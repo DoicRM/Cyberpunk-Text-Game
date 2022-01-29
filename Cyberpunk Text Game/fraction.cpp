@@ -18,3 +18,8 @@ Fraction::~Fraction()
 {
 
 }
+
+Fraction::setOwner(Fraction owner)
+{
+    this->owner = owner;
+}

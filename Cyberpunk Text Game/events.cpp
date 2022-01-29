@@ -626,7 +626,7 @@ void Event::scene001_01()
     //heroInv->addItem(Item_Pointer);
 
     //cout << endl;
-    //changeConsoleColor(15);
+    //Function::changeConsoleColor(15);
     //heroInv->showInv();
 
     //cout << endl;
