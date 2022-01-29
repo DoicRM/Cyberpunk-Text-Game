@@ -18,5 +18,6 @@ int main()
     }
 
     Function::waitForUserInput();
+
     return 0;
 }

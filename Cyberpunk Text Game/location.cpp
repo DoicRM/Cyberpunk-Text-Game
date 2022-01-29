@@ -21,3 +21,8 @@ Location::Location(string name, int type, int order, Fraction owner, bool curren
 Location::~Location()
 {
 }
+
+void Location::setOwner(Fraction owner)
+{
+    this->owner = owner;
+}

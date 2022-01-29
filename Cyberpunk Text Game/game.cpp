@@ -6,6 +6,7 @@ Game::Game()
     choice = 0;
     gameLang = 0;
     playing = true;
+    ptrCurrentLocation = nullptr;
 }
 
 Game::~Game()
@@ -17,7 +18,7 @@ void Game::selectLanguage()
 {
     while (gameLang != 1 && gameLang != 2)
     {
-        system("cls");
+        Function::clearScreen();
         cout << endl;
         Function::write("  [1] EN", 25);
         cout << endl;
@@ -27,7 +28,7 @@ void Game::selectLanguage()
         cin >> gameLang;
     }
 
-    Function::clearScreen(); //system("cls");
+    Function::clearScreen();
 }
 
 void Game::welcome()
@@ -137,6 +138,8 @@ void Game::newGame()
 {
     Event::initAll();
     Function::clearScreen();
+
+    //ptrCurrentLocation = DarkAlley;
 
     Event::prologue();
     Event::storyIntroduction();

@@ -19,5 +19,6 @@ public:
     inline const Fraction& getOwner() const { return this->owner; };
     inline const bool& isCurrent() const { return this->currency; };
 
+    void setOwner(Fraction owner);
     //void SetNeighbors(string north, string south, string east, string west);
 };

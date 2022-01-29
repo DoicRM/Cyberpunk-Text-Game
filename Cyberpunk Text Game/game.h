@@ -33,8 +33,8 @@ public:
 	void endGame(); // Koniec rozgrywki
 
 	friend void initAll();
-	friend void initHeroEQ();
-	friend void initQuestsList();
+	friend void Function::initHeroEQ();
+	friend void Function::initQuestsList();
 
 private:
 	bool playing;
@@ -45,5 +45,5 @@ private:
 enum language
 {
 	en = 1,
-	pl
+	pl = 2
 };
