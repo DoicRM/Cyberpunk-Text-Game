@@ -4,18 +4,27 @@ Quest::Quest()
 {
     this->name = "None";
     this->description = "None";
-    this->status = "unkown";
-    this->isRunning = false;
-    this->isComplete = false;
+    this->status = "unknown";
+    this->running = false;
+    this->completed = false;
 }
 
-Quest::Quest(string name, string description, string status, bool isRunning, bool isComplete)
+Quest::Quest(string name, string description)
+{
+    this->name = name;
+    this->description = description;
+    this->status = "unknown";
+    this->running = false;
+    this->completed = false;
+}
+
+Quest::Quest(string name, string description, string status, bool running, bool completed)
 {
     this->name = name;
     this->description = description;
     this->status = status;
-    this->isRunning = isRunning;
-    this->isComplete = isComplete;
+    this->running = running;
+    this->completed = completed;
 }
 
 Quest::~Quest()
@@ -25,7 +34,7 @@ Quest::~Quest()
 
 void Quest::addQuest()
 {
-    this->isRunning = true;
+    this->running = true;
     this->status = "ongoing";
 
     fstream q;
@@ -39,8 +48,8 @@ void Quest::addQuest()
 
 void Quest::endQuest()
 {
-    this->isRunning = false;
-    this->isComplete = true;
+    this->running = false;
+    this->completed = true;
     this->status = "completed";
 
     string quests[2];
@@ -74,17 +83,5 @@ void Quest::endQuest()
     }
 
     q.close();
-}
-
-bool Quest::isQuestRunning()
-{
-    if (!this->isComplete) return true;
-    else return false;
-}
-
-bool Quest::isQuestCompleted()
-{
-    if (!this->isRunning) return true;
-    else return false;
 }
 

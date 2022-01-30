@@ -1231,7 +1231,7 @@ void Event::enterGunShop()
             Function::write("  - 'What's up? How's the gun working out?'");
         }
 
-        if (quests["ZedAccelerator"].isQuestRunning() && !quests["ZedAccelerator"].isQuestCompleted())
+        if (quests["ZedAccelerator"].isRunning() && !quests["ZedAccelerator"].isCompleted())
         {
             Item* Item_Pointer = &items["AD13"];
 
