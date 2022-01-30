@@ -12,7 +12,8 @@ class Quest
     bool isComplete;
 
 public:
-    Quest(string = "none", string = "none", string = "unknown", bool = no, bool = no);
+    Quest();
+    Quest(string name, string description, string status, bool isRunning, bool isComplete);
     virtual ~Quest();
 
     inline const string& getName() const { return this->name; };

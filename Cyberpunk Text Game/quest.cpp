@@ -1,12 +1,21 @@
 #include "quest.h"
 
-Quest::Quest(string n, string d, string s, bool ir, bool ic)
+Quest::Quest()
 {
-    name = n;
-    description = d;
-    status = s;
-    isRunning = ir;
-    isComplete = ic;
+    this->name = "None";
+    this->description = "None";
+    this->status = "Unkown";
+    this->isRunning = false;
+    this->isComplete = false;
+}
+
+Quest::Quest(string name, string description, string status, bool isRunning, bool isComplete)
+{
+    this->name = name;
+    this->description = description;
+    this->status = status;
+    this->isRunning = isRunning;
+    this->isComplete = isComplete;
 }
 
 Quest::~Quest()
