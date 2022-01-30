@@ -1,6 +1,8 @@
 #pragma once
 #include "fraction.h"
 
+using namespace std;
+
 class Location
 {
     string name;

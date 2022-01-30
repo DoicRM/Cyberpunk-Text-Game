@@ -57,6 +57,8 @@ void Hero::delMoney(float money)
     {
         this->money = this->money - money;
     }
-
-    // You owe a debt to society!
+    else
+    {
+        // You owe a debt to society!
+    }
 }

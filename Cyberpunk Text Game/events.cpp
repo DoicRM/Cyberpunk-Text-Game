@@ -20,8 +20,8 @@ void Event::initHero()
 // Inicjowanie frakcji
 void Event::initFractionsNpcsAndLocations()
 {
-    if (Game().getLang() == en)
-    {
+    //if (Game().getLang() == en)
+    //{
         // Frakcje
         Fraction None("None", 0, "neutral");
         Fraction Beggars("Beggars", 0, "neutral");
@@ -64,8 +64,8 @@ void Event::initFractionsNpcsAndLocations()
         locations["Street"] = Street;
         locations["Nightclub"] = Nightclub;
         locations["GunShop"] = GunShop;
-    }
-    else
+    /* }
+    else if (Game().getLang() == pl)
     {
         // Frakcje
         Fraction None("Brak", 0, "neutral");
@@ -109,14 +109,14 @@ void Event::initFractionsNpcsAndLocations()
         locations["Street"] = Street;
         locations["Nightclub"] = Nightclub;
         locations["GunShop"] = GunShop;
-    }
+    }*/
 }
 
 // Inicjowanie przedmiotów
 void Event::initItems()
 {
-    if (Game().getLang() == en)
-    {
+    //if (Game().getLang() == en)
+    //{
         Item AD13("Accelerator D-13", "Others", "A long gone accelerator model, though still quite precious.", 50);
         Item AccessCard("Access card", "Others", "It definitely matches the door leading to the locked room in Ramsey's office.", 0);
         Item Pistol("Pistol", "Weapons", "A simple weapon that shoots pure energy.", 250);
@@ -124,7 +124,7 @@ void Event::initItems()
         items["AD13"] = AD13;
         items["AccessCard"] = AccessCard;
         items["Pistol"] = Pistol;
-    }
+    /* }
     else if (Game().getLang() == pl)
     {
         Item AD13("Akcelerator D-13", "Inne", "Dawno nieu¿ywany model akceleratora, choæ wci¹¿ doœæ cenny.", 50);
@@ -135,19 +135,20 @@ void Event::initItems()
         items["AccessCard"] = AccessCard;
         items["Pistol"] = Pistol;
     }
+    */
 }
 
 // Inicjowanie zadañ
 void Event::initQuests()
 {
-    if (Game().getLang() == en)
-    {
+    //if (Game().getLang() == en)
+    //{
         Quest KillVincent("Beauty and the Beast", "Kill 'Amnesia' nightclub owner Vincent Ramsey at the request of his girlfriend, Mia.");
         Quest ZedAccelerator("Shades of the Past", "Bring Zed an old model of an accelerator. In return you will receive a gun from him.");
 
         quests["KillVincent"] = KillVincent;
         quests["ZedAccelerator"] = ZedAccelerator;
-    }
+    /*}
     else if (Game().getLang() == pl)
     {
         Quest KillVincent("Piêkna i bestia", "Zabij w³aœciciela klubu nocnego 'Amnezja', Vincenta Ramseya, na proœbê jego dziewczyny, Mii.");
@@ -155,7 +156,7 @@ void Event::initQuests()
 
         quests["KillVincent"] = KillVincent;
         quests["ZedAccelerator"] = ZedAccelerator;
-    }
+    }*/ 
 }
 
 // Inicjowanie wszystkiego
@@ -193,7 +194,7 @@ void Event::Commands()
     {
         Function::clearScreen();
         Game().logo();
-        Game().mainMenu();
+        //Game().mainMenu();
     }
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -220,7 +221,7 @@ void Event::heroDeath()
     Function::waitForUserInput();
     Function::clearScreen();
     Game().logo();
-    Game().mainMenu();
+    //Game().mainMenu();
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //+ Koniec gry
@@ -246,7 +247,7 @@ void Event::gameOver()
     Function::waitForUserInput();
     Function::clearScreen();
     Game().logo();
-    Game().mainMenu();
+    //Game().mainMenu();
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::OnStreet()
@@ -370,10 +371,9 @@ void Event::DarkAlley()
         Function::write_narration(" It's full of cardboard boxes, old mechanical parts, and god knows what else.");
     }
 
-    //Item* Item_Pointer = &items["AD13"];
+    Item* Item_Pointer = &items["AD13"];
 
-    /*
-    if (heroInv->isHeroHaveItem(Item_Pointer) == false)
+    if (!heroes["Hero"].isHaveItem(Item_Pointer))
     {
         Sleep(1500);
         cout << endl;
@@ -403,11 +403,11 @@ void Event::DarkAlley()
                 Sleep(2000);
                 cout << endl;
 
-                Item* Item_Pointer = &Items["AD13"];
-                heroInv->addItem(Item_Pointer);
+                Item* Item_Pointer = &items["AD13"];
+                heroes["Hero"].addItem(Item_Pointer);
 
                 Function::changeConsoleColor(item);
-                string str = "  " + Items["AD13"].getName();
+                string str = "  " + items["AD13"].getName();
                 Function::write(str);
                 Function::changeConsoleColor();
                 Function::write(" was found.");
@@ -439,13 +439,12 @@ void Event::DarkAlley()
         cout << endl;
         OnStreet();
     }
-    */
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::prologue()
 {
-    if (Game().getLang() == en)
-    {
+    //if (Game().getLang() == en)
+    //{
         cout << "" << endl;
         Function::write("  Prologue");
         Sleep(2000);
@@ -453,7 +452,7 @@ void Event::prologue()
         cout << "" << endl;
         Function::write("  REQUIEM FOR A DREAM");
         Sleep(5000);
-    }
+    /* }
     else
     {
         cout << "" << endl;
@@ -463,13 +462,13 @@ void Event::prologue()
         cout << "" << endl;
         Function::write("  REQUIEM DLA MARZEÑ");
         Sleep(5000);
-    }
+    }*/
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::storyIntroduction()
 {
-    if (Game().getLang() == en)
-    {
+    //if (Game().getLang() == en)
+    //{
         Function::clearScreen();
         Sleep(2000);
         cout << "" << endl;
@@ -478,7 +477,7 @@ void Event::storyIntroduction()
         Function::write_narration(" Megacity is a place overrun by poverty and feuding gangs, where powerful corporations have the most influence. The violence in the streets is a clear sign of an impending war. Government operating from behind the secure walls of City Hall are trying to combat this, but so far without success. There are rumors that they themselves are secretly supporting the chaos to create a New Order on the ruins of the city.", 20);
         cout << endl;
         cout << "" << endl;
-        system("pause");
+        Function::pauseGame();
         Function::clearScreen();
         cout << "" << endl;
         Sleep(2500);
@@ -494,7 +493,7 @@ void Event::storyIntroduction()
         Sleep(2500);
         cout << endl;
         cout << "" << endl;
-    }
+    /* }
     else
     {
         Function::clearScreen();
@@ -521,13 +520,13 @@ void Event::storyIntroduction()
         Sleep(2500);
         cout << endl;
         cout << "" << endl;
-    }
+    }*/
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::scene001()
 {
-    if (Game().getLang() == en)
-    {
+    //if (Game().getLang() == en)
+    //{
         Function::write_narration("  You wake up dazed from a restless slumber.");
         Sleep(1000);
         Function::write_narration(" It was the same dream again...");
@@ -558,7 +557,7 @@ void Event::scene001()
         Function::actionOption(optionNr, "Find the exit from the alley."); // Opcja nr 2
         optionNr = 1;
         Function::write("  > ", 15);
-    }
+    /* }
     else
     {
         Function::write_narration("  Budzisz siê oszo³omiony z niespokojnej drzemki.");
@@ -591,7 +590,7 @@ void Event::scene001()
         Function::actionOption(optionNr, "ZnajdŸ wyjœcie z zau³ka."); // Opcja nr 2
         optionNr = 1;
         Function::write("  > ", 15);
-    }
+    }*/
 
     while (true)
     {
@@ -622,8 +621,8 @@ void Event::scene001_01()
     Sleep(2000);
     cout << endl;
 
-    //Item* Item_Pointer = &Items["AD13"];
-    //heroInv->addItem(Item_Pointer);
+    Item* Item_Pointer = &items["AD13"];
+    heroes["Hero"].addItem(Item_Pointer);
 
     //cout << endl;
     //Function::changeConsoleColor(15);
@@ -649,10 +648,9 @@ void Event::scene001_02()
 {
     cout << endl;
 
-    //Item* Item_Pointer = &items["Pistol"];
+    Item* Item_Pointer = &items["AD13"];
 
-    /*
-    if (heroInv->isHeroHaveItem(Item_Pointer) == false)
+    if (!heroes["Hero"].isHaveItem(Item_Pointer))
     {
         Function::write_narration("  You're not going to rummage through the trash.");
         Sleep(1000);
@@ -662,7 +660,6 @@ void Event::scene001_02()
     else {
         Function::write_narration("  You slowly toddle toward the neon color bombs at the end of the alley.");
     }
-    */
 
     Sleep(3000);
     cout << endl;
@@ -721,7 +718,7 @@ void Event::conversationWithHomeless()
     cout << "  > ";
     cin >> heroName;
     heroes["Hero"].setName(heroName);
-    npcs["Bob"].setToKnowHero(); // Bob poznaje bohatera
+    npcs["Bob"].setToKnowHero();
     Function::changeConsoleColor(dialogue);
     str = "  - 'So you're " + heroes["Hero"].getName() + ", huh?";
     Function::write(str);
@@ -974,17 +971,15 @@ void Event::heroMeetsPolicemans()
     cout << endl;
     Function::changeConsoleColor(narration);
 
-    //Item* Item_Pointer = &items["AD13"];
+    Item* Item_Pointer = &items["AD13"];
 
-    /*
-    if (heroInv->isHeroHaveItem(Item_Pointer) == true)
+    if (heroes["Hero"].isHaveItem(Item_Pointer))
     {
         Function::write("  You start searching through the pockets of your jacket and pants, but other than the accelerator you found in the trash, there's nothing else there.");
     }
     else {
         Function::write("  You start searching through the pockets of your jacket and pants, but there's nothing there.");
     }
-    */
 
     cout << endl;
     Function::changeConsoleColor(dialogue);
@@ -1227,23 +1222,20 @@ void Event::enterGunShop()
         Sleep(1000);
         Function::write(" From behind the counter, Zed is already smiling at you.");
 
-        //Item* Item_Pointer = &items["Pistol"];
+        Item* Item_Pointer = &items["Pistol"];
 
-        /*
-        if (heroInv->isHeroHaveItem(Item_Pointer) == true)
+        if (heroes["Hero"].isHaveItem(Item_Pointer))
         {
             cout << endl;
             Function::changeConsoleColor(dialogue);
             Function::write("  - 'What's up? How's the gun working out?'");
         }
-        */
 
         if (quests["ZedAccelerator"].isQuestRunning() && !quests["ZedAccelerator"].isQuestCompleted())
         {
-            //Item* Item_Pointer = &items["AD13"];
+            Item* Item_Pointer = &items["AD13"];
 
-            /*
-            if (heroInv->isHeroHaveItem(Item_Pointer) == false)
+            if (!heroes["Hero"].isHaveItem(Item_Pointer))
             {
                 dialogueWithZed();
             }
@@ -1251,7 +1243,6 @@ void Event::enterGunShop()
             {
 
             }
-            */
         }
         else
         {
@@ -1370,10 +1361,9 @@ void Event::ZedTrade()
 {
     bool ZedTellsAboutWeapons = false;
 
-    //Item* Item_Pointer = &items["Pistol"];
+    Item* Item_Pointer = &items["Pistol"];
 
-    /*
-    if (heroInv->isHeroHaveItem(Item_Pointer) == false)
+    if (!heroes["Hero"].isHaveItem(Item_Pointer))
     {
         if (!ZedTellsAboutWeapons)
         {
@@ -1450,7 +1440,7 @@ void Event::ZedTrade()
                     Function::changeConsoleColor(dialogue);
                     Function::write("  - 'No problem. It can happen to anyone.'");
                     cout << endl;
-                    Function::dialogueWithZed();
+                    dialogueWithZed();
                     break;
                 }
             }
@@ -1463,7 +1453,6 @@ void Event::ZedTrade()
         cout << endl;
         dialogueWithZed();
     }
-    */
 }
 
 void Event::buyPistol()
@@ -1486,8 +1475,8 @@ void Event::buyPistol()
             Sleep(1000);
             Function::write(" Let's just say I'll loan you this gun on a friendly basis.");
 
-            //Item* Item_Pointer = &items["Pistol"];
-            //heroInv->addItem(Item_Pointer);
+            Item* Item_Pointer = &items["Pistol"];
+            heroes["Hero"].addItem(Item_Pointer);
 
             cout << endl;
             Function::changeConsoleColor(3);
@@ -1515,8 +1504,8 @@ void Event::buyPistol()
         Function::changeConsoleColor(dialogue);
         Function::write("  - 'A pistol is a good start. Here, it's yours.'");
 
-        //Item* Item_Pointer = &items["Pistol"];
-        //heroInv->addItem(Item_Pointer);
+        Item* Item_Pointer = &items["Pistol"];
+        heroes["Hero"].addItem(Item_Pointer);
 
         cout << endl;
         Function::changeConsoleColor(item);

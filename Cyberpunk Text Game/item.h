@@ -12,7 +12,8 @@ public:
     float price;
     Item* nextItem; // wskaŸnik na nastêpny element
 
-    Item(string = "none", string = "none", string = "none", float = 0.0);
+    Item();
+    Item(string name, string type, string description, float price);
     virtual ~Item();
 
     inline const string& getName() const { return this->name; };

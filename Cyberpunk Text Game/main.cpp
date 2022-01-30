@@ -11,10 +11,8 @@ int main()
     
     while (game.getPlaying())
     {
-        game.selectLanguage(); // Wybór języka gry
-        game.welcome(); // Powitanie
-        game.writeLogo(); // Logo
-        game.mainMenu(); // Menu główne
+        //game.selectLanguage(); // Wybór języka gry
+        game.welcome();
     }
 
     Function::waitForUserInput();

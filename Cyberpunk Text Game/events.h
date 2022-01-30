@@ -7,6 +7,8 @@
 #include "functions.h"
 #include "location.h"
 
+using namespace std;
+
 class Event
 {
 public:

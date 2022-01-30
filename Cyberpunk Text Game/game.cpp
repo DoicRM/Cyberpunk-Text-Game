@@ -29,6 +29,7 @@ void Game::selectLanguage()
     }
 
     Function::clearScreen();
+    welcome(); // Powitanie
 }
 
 void Game::welcome()
@@ -36,11 +37,12 @@ void Game::welcome()
     cout << endl;
     Sleep(500); 
 
-    if (gameLang == pl) Function::write("  RADOS£AW 'DOIC' MICHALAK PREZENTUJE GRÊ TEKSTOW¥ POD TYTU£EM", 40);
+    if (getLang() == pl) Function::write("  RADOS£AW 'DOIC' MICHALAK PREZENTUJE GRÊ TEKSTOW¥ POD TYTU£EM", 40);
     else Function::write("  RADOS£AW 'DOIC' MICHALAK PRESENTS A TEXT GAME TITLED", 40);
 
     Sleep(2000);
     Function::clearScreen();
+    writeLogo(); // Logo
 }
 
 void Game::writeLogo()
@@ -65,6 +67,7 @@ void Game::writeLogo()
     Function::changeConsoleColor();
     Function::write("                                                                      Demo Build", 2);
     cout << "" << endl;
+    mainMenu(); // Menu g³ówne
 }
 
 void Game::logo()
@@ -82,6 +85,7 @@ void Game::logo()
     Function::changeConsoleColor();
     cout << "                                                                      Demo Build" << endl;
     cout << "" << endl;
+    mainMenu(); // Menu g³ówne
 }
 
 void Game::mainMenu()
@@ -89,7 +93,7 @@ void Game::mainMenu()
     Function::changeConsoleColor();
     cout << "" << endl;
 
-    if (gameLang == pl)
+    if (getLang() == pl)
     {
         Function::write("  [1] Nowa gra", 25);
         cout << endl;
@@ -153,7 +157,7 @@ void Game::continueGame()
     cout << endl;
     Function::changeConsoleColor(lightblue);
 
-    if (gameLang == pl) Function::write("  Nic tu nie ma. Ta funkcja jest obecnie niedostêpna.", 25);
+    if (getLang() == pl) Function::write("  Nic tu nie ma. Ta funkcja jest obecnie niedostêpna.", 25);
     else Function::write("  There's nothing here. This feature is currently unavailable.", 25);
 
     Sleep(1000);
@@ -174,7 +178,7 @@ void Game::aboutAuthor()
     cout << "" << endl;
     Function::changeConsoleColor();
 
-    if (gameLang == pl) Function::write("  Rados³aw 'Doic' Michalak jest m³odym programist¹ i studentem AHE w £odzi. To naprawdê fajny goœæ, mówiê ci!", 25);
+    if (getLang() == pl) Function::write("  Rados³aw 'Doic' Michalak jest m³odym programist¹ i studentem AHE w £odzi. To naprawdê fajny goœæ, mówiê ci!", 25);
     else Function::write("  Rados³aw 'Doic' Michalak is a young programmer and a student at AHE in £ódŸ. He's a really cool guy, I tell you!", 25);
    
     Sleep(1000);
@@ -188,7 +192,7 @@ void Game::endGame()
 {
     do
     {
-        if (gameLang == pl)
+        if (getLang() == pl)
         {
             Sleep(500);
             Function::clearScreen();
