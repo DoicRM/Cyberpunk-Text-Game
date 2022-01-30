@@ -7,8 +7,10 @@ map <string, Item> items;
 map <string, Location> locations;
 map <string, Quest> quests;
 
-// INIT
-// Inicjowanie bohatera
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// 1. INIT
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// 1.1 Inicjowanie bohatera
 void Event::initHero()
 {
     Hero hero;
@@ -17,10 +19,10 @@ void Event::initHero()
     //EQ["HeroInv"] = heroInv;
 }
 
-// Inicjowanie frakcji
+// 1.2 Inicjowanie frakcji
 void Event::initFractionsNpcsAndLocations()
 {
-    //if (Game().getLang() == en)
+    //if (game.getLang() == en)
     //{
         // Frakcje
         Fraction None("None", 0, "neutral");
@@ -112,7 +114,7 @@ void Event::initFractionsNpcsAndLocations()
     }*/
 }
 
-// Inicjowanie przedmiotów
+// 1.3 Inicjowanie przedmiotów
 void Event::initItems()
 {
     //if (Game().getLang() == en)
@@ -138,7 +140,7 @@ void Event::initItems()
     */
 }
 
-// Inicjowanie zadañ
+// 1.4 Inicjowanie zadañ
 void Event::initQuests()
 {
     //if (Game().getLang() == en)
@@ -159,7 +161,7 @@ void Event::initQuests()
     }*/ 
 }
 
-// Inicjowanie wszystkiego
+// 1.5 Inicjowanie wszystkiego
 void Event::initAll()
 {
     Event::initHero();
@@ -170,129 +172,84 @@ void Event::initAll()
     Function::initQuestsList();
 }
 
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// INICJOWANIE
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-//+ Inicjowanie zmiennych
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// 1.6 Inicjowanie wszystkiego
 bool BobRecommendsZedToHero = false, heroKnowsVincentHideoutCode = false, heroIsOnDanceFloor = false, heroIsAtBar = false, ZedKnowsAboutBobFriendshipWithHero = false;
 int heroChoice = 0, checkpoint = 0, optionNr = 1;
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// SCENY
+// 2. WYDARZENIA
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-//+ Pomocne komendy
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-void Event::Commands()
-{
-    if (heroChoice == 'help')
-    {
-        cout << endl;
-        Function::write("  Use the 'exit' command to leave the current session.");
-    }
-    else if (heroChoice == 'exit')
-    {
-        Function::clearScreen();
-        Game().logo();
-        //Game().mainMenu();
-    }
-}
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-//+ Œmieræ bohatera
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-void Event::heroDeath()
-{
-    Sleep(500);
-    Function::clearScreen();
-    Function::changeConsoleColor(red);
-    cout << endl;
-
-    if (Game().getLang() == en)  Function::write("  YOU ARE DEAD!", 25);
-    else Function::write("  NIE ¯YJESZ!", 25);
-
-    Sleep(1000);
-    cout << endl;
-    cout << "" << endl;
-    Function::changeConsoleColor();
-
-    if (Game().getLang() == en)  Function::write("  Back to menu...", 25);
-    else Function::write("  Wróæ do menu...", 25);
-
-    Function::waitForUserInput();
-    Function::clearScreen();
-    Game().logo();
-    //Game().mainMenu();
-}
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-//+ Koniec gry
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-void Event::gameOver()
-{
-    Sleep(500);
-    Function::clearScreen();
-    Function::changeConsoleColor(lightblue);
-    cout << endl;
-
-    if (Game().getLang() == en)  Function::write("  THE END", 25);
-    else Function::write("  KONIEC", 25);
-
-    Sleep(1000);
-    cout << endl;
-    cout << "" << endl;
-    Function::changeConsoleColor();
-
-    if (Game().getLang() == en)  Function::write("  Back to menu...", 25);
-    else Function::write("  Wróæ do menu...", 25);
-
-    Function::waitForUserInput();
-    Function::clearScreen();
-    Game().logo();
-    //Game().mainMenu();
-}
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-void Event::OnStreet()
-{
-    //-------------------------------------------------------------
-    // Decyzja
-    Function::write_narration("Once again you are on a street bathed in nighttime darkness.");
-    cout << "" << endl;
-    Function::changeConsoleColor();
-    Function::actionOption(optionNr, "Visit Dark Alley."); // Opcja nr 1
-    optionNr++;
-    Function::actionOption(optionNr, "Visit Nightclub 'Amnesia'."); // Opcja nr 2
-    optionNr++;
-    Function::actionOption(optionNr, "Go back to the gun shop."); // Opcja nr 3
-    optionNr = 1;
-    Function::write("  > ", 15);
-
-    while (true)
-    {
-        cin >> heroChoice;
-
-        if (heroChoice == 1)
-        {
-            cout << endl;
-            enterClub();
-            break;
-        }
-        else if (heroChoice == 2)
-        {
-            cout << endl;
-            enterClub();
-            break;
-        }
-        else if (heroChoice == 3)
-        {
-            cout << endl;
-            enterGunShop();
-            break;
-        }
-    }
-    //-------------------------------------------------------------
-}
-
+// 2.1 G£ÓWNE
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::DarkAlley()
+{
+    bool DarkAlleyWasVisited = false;
+
+    //Game().setCurrentLocation(locations["DarkAlley"]);
+
+    if (!DarkAlleyWasVisited)
+    {
+        prologue();
+        storyIntroduction();
+        wakeUpAloneInDarkAlley();
+    }
+    else
+    {
+        DarkAlleyCrossroads();
+    }
+}
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+void Event::Street()
+{
+    bool StreetWasVisited = false;
+
+    //Game().setCurrentLocation(locations["Street"]);
+
+    if (!StreetWasVisited)
+    {
+
+    }
+    else
+    {
+        StreetCrossroads();
+    }
+}
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+void Event::GunShop()
+{
+    bool GunShopWasVisited = false;
+
+    //Game().setCurrentLocation(locations["GunShop"]);
+
+    if (!GunShopWasVisited)
+    {
+
+    }
+    else
+    {
+
+    }
+}
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+void Event::Nightclub()
+{
+    bool NightclubWasVisited = false;
+
+    //Game().setCurrentLocation(locations["Nightclub"]);
+
+    if (!NightclubWasVisited)
+    {
+
+    }
+    else
+    {
+
+    }
+}
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// 2.2 INNE
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+void Event::DarkAlleyCrossroads()
 {
     string heroName;
 
@@ -420,13 +377,13 @@ void Event::DarkAlley()
                 cout << endl;
                 Function::write_narration("  There is nothing interesting here any more. Time to go back...");
                 cout << endl;
-                OnStreet();
+                StreetCrossroads();
                 break;
             }
             else if (heroChoice == 2)
             {
                 cout << endl;
-                OnStreet();
+                Street();
                 break;
             }
         }
@@ -437,32 +394,85 @@ void Event::DarkAlley()
         cout << endl;
         Function::write_narration("  There is nothing interesting here. Time to go back...");
         cout << endl;
-        OnStreet();
+        Street();
     }
 }
+
+void Event::StreetCrossroads()
+{
+    //-------------------------------------------------------------
+    // Decyzja
+    Function::write_narration("Once again you are on a street bathed in nighttime darkness.");
+    cout << "" << endl;
+    Function::changeConsoleColor();
+    Function::actionOption(optionNr, "Visit Dark Alley."); // Opcja nr 1
+    optionNr++;
+    Function::actionOption(optionNr, "Visit Nightclub 'Amnesia'."); // Opcja nr 2
+    optionNr++;
+    Function::actionOption(optionNr, "Go back to the gun shop."); // Opcja nr 3
+    optionNr = 1;
+    Function::write("  > ", 15);
+
+    while (true)
+    {
+        cin >> heroChoice;
+
+        if (heroChoice == 1)
+        {
+            cout << endl;
+            DarkAlley();
+            break;
+        }
+        else if (heroChoice == 2)
+        {
+            cout << endl;
+            Nightclub();
+            break;
+        }
+        else if (heroChoice == 3)
+        {
+            cout << endl;
+            GunShop();
+            break;
+        }
+    }
+    //-------------------------------------------------------------
+}
+
+void Event::GunShopCrossroads()
+{
+
+}
+
+void Event::NightclubCrossroads()
+{
+
+}
+
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::prologue()
 {
     //if (Game().getLang() == en)
     //{
         cout << "" << endl;
-        Function::write("  Prologue");
+        Function::write("\tPrologue");
         Sleep(2000);
         cout << endl;
         cout << "" << endl;
-        Function::write("  REQUIEM FOR A DREAM");
+        Function::write("\tREQUIEM FOR A DREAM");
         Sleep(5000);
     /* }
     else
     {
         cout << "" << endl;
-        Function::write("  Prolog");
+        Function::write("\tProlog");
         Sleep(2000);
         cout << endl;
         cout << "" << endl;
-        Function::write("  REQUIEM DLA MARZEÑ");
+        Function::write("\tREQUIEM DLA MARZEÑ");
         Sleep(5000);
-    }*/
+    }
+    */
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::storyIntroduction()
@@ -472,9 +482,9 @@ void Event::storyIntroduction()
         Function::clearScreen();
         Sleep(2000);
         cout << "" << endl;
-        Function::write_narration("  It's 2050.");
+        Function::write_narration("\tIt's 2050.");
         Sleep(1000);
-        Function::write_narration(" Megacity is a place overrun by poverty and feuding gangs, where powerful corporations have the most influence. The violence in the streets is a clear sign of an impending war. Government operating from behind the secure walls of City Hall are trying to combat this, but so far without success. There are rumors that they themselves are secretly supporting the chaos to create a New Order on the ruins of the city.", 20);
+        Function::write_narration(" Megacity is a place overrun by poverty and feuding gangs, where powerful\n\tcorporations have the most influence. The violence in the streets is a clear sign of\n\tan impending war. Government operating from behind the secure walls of City Hall are\n\ttrying to combat this, but so far without success. There are rumors that they\n\tthemselves are secretly supporting the chaos to create a New Order on the ruins of the city.", 20);
         cout << endl;
         cout << "" << endl;
         Function::pauseGame();
@@ -482,13 +492,13 @@ void Event::storyIntroduction()
         cout << "" << endl;
         Sleep(2500);
         Function::changeConsoleColor(dialogue);
-        Function::write("  Standing at the edge of the tallest tower...", 80);
+        Function::write("\tStanding at the edge of the tallest tower...", 75);
         Sleep(1500);
         cout << endl;
-        Function::write("  Holding your hand and dive...", 80);
+        Function::write("\tHolding your hand and dive...", 75);
         Sleep(1500);
         cout << endl;
-        Function::write("  Falling and falling for what feels like hours...", 80);
+        Function::write("\tFalling and falling for what feels like hours...", 75);
         Function::changeConsoleColor();
         Sleep(2500);
         cout << endl;
@@ -499,7 +509,7 @@ void Event::storyIntroduction()
         Function::clearScreen();
         Sleep(2000);
         cout << "" << endl;
-        Function::write_narration("  Jest rok 2050.");
+        Function::write_narration("\tJest rok 2050.");
         Sleep(1000);
         Function::write_narration(" Megacity to miejsce opanowane przez biedê i zwaœnione gangi, gdzie najwiêksze wp³ywy maj¹ potê¿ne korporacje. Przemoc na ulicach jest wyraŸnym znakiem zbli¿aj¹cej siê wojny. Rz¹d dzia³aj¹cy zza bezpiecznych murów ratusza próbuje z tym walczyæ, ale jak na razie bezskutecznie. Kr¹¿¹ plotki, ¿e sam potajemnie wspiera chaos, by na gruzach miasta stworzyæ Nowy Porz¹dek.", 20);
         cout << endl;
@@ -509,13 +519,13 @@ void Event::storyIntroduction()
         cout << "" << endl;
         Sleep(2500);
         Function::changeConsoleColor(dialogue);
-        Function::write("  Stoj¹c na krawêdzi najwy¿szej wie¿y...", 80);
+        Function::write("\tStoj¹c na krawêdzi najwy¿szej wie¿y...", 80);
         Sleep(1500);
         cout << endl;
-        Function::write("  Trzymaj¹c ciê za rêkê i nurkuj¹c...", 80);
+        Function::write("\tTrzymaj¹c ciê za rêkê i nurkuj¹c...", 80);
         Sleep(1500);
         cout << endl;
-        Function::write("  Spadaæ i spadaæ przez to, co wydaje siê godzinami...", 80);
+        Function::write("\tSpadaæ i spadaæ przez to, co wydaje siê godzinami...", 80);
         Function::changeConsoleColor();
         Sleep(2500);
         cout << endl;
@@ -523,31 +533,31 @@ void Event::storyIntroduction()
     }*/
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-void Event::scene001()
+void Event::wakeUpAloneInDarkAlley()
 {
     //if (Game().getLang() == en)
     //{
-        Function::write_narration("  You wake up dazed from a restless slumber.");
+        Function::write_narration("\tYou wake up dazed from a restless slumber.");
         Sleep(1000);
         Function::write_narration(" It was the same dream again...");
         Sleep(1500);
         cout << endl;
-        Function::write_narration("  You are somewhere in a dark alley. Above your head, among the smoggy haze, as if torn from a dream, rise the monumental skyscrapers of large corporations.");
+        Function::write_narration("\tYou are somewhere in a dark alley. Above your head, among the smoggy haze,\n\tas if torn from a dream, rise the monumental skyscrapers of large\n\tcorporations.");
         Sleep(1000);
         Function::write_narration(" Their divine majesty beats you to the eyes.");
         Sleep(2500);
         cout << endl;
-        Function::write_narration("  Your heart beats so hard that only the stinging touch of the wind protects you from a sudden heart attack.");
+        Function::write_narration("\tYour heart beats so hard that only the stinging touch of the wind protects\n\tyou from a sudden heart attack.");
         Sleep(500);
         Function::write_narration(" Suddenly a wave of shivers comes over your body, you start shaking like an aspen, and realize that you are lying on a lair made of some old newspapers.");
         Sleep(2000);
         cout << endl;
-        Function::write_narration("  When you rise from the ground, you notice a sea of trash around you.");
+        Function::write_narration("\tWhen you rise from the ground, you notice a sea of trash around you.");
         Sleep(1000);
         Function::write_narration(" It's full of cardboard boxes, old mechanical parts, and god knows what else.");
         Sleep(1500);
         cout << endl;
-        Function::write_narration("  Who knows, you might find something interesting there...");
+        Function::write_narration("\tWho knows, you might find something interesting there...");
         cout << endl;
         cout << "" << endl;
         //-------------------------------------------------------------
@@ -556,7 +566,7 @@ void Event::scene001()
         optionNr++;
         Function::actionOption(optionNr, "Find the exit from the alley."); // Opcja nr 2
         optionNr = 1;
-        Function::write("  > ", 15);
+        Function::write("\t> ", 15);
     /* }
     else
     {
@@ -599,20 +609,20 @@ void Event::scene001()
         if (heroChoice == 1)
         {
             Sleep(1000);
-            scene001_01();
+            inSeaOfRubbish();
             break;
         }
         else if (heroChoice == 2)
         {
             Sleep(1000);
-            scene001_02();
+            outOfTheAlley();
             break;
         }
     }
     //-------------------------------------------------------------
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-void Event::scene001_01()
+void Event::inSeaOfRubbish()
 {
     cout << endl;
     Function::write_narration("  You start rummaging through the trash.");
@@ -641,10 +651,10 @@ void Event::scene001_01()
     Function::write_narration("  Hmm, that might come in handy in the future.");
     Sleep(1000);
 
-    scene001_02();
+    outOfTheAlley();
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-void Event::scene001_02()
+void Event::outOfTheAlley()
 {
     cout << endl;
 
@@ -1329,7 +1339,7 @@ void Event::dialogueWithZed()
                 }
                 else
                 {
-                    Event::OnStreet();
+                    StreetCrossroads();
                 }
 
                 break;
@@ -1348,7 +1358,7 @@ void Event::dialogueWithZed()
             }
             else
             {
-                Event::OnStreet();
+                StreetCrossroads();
             }
 
             break;
@@ -1891,4 +1901,70 @@ void Event::loadingFiles()
     cout << endl;
     Function::write("  Download completed.");
     Function::changeConsoleColor();
+}
+
+// Komendy
+void Event::Commands()
+{
+    if (heroChoice == 'help')
+    {
+        cout << endl;
+        Function::write("  Use the 'exit' command to leave the current session.");
+    }
+    else if (heroChoice == 'exit')
+    {
+        Function::clearScreen();
+        Game().logo();
+        //Game().mainMenu();
+    }
+}
+
+// Œmieræ bohatera
+void Event::heroDeath()
+{
+    Sleep(500);
+    Function::clearScreen();
+    Function::changeConsoleColor(red);
+    cout << endl;
+
+    if (Game().getLang() == en)  Function::write("  YOU ARE DEAD!", 25);
+    else Function::write("  NIE ¯YJESZ!", 25);
+
+    Sleep(1000);
+    cout << endl;
+    cout << "" << endl;
+    Function::changeConsoleColor();
+
+    if (Game().getLang() == en)  Function::write("  Back to menu...", 25);
+    else Function::write("  Wróæ do menu...", 25);
+
+    Function::waitForUserInput();
+    Function::clearScreen();
+    Game().logo();
+    //Game().mainMenu();
+}
+
+// Koniec gry
+void Event::gameOver()
+{
+    Sleep(500);
+    Function::clearScreen();
+    Function::changeConsoleColor(lightblue);
+    cout << endl;
+
+    if (Game().getLang() == en)  Function::write("  THE END", 25);
+    else Function::write("  KONIEC", 25);
+
+    Sleep(1000);
+    cout << endl;
+    cout << "" << endl;
+    Function::changeConsoleColor();
+
+    if (Game().getLang() == en)  Function::write("  Back to menu...", 25);
+    else Function::write("  Wróæ do menu...", 25);
+
+    Function::waitForUserInput();
+    Function::clearScreen();
+    Game().logo();
+    //Game().mainMenu();
 }

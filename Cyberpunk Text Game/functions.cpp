@@ -25,14 +25,14 @@ void Function::write_narration(string st, int sp)
 
 void Function::actionOption(int nr, string text)
 {
-    string str = "  [" + to_string(nr) + "] " + text;
+    string str = "\t[" + to_string(nr) + "] " + text;
     Function::write(str, 25);
     cout << endl;
 }
 
 void Function::dialogueOption(int nr, string text)
 {
-    string str = "  [" + to_string(nr) + "] '" + text + "'";
+    string str = "\t[" + to_string(nr) + "] '" + text + "'";
     Function::write(str, 25);
     cout << endl;
 }

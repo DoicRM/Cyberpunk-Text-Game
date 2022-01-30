@@ -4,11 +4,13 @@ using namespace std;
 
 int main()
 {   
+    //cout << "\t\t\t\t\t\t\t\t\t\t\t\t  i" << endl; miarka
+
     SetConsoleTitleA("Cyberpunk Text Game");
     setlocale(LC_ALL, "polish"); // Zainicjowanie polskich znaków
 
     Game game;
-    
+
     while (game.getPlaying())
     {
         //game.selectLanguage(); // Wybór języka gry

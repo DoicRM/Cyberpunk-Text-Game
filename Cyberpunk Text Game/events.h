@@ -21,27 +21,30 @@ public:
 	// FABULARNE
 	//	Mroczny zau³ek
 	static void DarkAlley();
+		static void DarkAlleyCrossroads();
 		static void prologue();
 		static void storyIntroduction();
-		static void scene001();
-		static void scene001_01();
-		static void scene001_02();
+		static void wakeUpAloneInDarkAlley();
+		static void inSeaOfRubbish();
+		static void outOfTheAlley();
 		static void conversationWithHomeless();
 	//	Ulica
-	//static void Street();
-		static void OnStreet();
+	static void Street();
+		static void StreetCrossroads();
 		static void scene002();
 		static void heroMeetSecurityGuards();
 		static void heroMeetsPolicemans();
 	//	Sklep z broni¹
-	//static void GunShop();
+	static void GunShop();
+		static void GunShopCrossroads();
 		static void heroMeetGunStore();
 		static void enterGunShop();
 		static void ZedTrade();
 		static void buyPistol();
 		static void dialogueWithZed();
 	//	Klub nocny
-	//static void Nightclub();
+	static void Nightclub();
+		static void NightclubCrossroads();
 		static void enterClub();
 		static void clubDanceFloor();
 		static void clubBar();
