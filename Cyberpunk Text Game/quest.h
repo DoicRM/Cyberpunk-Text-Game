@@ -5,6 +5,7 @@ using namespace std;
 
 class Quest
 {
+private:
     string name;
     string description;
     string status;
@@ -24,10 +25,4 @@ public:
     void endQuest();
     bool isQuestRunning();
     bool isQuestCompleted();
-
-    enum yesAndNo
-    {
-        no = 0,
-        yes
-    };
 };

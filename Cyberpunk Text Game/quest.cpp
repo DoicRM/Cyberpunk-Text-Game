@@ -4,7 +4,7 @@ Quest::Quest()
 {
     this->name = "None";
     this->description = "None";
-    this->status = "Unkown";
+    this->status = "unkown";
     this->isRunning = false;
     this->isComplete = false;
 }
@@ -25,23 +25,23 @@ Quest::~Quest()
 
 void Quest::addQuest()
 {
-    isRunning = true;
-    status = "ongoing";
+    this->isRunning = true;
+    this->status = "ongoing";
 
     fstream q;
     q.open("quests.txt", ios::out | ios::app);
-    q << "  Name: " << name << endl;
-    q << "  Description: " << description << endl;
-    q << "  Status: " << status << endl;
+    q << "  Name: " << this->name << endl;
+    q << "  Description: " << this->description << endl;
+    q << "  Status: " << this->status << endl;
     q << "..........................................................................." << endl;
     q.close();
 }
 
 void Quest::endQuest()
 {
-    isRunning = false;
-    isComplete = true;
-    status = "completed";
+    this->isRunning = false;
+    this->isComplete = true;
+    this->status = "completed";
 
     string quests[2];
     string header, breakLine, questName[1], questDesc[1], questStatus[1], questsLine;
@@ -65,7 +65,7 @@ void Quest::endQuest()
         if (lineNr == 5)
         {
             getline(q, questsLine);
-            cout << "  Status: " << status;
+            cout << "  Status: " << this->status;
             lineNr = 3;
             questNr++;
         }
@@ -78,13 +78,13 @@ void Quest::endQuest()
 
 bool Quest::isQuestRunning()
 {
-    if (!isComplete) return true;
+    if (!this->isComplete) return true;
     else return false;
 }
 
 bool Quest::isQuestCompleted()
 {
-    if (!isRunning) return true;
+    if (!this->isRunning) return true;
     else return false;
 }
 
