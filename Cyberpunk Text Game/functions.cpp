@@ -37,6 +37,14 @@ void Function::dialogueOption(int nr, string text)
     cout << endl;
 }
 
+void Function::showHeroAction(string text)
+{
+    cout << endl;
+    changeConsoleColor();
+    string str = "\t> " + text;
+    cout << str << endl;
+}
+
 // Zmiana koloru tekstu i t³a konsoli
 void Function::changeConsoleColor(int color)
 {
@@ -82,10 +90,6 @@ void Function::clearScreen()
 
 void Function::pauseGame()
 {
-#if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
-    system("pause");
-#else
-    cout << endl << " Press ENTER to continue..." << endl;
-    cin.ignore(std::numeric_limits <std::streamsize> ::max(), '\n');
-#endif
+    cout << "\tPress ANY KEY to continue...";
+    waitForUserInput();
 }

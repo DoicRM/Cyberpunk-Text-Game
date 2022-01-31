@@ -24,6 +24,6 @@ public:
     inline const bool& isRunning() const { return this->running; };
     inline const bool& isCompleted() const { return this->completed; };
 
-    void addQuest();
-    void endQuest();
+    void start();
+    void end();
 };

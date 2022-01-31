@@ -32,7 +32,7 @@ Quest::~Quest()
 
 }
 
-void Quest::addQuest()
+void Quest::start()
 {
     this->running = true;
     this->status = "ongoing";
@@ -46,7 +46,7 @@ void Quest::addQuest()
     q.close();
 }
 
-void Quest::endQuest()
+void Quest::end()
 {
     this->running = false;
     this->completed = true;

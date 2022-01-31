@@ -56,7 +56,7 @@ void Npc::setAttitude(int attitude)
         Function::changeConsoleColor();
     }
 
-    string str = "  " + this->name + " is " + this->attitude + " now.";
+    string str = "\t" + this->name + " is " + this->attitude + " now.";
     Function::write(str);
     cout << endl;
     Function::changeConsoleColor();

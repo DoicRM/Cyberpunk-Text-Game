@@ -233,3 +233,8 @@ void Game::endGame()
         }
     } while (choice != 1 && choice != 2);
 }
+
+void Game::credits()
+{
+    Function::write("\t\tAUTHOR\n\tRados³aw 'Doic' Michalak\n\n\t\tTESTERS\n\tPawe³ Michalak\n\n\t\tTHANKS\n\tDominik Szpilski\n\tDaniel Ob³¹k");
+}

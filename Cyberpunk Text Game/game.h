@@ -31,6 +31,7 @@ public:
 	void aboutAuthor(); // O autorze
 	void logo(); // Gotowe logo gry
 	void endGame(); // Koniec rozgrywki
+	void credits();
 
 	friend void initAll();
 	friend void Function::initHeroEQ();
