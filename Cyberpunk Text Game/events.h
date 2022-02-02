@@ -31,7 +31,7 @@ public:
 	//	Ulica
 	static void Street();
 		static void StreetCrossroads();
-		static void scene002();
+		static void viewOfAmnesia();
 		static void heroMeetSecurityGuards();
 		static void heroMeetsPolicemans();
 	//	Sklep z broni¹

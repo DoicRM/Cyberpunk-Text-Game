@@ -175,6 +175,7 @@ void Event::initAll()
 // 1.6 Inicjowanie wszystkiego
 bool BobRecommendsZedToHero = false, heroKnowsVincentHideoutCode = false, heroIsOnDanceFloor = false, heroIsAtBar = false, ZedKnowsAboutBobFriendshipWithHero = false;
 int heroChoice = 0, checkpoint = 0, optionNr = 1;
+bool DarkAlleyWasVisited = false, StreetWasVisited = false, GunShopWasVisited = false, NightclubWasVisited = false;
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // 2. WYDARZENIA
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -182,14 +183,11 @@ int heroChoice = 0, checkpoint = 0, optionNr = 1;
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::DarkAlley()
 {
-    bool DarkAlleyWasVisited = false;
-
     //Game().setCurrentLocation(locations["DarkAlley"]);
 
     if (!DarkAlleyWasVisited)
     {
         prologue();
-        //DarkAlleyWasVisited = true;
     }
     else
     {
@@ -199,13 +197,11 @@ void Event::DarkAlley()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::Street()
 {
-    bool StreetWasVisited = false;
-
     //Game().setCurrentLocation(locations["Street"]);
 
     if (!StreetWasVisited)
     {
-        //StreetWasVisited = true;
+        viewOfAmnesia();
     }
     else
     {
@@ -215,24 +211,21 @@ void Event::Street()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::GunShop()
 {
-    bool GunShopWasVisited = false;
-
     //Game().setCurrentLocation(locations["GunShop"]);
 
     if (!GunShopWasVisited)
     {
+        
         //GunShopWasVisited = true;
     }
     else
     {
-
+        GunShopCrossroads();
     }
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::Nightclub()
 {
-    bool NightclubWasVisited = false;
-
     //Game().setCurrentLocation(locations["Nightclub"]);
 
     if (!NightclubWasVisited)
@@ -241,12 +234,13 @@ void Event::Nightclub()
     }
     else
     {
-
+        NightclubCrossroads();
     }
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // 2.2 INNE
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// 2.2.1 MROCZNY ZAU£EK
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::DarkAlleyCrossroads()
 {
@@ -258,7 +252,7 @@ void Event::DarkAlleyCrossroads()
     {
         Function::write_narration("When you enter the alley, you hear a familiar voice.");
         Function::changeConsoleColor(dialogue);
-        Function::write("  - 'It's you again. Why don't you tell me something for one this time?'");
+        Function::write("\t- 'It's you again. Why don't you tell me something for one this time?'");
         cout << endl;
         cout << "" << endl;
         //-------------------------------------------------------------
@@ -267,7 +261,7 @@ void Event::DarkAlleyCrossroads()
         optionNr++;
         Function::actionOption(optionNr, "Ignore him again."); // Opcja nr 2
         optionNr = 1;
-        Function::write("  > ", 15);
+        Function::write("\t> ", 15);
 
         while (true)
         {
@@ -276,7 +270,7 @@ void Event::DarkAlleyCrossroads()
             if (heroChoice == 1)
             {
                 cout << endl;
-                Function::write_narration("  You stop and turn towards the owner of the voice.");
+                Function::write_narration("\tYou stop and turn towards the owner of the voice.");
                 Sleep(1500);
                 Function::write_narration(" His silhouette looms in the darkness. It's one of the homeless people who live here. What can he have for you?");
                 cout << endl;
@@ -296,7 +290,7 @@ void Event::DarkAlleyCrossroads()
                     cout << endl;
                 }
 
-                string str = "  - 'So you're " + heroes["Hero"].getName() + ", huh?";
+                string str = "\t- 'So you're " + heroes["Hero"].getName() + ", huh?";
                 Function::write(str);
                 Sleep(1500);
                 str = " All right. I'm " + npcs["Bob"].getName() + ".";
@@ -304,17 +298,17 @@ void Event::DarkAlleyCrossroads()
                 Sleep(1500);
                 Function::write(" What are you doin' here?'");
                 cout << endl;
-                Function::write_narration("  The shadows in front of you, begin to ripple when your caller stands up.");
+                Function::write_narration("\tThe shadows in front of you, begin to ripple when your caller stands up.");
 
                 break;
             }
             else if (heroChoice == 2)
             {
                 cout << endl;
-                Function::write_narration("  You have a mysterious stranger for nothing. You speed up your step and leave him far behind\n\tyou. Whatever he wanted from you is no longer important.");
+                Function::write_narration("\tYou have a mysterious stranger for nothing. You speed up your step and leave him far behind\n\tyou. Whatever he wanted from you is no longer important.");
                 Sleep(1000);
 
-                scene002();
+                Street();
                 break;
             }
         }
@@ -322,7 +316,7 @@ void Event::DarkAlleyCrossroads()
     }
     else
     {
-        Function::write_narration("  When you enter an alley, you notice a sea of trash around you.");
+        Function::write_narration("\tWhen you enter an alley, you notice a sea of trash around you.");
         Sleep(1000);
         Function::write_narration(" It's full of cardboard boxes, old mechanical parts, and god knows what else.");
     }
@@ -333,7 +327,7 @@ void Event::DarkAlleyCrossroads()
     {
         Sleep(1500);
         cout << endl;
-        Function::write_narration("  Who knows, you might find something interesting there...");
+        Function::write_narration("\tWho knows, you might find something interesting there...");
         cout << endl;
         cout << "" << endl;
         //-------------------------------------------------------------
@@ -343,7 +337,7 @@ void Event::DarkAlleyCrossroads()
         optionNr++;
         Function::actionOption(optionNr, "Go out of the alley."); // Opcja nr 2
         optionNr = 1;
-        Function::write("  > ", 15);
+        Function::write("\t> ", 15);
 
         while (true)
         {
@@ -353,7 +347,7 @@ void Event::DarkAlleyCrossroads()
             {
                 Sleep(1000);
                 cout << endl;
-                Function::write_narration("  You start rummaging through the trash.");
+                Function::write_narration("\tYou start rummaging through the trash.");
                 Sleep(1500);
                 Function::write_narration(" The search takes a long while, but eventually you manage to find something.");
                 Sleep(2000);
@@ -363,20 +357,20 @@ void Event::DarkAlleyCrossroads()
                 heroes["Hero"].addItem(Item_Pointer);
 
                 Function::changeConsoleColor(item);
-                string str = "  " + items["AD13"].getName();
+                string str = "\t" + items["AD13"].getName();
                 Function::write(str);
                 Function::changeConsoleColor();
                 Function::write(" was found.");
                 cout << endl;
-                Function::write("  [TIP: This item has been added to your inventory. You can view it in the text file in your game folder.]", 15); // TODO: or display information about it with the 'view _ItemName_' command
+                Function::write("\t[TIP: This item has been added to your inventory. You can view it in the text file in your game folder.]", 15);
                 Sleep(4000);
                 cout << endl;
-                Function::write_narration("  Hmm, that might come in handy in the future.");
+                Function::write_narration("\tHmm, that might come in handy in the future.");
                 Sleep(1000);
                 cout << endl;
-                Function::write_narration("  There is nothing interesting here any more. Time to go back...");
+                Function::write_narration("\tThere is nothing interesting here any more. Time to go back...");
                 cout << endl;
-                StreetCrossroads();
+                Street();
                 break;
             }
             else if (heroChoice == 2)
@@ -391,63 +385,11 @@ void Event::DarkAlleyCrossroads()
     else
     {
         cout << endl;
-        Function::write_narration("  There is nothing interesting here. Time to go back...");
+        Function::write_narration("\tThere is nothing interesting here. Time to go back...");
         cout << endl;
         Street();
     }
 }
-
-void Event::StreetCrossroads()
-{
-    //-------------------------------------------------------------
-    // Decyzja
-    Function::write_narration("Once again you are on a street bathed in nighttime darkness.");
-    cout << "" << endl;
-    Function::changeConsoleColor();
-    Function::actionOption(optionNr, "Visit Dark Alley."); // Opcja nr 1
-    optionNr++;
-    Function::actionOption(optionNr, "Visit Nightclub 'Amnesia'."); // Opcja nr 2
-    optionNr++;
-    Function::actionOption(optionNr, "Go back to the gun shop."); // Opcja nr 3
-    optionNr = 1;
-    Function::write("  > ", 15);
-
-    while (true)
-    {
-        cin >> heroChoice;
-
-        if (heroChoice == 1)
-        {
-            cout << endl;
-            DarkAlley();
-            break;
-        }
-        else if (heroChoice == 2)
-        {
-            cout << endl;
-            Nightclub();
-            break;
-        }
-        else if (heroChoice == 3)
-        {
-            cout << endl;
-            GunShop();
-            break;
-        }
-    }
-    //-------------------------------------------------------------
-}
-
-void Event::GunShopCrossroads()
-{
-
-}
-
-void Event::NightclubCrossroads()
-{
-
-}
-
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::prologue()
 {
@@ -538,6 +480,7 @@ void Event::wakeUpAloneInDarkAlley()
 {
     //if (Game().getLang() == en)
     //{
+        DarkAlleyWasVisited = true;
         Sleep(2000);
         Function::write_narration("\tYou wake up dazed from a restless slumber.");
         Sleep(1000);
@@ -572,27 +515,27 @@ void Event::wakeUpAloneInDarkAlley()
     /* }
     else
     {
-        Function::write_narration("  Budzisz siê oszo³omiony z niespokojnej drzemki.");
+        Function::write_narration("\tBudzisz siê oszo³omiony z niespokojnej drzemki.");
         Sleep(1000);
         Function::write_narration(" To by³ znowu ten sam sen...");
         Sleep(1500);
         cout << endl;
-        Function::write_narration("  Znajdujesz siê gdzieœ w ciemnym zau³ku. Nad twoj¹ g³ow¹, wœród smogowej mg³y, niczym wyrwane ze snu, wznosz¹ siê monumentalne drapacze chmur wielkich korporacji.");
+        Function::write_narration("\tZnajdujesz siê gdzieœ w ciemnym zau³ku. Nad twoj¹ g³ow¹, wœród smogowej mg³y, niczym wyrwane ze snu, wznosz¹ siê monumentalne drapacze chmur wielkich korporacji.");
         Sleep(1000);
         Function::write_narration(" Ich boski majestat bije ciê po oczach.");
         Sleep(2500);
         cout << endl;
-        Function::write_narration("  Serce bije ci tak mocno, ¿e tylko szczypi¹cy dotyk wiatru chroni ciê przed nag³ym atakiem serca.");
+        Function::write_narration("\tSerce bije ci tak mocno, ¿e tylko szczypi¹cy dotyk wiatru chroni ciê przed nag³ym atakiem serca.");
         Sleep(500);
         Function::write_narration(" Nagle przez twoje cia³o przechodzi fala dreszczy, zaczynasz trz¹œæ siê jak osika i uœwiadamiasz sobie, ¿e le¿ysz na legowisku zrobionym ze starych gazet.");
         Sleep(2000);
         cout << endl;
-        Function::write_narration("  Kiedy podnosisz siê z ziemi, zauwa¿asz wokó³ siebie morze œmieci.");
+        Function::write_narration("\tKiedy podnosisz siê z ziemi, zauwa¿asz wokó³ siebie morze œmieci.");
         Sleep(1000);
         Function::write_narration(" Jest pe³ne kartonów, starych czêœci mechanicznych i Bóg wie czego jeszcze.");
         Sleep(1500);
         cout << endl;
-        Function::write_narration("  Kto wie, mo¿e znajdziesz tam coœ interesuj¹cego...");
+        Function::write_narration("\tKto wie, mo¿e znajdziesz tam coœ interesuj¹cego...");
         cout << endl;
         cout << "" << endl;
         //-------------------------------------------------------------
@@ -601,7 +544,7 @@ void Event::wakeUpAloneInDarkAlley()
         optionNr++;
         Function::actionOption(optionNr, "ZnajdŸ wyjœcie z zau³ka."); // Opcja nr 2
         optionNr = 1;
-        Function::write("  > ", 15);
+        Function::write("\t> ", 15);
     }*/
 
     while (true)
@@ -714,7 +657,7 @@ void Event::outOfTheAlley()
             Function::write_narration("\tYou have a mysterious stranger for nothing. You speed up your step and leave him far behind you.\n\tWhatever he wanted from you is no longer important.");
             Sleep(1000);
 
-            scene002();
+            Street();
             break;
         }
     }
@@ -826,11 +769,56 @@ void Event::conversationWithHomeless()
     Sleep(1500);
     Function::write_narration(" Does this mean you see him for\n\tthe last time?");
     Sleep(3500);
-    scene002();
+    viewOfAmnesia();
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-void Event::scene002()
+// 2.2.2 ULICA
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+void Event::StreetCrossroads()
 {
+    //-------------------------------------------------------------
+    // Decyzja
+    Function::write_narration("Once again you are on a street bathed in nighttime darkness.");
+    cout << "" << endl;
+    Function::changeConsoleColor();
+    Function::actionOption(optionNr, "Visit Dark Alley."); // Opcja nr 1
+    optionNr++;
+    Function::actionOption(optionNr, "Visit Nightclub 'Amnesia'."); // Opcja nr 2
+    optionNr++;
+    Function::actionOption(optionNr, "Go back to the gun shop."); // Opcja nr 3
+    optionNr = 1;
+    Function::write("\t> ", 15);
+
+    while (true)
+    {
+        cin >> heroChoice;
+
+        if (heroChoice == 1)
+        {
+            cout << endl;
+            DarkAlley();
+            break;
+        }
+        else if (heroChoice == 2)
+        {
+            cout << endl;
+            Nightclub();
+            break;
+        }
+        else if (heroChoice == 3)
+        {
+            cout << endl;
+            GunShop();
+            break;
+        }
+    }
+    //-------------------------------------------------------------
+}
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+void Event::viewOfAmnesia()
+{
+    StreetWasVisited = true;
+
     cout << endl;
 
     if (!npcs["Bob"].isKnowsHero())
@@ -1095,8 +1083,342 @@ void Event::heroMeetsPolicemans()
     //-------------------------------------------------------------
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// 2.2.3 SKLEP Z BRONI¥
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+void Event::GunShopCrossroads()
+{
+
+}
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+void Event::enterGunShop()
+{
+    GunShopWasVisited = true;
+
+    Function::changeConsoleColor(narration);
+    Function::write("\tThe front door hisses open before you.");
+
+    if (!npcs["Zed"].isKnowsHero())
+    {
+        Sleep(1000);
+        Function::write(" You step over the threshold and enter a small room with a counter opposite the entrance. Behind it stands a tall, thin man with fatigue painted on his terribly oblong face.");
+        Sleep(1500);
+        Function::write(" He is dressed in an old corporate commando suit. On the wall behind his back hangs a lot of weapons.");
+        cout << endl;
+        Function::changeConsoleColor(dialogue);
+        Function::write("\t- 'How can I help you, my friend?'");
+        cout << endl;
+        npcs["Zed"].setToKnowHero();
+        dialogueWithZed();
+    }
+    else {
+        Sleep(1000);
+        Function::write(" From behind the counter, Zed is already smiling at you.");
+
+        Item* Item_Pointer = &items["Pistol"];
+
+        if (heroes["Hero"].isHaveItem(Item_Pointer))
+        {
+            cout << endl;
+            Function::changeConsoleColor(dialogue);
+            Function::write("\t- 'What's up? How's the gun working out?'");
+        }
+
+        if (quests["ZedAccelerator"].isRunning() && !quests["ZedAccelerator"].isCompleted())
+        {
+            Item* Item_Pointer = &items["AD13"];
+
+            if (!heroes["Hero"].isHaveItem(Item_Pointer))
+            {
+                dialogueWithZed();
+            }
+            else
+            {
+
+            }
+        }
+        else
+        {
+
+        }
+    }
+}
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+void Event::dialogueWithZed()
+{
+    bool heroTalkedAboutBusinessWithZed = false;
+
+    while (true)
+    {
+        //-------------------------------------------------------------
+        // Decyzja
+        Function::changeConsoleColor();
+        cout << "" << endl;
+
+        Function::dialogueOption(optionNr, "What do you have?");
+        optionNr++;
+        Function::dialogueOption(optionNr, "How's business going?");
+        optionNr++;
+
+        if (BobRecommendsZedToHero && !ZedKnowsAboutBobFriendshipWithHero)
+        {
+            Function::dialogueOption(optionNr, "You're Zed? I come from Bob.");
+            optionNr++;
+        }
+
+        Function::dialogueOption(optionNr, "I have to go...");
+        optionNr = 1;
+        Function::write("\t> ", 15);
+
+        cin >> heroChoice;
+
+        if (heroChoice == 1)
+        {
+            cout << endl;
+            ZedTrade();
+            continue;
+        }
+        else if (heroChoice == 2)
+        {
+            cout << endl;
+            Function::changeConsoleColor(dialogue);
+
+            if (heroTalkedAboutBusinessWithZed == true)
+            {
+                Function::write("\t- 'Hey, what's up? Are you sclerotic or something? We already talked about this, haha!'");
+                cout << endl;
+            }
+            else {
+                heroTalkedAboutBusinessWithZed = true;
+                Function::write("\t- 'What kind of question is that anyway? Business is doing great! Everyone stops by every now and then to rearm. It's the natural order of things.'");
+                cout << endl;
+            }
+
+            continue;
+        }
+        else if (heroChoice == 3)
+        {
+            cout << endl;
+
+            if (BobRecommendsZedToHero && !ZedKnowsAboutBobFriendshipWithHero)
+            {
+                ZedKnowsAboutBobFriendshipWithHero = true;
+                cout << endl;
+                Function::changeConsoleColor(dialogue);
+                Function::write("\t- 'Yes, that is correct. I'm Zed, and this is my little shop.");
+                npcs["Zed"].setAttitude(friendly);
+                Sleep(1000);
+                Function::write(" Since you know Bob, you can get a small discount here'.");
+                continue;
+            }
+            else {
+                Function::changeConsoleColor(dialogue);
+                Function::write("\t- 'No problem. See you later!'");
+                cout << endl;
+
+                if (!npcs["Caden"].isKnowsHero() && !npcs["CadenPartner"].isKnowsHero())
+                {
+                    heroMeetsPolicemans();
+                }
+                else
+                {
+                    Street();
+                }
+
+                break;
+            }
+        }
+        else if (heroChoice == 4 && BobRecommendsZedToHero && !ZedKnowsAboutBobFriendshipWithHero)
+        {
+            cout << endl;
+            Function::changeConsoleColor(dialogue);
+            Function::write("\t- 'No problem. See you later!'");
+            cout << endl;
+
+            if (!npcs["Caden"].isKnowsHero() && !npcs["CadenPartner"].isKnowsHero())
+            {
+                heroMeetsPolicemans();
+            }
+            else
+            {
+                Street();
+            }
+
+            break;
+        }
+    }
+    //-------------------------------------------------------------
+}
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+void Event::ZedTrade()
+{
+    bool ZedTellsAboutWeapons = false;
+
+    Item* Item_Pointer = &items["Pistol"];
+
+    if (!heroes["Hero"].isHaveItem(Item_Pointer))
+    {
+        if (!ZedTellsAboutWeapons)
+        {
+            ZedTellsAboutWeapons = true;
+            Function::changeConsoleColor(dialogue);
+            Function::write("\t- 'Better ask what I don't have!");
+            Sleep(1000);
+            Function::write(" Look - ");
+            Sleep(1000);
+            Function::write("rifles, pistols, machine guns, shotguns. I have a melee weapons as well. Knives, hammers, long blades like katanas...");
+            Sleep(1500);
+            Function::write(" Anything you want, my friend!");
+            Sleep(1500);
+            Function::write(" Tell me, what do you like?'");
+            // Decyzja
+            cout << endl;
+            Function::changeConsoleColor();
+            cout << "" << endl;
+            Function::actionOption(optionNr, "Buy: pistol (250 $)."); // Opcja nr 1
+            optionNr++;
+            Function::dialogueOption(optionNr, "I have made up my mind."); // Opcja nr 2
+            optionNr = 1;
+            Function::write("\t> ", 15);
+
+            while (true)
+            {
+                cin >> heroChoice;
+
+                if (heroChoice == 1)
+                {
+                    buyPistol();
+
+                    break;
+                }
+                else if (heroChoice == 2)
+                {
+                    cout << endl;
+                    Function::write_narration("Zed looks at you pityingly and shrugs his shoulders.");
+                    cout << endl;
+                    Function::changeConsoleColor(dialogue);
+                    Function::write("\t- 'No problem. It can happen to anyone.'");
+                    cout << endl;
+                    dialogueWithZed();
+                    break;
+                }
+            }
+        }
+        else
+        {
+            // Decyzja
+            Function::changeConsoleColor();
+            cout << "" << endl;
+            Function::actionOption(optionNr, "Buy: pistol (250 $)."); // Opcja nr 1
+            optionNr++;
+            Function::dialogueOption(optionNr, "I have made up my mind."); // Opcja nr 2
+            optionNr = 1;
+            Function::write("  > ", 15);
+
+            while (true)
+            {
+                cin >> heroChoice;
+
+                if (heroChoice == 1)
+                {
+                    buyPistol();
+
+                    break;
+                }
+                else if (heroChoice == 2)
+                {
+                    cout << endl;
+                    Function::write_narration("Zed looks at you pityingly and shrugs his shoulders.");
+                    cout << endl;
+                    Function::changeConsoleColor(dialogue);
+                    Function::write("\t- 'No problem. It can happen to anyone.'");
+                    cout << endl;
+                    dialogueWithZed();
+                    break;
+                }
+            }
+        }
+    }
+    else
+    {
+        Function::changeConsoleColor();
+        Function::write("You have everything you need. There's no point in bothering Zed.");
+        cout << endl;
+        dialogueWithZed();
+    }
+}
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+void Event::buyPistol()
+{
+    string str;
+
+    cout << endl;
+
+    if (heroes["Hero"].getMoney() != 250.0)
+    {
+        Function::changeConsoleColor(dialogue);
+        Function::write("\t- 'I see you're low on cash.");
+        Sleep(1000);
+        Function::write(" But don't worry, we'll sort it out somehow.");
+        Sleep(1500);
+
+        if (ZedKnowsAboutBobFriendshipWithHero)
+        {
+            Function::write(" Hmm, you know Old Bob, that already means something.");
+            Sleep(1000);
+            Function::write(" Let's just say I'll loan you this gun on a friendly basis.");
+
+            Item* Item_Pointer = &items["Pistol"];
+            heroes["Hero"].addItem(Item_Pointer);
+
+            cout << endl;
+            Function::changeConsoleColor(3);
+            str = "\t" + items["Pistol"].getName();
+            Function::write(str);
+            Function::changeConsoleColor(15);
+            Function::write(" gained.");
+            cout << endl;
+        }
+        else
+        {
+            quests["ZedAccelerator"].start();
+
+            Function::write(" It so happens that I have been looking for a good accelerator for some time.");
+            Sleep(1000);
+            Function::write(" I don't mean the crap produced by corporations these days.");
+            Sleep(1000);
+            Function::write(" I mean the good old accelerator!");
+            Sleep(1500);
+            Function::write(" Find me such a device and you will get that gun. Okay?");
+        }
+    }
+    else
+    {
+        Function::changeConsoleColor(dialogue);
+        Function::write("\t- 'A pistol is a good start. Here, it's yours.'");
+
+        Item* Item_Pointer = &items["Pistol"];
+        heroes["Hero"].addItem(Item_Pointer);
+
+        cout << endl;
+        Function::changeConsoleColor(item);
+        str = "\t" + items["Pistol"].getName();
+        Function::write(str);
+        Function::changeConsoleColor(15);
+        Function::write(" was bought.");
+        cout << endl;
+    }
+}
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// 2.2.4 KLUB NOCNY
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+void Event::NightclubCrossroads()
+{
+
+}
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::enterClub()
 {
+    NightclubWasVisited = true;
     Function::changeConsoleColor(narration);
     Function::write("\tAfter passing through the entrance your eardrums are slowly bursting from the loud music in the club.");
     Sleep(1000);
@@ -1229,323 +1551,6 @@ void Event::MiaMeeting()
     else if (heroIsOnDanceFloor)
     {
 
-    }
-}
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-void Event::enterGunShop()
-{
-    Function::changeConsoleColor(narration);
-    Function::write("\tThe front door hisses open before you.");
-
-    if (!npcs["Zed"].isKnowsHero())
-    {
-        Sleep(1000);
-        Function::write(" You step over the threshold and enter a small room with a counter opposite the entrance. Behind it stands a tall, thin man with fatigue painted on his terribly oblong face.");
-        Sleep(1500);
-        Function::write(" He is dressed in an old corporate commando suit. On the wall behind his back hangs a lot of weapons.");
-        cout << endl;
-        Function::changeConsoleColor(dialogue);
-        Function::write("\t- 'How can I help you, my friend?'");
-        cout << endl;
-        npcs["Zed"].setToKnowHero();
-        dialogueWithZed();
-    }
-    else {
-        Sleep(1000);
-        Function::write(" From behind the counter, Zed is already smiling at you.");
-
-        Item* Item_Pointer = &items["Pistol"];
-
-        if (heroes["Hero"].isHaveItem(Item_Pointer))
-        {
-            cout << endl;
-            Function::changeConsoleColor(dialogue);
-            Function::write("\t- 'What's up? How's the gun working out?'");
-        }
-
-        if (quests["ZedAccelerator"].isRunning() && !quests["ZedAccelerator"].isCompleted())
-        {
-            Item* Item_Pointer = &items["AD13"];
-
-            if (!heroes["Hero"].isHaveItem(Item_Pointer))
-            {
-                dialogueWithZed();
-            }
-            else
-            {
-
-            }
-        }
-        else
-        {
-
-        }
-    }
-}
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-void Event::dialogueWithZed()
-{
-    bool heroTalkedAboutBusinessWithZed = false;
-
-    while (true)
-    {
-        //-------------------------------------------------------------
-        // Decyzja
-        Function::changeConsoleColor();
-        cout << "" << endl;
-
-        Function::dialogueOption(optionNr, "What do you have?");
-        optionNr++;
-        Function::dialogueOption(optionNr, "How's business going?");
-        optionNr++;
-
-        if (BobRecommendsZedToHero && !ZedKnowsAboutBobFriendshipWithHero)
-        {
-            Function::dialogueOption(optionNr, "You're Zed? I come from Bob.");
-            optionNr++;
-        }
-
-        Function::dialogueOption(optionNr, "I have to go...");
-        optionNr = 1;
-        Function::write("\t> ", 15);
-
-        cin >> heroChoice;
-
-        if (heroChoice == 1)
-        {
-            cout << endl;
-            ZedTrade();
-            continue;
-        }
-        else if (heroChoice == 2)
-        {
-            cout << endl;
-            Function::changeConsoleColor(dialogue);
-
-            if (heroTalkedAboutBusinessWithZed == true)
-            {
-                Function::write("\t- 'Hey, what's up? Are you sclerotic or something? We already talked about this, haha!'");
-                cout << endl;
-            }
-            else {
-                heroTalkedAboutBusinessWithZed = true;
-                Function::write("\t- 'What kind of question is that anyway? Business is doing great! Everyone stops by every now and then to rearm. It's the natural order of things.'");
-                cout << endl;
-            }
-
-            continue;
-        }
-        else if (heroChoice == 3)
-        {
-            cout << endl;
-
-            if (BobRecommendsZedToHero && !ZedKnowsAboutBobFriendshipWithHero)
-            {
-                ZedKnowsAboutBobFriendshipWithHero = true;
-                cout << endl;
-                Function::changeConsoleColor(dialogue);
-                Function::write("\t- 'Yes, that is correct. I'm Zed, and this is my little shop.");
-                npcs["Zed"].setAttitude(friendly);
-                Sleep(1000);
-                Function::write(" Since you know Bob, you can get a small discount here'.");
-                continue;
-            }
-            else {
-                Function::changeConsoleColor(dialogue);
-                Function::write("\t- 'No problem. See you later!'");
-                cout << endl;
-
-                if (!npcs["Caden"].isKnowsHero() && !npcs["CadenPartner"].isKnowsHero())
-                {
-                    heroMeetsPolicemans();
-                }
-                else
-                {
-                    StreetCrossroads();
-                }
-
-                break;
-            }
-        }
-        else if (heroChoice == 4 && BobRecommendsZedToHero && !ZedKnowsAboutBobFriendshipWithHero)
-        {
-            cout << endl;
-            Function::changeConsoleColor(dialogue);
-            Function::write("\t- 'No problem. See you later!'");
-            cout << endl;
-
-            if (!npcs["Caden"].isKnowsHero() && !npcs["CadenPartner"].isKnowsHero())
-            {
-                heroMeetsPolicemans();
-            }
-            else
-            {
-                StreetCrossroads();
-            }
-
-            break;
-        }
-    }
-    //-------------------------------------------------------------
-}
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-void Event::ZedTrade()
-{
-    bool ZedTellsAboutWeapons = false;
-
-    Item* Item_Pointer = &items["Pistol"];
-
-    if (!heroes["Hero"].isHaveItem(Item_Pointer))
-    {
-        if (!ZedTellsAboutWeapons)
-        {
-            ZedTellsAboutWeapons = true;
-            Function::changeConsoleColor(dialogue);
-            Function::write("\t- 'Better ask what I don't have!");
-            Sleep(1000);
-            Function::write(" Look - ");
-            Sleep(1000);
-            Function::write("rifles, pistols, machine guns, shotguns. I have a melee weapons as well. Knives, hammers, long blades like katanas...");
-            Sleep(1500);
-            Function::write(" Anything you want, my friend!");
-            Sleep(1500);
-            Function::write(" Tell me, what do you like?'");
-            // Decyzja
-            cout << endl;
-            Function::changeConsoleColor();
-            cout << "" << endl;
-            Function::actionOption(optionNr, "Buy: pistol (250 $)."); // Opcja nr 1
-            optionNr++;
-            Function::dialogueOption(optionNr, "I have made up my mind."); // Opcja nr 2
-            optionNr = 1;
-            Function::write("\t> ", 15);
-
-            while (true)
-            {
-                cin >> heroChoice;
-
-                if (heroChoice == 1)
-                {
-                    buyPistol();
-
-                    break;
-                }
-                else if (heroChoice == 2)
-                {
-                    cout << endl;
-                    Function::write_narration("Zed looks at you pityingly and shrugs his shoulders.");
-                    cout << endl;
-                    Function::changeConsoleColor(dialogue);
-                    Function::write("\t- 'No problem. It can happen to anyone.'");
-                    cout << endl;
-                    dialogueWithZed();
-                    break;
-                }
-            }
-        }
-        else
-        {
-            // Decyzja
-            Function::changeConsoleColor();
-            cout << "" << endl;
-            Function::actionOption(optionNr, "Buy: pistol (250 $)."); // Opcja nr 1
-            optionNr++;
-            Function::dialogueOption(optionNr, "I have made up my mind."); // Opcja nr 2
-            optionNr = 1;
-            Function::write("  > ", 15);
-
-            while (true)
-            {
-                cin >> heroChoice;
-
-                if (heroChoice == 1)
-                {
-                    buyPistol();
-
-                    break;
-                }
-                else if (heroChoice == 2)
-                {
-                    cout << endl;
-                    Function::write_narration("Zed looks at you pityingly and shrugs his shoulders.");
-                    cout << endl;
-                    Function::changeConsoleColor(dialogue);
-                    Function::write("\t- 'No problem. It can happen to anyone.'");
-                    cout << endl;
-                    dialogueWithZed();
-                    break;
-                }
-            }
-        }
-    }
-    else
-    {
-        Function::changeConsoleColor();
-        Function::write("You have everything you need. There's no point in bothering Zed.");
-        cout << endl;
-        dialogueWithZed();
-    }
-}
-
-void Event::buyPistol()
-{
-    string str;
-
-    cout << endl;
-
-    if (heroes["Hero"].getMoney() != 250.0)
-    {
-        Function::changeConsoleColor(dialogue);
-        Function::write("\t- 'I see you're low on cash.");
-        Sleep(1000);
-        Function::write(" But don't worry, we'll sort it out somehow.");
-        Sleep(1500);
-
-        if (ZedKnowsAboutBobFriendshipWithHero)
-        {
-            Function::write(" Hmm, you know Old Bob, that already means something.");
-            Sleep(1000);
-            Function::write(" Let's just say I'll loan you this gun on a friendly basis.");
-
-            Item* Item_Pointer = &items["Pistol"];
-            heroes["Hero"].addItem(Item_Pointer);
-
-            cout << endl;
-            Function::changeConsoleColor(3);
-            str = "\t" + items["Pistol"].getName();
-            Function::write(str);
-            Function::changeConsoleColor(15);
-            Function::write(" gained.");
-            cout << endl;
-        }
-        else
-        {
-            quests["ZedAccelerator"].start();
-
-            Function::write(" It so happens that I have been looking for a good accelerator for some time.");
-            Sleep(1000);
-            Function::write(" I don't mean the crap produced by corporations these days.");
-            Sleep(1000);
-            Function::write(" I mean the good old accelerator!");
-            Sleep(1500);
-            Function::write(" Find me such a device and you will get that gun. Okay?");
-        }
-    }
-    else
-    {
-        Function::changeConsoleColor(dialogue);
-        Function::write("\t- 'A pistol is a good start. Here, it's yours.'");
-
-        Item* Item_Pointer = &items["Pistol"];
-        heroes["Hero"].addItem(Item_Pointer);
-
-        cout << endl;
-        Function::changeConsoleColor(item);
-        str = "\t" + items["Pistol"].getName();
-        Function::write(str);
-        Function::changeConsoleColor(15);
-        Function::write(" was bought.");
-        cout << endl;
     }
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
