@@ -4,7 +4,7 @@ using namespace std;
 
 int main()
 {   
-    //cout << "\t\t\t\t\t\t\t\t\t\t\t\t  i" << endl; miarka
+    //cout << "\t\t\t\t\t\t\t\t\t\t\t\t  i" << endl;
 
     SetConsoleTitleA("Cyberpunk Text Game");
     setlocale(LC_ALL, "polish"); // Zainicjowanie polskich znaków

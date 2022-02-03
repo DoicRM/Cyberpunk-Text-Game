@@ -8,7 +8,6 @@
 #include "functions.h"
 #include "location.h"
 #include <string>
-#include <map>
 
 using namespace std;
 
@@ -32,6 +31,10 @@ public:
 	void logo(); // Gotowe logo gry
 	void endGame(); // Koniec rozgrywki
 	void credits();
+	void test();
+
+	void setCurrentLocation(Location* location);
+	bool isCurrentLocation(Location* location);
 
 	friend void initAll();
 	friend void Function::initHeroEQ();

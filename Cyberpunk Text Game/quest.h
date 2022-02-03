@@ -1,5 +1,7 @@
 #pragma once
-#include "game.h"
+#include <iostream>
+#include <string>
+#include <fstream>
 
 using namespace std;
 

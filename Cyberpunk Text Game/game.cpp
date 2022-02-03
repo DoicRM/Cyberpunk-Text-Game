@@ -144,7 +144,7 @@ void Game::newGame()
     Event::initAll();
     Function::clearScreen();
 
-    //ptrCurrentLocation = DarkAlley;
+    //gamePointer->setCurrentLocation();
 
     Event::DarkAlley();
 }
@@ -237,4 +237,20 @@ void Game::endGame()
 void Game::credits()
 {
     Function::write("\t\tAUTHOR\n\tRados³aw 'Doic' Michalak\n\n\t\tTESTERS\n\tPawe³ Michalak\n\n\t\tTHANKS\n\tDominik Szpilski\n\tDaniel Ob³¹k");
+}
+
+void Game::setCurrentLocation(Location* location)
+{
+    ptrCurrentLocation = location;
+}
+
+bool Game::isCurrentLocation(Location* location)
+{
+    if (ptrCurrentLocation == location) return true;
+    return false;
+}
+
+void Game::test()
+{
+
 }
