@@ -1503,18 +1503,76 @@ void Event::enterClub()
         }
     }
     //-------------------------------------------------------------
-
-    MiaMeeting();
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::clubDanceFloor()
 {
-    heroIsOnDanceFloor = true;
+    Function::showHeroAction("Go dance on the dance floor.");
+    cout << endl;
 
-    Function::changeConsoleColor(narration);
-    Function::write("\tYou walk onto the dance floor with a dance step.");
-    Sleep(1000);
-    Function::write(" It's quite crowded, but at least you can enjoy the beautiful views.");
+    if (!npcs["Mia"].isKnowsHero())
+    {
+        Function::write_narration("\tYou get on the dance floor.");
+        Sleep(1000);
+        Function::write_narration(" A crowd of dancing people stretches out around you, rubbing\n\tagainst each other to the rhythm of the music.");
+        Sleep(1500);
+        Function::write_narration(" Half-naked beauties are dancing in places\n\tthat look like pillars supporting the ceiling. You are not sure if they are real. There\n\tis a definite possibility that they are women, but somewhere in the back of your mind you\n\tthink they are just androids.");
+        Sleep(1500);
+        Function::write_narration("\n\tYou start dancing yourself.");
+        Sleep(1000); 
+        Function::write_narration(" You are doing quite well when an attractive girl appears in\n\tfront of you. She's wearing a see-through, brightly coloured dress.");
+        Sleep(1500);
+        Function::write_narration(" Is it a coincidence\n\tthat she has just appeared and is dancing so close to you?");
+        //-------------------------------------------------------------
+        // Decyzja
+        Function::changeConsoleColor();
+        cout << endl << endl;
+        Function::actionOption(optionNr, "'What do you want?'"); // Opcja nr 1
+        optionNr++;
+        Function::actionOption(optionNr, "'Hey, baby.'"); // Opcja nr 2
+        optionNr++;
+        Function::actionOption(optionNr, "Keep dancing with no words."); // Opcja nr 3
+        optionNr = 1;
+        Function::write("\t> ", 15);
+
+        while (true)
+        {
+            cin >> heroChoice;
+
+            if (heroChoice == 1)
+            {
+                Function::clearScreen();
+                cout << endl;
+                MiaMeeting();
+                break;
+            }
+            else if (heroChoice == 2)
+            {
+                Function::clearScreen();
+                cout << endl;
+                MiaMeeting();
+                break;
+            }
+            else if (heroChoice == 3)
+            {
+                Function::clearScreen();
+                cout << endl;
+                MiaMeeting();
+                break;
+            }
+
+        }
+        //-------------------------------------------------------------
+    }
+    else
+    {
+        Function::write_narration("\tYou get on the dance floor.");
+        Sleep(1000);
+        Function::write_narration(" It's quite crowded, but at least you can enjoy the beautiful\n\tviews. You try to keep up with the rest of the people dancing there. However, you quickly\n\tget tired and head for the exit.");
+        Sleep(1500);
+        Function::clearScreen();
+        Nightclub();
+    }
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::clubBar()
@@ -1531,11 +1589,11 @@ void Event::clubBar()
     // Decyzja
     Function::changeConsoleColor();
     cout << "" << endl;
-    Function::dialogueOption(optionNr, "Give me anything."); // Opcja nr 1
+    Function::dialogueOption(optionNr, "'Give me anything.'"); // Opcja nr 1
     optionNr++;
-    Function::dialogueOption(optionNr, "Who's in charge?"); // Opcja nr 2
+    Function::dialogueOption(optionNr, "'Who's in charge?'"); // Opcja nr 2
     optionNr++;
-    Function::dialogueOption(optionNr, "Bye."); // Opcja nr 3
+    Function::dialogueOption(optionNr, "'Bye.'"); // Opcja nr 3
     optionNr = 1;
     Function::write("\t> ", 15);
 
