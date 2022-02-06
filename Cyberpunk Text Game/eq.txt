@@ -1,2 +1,7 @@
                                     ITEMS
 ...........................................................................
+  Name: Accelerator D-13
+  Type: Others
+  Description: A long gone accelerator model, though still quite precious.
+  Price: 50
+...........................................................................

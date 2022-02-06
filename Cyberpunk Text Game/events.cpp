@@ -1543,26 +1543,32 @@ void Event::clubDanceFloor()
             {
                 Function::clearScreen();
                 cout << endl;
-                MiaMeeting();
+                Function::showHeroAction("'What do you want?'");
+                cout << endl;
+                Function::write_narration("\tThe girl turns towards you and smiles with her snow-white teeth.");
+                Function::changeConsoleColor(dialogue);
+                Function::write("\n\t- 'Nothing will escape your attention. I am Mia. Vincent, the owner, is my boyfriend. I\n\tthink you can help me.'");
                 break;
             }
             else if (heroChoice == 2)
             {
                 Function::clearScreen();
                 cout << endl;
-                MiaMeeting();
+                Function::showHeroAction("'Hey, baby.'");
+                cout << endl;
                 break;
             }
             else if (heroChoice == 3)
             {
                 Function::clearScreen();
                 cout << endl;
-                MiaMeeting();
+                Function::showHeroAction("Keep dancing with no words.");
+                cout << endl;
                 break;
             }
-
         }
         //-------------------------------------------------------------
+        MiaMeeting();
     }
     else
     {
@@ -1571,7 +1577,7 @@ void Event::clubDanceFloor()
         Function::write_narration(" It's quite crowded, but at least you can enjoy the beautiful\n\tviews. You try to keep up with the rest of the people dancing there. However, you quickly\n\tget tired and head for the exit.");
         Sleep(1500);
         Function::clearScreen();
-        Nightclub();
+        NightclubCrossroads();
     }
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -1649,14 +1655,7 @@ void Event::clubBar()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::MiaMeeting()
 {
-    if (heroIsAtBar)
-    {
 
-    }
-    else if (heroIsOnDanceFloor)
-    {
-
-    }
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::VincentAssassination()
