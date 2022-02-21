@@ -24,7 +24,7 @@ public:
     inline const string& getStatus() const { return this->status; };
 
     void setAttitude(int attitude);
-    void setStatus(int status);
+    void kill();
     void setToKnowHero();
     bool isDead();
     bool isKnowsHero();

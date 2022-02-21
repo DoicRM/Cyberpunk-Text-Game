@@ -62,16 +62,9 @@ void Npc::setAttitude(int attitude)
     Function::changeConsoleColor();
 }
 
-void Npc::setStatus(int status)
+void Npc::kill()
 {
-    if (status == alive)
-    {
-        this->status = "alive";
-    }
-    else if (status == dead)
-    {
-        this->status = "dead";
-    }
+    this->status = "dead";
 }
 
 bool Npc::isDead()
