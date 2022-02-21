@@ -1374,7 +1374,7 @@ void Event::buyPistol()
             Function::changeConsoleColor(3);
             str = "\t" + items["Pistol"].getName();
             Function::write(str);
-            Function::changeConsoleColor(15);
+            Function::changeConsoleColor();
             Function::write(" gained.");
             cout << endl;
         }
@@ -1466,14 +1466,13 @@ void Event::enterClub()
 {
     NightclubWasVisited = true;
     cout << endl;
-    Function::changeConsoleColor(narration);
-    Function::write("\tAfter passing through the entrance your eardrums are slowly bursting from the loud music in the club.");
+    Function::write_narration("\tAfter passing through the entrance your eardrums are slowly bursting from the loud music in the club.");
     Sleep(1000);
-    Function::write(" You walk through a short lobby and so arrive at a crowded room full of dancing people.");
+    Function::write_narration(" You walk through a short lobby and so arrive at a crowded room full of dancing people.");
     Sleep(1000);
-    Function::write(" Disco balls hung from the ceiling net everything around with streaks of multi-colored light.");
+    Function::write_narration(" Disco balls hung from the ceiling net everything around with streaks of multi-colored light.");
     Sleep(1000);
-    Function::write(" Next to the dance floor is a bar, and behind it are several mechanically streamlined bartenders.");
+    Function::write_narration(" Next to the dance floor is a bar, and behind it are several mechanically streamlined bartenders.");
     cout << endl;
     //-------------------------------------------------------------
     // Decyzja
@@ -1585,8 +1584,7 @@ void Event::clubBar()
 {
     heroIsAtBar = true;
 
-    Function::changeConsoleColor(narration);
-    Function::write("\tWith a slow step, you approach the counter, settle comfortably on a stool, and lift your gaze to the barman in front of you.");
+    Function::write_narration("\tWith a slow step, you approach the counter, settle comfortably on a stool, and lift your gaze to the barman in front of you.");
     cout << endl;
     Function::changeConsoleColor(dialogue);
     Function::write("\t- 'What's for you?'");
@@ -1616,20 +1614,18 @@ void Event::clubBar()
             Function::write(" Let's see...'");
             Sleep(1500);
             cout << endl;
-            Function::changeConsoleColor(narration);
-            Function::write("\tThe barman turns his back on you and looks through the bottles of alcohol. Finally, he selects one of them and pours its contents into a glass before placing it on the counter in front of you.");
+            Function::write_narration("\tThe barman turns his back on you and looks through the bottles of alcohol. Finally, he selects one of them and pours its contents into a glass before placing it on the counter in front of you.");
             Sleep(1500);
             cout << endl;
-            Function::write("\tYou reach for the vessel and empty it.");
+            Function::write_narration("\tYou reach for the vessel and empty it.");
             Sleep(1000);
-            Function::write(" You feel a pleasant warmth spreading up your throat and further down your gullet.");
+            Function::write_narration(" You feel a pleasant warmth spreading up your throat and further down your gullet.");
             break;
         }
         else if (heroChoice == 2)
         {
             cout << endl;
-            Function::changeConsoleColor(narration);
-            Function::write("\tThe bartender squints, hearing your question.");
+            Function::write_narration("\tThe bartender squints, hearing your question.");
             cout << endl;
             Function::changeConsoleColor(dialogue);
             Function::write("\t- 'You're not from around here, are you?");
@@ -1642,8 +1638,7 @@ void Event::clubBar()
         else if (heroChoice == 3)
         {
             cout << endl;
-            Function::changeConsoleColor(narration);
-            Function::write("\tThe bartender reaches for a glass from under the counter and starts wiping it down.");
+            Function::write_narration("\tThe bartender reaches for a glass from under the counter and starts wiping it down.");
             cout << endl;
             Function::changeConsoleColor(dialogue);
             Function::write("\t- 'Yeah, have fun.'");
@@ -1665,8 +1660,7 @@ void Event::VincentAssassination()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::VincentOffice()
 {
-    Function::changeConsoleColor(narration);
-    Function::write("\tYou enter the manager's office immersed in twilight. In the middle of the room stands a sizable desk, and on it are stacks of documents and computer. To the left of the entrance is a window to the street below. On the right you will notice a door to another room.");
+    Function::write_narration("\tYou enter the manager's office immersed in twilight. In the middle of the room stands a sizable desk, and on it are stacks of documents and computer. To the left of the entrance is a window to the street below. On the right you will notice a door to another room.");
     cout << endl;
     //-------------------------------------------------------------
     // Decyzja
@@ -1701,8 +1695,7 @@ void Event::checkVincentDesk()
     heroKnowsVincentHideoutCode = true;
     Function::showHeroAction("Stay and search the office.");
     cout << endl;
-    Function::changeConsoleColor(narration);
-    Function::write("\tYou walk up to the desk. You start flipping through the e-papers one by one and finally your gaze falls on the flickering blue monitor.");
+    Function::write_narration("\tYou walk up to the desk. You start flipping through the e-papers one by one and finally your gaze falls on the flickering blue monitor.");
     cout << endl;
     Function::write("\t");
 
@@ -1712,13 +1705,12 @@ void Event::checkVincentDesk()
 void Event::VincentHideoutCode()
 {
     cout << endl;
-    Function::changeConsoleColor(narration);
-    Function::write("\tYou walk closer and spot the terminal. It looks like you'll need to use a code to get through.");
+    Function::write_narration("\tYou walk closer and spot the terminal. It looks like you'll need to use a code to get through.");
     Sleep(1500);
 
     if (!heroKnowsVincentHideoutCode)
     {
-        Function::write(" You have to look around the office though, whether you want to or not.");
+        Function::write_narration(" You have to look around the office though, whether you want to or not.");
     }
     else {
         cout << endl;
@@ -1734,15 +1726,14 @@ void Event::VincentHideoutCode()
 void Event::VincentHideout()
 {
     cout << endl;
-    Function::changeConsoleColor(narration);
-    Function::write("\tThe door closes behind you, hissing quietly.");
+    Function::write_narration("\tThe door closes behind you, hissing quietly.");
     Sleep(2000);
-    Function::write(" The room you're in is full of smaller and larger cables that merge into a single monitor that hangs above the sim-chair. On it lies a big guy in a tailored suit and a stimulation helmet on his head that obscures his face.");
+    Function::write_narration(" The room you're in is full of smaller and larger\n\tcables that merge into a single monitor that hangs above the sim-chair. On it lies a big guy\n\tin a tailored suit and a stimulation helmet on his head that obscures his face.");
     Sleep(1500);
-    Function::write(" You guess it's Vincent, the club owner.");
+    Function::write_narration(" You guess it's\n\tVincent, the club owner.");
     Sleep(2000);
     cout << endl;
-    Function::write("\tCreeping up, you come closer. Your goal is within reach. The question is what will you do?");
+    Function::write_narration("\tCreeping up, you come closer. Your goal is within reach. The question is what will you do?");
     cout << endl;
     //-------------------------------------------------------------
     // Decyzja
@@ -1760,23 +1751,27 @@ void Event::VincentHideout()
 
         if (heroChoice == 1)
         {
+            //Function::clearScreen();
+            Function::showHeroAction("Disconnect his consciousness from the neuronet. (Kill him)");
             cout << endl;
-            Function::changeConsoleColor(narration);
-            Function::write("\tYou lean over Vincent and, in a fluid motion without hesitation, pull the stimulation helmet off his head. You witness the nightclub owner being shaken by a wave of convulsions. Foam begins to come out of his mouth and after a moment the man freezes.");
+            Function::write_narration("\tYou lean over Vincent and, in a fluid motion without hesitation, pull the stimulation helmet\n\toff his head. You witness the nightclub owner being shaken by a wave of convulsions. Foam\n\tbegins to come out of his mouth and after a moment the man freezes.");
             Sleep(1500);
-            Function::write(" He's probably dead, just like Mia wanted.");
-            npcs["Vincent"].setStatus(dead);
+            Function::write_narration(" He's probably dead, just like\n\tMia wanted.");
+            npcs["Vincent"].kill();
             break;
         }
         else if (heroChoice == 2)
         {
+            //Function::clearScreen();
+            Function::showHeroAction("Wait for his consciousness to leave the neuronet.");
             cout << endl;
-            Function::changeConsoleColor(narration);
-            Function::write("\tYou are not a coward. You don't stab people in the back. That's not your style. You prefer an open fight.");
-            Sleep(1500);
-            Function::write(" After a while, you notice Vincent moving slightly in his seat. He opens his eyes - they are shining with the excitement of his online adventure.");
+            Function::write_narration("\tYou are not a coward.");
             Sleep(1000);
-            Function::write(" It is only a matter of time before Vincent notices your presence. There is no turning back now.");
+            Function::write_narration(" You don't stab people in the back. That's not your style. You prefer an\n\topen fight.");
+            Sleep(1500);
+            Function::write_narration(" After a while, you notice Vincent moving slightly in his seat. He opens his eyes -\n\tthey are shining with the excitement of his online adventure.");
+            Sleep(1000);
+            Function::write_narration(" It is only a matter of time before\n\tVincent notices your presence. There is no turning back now.");
             cout << endl;
             Function::changeConsoleColor(dialogue);
             Function::write("\t- 'What the fuck are you doing here, dickhead?'");
@@ -1801,7 +1796,7 @@ void Event::dialogueWithVincent()
     optionNr++;
     Function::dialogueOption(optionNr, "Mia wants you dead."); // Opcja nr 3
     optionNr = 1;
-    Function::write("  > ", 15);
+    Function::write("\t> ", 15);
 
     while (true)
     {
@@ -1809,30 +1804,35 @@ void Event::dialogueWithVincent()
 
         if (heroChoice == 1)
         {
+            //Function::clearScreen();
+            Function::showHeroAction("'Die!'");
             cout << endl;
-            Function::changeConsoleColor(narration);
-            Function::write("\tWith a shout, you bring out your gun and aim it at Vincent's chest.");
+            Function::write_narration("\tWith a shout, you bring out your gun and aim it at Vincent's chest.");
             cout << endl;
             Function::changeConsoleColor(dialogue);
             Function::write("\t- 'Are you such a hero?");
             Sleep(1000);
             Function::write(" Would you kill an unarmed man?");
             Sleep(1000);
-            Function::write(" All right, can I at least find out who sent you? I know you're not working alone. I'm seeing you for the first time in my life.'");
+            Function::write(" All right, can I at least find out who\n\tsent you? I know you're not working alone. I'm seeing you for the first time in my life.'");
             break;
         }
         else if (heroChoice == 2)
         {
+            //Function::clearScreen();
+            Function::showHeroAction("'I don't want to fight with you.'");
             cout << endl;
-            Function::changeConsoleColor(narration);
-            Function::write("\tYou are not a coward. You don't stab people in the back. That's not your style. You prefer an open fight.");
+            Function::write_narration("\tYou are not a coward.");
+            Sleep(1000);
+            Function::write_narration(" You don't stab people in the back. That's not your style. You prefer an\n\topen fight.");
             break;
         }
         else if (heroChoice == 3)
         {
+            //Function::clearScreen();
+            Function::showHeroAction("'Mia wants you dead.'");
             cout << endl;
-            Function::changeConsoleColor(narration);
-            Function::write("\tYou are not a coward. You don't stab people in the back. That's not your style. You prefer an open fight.");
+            Function::write_narration("\tYou are not a coward. You don't stab people in the back. That's not your style. You prefer an open fight.");
             break;
         }
     }
@@ -1850,69 +1850,68 @@ void Event::dialogueWithVincent()
     while (true)
     {
         cin >> heroChoice;
-
+        
         if (heroChoice == 1)
         {
+            Function::clearScreen();
+            Function::showHeroAction("'It doesn't matter.'");
             cout << endl;
             Function::changeConsoleColor(dialogue);
             Function::write("\t- 'Ugh, you little prick. I'll get you from beyond the grave. There will be no peace. I won't let that happen!'");
             Sleep(1500);
             cout << endl;
-            Function::changeConsoleColor(narration);
-            Function::write("\tThe last word spoken synchronizes with the bang of a gunshot as a bullet of energy pierces the club owner's chest.");
+            Function::write_narration("\tThe last word spoken synchronizes with the bang of a gunshot as a bullet of energy pierces the club owner's chest.");
             Sleep(1000);
-            Function::write(" The recoil knocks him from his seat. The lifeless body clatters against the floor.");
+            Function::write_narration(" The recoil knocks him from his seat. The lifeless body clatters against the floor.");
             Sleep(1500);
-            Function::write(" He's dead, just like Mia wanted.");
-            npcs["Vincent"].setStatus(dead);
+            Function::write_narration(" He's dead, just like Mia wanted.");
+            npcs["Vincent"].kill();
             cout << endl;
-            Function::write("\tOut of curiosity, you walk closer and spot the corpse holding a small pistol.");
+            Function::write_narration("\tOut of curiosity, you walk closer and spot the corpse holding a small pistol.");
             Sleep(1000);
-            Function::write(" That bastard was playing for time after all!");
+            Function::write_narration(" That bastard was playing for time after all!");
             break;
         }
         else if (heroChoice == 2)
         {
+            Function::clearScreen();
+            Function::showHeroAction("'Your girlfriend, Mia.'");
             cout << endl;
             Function::changeConsoleColor(dialogue);
             Function::write("\t- 'Traitorous bitch! She'll get her due someday.");
             Function::write(" All right, shithead, let's get this over with.'");
             cout << endl;
-            Function::changeConsoleColor(narration);
-            Function::write("\tThe last word spoken synchronizes with the bang of a gunshot as a bullet of energy pierces the club owner's chest.");
+            Function::write_narration("\tThe last word spoken synchronizes with the bang of a gunshot as a bullet of energy pierces the club owner's chest.");
             Sleep(1000);
-            Function::write(" The recoil knocks him from his seat. The lifeless body clatters against the floor.");
+            Function::write_narration(" The recoil knocks him from his seat. The lifeless body clatters against the floor.");
             Sleep(1500);
-            Function::write(" He's dead, just like Mia wanted.");
-            npcs["Vincent"].setStatus(dead);
+            Function::write_narration(" He's dead, just like Mia wanted.");
+            npcs["Vincent"].kill();
             cout << endl;
-            Function::write("\tOut of curiosity, you walk closer and spot the corpse holding a small pistol.");
+            Function::write_narration("\tOut of curiosity, you walk closer and spot the corpse holding a small pistol.");
             Sleep(1000);
-            Function::write(" That bastard was playing for time after all!");
+            Function::write_narration(" That bastard was playing for time after all!");
             break;
         }
     }
     //-------------------------------------------------------------
     cout << endl;
-    Function::changeConsoleColor(narration);
-    Function::write("\tThe passage behind your back is opened.");
+    Function::write_narration("\tThe passage behind your back is opened.");
     Sleep(1000);
-    Function::write(" You turn around, in front of you is Mia.");
+    Function::write_narration(" You turn around, in front of you is Mia.");
     cout << endl;
     Function::changeConsoleColor(dialogue);
     Function::write("\t- 'Did you do what I asked you to do...'");
     Sleep(1500);
     cout << endl;
-    Function::changeConsoleColor(narration);
-    Function::write("\tThe girl's gaze wanders from you to the body of her ex-boyfriend behind you.");
+    Function::write_narration("\tThe girl's gaze wanders from you to the body of her ex-boyfriend behind you.");
     Sleep(1000);
     cout << endl;
     Function::changeConsoleColor(dialogue);
     Function::write("\t- 'You did it... You really did it... Is he - is he dead?'");
     Sleep(1000);
     cout << endl;
-    Function::changeConsoleColor(narration);
-    Function::write("\tMia walks past you and kneels by the dead man. She starts searching his pockets for something.");
+    Function::write_narration("\tMia walks past you and kneels by the dead man. She starts searching his pockets for something.");
     //-------------------------------------------------------------
     // Decyzja
     cout << endl;
@@ -1931,8 +1930,7 @@ void Event::dialogueWithVincent()
         if (heroChoice == 1)
         {
             cout << endl;
-            Function::changeConsoleColor(narration);
-            Function::write("\tYou let the girl quietly plunder the corpse. This gives you more time to look at her shapes more closely.");
+            Function::write_narration("\tYou let the girl quietly plunder the corpse. This gives you more time to look at her shapes more closely.");
             cout << endl;
             Function::changeConsoleColor(dialogue);
             Function::write("\t- 'Spare me, if you please.'");
@@ -1943,8 +1941,7 @@ void Event::dialogueWithVincent()
             cout << endl;
             Function::changeConsoleColor(dialogue);
             Function::write("\t- 'Well, now I think I owe you an explanation.'");
-            Function::changeConsoleColor(narration);
-            Function::write("\tA girl talks to you without even looking at you.");
+            Function::write_narration("\tA girl talks to you without even looking at you.");
             cout << endl;
             break;
         }
@@ -1956,10 +1953,9 @@ void Event::dialogueWithVincent()
 void Event::VincentResurrection()
 {
     cout << endl;
-    Function::changeConsoleColor(narration);
-    Function::write("\tSuddenly, the maze of cables begins to vibrate and move in a strange dance.");
+    Function::write_narration("\tSuddenly, the maze of cables begins to vibrate and move in a strange dance.");
     Sleep(1000);
-    Function::write(" Hisses reach you and Mia, forming a gibberish that is difficult to understand.");
+    Function::write_narration(" Hisses reach you and Mia, forming a gibberish that is difficult to understand.");
     cout << endl;
     Function::changeConsoleColor(dia_robot);
     Function::write("\t<You scum! You thought you got rid of me.");
@@ -1968,8 +1964,7 @@ void Event::VincentResurrection()
     Sleep(1000);
     Function::write(" I'm immortal now!>");
     cout << endl;
-    Function::changeConsoleColor(narration);
-    Function::write("\tYou exchange a look with Mia. You both can't believe what's happening.");
+    Function::write_narration("\tYou exchange a look with Mia. You both can't believe what's happening.");
     cout << endl;
     Function::changeConsoleColor(dialogue);
     Function::write("\t- 'What the fuck?!'");
