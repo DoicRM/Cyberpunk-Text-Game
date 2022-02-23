@@ -20,17 +20,14 @@ void Hero::setName(string name)
 
 void Hero::addHP(int hp)
 {
-    this->hp = this->hp + hp;
+    this->hp += hp;
 }
 
 void Hero::removeHP(int hp)
 {
-    this->hp = this->hp - hp;
+    this->hp -=hp;
 
-    if (hp <= 0)
-    {
-        changeStatus(dead);
-    }
+    if (hp < 0) kill();
 }
 
 void Hero::changeStatus(int status)
@@ -46,19 +43,26 @@ void Hero::changeStatus(int status)
     }
 }
 
+void Hero::kill()
+{
+    changeStatus(dead);
+}
+
 void Hero::addMoney(float money)
 {
-    this->money = this->money + money;
+    this->money += money;
 }
 
 void Hero::delMoney(float money)
 {
     if (this->money > 0)
     {
-        this->money = this->money - money;
+        this->money -= money;
     }
+    /*
     else
     {
-        // You owe a debt to society!
+        You owe a debt to society!
     }
+    */
 }

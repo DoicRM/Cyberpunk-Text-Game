@@ -25,6 +25,14 @@ enum write_colors
 	default_color = 15
 };
 
+enum attitude
+{
+	neutral = 0,
+	angry,
+	hostile,
+	friendly
+};
+
 class Function
 {
 public:

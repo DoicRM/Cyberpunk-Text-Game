@@ -13,6 +13,11 @@ using namespace std;
 
 class Game
 {
+private:
+	bool playing;
+	int menu, choice, gameLang;
+	Location* ptrCurrentLocation;
+
 public:
 	Game();
 	virtual ~Game();
@@ -39,11 +44,6 @@ public:
 	friend void initAll();
 	friend void Function::initHeroEQ();
 	friend void Function::initQuestsList();
-
-private:
-	bool playing;
-	int menu, choice, gameLang;
-	Location* ptrCurrentLocation;
 }; 
 
 enum language

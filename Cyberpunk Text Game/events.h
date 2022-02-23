@@ -1,11 +1,4 @@
 #pragma once
-//#include "hero.h"
-//#include "npc.h"
-//#include "fraction.h"
-//#include "item.h"
-//#include "quest.h"
-//#include "functions.h"
-//#include "location.h"
 #include "game.h"
 #include <map>
 

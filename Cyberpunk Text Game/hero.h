@@ -21,12 +21,14 @@ public:
     void addHP(int hp);
     void removeHP(int hp);
     void changeStatus(int status);
+    void kill();
     void addMoney(float money);
     void delMoney(float money);
-    void addItem(Item* item) { this->inventory.addItem(item); }
-    void removeItem(int index) { this->inventory.removeItem(index); }
-    void showInv() { this->inventory.showInv(); }
-    bool isHaveItem(Item* item) { return this->inventory.isHeroHaveItem(item); }
+    bool isDead() { return this->hp < 0; };
+    void addItem(Item* item) { this->inventory.addItem(item); };
+    void removeItem(int index) { this->inventory.removeItem(index); };
+    void showInv() { this->inventory.showInv(); };
+    bool isHaveItem(Item* item) { return this->inventory.isHeroHaveItem(item); };
 
     inline const string& getName() const { return this->name; };
     inline const int& getHP() const { return this->hp; };

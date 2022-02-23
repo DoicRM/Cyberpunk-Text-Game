@@ -70,7 +70,7 @@ void Npc::kill()
 bool Npc::isDead()
 {
     if (status == "alive") return false;
-    else return true;
+    return true;
 }
 
 void Npc::setToKnowHero()

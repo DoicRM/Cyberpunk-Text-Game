@@ -29,7 +29,7 @@ void Game::selectLanguage()
     }
 
     Function::clearScreen();
-    welcome(); // Powitanie
+    welcome();
 }
 
 void Game::welcome()
@@ -42,7 +42,7 @@ void Game::welcome()
 
     Sleep(2000);
     Function::clearScreen();
-    writeLogo(); // Logo
+    writeLogo();
 }
 
 void Game::writeLogo()
@@ -68,7 +68,7 @@ void Game::writeLogo()
     Function::write("\t\t\t\t\t\t\t\t\tDemo Build", 2);
     cout << endl;
     cout << "" << endl;
-    mainMenu(); // Menu g³ówne
+    mainMenu();
 }
 
 void Game::logo()
@@ -86,7 +86,7 @@ void Game::logo()
     Function::changeConsoleColor();
     cout << "\t\t\t\t\t\t\t\t\tDemo Build" << endl;
     cout << "" << endl;
-    mainMenu(); // Menu g³ówne
+    mainMenu();
 }
 
 void Game::mainMenu()
@@ -177,8 +177,8 @@ void Game::aboutAuthor()
     cout << "" << endl;
     Function::changeConsoleColor();
 
-    if (getLang() == pl) Function::write("\tRados³aw 'Doic' Michalak jest m³odym programist¹ i studentem AHE w £odzi.\n\tTo naprawdê fajny goœæ, mówiê ci!", 25);
-    else Function::write("\tRados³aw 'Doic' Michalak is a young programmer and a student at AHE in £ódŸ.\n\tHe's a really cool guy, I tell you!", 25);
+    if (getLang() == pl) Function::write("\tRados³aw 'Doic' Michalak to m³ody pasjonat sztuki programowania i student AHE w £odzi.", 25);
+    else Function::write("\tRados³aw 'Doic' Michalak is a young enthusiast of the art of programming and a student of\n\tAHE in £ódŸ.", 25);
    
     Sleep(1000);
     Function::waitForUserInput();

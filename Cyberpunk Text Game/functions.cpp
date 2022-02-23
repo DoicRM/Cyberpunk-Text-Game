@@ -64,7 +64,8 @@ void Function::initHeroEQ()
 {
     fstream eq;
     eq.open("eq.txt", ios::out);
-    eq << "                                    ITEMS" << endl;
+    eq << "                                    ITEMS                                  " << endl;
+    //eq << "                               PRZEDMIOTY                                  " << endl;
     eq << "..........................................................................." << endl;
     eq.close();
 }
@@ -74,7 +75,8 @@ void Function::initQuestsList()
 {
     fstream q;
     q.open("quests.txt", ios::out);
-    q << "                                    QUESTS" << endl;
+    q << "                                    QUESTS                                 " << endl;
+    //q << "                                   ZADANIA                                 " << endl;
     q << "..........................................................................." << endl;
     q.close();
 }
@@ -91,5 +93,6 @@ void Function::clearScreen()
 void Function::pauseGame()
 {
     cout << "\tPress ANY KEY to continue...";
+    //cout << "\tWciœnij DOWOLNY PRZYCISK, aby kontynuowaæ...";
     waitForUserInput();
 }
