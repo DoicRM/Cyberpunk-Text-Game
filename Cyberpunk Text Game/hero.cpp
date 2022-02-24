@@ -25,7 +25,7 @@ void Hero::addHP(int hp)
 
 void Hero::removeHP(int hp)
 {
-    this->hp -=hp;
+    this->hp -= hp;
 
     if (hp < 0) kill();
 }

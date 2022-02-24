@@ -16,12 +16,21 @@ void Function::write(const string& sentence, int speed)
 }
 
 // Powolne wypisywanie kodu (narracja)
-void Function::write_narration(string st, int sp)
+void Function::writeNarration(string st, int sp)
 {
     changeConsoleColor(narration);
     Function::write(st, sp);
     changeConsoleColor();
 }
+
+// Powolne wypisywanie kodu (dialog)
+void Function::writeDialogue(string st, int sp)
+{
+    changeConsoleColor(dialogue);
+    Function::write(st, sp);
+    changeConsoleColor();
+}
+
 
 void Function::actionOption(int nr, string text)
 {

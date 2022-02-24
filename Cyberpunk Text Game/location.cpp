@@ -5,16 +5,16 @@ Location::Location()
     this->name = "None";
     this->type = 0;
     this->order = 0;
-    this->owner = Fraction();
+    this->occupation = Fraction();
     this->currency = 0;
 }
 
-Location::Location(string name, int type, int order, Fraction owner, bool currency)
+Location::Location(string name, int type, int order, Fraction occupation, bool currency)
 {
     this->name = name;
     this->type = type;
     this->order = order;
-    this->owner = owner;
+    this->occupation = occupation;
     this->currency = currency;
 }
 
@@ -22,7 +22,7 @@ Location::~Location()
 {
 }
 
-void Location::setOwner(Fraction owner)
+void Location::setOccupation(Fraction occupation)
 {
-    this->owner = owner;
+    this->occupation = occupation;
 }

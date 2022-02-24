@@ -38,7 +38,8 @@ class Function
 public:
 	// Powolne wypisywanie kodu
 	static void write(const string& sentence, int speed = 60);
-	static void write_narration(string st, int sp = 60);
+	static void writeNarration(string st, int sp = 60);
+	static void writeDialogue(string st, int sp = 60);
 
 	static void actionOption(int nr, string text);
 	static void dialogueOption(int nr, string text);
