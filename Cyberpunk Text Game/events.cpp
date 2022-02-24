@@ -55,10 +55,10 @@ void Event::initFractionsNpcsAndLocations()
         npcs["Enigma"] = Enigma;
 
         // Lokacje
-        Location DarkAlley("Dark alley", 0, 1, Beggars, false);
-        Location Street("Street", 0, 2, Police, false);
-        Location Nightclub("Nightclub 'Amnesia'", 0, 3, Hammers, false);
-        Location GunShop("Zed's Gun Shop", 0, 3, None, false);
+        Location DarkAlley("Dark alley", 0, Beggars, 1, false);
+        Location Street("Street", 0, Police, 2, false);
+        Location Nightclub("Nightclub 'Amnesia'", 0, Hammers, 3, false);
+        Location GunShop("Zed's Gun Shop", 0, None, 3, false);
 
         locations["DarkAlley"] = DarkAlley;
         locations["Street"] = Street;

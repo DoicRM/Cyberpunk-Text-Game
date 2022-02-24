@@ -8,13 +8,13 @@ class Location
 private:
     string name;
     int type;
-    int order;
     Fraction occupation;
+    int order;
     bool currency;
 
 public:
     Location();
-    Location(string name, int type, int order, Fraction occupation, bool currency);
+    Location(string name, int type, Fraction occupation, int order, bool currency);
     virtual ~Location();
 
     void setOccupation(Fraction occupation);
