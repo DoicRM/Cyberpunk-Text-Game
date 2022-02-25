@@ -53,6 +53,7 @@ public:
 		static void VincentResurrection();
 
 	// INNE
+	//static void showTakeItemInfo(Item findItem); Pomocnicza funkcja do wyœwietlania informacji o zdobyciu przedmiotu
 	static void Commands(); // Pomocne komendy
 	static void heroDeath(); // Ekran mierci
 	static void loadingFiles(); // £adowanie plikw

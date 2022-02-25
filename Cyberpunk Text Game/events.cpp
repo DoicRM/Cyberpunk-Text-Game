@@ -119,7 +119,8 @@ void Event::initItems()
     //{
         Item AD13("Accelerator D-13", "Others", "A long gone accelerator model, though still quite precious.", 50);
         Item AccessCard("Access card", "Others", "It definitely matches the door leading to the locked room in Ramsey's office.", 0);
-        Item Pistol("Pistol", "Weapons", "A simple weapon that shoots pure energy.", 250);
+        Weapon Pistol("Pistol", "Weapons", "A simple weapon that shoots pure energy.", 10, 15, 250);
+        //Item Pistol("Pistol", "Weapons", "A simple weapon that shoots pure energy.", 250);
 
         items["AD13"] = AD13;
         items["AccessCard"] = AccessCard;
@@ -129,7 +130,8 @@ void Event::initItems()
     {
         Item AD13("Akcelerator D-13", "Inne", "Dawno nieu¿ywany model akceleratora, choæ wci¹¿ doœæ cenny.", 50);
         Item AccessCard("Karta dostêpu", "Inne", "Z pewnoœci¹ pasuje do drzwi prowadz¹cych do zablokowanego pomieszczenia w gabinecie Ramseya.", 0);
-        Item Pistol("Pistolet", "Broñ", "Prosta broñ strzelaj¹ca czyst¹ energi¹.", 500);
+        Weapon Pistol("Pistol", "Broñ", "Prosta broñ strzelaj¹ca czyst¹ energi¹.", 10, 15, 250);
+        Item Pistol("Pistolet", "Broñ", "Prosta broñ strzelaj¹ca czyst¹ energi¹.", 250);
 
         items["AD13"] = AD13;
         items["AccessCard"] = AccessCard;
@@ -176,6 +178,21 @@ int heroChoice = 0, checkpoint = 0, optionNr = 1;
 bool DarkAlleyWasVisited = false, StreetWasVisited = false, GunShopWasVisited = false, NightclubWasVisited = false;
 Location* locationPointer;
 Item* itemPointer;
+
+// 1.7 Pomocnicza funkcja do wyœwietlania informacji o zdobyciu przedmiotu
+/*
+void Event::showTakeItemInfo(Item findItem)
+{
+    itemPointer = &findItem;
+    heroes["Hero"].addItem(itemPointer);
+
+    Function::changeConsoleColor(item);
+    string str = "\t" + findItem.getName();
+    Function::write(str);
+    Function::changeConsoleColor();
+    Function::write(" was found.\n");
+}
+*/
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // 2. WYDARZENIA
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -340,6 +357,7 @@ void Event::DarkAlleyCrossroads()
                 Sleep(2000);
                 cout << endl;
 
+                //Event::showTakeItemInfo(items["AD13"]);
                 itemPointer = &items["AD13"];
                 heroes["Hero"].addItem(itemPointer);
 
@@ -561,7 +579,7 @@ void Event::inSeaOfRubbish()
     Function::writeNarration(" The search takes a long while, but eventually you\n\tmanage to find something.");
     Sleep(2000);
     cout << endl << endl;
-
+    //Event::showTakeItemInfo(items["AD13"]);
     itemPointer = &items["AD13"];
     heroes["Hero"].addItem(itemPointer);
 
@@ -569,7 +587,7 @@ void Event::inSeaOfRubbish()
     string str = "\t" + items["AD13"].getName();
     Function::write(str);
     Function::changeConsoleColor();
-    Function::write(" was found.\n");
+    Function::write(" was found.");
     Function::write("\t[TIP: This item has been added to your inventory. You can view it in the text file in your\n\tgame folder.]", 15);
     Sleep(4000);
     cout << endl << endl;
@@ -661,7 +679,6 @@ void Event::conversationWithHomeless()
     }
 
     npcs["Bob"].setToKnowHero();
-    //Function::changeConsoleColor(dialogue);
     str = "\t- 'So you're " + heroes["Hero"].getName() + ", huh?";
     Function::writeDialogue(str);
     Sleep(1500);
@@ -723,7 +740,7 @@ void Event::conversationWithHomeless()
             Function::clearScreen();
             Function::showHeroAction("'It's not your business.'");
             cout << endl;
-            npcs["Bob"].setAttitude(angry);
+            npcs["Bob"].setAttitude(angry); // angry / hostile / friendly / neutral
             Function::writeDialogue("\t- 'You're wrong. It's absolutely my business, kid. Don't shut your mouth like that, or you might\n\tlose a few teeth. Got it?'");
             cout << endl;
             break;
@@ -841,7 +858,6 @@ void Event::viewOfAmnesia()
             Function::clearScreen();
             Function::showHeroAction("Come closer and see what it's all about.");
             cout << endl;
-            Function::changeConsoleColor(narration);
 
             if (!npcs["Bob"].isKnowsHero())
             {
@@ -942,6 +958,7 @@ void Event::heroMeetSecurityGuards()
 void Event::heroMeetsPolicemans()
 {
     string heroName;
+    string str;
 
     if (npcs["Bob"].isKnowsHero())
     {
@@ -975,25 +992,30 @@ void Event::heroMeetsPolicemans()
     cout << endl;
     Function::writeDialogue("\t- 'I see that we have a problem.");
     Sleep(1500);
-    Function::writeDialogue(" Okay, then what's your name, citizen?'");
+    Function::writeDialogue(" Okay, then what's your name, citizen?");
 
     if (!npcs["Bob"].isKnowsHero())
     {
+        Function::writeDialogue("'");
         cout << endl;
         cout << "\t> ";
         cin >> heroName;
         heroes["Hero"].setName(heroName);
+        cout << endl;
+        str = "\t- '" + heroes["Hero"].getName() + "...";
+        Function::writeDialogue(str);
+        Sleep(1000);
+        Function::writeDialogue(" Caden, check it out in the database.");
     }
     else {
-        cout << endl;
+        str = " " + heroes["Hero"].getName() + "...";
+        Function::writeDialogue(str);
+        Sleep(1000);
+        Function::writeDialogue(" Caden, check\n\tit out in the database.");
     }
 
     npcs["CadenPartner"].setToKnowHero();
     npcs["Caden"].setToKnowHero();
-    string str = "\t- '" + heroes["Hero"].getName() + "...";
-    Function::writeDialogue(str);
-    Sleep(1000);
-    Function::writeDialogue(" Caden, check it out in the database.");
     Sleep(1500);
     Function::writeDialogue(" And you, stand where you are.'");
     cout << endl;

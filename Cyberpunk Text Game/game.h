@@ -3,6 +3,7 @@
 #include "npc.h"
 #include "fraction.h"
 #include "item.h"
+#include "weapon.h"
 #include "quest.h"
 #include "events.h"
 #include "functions.h"
