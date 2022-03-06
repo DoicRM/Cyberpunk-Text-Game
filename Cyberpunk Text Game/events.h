@@ -15,8 +15,8 @@ public:
 
 	// FABULARNE
 	//	Mroczny zau³ek
-	static void DarkAlley();
-		static void DarkAlleyCrossroads();
+	static void darkAlley();
+		static void darkAlleyCrossroads();
 		static void prologue();
 		static void storyIntroduction();
 		static void wakeUpAloneInDarkAlley();
@@ -24,38 +24,38 @@ public:
 		static void outOfTheAlley();
 		static void conversationWithHomeless();
 	//	Ulica
-	static void Street();
-		static void StreetCrossroads();
+	static void street();
+		static void streetCrossroads();
 		static void viewOfAmnesia();
 		static void heroMeetSecurityGuards();
 		static void heroMeetsPolicemans();
 	//	Sklep z broni¹
-	static void GunShop();
-		static void GunShopCrossroads();
+	static void gunShop();
+		static void gunShopCrossroads();
 		static void heroMeetGunStore();
 		static void enterGunShop();
-		static void ZedTrade();
+		static void zedTrade();
 		static void buyPistol();
 		static void dialogueWithZed();
 	//	Klub nocny
-	static void Nightclub();
-		static void NightclubCrossroads();
+	static void nightclub();
+		static void nightclubCrossroads();
 		static void enterClub();
 		static void clubDanceFloor();
 		static void clubBar();
-		static void MiaMeeting();
-		static void VincentAssassination();
-		static void VincentOffice();
+		static void miaMeeting();
+		static void vincentAssassination();
+		static void vincentOffice();
 		static void checkVincentDesk();
-		static void VincentHideoutCode();
-		static void VincentHideout();
+		static void vincentHideoutCode();
+		static void vincentHideout();
 		static void dialogueWithVincent();
-		static void VincentResurrection();
+		static void vincentResurrection();
 
 	// INNE
-	//static void showTakeItemInfo(Item findItem); Pomocnicza funkcja do wyœwietlania informacji o zdobyciu przedmiotu
-	static void Commands(); // Pomocne komendy
-	static void heroDeath(); // Ekran mierci
-	static void loadingFiles(); // £adowanie plikw
-	static void gameOver(); // Koniec gry
+	//static void showTakeItemInfo(Item findItem); - pomocnicza funkcja do wyœwietlania informacji o zdobyciu przedmiotu
+	//static void commands(); - pomocne komendy
+	static void heroDeath(); // ekran mierci
+	static void loadingFiles(); // ³adowanie plikw
+	static void gameOver(); // koniec gry
 };

@@ -7,13 +7,13 @@ int main()
     //cout << "\t\t\t\t\t\t\t\t\t\t\t\t  i" << endl;
 
     SetConsoleTitleA("Cyberpunk Text Game");
-    setlocale(LC_ALL, "polish"); // Zainicjowanie polskich znaków
+    setlocale(LC_ALL, "polish"); // zainicjowanie polskich znaków
 
     Game game;
 
     while (game.getPlaying())
     {
-        //game.selectLanguage(); // Wybór języka gry
+        //game.selectLanguage(); // wybór języka gry
         game.welcome();
     }
 

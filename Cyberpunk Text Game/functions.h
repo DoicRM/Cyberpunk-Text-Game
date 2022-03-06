@@ -36,13 +36,18 @@ enum attitude
 class Function
 {
 public:
-	// Powolne wypisywanie kodu
+	// powolne wypisywanie kodu - (tekst, szybkoœæ)
 	static void write(const string& sentence, int speed = 60);
+	// powolne wypisywanie kodu - (tekst, szybkoœæ)
 	static void writeNarration(string st, int sp = 60);
+	// powolne wypisywanie kodu - (tekst, szybkoœæ)
 	static void writeDialogue(string st, int sp = 60);
 
+	// tworzenie akcji gracza - (numer, opis)
 	static void actionOption(int nr, string text);
+	// tworzenie dialogu gracza - (numer, opis)
 	static void dialogueOption(int nr, string text);
+	// wyœwietlanie akcji gracza - (opis)
 	static void showHeroAction(string text);
 
 	// Zmiana koloru tekstu i t³a konsoli
@@ -66,16 +71,16 @@ public:
 	//		16 czarny na ciemno niebieskim tle
 	static void changeConsoleColor(int color = default_color);
 
-	// Inicjowanie
+	// inicjowanie
 	static void initHeroEQ(); // ekwipunku gracza
 	static void initQuestsList(); // zadañ gracza
 
 	static void waitForUserInput();
 
-	// Czyszczenie ekranu
+	// czyszczenie ekranu
 	static void clearScreen();
 
-	// Zatrzymanie gry
+	// zatrzymanie gry
 	static void pauseGame();
 };
 

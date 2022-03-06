@@ -143,10 +143,8 @@ void Game::newGame()
 {
     Event::initAll();
     Function::clearScreen();
-
-    //gamePointer->setCurrentLocation();
-
-    Event::DarkAlley();
+    //Game().setCurrentLocation(DarkAlley);
+    Event::darkAlley();
 }
 
 void Game::continueGame()
@@ -244,10 +242,9 @@ void Game::setCurrentLocation(Location* location)
     ptrCurrentLocation = location;
 }
 
-bool Game::isCurrentLocation(Location* location)
+Location* Game::getCurrentLocation()
 {
-    if (ptrCurrentLocation == location) return true;
-    return false;
+    return ptrCurrentLocation;
 }
 
 void Game::test()

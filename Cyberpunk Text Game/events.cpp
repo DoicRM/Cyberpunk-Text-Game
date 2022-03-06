@@ -173,15 +173,14 @@ void Event::initAll()
 }
 
 // 1.6 Inicjowanie zmiennych
-bool BobRecommendsZedToHero = false, heroKnowsVincentHideoutCode = false, heroIsOnDanceFloor = false, heroIsAtBar = false, ZedKnowsAboutBobFriendshipWithHero = false;
+bool bobRecommendsZedToHero = false, heroKnowsVincentHideoutCode = false, heroIsOnDanceFloor = false, heroIsAtBar = false, zedKnowsAboutBobFriendshipWithHero = false;
 int heroChoice = 0, checkpoint = 0, optionNr = 1;
-bool DarkAlleyWasVisited = false, StreetWasVisited = false, GunShopWasVisited = false, NightclubWasVisited = false;
+bool darkAlleyWasVisited = false, streetWasVisited = false, gunShopWasVisited = false, nightclubWasVisited = false;
 Location* locationPointer;
 Item* itemPointer;
 
 // 1.7 Pomocnicza funkcja do wyœwietlania informacji o zdobyciu przedmiotu
-/*
-void Event::showTakeItemInfo(Item findItem)
+/*void Event::showTakeItemInfo(Item findItem)
 {
     itemPointer = &findItem;
     heroes["Hero"].addItem(itemPointer);
@@ -191,64 +190,68 @@ void Event::showTakeItemInfo(Item findItem)
     Function::write(str);
     Function::changeConsoleColor();
     Function::write(" was found.\n");
-}
-*/
+}*/
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // 2. WYDARZENIA
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // 2.1 G£ÓWNE
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-void Event::DarkAlley()
+void Event::darkAlley()
 {
     locationPointer = &locations["DarkAlley"];
     Game().setCurrentLocation(locationPointer);
 
-    if (!DarkAlleyWasVisited)
+    /*if (Game().getCurrentLocation() == locationPointer)
+    {
+        
+    }*/
+
+    if (!darkAlleyWasVisited)
     {
         prologue();
     }
     else
     {
-        DarkAlleyCrossroads();
+        darkAlleyCrossroads();
     }
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-void Event::Street()
+void Event::street()
 {
     locationPointer = &locations["Street"];
     Game().setCurrentLocation(locationPointer);
 
-    if (!StreetWasVisited)
+    if (!streetWasVisited)
     {
         viewOfAmnesia();
     }
     else
     {
-        StreetCrossroads();
+        streetCrossroads();
     }
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-void Event::GunShop()
+void Event::gunShop()
 {
     locationPointer = &locations["GunShop"];
     Game().setCurrentLocation(locationPointer);
 
-    if (!GunShopWasVisited)
+    if (!gunShopWasVisited)
     {
         heroMeetGunStore();
     }
     else
     {
-        GunShopCrossroads();
+        gunShopCrossroads();
     }
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-void Event::Nightclub()
+void Event::nightclub()
 {
     locationPointer = &locations["Nightclub"];
     Game().setCurrentLocation(locationPointer);
 
-    if (!NightclubWasVisited)
+    if (!nightclubWasVisited)
     {
         Function::showHeroAction("Go inside.");
         enterClub();
@@ -256,7 +259,7 @@ void Event::Nightclub()
     else
     {
         Function::showHeroAction("Visit: Nightclub 'Amnesia'.");
-        NightclubCrossroads();
+        nightclubCrossroads();
     }
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -264,7 +267,7 @@ void Event::Nightclub()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // 2.2.1 MROCZNY ZAU£EK
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-void Event::DarkAlleyCrossroads()
+void Event::darkAlleyCrossroads()
 {
     string heroName;
 
@@ -312,7 +315,7 @@ void Event::DarkAlleyCrossroads()
                 Function::writeDialogue("\t- 'Don't show up here again if you don't want to get your teeth kicked in!'");
                 cout << endl;
                 Function::clearScreen();
-                Street();
+                street();
                 break;
             }
         }
@@ -375,13 +378,13 @@ void Event::DarkAlleyCrossroads()
                 cout << endl;
                 Function::writeNarration("\tThere is nothing interesting here any more. Time to go back...");
                 cout << endl;
-                Street();
+                street();
                 break;
             }
             else if (heroChoice == 2)
             {
                 cout << endl;
-                Street();
+                street();
                 break;
             }
         }
@@ -392,7 +395,7 @@ void Event::DarkAlleyCrossroads()
         cout << endl;
         Function::writeNarration("\tThere is nothing interesting here. Time to go back...");
         cout << endl;
-        Street();
+        street();
     }
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -481,7 +484,7 @@ void Event::wakeUpAloneInDarkAlley()
 {
     //if (Game().getLang() == en)
     //{
-        DarkAlleyWasVisited = true;
+        darkAlleyWasVisited = true;
         Sleep(2000);
         Function::writeNarration("\tYou wake up dazed from a restless slumber.");
         Sleep(1000);
@@ -644,7 +647,6 @@ void Event::outOfTheAlley()
             Function::writeNarration(" His silhouette looms in the darkness. It's\n\tone of the homeless people who live here. What can he have for you?");
             cout << endl;
             Sleep(1000);
-
             conversationWithHomeless();
             break;
         }
@@ -655,8 +657,7 @@ void Event::outOfTheAlley()
             cout << endl;
             Function::writeNarration("\tYou have a mysterious stranger for nothing. You speed up your step and leave him far behind you.\n\tWhatever he wanted from you is no longer important.");
             Sleep(1000);
-
-            Street();
+            street();
             break;
         }
     }
@@ -708,7 +709,7 @@ void Event::conversationWithHomeless()
         {
             Function::clearScreen();
             Function::showHeroAction("'I'm not looking for trouble.'");
-            BobRecommendsZedToHero = true; // Bob poleca bohaterowi sklep z broni¹ Zeda
+            bobRecommendsZedToHero = true; // Bob poleca bohaterowi sklep z broni¹ Zeda
             cout << endl;
             Function::writeDialogue("\t- 'Ha-ha, that's what I thought. To tell you the truth, you don't look very threatening.");
             Sleep(1000);
@@ -747,7 +748,7 @@ void Event::conversationWithHomeless()
         }
     }
     //-------------------------------------------------------------
-    if (!StreetWasVisited)
+    if (!streetWasVisited)
     {
         Function::writeNarration("\tFinally, an old, wrinkled face surrounded by gray fuzz emerges from the darkness. An artificial,\n\tcybernetic eye watches you vigilantly.");
         Sleep(1000);
@@ -775,7 +776,7 @@ void Event::conversationWithHomeless()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // 2.2.2 ULICA
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-void Event::StreetCrossroads()
+void Event::streetCrossroads()
 {
     //-------------------------------------------------------------
     // Decyzja
@@ -799,19 +800,19 @@ void Event::StreetCrossroads()
         if (heroChoice == 1)
         {
             Function::clearScreen();
-            DarkAlley();
+            darkAlley();
             break;
         }
         else if (heroChoice == 2)
         {
             Function::clearScreen();
-            Nightclub();
+            nightclub();
             break;
         }
         else if (heroChoice == 3)
         {
             Function::clearScreen();
-            GunShop();
+            gunShop();
             break;
         }
     }
@@ -820,7 +821,7 @@ void Event::StreetCrossroads()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::viewOfAmnesia()
 {
-    StreetWasVisited = true;
+    streetWasVisited = true;
 
     cout << endl;
 
@@ -885,7 +886,7 @@ void Event::heroMeetGunStore()
     cout << endl;
     Function::writeNarration("\tYou go to the right side of the street. After walking several meters you come across a small booth\n\tbetween blocks of flats.");
 
-    if (BobRecommendsZedToHero)
+    if (bobRecommendsZedToHero)
     {
         Function::writeNarration(" Could it be that the famous gun store managed by Bob's friend?");
     }
@@ -1057,7 +1058,7 @@ void Event::heroMeetsPolicemans()
             Function::clearScreen();
             Function::showHeroAction("Go inside.");
             cout << endl;
-            Nightclub();
+            nightclub();
             break;
         }
         else if (heroChoice == 2)
@@ -1074,14 +1075,14 @@ void Event::heroMeetsPolicemans()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // 2.2.3 SKLEP Z BRONI¥
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-void Event::GunShopCrossroads()
+void Event::gunShopCrossroads()
 {
 
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::enterGunShop()
 {
-    GunShopWasVisited = true;
+    gunShopWasVisited = true;
 
     Function::writeNarration("\tThe front door hisses open before you.");
 
@@ -1145,7 +1146,7 @@ void Event::dialogueWithZed()
         Function::dialogueOption(optionNr, "How's business going?");
         optionNr++;
 
-        if (BobRecommendsZedToHero && !ZedKnowsAboutBobFriendshipWithHero)
+        if (bobRecommendsZedToHero && !zedKnowsAboutBobFriendshipWithHero)
         {
             Function::dialogueOption(optionNr, "You're Zed? I come from Bob.");
             optionNr++;
@@ -1160,7 +1161,7 @@ void Event::dialogueWithZed()
         if (heroChoice == 1)
         {
             cout << endl;
-            ZedTrade();
+            zedTrade();
             continue;
         }
         else if (heroChoice == 2)
@@ -1184,9 +1185,9 @@ void Event::dialogueWithZed()
         {
             cout << endl;
 
-            if (BobRecommendsZedToHero && !ZedKnowsAboutBobFriendshipWithHero)
+            if (bobRecommendsZedToHero && !zedKnowsAboutBobFriendshipWithHero)
             {
-                ZedKnowsAboutBobFriendshipWithHero = true;
+                zedKnowsAboutBobFriendshipWithHero = true;
                 cout << endl;
                 Function::writeDialogue("\t- 'Yes, that is correct. I'm Zed, and this is my little shop.");
                 npcs["Zed"].setAttitude(friendly);
@@ -1205,13 +1206,13 @@ void Event::dialogueWithZed()
                 }
                 else
                 {
-                    Street();
+                    street();
                 }
 
                 break;
             }
         }
-        else if (heroChoice == 4 && BobRecommendsZedToHero && !ZedKnowsAboutBobFriendshipWithHero)
+        else if (heroChoice == 4 && bobRecommendsZedToHero && !zedKnowsAboutBobFriendshipWithHero)
         {
             cout << endl;
             Function::writeDialogue("\t- 'No problem. See you later!'");
@@ -1223,7 +1224,7 @@ void Event::dialogueWithZed()
             }
             else
             {
-                Street();
+                street();
             }
 
             break;
@@ -1232,7 +1233,7 @@ void Event::dialogueWithZed()
     //-------------------------------------------------------------
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-void Event::ZedTrade()
+void Event::zedTrade()
 {
     bool ZedTellsAboutWeapons = false;
 
@@ -1340,7 +1341,7 @@ void Event::buyPistol()
         Function::writeDialogue(" But don't worry, we'll sort it out somehow.");
         Sleep(1500);
 
-        if (ZedKnowsAboutBobFriendshipWithHero)
+        if (zedKnowsAboutBobFriendshipWithHero)
         {
             Function::writeDialogue(" Hmm, you know Old Bob, that already means something.");
             Sleep(1000);
@@ -1389,7 +1390,7 @@ void Event::buyPistol()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // 2.2.4 KLUB NOCNY
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-void Event::NightclubCrossroads()
+void Event::nightclubCrossroads()
 {
     //-------------------------------------------------------------
     // Decyzja
@@ -1415,25 +1416,25 @@ void Event::NightclubCrossroads()
         if (heroChoice == 1)
         {
             cout << endl;
-            DarkAlley();
+            darkAlley();
             break;
         }
         else if (heroChoice == 2)
         {
             cout << endl;
-            Nightclub();
+            nightclub();
             break;
         }
         else if (heroChoice == 3)
         {
             cout << endl;
-            GunShop();
+            gunShop();
             break;
         }
         else if (heroChoice == 4)
         {
             cout << endl;
-            Street();
+            street();
             break;
         }
     }
@@ -1442,7 +1443,7 @@ void Event::NightclubCrossroads()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::enterClub()
 {
-    NightclubWasVisited = true;
+    nightclubWasVisited = true;
     cout << endl;
     Function::writeNarration("\tAfter passing through the entrance your eardrums are slowly bursting from the loud music in the club.");
     Sleep(1000);
@@ -1544,7 +1545,7 @@ void Event::clubDanceFloor()
             }
         }
         //-------------------------------------------------------------
-        MiaMeeting();
+        miaMeeting();
     }
     else
     {
@@ -1553,7 +1554,7 @@ void Event::clubDanceFloor()
         Function::writeNarration(" It's quite crowded, but at least you can enjoy the beautiful\n\tviews. You try to keep up with the rest of the people dancing there. However, you quickly\n\tget tired and head for the exit.");
         Sleep(1500);
         Function::clearScreen();
-        NightclubCrossroads();
+        nightclubCrossroads();
     }
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -1621,17 +1622,17 @@ void Event::clubBar()
     //-------------------------------------------------------------
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-void Event::MiaMeeting()
+void Event::miaMeeting()
 {
 
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-void Event::VincentAssassination()
+void Event::vincentAssassination()
 {
-    VincentOffice();
+    vincentOffice();
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-void Event::VincentOffice()
+void Event::vincentOffice()
 {
     Function::writeNarration("\tYou enter the manager's office immersed in twilight. In the middle of the room stands a sizable desk, and on it are stacks of documents and computer. To the left of the entrance is a window to the street below. On the right you will notice a door to another room.");
     cout << endl;
@@ -1651,7 +1652,7 @@ void Event::VincentOffice()
 
         if (heroChoice == 1)
         {
-            VincentHideoutCode();
+            vincentHideoutCode();
             break;
         }
         else if (heroChoice == 2)
@@ -1672,10 +1673,10 @@ void Event::checkVincentDesk()
     cout << endl;
     Function::write("\t");
 
-    VincentHideoutCode();
+    vincentHideoutCode();
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-void Event::VincentHideoutCode()
+void Event::vincentHideoutCode()
 {
     cout << endl;
     Function::writeNarration("\tYou walk closer and spot the terminal. It looks like you'll need to use a code to get through.");
@@ -1696,7 +1697,7 @@ void Event::VincentHideoutCode()
     }
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-void Event::VincentHideout()
+void Event::vincentHideout()
 {
     cout << endl;
     Function::writeNarration("\tThe door closes behind you, hissing quietly.");
@@ -1912,10 +1913,10 @@ void Event::dialogueWithVincent()
         }
     }
     //-------------------------------------------------------------
-    VincentResurrection();
+    vincentResurrection();
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-void Event::VincentResurrection()
+void Event::vincentResurrection()
 {
     cout << endl;
     Function::writeNarration("\tSuddenly, the maze of cables begins to vibrate and move in a strange dance.");
@@ -1995,7 +1996,8 @@ void Event::loadingFiles()
 }
 
 // Komendy
-void Event::Commands()
+/*
+void Event::commands()
 {
     if (heroChoice == 'help')
     {
@@ -2008,6 +2010,7 @@ void Event::Commands()
         Game().logo();
     }
 }
+*/
 
 // Œmieræ bohatera
 void Event::heroDeath()

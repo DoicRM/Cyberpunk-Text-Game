@@ -12,6 +12,8 @@ private:
     string status;
     float money;
     Inventory inventory;
+    Weapon weapon;
+    Armor armor;
 
 public:
     Hero();
