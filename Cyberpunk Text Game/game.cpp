@@ -49,19 +49,19 @@ void Game::writeLogo()
 {
     Function::changeConsoleColor(yellow);
     cout << "" << endl;
-    Function::write("\t ======  ===    ===  =======   =======  =======   =======   ==     ==  ===    ==  ==    ==  ", 1);
+    Function::write("\t ======  ===    ===  =======   =======  =======   =======   ==     ==  ===    ==  ==    ==", 1);
     cout << endl;
-    Function::write("\t=======   ===  ===   ==   ===  ==       ==   ===  ==   ===  ==     ==  ====   ==  ==   ==   ", 1);
+    Function::write("\t=======   ===  ===   ==   ===  ==       ==   ===  ==   ===  ==     ==  ====   ==  ==   == ", 1);
     cout << endl;
-    Function::write("\t==         ======    ==   ==   ==       ==   ==   ==   ==   ==     ==  =====  ==  ==  ==    ", 1);
+    Function::write("\t==         ======    ==   ==   ==       ==   ==   ==   ==   ==     ==  =====  ==  ==  ==  ", 1);
     cout << endl;
-    Function::write("\t==          ====     ======    =======  ======    ======    ==     ==  =========  =====     ", 1);
+    Function::write("\t==          ====     ======    =======  ======    ======    ==     ==  =========  =====   ", 1);
     cout << endl;
-    Function::write("\t==           ==      ==   ==   ==       =====     =====     ===   ===  == ======  ==  ==    ", 1);
+    Function::write("\t==           ==      ==   ==   ==       =====     =====     ===   ===  == ======  ==  ==  ", 1);
     cout << endl;
-    Function::write("\t=======      ==      ==   ===  ==       ==  ==    ==         =======   ==   ====  ==   ==   ", 1);
+    Function::write("\t=======      ==      ==   ===  ==       ==  ==    ==         =======   ==   ====  ==   == ", 1);
     cout << endl;
-    Function::write("\t ======      ==      =======   =======  ==   ===  ==          =====    ==    ===  ==    ==  ", 1);
+    Function::write("\t ======      ==      =======   =======  ==   ===  ==          =====    ==    ===  ==    ==", 1);
     cout << endl;
     cout << "" << endl;
     Function::changeConsoleColor();
@@ -75,13 +75,13 @@ void Game::logo()
 {
     Function::changeConsoleColor(yellow);
     cout << "" << endl;
-    cout << "\t ======  ===    ===  =======   =======  =======   =======   ==     ==  ===    ==  ==    ==  " << endl;
-    cout << "\t=======   ===  ===   ==   ===  ==       ==   ===  ==   ===  ==     ==  ====   ==  ==   ==   " << endl;
-    cout << "\t==         ======    ==   ==   ==       ==   ==   ==   ==   ==     ==  =====  ==  ==  ==    " << endl;
-    cout << "\t==          ====     ======    =======  ======    ======    ==     ==  =========  =====     " << endl;
-    cout << "\t==           ==      ==   ==   ==       =====     =====     ===   ===  == ======  ==  ==    " << endl;
-    cout << "\t=======      ==      ==   ===  ==       ==  ==    ==         =======   ==   ====  ==   ==   " << endl;
-    cout << "\t ======      ==      =======   =======  ==   ===  ==          =====    ==    ===  ==    ==  " << endl;
+    cout << "\t ======  ===    ===  =======   =======  =======   =======   ==     ==  ===    ==  ==    ==" << endl;
+    cout << "\t=======   ===  ===   ==   ===  ==       ==   ===  ==   ===  ==     ==  ====   ==  ==   == " << endl;
+    cout << "\t==         ======    ==   ==   ==       ==   ==   ==   ==   ==     ==  =====  ==  ==  ==  " << endl;
+    cout << "\t==          ====     ======    =======  ======    ======    ==     ==  =========  =====   " << endl;
+    cout << "\t==           ==      ==   ==   ==       =====     =====     ===   ===  == ======  ==  ==  " << endl;
+    cout << "\t=======      ==      ==   ===  ==       ==  ==    ==         =======   ==   ====  ==   == " << endl;
+    cout << "\t ======      ==      =======   =======  ==   ===  ==          =====    ==    ===  ==    ==" << endl;
     cout << "" << endl;
     Function::changeConsoleColor();
     cout << "\t\t\t\t\t\t\t\t\tDemo Build" << endl;
@@ -136,14 +136,14 @@ void Game::mainMenu()
             endGame();
             break;
         }
-    } while (choice != 1 && choice != 2 && choice != 3 && choice != 4);
+    } while (menu > 4 || menu <= 0);
 }
 
 void Game::newGame()
 {
     Event::initAll();
     Function::clearScreen();
-    //Game().setCurrentLocation(DarkAlley);
+    //setCurrentLocation(DarkAlley);
     Event::darkAlley();
 }
 
@@ -155,10 +155,10 @@ void Game::continueGame()
     Function::changeConsoleColor(lightblue);
 
     if (getLang() == pl) Function::write("\tNic tu nie ma. Ta funkcja jest obecnie niedostêpna.", 25);
-    else Function::write("\tThere's nothing here. This feature is currently unavailable.", 25);
+    else Function::write("\tThere's nothing here. This feature is currently unavailable.\n\n", 25);
 
     Sleep(1000);
-    Function::waitForUserInput();
+    Function::pauseGame();
     Function::clearScreen();
     logo();
     mainMenu();
@@ -176,10 +176,10 @@ void Game::aboutAuthor()
     Function::changeConsoleColor();
 
     if (getLang() == pl) Function::write("\tRados³aw 'Doic' Michalak to m³ody pasjonat sztuki programowania i student AHE w £odzi.", 25);
-    else Function::write("\tRados³aw 'Doic' Michalak is a young enthusiast of the art of programming and a student of\n\tAHE in £ódŸ.", 25);
+    else Function::write("\tRados³aw 'Doic' Michalak is a young enthusiast of the art of programming and a student of\n\tAHE in £ódŸ.\n\n", 25);
    
     Sleep(1000);
-    Function::waitForUserInput();
+    Function::pauseGame();
     Function::clearScreen();
     logo();
     mainMenu();

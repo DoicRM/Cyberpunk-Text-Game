@@ -4,7 +4,6 @@ Hero::Hero()
 {
     this->name = "None";
     this->hp = 60;
-    this->status = "alive";
     this->money = 0.0;
 }
 
@@ -30,22 +29,10 @@ void Hero::removeHP(int hp)
     if (hp < 0) kill();
 }
 
-void Hero::changeStatus(int status)
-{
-    if (status == alive)
-    {
-        this->status = "alive";
-    }
-    else
-    {
-        this->status = "dead";
-        Event::heroDeath();
-    }
-}
-
 void Hero::kill()
 {
-    changeStatus(dead);
+    this->hp = -1;
+    Event::heroDeath();
 }
 
 void Hero::addMoney(float money)
@@ -53,7 +40,7 @@ void Hero::addMoney(float money)
     this->money += money;
 }
 
-void Hero::delMoney(float money)
+void Hero::removeMoney(float money)
 {
     if (this->money > 0)
     {

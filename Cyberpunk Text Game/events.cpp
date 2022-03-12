@@ -274,7 +274,7 @@ void Event::darkAlleyCrossroads()
     Function::showHeroAction("Visit: Dark Alley.");
     cout << endl;
 
-    if (!npcs["Bob"].isKnowsHero())
+    if (!npcs["Bob"].knowsHero())
     {
         Function::writeNarration("\tWhen you enter the alley, you hear a familiar voice.");
         cout << endl;
@@ -330,7 +330,7 @@ void Event::darkAlleyCrossroads()
 
     itemPointer = &items["AD13"];
 
-    if (!heroes["Hero"].isHaveItem(itemPointer))
+    if (!heroes["Hero"].hasItem(itemPointer))
     {
         Sleep(1500);
         cout << endl;
@@ -604,7 +604,7 @@ void Event::outOfTheAlley()
 {
     itemPointer = &items["AD13"];
 
-    if (!heroes["Hero"].isHaveItem(itemPointer))
+    if (!heroes["Hero"].hasItem(itemPointer))
     {
         Function::showHeroAction("Find the exit from the alley.");
         cout << endl;
@@ -670,7 +670,7 @@ void Event::conversationWithHomeless()
 
     Function::writeDialogue("\t- 'What's your name, boy?'");
 
-    if (!npcs["Bob"].isKnowsHero() && !npcs["Caden"].isKnowsHero() && !npcs["CadenPartner"].isKnowsHero())
+    if (!npcs["Bob"].knowsHero() && !npcs["Caden"].knowsHero() && !npcs["CadenPartner"].knowsHero())
     {
         Function::changeConsoleColor();
         cout << endl;
@@ -825,7 +825,7 @@ void Event::viewOfAmnesia()
 
     cout << endl;
 
-    if (!npcs["Bob"].isKnowsHero())
+    if (!npcs["Bob"].knowsHero())
     {
         Function::writeNarration("\tYou walk out of the alley onto a street lit by neon lights on the opposite side. A large sign\n\tthat reads 'Amnesia' belongs to a nightclub.");
         Sleep(1000);
@@ -860,7 +860,7 @@ void Event::viewOfAmnesia()
             Function::showHeroAction("Come closer and see what it's all about.");
             cout << endl;
 
-            if (!npcs["Bob"].isKnowsHero())
+            if (!npcs["Bob"].knowsHero())
             {
                 heroMeetSecurityGuards();
                 heroMeetsPolicemans();
@@ -920,7 +920,7 @@ void Event::heroMeetGunStore()
             Function::showHeroAction("Turn back.");
             cout << endl;
 
-            if (!npcs["Bob"].isKnowsHero())
+            if (!npcs["Bob"].knowsHero())
             {
                 heroMeetSecurityGuards();
                 heroMeetsPolicemans();
@@ -961,7 +961,7 @@ void Event::heroMeetsPolicemans()
     string heroName;
     string str;
 
-    if (npcs["Bob"].isKnowsHero())
+    if (npcs["Bob"].knowsHero())
     {
         Function::writeNarration("\tWhen you get closer, one of the police officers in a dark blue uniform turns toward you.");
     }
@@ -982,7 +982,7 @@ void Event::heroMeetsPolicemans()
 
     itemPointer = &items["AD13"];
 
-    if (heroes["Hero"].isHaveItem(itemPointer))
+    if (heroes["Hero"].hasItem(itemPointer))
     {
         Function::writeNarration("\tYou start searching through the pockets of your jacket and pants, but other than the accelerator\n\tyou found in the trash, there's nothing else there.");
     }
@@ -995,7 +995,7 @@ void Event::heroMeetsPolicemans()
     Sleep(1500);
     Function::writeDialogue(" Okay, then what's your name, citizen?");
 
-    if (!npcs["Bob"].isKnowsHero())
+    if (!npcs["Bob"].knowsHero())
     {
         Function::writeDialogue("'");
         cout << endl;
@@ -1077,7 +1077,6 @@ void Event::heroMeetsPolicemans()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::gunShopCrossroads()
 {
-
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::enterGunShop()
@@ -1086,7 +1085,7 @@ void Event::enterGunShop()
 
     Function::writeNarration("\tThe front door hisses open before you.");
 
-    if (!npcs["Zed"].isKnowsHero())
+    if (!npcs["Zed"].knowsHero())
     {
         Sleep(1000);
         Function::writeNarration(" You step over the threshold and enter a small room with a counter opposite the entrance. Behind it stands a tall, thin man with fatigue painted on his terribly oblong face.");
@@ -1104,7 +1103,7 @@ void Event::enterGunShop()
 
         itemPointer = &items["Pistol"];
 
-        if (heroes["Hero"].isHaveItem(itemPointer))
+        if (heroes["Hero"].hasItem(itemPointer))
         {
             cout << endl;
             Function::writeDialogue("\t- 'What's up? How's the gun working out?'");
@@ -1114,18 +1113,16 @@ void Event::enterGunShop()
         {
             itemPointer = &items["AD13"];
 
-            if (!heroes["Hero"].isHaveItem(itemPointer))
+            if (!heroes["Hero"].hasItem(itemPointer))
             {
                 dialogueWithZed();
             }
             else
             {
-
             }
         }
         else
         {
-
         }
     }
 }
@@ -1200,7 +1197,7 @@ void Event::dialogueWithZed()
                 cout << endl;
                 Function::clearScreen();
 
-                if (!npcs["Caden"].isKnowsHero() && !npcs["CadenPartner"].isKnowsHero())
+                if (!npcs["Caden"].knowsHero() && !npcs["CadenPartner"].knowsHero())
                 {
                     heroMeetsPolicemans();
                 }
@@ -1218,7 +1215,7 @@ void Event::dialogueWithZed()
             Function::writeDialogue("\t- 'No problem. See you later!'");
             cout << endl;
 
-            if (!npcs["Caden"].isKnowsHero() && !npcs["CadenPartner"].isKnowsHero())
+            if (!npcs["Caden"].knowsHero() && !npcs["CadenPartner"].knowsHero())
             {
                 heroMeetsPolicemans();
             }
@@ -1239,7 +1236,7 @@ void Event::zedTrade()
 
     itemPointer = &items["Pistol"];
 
-    if (!heroes["Hero"].isHaveItem(itemPointer))
+    if (!heroes["Hero"].hasItem(itemPointer))
     {
         if (!ZedTellsAboutWeapons)
         {
@@ -1270,7 +1267,6 @@ void Event::zedTrade()
                 if (heroChoice == 1)
                 {
                     buyPistol();
-
                     break;
                 }
                 else if (heroChoice == 2)
@@ -1488,7 +1484,7 @@ void Event::clubDanceFloor()
     Function::showHeroAction("Go dance on the dance floor.");
     cout << endl;
 
-    if (!npcs["Mia"].isKnowsHero())
+    if (!npcs["Mia"].knowsHero())
     {
         Function::writeNarration("\tYou get on the dance floor.");
         Sleep(1000);
@@ -1624,7 +1620,6 @@ void Event::clubBar()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::miaMeeting()
 {
-
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::vincentAssassination()
@@ -1993,6 +1988,17 @@ void Event::loadingFiles()
     cout << endl;
     Function::write("\tDownload completed.");
     Function::changeConsoleColor();
+}
+
+void Event::endGame()
+{
+    // czyszczenie map
+    heroes.clear();
+    npcs.clear();
+    fractions.clear();
+    items.clear();
+    locations.clear();
+    quests.clear();
 }
 
 // Komendy

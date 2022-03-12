@@ -9,7 +9,8 @@ class Hero
 private:
     string name;
     int hp;
-    string status;
+    //int exp;
+    //int level;
     float money;
     Inventory inventory;
     Weapon weapon;
@@ -22,18 +23,16 @@ public:
     void setName(string name);
     void addHP(int hp);
     void removeHP(int hp);
-    void changeStatus(int status);
     void kill();
     void addMoney(float money);
-    void delMoney(float money);
+    void removeMoney(float money);
     bool isDead() { return this->hp < 0; };
     void addItem(Item* item) { this->inventory.addItem(item); };
     void removeItem(int index) { this->inventory.removeItem(index); };
     void showInv() { this->inventory.showInv(); };
-    bool isHaveItem(Item* item) { return this->inventory.isHeroHaveItem(item); };
+    bool hasItem(Item* item) { return this->inventory.hasItem(item); };
 
     inline const string& getName() const { return this->name; };
     inline const int& getHP() const { return this->hp; };
-    inline const string& getStatus() const { return this->status; };
     inline const float& getMoney() const { return this->money; };
 };

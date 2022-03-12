@@ -15,23 +15,23 @@ void Inventory::addItem(Item* item)
 
     newItem = item;
 
-    if (firstItem == 0) // sprawdzamy czy to pierwszy element listy
+    if (firstItem == 0) // sprawdzenie czy to pierwszy element listy
     {
         // jeøeli tak to nowy element jest teraz poczπtkiem listy
         firstItem = newItem;
     }
     else
     {
-        // w przeciwnym wypadku wÍdrujemy na koniec listy
+        // w przeciwnym wypadku trafia na koniec listy
         Item* temp = firstItem;
 
         while (temp->nextItem)
         {
-            // znajdujemy wskaünik na ostatni element
+            // znajdowania wskaünika na ostatni element
             temp = temp->nextItem;
         }
 
-        temp->nextItem = newItem;  // ostatni element wskazuje na nasz nowy
+        temp->nextItem = newItem;  // ostatni element wskazuje na nowy item
         newItem->nextItem = 0;     // ostatni nie wskazuje na nic
     }
 
@@ -93,7 +93,7 @@ void Inventory::removeItem(int index)
 
 void Inventory::showInv()
 {
-    Item* temp = firstItem; // wskaünik na pierszy element listy
+    Item* temp = firstItem; // wskaünik na pierwszy element listy
 
     // przewijanie wskaünikÛw na nastÍpne elementy
     while (temp)
@@ -106,9 +106,9 @@ void Inventory::showInv()
     }
 }
 
-bool Inventory::isHeroHaveItem(Item* item)
+bool Inventory::hasItem(Item* item)
 {
-    Item* temp = firstItem; // wskaünik na pierszy element listy
+    Item* temp = firstItem; // wskaünik na pierwszy element listy
 
     while (temp)
     {

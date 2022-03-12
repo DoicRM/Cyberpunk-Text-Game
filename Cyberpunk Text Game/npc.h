@@ -11,19 +11,19 @@ private:
     Fraction fraction;
     string attitude;
     string status;
-    bool knowsHero;
+    bool knowingHero;
 
 public:
     Npc();
     Npc(string name, Fraction fraction);
-    Npc(string name, Fraction fraction, string attitude, string status, bool knowsHero);
+    Npc(string name, Fraction fraction, string attitude, string status, bool knowingHero);
     virtual ~Npc();
 
     void setAttitude(int attitude);
     void kill();
-    void setToKnowHero();
     bool isDead();
-    bool isKnowsHero();
+    void setToKnowHero();
+    bool knowsHero();
 
     inline const string& getName() const { return this->name; };
     inline const Fraction& getFraction() const { return this->fraction; };

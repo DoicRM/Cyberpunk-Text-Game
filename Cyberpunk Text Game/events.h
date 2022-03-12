@@ -51,6 +51,7 @@ public:
 		static void vincentHideout();
 		static void dialogueWithVincent();
 		static void vincentResurrection();
+	static void endGame();
 
 	// INNE
 	//static void showTakeItemInfo(Item findItem); - pomocnicza funkcja do wyœwietlania informacji o zdobyciu przedmiotu

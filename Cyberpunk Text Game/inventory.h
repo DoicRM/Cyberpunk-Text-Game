@@ -14,5 +14,5 @@ public:
     void addItem(Item* item);
     void removeItem(int index);
     void showInv();
-    bool isHeroHaveItem(Item* item);
+    bool hasItem(Item* item);
 };

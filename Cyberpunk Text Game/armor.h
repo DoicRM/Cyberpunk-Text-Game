@@ -3,7 +3,13 @@
 
 using namespace std;
 
-enum armorType { HEAD = 0, CHEST, ARMS, LEGS };
+enum armorType
+{
+	Head = 0,
+	Chest,
+	Arms,
+	Legs
+};
 
 class Armor : public Item
 {

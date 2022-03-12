@@ -6,7 +6,7 @@ Npc::Npc()
     this->fraction = Fraction();
     this->attitude = "neutral";
     this->status = "alive";
-    this->knowsHero = false;
+    this->knowingHero = false;
 }
 
 Npc::Npc(string name, Fraction fraction)
@@ -15,17 +15,17 @@ Npc::Npc(string name, Fraction fraction)
     this->fraction = fraction;
     this->attitude = "neutral";
     this->status = "alive";
-    this->knowsHero = false;
+    this->knowingHero = false;
 }
 
 
-Npc::Npc(string name, Fraction fraction, string attitude, string status, bool knowsHero)
+Npc::Npc(string name, Fraction fraction, string attitude, string status, bool knowingHero)
 {
     this->name = name;
     this->fraction = fraction;
     this->attitude = attitude;
     this->status = status;
-    this->knowsHero = knowsHero;
+    this->knowingHero = knowingHero;
 }
 
 Npc::~Npc()
@@ -75,10 +75,10 @@ bool Npc::isDead()
 
 void Npc::setToKnowHero()
 {
-    knowsHero = true;
+    knowingHero = true;
 }
 
-bool Npc::isKnowsHero()
+bool Npc::knowsHero()
 {
-    return knowsHero;
+    return knowingHero;
 }
