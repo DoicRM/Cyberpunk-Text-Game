@@ -7,3 +7,6 @@ English and Polish language console text game written entirely in C++. The game 
 * the player interacts with elements of the world (immersion)
 * the environment reacts to the player's actions and refers to them (reputation and consequence system)
 * focus on the storyline and its integrity
+
+#
+Copyright © 2022 Radosław "Doic" Michalak
