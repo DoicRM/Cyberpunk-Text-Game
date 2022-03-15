@@ -30,7 +30,6 @@ Npc::Npc(string name, Fraction fraction, string attitude, string status, bool kn
 
 Npc::~Npc()
 {
-
 }
 
 void Npc::setAttitude(int attitude)

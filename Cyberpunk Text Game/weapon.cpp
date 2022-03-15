@@ -14,5 +14,4 @@ Weapon::Weapon(string name, string type, string description, int damageMin, int 
 
 Weapon::~Weapon()
 {
-
 }

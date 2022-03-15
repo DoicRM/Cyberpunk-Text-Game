@@ -29,7 +29,6 @@ Quest::Quest(string name, string description, string status, bool running, bool 
 
 Quest::~Quest()
 {
-
 }
 
 void Quest::start()

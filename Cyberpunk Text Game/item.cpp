@@ -22,5 +22,4 @@ Item::Item(string name, string type, string description, float price)
 
 Item::~Item()
 {
-
 }

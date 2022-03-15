@@ -14,5 +14,4 @@ Armor::Armor(string name, string type, int armorType, string description, int de
 
 Armor::~Armor()
 {
-
 }

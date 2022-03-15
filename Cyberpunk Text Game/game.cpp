@@ -10,8 +10,7 @@ Game::Game()
 }
 
 Game::~Game()
-{
-     
+{   
 }
 
 void Game::selectLanguage()
@@ -249,5 +248,4 @@ Location* Game::getCurrentLocation()
 
 void Game::test()
 {
-
 }

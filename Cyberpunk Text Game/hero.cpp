@@ -9,7 +9,6 @@ Hero::Hero()
 
 Hero::~Hero()
 {
-
 }
 
 void Hero::setName(string name)

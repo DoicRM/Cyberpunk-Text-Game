@@ -1620,6 +1620,7 @@ void Event::clubBar()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::miaMeeting()
 {
+    //TODO
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::vincentAssassination()
@@ -2000,23 +2001,6 @@ void Event::endGame()
     locations.clear();
     quests.clear();
 }
-
-// Komendy
-/*
-void Event::commands()
-{
-    if (heroChoice == 'help')
-    {
-        cout << endl;
-        Function::write("\tUse the 'exit' command to leave the current session.");
-    }
-    else if (heroChoice == 'exit')
-    {
-        Function::clearScreen();
-        Game().logo();
-    }
-}
-*/
 
 // Œmieræ bohatera
 void Event::heroDeath()

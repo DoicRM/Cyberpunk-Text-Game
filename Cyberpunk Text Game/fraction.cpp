@@ -16,7 +16,6 @@ Fraction::Fraction(string name, int heroReputation, string attitudeToHero)
 
 Fraction::~Fraction()
 {
-
 }
 
 void Fraction::addRep(int rep)
