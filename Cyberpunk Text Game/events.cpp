@@ -1501,9 +1501,9 @@ void Event::clubDanceFloor()
         // Decyzja
         Function::changeConsoleColor();
         cout << endl << endl;
-        Function::actionOption(optionNr, "'What do you want?'"); // Opcja nr 1
+        Function::dialogueOption(optionNr, "What do you want?"); // Opcja nr 1
         optionNr++;
-        Function::actionOption(optionNr, "'Hey, baby.'"); // Opcja nr 2
+        Function::dialogueOption(optionNr, "Hey, baby."); // Opcja nr 2
         optionNr++;
         Function::actionOption(optionNr, "Keep dancing with no words."); // Opcja nr 3
         optionNr = 1;
@@ -1520,7 +1520,7 @@ void Event::clubDanceFloor()
                 Function::showHeroAction("'What do you want?'");
                 cout << endl;
                 Function::writeNarration("\tThe girl turns towards you and smiles with her snow-white teeth.");
-                Function::writeDialogue("\n\t- 'Nothing will escape your attention. I am Mia. Vincent, the owner, is my boyfriend. I\n\tthink you can help me.'");
+                Function::writeDialogue("\n\t- 'Nothing will escape your attention. I am Mia. I\n\tthink you can help me.'");
                 break;
             }
             else if (heroChoice == 2)
@@ -1529,6 +1529,10 @@ void Event::clubDanceFloor()
                 cout << endl;
                 Function::showHeroAction("'Hey, baby.'");
                 cout << endl;
+                Function::writeNarration("\tThe girl turns towards you and smiles with her snow-white teeth.");
+                Function::writeDialogue("\n\t- 'Hi, stud. I've been watching you since you came in. I am Mia.'");
+                Function::writeNarration("\n\tWith the last word she comes closer to you turns her back on you and starts dancing very close to you.");
+                Function::writeDialogue("\n\t- 'I am looking for someone like you. I\n\tthink you can help me.'");
                 break;
             }
             else if (heroChoice == 3)
@@ -1537,6 +1541,8 @@ void Event::clubDanceFloor()
                 cout << endl;
                 Function::showHeroAction("Keep dancing with no words.");
                 cout << endl;
+                Function::writeNarration("\tThe girl turns towards you and smiles with her snow-white teeth.");
+                Function::writeDialogue("\n\t- 'Hi, I am Mia. Vincent, the owner, is my boyfriend. I\n\tthink you can help me.'");
                 break;
             }
         }
@@ -1566,11 +1572,11 @@ void Event::clubBar()
     // Decyzja
     Function::changeConsoleColor();
     cout << "" << endl;
-    Function::dialogueOption(optionNr, "'Give me anything.'"); // Opcja nr 1
+    Function::dialogueOption(optionNr, "Give me anything."); // Opcja nr 1
     optionNr++;
-    Function::dialogueOption(optionNr, "'Who's in charge?'"); // Opcja nr 2
+    Function::dialogueOption(optionNr, "Who's in charge?"); // Opcja nr 2
     optionNr++;
-    Function::dialogueOption(optionNr, "'Bye.'"); // Opcja nr 3
+    Function::dialogueOption(optionNr, "Bye."); // Opcja nr 3
     optionNr = 1;
     Function::write("\t> ", 15);
 
@@ -1620,7 +1626,42 @@ void Event::clubBar()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::miaMeeting()
 {
-    //TODO
+    //-------------------------------------------------------------
+    // Decyzja
+    Function::changeConsoleColor();
+    cout << endl << endl;
+    Function::dialogueOption(optionNr, "What is it about?"); // Opcja nr 1
+    optionNr++;
+    Function::actionOption(optionNr, "Be silent and let her speak."); // Opcja nr 2
+    optionNr = 1;
+    Function::write("\t> ", 15);
+
+    while (true)
+    {
+        cin >> heroChoice;
+
+        if (heroChoice == 1)
+        {
+            Function::clearScreen();
+            cout << endl;
+            Function::showHeroAction("'What is it about?'");
+            cout << endl;
+            break;
+        }
+        else if (heroChoice == 2)
+        {
+            Function::clearScreen();
+            cout << endl;
+            Function::showHeroAction("Be silent and let her speak.");
+            cout << endl;
+            break;
+        }
+    }
+
+    Function::writeDialogue("\n\t- 'Vincent, the owner, is my boyfriend.");
+    Sleep(1000);
+    Function::writeDialogue(" I want him dead.'");
+    quests["KillVincent"].start();
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::vincentAssassination()
