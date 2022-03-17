@@ -23,11 +23,11 @@ void Event::initFractionsNpcsAndLocations()
     //if (game.getLang() == en)
     //{
         // Frakcje
-        Fraction None("None", 0, "neutral");
-        Fraction Beggars("Beggars", 0, "neutral");
-        Fraction Police("Police", 0, "neutral");
-        Fraction Hammers("Hammers", 0, "neutral");
-        Fraction Sleepers("Sleepers", 0, "neutral");
+        Fraction None("None", 0, neutral);
+        Fraction Beggars("Beggars", 0, neutral);
+        Fraction Police("Police", 0, neutral);
+        Fraction Hammers("Hammers", 0, neutral);
+        Fraction Sleepers("Sleepers", 0, neutral);
 
         fractions["None"] = None;
         fractions["Beggars"] = Beggars;
@@ -41,7 +41,7 @@ void Event::initFractionsNpcsAndLocations()
         Npc CadensPartner("Policeman", Police);
         Npc Zed("Zed", None);
         Npc Mia("Mia", Sleepers);
-        Npc Bodyguard("Bodyguard", Hammers);
+        Npc Jet("Jet", Hammers);
         Npc Vincent("Vincent", Hammers);
         Npc Enigma("Enigma", Sleepers);
 
@@ -50,7 +50,7 @@ void Event::initFractionsNpcsAndLocations()
         npcs["CadensPartner"] = CadensPartner;
         npcs["Zed"] = Zed;
         npcs["Mia"] = Mia;
-        npcs["Bodyguard"] = Bodyguard;
+        npcs["Jet"] = Jet;
         npcs["Vincent"] = Vincent;
         npcs["Enigma"] = Enigma;
 
@@ -86,7 +86,7 @@ void Event::initFractionsNpcsAndLocations()
         Npc CadensPartner("Policjant", Police);
         Npc Zed("Zed", None);
         Npc Mia("Mia", Sleepers);
-        Npc Bodyguard("Ochroniarz", Hammers);
+        Npc Jet("Jet", Hammers);
         Npc Vincent("Vincent", Hammers);
         Npc Enigma("Enigma", Sleepers);
 
@@ -95,7 +95,7 @@ void Event::initFractionsNpcsAndLocations()
         npcs["CadensPartner"] = CadensPartner;
         npcs["Zed"] = Zed;
         npcs["Mia"] = Mia;
-        npcs["Bodyguard"] = Bodyguard;
+        npcs["Jet"] = Jet;
         npcs["Vincent"] = Vincent;
         npcs["Enigma"] = Enigma;
 
@@ -117,9 +117,9 @@ void Event::initItems()
 {
     //if (Game().getLang() == en)
     //{
-        Item AD13("Accelerator D-13", "Others", "A long gone accelerator model, though still quite precious.", 50);
-        Item AccessCard("Access card", "Others", "It definitely matches the door leading to the locked room in Ramsey's office.", 0);
-        Weapon Pistol("Pistol", "Weapons", "A simple weapon that shoots pure energy.", 10, 15, 250);
+        Item AD13("Accelerator D-13", other, "A long gone accelerator model, though still quite precious.", 50);
+        Item AccessCard("Access card", other, "It definitely matches the door leading to the locked room in Ramsey's office.", 0);
+        Weapon Pistol("Pistol", weapon, "A simple weapon that shoots pure energy.", 10, 15, 250);
         //Item Pistol("Pistol", "Weapons", "A simple weapon that shoots pure energy.", 250);
 
         items["AD13"] = AD13;
@@ -370,7 +370,7 @@ void Event::darkAlleyCrossroads()
                 Function::changeConsoleColor();
                 Function::write(" was found.");
                 cout << endl;
-                Function::write("\t[TIP: This item has been added to your inventory. You can view it in the text file in your game folder.]", 15);
+                Function::write("\n\t[TIP: This item has been added to your inventory. You can view it in the text file in your game folder.]", 15);
                 Sleep(4000);
                 cout << endl;
                 Function::writeNarration("\tHmm, that might come in handy in the future.");
@@ -1736,6 +1736,7 @@ void Event::vincentHideoutCode()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::vincentHideout()
 {
+    npcs["Vincent"].setStatus(unconscious);
     cout << endl;
     Function::writeNarration("\tThe door closes behind you, hissing quietly.");
     Sleep(2000);
@@ -1768,7 +1769,7 @@ void Event::vincentHideout()
             Function::writeNarration("\tYou lean over Vincent and, in a fluid motion without hesitation, pull the stimulation helmet\n\toff his head. You witness the nightclub owner being shaken by a wave of convulsions. Foam\n\tbegins to come out of his mouth and after a moment the man freezes.");
             Sleep(1500);
             Function::writeNarration(" He's probably dead, just like\n\tMia wanted.");
-            npcs["Vincent"].kill();
+            npcs["Vincent"].setStatus(dead);
             break;
         }
         else if (heroChoice == 2)
@@ -1873,7 +1874,7 @@ void Event::dialogueWithVincent()
             Function::writeNarration(" The recoil knocks him from his seat. The lifeless body clatters against the floor.");
             Sleep(1500);
             Function::writeNarration(" He's dead, just like Mia wanted.");
-            npcs["Vincent"].kill();
+            npcs["Vincent"].setStatus(dead);
             cout << endl;
             Function::writeNarration("\tOut of curiosity, you walk closer and spot the corpse holding a small pistol.");
             Sleep(1000);
@@ -1893,7 +1894,7 @@ void Event::dialogueWithVincent()
             Function::writeNarration(" The recoil knocks him from his seat. The lifeless body clatters against the floor.");
             Sleep(1500);
             Function::writeNarration(" He's dead, just like Mia wanted.");
-            npcs["Vincent"].kill();
+            npcs["Vincent"].setStatus(dead);
             cout << endl;
             Function::writeNarration("\tOut of curiosity, you walk closer and spot the corpse holding a small pistol.");
             Sleep(1000);

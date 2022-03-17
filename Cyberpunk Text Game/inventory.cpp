@@ -38,7 +38,7 @@ void Inventory::addItem(Item* item)
     fstream eq;
     eq.open("eq.txt", ios::out | ios::app);
     eq << "  Name: " << newItem->name << endl;
-    eq << "  Type: " << newItem->type << endl;
+    eq << "  Type: " << item->printType() << endl;
     eq << "  Description: " << newItem->description << endl;
     eq << "  Price: " << newItem->price << endl;
     eq << "..........................................................................." << endl;
@@ -99,7 +99,7 @@ void Inventory::showInv()
     while (temp)
     {
         cout << "  Name: " << temp->name << endl;
-        cout << "  Type: " << temp->type << endl;
+        cout << "  Type: " << temp->printType() << endl;
         cout << "  Description: " << temp->description << endl;
         cout << "  Price: " << temp->price << endl;
         temp = temp->nextItem;

@@ -6,7 +6,7 @@ Armor::Armor() : Item()
 	this->defence = 0;
 }
 
-Armor::Armor(string name, string type, int armorType, string description, int defence, float price)
+Armor::Armor(string name, int type, int armorType, string description, int defence, float price)
 {
 	this->armorType = armorType;
 	this->defence = defence;

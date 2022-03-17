@@ -4,8 +4,8 @@ Npc::Npc()
 {
     this->name = "None";
     this->fraction = Fraction();
-    this->attitude = "neutral";
-    this->status = "alive";
+    this->attitude = neutral;
+    this->status = alive;
     this->knowingHero = false;
 }
 
@@ -13,13 +13,13 @@ Npc::Npc(string name, Fraction fraction)
 {
     this->name = name;
     this->fraction = fraction;
-    this->attitude = "neutral";
-    this->status = "alive";
+    this->attitude = neutral;
+    this->status = alive;
     this->knowingHero = false;
 }
 
 
-Npc::Npc(string name, Fraction fraction, string attitude, string status, bool knowingHero)
+Npc::Npc(string name, Fraction fraction, int attitude, int status, bool knowingHero)
 {
     this->name = name;
     this->fraction = fraction;
@@ -34,41 +34,49 @@ Npc::~Npc()
 
 void Npc::setAttitude(int attitude)
 {
-    if (attitude == angry)
+    this->attitude = attitude;
+    printAttitude();
+}
+
+void Npc::printAttitude()
+{
+    string attitude;
+
+    if (this->attitude == angry)
     {
-        this->attitude = "angry";
+        attitude = "angry";
         Function::changeConsoleColor(yellow);
     }
-    else if (attitude == hostile)
+    else if (this->attitude == hostile)
     {
-        this->attitude = "hostile";
+        attitude = "hostile";
         Function::changeConsoleColor(red);
     }
-    else if (attitude == friendly)
+    else if (this->attitude == friendly)
     {
-        this->attitude = "friendly";
+        attitude = "friendly";
         Function::changeConsoleColor(green);
     }
     else
     {
-        this->attitude = "neutral";
+        attitude = "neutral";
         Function::changeConsoleColor();
     }
 
-    string str = "\t" + this->name + " is " + this->attitude + " now.";
+    string str = "\t" + this->name + " is " + attitude + " now.";
     Function::write(str);
     cout << endl;
     Function::changeConsoleColor();
 }
 
-void Npc::kill()
+void Npc::setStatus(int status)
 {
-    this->status = "dead";
+    this->status = status;
 }
 
 bool Npc::isDead()
 {
-    if (status == "alive") return false;
+    if (status == alive || status == unconscious) return false;
     return true;
 }
 

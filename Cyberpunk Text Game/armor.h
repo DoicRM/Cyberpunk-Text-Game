@@ -5,10 +5,10 @@ using namespace std;
 
 enum armorType
 {
-	Head = 0,
-	Chest,
-	Arms,
-	Legs
+	head = 0,
+	chest,
+	arms,
+	legs
 };
 
 class Armor : public Item
@@ -19,7 +19,7 @@ private:
 
 public:
 	Armor();
-	Armor(string name, string type, int armorType, string description, int defence, float price);
+	Armor(string name, int type, int armorType, string description, int defence, float price);
 	virtual ~Armor();
 
 	inline const int& getArmorType() const { return this->armorType; }

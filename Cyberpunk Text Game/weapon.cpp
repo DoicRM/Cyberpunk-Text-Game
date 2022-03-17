@@ -6,7 +6,7 @@ Weapon::Weapon() : Item()
 	this->damageMax = 0;
 }
 
-Weapon::Weapon(string name, string type, string description, int damageMin, int damageMax, float price) : Item(name, type, description, price)
+Weapon::Weapon(string name, int type, string description, int damageMin, int damageMax, float price) : Item(name, type, description, price)
 {
 	this->damageMin = damageMin;
 	this->damageMax = damageMax;

@@ -33,6 +33,13 @@ enum attitude
 	friendly
 };
 
+enum status
+{
+	alive = 0,
+	unconscious,
+	dead
+};
+
 class Function
 {
 public:

@@ -156,6 +156,7 @@ void Game::continueGame()
     if (getLang() == pl) Function::write("\tNic tu nie ma. Ta funkcja jest obecnie niedostêpna.", 25);
     else Function::write("\tThere's nothing here. This feature is currently unavailable.\n\n", 25);
 
+    Function::changeConsoleColor();
     Sleep(1000);
     Function::pauseGame();
     Function::clearScreen();

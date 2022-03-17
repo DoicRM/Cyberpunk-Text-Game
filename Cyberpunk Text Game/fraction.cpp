@@ -4,14 +4,14 @@ Fraction::Fraction()
 {
     this->name = "None";
     this->heroReputation = 0;
-    this->attitudeToHero = "neutral";
+    this->attitude = neutral;
 }
 
-Fraction::Fraction(string name, int heroReputation, string attitudeToHero)
+Fraction::Fraction(string name, int heroReputation, int attitude)
 {
     this->name = name;
     this->heroReputation = heroReputation;
-    this->attitudeToHero = attitudeToHero;
+    this->attitude = attitude;
 }
 
 Fraction::~Fraction()
@@ -30,24 +30,29 @@ void Fraction::removeRep(int rep)
 
 void Fraction::setAttitude(int attitude)
 {
-    if (attitude == angry)
+    this->attitude = attitude;
+}
+
+string Fraction::printAttitude()
+{
+    string attitude;
+
+    if (this->attitude == angry)
     {
-        this->attitudeToHero = "angry";
-        //Function::changeConsoleColor(yellow);
+        attitude = "angry";
     }
-    else if (attitude == hostile)
+    else if (this->attitude == hostile)
     {
-        this->attitudeToHero = "hostile";
-        //Function::changeConsoleColor(red);
+        attitude = "hostile";
     }
-    else if (attitude == friendly)
+    else if (this->attitude == friendly)
     {
-        this->attitudeToHero = "friendly";
-        //Function::changeConsoleColor(green);
+        attitude = "friendly";
     }
     else
     {
-        this->attitudeToHero = "neutral";
-        //Function::changeConsoleColor();
+        attitude = "neutral";
     }
+
+    return attitude;
 }

@@ -25,12 +25,11 @@ void Hero::removeHP(int hp)
 {
     this->hp -= hp;
 
-    if (hp < 0) kill();
+    if (hp <= 0) kill();
 }
 
 void Hero::kill()
 {
-    this->hp = -1;
     Event::heroDeath();
 }
 
@@ -45,10 +44,4 @@ void Hero::removeMoney(float money)
     {
         this->money -= money;
     }
-    /*
-    else
-    {
-        You owe a debt to society!
-    }
-    */
 }

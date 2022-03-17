@@ -9,30 +9,25 @@ class Npc
 private:
     string name;
     Fraction fraction;
-    string attitude;
-    string status;
+    int attitude;
+    int status;
     bool knowingHero;
 
 public:
     Npc();
     Npc(string name, Fraction fraction);
-    Npc(string name, Fraction fraction, string attitude, string status, bool knowingHero);
+    Npc(string name, Fraction fraction, int attitude, int status, bool knowingHero);
     virtual ~Npc();
 
     void setAttitude(int attitude);
-    void kill();
+    void printAttitude();
+    void setStatus(int status);
     bool isDead();
     void setToKnowHero();
     bool knowsHero();
 
     inline const string& getName() const { return this->name; };
     inline const Fraction& getFraction() const { return this->fraction; };
-    inline const string& getAttitude() const { return this->attitude; };
-    inline const string& getStatus() const { return this->status; };
-};
-
-enum status
-{
-    alive = 0,
-    dead
+    inline const int& getAttitude() const { return this->attitude; };
+    inline const int& getStatus() const { return this->status; };
 };

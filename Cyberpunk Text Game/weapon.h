@@ -9,7 +9,7 @@ private:
 
 public:
 	Weapon();
-	Weapon(string name, string type, string description, int damageMin, int damageMax, float price);
+	Weapon(string name, int type, string description, int damageMin, int damageMax, float price);
 	virtual ~Weapon();
 
 	inline const int& getDamageMin() const { return this->damageMin; }
