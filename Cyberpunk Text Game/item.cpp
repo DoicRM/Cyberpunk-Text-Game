@@ -3,7 +3,7 @@
 Item::Item()
 {
     this->name = "None";
-    this->type = none;
+    this->type = NONE;
     this->description = "None";
     this->price = 0.0;
 
@@ -28,19 +28,23 @@ string Item::printType()
 {
     string type;
 
-    if (this->type == weapon)
+    if (this->type == WEAPON)
     {
         type = "Weapons";
     }
-    else if (this->type == armor)
+    else if (this->type == ARMOR)
     {
         type = "Armors";
     }
-    else if (this->type == other)
+    else if (this->type == OTHER)
     {
         type = "Others";
     }
-    else if (this->type == quest)
+    else if (this->type == FOOD)
+    {
+        type = "Food";
+    }
+    else if (this->type == QUEST)
     {
         type = "Quest";
     }

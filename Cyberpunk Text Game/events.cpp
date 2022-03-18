@@ -68,11 +68,11 @@ void Event::initFractionsNpcsAndLocations()
     else if (Game().getLang() == pl)
     {
         // Frakcje
-        Fraction None("Brak", 0, "neutral");
-        Fraction Beggars("¯ebracy", 0, "neutral");
-        Fraction Police("Policja", 0, "neutral");
-        Fraction Hammers("M³oty", 0, "neutral");
-        Fraction Sleepers("Œni¹cy", 0, "neutral");
+        Fraction None("Brak", 0, neutral);
+        Fraction Beggars("¯ebracy", 0, neutral);
+        Fraction Police("Policja", 0, neutral);
+        Fraction Hammers("M³oty", 0, neutral);
+        Fraction Sleepers("Œni¹cy", 0, neutral);
 
         fractions["None"] = None;
         fractions["Beggars"] = Beggars;
@@ -117,10 +117,9 @@ void Event::initItems()
 {
     //if (Game().getLang() == en)
     //{
-        Item AD13("Accelerator D-13", other, "A long gone accelerator model, though still quite precious.", 50);
-        Item AccessCard("Access card", other, "It definitely matches the door leading to the locked room in Ramsey's office.", 0);
-        Weapon Pistol("Pistol", weapon, "A simple weapon that shoots pure energy.", 10, 15, 250);
-        //Item Pistol("Pistol", "Weapons", "A simple weapon that shoots pure energy.", 250);
+        Item AD13("Accelerator D-13", OTHER, "A long gone accelerator model, though still quite precious.", 50);
+        Item AccessCard("Access card", OTHER, "It definitely matches the door leading to the locked room in Ramsey's office.", 0);
+        Weapon Pistol("Pistol", WEAPON, "A simple weapon that shoots pure energy.", 10, 15, 250);
 
         items["AD13"] = AD13;
         items["AccessCard"] = AccessCard;
@@ -128,10 +127,9 @@ void Event::initItems()
     /* }
     else if (Game().getLang() == pl)
     {
-        Item AD13("Akcelerator D-13", "Inne", "Dawno nieu¿ywany model akceleratora, choæ wci¹¿ doœæ cenny.", 50);
-        Item AccessCard("Karta dostêpu", "Inne", "Z pewnoœci¹ pasuje do drzwi prowadz¹cych do zablokowanego pomieszczenia w gabinecie Ramseya.", 0);
-        Weapon Pistol("Pistol", "Broñ", "Prosta broñ strzelaj¹ca czyst¹ energi¹.", 10, 15, 250);
-        Item Pistol("Pistolet", "Broñ", "Prosta broñ strzelaj¹ca czyst¹ energi¹.", 250);
+        Item AD13("Akcelerator D-13", OTHER, "Dawno nieu¿ywany model akceleratora, choæ wci¹¿ doœæ cenny.", 50);
+        Item AccessCard("Karta dostêpu", OTHER, "Z pewnoœci¹ pasuje do drzwi prowadz¹cych do zablokowanego pomieszczenia w gabinecie Ramseya.", 0);
+        Weapon Pistol("Pistol", WEAPON, "Prosta broñ strzelaj¹ca czyst¹ energi¹.", 10, 15, 250);
 
         items["AD13"] = AD13;
         items["AccessCard"] = AccessCard;
@@ -180,7 +178,7 @@ Location* locationPointer;
 Item* itemPointer;
 
 // 1.7 Pomocnicza funkcja do wyœwietlania informacji o zdobyciu przedmiotu
-/*void Event::showTakeItemInfo(Item findItem)
+void Event::showTakeItemInfo(Item findItem)
 {
     itemPointer = &findItem;
     heroes["Hero"].addItem(itemPointer);
@@ -190,7 +188,7 @@ Item* itemPointer;
     Function::write(str);
     Function::changeConsoleColor();
     Function::write(" was found.\n");
-}*/
+}
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // 2. WYDARZENIA
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -360,17 +358,17 @@ void Event::darkAlleyCrossroads()
                 Sleep(2000);
                 cout << endl;
 
-                //Event::showTakeItemInfo(items["AD13"]);
-                itemPointer = &items["AD13"];
-                heroes["Hero"].addItem(itemPointer);
+                Event::showTakeItemInfo(items["AD13"]);
+                //itemPointer = &items["AD13"];
+                //heroes["Hero"].addItem(itemPointer);
 
-                Function::changeConsoleColor(item);
-                string str = "\t" + items["AD13"].getName();
-                Function::write(str);
-                Function::changeConsoleColor();
-                Function::write(" was found.");
+                //Function::changeConsoleColor(item);
+                //string str = "\t" + items["AD13"].getName();
+                //Function::write(str);
+                //Function::changeConsoleColor();
+                //Function::write(" was found.");
                 cout << endl;
-                Function::write("\n\t[TIP: This item has been added to your inventory. You can view it in the text file in your game folder.]", 15);
+                Function::write("\t[TIP: This item has been added to your inventory. You can view it in the text file in your game folder.]", 15);
                 Sleep(4000);
                 cout << endl;
                 Function::writeNarration("\tHmm, that might come in handy in the future.");
@@ -591,6 +589,7 @@ void Event::inSeaOfRubbish()
     Function::write(str);
     Function::changeConsoleColor();
     Function::write(" was found.");
+    cout << endl;
     Function::write("\t[TIP: This item has been added to your inventory. You can view it in the text file in your\n\tgame folder.]", 15);
     Sleep(4000);
     cout << endl << endl;
@@ -1343,6 +1342,7 @@ void Event::buyPistol()
             Sleep(1000);
             Function::writeDialogue(" Let's just say I'll loan you this gun on a friendly basis.");
 
+            //Event::showTakeItemInfo(items["Pistol"]);
             itemPointer = &items["Pistol"];
             heroes["Hero"].addItem(itemPointer);
 
@@ -1662,6 +1662,32 @@ void Event::miaMeeting()
     Sleep(1000);
     Function::writeDialogue(" I want him dead.'");
     quests["KillVincent"].start();
+    Sleep(1500);
+    Function::writeNarration("\n\tMia takes your hand and leads you towards the toilet.");
+    Function::writeDialogue("\n\t- 'Do you have a gun?'");
+
+    itemPointer = &items["Pistol"];
+
+    if (heroes["Hero"].hasItem(itemPointer))
+    {
+        Function::writeDialogue("\n\t- 'Good.'");
+        Sleep(1000);
+        Function::writeDialogue(" Get it for yourself, you'll need it. Here's 250 bucks.'");
+    }
+    else
+    {
+        Function::writeDialogue("\n\t- 'You know how to use it, don't you?");
+        Sleep(1000);
+        Function::writeDialogue(" Get it for yourself, you'll need it. Here's 250 bucks.'");
+        heroes["Hero"].addMoney(250);
+        cout << endl;
+        Function::changeConsoleColor(green);
+        Function::write("\t250$");
+        Function::changeConsoleColor();
+        Function::write(" has been received.");
+        Function::writeDialogue("\n\t- 'There is a gun shop nearby.");
+        Function::writeDialogue(" It is run by a guy named Zed. Visit him before you head upstairs.'");
+    }
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::vincentAssassination()
@@ -1768,8 +1794,8 @@ void Event::vincentHideout()
             cout << endl;
             Function::writeNarration("\tYou lean over Vincent and, in a fluid motion without hesitation, pull the stimulation helmet\n\toff his head. You witness the nightclub owner being shaken by a wave of convulsions. Foam\n\tbegins to come out of his mouth and after a moment the man freezes.");
             Sleep(1500);
-            Function::writeNarration(" He's probably dead, just like\n\tMia wanted.");
             npcs["Vincent"].setStatus(dead);
+            Function::writeNarration(" He's probably dead, just like\n\tMia wanted.");
             break;
         }
         else if (heroChoice == 2)
@@ -1781,6 +1807,7 @@ void Event::vincentHideout()
             Sleep(1000);
             Function::writeNarration(" You don't stab people in the back. That's not your style. You prefer an\n\topen fight.");
             Sleep(1500);
+            npcs["Vincent"].setStatus(normal);
             Function::writeNarration(" After a while, you notice Vincent moving slightly in his seat. He opens his eyes -\n\tthey are shining with the excitement of his online adventure.");
             Sleep(1000);
             Function::writeNarration(" It is only a matter of time before\n\tVincent notices your presence. There is no turning back now.");

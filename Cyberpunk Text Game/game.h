@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 #include "fraction.h"
 #include "item.h"
 #include "weapon.h"
@@ -9,7 +10,6 @@
 #include "events.h"
 #include "functions.h"
 #include "location.h"
-#include <string>
 
 using namespace std;
 
@@ -47,9 +47,3 @@ public:
 	friend void Function::initHeroEQ();
 	friend void Function::initQuestsList();
 }; 
-
-enum language
-{
-	en = 1,
-	pl = 2
-};

@@ -5,7 +5,7 @@ Npc::Npc()
     this->name = "None";
     this->fraction = Fraction();
     this->attitude = neutral;
-    this->status = alive;
+    this->status = normal;
     this->knowingHero = false;
 }
 
@@ -14,7 +14,7 @@ Npc::Npc(string name, Fraction fraction)
     this->name = name;
     this->fraction = fraction;
     this->attitude = neutral;
-    this->status = alive;
+    this->status = normal;
     this->knowingHero = false;
 }
 
@@ -76,7 +76,7 @@ void Npc::setStatus(int status)
 
 bool Npc::isDead()
 {
-    if (status == alive || status == unconscious) return false;
+    if (status != dead) return false;
     return true;
 }
 

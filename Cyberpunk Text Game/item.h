@@ -1,16 +1,8 @@
 #pragma once
 #include <string>
+#include "enums.h"
 
 using namespace std;
-
-enum itemType
-{
-    none = 0,
-    weapon,
-    armor,
-    other,
-    quest
-};
 
 class Item
 {

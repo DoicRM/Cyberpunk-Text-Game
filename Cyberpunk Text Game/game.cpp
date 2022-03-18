@@ -4,7 +4,7 @@ Game::Game()
 {
     menu = 0;
     choice = 0;
-    gameLang = 0;
+    gameLang = en;
     playing = true;
     ptrCurrentLocation = nullptr;
 }

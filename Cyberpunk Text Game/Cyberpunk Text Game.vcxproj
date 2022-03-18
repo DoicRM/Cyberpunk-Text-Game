@@ -156,6 +156,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="armor.h" />
+    <ClInclude Include="enums.h" />
     <ClInclude Include="events.h" />
     <ClInclude Include="fraction.h" />
     <ClInclude Include="hero.h" />

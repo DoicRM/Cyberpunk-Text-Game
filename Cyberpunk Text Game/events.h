@@ -12,6 +12,7 @@ public:
 	static void initItems();
 	static void initQuests();
 	static void initAll();
+	static void showTakeItemInfo(Item findItem);
 
 	static void darkAlley();
 	static void street();

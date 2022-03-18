@@ -9,36 +9,9 @@
 #include <windows.h>
 #include <locale.h>
 #include <string>
+#include "enums.h"
 
 using namespace std;
-
-enum write_colors
-{
-	item = 3,
-	dialogue = 7,
-	narration = 8,
-	dia_robot = 9,
-	green = 10,
-	lightblue = 11,
-	red = 12,
-	yellow = 14,
-	default_color = 15
-};
-
-enum attitude
-{
-	neutral = 0,
-	angry,
-	hostile,
-	friendly
-};
-
-enum status
-{
-	alive = 0,
-	unconscious,
-	dead
-};
 
 class Function
 {
@@ -74,7 +47,7 @@ public:
 	//	13 magenta tekst na czarnym tle
 	//	14 ¿ó³ty tekst na czarnym tle
 	//	15 bia³y tekst na czarnym tle
-	static void changeConsoleColor(int color = default_color);
+	static void changeConsoleColor(int color = defaultColor);
 
 	// inicjowanie
 	static void initHeroEQ(); // ekwipunku gracza
