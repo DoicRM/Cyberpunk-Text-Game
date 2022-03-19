@@ -9,7 +9,7 @@ Location::Location()
     this->currency = 0;
 }
 
-Location::Location(string name, int type, Fraction occupation, int order, bool currency)
+Location::Location(std::string name, int type, Fraction occupation, int order, bool currency)
 {
     this->name = name;
     this->type = type;
@@ -20,9 +20,4 @@ Location::Location(string name, int type, Fraction occupation, int order, bool c
 
 Location::~Location()
 {
-}
-
-void Location::setOccupation(Fraction occupation)
-{
-    this->occupation = occupation;
 }

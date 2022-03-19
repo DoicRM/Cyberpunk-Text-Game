@@ -147,6 +147,7 @@
     <ClCompile Include="inventory.cpp" />
     <ClCompile Include="item.cpp" />
     <ClCompile Include="location.cpp" />
+    <ClCompile Include="logger.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="functions.cpp" />
     <ClCompile Include="game.cpp" />
@@ -165,6 +166,7 @@
     <ClInclude Include="location.h" />
     <ClInclude Include="functions.h" />
     <ClInclude Include="game.h" />
+    <ClInclude Include="logger.h" />
     <ClInclude Include="npc.h" />
     <ClInclude Include="quest.h" />
     <ClInclude Include="weapon.h" />

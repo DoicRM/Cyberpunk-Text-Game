@@ -11,7 +11,7 @@ Hero::~Hero()
 {
 }
 
-void Hero::setName(string name)
+void Hero::setName(std::string name)
 {
     this->name = name;
 }

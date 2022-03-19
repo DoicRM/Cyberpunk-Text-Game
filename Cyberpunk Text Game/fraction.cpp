@@ -7,7 +7,7 @@ Fraction::Fraction()
     this->attitude = neutral;
 }
 
-Fraction::Fraction(string name, int heroReputation, int attitude)
+Fraction::Fraction(std::string name, int heroReputation, int attitude)
 {
     this->name = name;
     this->heroReputation = heroReputation;
@@ -33,9 +33,9 @@ void Fraction::setAttitude(int attitude)
     this->attitude = attitude;
 }
 
-string Fraction::printAttitude()
+std::string Fraction::printAttitude()
 {
-    string attitude;
+    std::string attitude;
 
     if (this->attitude == angry)
     {

@@ -1,22 +1,30 @@
 #include "functions.h"
 
-using namespace std;
+void Function::nameGame(LPCSTR name)
+{
+    SetConsoleTitleA(name);
+}
+
+void Function::initSpecialChars(const char* lang)
+{
+    setlocale(LC_ALL, lang);
+}
 
 // Powolne wypisywanie kodu
-void Function::write(const string& sentence, int speed)
+void Function::write(const std::string& sentence, int speed)
 {
-    using namespace chrono_literals;
+    using namespace std::chrono_literals;
 
     for (auto letter : sentence)
     {
-        cout << letter;
-        cout.flush();
-        this_thread::sleep_for(chrono::milliseconds(speed));
+        std::cout << letter;
+        std::cout.flush();
+        std::this_thread::sleep_for(std::chrono::milliseconds(speed));
     }
 }
 
 // Powolne wypisywanie kodu (narracja)
-void Function::writeNarration(string st, int sp)
+void Function::writeNarration(std::string st, int sp)
 {
     changeConsoleColor(narration);
     Function::write(st, sp);
@@ -24,7 +32,7 @@ void Function::writeNarration(string st, int sp)
 }
 
 // Powolne wypisywanie kodu (dialog)
-void Function::writeDialogue(string st, int sp)
+void Function::writeDialogue(std::string st, int sp)
 {
     changeConsoleColor(dialogue);
     Function::write(st, sp);
@@ -32,26 +40,26 @@ void Function::writeDialogue(string st, int sp)
 }
 
 
-void Function::actionOption(int nr, string text)
+void Function::actionOption(int nr, std::string text)
 {
-    string str = "\t[" + to_string(nr) + "] " + text;
+    std::string str = "\t[" + std::to_string(nr) + "] " + text;
     Function::write(str, 25);
-    cout << endl;
+    std::cout << std::endl;
 }
 
-void Function::dialogueOption(int nr, string text)
+void Function::dialogueOption(int nr, std::string text)
 {
-    string str = "\t[" + to_string(nr) + "] '" + text + "'";
+    std::string str = "\t[" + std::to_string(nr) + "] '" + text + "'";
     Function::write(str, 25);
-    cout << endl;
+    std::cout << std::endl;
 }
 
-void Function::showHeroAction(string text)
+void Function::showHeroAction(std::string text)
 {
-    cout << endl;
+    std::cout << std::endl;
     changeConsoleColor();
-    string str = "\t> " + text;
-    cout << str << endl;
+    std::string str = "\t> " + text;
+    std::cout << str << std::endl;
 }
 
 // Zmiana koloru tekstu i t³a konsoli
@@ -71,22 +79,22 @@ void Function::waitForUserInput()
 // Inicjowanie ekwipunku gracza
 void Function::initHeroEQ()
 {
-    fstream eq;
-    eq.open("eq.txt", ios::out);
-    eq << "                                    ITEMS                                  " << endl;
+    std::fstream eq;
+    eq.open("eq.txt", std::ios::out);
+    eq << "                                    ITEMS                                  " << std::endl;
     //eq << "                               PRZEDMIOTY                                  " << endl;
-    eq << "..........................................................................." << endl;
+    eq << "..........................................................................." << std::endl;
     eq.close();
 }
 
 // Inicjowanie listy zadañ
 void Function::initQuestsList()
 {
-    fstream q;
-    q.open("quests.txt", ios::out);
-    q << "                                    QUESTS                                 " << endl;
+    std::fstream q;
+    q.open("quests.txt", std::ios::out);
+    q << "                                    QUESTS                                 " << std::endl;
     //q << "                                   ZADANIA                                 " << endl;
-    q << "..........................................................................." << endl;
+    q << "..........................................................................." << std::endl;
     q.close();
 }
 
@@ -101,7 +109,7 @@ void Function::clearScreen()
 
 void Function::pauseGame()
 {
-    cout << "\tPress ANY KEY to continue...";
-    //cout << "\tWciœnij DOWOLNY PRZYCISK, aby kontynuowaæ...";
+    std::cout << "\tPress ANY KEY to continue...";
+    //std::cout << "\tWciœnij DOWOLNY PRZYCISK, aby kontynuowaæ...";
     waitForUserInput();
 }

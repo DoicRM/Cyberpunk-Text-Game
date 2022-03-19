@@ -9,7 +9,7 @@ Quest::Quest()
     this->completed = false;
 }
 
-Quest::Quest(string name, string description)
+Quest::Quest(std::string name, std::string description)
 {
     this->name = name;
     this->description = description;
@@ -18,7 +18,7 @@ Quest::Quest(string name, string description)
     this->completed = false;
 }
 
-Quest::Quest(string name, string description, string status, bool running, bool completed)
+Quest::Quest(std::string name, std::string description, std::string status, bool running, bool completed)
 {
     this->name = name;
     this->description = description;
@@ -36,12 +36,12 @@ void Quest::start()
     this->running = true;
     this->status = "ongoing";
 
-    fstream q;
-    q.open("quests.txt", ios::out | ios::app);
-    q << "  Name: " << this->name << endl;
-    q << "  Description: " << this->description << endl;
-    q << "  Status: " << this->status << endl;
-    q << "..........................................................................." << endl;
+    std::fstream q;
+    q.open("quests.txt", std::ios::out | std::ios::app);
+    q << "  Name: " << this->name << std::endl;
+    q << "  Description: " << this->description << std::endl;
+    q << "  Status: " << this->status << std::endl;
+    q << "..........................................................................." << std::endl;
     q.close();
 }
 
@@ -51,13 +51,13 @@ void Quest::end()
     this->completed = true;
     this->status = "completed";
 
-    string quests[2];
-    string header, breakLine, questName[1], questDesc[1], questStatus[1], questsLine;
+    std::string quests[2];
+    std::string header, breakLine, questName[1], questDesc[1], questStatus[1], questsLine;
     int questNr = 0;
     int lineNr = 1;
 
-    fstream q;
-    q.open("quests.txt", ios::in | ios::out | ios::app);
+    std::fstream q;
+    q.open("quests.txt", std::ios::in | std::ios::out | std::ios::app);
 
     while (getline(q, questsLine))
     {
@@ -73,7 +73,7 @@ void Quest::end()
         if (lineNr == 5)
         {
             getline(q, questsLine);
-            cout << "  Status: " << this->status;
+            std::cout << "  Status: " << this->status;
             lineNr = 3;
             questNr++;
         }

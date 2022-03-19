@@ -10,7 +10,7 @@ Item::Item()
     nextItem = 0;
 }
 
-Item::Item(string name, int type, string description, float price)
+Item::Item(std::string name, int type, std::string description, float price)
 {
     this->name = name;
     this->type = type;
@@ -24,9 +24,9 @@ Item::~Item()
 {
 }
 
-string Item::printType()
+std::string Item::printType()
 {
-    string type;
+    std::string type;
 
     if (this->type == WEAPON)
     {

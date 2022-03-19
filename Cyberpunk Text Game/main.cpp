@@ -1,20 +1,22 @@
 ﻿#include "game.h"
 
-using namespace std;
-
 int main()
 {   
     //cout << "\t\t\t\t\t\t\t\t\t\t\t\t  i" << endl;
-
-    SetConsoleTitleA("Cyberpunk Text Game");
-    setlocale(LC_ALL, "polish"); // zainicjowanie polskich znaków
+    Logger::Setup();
+    Function::nameGame("Cyberpunk Text Game");
+    Function::initSpecialChars("polish");
 
     Game game;
+    Logger::Out("Game was create", "Game::Game");
 
     while (game.getPlaying())
     {
-        //game.selectLanguage(); // wybór języka gry
+        game.selectLanguage();
         game.welcome();
+        game.writeLogo();
+        game.mainMenu();
+        game.end();
     }
 
     Function::waitForUserInput();

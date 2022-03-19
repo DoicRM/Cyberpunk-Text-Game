@@ -11,24 +11,25 @@
 #include <string>
 #include "enums.h"
 
-using namespace std;
-
 class Function
 {
 public:
+	static void nameGame(LPCSTR name);
+	static void initSpecialChars(const char* lang);
+
 	// powolne wypisywanie kodu - (tekst, szybkoœæ)
-	static void write(const string& sentence, int speed = 60);
+	static void write(const std::string& sentence, int speed = 60);
 	// powolne wypisywanie kodu - (tekst, szybkoœæ)
-	static void writeNarration(string st, int sp = 60);
+	static void writeNarration(std::string st, int sp = 60);
 	// powolne wypisywanie kodu - (tekst, szybkoœæ)
-	static void writeDialogue(string st, int sp = 60);
+	static void writeDialogue(std::string st, int sp = 60);
 
 	// tworzenie akcji gracza - (numer, opis)
-	static void actionOption(int nr, string text);
+	static void actionOption(int nr, std::string text);
 	// tworzenie dialogu gracza - (numer, opis)
-	static void dialogueOption(int nr, string text);
+	static void dialogueOption(int nr, std::string text);
 	// wyœwietlanie akcji gracza - (opis)
-	static void showHeroAction(string text);
+	static void showHeroAction(std::string text);
 
 	// Zmiana koloru tekstu i t³a konsoli
 	//	1 czarny tekst na czarnym tle

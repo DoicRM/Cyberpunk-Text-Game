@@ -6,7 +6,7 @@ Armor::Armor() : Item()
 	this->defence = 0;
 }
 
-Armor::Armor(string name, int type, int armorType, string description, int defence, float price)
+Armor::Armor(std::string name, int type, int armorType, std::string description, int defence, float price)
 {
 	this->armorType = armorType;
 	this->defence = defence;
@@ -16,9 +16,9 @@ Armor::~Armor()
 {
 }
 
-string Armor::printArmorType()
+std::string Armor::printArmorType()
 {
-    string type;
+    std::string type;
 
     if (this->type == HEAD)
     {

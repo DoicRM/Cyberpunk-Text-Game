@@ -9,7 +9,7 @@ Npc::Npc()
     this->knowingHero = false;
 }
 
-Npc::Npc(string name, Fraction fraction)
+Npc::Npc(std::string name, Fraction fraction)
 {
     this->name = name;
     this->fraction = fraction;
@@ -19,7 +19,7 @@ Npc::Npc(string name, Fraction fraction)
 }
 
 
-Npc::Npc(string name, Fraction fraction, int attitude, int status, bool knowingHero)
+Npc::Npc(std::string name, Fraction fraction, int attitude, int status, bool knowingHero)
 {
     this->name = name;
     this->fraction = fraction;
@@ -40,7 +40,7 @@ void Npc::setAttitude(int attitude)
 
 void Npc::printAttitude()
 {
-    string attitude;
+    std::string attitude;
 
     if (this->attitude == angry)
     {
@@ -63,9 +63,9 @@ void Npc::printAttitude()
         Function::changeConsoleColor();
     }
 
-    string str = "\t" + this->name + " is " + attitude + " now.";
+    std::string str = "\t" + this->name + " is " + attitude + " now.";
     Function::write(str);
-    cout << endl;
+    std::cout << std::endl;
     Function::changeConsoleColor();
 }
 

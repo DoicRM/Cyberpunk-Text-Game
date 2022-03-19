@@ -13,7 +13,7 @@ enum consoleColors
 	yellow = 14
 };
 
-enum language { en = 1, pl = 2 };
+enum gameLanguage { en = 1, pl = 2 };
 
 enum attitude { neutral, angry, hostile, friendly };
 

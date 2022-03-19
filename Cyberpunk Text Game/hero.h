@@ -2,12 +2,10 @@
 #include "events.h"
 #include "inventory.h"
 
-using namespace std;
-
 class Hero
 {
 private:
-    string name;
+    std::string name;
     int hp;
     //int exp;
     //int level;
@@ -20,7 +18,7 @@ public:
     Hero();
     virtual ~Hero();
 
-    void setName(string name);
+    void setName(std::string name);
     void addHP(int hp);
     void removeHP(int hp);
     void kill();
@@ -32,7 +30,7 @@ public:
     void showInv() { this->inventory.showInv(); };
     bool hasItem(Item* item) { return this->inventory.hasItem(item); };
 
-    inline const string& getName() const { return this->name; };
+    inline const std::string& getName() const { return this->name; };
     inline const int& getHP() const { return this->hp; };
     inline const float& getMoney() const { return this->money; };
 };

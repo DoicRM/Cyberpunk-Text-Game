@@ -10,8 +10,7 @@
 #include "events.h"
 #include "functions.h"
 #include "location.h"
-
-using namespace std;
+#include "logger.h"
 
 class Game
 {
@@ -24,10 +23,6 @@ public:
 	Game();
 	virtual ~Game();
 
-	// funkcje
-	inline bool getPlaying() const { return this->playing; }
-	inline int getLang() const { return this->gameLang; }
-
 	void selectLanguage(); // wybór jêzyka gry
 	void welcome(); // powitanie
 	void writeLogo(); // wypisywanie loga gry
@@ -39,11 +34,14 @@ public:
 	void endGame(); // koniec rozgrywki
 	void credits();
 	void test();
-
-	void setCurrentLocation(Location* location);
-	Location* getCurrentLocation();
+	inline void end() { this->playing = false; }
+	inline void setCurrentLocation(Location* location) { this->ptrCurrentLocation = location; }
 
 	friend void initAll();
 	friend void Function::initHeroEQ();
 	friend void Function::initQuestsList();
+
+	inline bool getPlaying() const { return this->playing; }
+	inline int getLang() const { return this->gameLang; }
+	inline Location* getCurrentLocation() const { return this->ptrCurrentLocation; }
 }; 

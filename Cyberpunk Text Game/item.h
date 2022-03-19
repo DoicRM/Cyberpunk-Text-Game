@@ -2,25 +2,23 @@
 #include <string>
 #include "enums.h"
 
-using namespace std;
-
 class Item
 {
 public:
-    string name;
+    std::string name;
     int type;
-    string description;
+    std::string description;
     float price;
     Item* nextItem; // wskaŸnik na nastêpny element
 
     Item();
-    Item(string name, int type, string description, float price);
+    Item(std::string name, int type, std::string description, float price);
     virtual ~Item();
 
-    string printType();
+    std::string printType();
 
-    inline const string& getName() const { return this->name; };
+    inline const std::string& getName() const { return this->name; };
     inline const int& getType() const { return this->type; };
-    inline const string& getDescription() const { return this->description; };
+    inline const std::string& getDescription() const { return this->description; };
     inline const float& getPrice() const { return this->price; };
 };

@@ -2,8 +2,6 @@
 #include "game.h"
 #include <map>
 
-using namespace std;
-
 class Event
 {
 public:
