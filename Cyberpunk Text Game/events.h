@@ -17,7 +17,6 @@ public:
 	static void gunShop();
 	static void nightclub();
 
-	static void endGame();
 	static void heroDeath(); // ekran mierci
 	static void loadingFiles(); // ³adowanie plikw
 	static void gameOver(); // koniec gry

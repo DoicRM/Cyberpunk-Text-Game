@@ -15,7 +15,7 @@ Game::~Game()
 
 void Game::selectLanguage()
 {
-    Logger::Out("Function start", "Game::selectLanguage");
+    Logger::out("Function start", "Game::selectLanguage");
     while (gameLang != 1 && gameLang != 2)
     {
         Function::clearScreen();
@@ -28,12 +28,15 @@ void Game::selectLanguage()
         std::cin >> gameLang;
     }
 
+    if (getLang() == en) Logger::out("Game language is English", "Game::selectLanguage");
+    else Logger::out("Game language is Polish", "Game::selectLanguage");
+
     Function::clearScreen();
 }
 
 void Game::welcome()
 {
-    Logger::Out("Function start", "Game::welcome");
+    Logger::out("Function start", "Game::welcome");
     std::cout << std::endl;
     Sleep(500); 
 
@@ -46,7 +49,7 @@ void Game::welcome()
 
 void Game::writeLogo()
 {
-    Logger::Out("Function start", "Game::writeLogo");
+    Logger::out("Function start", "Game::writeLogo");
     Function::changeConsoleColor(yellow);
     std::cout << "" << std::endl;
     Function::write("\t ======  ===    ===  =======   =======  =======   =======   ==     ==  ===    ==  ==    ==", 1);
@@ -72,7 +75,7 @@ void Game::writeLogo()
 
 void Game::logo()
 {
-    Logger::Out("Function start", "Game::logo");
+    Logger::out("Function start", "Game::logo");
     Function::changeConsoleColor(yellow);
     std::cout << "" << std::endl;
     std::cout << "\t ======  ===    ===  =======   =======  =======   =======   ==     ==  ===    ==  ==    ==" << std::endl;
@@ -91,7 +94,7 @@ void Game::logo()
 
 void Game::mainMenu()
 {
-    Logger::Out("Function start", "Game::mainMenu");
+    Logger::out("Function start", "Game::mainMenu");
     Function::changeConsoleColor();
     std::cout << "" << std::endl;
 
@@ -142,7 +145,7 @@ void Game::mainMenu()
 
 void Game::newGame()
 {
-    Logger::Out("Function start", "Game::newGame");
+    Logger::out("Function start", "Game::newGame");
     Event::initAll();
     Function::clearScreen();
     //setCurrentLocation(DarkAlley);
@@ -151,7 +154,7 @@ void Game::newGame()
 
 void Game::continueGame()
 {
-    Logger::Out("Function start", "Game::continueGame");
+    Logger::out("Function start", "Game::continueGame");
     Sleep(500);
     Function::clearScreen();
     std::cout << std::endl;
@@ -170,7 +173,7 @@ void Game::continueGame()
 
 void Game::aboutAuthor()
 {
-    Logger::Out("Function start", "Game::aboutAuthor");
+    Logger::out("Function start", "Game::aboutAuthor");
     Sleep(500);
     Function::clearScreen();
     std::cout << std::endl;
@@ -192,7 +195,7 @@ void Game::aboutAuthor()
 
 void Game::endGame()
 {
-    Logger::Out("Function start", "Game::endGame");
+    Logger::out("Function start", "Game::endGame");
 
     do
     {
@@ -241,11 +244,11 @@ void Game::endGame()
 
 void Game::credits()
 {
-    Logger::Out("Function start", "Game::credits");
+    Logger::out("Function start", "Game::credits");
     Function::write("\t\tAUTHOR\n\tRados³aw 'Doic' Michalak\n\n\t\tTESTERS\n\tPawe³ Michalak\n\n\t\tTHANKS\n\tDominik Szpilski\n\tDaniel Ob³¹k");
 }
 
 void Game::test()
 {
-    Logger::Out("Function start", "Game::test");
+    Logger::out("Function start", "Game::test");
 }

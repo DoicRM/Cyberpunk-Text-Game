@@ -9,12 +9,12 @@ std::string Logger::m_categoryFilter;
 int Logger::m_rowCount;
 bool Logger::m_isLoud;
 
-void Logger::Setup(bool isLoud)
+void Logger::setup(bool isLoud)
 {
     m_rowCount = 0;
     m_logLevel = 0;
     m_file.open("log.html");
-    m_startTime = GetTimestamp();
+    m_startTime = getTimestamp();
     m_lastTimestamp = m_startTime;
     m_isLoud = isLoud;
 
@@ -48,40 +48,40 @@ void Logger::Setup(bool isLoud)
         << "<td class='location'><strong>LOCATION</strong></td>"
         << "<td class='message'><strong>MESSAGE</strong></td>"
         << "</tr>" << std::endl;
-    Out("Logging begins", "Logger::Setup");
+    out("Logging begins", "Logger::Setup");
 }
 
-void Logger::Setup(int logLevel, const std::string& filter)
+void Logger::setup(int logLevel, const std::string& filter)
 {
-    Setup();
-    SetLogLevel(logLevel);
-    SetFilterWord(filter);
+    setup();
+    setLogLevel(logLevel);
+    setFilterWord(filter);
 }
 
-void Logger::SetLogLevel(int val)
+void Logger::setLogLevel(int val)
 {
     m_logLevel = val;
 }
 
-void Logger::SetFilterWord(const std::string& filter)
+void Logger::setFilterWord(const std::string& filter)
 {
-    Out("Setting filter to only display messages of category \"" + filter + "\"");
+    out("Setting filter to only display messages of category \"" + filter + "\"");
     m_categoryFilter = filter;
 }
 
-void Logger::Cleanup()
+void Logger::cleanup()
 {
-    Out("Logging ends", "Logger::Cleanup");
+    out("Logging ends", "Logger::Cleanup");
     m_file << "</table>" << std::endl;
     m_file << "</body></html>" << std::endl;
     m_file.close();
 }
 
-void Logger::OutHighlight(const std::string& message, const std::string& location, int color /* = 1 */)
+void Logger::outHighlight(const std::string& message, const std::string& location, int color /* = 1 */)
 {
     if (m_isLoud)
     {
-        std::cout << GetFormattedTimestamp();
+        std::cout << getFormattedTimestamp();
         if (location != "") { std::cout << " @ " << location; }
         std::cout << std::endl << "  " << message << std::endl << std::endl;
     }
@@ -90,7 +90,7 @@ void Logger::OutHighlight(const std::string& message, const std::string& locatio
     if (loc == "") { loc = "-"; }
 
     m_file << "<tr class='highlight-" << color << "'>"
-        << "<td class='time'>" << GetFormattedTimestamp() << "</td>"
+        << "<td class='time'>" << getFormattedTimestamp() << "</td>"
         << "<td class='location'>" << loc << "</td>"
         << "<td class='message'>" << message << "</td>"
         << "</tr>" << std::endl;
@@ -98,7 +98,7 @@ void Logger::OutHighlight(const std::string& message, const std::string& locatio
     m_rowCount++;
 }
 
-void Logger::Out(const std::string& message, const std::string& location /* = "" */, const std::string& category /* = "" */, bool condition /* = true */, int level /* = 0 */)
+void Logger::out(const std::string& message, const std::string& location /* = "" */, const std::string& category /* = "" */, bool condition /* = true */, int level /* = 0 */)
 {
     if (m_categoryFilter.size() > 0)
     {
@@ -120,7 +120,7 @@ void Logger::Out(const std::string& message, const std::string& location /* = ""
     {
         if (m_isLoud)
         {
-            std::cout << GetFormattedTimestamp();
+            std::cout << getFormattedTimestamp();
             if (location != "") { std::cout << " @ " << location; }
             std::cout << std::endl << "  " << message << std::endl << std::endl;
         }
@@ -131,7 +131,7 @@ void Logger::Out(const std::string& message, const std::string& location /* = ""
         std::string rowClass = (m_rowCount % 2 == 0) ? "" : "odd";
 
         m_file << "<tr class='" + rowClass + "'>"
-            << "<td class='time'>" << GetFormattedTimestamp() << "</td>"
+            << "<td class='time'>" << getFormattedTimestamp() << "</td>"
             << "<td class='location'>" << loc << "</td>"
             << "<td class='message'>" << message << "</td>"
             << "</tr>" << std::endl;
@@ -140,9 +140,9 @@ void Logger::Out(const std::string& message, const std::string& location /* = ""
     }
 }
 
-void Logger::Error(const std::string& message, const std::string& location /* = "" */)
+void Logger::error(const std::string& message, const std::string& location /* = "" */)
 {
-    std::cerr << "** " << GetTimestamp() << "\t" << message;
+    std::cerr << "** " << getTimestamp() << "\t" << message;
     if (location != "") { std::cerr << " @ " << location; }
     std::cerr << "\t LINE " << __LINE__ << " FILE " << __FILE__;
     std::cerr << std::endl;
@@ -151,17 +151,17 @@ void Logger::Error(const std::string& message, const std::string& location /* = 
     if (loc == "") { loc = "-"; }
 
     m_file << "<tr class='error'>"
-        << "<td class='time'>" << GetFormattedTimestamp() << "</td>"
+        << "<td class='time'>" << getFormattedTimestamp() << "</td>"
         << "<td class='location'>" << loc << "</td>"
         << "<td class='message'>" << message << "</td>"
         << "</tr>" << std::endl;
 }
 
-std::string Logger::GetFormattedTimestamp()
+std::string Logger::getFormattedTimestamp()
 {
 
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
-    time_t timestamp = GetTimestamp();
+    time_t timestamp = getTimestamp();
     struct tm timeinfo;
     char buffer[80];
     time(&timestamp);
@@ -186,7 +186,7 @@ std::string Logger::GetFormattedTimestamp()
 
 }
 
-double Logger::GetTimestamp()
+double Logger::getTimestamp()
 {
     std::chrono::system_clock::time_point now = std::chrono::system_clock::now();
     return std::chrono::system_clock::to_time_t(now);

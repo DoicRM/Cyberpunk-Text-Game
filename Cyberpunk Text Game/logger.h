@@ -9,18 +9,18 @@
 class Logger
 {
 public:
-    static void Setup(bool loud = false);
-    static void Setup(int logLevel, const std::string& filter);
-    static void Cleanup();
-    static void SetLogLevel(int val);
-    static void SetFilterWord(const std::string& filter);
+    static void setup(bool loud = false);
+    static void setup(int logLevel, const std::string& filter);
+    static void cleanup();
+    static void setLogLevel(int val);
+    static void setFilterWord(const std::string& filter);
 
-    static void Out(const std::string& message, const std::string& location = "", const std::string& category = "", bool condition = true, int level = 0);
-    static void OutHighlight(const std::string& message, const std::string& location = "", int color = 1);
-    static void Error(const std::string& message, const std::string& location = "");
+    static void out(const std::string& message, const std::string& location = "", const std::string& category = "", bool condition = true, int level = 0);
+    static void outHighlight(const std::string& message, const std::string& location = "", int color = 1);
+    static void error(const std::string& message, const std::string& location = "");
 
-    static double GetTimestamp();
-    static std::string GetFormattedTimestamp();
+    static double getTimestamp();
+    static std::string getFormattedTimestamp();
 
 private:
     static std::ofstream m_file;

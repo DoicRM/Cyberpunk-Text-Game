@@ -3,12 +3,12 @@
 int main()
 {   
     //cout << "\t\t\t\t\t\t\t\t\t\t\t\t  i" << endl;
-    Logger::Setup();
-    Function::nameGame("Cyberpunk Text Game");
+    Logger::setup();
+    Function::nameGame("Cyberpunk Text Game v.1.0");
     Function::initSpecialChars("polish");
 
     Game game;
-    Logger::Out("Game was create", "Game::Game");
+    Logger::out("Game start", "Game::Game");
 
     while (game.getPlaying())
     {

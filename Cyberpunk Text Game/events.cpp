@@ -13,7 +13,7 @@ std::map <std::string, Quest> quests;
 // 1.1 Inicjowanie bohatera
 void Event::initHero()
 {
-    Logger::Out("Function start", "Event::initHero");
+    Logger::out("Function start", "Event::initHero");
     Hero hero;
     heroes["Hero"] = hero;
 }
@@ -21,7 +21,7 @@ void Event::initHero()
 // 1.2 Inicjowanie frakcji
 void Event::initFractionsNpcsAndLocations()
 {
-    Logger::Out("Function start", "Event::initFractionsNpcsAndLocations");
+    Logger::out("Function start", "Event::initFractionsNpcsAndLocations");
     //if (game.getLang() == en)
     //{
         // Frakcje
@@ -117,7 +117,7 @@ void Event::initFractionsNpcsAndLocations()
 // 1.3 Inicjowanie przedmiotów
 void Event::initItems()
 {
-    Logger::Out("Function start", "Event::initItems");
+    Logger::out("Function start", "Event::initItems");
     //if (Game().getLang() == en)
     //{
         Item AD13("Accelerator D-13", OTHER, "A long gone accelerator model, though still quite precious.", 50);
@@ -144,7 +144,7 @@ void Event::initItems()
 // 1.4 Inicjowanie zadañ
 void Event::initQuests()
 {
-    Logger::Out("Function start", "Event::initQuests");
+    Logger::out("Function start", "Event::initQuests");
     //if (Game().getLang() == en)
     //{
         Quest KillVincent("Beauty and the Beast", "Kill 'Amnesia' nightclub owner Vincent Ramsey at the request of his girlfriend, Mia.");
@@ -166,7 +166,7 @@ void Event::initQuests()
 // 1.5 Inicjowanie wszystkiego
 void Event::initAll()
 {
-    Logger::Out("Function start", "Event::initAll");
+    Logger::out("Function start", "Event::initAll");
     Event::initHero();
     Event::initFractionsNpcsAndLocations();
     Event::initItems();
@@ -201,7 +201,7 @@ void Event::showTakeItemInfo(Item findItem)
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::darkAlley()
 {
-    Logger::Out("Function start", "Event::darkAlley");
+    Logger::out("Function start", "Event::darkAlley");
     locationPointer = &locations["DarkAlley"];
     Game().setCurrentLocation(locationPointer);
 
@@ -222,7 +222,7 @@ void Event::darkAlley()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::street()
 {
-    Logger::Out("Function start", "Event::street");
+    Logger::out("Function start", "Event::street");
     locationPointer = &locations["Street"];
     Game().setCurrentLocation(locationPointer);
 
@@ -238,7 +238,7 @@ void Event::street()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::gunShop()
 {
-    Logger::Out("Function start", "Event::gunShop");
+    Logger::out("Function start", "Event::gunShop");
     locationPointer = &locations["GunShop"];
     Game().setCurrentLocation(locationPointer);
 
@@ -254,7 +254,7 @@ void Event::gunShop()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::nightclub()
 {
-    Logger::Out("Function start", "Event::nightclub");
+    Logger::out("Function start", "Event::nightclub");
     locationPointer = &locations["Nightclub"];
     Game().setCurrentLocation(locationPointer);
 
@@ -276,7 +276,7 @@ void Event::nightclub()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::darkAlleyCrossroads()
 {
-    Logger::Out("Function start", "Event::darkAlleyCrossroads");
+    Logger::out("Function start", "Event::darkAlleyCrossroads");
     std::string heroName;
 
     Function::showHeroAction("Visit: Dark Alley.");
@@ -368,15 +368,16 @@ void Event::darkAlleyCrossroads()
                 Sleep(2000);
                 std::cout << std::endl;
 
-                Event::showTakeItemInfo(items["AD13"]);
-                //itemPointer = &items["AD13"];
-                //heroes["Hero"].addItem(itemPointer);
+                //Event::showTakeItemInfo(items["AD13"]);
+                itemPointer = &items["AD13"];
+                heroes["Hero"].addItem(itemPointer);
 
-                //Function::changeConsoleColor(item);
-                //std::string str = "\t" + items["AD13"].getName();
-                //Function::write(str);
-                //Function::changeConsoleColor();
-                //Function::write(" was found.");
+                Function::changeConsoleColor(item);
+                std::string str = "\t" + items["AD13"].getName();
+                Function::write(str);
+                Function::changeConsoleColor();
+                Function::write(" was found.");
+                Logger::out(items["AD13"].getName() + " added", "Event::initHero");
                 std::cout << std::endl;
                 Function::write("\t[TIP: This item has been added to your inventory. You can view it in the text file in your game folder.]", 15);
                 Sleep(4000);
@@ -409,7 +410,7 @@ void Event::darkAlleyCrossroads()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::prologue()
 {
-    Logger::Out("Function start", "Event::prologue");
+    Logger::out("Function start", "Event::prologue");
     //if (Game().getLang() == en)
     //{
         std::cout << "" << std::endl;
@@ -437,7 +438,7 @@ void Event::prologue()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::storyIntroduction()
 {
-    Logger::Out("Function start", "Event::storyIntroduction");
+    Logger::out("Function start", "Event::storyIntroduction");
     //if (Game().getLang() == en)
     //{
         std::cout << "" << std::endl;
@@ -492,7 +493,7 @@ void Event::storyIntroduction()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::wakeUpAloneInDarkAlley()
 {
-    Logger::Out("Function start", "Event::wakeUpAloneInDarkAlley");
+    Logger::out("Function start", "Event::wakeUpAloneInDarkAlley");
     //if (Game().getLang() == en)
     //{
         darkAlleyWasVisited = true;
@@ -586,7 +587,7 @@ void Event::wakeUpAloneInDarkAlley()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::inSeaOfRubbish()
 {
-    Logger::Out("Function start", "Event::inSeaOfRubbish");
+    Logger::out("Function start", "Event::inSeaOfRubbish");
     Function::showHeroAction("Search the area for something valuable.");
     std::cout << std::endl;
     Function::writeNarration("\tYou start rummaging through the trash.");
@@ -603,6 +604,7 @@ void Event::inSeaOfRubbish()
     Function::write(str);
     Function::changeConsoleColor();
     Function::write(" was found.");
+    Logger::out(items["AD13"].getName() + " added", "Event::initHero");
     std::cout << std::endl;
     Function::write("\t[TIP: This item has been added to your inventory. You can view it in the text file in your\n\tgame folder.]", 15);
     Sleep(4000);
@@ -615,7 +617,7 @@ void Event::inSeaOfRubbish()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::outOfTheAlley()
 {
-    Logger::Out("Function start", "Event::outOfTheAlley");
+    Logger::out("Function start", "Event::outOfTheAlley");
     itemPointer = &items["AD13"];
 
     if (!heroes["Hero"].hasItem(itemPointer))
@@ -680,7 +682,7 @@ void Event::outOfTheAlley()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::conversationWithHomeless()
 {
-    Logger::Out("Function start", "Event::conversationWithHomeless");
+    Logger::out("Function start", "Event::conversationWithHomeless");
     std::string heroName, str;
 
     Function::writeDialogue("\t- 'What's your name, boy?'");
@@ -692,6 +694,7 @@ void Event::conversationWithHomeless()
         std::cout << "\t> ";
         std::cin >> heroName;
         heroes["Hero"].setName(heroName);
+        Logger::out("Hero name is " + heroes["Hero"].getName(), "Event::conversationWithHomeless");
     }
 
     npcs["Bob"].setToKnowHero();
@@ -757,6 +760,7 @@ void Event::conversationWithHomeless()
             Function::showHeroAction("'It's not your business.'");
             std::cout << std::endl;
             npcs["Bob"].setAttitude(angry); // angry / hostile / friendly / neutral
+            Logger::out("Bob is " + npcs["Bob"].getAttitude(), "Event::conversationWithHomeless");
             Function::writeDialogue("\t- 'You're wrong. It's absolutely my business, kid. Don't shut your mouth like that, or you might\n\tlose a few teeth. Got it?'");
             std::cout << std::endl;
             break;
@@ -793,7 +797,7 @@ void Event::conversationWithHomeless()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::streetCrossroads()
 {
-    Logger::Out("Function start", "Event::streetCrossroads");
+    Logger::out("Function start", "Event::streetCrossroads");
     //-------------------------------------------------------------
     // Decyzja
     Function::showHeroAction("Visit: Street.");
@@ -837,7 +841,7 @@ void Event::streetCrossroads()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::viewOfAmnesia()
 {
-    Logger::Out("Function start", "Event::viewOfAmnesia");
+    Logger::out("Function start", "Event::viewOfAmnesia");
     streetWasVisited = true;
 
     std::cout << std::endl;
@@ -900,7 +904,7 @@ void Event::viewOfAmnesia()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::heroMeetGunStore()
 {
-    Logger::Out("Function start", "Event::heroMeetGunStore");
+    Logger::out("Function start", "Event::heroMeetGunStore");
     std::cout << std::endl;
     Function::writeNarration("\tYou go to the right side of the street. After walking several meters you come across a small booth\n\tbetween blocks of flats.");
 
@@ -954,7 +958,7 @@ void Event::heroMeetGunStore()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::heroMeetSecurityGuards()
 {
-    Logger::Out("Function start", "Event::heroMeetSecurityGuards");
+    Logger::out("Function start", "Event::heroMeetSecurityGuards");
     Function::writeNarration("\tWhen you get closer, the faces turn toward you and start looking at you intently.");
     Sleep(1000);
     Function::writeNarration(" You pass them in silenceand are confronted by a broad - shouldered security guard.");
@@ -977,7 +981,7 @@ void Event::heroMeetSecurityGuards()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::heroMeetsPolicemans()
 {
-    Logger::Out("Function start", "Event::heroMeetsPolicemans");
+    Logger::out("Function start", "Event::heroMeetsPolicemans");
     std::string heroName, str;
 
     if (npcs["Bob"].knowsHero())
@@ -1096,12 +1100,12 @@ void Event::heroMeetsPolicemans()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::gunShopCrossroads()
 {
-    Logger::Out("Function start", "Event::gunShopCrossroads");
+    Logger::out("Function start", "Event::gunShopCrossroads");
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::enterGunShop()
 {
-    Logger::Out("Function start", "Event::enterGunShop");
+    Logger::out("Function start", "Event::enterGunShop");
     gunShopWasVisited = true;
 
     Function::writeNarration("\tThe front door hisses open before you.");
@@ -1150,7 +1154,7 @@ void Event::enterGunShop()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::dialogueWithZed()
 {
-    Logger::Out("Function start", "Event::dialogueWithZed");
+    Logger::out("Function start", "Event::dialogueWithZed");
     bool heroTalkedAboutBusinessWithZed = false;
 
     while (true)
@@ -1254,6 +1258,7 @@ void Event::dialogueWithZed()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::zedTrade()
 {
+    Logger::out("Function start", "Event::zedTrade");
     bool ZedTellsAboutWeapons = false;
 
     itemPointer = &items["Pistol"];
@@ -1348,6 +1353,7 @@ void Event::zedTrade()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::buyPistol()
 {
+    Logger::out("Function start", "Event::buyPistol");
     std::string str;
 
     std::cout << std::endl;
@@ -1411,6 +1417,7 @@ void Event::buyPistol()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::nightclubCrossroads()
 {
+    Logger::out("Function start", "Event::nightclubCrossroads");
     //-------------------------------------------------------------
     // Decyzja
     Function::showHeroAction("Visit: Nightclub 'Amnesia'.");
@@ -1462,6 +1469,7 @@ void Event::nightclubCrossroads()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::enterClub()
 {
+    Logger::out("Function start", "Event::enterClub");
     nightclubWasVisited = true;
     std::cout << std::endl;
     Function::writeNarration("\tAfter passing through the entrance your eardrums are slowly bursting from the loud music in the club.");
@@ -1504,6 +1512,7 @@ void Event::enterClub()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::clubDanceFloor()
 {
+    Logger::out("Function start", "Event::clubDanceFloor");
     Function::showHeroAction("Go dance on the dance floor.");
     std::cout << std::endl;
 
@@ -1585,6 +1594,7 @@ void Event::clubDanceFloor()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::clubBar()
 {
+    Logger::out("Function start", "Event::clubBar");
     heroIsAtBar = true;
 
     Function::writeNarration("\tWith a slow step, you approach the counter, settle comfortably on a stool, and lift your gaze to the barman in front of you.");
@@ -1649,6 +1659,7 @@ void Event::clubBar()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::miaMeeting()
 {
+    Logger::out("Function start", "Event::miaMeeting");
     //-------------------------------------------------------------
     // Decyzja
     Function::changeConsoleColor();
@@ -1715,11 +1726,13 @@ void Event::miaMeeting()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::vincentAssassination()
 {
+    Logger::out("Function start", "Event::vincentAssassination");
     vincentOffice();
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::vincentOffice()
 {
+    Logger::out("Function start", "Event::vincentOffice");
     Function::writeNarration("\tYou enter the manager's office immersed in twilight. In the middle of the room stands a sizable desk, and on it are stacks of documents and computer. To the left of the entrance is a window to the street below. On the right you will notice a door to another room.");
     std::cout << std::endl;
     //-------------------------------------------------------------
@@ -1752,6 +1765,7 @@ void Event::vincentOffice()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::checkVincentDesk()
 {
+    Logger::out("Function start", "Event::checkVincentDesk");
     heroKnowsVincentHideoutCode = true;
     Function::showHeroAction("Stay and search the office.");
     std::cout << std::endl;
@@ -1764,6 +1778,7 @@ void Event::checkVincentDesk()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::vincentHideoutCode()
 {
+    Logger::out("Function start", "Event::vincentHideoutCode");
     std::cout << std::endl;
     Function::writeNarration("\tYou walk closer and spot the terminal. It looks like you'll need to use a code to get through.");
     Sleep(1500);
@@ -1785,6 +1800,7 @@ void Event::vincentHideoutCode()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::vincentHideout()
 {
+    Logger::out("Function start", "Event::vincentHideout");
     npcs["Vincent"].setStatus(unconscious);
     std::cout << std::endl;
     Function::writeNarration("\tThe door closes behind you, hissing quietly.");
@@ -1846,6 +1862,7 @@ void Event::vincentHideout()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::dialogueWithVincent()
 {
+    Logger::out("Function start", "Event::dialogueWithVincent");
     //-------------------------------------------------------------
     // Decyzja
     std::cout << std::endl;
@@ -2006,6 +2023,7 @@ void Event::dialogueWithVincent()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::vincentResurrection()
 {
+    Logger::out("Function start", "Event::vincentResurrection");
     std::cout << std::endl;
     Function::writeNarration("\tSuddenly, the maze of cables begins to vibrate and move in a strange dance.");
     Sleep(1000);
@@ -2034,6 +2052,7 @@ void Event::vincentResurrection()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::loadingFiles()
 {
+    Logger::out("Function start", "Event::loadingFiles");
     Function::changeConsoleColor(dialogue);
     Function::write("\t||", 100);
     Sleep(1000);
@@ -2083,20 +2102,10 @@ void Event::loadingFiles()
     Function::changeConsoleColor();
 }
 
-void Event::endGame()
-{
-    // czyszczenie map
-    heroes.clear();
-    npcs.clear();
-    fractions.clear();
-    items.clear();
-    locations.clear();
-    quests.clear();
-}
-
 // Œmieræ bohatera
 void Event::heroDeath()
 {
+    Logger::out("Function start", "Event::heroDeath");
     Sleep(500);
     Function::clearScreen();
     Function::changeConsoleColor(red);
@@ -2121,6 +2130,15 @@ void Event::heroDeath()
 // Koniec gry
 void Event::gameOver()
 {
+    Logger::out("Function start", "Event::gameOver");
+
+    heroes.clear();
+    npcs.clear();
+    fractions.clear();
+    items.clear();
+    locations.clear();
+    quests.clear();
+
     Sleep(500);
     Function::clearScreen();
     Function::changeConsoleColor(lightblue);
