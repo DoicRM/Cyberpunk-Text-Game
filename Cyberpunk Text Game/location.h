@@ -15,7 +15,7 @@ public:
     Location(std::string name, int type, Fraction occupation, int order, bool currency);
     virtual ~Location();
 
-    void setOccupation(Fraction occupation) { this->occupation = occupation; }
+    inline void setOccupation(Fraction occupation) { this->occupation = occupation; }
     //void SetNeighbors(string north, string south, string east, string west);
 
     inline const std::string& getName() const { return this->name; };

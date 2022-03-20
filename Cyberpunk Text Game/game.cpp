@@ -2,6 +2,7 @@
 
 Game::Game()
 {
+    Logger::out("Function start", "Game::Game");
     menu = 0;
     choice = 0;
     gameLang = 0;
@@ -11,6 +12,24 @@ Game::Game()
 
 Game::~Game()
 {   
+    Logger::out("Function start", "Game::~Game");
+}
+
+void Game::run()
+{
+    Function::nameGame("CYBERPUNK Text Game v.1.0");
+    Function::initSpecialChars("polish");
+
+    while (getPlaying())
+    {
+        Logger::out("Function start", "Game::run");
+        selectLanguage();
+        welcome();
+        writeLogo();
+        mainMenu();
+        end();
+        Logger::out("Function end", "Game::run");
+    }
 }
 
 void Game::selectLanguage()
@@ -26,10 +45,12 @@ void Game::selectLanguage()
         std::cout << std::endl;
         Function::write("\tSelect your language: ", 25);
         std::cin >> gameLang;
+
+        if (gameLang != 1 && gameLang != 2) Logger::error("Invalid value of 'gameLang'", "Game::selectLanguage");
     }
 
     if (getLang() == en) Logger::out("Game language is English", "Game::selectLanguage");
-    else Logger::out("Game language is Polish", "Game::selectLanguage");
+    else if (getLang() == pl) Logger::out("Game language is Polish", "Game::selectLanguage");
 
     Function::clearScreen();
 }

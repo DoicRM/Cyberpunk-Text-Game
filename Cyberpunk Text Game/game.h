@@ -23,6 +23,7 @@ public:
 	Game();
 	virtual ~Game();
 
+	void run();
 	void selectLanguage(); // wybór jêzyka gry
 	void welcome(); // powitanie
 	void writeLogo(); // wypisywanie loga gry

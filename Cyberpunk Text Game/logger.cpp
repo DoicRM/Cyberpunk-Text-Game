@@ -1,4 +1,4 @@
-// CREATED BY Rachel Wil Sha Singh 2020 (https://gitlab.com/RachelWilShaSingh/simple-cpp-text-adventure/-/tree/master/)
+// CREATED BY Rachel Wil Sha Singh 2020 (https://gitlab.com/RachelWilShaSingh/simple-cpp-text-adventure)
 #include "logger.h"
 
 std::ofstream Logger::m_file;

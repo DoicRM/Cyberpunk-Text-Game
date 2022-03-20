@@ -152,6 +152,7 @@ void Event::initQuests()
 
         quests["KillVincent"] = KillVincent;
         quests["ZedAccelerator"] = ZedAccelerator;
+
     /*}
     else if (Game().getLang() == pl)
     {
@@ -377,7 +378,15 @@ void Event::darkAlleyCrossroads()
                 Function::write(str);
                 Function::changeConsoleColor();
                 Function::write(" was found.");
-                Logger::out(items["AD13"].getName() + " added", "Event::initHero");
+                
+                if (heroes["Hero"].hasItem(itemPointer))
+                {
+                    Logger::out(items["AD13"].getName() + " added to EQ", "Event::inSeaOfRubbish");
+                }
+                else {
+                    Logger::error(items["AD13"].getName() + " not added to EQ", "Event::inSeaOfRubbish");
+                }
+
                 std::cout << std::endl;
                 Function::write("\t[TIP: This item has been added to your inventory. You can view it in the text file in your game folder.]", 15);
                 Sleep(4000);
@@ -604,7 +613,15 @@ void Event::inSeaOfRubbish()
     Function::write(str);
     Function::changeConsoleColor();
     Function::write(" was found.");
-    Logger::out(items["AD13"].getName() + " added", "Event::initHero");
+
+    if (heroes["Hero"].hasItem(itemPointer))
+    {
+        Logger::out(items["AD13"].getName() + " added to EQ", "Event::inSeaOfRubbish");
+    }
+    else {
+        Logger::error(items["AD13"].getName() + " not added to EQ", "Event::inSeaOfRubbish");
+    }
+
     std::cout << std::endl;
     Function::write("\t[TIP: This item has been added to your inventory. You can view it in the text file in your\n\tgame folder.]", 15);
     Sleep(4000);
@@ -694,7 +711,7 @@ void Event::conversationWithHomeless()
         std::cout << "\t> ";
         std::cin >> heroName;
         heroes["Hero"].setName(heroName);
-        Logger::out("Hero name is " + heroes["Hero"].getName(), "Event::conversationWithHomeless");
+        Logger::out("The hero's name is " + heroes["Hero"].getName(), "Event::conversationWithHomeless");
     }
 
     npcs["Bob"].setToKnowHero();
@@ -760,7 +777,15 @@ void Event::conversationWithHomeless()
             Function::showHeroAction("'It's not your business.'");
             std::cout << std::endl;
             npcs["Bob"].setAttitude(angry); // angry / hostile / friendly / neutral
-            Logger::out("Bob is " + npcs["Bob"].getAttitude(), "Event::conversationWithHomeless");
+
+            if (npcs["Bob"].getAttitude() == angry)
+            {
+                Logger::out("Bob is angry", "Event::conversationWithHomeless");
+            }
+            else {
+                Logger::error("Bob is not angry", "Event::conversationWithHomeless");
+            }
+
             Function::writeDialogue("\t- 'You're wrong. It's absolutely my business, kid. Don't shut your mouth like that, or you might\n\tlose a few teeth. Got it?'");
             std::cout << std::endl;
             break;
@@ -1025,6 +1050,7 @@ void Event::heroMeetsPolicemans()
         std::cout << "\t> ";
         std::cin >> heroName;
         heroes["Hero"].setName(heroName);
+        Logger::out("The hero's name is " + heroes["Hero"].getName(), "Event::conversationWithHomeless");
         std::cout << std::endl;
         str = "\t- '" + heroes["Hero"].getName() + "...";
         Function::writeDialogue(str);

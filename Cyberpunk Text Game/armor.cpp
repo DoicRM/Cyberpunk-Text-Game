@@ -1,4 +1,4 @@
-#include "Armor.h"
+#include "armor.h"
 
 Armor::Armor() : Item()
 {

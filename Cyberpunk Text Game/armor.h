@@ -1,5 +1,5 @@
 #pragma once
-#include "Item.h"
+#include "item.h"
 #include "enums.h"
 
 class Armor : public Item
