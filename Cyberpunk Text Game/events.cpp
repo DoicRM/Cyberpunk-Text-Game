@@ -180,14 +180,14 @@ void Event::initAll()
 bool bobRecommendsZedToHero = false, heroKnowsVincentHideoutCode = false, heroIsOnDanceFloor = false, heroIsAtBar = false, zedKnowsAboutBobFriendshipWithHero = false;
 int heroChoice = 0, checkpoint = 0, optionNr = 1;
 bool darkAlleyWasVisited = false, streetWasVisited = false, gunShopWasVisited = false, nightclubWasVisited = false;
-Location* locationPointer;
-Item* itemPointer;
+Location* locationPtr;
+Item* itemPtr;
 
 // 1.7 Pomocnicza funkcja do wyœwietlania informacji o zdobyciu przedmiotu
 void Event::showTakeItemInfo(Item findItem)
 {
-    itemPointer = &findItem;
-    heroes["Hero"].addItem(itemPointer);
+    itemPtr = &findItem;
+    heroes["Hero"].addItem(itemPtr);
 
     Function::changeConsoleColor(item);
     std::string str = "\t" + findItem.getName();
@@ -203,13 +203,8 @@ void Event::showTakeItemInfo(Item findItem)
 void Event::darkAlley()
 {
     Logger::out("Function start", "Event::darkAlley");
-    locationPointer = &locations["DarkAlley"];
-    Game().setCurrentLocation(locationPointer);
-
-    /*if (Game().getCurrentLocation() == locationPointer)
-    {
-        
-    }*/
+    //locationPtr = &locations["DarkAlley"];
+    //setCurrentLocation(locationPtr);
 
     if (!darkAlleyWasVisited)
     {
@@ -224,8 +219,8 @@ void Event::darkAlley()
 void Event::street()
 {
     Logger::out("Function start", "Event::street");
-    locationPointer = &locations["Street"];
-    Game().setCurrentLocation(locationPointer);
+    //locationPtr = &locations["Street"];
+    //setCurrentLocation(locationPtr);
 
     if (!streetWasVisited)
     {
@@ -240,8 +235,8 @@ void Event::street()
 void Event::gunShop()
 {
     Logger::out("Function start", "Event::gunShop");
-    locationPointer = &locations["GunShop"];
-    Game().setCurrentLocation(locationPointer);
+    //locationPtr = &locations["GunShop"];
+    //setCurrentLocation(locationPtr);
 
     if (!gunShopWasVisited)
     {
@@ -256,8 +251,8 @@ void Event::gunShop()
 void Event::nightclub()
 {
     Logger::out("Function start", "Event::nightclub");
-    locationPointer = &locations["Nightclub"];
-    Game().setCurrentLocation(locationPointer);
+    //locationPtr = &locations["Nightclub"];
+    //setCurrentLocation(locationPtr);
 
     if (!nightclubWasVisited)
     {
@@ -337,9 +332,9 @@ void Event::darkAlleyCrossroads()
         Function::writeNarration(" It's full of cardboard boxes, old mechanical parts, and god knows what else.");
     }
 
-    itemPointer = &items["AD13"];
+    itemPtr = &items["AD13"];
 
-    if (!heroes["Hero"].hasItem(itemPointer))
+    if (!heroes["Hero"].hasItem(itemPtr))
     {
         Sleep(1500);
         std::cout << std::endl;
@@ -370,8 +365,8 @@ void Event::darkAlleyCrossroads()
                 std::cout << std::endl;
 
                 //Event::showTakeItemInfo(items["AD13"]);
-                itemPointer = &items["AD13"];
-                heroes["Hero"].addItem(itemPointer);
+                itemPtr = &items["AD13"];
+                heroes["Hero"].addItem(itemPtr);
 
                 Function::changeConsoleColor(item);
                 std::string str = "\t" + items["AD13"].getName();
@@ -379,7 +374,7 @@ void Event::darkAlleyCrossroads()
                 Function::changeConsoleColor();
                 Function::write(" was found.");
                 
-                if (heroes["Hero"].hasItem(itemPointer))
+                if (heroes["Hero"].hasItem(itemPtr))
                 {
                     Logger::out(items["AD13"].getName() + " added to EQ", "Event::inSeaOfRubbish");
                 }
@@ -605,8 +600,8 @@ void Event::inSeaOfRubbish()
     Sleep(2000);
     std::cout << std::endl << std::endl;
     //Event::showTakeItemInfo(items["AD13"]);
-    itemPointer = &items["AD13"];
-    heroes["Hero"].addItem(itemPointer);
+    itemPtr = &items["AD13"];
+    heroes["Hero"].addItem(itemPtr);
 
     Function::changeConsoleColor(item);
     std::string str = "\t" + items["AD13"].getName();
@@ -614,7 +609,7 @@ void Event::inSeaOfRubbish()
     Function::changeConsoleColor();
     Function::write(" was found.");
 
-    if (heroes["Hero"].hasItem(itemPointer))
+    if (heroes["Hero"].hasItem(itemPtr))
     {
         Logger::out(items["AD13"].getName() + " added to EQ", "Event::inSeaOfRubbish");
     }
@@ -635,9 +630,9 @@ void Event::inSeaOfRubbish()
 void Event::outOfTheAlley()
 {
     Logger::out("Function start", "Event::outOfTheAlley");
-    itemPointer = &items["AD13"];
+    itemPtr = &items["AD13"];
 
-    if (!heroes["Hero"].hasItem(itemPointer))
+    if (!heroes["Hero"].hasItem(itemPtr))
     {
         Function::showHeroAction("Find the exit from the alley.");
         std::cout << std::endl;
@@ -711,7 +706,7 @@ void Event::conversationWithHomeless()
         std::cout << "\t> ";
         std::cin >> heroName;
         heroes["Hero"].setName(heroName);
-        Logger::out("The hero's name is " + heroes["Hero"].getName(), "Event::conversationWithHomeless");
+        Logger::out("Hero's name is " + heroes["Hero"].getName(), "Event::conversationWithHomeless");
     }
 
     npcs["Bob"].setToKnowHero();
@@ -1028,9 +1023,9 @@ void Event::heroMeetsPolicemans()
     Function::writeDialogue(" And what are you doing here? Please show me your ID card.'");
     std::cout << std::endl;
 
-    itemPointer = &items["AD13"];
+    itemPtr = &items["AD13"];
 
-    if (heroes["Hero"].hasItem(itemPointer))
+    if (heroes["Hero"].hasItem(itemPtr))
     {
         Function::writeNarration("\tYou start searching through the pockets of your jacket and pants, but other than the accelerator\n\tyou found in the trash, there's nothing else there.");
     }
@@ -1050,7 +1045,7 @@ void Event::heroMeetsPolicemans()
         std::cout << "\t> ";
         std::cin >> heroName;
         heroes["Hero"].setName(heroName);
-        Logger::out("The hero's name is " + heroes["Hero"].getName(), "Event::conversationWithHomeless");
+        Logger::out("Hero's name is " + heroes["Hero"].getName(), "Event::conversationWithHomeless");
         std::cout << std::endl;
         str = "\t- '" + heroes["Hero"].getName() + "...";
         Function::writeDialogue(str);
@@ -1152,9 +1147,9 @@ void Event::enterGunShop()
         Sleep(1000);
         Function::writeNarration(" From behind the counter, Zed is already smiling at you.");
 
-        itemPointer = &items["Pistol"];
+        itemPtr = &items["Pistol"];
 
-        if (heroes["Hero"].hasItem(itemPointer))
+        if (heroes["Hero"].hasItem(itemPtr))
         {
             std::cout << std::endl;
             Function::writeDialogue("\t- 'What's up? How's the gun working out?'");
@@ -1162,9 +1157,9 @@ void Event::enterGunShop()
 
         if (quests["ZedAccelerator"].isRunning() && !quests["ZedAccelerator"].isCompleted())
         {
-            itemPointer = &items["AD13"];
+            itemPtr = &items["AD13"];
 
-            if (!heroes["Hero"].hasItem(itemPointer))
+            if (!heroes["Hero"].hasItem(itemPtr))
             {
                 dialogueWithZed();
             }
@@ -1287,9 +1282,9 @@ void Event::zedTrade()
     Logger::out("Function start", "Event::zedTrade");
     bool ZedTellsAboutWeapons = false;
 
-    itemPointer = &items["Pistol"];
+    itemPtr = &items["Pistol"];
 
-    if (!heroes["Hero"].hasItem(itemPointer))
+    if (!heroes["Hero"].hasItem(itemPtr))
     {
         if (!ZedTellsAboutWeapons)
         {
@@ -1396,11 +1391,8 @@ void Event::buyPistol()
             Function::writeDialogue(" Hmm, you know Old Bob, that already means something.");
             Sleep(1000);
             Function::writeDialogue(" Let's just say I'll loan you this gun on a friendly basis.");
-
-            //Event::showTakeItemInfo(items["Pistol"]);
-            itemPointer = &items["Pistol"];
-            heroes["Hero"].addItem(itemPointer);
-
+            itemPtr = &items["Pistol"];
+            heroes["Hero"].addItem(itemPtr);
             std::cout << std::endl;
             Function::changeConsoleColor(item);
             str = "\t" + items["Pistol"].getName();
@@ -1426,8 +1418,8 @@ void Event::buyPistol()
     {
         Function::writeDialogue("\t- 'A pistol is a good start. Here, it's yours.'");
 
-        itemPointer = &items["Pistol"];
-        heroes["Hero"].addItem(itemPointer);
+        itemPtr = &items["Pistol"];
+        heroes["Hero"].addItem(itemPtr);
 
         std::cout << std::endl;
         Function::changeConsoleColor(item);
@@ -1725,10 +1717,9 @@ void Event::miaMeeting()
     Sleep(1500);
     Function::writeNarration("\n\tMia takes your hand and leads you towards the toilet.");
     Function::writeDialogue("\n\t- 'Do you have a gun?'");
+    itemPtr = &items["Pistol"];
 
-    itemPointer = &items["Pistol"];
-
-    if (heroes["Hero"].hasItem(itemPointer))
+    if (heroes["Hero"].hasItem(itemPtr))
     {
         Function::writeDialogue("\n\t- 'Good.'");
         Sleep(1000);

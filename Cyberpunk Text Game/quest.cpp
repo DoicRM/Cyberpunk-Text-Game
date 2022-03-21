@@ -37,12 +37,18 @@ void Quest::start()
     this->status = "ongoing";
 
     std::fstream q;
-    q.open("quests.txt", std::ios::out | std::ios::app);
-    q << "  Name: " << this->name << std::endl;
-    q << "  Description: " << this->description << std::endl;
-    q << "  Status: " << this->status << std::endl;
-    q << "..........................................................................." << std::endl;
-    q.close();
+
+    if (q.good())
+    {
+        Logger::out("Access to file", "Quest::start");
+        q.open("quests.txt", std::ios::out | std::ios::app);
+        q << "  Name: " << this->name << std::endl;
+        q << "  Description: " << this->description << std::endl;
+        q << "  Status: " << this->status << std::endl;
+        q << "..........................................................................." << std::endl;
+        q.close();
+    }
+    else Logger::error("No file access", "Quest::start");
 }
 
 void Quest::end()
@@ -57,30 +63,36 @@ void Quest::end()
     int lineNr = 1;
 
     std::fstream q;
-    q.open("quests.txt", std::ios::in | std::ios::out | std::ios::app);
 
-    while (getline(q, questsLine))
+    if (q.good())
     {
-        switch (lineNr)
+        Logger::out("Access to file", "Quest::end");
+        q.open("quests.txt", std::ios::in | std::ios::out | std::ios::app);
+
+        while (getline(q, questsLine))
         {
+            switch (lineNr)
+            {
             case 1: header = questsLine; break;
             case 2: breakLine = questsLine;  break;
             case 3: questName[questNr] = questsLine; break;
             case 4: questDesc[questNr] = questsLine; break;
             case 5: questStatus[questNr] = questsLine; break;
+            }
+
+            if (lineNr == 5)
+            {
+                getline(q, questsLine);
+                std::cout << "  Status: " << this->status;
+                lineNr = 3;
+                questNr++;
+            }
+
+            lineNr++;
         }
 
-        if (lineNr == 5)
-        {
-            getline(q, questsLine);
-            std::cout << "  Status: " << this->status;
-            lineNr = 3;
-            questNr++;
-        }
-
-        lineNr++;
+        q.close();
     }
-
-    q.close();
+    else Logger::error("No file access", "Quest::end");
 }
 

@@ -1,4 +1,5 @@
 #include "inventory.h"
+#include "logger.h"
 
 Inventory::Inventory()
 {
@@ -36,13 +37,19 @@ void Inventory::addItem(Item* item)
     }
 
     std::fstream eq;
-    eq.open("eq.txt", std::ios::out | std::ios::app);
-    eq << "  Name: " << newItem->name << std::endl;
-    eq << "  Type: " << item->printType() << std::endl;
-    eq << "  Description: " << newItem->description << std::endl;
-    eq << "  Price: " << newItem->price << std::endl;
-    eq << "..........................................................................." << std::endl;
-    eq.close();
+
+    if (eq.good())
+    {
+        Logger::out("Access to file", "Inventory::addItem");
+        eq.open("eq.txt", std::ios::out | std::ios::app);
+        eq << "  Name: " << newItem->name << std::endl;
+        eq << "  Type: " << item->printType() << std::endl;
+        eq << "  Description: " << newItem->description << std::endl;
+        eq << "  Price: " << newItem->price << "$" << std::endl;
+        eq << "..........................................................................." << std::endl;
+        eq.close();
+    }
+    else Logger::error("No file access", "Inventory::addItem");
 }
 
 void Inventory::removeItem(int index)
@@ -101,7 +108,7 @@ void Inventory::showInv()
         std::cout << "  Name: " << temp->name << std::endl;
         std::cout << "  Type: " << temp->printType() << std::endl;
         std::cout << "  Description: " << temp->description << std::endl;
-        std::cout << "  Price: " << temp->price << std::endl;
+        std::cout << "  Price: " << temp->price << "$" << std::endl;
         temp = temp->nextItem;
     }
 }

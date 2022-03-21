@@ -17,18 +17,17 @@ Game::~Game()
 
 void Game::run()
 {
+    Logger::out("Function start", "Game::run");
     Function::nameGame("CYBERPUNK Text Game v.1.0");
     Function::initSpecialChars("polish");
 
     while (getPlaying())
     {
-        Logger::out("Function start", "Game::run");
         selectLanguage();
         welcome();
         writeLogo();
         mainMenu();
         end();
-        Logger::out("Function end", "Game::run");
     }
 }
 
@@ -221,8 +220,7 @@ void Game::changeLanguage()
         std::cout << std::endl;
         Function::write("\t[2] PL", 25);
         std::cout << std::endl;
-        Function::write("\t> ", 25);
-        
+        Function::write("\t> ", 25);   
         std::cin >> change;
 
         if (change != en && change != pl) Logger::error("Invalid value of 'gameLang'", "Game::changeLanguage");
