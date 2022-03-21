@@ -15,6 +15,8 @@ enum consoleColors
 
 enum gameLanguage { en = 1, pl = 2 };
 
+enum sex { undefined, male, female };
+
 enum attitude { neutral, angry, hostile, friendly };
 
 enum status { normal, unconscious, dead };

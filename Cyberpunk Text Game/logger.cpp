@@ -159,7 +159,6 @@ void Logger::error(const std::string& message, const std::string& location /* = 
 
 std::string Logger::getFormattedTimestamp()
 {
-
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
     time_t timestamp = getTimestamp();
     struct tm timeinfo;
@@ -176,14 +175,13 @@ std::string Logger::getFormattedTimestamp()
     struct tm* timeinfo;
     char buffer[80];
     time(&timestamp);
-    timeinfo = localtime(&timestamp);
+    timeinfo = localtime_r(&timestamp);
     // http://www.cplusplus.com/reference/ctime/strftime/
     strftime(buffer, 80, "%H:%M:%S", timeinfo);
 
     std::string str(buffer);
     return str;
 #endif
-
 }
 
 double Logger::getTimestamp()

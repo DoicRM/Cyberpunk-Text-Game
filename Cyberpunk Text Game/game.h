@@ -35,8 +35,8 @@ public:
 	void logo(); // wypisane logo gry
 	void endGame(); // koniec rozgrywki
 	void test();
-	inline void end() { this->playing = false; }
-	inline void setCurrentLocation(Location* location) { this->ptrCurrentLocation = location; }
+	void end() { this->playing = false; }
+	void setCurrentLocation(Location* location) { this->ptrCurrentLocation = location; }
 
 	friend void initAll();
 	friend void Function::initHeroEQ();

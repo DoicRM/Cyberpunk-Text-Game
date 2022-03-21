@@ -6,6 +6,7 @@ class Hero
 {
 private:
     std::string name;
+    int sex;
     int hp;
     float money;
     Inventory inventory;
@@ -16,11 +17,12 @@ public:
     Hero();
     virtual ~Hero();
 
-    void setName(std::string name);
-    void addHP(int hp);
+    void setName(std::string name) { this->name = name; };
+    void setSex(int sex) { this->sex = sex; };
+    void addHP(int hp) { this->hp += hp; };
     void removeHP(int hp);
-    void kill();
-    void addMoney(float money);
+    void kill() { Event::heroDeath(); };
+    void addMoney(float money) { this->money += money; };
     void removeMoney(float money);
     bool isDead() { return this->hp < 0; };
     void addItem(Item* item) { this->inventory.addItem(item); };

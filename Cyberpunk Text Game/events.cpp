@@ -38,20 +38,20 @@ void Event::initFractionsNpcsAndLocations()
         fractions["Sleepers"] = Sleepers;
 
         // Npc
-        Npc Bob("Bob", Beggars);
-        Npc Caden("Caden", Police);
-        Npc CadensPartner("Policeman", Police);
-        Npc Zed("Zed", None);
-        Npc Mia("Mia", Sleepers);
-        Npc Jet("Jet", Hammers);
-        Npc Vincent("Vincent", Hammers);
-        Npc Enigma("Enigma", Sleepers);
+        Npc Bob("Bob", male, Beggars);
+        Npc Caden("Caden", male, Police);
+        Npc CadensPartner("Policeman", male, Police);
+        Npc Zed("Zed", male, None);
+        Npc Nyx("Nyx", female, Sleepers);
+        Npc Jet("Jet", male, Hammers);
+        Npc Vincent("Vincent", male, Hammers);
+        Npc Enigma("Enigma", male, Sleepers);
 
         npcs["Bob"] = Bob;
         npcs["Caden"] = Caden;
         npcs["CadensPartner"] = CadensPartner;
         npcs["Zed"] = Zed;
-        npcs["Mia"] = Mia;
+        npcs["Nyx"] = Nyx;
         npcs["Jet"] = Jet;
         npcs["Vincent"] = Vincent;
         npcs["Enigma"] = Enigma;
@@ -83,20 +83,20 @@ void Event::initFractionsNpcsAndLocations()
         fractions["Sleepers"] = Sleepers;
 
         // Npc
-        Npc Bob("Bob", Beggars);
-        Npc Caden("Caden", Police);
-        Npc CadensPartner("Policjant", Police);
-        Npc Zed("Zed", None);
-        Npc Mia("Mia", Sleepers);
-        Npc Jet("Jet", Hammers);
-        Npc Vincent("Vincent", Hammers);
-        Npc Enigma("Enigma", Sleepers);
+        Npc Bob("Bob", male, Beggars);
+        Npc Caden("Caden", male, Police);
+        Npc CadensPartner("Policjant", male, Police);
+        Npc Zed("Zed", male, None);
+        Npc Nyx("Nyx", female, Sleepers);
+        Npc Jet("Jet", male, Hammers);
+        Npc Vincent("Vincent", male, Hammers);
+        Npc Enigma("Enigma", male, Sleepers);
 
         npcs["Bob"] = Bob;
         npcs["Caden"] = Caden;
         npcs["CadensPartner"] = CadensPartner;
         npcs["Zed"] = Zed;
-        npcs["Mia"] = Mia;
+        npcs["Nyx"] = Nyx;
         npcs["Jet"] = Jet;
         npcs["Vincent"] = Vincent;
         npcs["Enigma"] = Enigma;
@@ -181,19 +181,6 @@ bool bobRecommendsZedToHero = false, heroKnowsVincentHideoutCode = false, heroIs
 int heroChoice = 0, checkpoint = 0, optionNr = 1;
 Location* locationPtr;
 Item* itemPtr;
-
-// 1.7 Pomocnicza funkcja do wyœwietlania informacji o zdobyciu przedmiotu
-void Event::showTakeItemInfo(Item findItem)
-{
-    itemPtr = &findItem;
-    heroes["Hero"].addItem(itemPtr);
-
-    Function::changeConsoleColor(item);
-    std::string str = "\t" + findItem.getName();
-    Function::write(str);
-    Function::changeConsoleColor();
-    Function::write(" was found.\n");
-}
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // 2. WYDARZENIA
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -363,7 +350,6 @@ void Event::darkAlleyCrossroads()
                 Sleep(2000);
                 std::cout << std::endl;
 
-                //Event::showTakeItemInfo(items["AD13"]);
                 itemPtr = &items["AD13"];
                 heroes["Hero"].addItem(itemPtr);
 
@@ -598,10 +584,9 @@ void Event::inSeaOfRubbish()
     Function::writeNarration(" The search takes a long while, but eventually you\n\tmanage to find something.");
     Sleep(2000);
     std::cout << std::endl << std::endl;
-    //Event::showTakeItemInfo(items["AD13"]);
+
     itemPtr = &items["AD13"];
     heroes["Hero"].addItem(itemPtr);
-
     Function::changeConsoleColor(item);
     std::string str = "\t" + items["AD13"].getName();
     Function::write(str);
@@ -1390,6 +1375,7 @@ void Event::buyPistol()
             Function::writeDialogue(" Hmm, you know Old Bob, that already means something.");
             Sleep(1000);
             Function::writeDialogue(" Let's just say I'll loan you this gun on a friendly basis.");
+
             itemPtr = &items["Pistol"];
             heroes["Hero"].addItem(itemPtr);
             std::cout << std::endl;
@@ -1419,7 +1405,6 @@ void Event::buyPistol()
 
         itemPtr = &items["Pistol"];
         heroes["Hero"].addItem(itemPtr);
-
         std::cout << std::endl;
         Function::changeConsoleColor(item);
         str = "\t" + items["Pistol"].getName();
@@ -1533,7 +1518,7 @@ void Event::clubDanceFloor()
     Function::showHeroAction("Go dance on the dance floor.");
     std::cout << std::endl;
 
-    if (!npcs["Mia"].knowsHero())
+    if (!npcs["Nyx"].knowsHero())
     {
         Function::writeNarration("\tYou get on the dance floor.");
         Sleep(1000);
@@ -1569,7 +1554,7 @@ void Event::clubDanceFloor()
                 Function::showHeroAction("'What do you want?'");
                 std::cout << std::endl;
                 Function::writeNarration("\tThe girl turns towards you and smiles with her snow-white teeth.");
-                Function::writeDialogue("\n\t- 'Nothing will escape your attention. I am Mia. I\n\think you can help me.'");
+                Function::writeDialogue("\n\t- 'Nothing will escape your attention. I am Nyx. I\n\think you can help me.'");
                 break;
             }
             else if (heroChoice == 2)
@@ -1579,7 +1564,7 @@ void Event::clubDanceFloor()
                 Function::showHeroAction("'Hey, baby.'");
                 std::cout << std::endl;
                 Function::writeNarration("\tThe girl turns towards you and smiles with her snow-white teeth.");
-                Function::writeDialogue("\n\t- 'Hi, stud. I've been watching you since you came in. I am Mia.'");
+                Function::writeDialogue("\n\t- 'Hi, stud. I've been watching you since you came in. I am Nyx.'");
                 Function::writeNarration("\n\tWith the last word she comes closer to you turns her back on you and starts dancing very close to you.");
                 Function::writeDialogue("\n\t- 'I am looking for someone like you. I\n\tthink you can help me.'");
                 break;
@@ -1591,7 +1576,7 @@ void Event::clubDanceFloor()
                 Function::showHeroAction("Keep dancing with no words.");
                 std::cout << std::endl;
                 Function::writeNarration("\tThe girl turns towards you and smiles with her snow-white teeth.");
-                Function::writeDialogue("\n\t- 'Hi, I am Mia. Vincent, the owner, is my boyfriend. I\n\tthink you can help me.'");
+                Function::writeDialogue("\n\t- 'Hi, I am Nyx. Vinc, the owner, is my boyfriend. I\n\tthink you can help me.'");
                 break;
             }
         }
@@ -1709,12 +1694,12 @@ void Event::miaMeeting()
         }
     }
 
-    Function::writeDialogue("\n\t- 'Vincent, the owner, is my boyfriend.");
+    Function::writeDialogue("\n\t- 'Vinc, the owner, is my boyfriend.");
     Sleep(1000);
     Function::writeDialogue(" I want him dead.'");
     quests["KillVincent"].start();
     Sleep(1500);
-    Function::writeNarration("\n\tMia takes your hand and leads you towards the toilet.");
+    Function::writeNarration("\n\tNyx takes your hand and leads you towards the toilet.");
     Function::writeDialogue("\n\t- 'Do you have a gun?'");
     itemPtr = &items["Pistol"];
 
@@ -1722,17 +1707,17 @@ void Event::miaMeeting()
     {
         Function::writeDialogue("\n\t- 'Good.'");
         Sleep(1000);
-        Function::writeDialogue(" Get it for yourself, you'll need it. Here's 250 bucks.'");
+        Function::writeDialogue(" Get it for yourself, you'll need it. Here's 200 bucks.'");
     }
     else
     {
         Function::writeDialogue("\n\t- 'You know how to use it, don't you?");
         Sleep(1000);
-        Function::writeDialogue(" Get it for yourself, you'll need it. Here's 250 bucks.'");
-        heroes["Hero"].addMoney(250);
+        Function::writeDialogue(" Get it for yourself, you'll need it. Here's 200 bucks.'");
+        heroes["Hero"].addMoney(200);
         std::cout << std::endl;
         Function::changeConsoleColor(green);
-        Function::write("\t250$");
+        Function::write("\t200$");
         Function::changeConsoleColor();
         Function::write(" has been received.");
         Function::writeDialogue("\n\t- 'There is a gun shop nearby.");
@@ -1850,7 +1835,7 @@ void Event::vincentHideout()
             Function::writeNarration("\tYou lean over Vincent and, in a fluid motion without hesitation, pull the stimulation helmet\n\toff his head. You witness the nightclub owner being shaken by a wave of convulsions. Foam\n\tbegins to come out of his mouth and after a moment the man freezes.");
             Sleep(1500);
             npcs["Vincent"].setStatus(dead);
-            Function::writeNarration(" He's probably dead, just like\n\tMia wanted.");
+            Function::writeNarration(" He's probably dead, just like\n\tNyx wanted.");
             break;
         }
         else if (heroChoice == 2)
@@ -1888,7 +1873,7 @@ void Event::dialogueWithVincent()
     optionNr++;
     Function::dialogueOption(optionNr, "I don't want to fight with you."); // Opcja nr 2
     optionNr++;
-    Function::dialogueOption(optionNr, "Mia wants you dead."); // Opcja nr 3
+    Function::dialogueOption(optionNr, "Nyx wants you dead."); // Opcja nr 3
     optionNr = 1;
     Function::write("\t> ", 15);
 
@@ -1923,7 +1908,7 @@ void Event::dialogueWithVincent()
         else if (heroChoice == 3)
         {
             Function::clearScreen();
-            Function::showHeroAction("'Mia wants you dead.'");
+            Function::showHeroAction("'Nyx wants you dead.'");
             std::cout << std::endl;
             Function::writeNarration("\tYou are not a coward. You don't stab people in the back. That's not your style. You prefer an open fight.");
             break;
@@ -1936,7 +1921,7 @@ void Event::dialogueWithVincent()
     std::cout << "" << std::endl;
     Function::dialogueOption(optionNr, "It doesn't matter."); // Opcja nr 1
     optionNr++;
-    Function::dialogueOption(optionNr, "Your girlfriend, Mia."); // Opcja nr 2
+    Function::dialogueOption(optionNr, "Your girlfriend, Nyx."); // Opcja nr 2
     optionNr = 1;
     Function::write("\t> ", 15);
 
@@ -1956,7 +1941,7 @@ void Event::dialogueWithVincent()
             Sleep(1000);
             Function::writeNarration(" The recoil knocks him from his seat. The lifeless body clatters against the floor.");
             Sleep(1500);
-            Function::writeNarration(" He's dead, just like Mia wanted.");
+            Function::writeNarration(" He's dead, just like Nyx wanted.");
             npcs["Vincent"].setStatus(dead);
             std::cout << std::endl;
             Function::writeNarration("\tOut of curiosity, you walk closer and spot the corpse holding a small pistol.");
@@ -1967,7 +1952,7 @@ void Event::dialogueWithVincent()
         else if (heroChoice == 2)
         {
             Function::clearScreen();
-            Function::showHeroAction("'Your girlfriend, Mia.'");
+            Function::showHeroAction("'Your girlfriend, Nyx.'");
             std::cout << std::endl;
             Function::writeDialogue("\t- 'Traitorous bitch! She'll get her due someday.");
             Function::writeDialogue(" All right, shithead, let's get this over with.'");
@@ -1976,7 +1961,7 @@ void Event::dialogueWithVincent()
             Sleep(1000);
             Function::writeNarration(" The recoil knocks him from his seat. The lifeless body clatters against the floor.");
             Sleep(1500);
-            Function::writeNarration(" He's dead, just like Mia wanted.");
+            Function::writeNarration(" He's dead, just like Nyx wanted.");
             npcs["Vincent"].setStatus(dead);
             std::cout << std::endl;
             Function::writeNarration("\tOut of curiosity, you walk closer and spot the corpse holding a small pistol.");
@@ -1989,7 +1974,7 @@ void Event::dialogueWithVincent()
     std::cout << std::endl;
     Function::writeNarration("\tThe passage behind your back is opened.");
     Sleep(1000);
-    Function::writeNarration(" You turn around, in front of you is Mia.");
+    Function::writeNarration(" You turn around, in front of you is Nyx.");
     std::cout << std::endl;
     Function::writeDialogue("\t- 'Did you do what I asked you to do...'");
     Sleep(1500);
@@ -2000,7 +1985,7 @@ void Event::dialogueWithVincent()
     Function::writeDialogue("\t- 'You did it... You really did it... Is he - is he dead?'");
     Sleep(1000);
     std::cout << std::endl;
-    Function::writeNarration("\tMia walks past you and kneels by the dead man. She starts searching his pockets for something.");
+    Function::writeNarration("\tNyx walks past you and kneels by the dead man. She starts searching his pockets for something.");
     //-------------------------------------------------------------
     // Decyzja
     std::cout << std::endl;
@@ -2043,7 +2028,7 @@ void Event::vincentResurrection()
     std::cout << std::endl;
     Function::writeNarration("\tSuddenly, the maze of cables begins to vibrate and move in a strange dance.");
     Sleep(1000);
-    Function::writeNarration(" Hisses reach you and Mia, forming a gibberish that is difficult to understand.");
+    Function::writeNarration(" Hisses reach you and Nyx, forming a gibberish that is difficult to understand.");
     std::cout << std::endl;
     Function::changeConsoleColor(dia_robot);
     Function::write("\t<You scum! You thought you got rid of me.");
@@ -2052,7 +2037,7 @@ void Event::vincentResurrection()
     Sleep(1000);
     Function::write(" I'm immortal now!>");
     std::cout << std::endl;
-    Function::writeNarration("\tYou exchange a look with Mia. You both can't believe what's happening.");
+    Function::writeNarration("\tYou exchange a look with Nyx. You both can't believe what's happening.");
     std::cout << std::endl;
     Function::writeDialogue("\t- 'What the fuck?!'");
     std::cout << std::endl;

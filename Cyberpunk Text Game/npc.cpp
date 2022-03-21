@@ -3,15 +3,17 @@
 Npc::Npc()
 {
     this->name = "None";
+    this->sex = undefined;
     this->fraction = Fraction();
     this->attitude = neutral;
     this->status = normal;
     this->knowingHero = false;
 }
 
-Npc::Npc(std::string name, Fraction fraction)
+Npc::Npc(std::string name, int sex, Fraction fraction)
 {
     this->name = name;
+    this->sex = sex;
     this->fraction = fraction;
     this->attitude = neutral;
     this->status = normal;
@@ -19,9 +21,10 @@ Npc::Npc(std::string name, Fraction fraction)
 }
 
 
-Npc::Npc(std::string name, Fraction fraction, int attitude, int status, bool knowingHero)
+Npc::Npc(std::string name, int sex, Fraction fraction, int attitude, int status, bool knowingHero)
 {
     this->name = name;
+    this->sex = sex;
     this->fraction = fraction;
     this->attitude = attitude;
     this->status = status;
@@ -69,23 +72,8 @@ void Npc::printAttitude()
     Function::changeConsoleColor();
 }
 
-void Npc::setStatus(int status)
-{
-    this->status = status;
-}
-
 bool Npc::isDead()
 {
     if (status != dead) return false;
     return true;
-}
-
-void Npc::setToKnowHero()
-{
-    knowingHero = true;
-}
-
-bool Npc::knowsHero()
-{
-    return knowingHero;
 }
