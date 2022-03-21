@@ -10,6 +10,7 @@
 #include <locale.h>
 #include <string>
 #include "enums.h"
+#include "logger.h"
 
 class Function
 {
@@ -18,11 +19,11 @@ public:
 	static void initSpecialChars(const char* lang);
 
 	// powolne wypisywanie kodu - (tekst, szybkoœæ)
-	static void write(const std::string& sentence, int speed = 60);
+	static void write(const std::string& text, int speed = 60);
 	// powolne wypisywanie kodu - (tekst, szybkoœæ)
-	static void writeNarration(std::string st, int sp = 60);
+	static void writeNarration(std::string text, int speed = 60);
 	// powolne wypisywanie kodu - (tekst, szybkoœæ)
-	static void writeDialogue(std::string st, int sp = 60);
+	static void writeDialogue(std::string text, int speed = 60);
 
 	// tworzenie akcji gracza - (numer, opis)
 	static void actionOption(int nr, std::string text);

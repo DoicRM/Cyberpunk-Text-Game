@@ -7,8 +7,6 @@ class Hero
 private:
     std::string name;
     int hp;
-    //int exp;
-    //int level;
     float money;
     Inventory inventory;
     Weapon weapon;

@@ -11,11 +11,11 @@ void Function::initSpecialChars(const char* lang)
 }
 
 // Powolne wypisywanie kodu
-void Function::write(const std::string& sentence, int speed)
+void Function::write(const std::string& text, int speed)
 {
     using namespace std::chrono_literals;
 
-    for (auto letter : sentence)
+    for (auto letter : text)
     {
         std::cout << letter;
         std::cout.flush();
@@ -24,18 +24,18 @@ void Function::write(const std::string& sentence, int speed)
 }
 
 // Powolne wypisywanie kodu (narracja)
-void Function::writeNarration(std::string st, int sp)
+void Function::writeNarration(std::string text, int speed)
 {
     changeConsoleColor(narration);
-    Function::write(st, sp);
+    Function::write(text, speed);
     changeConsoleColor();
 }
 
 // Powolne wypisywanie kodu (dialog)
-void Function::writeDialogue(std::string st, int sp)
+void Function::writeDialogue(std::string text, int speed)
 {
     changeConsoleColor(dialogue);
-    Function::write(st, sp);
+    Function::write(text, speed);
     changeConsoleColor();
 }
 
@@ -79,23 +79,37 @@ void Function::waitForUserInput()
 // Inicjowanie ekwipunku gracza
 void Function::initHeroEQ()
 {
+    Logger::out("Function start", "Function::initHeroEQ");
     std::fstream eq;
-    eq.open("eq.txt", std::ios::out);
-    eq << "                                    ITEMS                                  " << std::endl;
-    //eq << "                               PRZEDMIOTY                                  " << endl;
-    eq << "..........................................................................." << std::endl;
-    eq.close();
+
+    if (eq.good())
+    {
+        Logger::out("Access to file", "Function::initHeroEQ");
+        eq.open("eq.txt", std::ios::out);
+        eq << "                                    ITEMS                                  " << std::endl;
+        //eq << "                               PRZEDMIOTY                                  " << endl;
+        eq << "..........................................................................." << std::endl;
+        eq.close();
+    }
+    else Logger::error("No file access", "Function::initHeroEQ");
 }
 
 // Inicjowanie listy zadañ
 void Function::initQuestsList()
 {
+    Logger::out("Function start", "Function::initQuestsList");
     std::fstream q;
-    q.open("quests.txt", std::ios::out);
-    q << "                                    QUESTS                                 " << std::endl;
-    //q << "                                   ZADANIA                                 " << endl;
-    q << "..........................................................................." << std::endl;
-    q.close();
+
+    if (q.good())
+    {
+        Logger::out("Access to file", "Function::initQuestsList");
+        q.open("quests.txt", std::ios::out);
+        q << "                                    QUESTS                                 " << std::endl;
+        //q << "                                   ZADANIA                                 " << endl;
+        q << "..........................................................................." << std::endl;
+        q.close();
+    }
+    else Logger::error("No file access", "Function::initQuestsList");
 }
 
 void Function::clearScreen()

@@ -48,7 +48,7 @@ void Logger::setup(bool isLoud)
         << "<td class='location'><strong>LOCATION</strong></td>"
         << "<td class='message'><strong>MESSAGE</strong></td>"
         << "</tr>" << std::endl;
-    out("Logging begins", "Logger::Setup");
+    out("Logging begins", "Logger::setup");
 }
 
 void Logger::setup(int logLevel, const std::string& filter)
@@ -71,7 +71,7 @@ void Logger::setFilterWord(const std::string& filter)
 
 void Logger::cleanup()
 {
-    out("Logging ends", "Logger::Cleanup");
+    out("Logging ends", "Logger::cleanup");
     m_file << "</table>" << std::endl;
     m_file << "</body></html>" << std::endl;
     m_file.close();

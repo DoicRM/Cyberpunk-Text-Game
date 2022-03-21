@@ -13,24 +13,17 @@ Inventory::~Inventory()
 void Inventory::addItem(Item* item)
 {
     Item* newItem = new Item;
-
     newItem = item;
 
     if (firstItem == 0) // sprawdzenie czy to pierwszy element listy
     {
-        // je¿eli tak to nowy element jest teraz pocz¹tkiem listy
-        firstItem = newItem;
+        firstItem = newItem; // je¿eli tak to nowy element jest teraz pocz¹tkiem listy
     }
     else
     {
-        // w przeciwnym wypadku trafia na koniec listy
-        Item* temp = firstItem;
+        Item* temp = firstItem; // w przeciwnym wypadku trafia na koniec listy
 
-        while (temp->nextItem)
-        {
-            // znajdowania wskaŸnika na ostatni element
-            temp = temp->nextItem;
-        }
+        while (temp->nextItem) temp = temp->nextItem; // znajdowanie wskaŸnika na ostatni element
 
         temp->nextItem = newItem;  // ostatni element wskazuje na nowy item
         newItem->nextItem = 0;     // ostatni nie wskazuje na nic
@@ -54,18 +47,15 @@ void Inventory::addItem(Item* item)
 
 void Inventory::removeItem(int index)
 {
-    // jezeli to pierwszy element listy
-    if (index == 1)
+    if (index == 1) // jezeli to pierwszy element listy
     {
         Item* temp = firstItem;
         firstItem = temp->nextItem; //ustawienie pocz¹tku na drugi element
         delete temp; // usuwanie starego pierwszego elementu z pamiêci
     }
-    // je¿eli nie jest to pierwszy element
-    else if (index >= 2)
+    else if (index >= 2) // je¿eli nie jest to pierwszy element
     {
         int j = 1;
-
         // do usuniecia srodkowego elemetnu potrzeba wskaznika na item n-1
         // wskaznik *temp bedzie wskaznikiem na item poprzedzaj¹cy item usuwany
         Item* temp = firstItem;
@@ -84,13 +74,13 @@ void Inventory::removeItem(int index)
         // nadpisywanie wkaznik n-1 z item n na item n+1
         // bezpowrotnie utrata item n-tego
 
-        // jezeli jest usuwany ostatni element listy
-        if (temp->nextItem->nextItem == 0) {
+        if (temp->nextItem->nextItem == 0) // jezeli jest usuwany ostatni element listy
+        {
             delete temp->nextItem;
             temp->nextItem = 0;
         }
-        // jezeli jest usuwany srodkowy element
-        else {
+        else // jezeli jest usuwany srodkowy element
+        {
             Item* delItem = temp->nextItem;
             temp->nextItem = temp->nextItem->nextItem;
             delete delItem;
@@ -102,8 +92,7 @@ void Inventory::showInv()
 {
     Item* temp = firstItem; // wskaŸnik na pierwszy element listy
 
-    // przewijanie wskaŸników na nastêpne elementy
-    while (temp)
+    while (temp) // przewijanie wskaŸników na nastêpne elementy
     {
         std::cout << "  Name: " << temp->name << std::endl;
         std::cout << "  Type: " << temp->printType() << std::endl;
@@ -119,14 +108,8 @@ bool Inventory::hasItem(Item* item)
 
     while (temp)
     {
-        if (temp == item)
-        {
-            return true;
-        }
-        else
-        {
-            temp = temp->nextItem;
-        }
+        if (temp == item) return true;
+        else temp = temp->nextItem;
     }
 
     return false;
