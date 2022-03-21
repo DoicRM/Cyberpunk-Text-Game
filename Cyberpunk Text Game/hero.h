@@ -21,7 +21,7 @@ public:
     void setSex(int sex) { this->sex = sex; };
     void addHP(int hp) { this->hp += hp; };
     void removeHP(int hp);
-    void kill() { Event::heroDeath(); };
+    void kill();
     void addMoney(float money) { this->money += money; };
     void removeMoney(float money);
     bool isDead() { return this->hp < 0; };

@@ -19,6 +19,11 @@ void Hero::removeHP(int hp)
     if (hp <= 0) kill();
 }
 
+void Hero::kill()
+{
+    Event::heroDeath();
+};
+
 void Hero::removeMoney(float money)
 {
     if (this->money > 0)
