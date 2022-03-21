@@ -2,7 +2,6 @@
 
 int main()
 {   
-    //cout << "\t\t\t\t\t\t\t\t\t\t\t\t  i" << endl;
     Logger::setup(false);
     Game game;
     game.run();

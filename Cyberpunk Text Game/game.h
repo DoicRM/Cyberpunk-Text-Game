@@ -30,10 +30,10 @@ public:
 	void mainMenu(); // menu g³ówne
 	void newGame(); // nowa gra
 	void continueGame(); // kontynuacja rozgrywki
-	void aboutAuthor(); // o autorze
+	void changeLanguage(); // zmiana jêzyka gry
+	void credits(); // o autorze
 	void logo(); // wypisane logo gry
 	void endGame(); // koniec rozgrywki
-	void credits();
 	void test();
 	inline void end() { this->playing = false; }
 	inline void setCurrentLocation(Location* location) { this->ptrCurrentLocation = location; }

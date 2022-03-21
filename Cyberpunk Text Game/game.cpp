@@ -35,18 +35,21 @@ void Game::run()
 void Game::selectLanguage()
 {
     Logger::out("Function start", "Game::selectLanguage");
-    while (gameLang != 1 && gameLang != 2)
+
+    while (gameLang != en && gameLang != pl)
     {
         Function::clearScreen();
+        std::cout << std::endl;
+        Function::write("\tSelect your language: ", 25);
         std::cout << std::endl;
         Function::write("\t[1] EN", 25);
         std::cout << std::endl;
         Function::write("\t[2] PL", 25);
         std::cout << std::endl;
-        Function::write("\tSelect your language: ", 25);
+        Function::write("\t> ", 25);
         std::cin >> gameLang;
 
-        if (gameLang != 1 && gameLang != 2) Logger::error("Invalid value of 'gameLang'", "Game::selectLanguage");
+        if (gameLang != en && gameLang != pl) Logger::error("Invalid value of 'gameLang'", "Game::selectLanguage");
     }
 
     if (getLang() == en) Logger::out("Game language is English", "Game::selectLanguage");
@@ -125,9 +128,11 @@ void Game::mainMenu()
         std::cout << std::endl;
         Function::write("\t[2] Kontynuuj grê", 25);
         std::cout << std::endl;
-        Function::write("\t[3] O autorze", 25);
+        Function::write("\t[3] Zmieñ jêzyk", 25);
         std::cout << std::endl;
-        Function::write("\t[4] WyjdŸ z gry", 25);
+        Function::write("\t[4] Napisy", 25);
+        std::cout << std::endl;
+        Function::write("\t[5] WyjdŸ z gry", 25);
         std::cout << std::endl;
         Function::write("\t> ", 25);
     }
@@ -137,9 +142,11 @@ void Game::mainMenu()
         std::cout << std::endl;
         Function::write("\t[2] Continue game", 25);
         std::cout << std::endl;
-        Function::write("\t[3] About author", 25);
+        Function::write("\t[3] Change language", 25);
         std::cout << std::endl;
-        Function::write("\t[4] Quit game", 25);
+        Function::write("\t[4] Credits", 25);
+        std::cout << std::endl;
+        Function::write("\t[5] Quit game", 25);
         std::cout << std::endl;
         Function::write("\t> ", 25);
     }
@@ -155,13 +162,16 @@ void Game::mainMenu()
             continueGame();
             break;
         case 3:
-            aboutAuthor();
+            changeLanguage();
             break;
         case 4:
+            credits();
+            break;
+        case 5:
             endGame();
             break;
         }
-    } while (menu > 4 || menu <= 0);
+    } while (menu > 5 || menu <= 0);
 }
 
 void Game::newGame()
@@ -192,23 +202,37 @@ void Game::continueGame()
     mainMenu();
 }
 
-void Game::aboutAuthor()
+void Game::changeLanguage()
 {
-    Logger::out("Function start", "Game::aboutAuthor");
-    Sleep(500);
-    Function::clearScreen();
-    std::cout << std::endl;
-    Function::changeConsoleColor(lightblue);
-    Function::write("\t\t\t\t\tAUTHOR");
-    std::cout << std::endl;
-    std::cout << "" << std::endl;
-    Function::changeConsoleColor();
+    Logger::out("Function start", "Game::changeLanguage");
 
-    if (getLang() == pl) Function::write("\tRados³aw 'Doic' Michalak to m³ody pasjonat sztuki programowania i student AHE w £odzi.\n\n", 25);
-    else Function::write("\tRados³aw 'Doic' Michalak is a young enthusiast of the art of programming and a student of\n\tAHE in £ódŸ.\n\n", 25);
-   
-    Sleep(1000);
-    Function::pauseGame();
+    int change = 0;
+
+    while (change != en && change != pl)
+    {
+        Function::clearScreen();
+        std::cout << std::endl;
+
+        if (getLang() == en) Function::write("\tSelect your language: ", 25);
+        else if (getLang() == pl) Function::write("\tWybierz swój jêzyk: ", 25);
+
+        std::cout << std::endl;
+        Function::write("\t[1] EN", 25);
+        std::cout << std::endl;
+        Function::write("\t[2] PL", 25);
+        std::cout << std::endl;
+        Function::write("\t> ", 25);
+        
+        std::cin >> change;
+
+        if (change != en && change != pl) Logger::error("Invalid value of 'gameLang'", "Game::changeLanguage");
+    }
+
+    gameLang = change;
+
+    if (getLang() == en) Logger::out("Game language is English", "Game::changeLanguage");
+    else if (getLang() == pl) Logger::out("Game language is Polish", "Game::changeLanguage");
+
     Function::clearScreen();
     logo();
     mainMenu();
@@ -266,7 +290,46 @@ void Game::endGame()
 void Game::credits()
 {
     Logger::out("Function start", "Game::credits");
-    Function::write("\t\tAUTHOR\n\tRados³aw 'Doic' Michalak\n\n\t\tTESTERS\n\tPawe³ Michalak\n\n\t\tTHANKS\n\tDominik Szpilski\n\tDaniel Ob³¹k");
+    Sleep(500);
+    Function::clearScreen();
+    std::cout << std::endl;
+
+    if (getLang() == pl)
+    {
+        Function::changeConsoleColor(lightblue);
+        Function::write("\t\tAUTOR\n");
+        Function::changeConsoleColor();
+        Function::write("\tRados³aw 'Doic' Michalak\n\n");
+        Function::changeConsoleColor(lightblue);
+        Function::write("\t       TESTERZY\n");
+        Function::changeConsoleColor();
+        Function::write("\t    Pawe³ Michalak\n\n");
+        Function::changeConsoleColor(lightblue);
+        Function::write("\t     PODZIÊKOWANIA\n");
+        Function::changeConsoleColor();
+        Function::write("\t   Dominik Szpilski\n\t     Daniel Ob³¹k\n\n");
+    }
+    else
+    {
+        Function::changeConsoleColor(lightblue);
+        Function::write("\t\tAUTHOR\n");
+        Function::changeConsoleColor();
+        Function::write("\tRados³aw 'Doic' Michalak\n\n");
+        Function::changeConsoleColor(lightblue);
+        Function::write("\t\tTESTERS\n");
+        Function::changeConsoleColor();
+        Function::write("\t   Pawe³ Michalak\n\n");
+        Function::changeConsoleColor(lightblue);
+        Function::write("\t\tTHANKS\n");
+        Function::changeConsoleColor();
+        Function::write("\t   Dominik Szpilski\n\t     Daniel Ob³¹k\n\n");
+    }
+
+    Sleep(1000);
+    Function::pauseGame();
+    Function::clearScreen();
+    logo();
+    mainMenu();
 }
 
 void Game::test()
