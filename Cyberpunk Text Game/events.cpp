@@ -1709,9 +1709,9 @@ void Event::miaMeeting()
 
     if (heroes["Hero"].hasItem(itemPtr))
     {
-        Function::writeDialogue("\n\t- 'Good.'");
+        Function::writeDialogue("\n\t- 'Good.");
         Sleep(1000);
-        Function::writeDialogue(" Get it for yourself, you'll need it. Here's 200 bucks.'");
+        Function::writeDialogue(" So you already know what and how.'");
     }
     else
     {
@@ -1726,6 +1726,138 @@ void Event::miaMeeting()
         Function::write(" has been received.");
         Function::writeDialogue("\n\t- 'There is a gun shop nearby.");
         Function::writeDialogue(" It is run by a guy named Zed. Visit him before you head upstairs.'");
+    }
+}
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+void Event::clubUpstairs()
+{
+    Logger::out("Function start", "Event::clubUpstairs");
+    Function::writeNarration("\n\tYou go up a winding staircase. At the end of a short banister you will see a closed door guarded by another bulky individual.");
+    //-------------------------------------------------------------
+    // Decyzja
+    Function::changeConsoleColor();
+    std::cout << std::endl << std::endl;
+    Function::actionOption(optionNr, "Come closer."); // Opcja nr 1
+    optionNr++;
+    Function::actionOption(optionNr, "Go back downstairs."); // Opcja nr 2
+    optionNr = 1;
+    Function::write("\t> ", 15);
+
+    while (true)
+    {
+        std::cin >> heroChoice;
+
+        if (heroChoice == 1)
+        {
+            Function::clearScreen();
+            std::cout << std::endl;
+            Function::showHeroAction("Come closer.");
+            std::cout << std::endl;
+            Function::writeNarration("\tAre you brave or foolish enough to face the hammer man. You are stopped from taking another step by his firm voice.");
+            std::cout << std::endl;
+            Function::writeDialogue("\t- 'What here?'");
+            npcs["Jet"].setToKnowHero();
+            dialogueWithJet();
+            break;
+        }
+        else if (heroChoice == 2)
+        {
+            Function::clearScreen();
+            std::cout << std::endl;
+            Function::showHeroAction("Go back downstairs.");
+            std::cout << std::endl;
+            Function::writeNarration("\tYou don't dare to come closer, so like the last coward you turn back and return to the kingdom of loud music and dancing people.");
+            std::cout << std::endl;
+            nightclub();
+            break;
+        }
+    }
+}
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+void Event::dialogueWithJet()
+{
+    Logger::out("Function start", "Event::dialogueWithJet");
+    int jetPoints = 0;
+    //-------------------------------------------------------------
+    // Decyzja
+    Function::changeConsoleColor();
+    std::cout << std::endl << std::endl;
+    Function::dialogueOption(optionNr, "I want to pass.");
+    optionNr++;
+    Function::dialogueOption(optionNr, "What is behind that door?");
+    optionNr++;
+
+    if (heroes["Hero"].hasItem(&items["Pistol"]))
+    {
+        Function::actionOption(optionNr, "Kill him with a pistol.");
+        optionNr++;
+        Function::actionOption(optionNr, "Stun him with a pistol.");
+        optionNr++;
+    }
+
+    Function::dialogueOption(optionNr, "It's time for me to go.");
+    optionNr++;
+    optionNr = 1;
+    Function::write("\t> ", 15);
+
+    while (true)
+    {
+        std::cin >> heroChoice;
+
+        if (heroChoice == 1)
+        {
+            Function::clearScreen();
+            std::cout << std::endl;
+            Function::showHeroAction("'I want to pass.'");
+            std::cout << std::endl;
+            jetPoints += 1;
+            break;
+        }
+        else if (heroChoice == 2)
+        {
+            Function::clearScreen();
+            std::cout << std::endl;
+            Function::showHeroAction("'What is behind that door?'");
+            std::cout << std::endl;
+            jetPoints += 1;
+            break;
+        }
+        else if (heroChoice == 3 && !heroes["Hero"].hasItem(&items["Pistol"]))
+        {
+            Function::clearScreen();
+            std::cout << std::endl;
+            Function::showHeroAction("'It's time for me to go.'");
+            std::cout << std::endl;
+            Function::clearScreen();
+            nightclub();
+            break;
+        }
+        else if (heroChoice == 3 && heroes["Hero"].hasItem(&items["Pistol"]))
+        {
+            Function::clearScreen();
+            std::cout << std::endl;
+            Function::showHeroAction("Kill him with a pistol.");
+            std::cout << std::endl;
+            break;
+        }
+        else if (heroChoice == 4 && heroes["Hero"].hasItem(&items["Pistol"]))
+        {
+            Function::clearScreen();
+            std::cout << std::endl;
+            Function::showHeroAction("Stun him with a pistol.");
+            std::cout << std::endl;
+            break;
+        }
+        else if (heroChoice == 5 && heroes["Hero"].hasItem(&items["Pistol"]))
+        {
+            Function::clearScreen();
+            std::cout << std::endl;
+            Function::showHeroAction("'It's time for me to go.'");
+            std::cout << std::endl;
+            Function::clearScreen();
+            nightclub();
+            break;
+        }
     }
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

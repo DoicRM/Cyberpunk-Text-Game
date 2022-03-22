@@ -47,6 +47,8 @@ private:
 	static void clubDanceFloor();
 	static void clubBar();
 	static void miaMeeting();
+	static void clubUpstairs();
+	static void dialogueWithJet();
 	static void vincentAssassination();
 	static void vincentOffice();
 	static void checkVincentDesk();
