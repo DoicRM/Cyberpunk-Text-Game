@@ -20,26 +20,11 @@ std::string Armor::printArmorType()
 {
     std::string type;
 
-    if (this->type == HEAD)
-    {
-        type = "Head";
-    }
-    else if (this->type == CHEST)
-    {
-        type = "Chest";
-    }
-    else if (this->type == ARMS)
-    {
-        type = "Arms";
-    }
-    else if (this->type == LEGS)
-    {
-        type = "Legs";
-    }
-    else
-    {
-        type = "None";
-    }
+    if (this->type == HEAD) type = "Head";
+    else if (this->type == CHEST) type = "Chest";
+    else if (this->type == ARMS) type = "Arms";
+    else if (this->type == LEGS)  type = "Legs";
+    else type = "None";
 
     return type;
 }

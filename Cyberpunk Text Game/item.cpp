@@ -28,30 +28,12 @@ std::string Item::printType()
 {
     std::string type;
 
-    if (this->type == WEAPON)
-    {
-        type = "Weapons";
-    }
-    else if (this->type == ARMOR)
-    {
-        type = "Armors";
-    }
-    else if (this->type == OTHER)
-    {
-        type = "Others";
-    }
-    else if (this->type == FOOD)
-    {
-        type = "Food";
-    }
-    else if (this->type == QUEST)
-    {
-        type = "Quest";
-    }
-    else
-    {
-        type = "None";
-    }
+    if (this->type == WEAPON) type = "Weapons";
+    else if (this->type == ARMOR) type = "Armors";
+    else if (this->type == OTHER) type = "Others";
+    else if (this->type == FOOD) type = "Food";
+    else if (this->type == QUEST) type = "Quest";
+    else type = "None";
 
     return type;
 }

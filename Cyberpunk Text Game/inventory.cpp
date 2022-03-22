@@ -30,15 +30,15 @@ void Inventory::addItem(Item* item)
     }
 
     std::fstream eq;
+    eq.open("eq.txt", std::ios::out | std::ios::app);
 
     if (eq.good())
     {
-        Logger::out("Access to file", "Inventory::addItem");
-        eq.open("eq.txt", std::ios::out | std::ios::app);
-        eq << "  Name: " << newItem->name << std::endl;
-        eq << "  Type: " << item->printType() << std::endl;
-        eq << "  Description: " << newItem->description << std::endl;
-        eq << "  Price: " << newItem->price << "$" << std::endl;
+        Logger::out("Access to txt file", "Inventory::addItem");
+        eq << "  Name: " << newItem->getName() << std::endl;
+        eq << "  Type: " << newItem->printType() << std::endl;
+        eq << "  Description: " << newItem->getDescription() << std::endl;
+        eq << "  Price: " << newItem->getPrice() << "$" << std::endl;
         eq << "..........................................................................." << std::endl;
         eq.close();
     }
@@ -94,10 +94,10 @@ void Inventory::showInv()
 
     while (temp) // przewijanie wskaŸników na nastêpne elementy
     {
-        std::cout << "  Name: " << temp->name << std::endl;
+        std::cout << "  Name: " << temp->getName() << std::endl;
         std::cout << "  Type: " << temp->printType() << std::endl;
-        std::cout << "  Description: " << temp->description << std::endl;
-        std::cout << "  Price: " << temp->price << "$" << std::endl;
+        std::cout << "  Description: " << temp->getDescription() << std::endl;
+        std::cout << "  Price: " << temp->getPrice() << "$" << std::endl;
         temp = temp->nextItem;
     }
 }

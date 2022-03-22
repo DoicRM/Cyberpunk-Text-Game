@@ -37,14 +37,14 @@ void Quest::start()
     this->status = "ongoing";
 
     std::fstream q;
+    q.open("quests.txt", std::ios::out | std::ios::app);
 
     if (q.good())
     {
-        Logger::out("Access to file", "Quest::start");
-        q.open("quests.txt", std::ios::out | std::ios::app);
-        q << "  Name: " << this->name << std::endl;
-        q << "  Description: " << this->description << std::endl;
-        q << "  Status: " << this->status << std::endl;
+        Logger::out("Access to txt file", "Quest::start");
+        q << "  Name: " << this->getName() << std::endl;
+        q << "  Description: " << this->getDescription() << std::endl;
+        q << "  Status: " << this->getStatus() << std::endl;
         q << "..........................................................................." << std::endl;
         q.close();
     }
@@ -63,11 +63,11 @@ void Quest::end()
     int lineNr = 1;
 
     std::fstream q;
+    q.open("quests.txt", std::ios::in | std::ios::out | std::ios::app);
 
     if (q.good())
     {
-        Logger::out("Access to file", "Quest::end");
-        q.open("quests.txt", std::ios::in | std::ios::out | std::ios::app);
+        Logger::out("Access to txt file", "Quest::end");
 
         while (getline(q, questsLine))
         {
