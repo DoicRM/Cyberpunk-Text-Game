@@ -2,14 +2,14 @@
 
 Armor::Armor() : Item()
 {
-	this->armorType = -1;
-	this->defence = 0;
+    this->armorType = -1;
+    this->defence = 0;
 }
 
 Armor::Armor(std::string name, int type, int armorType, std::string description, int defence, float price)
 {
-	this->armorType = armorType;
-	this->defence = defence;
+    this->armorType = armorType;
+    this->defence = defence;
 }
 
 Armor::~Armor()

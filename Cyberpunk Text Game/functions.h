@@ -15,8 +15,8 @@
 class Function
 {
 public:
-	static void nameGame(LPCSTR name);
-	static void initSpecialChars(const char* lang);
+	static void nameGame(LPCSTR name) { SetConsoleTitleA(name); };
+	static void initSpecialChars(const char* lang) { setlocale(LC_ALL, lang); };
 
 	// powolne wypisywanie kodu - (tekst, szybkoœæ)
 	static void write(const std::string& text, int speed = 60);

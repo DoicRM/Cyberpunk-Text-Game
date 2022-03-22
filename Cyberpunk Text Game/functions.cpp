@@ -1,15 +1,5 @@
 #include "functions.h"
 
-void Function::nameGame(LPCSTR name)
-{
-    SetConsoleTitleA(name);
-}
-
-void Function::initSpecialChars(const char* lang)
-{
-    setlocale(LC_ALL, lang);
-}
-
 // Powolne wypisywanie kodu
 void Function::write(const std::string& text, int speed)
 {
@@ -81,11 +71,11 @@ void Function::initHeroEQ()
 {
     Logger::out("Function start", "Function::initHeroEQ");
     std::fstream eq;
+    eq.open("eq.txt", std::ios::out);
 
     if (eq.good())
     {
-        Logger::out("Access to file", "Function::initHeroEQ");
-        eq.open("eq.txt", std::ios::out);
+        Logger::out("Access to txt file", "Function::initHeroEQ");
         eq << "                                    ITEMS                                  " << std::endl;
         //eq << "                               PRZEDMIOTY                                  " << endl;
         eq << "..........................................................................." << std::endl;
@@ -99,11 +89,11 @@ void Function::initQuestsList()
 {
     Logger::out("Function start", "Function::initQuestsList");
     std::fstream q;
+    q.open("quests.txt", std::ios::out);
 
     if (q.good())
     {
-        Logger::out("Access to file", "Function::initQuestsList");
-        q.open("quests.txt", std::ios::out);
+        Logger::out("Access to txt file", "Function::initQuestsList");
         q << "                                    QUESTS                                 " << std::endl;
         //q << "                                   ZADANIA                                 " << endl;
         q << "..........................................................................." << std::endl;

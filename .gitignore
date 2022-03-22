@@ -364,4 +364,4 @@ FodyWeavers.xsd
 
 # For generated files
 *.txt
-*.html
+log.html

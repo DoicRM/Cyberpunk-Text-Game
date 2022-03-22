@@ -153,6 +153,7 @@ void Game::mainMenu()
     do
     {
         std::cin >> menu;
+
         switch (menu) {
         case 1:
             newGame();

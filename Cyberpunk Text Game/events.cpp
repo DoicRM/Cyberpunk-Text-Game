@@ -45,7 +45,8 @@ void Event::initFractionsNpcsAndLocations()
         Npc Nyx("Nyx", female, Sleepers);
         Npc Jet("Jet", male, Hammers);
         Npc Vincent("Vincent", male, Hammers);
-        Npc Enigma("Enigma", male, Sleepers);
+        Npc Enigma("Enigma", male, None);
+        Npc Morpheus("Morpheus", male, Sleepers);
 
         npcs["Bob"] = Bob;
         npcs["Caden"] = Caden;
@@ -55,6 +56,7 @@ void Event::initFractionsNpcsAndLocations()
         npcs["Jet"] = Jet;
         npcs["Vincent"] = Vincent;
         npcs["Enigma"] = Enigma;
+        npcs["Morpheus"] = Morpheus;
 
         // Lokacje
         Location DarkAlley("Dark alley", 0, Beggars, 1, false);
@@ -90,7 +92,8 @@ void Event::initFractionsNpcsAndLocations()
         Npc Nyx("Nyx", female, Sleepers);
         Npc Jet("Jet", male, Hammers);
         Npc Vincent("Vincent", male, Hammers);
-        Npc Enigma("Enigma", male, Sleepers);
+        Npc Enigma("Enigma", male, None);
+        Npc Morpheus("Morfeusz", male, Sleepers);
 
         npcs["Bob"] = Bob;
         npcs["Caden"] = Caden;
@@ -100,6 +103,7 @@ void Event::initFractionsNpcsAndLocations()
         npcs["Jet"] = Jet;
         npcs["Vincent"] = Vincent;
         npcs["Enigma"] = Enigma;
+        npcs["Morpheus"] = Morpheus;
 
         // Lokacje
         Location DarkAlley("Mroczny zau³ek", 0, 1, Beggars, false);
