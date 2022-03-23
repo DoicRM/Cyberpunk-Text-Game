@@ -8,8 +8,7 @@ Item::Item()
     this->type = NONE;
     this->description = "None";
     this->price = 0.0;
-
-    nextItem = 0;
+    this->nextItem = 0;
 }
 
 Item::Item(std::string name, int type, std::string description, float price)
@@ -18,23 +17,11 @@ Item::Item(std::string name, int type, std::string description, float price)
     this->type = type;
     this->description = description;
     this->price = price;
-
-    nextItem = 0;
+    this->nextItem = 0;
 }
 
 Item::~Item()
 {
-}
-
-void Item::initItems()
-{
-    Logger::out("Function start", "Item::initItems");
-
-    Item AD13("Accelerator D-13", OTHER, "A long gone accelerator model, though still quite precious.", 50);
-    Item AccessCard("Access card", OTHER, "It definitely matches the door leading to the locked room in Ramsey's office.", 0);
-
-    items["AD13"] = AD13;
-    items["AccessCard"] = AccessCard;
 }
 
 std::string Item::printType()
@@ -49,4 +36,15 @@ std::string Item::printType()
     else type = "None";
 
     return type;
+}
+
+void Item::initItems()
+{
+    Logger::out("Function start", "Item::initItems");
+
+    Item AD13("Accelerator D-13", OTHER, "A long gone accelerator model, though still quite precious.", 50);
+    Item AccessCard("Access card", OTHER, "It definitely matches the door leading to the locked room in Ramsey's office.", 0);
+
+    items["AD13"] = AD13;
+    items["AccessCard"] = AccessCard;
 }

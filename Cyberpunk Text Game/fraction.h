@@ -24,6 +24,6 @@ public:
     inline const int& getReputation() const { return this->heroReputation; };
     inline const int& getAttitude() const { return this->attitude; };
 
-    static std::map <std::string, Fraction> fractions;;
+    static std::map <std::string, Fraction> fractions;
     static void initFractions();
 };
