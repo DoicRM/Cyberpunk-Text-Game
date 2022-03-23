@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <map>
 #include "logger.h"
 
 class Quest
@@ -27,4 +28,7 @@ public:
     inline const std::string& getStatus() const { return this->status; };
     inline const bool& isRunning() const { return this->running; };
     inline const bool& isCompleted() const { return this->completed; };
+
+    static std::map <std::string, Quest> quests;
+    static void initQuests();
 };

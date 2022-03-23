@@ -30,4 +30,7 @@ public:
     inline const int& getAttitude() const { return this->attitude; };
     inline const int& getStatus() const { return this->status; };
     inline const bool& knowsHero() const { return this->knowingHero; };
+
+    static std::map <std::string, Npc> npcs;;
+    static void initNpcs();
 };

@@ -24,6 +24,7 @@ public:
 	virtual ~Game();
 
 	void run();
+	void init();
 	void selectLanguage(); // wybór jêzyka gry
 	void welcome(); // powitanie
 	void writeLogo(); // wypisywanie loga gry
@@ -37,10 +38,6 @@ public:
 	void test();
 	void end() { this->playing = false; }
 	void setCurrentLocation(Location* location) { this->ptrCurrentLocation = location; }
-
-	friend void initAll();
-	friend void Function::initHeroEQ();
-	friend void Function::initQuestsList();
 
 	inline bool getPlaying() const { return this->playing; }
 	inline int getLang() const { return this->gameLang; }

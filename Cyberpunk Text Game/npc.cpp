@@ -1,5 +1,7 @@
 #include "npc.h"
 
+std::map <std::string, Npc> Npc::npcs;
+
 Npc::Npc()
 {
     this->name = "None";
@@ -76,4 +78,29 @@ bool Npc::isDead()
 {
     if (status != dead) return false;
     return true;
+}
+
+void Npc::initNpcs()
+{
+    Logger::out("Function start", "Npc::initNpcs");
+
+    Npc Bob("Bob", male, Fraction::fractions["Beggars"]);
+    Npc Caden("Caden", male, Fraction::fractions["Police"]);
+    Npc CadensPartner("Policeman", male, Fraction::fractions["Police"]);
+    Npc Zed("Zed", male, Fraction::fractions["None"]);
+    Npc Nyx("Nyx", female, Fraction::fractions["Sleepers"]);
+    Npc Jet("Jet", male, Fraction::fractions["Hammers"]);
+    Npc Vincent("Vincent", male, Fraction::fractions["Hammers"]);
+    Npc Enigma("Enigma", male, Fraction::fractions["None"]);
+    Npc Morpheus("Morpheus", male, Fraction::fractions["Sleepers"]);
+
+    npcs["Bob"] = Bob;
+    npcs["Caden"] = Caden;
+    npcs["CadensPartner"] = CadensPartner;
+    npcs["Zed"] = Zed;
+    npcs["Nyx"] = Nyx;
+    npcs["Jet"] = Jet;
+    npcs["Vincent"] = Vincent;
+    npcs["Enigma"] = Enigma;
+    npcs["Morpheus"] = Morpheus;
 }

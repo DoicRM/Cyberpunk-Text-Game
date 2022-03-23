@@ -1,5 +1,7 @@
 #include "quest.h"
 
+std::map <std::string, Quest> Quest::quests;
+
 Quest::Quest()
 {
     this->name = "None";
@@ -94,5 +96,16 @@ void Quest::end()
         q.close();
     }
     else Logger::error("No file access", "Quest::end");
+}
+
+void Quest::initQuests()
+{
+    Logger::out("Function start", "Quest::initQuests");
+
+    Quest KillVincent("Beauty and the Beast", "Kill 'Amnesia' nightclub owner Vincent Ramsey at the request of his girlfriend, Mia.");
+    Quest ZedAccelerator("Shades of the Past", "Bring Zed an old model of an accelerator. In return you will receive a gun from him.");
+
+    quests["KillVincent"] = KillVincent;
+    quests["ZedAccelerator"] = ZedAccelerator;
 }
 

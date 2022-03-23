@@ -1,5 +1,7 @@
 #include "hero.h"
 
+std::map <std::string, Hero> Hero::heroes;
+
 Hero::Hero()
 {
     this->name = "None";
@@ -30,4 +32,12 @@ void Hero::removeMoney(float money)
     {
         this->money -= money;
     }
+}
+
+void Hero::initHero()
+{
+    Logger::out("Function start", "Hero::initHero");
+
+    Hero hero;
+    heroes["Hero"] = hero;
 }

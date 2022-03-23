@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <map>
 #include "functions.h"
 
 class Fraction
@@ -22,4 +23,7 @@ public:
     inline const std::string& getName() const { return this->name; };
     inline const int& getReputation() const { return this->heroReputation; };
     inline const int& getAttitude() const { return this->attitude; };
+
+    static std::map <std::string, Fraction> fractions;;
+    static void initFractions();
 };

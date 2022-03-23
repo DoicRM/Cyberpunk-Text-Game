@@ -1,5 +1,7 @@
 #pragma once
+#include <map>
 #include "fraction.h"
+#include "logger.h"
 
 class Location
 {
@@ -21,4 +23,7 @@ public:
     inline const int& getType() const { return this->type; };
     inline const Fraction& getOccupation() const { return this->occupation; };
     inline const bool& isCurrent() const { return this->currency; };
+
+    static std::map <std::string, Location> locations;
+    static void initLocations();
 };

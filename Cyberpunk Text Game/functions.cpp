@@ -77,7 +77,7 @@ void Function::initHeroEQ()
     {
         Logger::out("Access to txt file", "Function::initHeroEQ");
         eq << "                                    ITEMS                                  " << std::endl;
-        //eq << "                               PRZEDMIOTY                                  " << endl;
+        //eq << "                               PRZEDMIOTY                                  " << std::endl;
         eq << "..........................................................................." << std::endl;
         eq.close();
     }
@@ -95,7 +95,7 @@ void Function::initQuestsList()
     {
         Logger::out("Access to txt file", "Function::initQuestsList");
         q << "                                    QUESTS                                 " << std::endl;
-        //q << "                                   ZADANIA                                 " << endl;
+        //q << "                                   ZADANIA                                 " << std::endl;
         q << "..........................................................................." << std::endl;
         q.close();
     }

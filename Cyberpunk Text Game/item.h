@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
+#include <map>
 #include "enums.h"
+#include "logger.h"
 
 class Item
 {
@@ -21,4 +23,7 @@ public:
     inline const int& getType() const { return this->type; };
     inline const std::string& getDescription() const { return this->description; };
     inline const float& getPrice() const { return this->price; };
+
+    static std::map <std::string, Item> items;
+    static void initItems();
 };

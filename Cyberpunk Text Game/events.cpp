@@ -1,199 +1,15 @@
 #include "events.h"
 
-std::map <std::string, Hero> heroes;
-std::map <std::string, Npc> npcs;
-std::map <std::string, Fraction> fractions;
-std::map <std::string, Item> items;
-std::map <std::string, Location> locations;
-std::map <std::string, Quest> quests;
-
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// 1. INIT
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// 1.1 Inicjowanie bohatera
-void Event::initHero()
-{
-    Logger::out("Function start", "Event::initHero");
-    Hero hero;
-    heroes["Hero"] = hero;
-}
-
-// 1.2 Inicjowanie frakcji
-void Event::initFractionsNpcsAndLocations()
-{
-    Logger::out("Function start", "Event::initFractionsNpcsAndLocations");
-    //if (game.getLang() == en)
-    //{
-        // Frakcje
-        Fraction None("None", 0, neutral);
-        Fraction Beggars("Beggars", 0, neutral);
-        Fraction Police("Police", 0, neutral);
-        Fraction Hammers("Hammers", 0, neutral);
-        Fraction Sleepers("Sleepers", 0, neutral);
-
-        fractions["None"] = None;
-        fractions["Beggars"] = Beggars;
-        fractions["Police"] = Police;
-        fractions["Hammers"] = Hammers;
-        fractions["Sleepers"] = Sleepers;
-
-        // Npc
-        Npc Bob("Bob", male, Beggars);
-        Npc Caden("Caden", male, Police);
-        Npc CadensPartner("Policeman", male, Police);
-        Npc Zed("Zed", male, None);
-        Npc Nyx("Nyx", female, Sleepers);
-        Npc Jet("Jet", male, Hammers);
-        Npc Vincent("Vincent", male, Hammers);
-        Npc Enigma("Enigma", male, None);
-        Npc Morpheus("Morpheus", male, Sleepers);
-
-        npcs["Bob"] = Bob;
-        npcs["Caden"] = Caden;
-        npcs["CadensPartner"] = CadensPartner;
-        npcs["Zed"] = Zed;
-        npcs["Nyx"] = Nyx;
-        npcs["Jet"] = Jet;
-        npcs["Vincent"] = Vincent;
-        npcs["Enigma"] = Enigma;
-        npcs["Morpheus"] = Morpheus;
-
-        // Lokacje
-        Location DarkAlley("Dark alley", 0, Beggars, 1, false);
-        Location Street("Street", 0, Police, 2, false);
-        Location Nightclub("Nightclub 'Amnesia'", 0, Hammers, 3, false);
-        Location GunShop("Zed's Gun Shop", 0, None, 3, false);
-
-        locations["DarkAlley"] = DarkAlley;
-        locations["Street"] = Street;
-        locations["Nightclub"] = Nightclub;
-        locations["GunShop"] = GunShop;
-    /* }
-    else if (Game().getLang() == pl)
-    {
-        // Frakcje
-        Fraction None("Brak", 0, neutral);
-        Fraction Beggars("¯ebracy", 0, neutral);
-        Fraction Police("Policja", 0, neutral);
-        Fraction Hammers("M³oty", 0, neutral);
-        Fraction Sleepers("Œni¹cy", 0, neutral);
-
-        fractions["None"] = None;
-        fractions["Beggars"] = Beggars;
-        fractions["Police"] = Police;
-        fractions["Hammers"] = Hammers;
-        fractions["Sleepers"] = Sleepers;
-
-        // Npc
-        Npc Bob("Bob", male, Beggars);
-        Npc Caden("Caden", male, Police);
-        Npc CadensPartner("Policjant", male, Police);
-        Npc Zed("Zed", male, None);
-        Npc Nyx("Nyx", female, Sleepers);
-        Npc Jet("Jet", male, Hammers);
-        Npc Vincent("Vincent", male, Hammers);
-        Npc Enigma("Enigma", male, None);
-        Npc Morpheus("Morfeusz", male, Sleepers);
-
-        npcs["Bob"] = Bob;
-        npcs["Caden"] = Caden;
-        npcs["CadensPartner"] = CadensPartner;
-        npcs["Zed"] = Zed;
-        npcs["Nyx"] = Nyx;
-        npcs["Jet"] = Jet;
-        npcs["Vincent"] = Vincent;
-        npcs["Enigma"] = Enigma;
-        npcs["Morpheus"] = Morpheus;
-
-        // Lokacje
-        Location DarkAlley("Mroczny zau³ek", 0, 1, Beggars, false);
-        Location Street("Ulica", 0, 2, Police, false);
-        Location Nightclub("Klub nocny 'Amnezja'", 0, 3, Hammers, false);
-        Location GunShop("Sklep z broni¹ u Zeda", 0, 3, None, false);
-
-        locations["DarkAlley"] = DarkAlley;
-        locations["Street"] = Street;
-        locations["Nightclub"] = Nightclub;
-        locations["GunShop"] = GunShop;
-    }*/
-}
-
-// 1.3 Inicjowanie przedmiotów
-void Event::initItems()
-{
-    Logger::out("Function start", "Event::initItems");
-    //if (Game().getLang() == en)
-    //{
-        Item AD13("Accelerator D-13", OTHER, "A long gone accelerator model, though still quite precious.", 50);
-        Item AccessCard("Access card", OTHER, "It definitely matches the door leading to the locked room in Ramsey's office.", 0);
-        Weapon Pistol("Pistol", WEAPON, "A simple weapon that shoots pure energy.", 10, 15, 250);
-
-        items["AD13"] = AD13;
-        items["AccessCard"] = AccessCard;
-        items["Pistol"] = Pistol;
-    /* }
-    else if (Game().getLang() == pl)
-    {
-        Item AD13("Akcelerator D-13", OTHER, "Dawno nieu¿ywany model akceleratora, choæ wci¹¿ doœæ cenny.", 50);
-        Item AccessCard("Karta dostêpu", OTHER, "Z pewnoœci¹ pasuje do drzwi prowadz¹cych do zablokowanego pomieszczenia w gabinecie Ramseya.", 0);
-        Weapon Pistol("Pistol", WEAPON, "Prosta broñ strzelaj¹ca czyst¹ energi¹.", 10, 15, 250);
-
-        items["AD13"] = AD13;
-        items["AccessCard"] = AccessCard;
-        items["Pistol"] = Pistol;
-    }
-    */
-}
-
-// 1.4 Inicjowanie zadañ
-void Event::initQuests()
-{
-    Logger::out("Function start", "Event::initQuests");
-    //if (Game().getLang() == en)
-    //{
-        Quest KillVincent("Beauty and the Beast", "Kill 'Amnesia' nightclub owner Vincent Ramsey at the request of his girlfriend, Mia.");
-        Quest ZedAccelerator("Shades of the Past", "Bring Zed an old model of an accelerator. In return you will receive a gun from him.");
-
-        quests["KillVincent"] = KillVincent;
-        quests["ZedAccelerator"] = ZedAccelerator;
-
-    /*}
-    else if (Game().getLang() == pl)
-    {
-        Quest KillVincent("Piêkna i bestia", "Zabij w³aœciciela klubu nocnego 'Amnezja', Vincenta Ramseya, na proœbê jego dziewczyny, Mii.");
-        Quest ZedAccelerator("Cienie przesz³oœci", "Przynieœ Zedowi stary model akumulatora. W zamian otrzymasz od niego pistolet.");
-
-        quests["KillVincent"] = KillVincent;
-        quests["ZedAccelerator"] = ZedAccelerator;
-    }*/ 
-}
-
-// 1.5 Inicjowanie wszystkiego
-void Event::initAll()
-{
-    Logger::out("Function start", "Event::initAll");
-    Event::initHero();
-    Event::initFractionsNpcsAndLocations();
-    Event::initItems();
-    Event::initQuests();
-    Function::initHeroEQ();
-    Function::initQuestsList();
-}
-
-// 1.6 Inicjowanie zmiennych
 bool bobRecommendsZedToHero = false, heroKnowsVincentHideoutCode = false, heroIsOnDanceFloor = false, heroIsAtBar = false, zedKnowsAboutBobFriendshipWithHero = false, darkAlleyWasVisited = false, streetWasVisited = false, gunShopWasVisited = false, nightclubWasVisited = false;
 int heroChoice = 0, checkpoint = 0, optionNr = 1;
 Location* locationPtr;
 Item* itemPtr;
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// 2. WYDARZENIA
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// 2.1 G£ÓWNE
+
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::darkAlley()
 {
     Logger::out("Function start", "Event::darkAlley");
-    //locationPtr = &locations["DarkAlley"];
+    locationPtr = &Location::locations["DarkAlley"];
     //setCurrentLocation(locationPtr);
 
     if (!darkAlleyWasVisited)
@@ -209,7 +25,7 @@ void Event::darkAlley()
 void Event::street()
 {
     Logger::out("Function start", "Event::street");
-    //locationPtr = &locations["Street"];
+    locationPtr = &Location::locations["Street"];
     //setCurrentLocation(locationPtr);
 
     if (!streetWasVisited)
@@ -225,7 +41,7 @@ void Event::street()
 void Event::gunShop()
 {
     Logger::out("Function start", "Event::gunShop");
-    //locationPtr = &locations["GunShop"];
+    locationPtr = &Location::locations["GunShop"];
     //setCurrentLocation(locationPtr);
 
     if (!gunShopWasVisited)
@@ -241,7 +57,7 @@ void Event::gunShop()
 void Event::nightclub()
 {
     Logger::out("Function start", "Event::nightclub");
-    //locationPtr = &locations["Nightclub"];
+    locationPtr = &Location::locations["Nightclub"];
     //setCurrentLocation(locationPtr);
 
     if (!nightclubWasVisited)
@@ -256,10 +72,6 @@ void Event::nightclub()
     }
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// 2.2 INNE
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// 2.2.1 MROCZNY ZAU£EK
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::darkAlleyCrossroads()
 {
     Logger::out("Function start", "Event::darkAlleyCrossroads");
@@ -268,7 +80,7 @@ void Event::darkAlleyCrossroads()
     Function::showHeroAction("Visit: Dark Alley.");
     std::cout << std::endl;
 
-    if (!npcs["Bob"].knowsHero())
+    if (!Npc::npcs["Bob"].knowsHero())
     {
         Function::writeNarration("\tWhen you enter the alley, you hear a familiar voice.");
         std::cout << std::endl;
@@ -322,9 +134,9 @@ void Event::darkAlleyCrossroads()
         Function::writeNarration(" It's full of cardboard boxes, old mechanical parts, and god knows what else.");
     }
 
-    itemPtr = &items["AD13"];
+    itemPtr = &Item::items["AD13"];
 
-    if (!heroes["Hero"].hasItem(itemPtr))
+    if (!Hero::heroes["Hero"].hasItem(itemPtr))
     {
         Sleep(1500);
         std::cout << std::endl;
@@ -354,21 +166,21 @@ void Event::darkAlleyCrossroads()
                 Sleep(2000);
                 std::cout << std::endl;
 
-                itemPtr = &items["AD13"];
-                heroes["Hero"].addItem(itemPtr);
+                itemPtr = &Item::items["AD13"];
+                Hero::heroes["Hero"].addItem(itemPtr);
 
                 Function::changeConsoleColor(item);
-                std::string str = "\t" + items["AD13"].getName();
+                std::string str = "\t" + Item::items["AD13"].getName();
                 Function::write(str);
                 Function::changeConsoleColor();
                 Function::write(" was found.");
                 
-                if (heroes["Hero"].hasItem(itemPtr))
+                if (Hero::heroes["Hero"].hasItem(itemPtr))
                 {
-                    Logger::out(items["AD13"].getName() + " added to EQ", "Event::inSeaOfRubbish");
+                    Logger::out(Item::items["AD13"].getName() + " added to EQ", "Event::inSeaOfRubbish");
                 }
                 else {
-                    Logger::error(items["AD13"].getName() + " not added to EQ", "Event::inSeaOfRubbish");
+                    Logger::error(Item::items["AD13"].getName() + " not added to EQ", "Event::inSeaOfRubbish");
                 }
 
                 std::cout << std::endl;
@@ -589,20 +401,20 @@ void Event::inSeaOfRubbish()
     Sleep(2000);
     std::cout << std::endl << std::endl;
 
-    itemPtr = &items["AD13"];
-    heroes["Hero"].addItem(itemPtr);
+    itemPtr = &Item::items["AD13"];
+    Hero::heroes["Hero"].addItem(itemPtr);
     Function::changeConsoleColor(item);
-    std::string str = "\t" + items["AD13"].getName();
+    std::string str = "\t" + Item::items["AD13"].getName();
     Function::write(str);
     Function::changeConsoleColor();
     Function::write(" was found.");
 
-    if (heroes["Hero"].hasItem(itemPtr))
+    if (Hero::heroes["Hero"].hasItem(itemPtr))
     {
-        Logger::out(items["AD13"].getName() + " added to EQ", "Event::inSeaOfRubbish");
+        Logger::out(Item::items["AD13"].getName() + " added to EQ", "Event::inSeaOfRubbish");
     }
     else {
-        Logger::error(items["AD13"].getName() + " not added to EQ", "Event::inSeaOfRubbish");
+        Logger::error(Item::items["AD13"].getName() + " not added to EQ", "Event::inSeaOfRubbish");
     }
 
     std::cout << std::endl;
@@ -618,9 +430,9 @@ void Event::inSeaOfRubbish()
 void Event::outOfTheAlley()
 {
     Logger::out("Function start", "Event::outOfTheAlley");
-    itemPtr = &items["AD13"];
+    itemPtr = &Item::items["AD13"];
 
-    if (!heroes["Hero"].hasItem(itemPtr))
+    if (!Hero::heroes["Hero"].hasItem(itemPtr))
     {
         Function::showHeroAction("Find the exit from the alley.");
         std::cout << std::endl;
@@ -687,21 +499,21 @@ void Event::conversationWithHomeless()
 
     Function::writeDialogue("\t- 'What's your name, boy?'");
 
-    if (!npcs["Bob"].knowsHero() && !npcs["Caden"].knowsHero() && !npcs["CadenPartner"].knowsHero())
+    if (!Npc::npcs["Bob"].knowsHero() && !Npc::npcs["Caden"].knowsHero() && !Npc::npcs["CadenPartner"].knowsHero())
     {
         Function::changeConsoleColor();
         std::cout << std::endl;
         std::cout << "\t> ";
         std::cin >> heroName;
-        heroes["Hero"].setName(heroName);
-        Logger::out("Hero's name is " + heroes["Hero"].getName(), "Event::conversationWithHomeless");
+        Hero::heroes["Hero"].setName(heroName);
+        Logger::out("Hero's name is " + Hero::heroes["Hero"].getName(), "Event::conversationWithHomeless");
     }
 
-    npcs["Bob"].setToKnowHero();
-    str = "\t- 'So you're " + heroes["Hero"].getName() + ", huh?";
+    Npc::npcs["Bob"].setToKnowHero();
+    str = "\t- 'So you're " + Hero::heroes["Hero"].getName() + ", huh?";
     Function::writeDialogue(str);
     Sleep(1500);
-    str = " All right. I'm " + npcs["Bob"].getName() + ".";
+    str = " All right. I'm " + Npc::npcs["Bob"].getName() + ".";
     Function::writeDialogue(str);
     Sleep(1500);
     Function::writeDialogue(" What are you doin' here?'");
@@ -759,9 +571,9 @@ void Event::conversationWithHomeless()
             Function::clearScreen();
             Function::showHeroAction("'It's not your business.'");
             std::cout << std::endl;
-            npcs["Bob"].setAttitude(angry); // angry / hostile / friendly / neutral
+            Npc::npcs["Bob"].setAttitude(angry); // angry / hostile / friendly / neutral
 
-            if (npcs["Bob"].getAttitude() == angry)
+            if (Npc::npcs["Bob"].getAttitude() == angry)
             {
                 Logger::out("Bob is angry", "Event::conversationWithHomeless");
             }
@@ -854,7 +666,7 @@ void Event::viewOfAmnesia()
 
     std::cout << std::endl;
 
-    if (!npcs["Bob"].knowsHero())
+    if (!Npc::npcs["Bob"].knowsHero())
     {
         Function::writeNarration("\tYou walk out of the alley onto a street lit by neon lights on the opposite side. A large sign\n\tthat reads 'Amnesia' belongs to a nightclub.");
         Sleep(1000);
@@ -889,7 +701,7 @@ void Event::viewOfAmnesia()
             Function::showHeroAction("Come closer and see what it's all about.");
             std::cout << std::endl;
 
-            if (!npcs["Bob"].knowsHero())
+            if (!Npc::npcs["Bob"].knowsHero())
             {
                 heroMeetSecurityGuards();
                 heroMeetsPolicemans();
@@ -950,7 +762,7 @@ void Event::heroMeetGunStore()
             Function::showHeroAction("Turn back.");
             std::cout << std::endl;
 
-            if (!npcs["Bob"].knowsHero())
+            if (!Npc::npcs["Bob"].knowsHero())
             {
                 heroMeetSecurityGuards();
                 heroMeetsPolicemans();
@@ -992,7 +804,7 @@ void Event::heroMeetsPolicemans()
     Logger::out("Function start", "Event::heroMeetsPolicemans");
     std::string heroName, str;
 
-    if (npcs["Bob"].knowsHero())
+    if (Npc::npcs["Bob"].knowsHero())
     {
         Function::writeNarration("\tWhen you get closer, one of the police officers in a dark blue uniform turns toward you.");
     }
@@ -1011,9 +823,9 @@ void Event::heroMeetsPolicemans()
     Function::writeDialogue(" And what are you doing here? Please show me your ID card.'");
     std::cout << std::endl;
 
-    itemPtr = &items["AD13"];
+    itemPtr = &Item::items["AD13"];
 
-    if (heroes["Hero"].hasItem(itemPtr))
+    if (Hero::heroes["Hero"].hasItem(itemPtr))
     {
         Function::writeNarration("\tYou start searching through the pockets of your jacket and pants, but other than the accelerator\n\tyou found in the trash, there's nothing else there.");
     }
@@ -1026,29 +838,29 @@ void Event::heroMeetsPolicemans()
     Sleep(1500);
     Function::writeDialogue(" Okay, then what's your name, citizen?");
 
-    if (!npcs["Bob"].knowsHero())
+    if (!Npc::npcs["Bob"].knowsHero())
     {
         Function::writeDialogue("'");
         std::cout << std::endl;
         std::cout << "\t> ";
         std::cin >> heroName;
-        heroes["Hero"].setName(heroName);
-        Logger::out("Hero's name is " + heroes["Hero"].getName(), "Event::conversationWithHomeless");
+        Hero::heroes["Hero"].setName(heroName);
+        Logger::out("Hero's name is " + Hero::heroes["Hero"].getName(), "Event::conversationWithHomeless");
         std::cout << std::endl;
-        str = "\t- '" + heroes["Hero"].getName() + "...";
+        str = "\t- '" + Hero::heroes["Hero"].getName() + "...";
         Function::writeDialogue(str);
         Sleep(1000);
         Function::writeDialogue(" Caden, check it out in the database.");
     }
     else {
-        str = " " + heroes["Hero"].getName() + "...";
+        str = " " + Hero::heroes["Hero"].getName() + "...";
         Function::writeDialogue(str);
         Sleep(1000);
         Function::writeDialogue(" Caden, check\n\tit out in the database.");
     }
 
-    npcs["CadenPartner"].setToKnowHero();
-    npcs["Caden"].setToKnowHero();
+    Npc::npcs["CadenPartner"].setToKnowHero();
+    Npc::npcs["Caden"].setToKnowHero();
     Sleep(1500);
     Function::writeDialogue(" And you, stand where you are.'");
     std::cout << std::endl;
@@ -1119,7 +931,7 @@ void Event::enterGunShop()
 
     Function::writeNarration("\tThe front door hisses open before you.");
 
-    if (!npcs["Zed"].knowsHero())
+    if (!Npc::npcs["Zed"].knowsHero())
     {
         Sleep(1000);
         Function::writeNarration(" You step over the threshold and enter a small room with a counter opposite the entrance. Behind it stands a tall, thin man with fatigue painted on his terribly oblong face.");
@@ -1128,26 +940,24 @@ void Event::enterGunShop()
         std::cout << std::endl;
         Function::writeDialogue("\t- 'How can I help you, my friend?'");
         std::cout << std::endl;
-        npcs["Zed"].setToKnowHero();
+        Npc::npcs["Zed"].setToKnowHero();
         dialogueWithZed();
     }
     else {
         Sleep(1000);
         Function::writeNarration(" From behind the counter, Zed is already smiling at you.");
 
-        itemPtr = &items["Pistol"];
-
-        if (heroes["Hero"].hasItem(itemPtr))
+        if (Hero::heroes["Hero"].hasItem(&Item::items["Pistol"]))
         {
             std::cout << std::endl;
             Function::writeDialogue("\t- 'What's up? How's the gun working out?'");
         }
 
-        if (quests["ZedAccelerator"].isRunning() && !quests["ZedAccelerator"].isCompleted())
+        if (Quest::quests["ZedAccelerator"].isRunning() && !Quest::quests["ZedAccelerator"].isCompleted())
         {
-            itemPtr = &items["AD13"];
+            itemPtr = &Item::items["AD13"];
 
-            if (!heroes["Hero"].hasItem(itemPtr))
+            if (!Hero::heroes["Hero"].hasItem(itemPtr))
             {
                 dialogueWithZed();
             }
@@ -1222,7 +1032,7 @@ void Event::dialogueWithZed()
                 zedKnowsAboutBobFriendshipWithHero = true;
                 std::cout << std::endl;
                 Function::writeDialogue("\t- 'Yes, that is correct. I'm Zed, and this is my little shop.");
-                npcs["Zed"].setAttitude(friendly);
+                Npc::npcs["Zed"].setAttitude(friendly);
                 Sleep(1000);
                 Function::writeDialogue(" Since you know Bob, you can get a small discount here'.");
                 continue;
@@ -1232,7 +1042,7 @@ void Event::dialogueWithZed()
                 std::cout << std::endl;
                 Function::clearScreen();
 
-                if (!npcs["Caden"].knowsHero() && !npcs["CadenPartner"].knowsHero())
+                if (!Npc::npcs["Caden"].knowsHero() && !Npc::npcs["CadenPartner"].knowsHero())
                 {
                     heroMeetsPolicemans();
                 }
@@ -1250,7 +1060,7 @@ void Event::dialogueWithZed()
             Function::writeDialogue("\t- 'No problem. See you later!'");
             std::cout << std::endl;
 
-            if (!npcs["Caden"].knowsHero() && !npcs["CadenPartner"].knowsHero())
+            if (!Npc::npcs["Caden"].knowsHero() && !Npc::npcs["CadenPartner"].knowsHero())
             {
                 heroMeetsPolicemans();
             }
@@ -1270,9 +1080,7 @@ void Event::zedTrade()
     Logger::out("Function start", "Event::zedTrade");
     bool ZedTellsAboutWeapons = false;
 
-    itemPtr = &items["Pistol"];
-
-    if (!heroes["Hero"].hasItem(itemPtr))
+    if (!Hero::heroes["Hero"].hasItem(&Item::items["Pistol"]))
     {
         if (!ZedTellsAboutWeapons)
         {
@@ -1367,7 +1175,7 @@ void Event::buyPistol()
 
     std::cout << std::endl;
 
-    if (heroes["Hero"].getMoney() != 250.0)
+    if (Hero::heroes["Hero"].getMoney() != 250.0)
     {
         Function::writeDialogue("\t- 'I see you're low on cash.");
         Sleep(1000);
@@ -1380,11 +1188,10 @@ void Event::buyPistol()
             Sleep(1000);
             Function::writeDialogue(" Let's just say I'll loan you this gun on a friendly basis.");
 
-            itemPtr = &items["Pistol"];
-            heroes["Hero"].addItem(itemPtr);
+            Hero::heroes["Hero"].addItem(&Item::items["Pistol"]);
             std::cout << std::endl;
             Function::changeConsoleColor(item);
-            str = "\t" + items["Pistol"].getName();
+            str = "\t" + Item::items["Pistol"].getName();
             Function::write(str);
             Function::changeConsoleColor();
             Function::write(" gained.");
@@ -1392,8 +1199,7 @@ void Event::buyPistol()
         }
         else
         {
-            quests["ZedAccelerator"].start();
-
+            Quest::quests["ZedAccelerator"].start();
             Function::writeDialogue(" It so happens that I have been looking for a good accelerator for some time.");
             Sleep(1000);
             Function::writeDialogue(" I don't mean the crap produced by corporations these days.");
@@ -1407,11 +1213,10 @@ void Event::buyPistol()
     {
         Function::writeDialogue("\t- 'A pistol is a good start. Here, it's yours.'");
 
-        itemPtr = &items["Pistol"];
-        heroes["Hero"].addItem(itemPtr);
+        Hero::heroes["Hero"].addItem(&Item::items["Pistol"]);
         std::cout << std::endl;
         Function::changeConsoleColor(item);
-        str = "\t" + items["Pistol"].getName();
+        str = "\t" + Item::items["Pistol"].getName();
         Function::write(str);
         Function::changeConsoleColor();
         Function::write(" was bought.");
@@ -1522,7 +1327,7 @@ void Event::clubDanceFloor()
     Function::showHeroAction("Go dance on the dance floor.");
     std::cout << std::endl;
 
-    if (!npcs["Nyx"].knowsHero())
+    if (!Npc::npcs["Nyx"].knowsHero())
     {
         Function::writeNarration("\tYou get on the dance floor.");
         Sleep(1000);
@@ -1701,13 +1506,12 @@ void Event::miaMeeting()
     Function::writeDialogue("\n\t- 'Vinc, the owner, is my boyfriend.");
     Sleep(1000);
     Function::writeDialogue(" I want him dead.'");
-    quests["KillVincent"].start();
+    Quest::quests["KillVincent"].start();
     Sleep(1500);
     Function::writeNarration("\n\tNyx takes your hand and leads you towards the toilet.");
     Function::writeDialogue("\n\t- 'Do you have a gun?'");
-    itemPtr = &items["Pistol"];
 
-    if (heroes["Hero"].hasItem(itemPtr))
+    if (Hero::heroes["Hero"].hasItem(&Item::items["Pistol"]))
     {
         Function::writeDialogue("\n\t- 'Good.");
         Sleep(1000);
@@ -1718,7 +1522,7 @@ void Event::miaMeeting()
         Function::writeDialogue("\n\t- 'You know how to use it, don't you?");
         Sleep(1000);
         Function::writeDialogue(" Get it for yourself, you'll need it. Here's 200 bucks.'");
-        heroes["Hero"].addMoney(200);
+        Hero::heroes["Hero"].addMoney(200);
         std::cout << std::endl;
         Function::changeConsoleColor(green);
         Function::write("\t200$");
@@ -1756,7 +1560,7 @@ void Event::clubUpstairs()
             Function::writeNarration("\tAre you brave or foolish enough to face the hammer man. You are stopped from taking another step by his firm voice.");
             std::cout << std::endl;
             Function::writeDialogue("\t- 'What here?'");
-            npcs["Jet"].setToKnowHero();
+            Npc::npcs["Jet"].setToKnowHero();
             dialogueWithJet();
             break;
         }
@@ -1787,7 +1591,7 @@ void Event::dialogueWithJet()
     Function::dialogueOption(optionNr, "What is behind that door?");
     optionNr++;
 
-    if (heroes["Hero"].hasItem(&items["Pistol"]))
+    if (Hero::heroes["Hero"].hasItem(&Item::items["Pistol"]))
     {
         Function::actionOption(optionNr, "Kill him with a pistol.");
         optionNr++;
@@ -1822,7 +1626,7 @@ void Event::dialogueWithJet()
             jetPoints += 1;
             break;
         }
-        else if (heroChoice == 3 && !heroes["Hero"].hasItem(&items["Pistol"]))
+        else if (heroChoice == 3 && !Hero::heroes["Hero"].hasItem(&Item::items["Pistol"]))
         {
             Function::clearScreen();
             std::cout << std::endl;
@@ -1832,7 +1636,7 @@ void Event::dialogueWithJet()
             nightclub();
             break;
         }
-        else if (heroChoice == 3 && heroes["Hero"].hasItem(&items["Pistol"]))
+        else if (heroChoice == 3 && Hero::heroes["Hero"].hasItem(&Item::items["Pistol"]))
         {
             Function::clearScreen();
             std::cout << std::endl;
@@ -1840,7 +1644,7 @@ void Event::dialogueWithJet()
             std::cout << std::endl;
             break;
         }
-        else if (heroChoice == 4 && heroes["Hero"].hasItem(&items["Pistol"]))
+        else if (heroChoice == 4 && Hero::heroes["Hero"].hasItem(&Item::items["Pistol"]))
         {
             Function::clearScreen();
             std::cout << std::endl;
@@ -1848,7 +1652,7 @@ void Event::dialogueWithJet()
             std::cout << std::endl;
             break;
         }
-        else if (heroChoice == 5 && heroes["Hero"].hasItem(&items["Pistol"]))
+        else if (heroChoice == 5 && Hero::heroes["Hero"].hasItem(&Item::items["Pistol"]))
         {
             Function::clearScreen();
             std::cout << std::endl;
@@ -1938,7 +1742,7 @@ void Event::vincentHideoutCode()
 void Event::vincentHideout()
 {
     Logger::out("Function start", "Event::vincentHideout");
-    npcs["Vincent"].setStatus(unconscious);
+    Npc::npcs["Vincent"].setStatus(unconscious);
     std::cout << std::endl;
     Function::writeNarration("\tThe door closes behind you, hissing quietly.");
     Sleep(2000);
@@ -1970,7 +1774,7 @@ void Event::vincentHideout()
             std::cout << std::endl;
             Function::writeNarration("\tYou lean over Vincent and, in a fluid motion without hesitation, pull the stimulation helmet\n\toff his head. You witness the nightclub owner being shaken by a wave of convulsions. Foam\n\tbegins to come out of his mouth and after a moment the man freezes.");
             Sleep(1500);
-            npcs["Vincent"].setStatus(dead);
+            Npc::npcs["Vincent"].setStatus(dead);
             Function::writeNarration(" He's probably dead, just like\n\tNyx wanted.");
             break;
         }
@@ -1983,7 +1787,7 @@ void Event::vincentHideout()
             Sleep(1000);
             Function::writeNarration(" You don't stab people in the back. That's not your style. You prefer an\n\topen fight.");
             Sleep(1500);
-            npcs["Vincent"].setStatus(normal);
+            Npc::npcs["Vincent"].setStatus(normal);
             Function::writeNarration(" After a while, you notice Vincent moving slightly in his seat. He opens his eyes -\n\tthey are shining with the excitement of his online adventure.");
             Sleep(1000);
             Function::writeNarration(" It is only a matter of time before\n\tVincent notices your presence. There is no turning back now.");
@@ -2078,7 +1882,7 @@ void Event::dialogueWithVincent()
             Function::writeNarration(" The recoil knocks him from his seat. The lifeless body clatters against the floor.");
             Sleep(1500);
             Function::writeNarration(" He's dead, just like Nyx wanted.");
-            npcs["Vincent"].setStatus(dead);
+            Npc::npcs["Vincent"].setStatus(dead);
             std::cout << std::endl;
             Function::writeNarration("\tOut of curiosity, you walk closer and spot the corpse holding a small pistol.");
             Sleep(1000);
@@ -2098,7 +1902,7 @@ void Event::dialogueWithVincent()
             Function::writeNarration(" The recoil knocks him from his seat. The lifeless body clatters against the floor.");
             Sleep(1500);
             Function::writeNarration(" He's dead, just like Nyx wanted.");
-            npcs["Vincent"].setStatus(dead);
+            Npc::npcs["Vincent"].setStatus(dead);
             std::cout << std::endl;
             Function::writeNarration("\tOut of curiosity, you walk closer and spot the corpse holding a small pistol.");
             Sleep(1000);
@@ -2269,12 +2073,12 @@ void Event::gameOver()
 {
     Logger::out("Function start", "Event::gameOver");
 
-    heroes.clear();
-    npcs.clear();
-    fractions.clear();
-    items.clear();
-    locations.clear();
-    quests.clear();
+    Hero::heroes.clear();
+    Npc::npcs.clear();
+    Fraction::fractions.clear();
+    Item::items.clear();
+    Location::locations.clear();
+    Quest::quests.clear();
 
     Sleep(500);
     Function::clearScreen();

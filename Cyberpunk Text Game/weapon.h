@@ -1,5 +1,6 @@
 #pragma once
 #include "item.h"
+#include "logger.h"
 
 class Weapon : public Item
 {
@@ -14,4 +15,6 @@ public:
 
 	inline const int& getDamageMin() const { return this->damageMin; }
 	inline const int& getDamageMax() const { return this->damageMax; }
+
+	static void initWeapons();
 };

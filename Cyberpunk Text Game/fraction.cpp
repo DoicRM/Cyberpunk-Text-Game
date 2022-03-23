@@ -1,5 +1,7 @@
 #include "fraction.h"
 
+std::map <std::string, Fraction> Fraction::fractions;
+
 Fraction::Fraction()
 {
     this->name = "None";
@@ -28,4 +30,21 @@ std::string Fraction::printAttitude()
     else attitude = "neutral";
 
     return attitude;
+}
+
+void Fraction::initFractions()
+{
+    Logger::out("Function start", "Fraction::initFractions");
+
+    Fraction None("None", 0, neutral);
+    Fraction Beggars("Beggars", 0, neutral);
+    Fraction Police("Police", 0, neutral);
+    Fraction Hammers("Hammers", 0, neutral);
+    Fraction Sleepers("Sleepers", 0, neutral);
+
+    fractions["None"] = None;
+    fractions["Beggars"] = Beggars;
+    fractions["Police"] = Police;
+    fractions["Hammers"] = Hammers;
+    fractions["Sleepers"] = Sleepers;
 }
