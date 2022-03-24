@@ -23,21 +23,21 @@ public:
 	Game();
 	virtual ~Game();
 
-	void run();
-	void init();
-	void selectLanguage(); // wybór jêzyka gry
+	void run(); // rozpoczêcie dzia³ania
+	void init(); // inicjalizacja obiektów
+	void selectLanguage(); // wybór jêzyka
 	void welcome(); // powitanie
-	void writeLogo(); // wypisywanie loga gry
+	void writeLogo(); // wypisywanie loga
 	void mainMenu(); // menu g³ówne
 	void newGame(); // nowa gra
 	void continueGame(); // kontynuacja rozgrywki
-	void changeLanguage(); // zmiana jêzyka gry
+	void changeLanguage(); // zmiana jêzyka
 	void credits(); // o autorze
-	void logo(); // wypisane logo gry
+	void logo(); // wypisane logo
 	void endGame(); // koniec rozgrywki
-	void test();
-	void end() { this->playing = false; }
-	void setCurrentLocation(Location* location) { this->ptrCurrentLocation = location; }
+	void test(); // do testów
+	void end() { this->playing = false; } // zakoñczenie dzia³ania
+	void setCurrentLocation(Location* location) { this->ptrCurrentLocation = location; } // ustawienie aktualnej lokacji
 
 	inline bool getPlaying() const { return this->playing; }
 	inline int getLang() const { return this->gameLang; }

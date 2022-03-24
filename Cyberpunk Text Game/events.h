@@ -1,23 +1,17 @@
 #pragma once
-#include "game.h"
 #include <map>
+#include "game.h"
 
 class Event
 {
 public:
-	static void initHero();
-	static void initFractionsNpcsAndLocations();
-	static void initItems();
-	static void initQuests();
-	static void initAll();
-
 	static void darkAlley();
 	static void street();
 	static void gunShop();
 	static void nightclub();
 
-	static void heroDeath(); // ekran mierci
-	static void loadingFiles(); // ³adowanie plikw
+	static void heroDeath(); // ekran œmierci
+	static void loadingFiles(); // ³adowanie plików
 	static void gameOver(); // koniec gry
 
 private:
@@ -25,18 +19,18 @@ private:
 	static void darkAlleyCrossroads();
 	static void prologue();
 	static void storyIntroduction();
-	static void wakeUpAloneInDarkAlley();
-	static void inSeaOfRubbish();
+	static void wakeUpInDarkAlley();
+	static void rubbishSearch();
 	static void outOfTheAlley();
-	static void conversationWithHomeless();
+	static void dialogueWithBob();
 	//	Ulica
 	static void streetCrossroads();
-	static void viewOfAmnesia();
-	static void heroMeetSecurityGuards();
-	static void heroMeetsPolicemans();
+	static void lookAtAmnesia();
+	static void meetingWithSecurityGuards();
+	static void meetingWithPolicemans();
 	//	Sklep z broni¹
 	static void gunShopCrossroads();
-	static void heroMeetGunStore();
+	static void encounterGunStore();
 	static void enterGunShop();
 	static void zedTrade();
 	static void buyPistol();
@@ -57,3 +51,6 @@ private:
 	static void dialogueWithVincent();
 	static void vincentResurrection();
 };
+
+extern bool darkAlleyWasVisited, streetWasVisited, gunShopWasVisited, nightclubWasVisited, bobRecommendsZed, zedKnowsAboutBobAndZed, heroIsOnDanceFloor, heroIsAtBar, heroKnowsVincentCode;
+extern int heroChoice, optionNr;

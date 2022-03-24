@@ -153,6 +153,7 @@
     <ClCompile Include="game.cpp" />
     <ClCompile Include="npc.cpp" />
     <ClCompile Include="quest.cpp" />
+    <ClCompile Include="scenes.cpp" />
     <ClCompile Include="weapon.cpp" />
   </ItemGroup>
   <ItemGroup>
