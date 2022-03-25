@@ -3,7 +3,7 @@
 #include "fraction.h"
 #include "item.h"
 #include "weapon.h"
-#include "armor.h"
+#include "clothes.h"
 #include "hero.h"
 #include "npc.h"
 #include "quest.h"

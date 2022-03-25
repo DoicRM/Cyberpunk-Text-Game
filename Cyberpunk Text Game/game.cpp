@@ -63,10 +63,9 @@ void Game::selectLanguage()
         std::cin >> this->gameLang;
 
         if (this->gameLang != en && this->gameLang != pl) Logger::error("Invalid value of 'gameLang'", "Game::selectLanguage");
+        else if (getLang() == en) Logger::out("Game language is English", "Game::selectLanguage");
+        else if (getLang() == pl) Logger::out("Game language is Polish", "Game::selectLanguage");
     }
-
-    if (getLang() == en) Logger::out("Game language is English", "Game::selectLanguage");
-    else if (getLang() == pl) Logger::out("Game language is Polish", "Game::selectLanguage");
 
     Function::clearScreen();
 }

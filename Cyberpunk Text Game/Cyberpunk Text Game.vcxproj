@@ -140,7 +140,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="armor.cpp" />
+    <ClCompile Include="clothes.cpp" />
     <ClCompile Include="events.cpp" />
     <ClCompile Include="fraction.cpp" />
     <ClCompile Include="hero.cpp" />
@@ -157,7 +157,7 @@
     <ClCompile Include="weapon.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="armor.h" />
+    <ClInclude Include="clothes.h" />
     <ClInclude Include="enums.h" />
     <ClInclude Include="events.h" />
     <ClInclude Include="fraction.h" />
