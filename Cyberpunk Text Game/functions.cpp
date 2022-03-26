@@ -52,6 +52,21 @@ void Function::showHeroAction(std::string text)
     std::cout << str << std::endl;
 }
 
+void Function::clearChoices()
+{
+    // TODO
+}
+
+void Function::addChoice()
+{
+    // TODO
+}
+
+void Function::showChoices()
+{
+    // TODO
+}
+
 // Zmiana koloru tekstu i t³a konsoli
 void Function::changeConsoleColor(int color)
 {

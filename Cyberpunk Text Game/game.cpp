@@ -18,7 +18,7 @@ Game::~Game()
 void Game::run()
 {
     Logger::out("Function start", "Game::run");
-    Function::nameGame("CYBERPUNK Text Game v.1.0");
+    Function::nameGame("Nocturnal - v.1.0");
     Function::initSpecialChars("polish");
 
     while (this->getPlaying())
@@ -40,6 +40,7 @@ void Game::init()
     Location::initLocations();
     Item::initItems();
     Weapon::initWeapons();
+    Clothes::initClothes();
     Quest::initQuests();
     Function::initHeroEQ();
     Function::initQuestsList();

@@ -32,6 +32,11 @@ public:
 	// wyœwietlanie akcji gracza - (opis)
 	static void showHeroAction(std::string text);
 
+	// Decyzje
+	static void clearChoices();
+	static void addChoice();
+	static void showChoices();
+
 	// Zmiana koloru tekstu i t³a konsoli
 	//	1 czarny tekst na czarnym tle
 	//	1 ciemno niebieski tekst na czarnym tle
