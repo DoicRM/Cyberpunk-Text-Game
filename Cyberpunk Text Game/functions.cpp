@@ -1,5 +1,8 @@
 #include "functions.h"
 
+std::map <int, std::string> Function::choices;
+int choiceNr = 0;
+
 // Powolne wypisywanie kodu
 void Function::write(const std::string& text, int speed)
 {
@@ -29,7 +32,6 @@ void Function::writeDialogue(std::string text, int speed)
     changeConsoleColor();
 }
 
-
 void Function::actionOption(int nr, std::string text)
 {
     std::string str = "\t[" + std::to_string(nr) + "] " + text;
@@ -54,17 +56,40 @@ void Function::showHeroAction(std::string text)
 
 void Function::clearChoices()
 {
-    // TODO
+    //Logger::out("Value of choice before reset: " + std::to_string(choiceNr), "Function::clearChoices");
+    choices.clear();
+    choiceNr = 0;
+    //Logger::out("Value of choice after reset: " + std::to_string(choiceNr), "Function::clearChoices");
 }
 
-void Function::addChoice()
+void Function::addChoice(std::string description)
 {
-    // TODO
+    choices[choiceNr] = description;
+    choiceNr += 1;
+}
+
+void Function::removeChoice(int index)
+{
+    choices.erase(int(index));
+    // TODO: przetasowaæ mapê i zaktualizowaæ wartoœci kluczy po usuniêciu jednego z nich
 }
 
 void Function::showChoices()
 {
-    // TODO
+    std::map<int, std::string>::size_type choicesSize;
+    choicesSize = choices.size();
+
+    for (int j = 0; j < choices.size(); j++)
+    {
+        Function::actionOption(j+1, choices[j]);
+    }
+
+    Function::write("\t> ", 25);
+}
+
+void Function::selectChoice(int nr)
+{
+    std::cin >> nr;
 }
 
 // Zmiana koloru tekstu i t³a konsoli

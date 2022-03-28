@@ -9,6 +9,7 @@
 #include <windows.h>
 #include <locale.h>
 #include <string>
+#include <map>
 #include "enums.h"
 #include "logger.h"
 
@@ -34,8 +35,10 @@ public:
 
 	// Decyzje
 	static void clearChoices();
-	static void addChoice();
+	static void addChoice(std::string text);
+	static void removeChoice(int index);
 	static void showChoices();
+	static void selectChoice(int nr);
 
 	// Zmiana koloru tekstu i t³a konsoli
 	//	1 czarny tekst na czarnym tle
@@ -67,6 +70,8 @@ public:
 
 	// zatrzymanie gry
 	static void pauseGame();
+
+	static std::map <int, std::string> choices;
 };
 
 

@@ -56,11 +56,10 @@ void Game::selectLanguage()
         std::cout << std::endl;
         Function::write("\tSelect your language: ", 25);
         std::cout << std::endl;
-        Function::write("\t[1] EN", 25);
-        std::cout << std::endl;
-        Function::write("\t[2] PL", 25);
-        std::cout << std::endl;
-        Function::write("\t> ", 25);
+        Function::clearChoices();
+        Function::addChoice("EN");
+        Function::addChoice("PL");
+        Function::showChoices();
         std::cin >> this->gameLang;
 
         if (this->gameLang != en && this->gameLang != pl) Logger::error("Invalid value of 'gameLang'", "Game::selectLanguage");
@@ -68,6 +67,7 @@ void Game::selectLanguage()
         else if (getLang() == pl) Logger::out("Game language is Polish", "Game::selectLanguage");
     }
 
+    Function::clearChoices();
     Function::clearScreen();
 }
 
@@ -137,31 +137,23 @@ void Game::mainMenu()
 
     if (this->getLang() == pl)
     {
-        Function::write("\t[1] Nowa gra", 25);
-        std::cout << std::endl;
-        Function::write("\t[2] Kontynuuj grê", 25);
-        std::cout << std::endl;
-        Function::write("\t[3] Zmieñ jêzyk", 25);
-        std::cout << std::endl;
-        Function::write("\t[4] Napisy", 25);
-        std::cout << std::endl;
-        Function::write("\t[5] WyjdŸ z gry", 25);
-        std::cout << std::endl;
-        Function::write("\t> ", 15);
+        Function::clearChoices();
+        Function::addChoice("Nowa gra");
+        Function::addChoice("Kontynuuj grê");
+        Function::addChoice("Zmieñ jêzyk");
+        Function::addChoice("Napisy");
+        Function::addChoice("WyjdŸ z gry");
+        Function::showChoices();
     }
     else
     {
-        Function::write("\t[1] New game", 25);
-        std::cout << std::endl;
-        Function::write("\t[2] Continue game", 25);
-        std::cout << std::endl;
-        Function::write("\t[3] Change language", 25);
-        std::cout << std::endl;
-        Function::write("\t[4] Credits", 25);
-        std::cout << std::endl;
-        Function::write("\t[5] Quit game", 25);
-        std::cout << std::endl;
-        Function::write("\t> ", 15);
+        Function::clearChoices();
+        Function::addChoice("New game");
+        Function::addChoice("Continue game");
+        Function::addChoice("Change language");
+        Function::addChoice("Credits");
+        Function::addChoice("Quit game");
+        Function::showChoices();
     }
 
     do
@@ -170,18 +162,23 @@ void Game::mainMenu()
 
         switch (this->menu) {
         case 1:
+            Function::clearChoices();
             newGame();
             break;
         case 2:
+            Function::clearChoices();
             continueGame();
             break;
         case 3:
+            Function::clearChoices();
             changeLanguage();
             break;
         case 4:
+            Function::clearChoices();
             credits();
             break;
         case 5:
+            Function::clearChoices();
             endGame();
             break;
         }
@@ -232,11 +229,10 @@ void Game::changeLanguage()
         else if (this->getLang() == pl) Function::write("\tWybierz swój jêzyk: ", 25);
 
         std::cout << std::endl;
-        Function::write("\t[1] EN", 25);
-        std::cout << std::endl;
-        Function::write("\t[2] PL", 25);
-        std::cout << std::endl;
-        Function::write("\t> ", 25);   
+        Function::clearChoices();
+        Function::addChoice("EN");
+        Function::addChoice("PL");
+        Function::showChoices();
         std::cin >> change;
 
         if (change != en && change != pl) Logger::error("Invalid value of 'gameLang'", "Game::changeLanguage");
@@ -247,6 +243,7 @@ void Game::changeLanguage()
     if (this->getLang() == en) Logger::out("Game language is English", "Game::changeLanguage");
     else if (this->getLang() == pl) Logger::out("Game language is Polish", "Game::changeLanguage");
 
+    Function::clearChoices();
     Function::clearScreen();
     logo();
     mainMenu();
@@ -265,11 +262,10 @@ void Game::endGame()
             std::cout << std::endl;
             Function::write("\tJesteœ pewien, ¿e chcesz wyjœæ z gry?", 25);
             std::cout << std::endl;
-            Function::write("\t[1] Tak", 25);
-            std::cout << std::endl;
-            Function::write("\t[2] Nie", 25);
-            std::cout << std::endl;
-            Function::write("\t> ", 15);
+            Function::clearChoices();
+            Function::addChoice("Tak");
+            Function::addChoice("Nie");
+            Function::showChoices();
         }
         else
         {
@@ -278,20 +274,21 @@ void Game::endGame()
             std::cout << std::endl;
             Function::write("\tAre you sure you want to end the game?", 25);
             std::cout << std::endl;
-            Function::write("\t[1] Yes", 25);
-            std::cout << std::endl;
-            Function::write("\t[2] No", 25);
-            std::cout << std::endl;
-            Function::write("\t> ", 15);
+            Function::clearChoices();
+            Function::addChoice("Yes");
+            Function::addChoice("No");
+            Function::showChoices();
         }
 
         std::cin >> this->choice;
 
         switch (this->choice) {
         case 1:
+            Function::clearChoices();
             end();
             break;
         case 2:
+            Function::clearChoices();
             Function::clearScreen();
             Sleep(500); 
             logo();
