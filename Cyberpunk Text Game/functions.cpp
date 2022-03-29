@@ -39,13 +39,6 @@ void Function::actionOption(int nr, std::string text)
     std::cout << std::endl;
 }
 
-void Function::dialogueOption(int nr, std::string text)
-{
-    std::string str = "\t[" + std::to_string(nr) + "] '" + text + "'";
-    Function::write(str, 25);
-    std::cout << std::endl;
-}
-
 void Function::showHeroAction(std::string text)
 {
     std::cout << std::endl;
@@ -68,16 +61,11 @@ void Function::addChoice(std::string description)
     choiceNr += 1;
 }
 
-void Function::removeChoice(int index)
-{
-    choices.erase(int(index));
-    // TODO: przetasowaæ mapê i zaktualizowaæ wartoœci kluczy po usuniêciu jednego z nich
-}
-
 void Function::showChoices()
 {
     std::map<int, std::string>::size_type choicesSize;
     choicesSize = choices.size();
+    Function::changeConsoleColor();
 
     for (int j = 0; j < choices.size(); j++)
     {

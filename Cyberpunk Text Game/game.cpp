@@ -49,6 +49,7 @@ void Game::init()
 void Game::selectLanguage()
 {
     Logger::out("Function start", "Game::selectLanguage");
+    Function::changeConsoleColor();
 
     while (this->gameLang != en && this->gameLang != pl)
     {

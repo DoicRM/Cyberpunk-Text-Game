@@ -28,15 +28,12 @@ public:
 
 	// tworzenie akcji gracza - (numer, opis)
 	static void actionOption(int nr, std::string text);
-	// tworzenie dialogu gracza - (numer, opis)
-	static void dialogueOption(int nr, std::string text);
 	// wyœwietlanie akcji gracza - (opis)
 	static void showHeroAction(std::string text);
 
 	// Decyzje
 	static void clearChoices();
-	static void addChoice(std::string text);
-	static void removeChoice(int index);
+	static void addChoice(std::string description);
 	static void showChoices();
 	static void selectChoice(int nr);
 

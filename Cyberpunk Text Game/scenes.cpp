@@ -17,15 +17,12 @@ void Event::darkAlleyCrossroads()
         Function::writeNarration("\tWhen you enter the alley, you hear a familiar voice.");
         std::cout << std::endl;
         Function::writeDialogue("\t- 'It's you again. Why don't you tell me something for one this time?'");
-        std::cout << std::endl;
-        std::cout << "" << std::endl;
-        //-------------------------------------------------------------
-        // Decyzja
-        Function::actionOption(optionNr, "Stop and finally find out what he wants.");
-        optionNr++;
-        Function::actionOption(optionNr, "Ignore him again.");
-        optionNr = 1;
-        Function::write("\t> ", 15);
+        std::cout << std::endl << std::endl;
+
+        Function::clearChoices();
+        Function::addChoice("Stop and finally find out what he wants.");
+        Function::addChoice("Ignore him again.");
+        Function::showChoices();
 
         while (true)
         {
@@ -57,7 +54,6 @@ void Event::darkAlleyCrossroads()
                 break;
             }
         }
-        //-------------------------------------------------------------
     }
     else
     {
@@ -71,16 +67,11 @@ void Event::darkAlleyCrossroads()
         Sleep(1500);
         std::cout << std::endl;
         Function::writeNarration("\tWho knows, you might find something interesting there...");
-        std::cout << std::endl;
-        std::cout << "" << std::endl;
-        //-------------------------------------------------------------
-        // Decyzja
-        Function::changeConsoleColor();
-        Function::actionOption(optionNr, "Search the area for something valuable.");
-        optionNr++;
-        Function::actionOption(optionNr, "Go out of the alley.");
-        optionNr = 1;
-        Function::write("\t> ", 15);
+        std::cout << std::endl << std::endl;
+        Function::clearChoices();
+        Function::addChoice("Search the area for something valuable.");
+        Function::addChoice("Go out of the alley.");
+        Function::showChoices();
 
         while (true)
         {
@@ -130,7 +121,6 @@ void Event::darkAlleyCrossroads()
                 break;
             }
         }
-        //-------------------------------------------------------------
     }
     else
     {
@@ -144,36 +134,32 @@ void Event::darkAlleyCrossroads()
 void Event::prologue()
 {
     Logger::out("Function start", "Event::prologue");
-    //if (Game().getLang() == en)
-    //{
-    std::cout << "" << std::endl;
+
+    std::cout << std::endl;
     Function::write("\tPrologue");
     Sleep(2000);
-    std::cout << std::endl;
-    std::cout << "" << std::endl;
+    std::cout << std::endl << std::endl;
     Function::write("\tREQUIEM FOR A DREAM");
     Sleep(5000);
     Function::clearScreen();
     storyIntroduction();
-    /* }
-    else
-    {
-        cout << "" << endl;
+
+    /*
+        std::cout << std::endl;
         Function::write("\tProlog");
         Sleep(2000);
-        cout << endl;
-        cout << "" << endl;
+        std::cout << std::endl << std::endl;
         Function::write("\tREQUIEM DLA MARZEÑ");
         Sleep(5000);
-    }
+        Function::clearScreen();
+        storyIntroduction();
     */
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::storyIntroduction()
 {
     Logger::out("Function start", "Event::storyIntroduction");
-    //if (Game().getLang() == en)
-    //{
+
     std::cout << "" << std::endl;
     Function::writeNarration("\tIt's 2050.");
     Sleep(1000);
@@ -193,12 +179,10 @@ void Event::storyIntroduction()
     Function::writeDialogue("\tFalling and falling for what feels like hours...", 75);
     Sleep(3000);
     Function::clearScreen();
-    //cout << endl;
-    std::cout << "" << std::endl;
+    std::cout << std::endl;
     wakeUpInDarkAlley();
-    /* }
-    else
-    {
+
+    /* 
         Function::clearScreen();
         Sleep(2000);
         std::cout << "" << std::endl;
@@ -221,14 +205,13 @@ void Event::storyIntroduction()
         Sleep(2500);
         std::cout << std::endl;
         std::cout << "" << std::endl;
-    }*/
+    */
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::wakeUpInDarkAlley()
 {
     Logger::out("Function start", "Event::wakeUpInDarkAlley");
-    //if (Game().getLang() == en)
-    //{
+
     darkAlleyWasVisited = true;
     Sleep(2000);
     Function::writeNarration("\tYou wake up dazed from a restless slumber.");
@@ -252,49 +235,41 @@ void Event::wakeUpInDarkAlley()
     Sleep(2500);
     std::cout << std::endl;
     Function::writeNarration("\tWho knows, you might find something interesting there...");
-    std::cout << std::endl;
-    std::cout << "" << std::endl;
-    //-------------------------------------------------------------
-    // Decyzja
-    Function::actionOption(optionNr, "Search the area for something valuable.");
-    optionNr++;
-    Function::actionOption(optionNr, "Find the exit from the alley.");
-    optionNr = 1;
-    Function::write("\t> ", 15);
-    /* }
-    else
-    {
+    std::cout << std::endl << std::endl;
+
+    Function::clearChoices();
+    Function::addChoice("Search the area for something valuable.");
+    Function::addChoice("Find the exit from the alley.");
+    Function::showChoices();
+    /*
         Function::writeNarration("\tBudzisz siê oszo³omiony z niespokojnej drzemki.");
         Sleep(1000);
         Function::writeNarration(" To by³ znowu ten sam sen...");
         Sleep(1500);
-        cout << endl;
+        std::cout << std::endl;
         Function::writeNarration("\tZnajdujesz siê gdzieœ w ciemnym zau³ku. Nad twoj¹ g³ow¹, wœród smogowej mg³y, niczym wyrwane ze snu, wznosz¹ siê monumentalne drapacze chmur wielkich korporacji.");
         Sleep(1000);
         Function::writeNarration(" Ich boski majestat bije ciê po oczach.");
         Sleep(2500);
-        cout << endl;
+        std::cout << std::endl;
         Function::writeNarration("\tSerce bije ci tak mocno, ¿e tylko szczypi¹cy dotyk wiatru chroni ciê przed nag³ym atakiem serca.");
         Sleep(500);
         Function::writeNarration(" Nagle przez twoje cia³o przechodzi fala dreszczy, zaczynasz trz¹œæ siê jak osika i uœwiadamiasz sobie, ¿e le¿ysz na legowisku zrobionym ze starych gazet.");
         Sleep(2000);
-        cout << endl;
+        std::cout << std::endl;
         Function::writeNarration("\tKiedy podnosisz siê z ziemi, zauwa¿asz wokó³ siebie morze œmieci.");
         Sleep(1000);
         Function::writeNarration(" Jest pe³ne kartonów, starych czêœci mechanicznych i Bóg wie czego jeszcze.");
         Sleep(1500);
-        cout << endl;
+        std::cout << std::endl;
         Function::writeNarration("\tKto wie, mo¿e znajdziesz tam coœ interesuj¹cego...");
-        cout << endl;
-        cout << "" << endl;
-        //-------------------------------------------------------------
-        // Decyzja
-        Function::actionOption(optionNr, "Rozejrzyj siê po okolicy w poszukiwaniu czegoœ cennego."); // Opcja nr 1
-        optionNr++;
-        Function::actionOption(optionNr, "ZnajdŸ wyjœcie z zau³ka."); // Opcja nr 2
-        optionNr = 1;
-        Function::write("\t> ", 15);
-    }*/
+        std::cout << std::endl << std::endl;
+
+        Function::clearChoices();
+        Function::addChoice("Rozejrzyj siê po okolicy w poszukiwaniu czegoœ cennego.");
+        Function::addChoice("ZnajdŸ wyjœcie z zau³ka.");
+        Function::showChoices();
+    */
 
     while (true)
     {
@@ -315,7 +290,6 @@ void Event::wakeUpInDarkAlley()
             break;
         }
     }
-    //-------------------------------------------------------------
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::rubbishSearch()
@@ -377,15 +351,12 @@ void Event::outOfTheAlley()
     Function::writeNarration("\tYou are getting closer and closer to your goal when from the right, from behind a veil of\n\tshadows, a low, not very pleasant voice belonging to a man speaks up.");
     std::cout << std::endl;
     Function::writeDialogue("\t- 'Hey, kid. Wait for a second.'");
-    std::cout << std::endl;
-    std::cout << "" << std::endl;
-    //-------------------------------------------------------------
-    // Decyzja
-    Function::actionOption(optionNr, "Stop and find out what he wants.");
-    optionNr++;
-    Function::actionOption(optionNr, "Ignore him and keep walking.");
-    optionNr = 1;
-    Function::write("\t> ", 15);
+    std::cout << std::endl << std::endl;
+
+    Function::clearChoices();
+    Function::addChoice("Stop and find out what he wants.");
+    Function::addChoice("Ignore him and keep walking.");
+    Function::showChoices();
 
     while (true)
     {
@@ -445,17 +416,13 @@ void Event::dialogueWithBob()
     Function::writeDialogue(" What are you doin' here?'");
     std::cout << std::endl;
     Function::writeNarration("\tThe shadows in front of you, begin to ripple when your caller stands up.");
-    //-------------------------------------------------------------
-    // Decyzja
-    std::cout << std::endl;
-    std::cout << "" << std::endl;
-    Function::dialogueOption(optionNr, "I'm not looking for trouble.");
-    optionNr++;
-    Function::dialogueOption(optionNr, "I'm just looking around. Where are we actually?");
-    optionNr++;
-    Function::dialogueOption(optionNr, "It's not your business.");
-    optionNr = 1;
-    Function::write("\t> ", 15);
+    std::cout << std::endl << std::endl;
+
+    Function::clearChoices();
+    Function::addChoice("'I'm not looking for trouble.'");
+    Function::addChoice("'I'm just looking around. Where are we actually?'");
+    Function::addChoice("'It's not your business.'");
+    Function::showChoices();
 
     while (true)
     {
@@ -550,14 +517,12 @@ void Event::streetCrossroads()
     std::cout << std::endl;
     Function::writeNarration("\tOnce again you are on a street bathed in nighttime darkness.");
     std::cout << std::endl << std::endl;
-    Function::changeConsoleColor();
-    Function::actionOption(optionNr, "Visit: " + Location::locations["DarkAlley"].getName());
-    optionNr++;
-    Function::actionOption(optionNr, "Visit: " + Location::locations["Nightclub"].getName());
-    optionNr++;
-    Function::actionOption(optionNr, "Visit: " + Location::locations["GunShop"].getName());
-    optionNr = 1;
-    Function::write("\t> ", 15);
+
+    Function::clearChoices();
+    Function::addChoice("Visit: " + Location::locations["DarkAlley"].getName());
+    Function::addChoice("Visit: " + Location::locations["Nightclub"].getName());
+    Function::addChoice("Visit: " + Location::locations["GunShop"].getName());
+    Function::showChoices();
 
     while (true)
     {
@@ -607,15 +572,11 @@ void Event::lookAtAmnesia()
         Function::writeNarration(" Something smells here, it's probably trouble...");
     }
 
-    std::cout << std::endl;
-    //-------------------------------------------------------------
-    // Decyzja
-    std::cout << "" << std::endl;
-    Function::actionOption(optionNr, "Come closer and see what it's all about.");
-    optionNr++;
-    Function::actionOption(optionNr, "Take a look around the area.");
-    optionNr = 1;
-    Function::write("\t> ", 15);
+    std::cout << std::endl << std::endl;
+    Function::clearChoices();
+    Function::addChoice("Come closer and see what it's all about.");
+    Function::addChoice("Take a look around the area.");
+    Function::showChoices();
 
     while (true)
     {
@@ -659,16 +620,12 @@ void Event::encounterGunStore()
         Function::writeNarration(" Could it be that the famous gun store managed by Bob's friend?");
     }
 
-    std::cout << std::endl;
-    Function::changeConsoleColor();
-    //-------------------------------------------------------------
-    // Decyzja
-    std::cout << "" << std::endl;
-    Function::actionOption(optionNr, "Go inside.");
-    optionNr++;
-    Function::actionOption(optionNr, "Turn back.");
-    optionNr = 1;
-    Function::write("\t> ", 15);
+    std::cout << std::endl << std::endl;
+
+    Function::clearChoices();
+    Function::addChoice("Go inside.");
+    Function::addChoice("Turn back.");
+    Function::showChoices();
 
     while (true)
     {
@@ -806,16 +763,12 @@ void Event::meetingWithPolicemans()
     Function::writeDialogue("\t- 'If you're so pure, get in.'");
     std::cout << std::endl;
     Function::writeNarration("\tThe bouncer points to the door behind him.");
-    std::cout << std::endl;
-    //-------------------------------------------------------------
-    // Decyzja
-    Function::changeConsoleColor();
-    std::cout << "" << std::endl;
-    Function::actionOption(optionNr, "Go inside.");
-    optionNr++;
-    Function::actionOption(optionNr, "Turn back.");
-    optionNr = 1;
-    Function::write("\t> ", 15);
+    std::cout << std::endl << std::endl;
+
+    Function::clearChoices();
+    Function::addChoice("Go inside.");
+    Function::addChoice("Turn back.");
+    Function::showChoices();
 
     while (true)
     {
@@ -823,6 +776,7 @@ void Event::meetingWithPolicemans()
 
         if (heroChoice == 1)
         {
+            Function::clearChoices();
             Function::clearScreen();
             Function::showHeroAction("Go inside.");
             std::cout << std::endl;
@@ -831,6 +785,7 @@ void Event::meetingWithPolicemans()
         }
         else if (heroChoice == 2)
         {
+            Function::clearChoices();
             Function::clearScreen();
             Function::showHeroAction("Turn back.");
             std::cout << std::endl;
@@ -900,26 +855,19 @@ void Event::dialogueWithZed()
 
     while (true)
     {
-        //-------------------------------------------------------------
-        // Decyzja
-        Function::changeConsoleColor();
-        std::cout << "" << std::endl;
+        std::cout << std::endl;
 
-        Function::dialogueOption(optionNr, "What do you have?");
-        optionNr++;
-        Function::dialogueOption(optionNr, "How's business going?");
-        optionNr++;
+        Function::clearChoices();
+        Function::addChoice("What do you have?");
+        Function::addChoice("How's business going?");
 
         if (bobRecommendsZed && !zedKnowsAboutBobAndZed)
         {
-            Function::dialogueOption(optionNr, "You're Zed? I come from Bob.");
-            optionNr++;
+            Function::addChoice("You're Zed? I come from Bob.");
         }
 
-        Function::dialogueOption(optionNr, "I have to go...");
-        optionNr = 1;
-        Function::write("\t> ", 15);
-
+        Function::addChoice("I have to go...");
+        Function::showChoices();
         std::cin >> heroChoice;
 
         if (heroChoice == 1)
@@ -1017,14 +965,12 @@ void Event::zedTrade()
             Sleep(1500);
             Function::writeDialogue(" Tell me, what do you like?'");
             // Decyzja
-            std::cout << std::endl;
-            Function::changeConsoleColor();
-            std::cout << "" << std::endl;
-            Function::actionOption(optionNr, "Buy: pistol (250 $).");
-            optionNr++;
-            Function::dialogueOption(optionNr, "I have made up my mind.");
-            optionNr = 1;
-            Function::write("\t> ", 15);
+            std::cout << std::endl << std::endl;
+
+            Function::clearChoices();
+            Function::addChoice("Buy: pistol (250 $).");
+            Function::addChoice("'I have made up my mind.'");
+            Function::showChoices();
 
             while (true)
             {
@@ -1049,14 +995,11 @@ void Event::zedTrade()
         }
         else
         {
-            // Decyzja
-            Function::changeConsoleColor();
-            std::cout << "" << std::endl;
-            Function::actionOption(optionNr, "Buy: pistol (250 $).");
-            optionNr++;
-            Function::dialogueOption(optionNr, "I have made up my mind.");
-            optionNr = 1;
-            Function::write("\t> ", 15);
+            std::cout << std::endl;
+            Function::clearChoices();
+            Function::addChoice("Buy: pistol (250 $).");
+            Function::addChoice("'I have made up my mind.'");
+            Function::showChoices();
 
             while (true)
             {
@@ -1065,7 +1008,6 @@ void Event::zedTrade()
                 if (heroChoice == 1)
                 {
                     buyPistol();
-
                     break;
                 }
                 else if (heroChoice == 2)
@@ -1157,16 +1099,13 @@ void Event::nightclubCrossroads()
     std::cout << std::endl;
     Function::writeNarration("\tYou enter from a fairly well-lit street into a slightly darkened nightclub, trembling with colour.");
     std::cout << std::endl << std::endl;
-    Function::changeConsoleColor();
-    Function::actionOption(optionNr, "Go to the dance floor.");
-    optionNr++;
-    Function::actionOption(optionNr, "Go to the bar.");
-    optionNr++;
-    Function::actionOption(optionNr, "Go upstairs.");
-    optionNr++;
-    Function::actionOption(optionNr, "Visit: " + Location::locations["Street"].getName());
-    optionNr = 1;
-    Function::write("\t> ", 15);
+
+    Function::clearChoices();
+    Function::addChoice("Go to the dance floor.");
+    Function::addChoice("Go to the bar.");
+    Function::addChoice("Go upstairs.");
+    Function::addChoice("Visit: " + Location::locations["Street"].getName());
+    Function::showChoices();
 
     while (true)
     {
@@ -1175,13 +1114,13 @@ void Event::nightclubCrossroads()
         if (heroChoice == 1)
         {
             std::cout << std::endl;
-            darkAlley();
+            clubDanceFloor();
             break;
         }
         else if (heroChoice == 2)
         {
             std::cout << std::endl;
-            nightclub();
+            clubBar();
             break;
         }
         else if (heroChoice == 3)
@@ -1197,7 +1136,6 @@ void Event::nightclubCrossroads()
             break;
         }
     }
-    //-------------------------------------------------------------
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::enterClub()
@@ -1212,16 +1150,12 @@ void Event::enterClub()
     Function::writeNarration(" Disco balls hung from the ceiling net everything around with streaks of multi-colored light.");
     Sleep(1000);
     Function::writeNarration(" Next to the dance floor is a bar, and behind it are several mechanically streamlined bartenders.");
-    std::cout << std::endl;
-    //-------------------------------------------------------------
-    // Decyzja
-    Function::changeConsoleColor();
-    std::cout << "" << std::endl;
-    Function::actionOption(optionNr, "Go dance on the dance floor.");
-    optionNr++;
-    Function::actionOption(optionNr, "Go to the bar.");
-    optionNr = 1;
-    Function::write("\t> ", 15);
+    std::cout << std::endl << std::endl;
+
+    Function::clearChoices();
+    Function::addChoice("Go dance on the dance floor.");
+    Function::addChoice("Go to the bar.");
+    Function::showChoices();
 
     while (true)
     {
@@ -1240,7 +1174,6 @@ void Event::enterClub()
             break;
         }
     }
-    //-------------------------------------------------------------
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::clubDanceFloor()
@@ -1262,17 +1195,13 @@ void Event::clubDanceFloor()
         Function::writeNarration(" You are doing quite well when an attractive girl appears in\n\tfront of you. She's wearing a see-through, brightly coloured dress.");
         Sleep(1500);
         Function::writeNarration(" Is it a coincidence\n\tthat she has just appeared and is dancing so close to you?");
-        //-------------------------------------------------------------
-        // Decyzja
-        Function::changeConsoleColor();
         std::cout << std::endl << std::endl;
-        Function::dialogueOption(optionNr, "What do you want?"); // Opcja nr 1
-        optionNr++;
-        Function::dialogueOption(optionNr, "Hey, baby."); // Opcja nr 2
-        optionNr++;
-        Function::actionOption(optionNr, "Keep dancing with no words."); // Opcja nr 3
-        optionNr = 1;
-        Function::write("\t> ", 15);
+
+        Function::clearChoices();
+        Function::addChoice("'What do you want?'");
+        Function::addChoice("'Hey, baby.'");
+        Function::addChoice("Keep dancing with no words.");
+        Function::showChoices();
 
         while (true)
         {
@@ -1311,7 +1240,7 @@ void Event::clubDanceFloor()
                 break;
             }
         }
-        //-------------------------------------------------------------
+
         miaMeeting();
     }
     else
@@ -1333,18 +1262,13 @@ void Event::clubBar()
     Function::writeNarration("\tWith a slow step, you approach the counter, settle comfortably on a stool, and lift your gaze to the barman in front of you.");
     std::cout << std::endl;
     Function::writeDialogue("\t- 'What's for you?'");
-    std::cout << std::endl;
-    //-------------------------------------------------------------
-    // Decyzja
-    Function::changeConsoleColor();
-    std::cout << "" << std::endl;
-    Function::dialogueOption(optionNr, "Give me anything.");
-    optionNr++;
-    Function::dialogueOption(optionNr, "Who's in charge?");
-    optionNr++;
-    Function::dialogueOption(optionNr, "Bye.");
-    optionNr = 1;
-    Function::write("\t> ", 15);
+    std::cout << std::endl << std::endl;
+
+    Function::clearChoices();
+    Function::addChoice("'Give me anything.'");
+    Function::addChoice("'Who's in charge?'");
+    Function::addChoice("'Bye.'");
+    Function::showChoices();
 
     while (true)
     {
@@ -1387,21 +1311,17 @@ void Event::clubBar()
             break;
         }
     }
-    //-------------------------------------------------------------
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::miaMeeting()
 {
     Logger::out("Function start", "Event::miaMeeting");
-    //-------------------------------------------------------------
-    // Decyzja
-    Function::changeConsoleColor();
+
     std::cout << std::endl << std::endl;
-    Function::dialogueOption(optionNr, "What is it about?");
-    optionNr++;
-    Function::actionOption(optionNr, "Be silent and let her speak.");
-    optionNr = 1;
-    Function::write("\t> ", 15);
+    Function::clearChoices();
+    Function::addChoice("'What is it about?'");
+    Function::addChoice("Be silent and let her speak.");
+    Function::showChoices();
 
     while (true)
     {
@@ -1459,15 +1379,12 @@ void Event::clubUpstairs()
 {
     Logger::out("Function start", "Event::clubUpstairs");
     Function::writeNarration("\n\tYou go up a winding staircase. At the end of a short banister you will see a closed door guarded by another bulky individual.");
-    //-------------------------------------------------------------
-    // Decyzja
-    Function::changeConsoleColor();
     std::cout << std::endl << std::endl;
-    Function::actionOption(optionNr, "Come closer.");
-    optionNr++;
-    Function::actionOption(optionNr, "Go back downstairs.");
-    optionNr = 1;
-    Function::write("\t> ", 15);
+
+    Function::clearChoices();
+    Function::addChoice("Come closer.");
+    Function::addChoice("Go back downstairs.");
+    Function::showChoices();
 
     while (true)
     {
@@ -1504,27 +1421,20 @@ void Event::dialogueWithJet()
 {
     Logger::out("Function start", "Event::dialogueWithJet");
     int jetPoints = 0;
-    //-------------------------------------------------------------
-    // Decyzja
-    Function::changeConsoleColor();
     std::cout << std::endl << std::endl;
-    Function::dialogueOption(optionNr, "I want to pass.");
-    optionNr++;
-    Function::dialogueOption(optionNr, "What is behind that door?");
-    optionNr++;
+
+    Function::clearChoices();
+    Function::addChoice("'I want to pass.'");
+    Function::addChoice("'What is behind that door?'");
 
     if (Hero::heroes["Hero"].hasItem(&Item::items["Pistol"]))
     {
-        Function::actionOption(optionNr, "Kill him with a pistol.");
-        optionNr++;
-        Function::actionOption(optionNr, "Stun him with a pistol.");
-        optionNr++;
+        Function::addChoice("Kill him with a pistol.");
+        Function::addChoice("Stun him with a pistol.");
     }
 
-    Function::dialogueOption(optionNr, "It's time for me to go.");
-    optionNr++;
-    optionNr = 1;
-    Function::write("\t> ", 15);
+    Function::addChoice("It's time for me to go.");
+    Function::showChoices();
 
     while (true)
     {
@@ -1597,16 +1507,12 @@ void Event::vincentOffice()
 {
     Logger::out("Function start", "Event::vincentOffice");
     Function::writeNarration("\tYou enter the manager's office immersed in twilight. In the middle of the room stands a sizable desk, and on it are stacks of documents and computer. To the left of the entrance is a window to the street below. On the right you will notice a door to another room.");
-    std::cout << std::endl;
-    //-------------------------------------------------------------
-    // Decyzja
-    Function::changeConsoleColor();
-    std::cout << "" << std::endl;
-    Function::actionOption(optionNr, "Open the door and go into the other room.");
-    optionNr++;
-    Function::actionOption(optionNr, "Stay and search the office.");
-    optionNr = 1;
-    Function::write("\t> ", 15);
+    std::cout << std::endl << std::endl;
+
+    Function::clearChoices();
+    Function::addChoice("Open the door and go into the other room.");
+    Function::addChoice("Stay and search the office.");
+    Function::showChoices();
 
     while (true)
     {
@@ -1623,7 +1529,6 @@ void Event::vincentOffice()
             break;
         }
     }
-    //-------------------------------------------------------------
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::checkVincentDesk()
@@ -1651,13 +1556,12 @@ void Event::vincentHideoutCode()
         Function::writeNarration(" You have to look around the office though, whether you want to or not.");
     }
     else {
-        std::cout << std::endl;
-        Function::changeConsoleColor();
-        std::cout << "" << std::endl;
-        Function::actionOption(optionNr, "Use code '2021'.");
-        optionNr++;
-        Function::actionOption(optionNr, "Search the office.");
-        Function::write("\t> ", 15);
+        std::cout << std::endl << std::endl;
+
+        Function::clearChoices();
+        Function::addChoice("Use code '2021'.");
+        Function::addChoice("Search the office.");
+        Function::showChoices();
     }
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -1674,16 +1578,12 @@ void Event::vincentHideout()
     Sleep(2000);
     std::cout << std::endl;
     Function::writeNarration("\tCreeping up, you come closer. Your goal is within reach. The question is what will you do?");
-    std::cout << std::endl;
-    //-------------------------------------------------------------
-    // Decyzja
-    Function::changeConsoleColor();
-    std::cout << "" << std::endl;
-    Function::actionOption(optionNr, "Disconnect his consciousness from the neuronet. (Kill him)");
-    optionNr++;
-    Function::actionOption(optionNr, "Wait for his consciousness to leave the neuronet.");
-    optionNr = 1;
-    Function::write("\t> ", 15);
+    std::cout << std::endl << std::endl;
+
+    Function::clearChoices();
+    Function::addChoice("Disconnect his consciousness from the neuronet. (Kill him)");
+    Function::addChoice("Wait for his consciousness to leave the neuronet.");
+    Function::showChoices();
 
     while (true)
     {
@@ -1720,24 +1620,19 @@ void Event::vincentHideout()
             break;
         }
     }
-    //-------------------------------------------------------------
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::dialogueWithVincent()
 {
     Logger::out("Function start", "Event::dialogueWithVincent");
-    //-------------------------------------------------------------
-    // Decyzja
-    std::cout << std::endl;
-    Function::changeConsoleColor();
-    std::cout << "" << std::endl;
-    Function::dialogueOption(optionNr, "Die!");
-    optionNr++;
-    Function::dialogueOption(optionNr, "I don't want to fight with you.");
-    optionNr++;
-    Function::dialogueOption(optionNr, "Nyx wants you dead.");
-    optionNr = 1;
-    Function::write("\t> ", 15);
+
+    std::cout << std::endl << std::endl;
+
+    Function::clearChoices();
+    Function::addChoice("'Die!'");
+    Function::addChoice("'I don't want to fight with you.'");
+    Function::addChoice("'Nyx wants you dead.'");
+    Function::showChoices();
 
     while (true)
     {
@@ -1776,16 +1671,12 @@ void Event::dialogueWithVincent()
             break;
         }
     }
-    //-------------------------------------------------------------
-    // Decyzja
-    std::cout << std::endl;
-    Function::changeConsoleColor();
-    std::cout << "" << std::endl;
-    Function::dialogueOption(optionNr, "It doesn't matter.");
-    optionNr++;
-    Function::dialogueOption(optionNr, "Your girlfriend, Nyx.");
-    optionNr = 1;
-    Function::write("\t> ", 15);
+
+    std::cout << std::endl << std::endl;
+    Function::clearChoices();
+    Function::addChoice("'It doesn't matter.'");
+    Function::addChoice("'Your girlfriend, Nyx.'");
+    Function::showChoices();
 
     while (true)
     {
@@ -1832,7 +1723,7 @@ void Event::dialogueWithVincent()
             break;
         }
     }
-    //-------------------------------------------------------------
+
     std::cout << std::endl;
     Function::writeNarration("\tThe passage behind your back is opened.");
     Sleep(1000);
@@ -1848,16 +1739,12 @@ void Event::dialogueWithVincent()
     Sleep(1000);
     std::cout << std::endl;
     Function::writeNarration("\tNyx walks past you and kneels by the dead man. She starts searching his pockets for something.");
-    //-------------------------------------------------------------
-    // Decyzja
-    std::cout << std::endl;
-    Function::changeConsoleColor();
-    std::cout << "" << std::endl;
-    Function::actionOption(optionNr, "Do nothing.");
-    optionNr++;
-    Function::dialogueOption(optionNr, "What is this all about?");
-    optionNr = 1;
-    Function::write("\t> ", 15);
+    std::cout << std::endl << std::endl;
+
+    Function::clearChoices();
+    Function::addChoice("Do nothing.");
+    Function::addChoice("'What is this all about?'");
+    Function::showChoices();
 
     while (true)
     {
@@ -1880,7 +1767,7 @@ void Event::dialogueWithVincent()
             break;
         }
     }
-    //-------------------------------------------------------------
+
     vincentResurrection();
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
