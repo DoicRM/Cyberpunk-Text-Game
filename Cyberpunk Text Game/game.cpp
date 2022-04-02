@@ -1,5 +1,7 @@
 #include "game.h"
 
+std::map <int, Game> Game::game;
+
 Game::Game()
 {
     Logger::out("Function start", "Game::Game");
@@ -34,6 +36,12 @@ void Game::run()
 void Game::init()
 {
     Logger::out("Function start", "Game::init");
+    Game Nocturnal;
+    game[0] = Nocturnal;
+}
+
+void Game::initObjects()
+{
     Fraction::initFractions();
     Hero::initHero();
     Npc::initNpcs();
@@ -42,8 +50,8 @@ void Game::init()
     Weapon::initWeapons();
     Clothes::initClothes();
     Quest::initQuests();
-    Function::initHeroEQ();
-    Function::initQuestsList();
+    initHeroEQ();
+    initQuestsList();
 }
 
 void Game::selectLanguage()
@@ -53,7 +61,7 @@ void Game::selectLanguage()
 
     while (this->gameLang != en && this->gameLang != pl)
     {
-        Function::clearScreen();
+        clearScreen();
         std::cout << std::endl;
         Function::write("\tSelect your language: ", 25);
         std::cout << std::endl;
@@ -69,7 +77,7 @@ void Game::selectLanguage()
     }
 
     Function::clearChoices();
-    Function::clearScreen();
+    clearScreen();
 }
 
 void Game::welcome()
@@ -82,14 +90,14 @@ void Game::welcome()
     else Function::write("\tRADOS£AW 'DOIC' MICHALAK PRESENTS A TEXT GAME TITLED", 40);
 
     Sleep(2000);
-    Function::clearScreen();
+    clearScreen();
 }
 
 void Game::writeLogo()
 {
     Logger::out("Function start", "Game::writeLogo");
     Function::changeConsoleColor(yellow);
-    std::cout << "" << std::endl;
+    std::cout << std::endl;
     Function::write("\t ======  ===    ===  =======   =======  =======   =======   ==     ==  ===    ==  ==    ==", 1);
     std::cout << std::endl;
     Function::write("\t=======   ===  ===   ==   ===  ==       ==   ===  ==   ===  ==     ==  ====   ==  ==   == ", 1);
@@ -103,19 +111,17 @@ void Game::writeLogo()
     Function::write("\t=======      ==      ==   ===  ==       ==  ==    ==         =======   ==   ====  ==   == ", 1);
     std::cout << std::endl;
     Function::write("\t ======      ==      =======   =======  ==   ===  ==          =====    ==    ===  ==    ==", 1);
-    std::cout << std::endl;
-    std::cout << "" << std::endl;
+    std::cout << std::endl << std::endl;
     Function::changeConsoleColor();
     Function::write("\t\t\t\t\t\t\t\t\tDemo Build", 2);
-    std::cout << std::endl;
-    std::cout << "" << std::endl;
+    std::cout << std::endl << std::endl;
 }
 
 void Game::logo()
 {
     Logger::out("Function start", "Game::logo");
     Function::changeConsoleColor(yellow);
-    std::cout << "" << std::endl;
+    std::cout << std::endl;
     std::cout << "\t ======  ===    ===  =======   =======  =======   =======   ==     ==  ===    ==  ==    ==" << std::endl;
     std::cout << "\t=======   ===  ===   ==   ===  ==       ==   ===  ==   ===  ==     ==  ====   ==  ==   == " << std::endl;
     std::cout << "\t==         ======    ==   ==   ==       ==   ==   ==   ==   ==     ==  =====  ==  ==  ==  " << std::endl;
@@ -123,10 +129,10 @@ void Game::logo()
     std::cout << "\t==           ==      ==   ==   ==       =====     =====     ===   ===  == ======  ==  ==  " << std::endl;
     std::cout << "\t=======      ==      ==   ===  ==       ==  ==    ==         =======   ==   ====  ==   == " << std::endl;
     std::cout << "\t ======      ==      =======   =======  ==   ===  ==          =====    ==    ===  ==    ==" << std::endl;
-    std::cout << "" << std::endl;
+    std::cout << std::endl;
     Function::changeConsoleColor();
     std::cout << "\t\t\t\t\t\t\t\t\tDemo Build" << std::endl;
-    std::cout << "" << std::endl;
+    std::cout << std::endl;
     mainMenu();
 }
 
@@ -134,7 +140,7 @@ void Game::mainMenu()
 {
     Logger::out("Function start", "Game::mainMenu");
     Function::changeConsoleColor();
-    std::cout << "" << std::endl;
+    std::cout << std::endl;
 
     if (this->getLang() == pl)
     {
@@ -190,9 +196,8 @@ void Game::newGame()
 {
     Logger::out("Function start", "Game::newGame");
     //Game* ptrGame = this;
-    init();
-    Function::clearScreen();
-    setCurrentLocation(&Location::locations["DarkAlley"]);
+    initObjects();
+    clearScreen();
     Event::darkAlley();
 }
 
@@ -200,7 +205,7 @@ void Game::continueGame()
 {
     Logger::out("Function start", "Game::continueGame");
     Sleep(500);
-    Function::clearScreen();
+    clearScreen();
     std::cout << std::endl;
     Function::changeConsoleColor(lightblue);
 
@@ -209,8 +214,8 @@ void Game::continueGame()
 
     Function::changeConsoleColor();
     Sleep(1000);
-    Function::pauseGame();
-    Function::clearScreen();
+    pause();
+    clearScreen();
     logo();
     mainMenu();
 }
@@ -223,7 +228,7 @@ void Game::changeLanguage()
 
     while (change != en && change != pl)
     {
-        Function::clearScreen();
+        clearScreen();
         std::cout << std::endl;
 
         if (this->getLang() == en) Function::write("\tSelect your language: ", 25);
@@ -245,7 +250,7 @@ void Game::changeLanguage()
     else if (this->getLang() == pl) Logger::out("Game language is Polish", "Game::changeLanguage");
 
     Function::clearChoices();
-    Function::clearScreen();
+    clearScreen();
     logo();
     mainMenu();
 }
@@ -259,7 +264,7 @@ void Game::endGame()
         if (this->getLang() == pl)
         {
             Sleep(500);
-            Function::clearScreen();
+            clearScreen();
             std::cout << std::endl;
             Function::write("\tJesteœ pewien, ¿e chcesz wyjœæ z gry?", 25);
             std::cout << std::endl;
@@ -271,7 +276,7 @@ void Game::endGame()
         else
         {
             Sleep(500);
-            Function::clearScreen();
+            clearScreen();
             std::cout << std::endl;
             Function::write("\tAre you sure you want to end the game?", 25);
             std::cout << std::endl;
@@ -290,7 +295,7 @@ void Game::endGame()
             break;
         case 2:
             Function::clearChoices();
-            Function::clearScreen();
+            clearScreen();
             Sleep(500); 
             logo();
             mainMenu();
@@ -303,7 +308,7 @@ void Game::credits()
 {
     Logger::out("Function start", "Game::credits");
     Sleep(500);
-    Function::clearScreen();
+    clearScreen();
     std::cout << std::endl;
 
     if (this->getLang() == pl)
@@ -338,8 +343,8 @@ void Game::credits()
     }
 
     Sleep(1000);
-    Function::pauseGame();
-    Function::clearScreen();
+    pause();
+    clearScreen();
     logo();
     mainMenu();
 }
@@ -348,3 +353,67 @@ void Game::test()
 {
     Logger::out("Function start", "Game::test");
 }
+
+void Game::setCurrentLocation(Location* location)
+{
+    this->ptrCurrentLocation = location;
+    Logger::out("Actual location is " + location->getName(), "Game::setCurrentLocation");
+}
+
+// Inicjowanie ekwipunku gracza
+void Game::initHeroEQ()
+{
+    Logger::out("Function start", "Function::initHeroEQ");
+    std::fstream eq;
+    eq.open("eq.txt", std::ios::out);
+
+    if (eq.good())
+    {
+        Logger::out("Access to txt file", "Function::initHeroEQ");
+
+        if (Game::game[0].getLang() == en) eq << "                                    ITEMS                                  " << std::endl;
+        else if (Game::game[0].getLang() == pl) eq << "                               PRZEDMIOTY                                  " << std::endl;
+
+        eq << "..........................................................................." << std::endl;
+        eq.close();
+    }
+    else Logger::error("No file access", "Function::initHeroEQ");
+}
+
+// Inicjowanie listy zadañ
+void Game::initQuestsList()
+{
+    Logger::out("Function start", "Function::initQuestsList");
+    std::fstream q;
+    q.open("quests.txt", std::ios::out);
+
+    if (q.good())
+    {
+        Logger::out("Access to txt file", "Function::initQuestsList");
+
+        if (Game::game[0].getLang() == en) q << "                                    QUESTS                                 " << std::endl;
+        else if (Game::game[0].getLang() == pl) q << "                                   ZADANIA                                 " << std::endl;
+
+        q << "..........................................................................." << std::endl;
+        q.close();
+    }
+    else Logger::error("No file access", "Function::initQuestsList");
+}
+
+void Game::clearScreen()
+{
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
+    system("cls");
+#else
+    system("clear");
+#endif
+}
+
+void Game::pause()
+{
+    if (Game::game[0].getLang() == en) std::cout << "\tPress ANY KEY to continue...";
+    else if (Game::game[0].getLang() == pl) std::cout << "\tWciœnij DOWOLNY PRZYCISK, aby kontynuowaæ...";
+
+    Function::waitForUserInput();
+}
+

@@ -1,6 +1,6 @@
 #include "hero.h"
 
-std::map <std::string, Hero> Hero::heroes;
+std::map <int, Hero> Hero::heroes;
 
 Hero::Hero()
 {
@@ -39,5 +39,5 @@ void Hero::initHero()
     Logger::out("Function start", "Hero::initHero");
 
     Hero hero;
-    heroes["Hero"] = hero;
+    heroes[0] = hero;
 }

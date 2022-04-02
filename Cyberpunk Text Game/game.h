@@ -23,8 +23,17 @@ public:
 	Game();
 	virtual ~Game();
 
+	// inicjalizacja
+	static void init(); // gry
+	static void initHeroEQ(); // ekwipunku gracza
+	static void initQuestsList(); // zadañ gracza
+	// czyszczenie ekranu
+	static void clearScreen();
+	// zatrzymanie gry
+	static void pause();
+
 	void run(); // rozpoczêcie dzia³ania
-	void init(); // inicjalizacja obiektów
+	void initObjects(); // inicjalizacja obiektów
 	void selectLanguage(); // wybór jêzyka
 	void welcome(); // powitanie
 	void writeLogo(); // wypisywanie loga
@@ -37,9 +46,11 @@ public:
 	void endGame(); // koniec rozgrywki
 	void test(); // do testów
 	void end() { this->playing = false; } // zakoñczenie dzia³ania
-	void setCurrentLocation(Location* location) { this->ptrCurrentLocation = location; } // ustawienie aktualnej lokacji
+	void setCurrentLocation(Location* location); // ustawienie aktualnej lokacji
 
 	inline bool getPlaying() const { return this->playing; }
 	inline int getLang() const { return this->gameLang; }
 	inline Location* getCurrentLocation() const { return this->ptrCurrentLocation; }
+
+	static std::map <int, Game> game;
 }; 

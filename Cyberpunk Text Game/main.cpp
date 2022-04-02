@@ -3,8 +3,8 @@
 int main()
 {   
     Logger::setup(false);
-    Game game;
-    game.run();
+    Game::init();
+    Game::game[0].run();
     Logger::cleanup();
     return 0;
 }

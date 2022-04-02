@@ -8,7 +8,7 @@ void Event::darkAlley()
 {
     Logger::out("Function start", "Event::darkAlley");
     locationPtr = &Location::locations["DarkAlley"];
-    //setCurrentLocation(locationPtr);
+    Game::game[0].setCurrentLocation(locationPtr);
 
     if (!darkAlleyWasVisited)
     {
@@ -25,7 +25,7 @@ void Event::street()
 {
     Logger::out("Function start", "Event::street");
     locationPtr = &Location::locations["Street"];
-    //setCurrentLocation(locationPtr);
+    Game::game[0].setCurrentLocation(locationPtr);
 
     if (!streetWasVisited)
     {
@@ -42,7 +42,7 @@ void Event::gunShop()
 {
     Logger::out("Function start", "Event::gunShop");
     locationPtr = &Location::locations["GunShop"];
-    //setCurrentLocation(locationPtr);
+    Game::game[0].setCurrentLocation(locationPtr);
 
     if (!gunShopWasVisited)
     {
@@ -59,7 +59,7 @@ void Event::nightclub()
 {
     Logger::out("Function start", "Event::nightclub");
     locationPtr = &Location::locations["Nightclub"];
-    //setCurrentLocation(locationPtr);
+    Game::game[0].setCurrentLocation(locationPtr);
 
     if (!nightclubWasVisited)
     {
@@ -85,17 +85,23 @@ void Event::heroDeath()
     Location::locations.clear();
     Quest::quests.clear();
     Sleep(500);
-    Function::clearScreen();
+    Game::clearScreen();
     Function::changeConsoleColor(red);
     std::cout << std::endl;
-    Function::write("\tYOU ARE DEAD!");
+
+    if (Game::game[0].getLang() == en) Function::write("\tYOU ARE DEAD!");
+    else if (Game::game[0].getLang() == pl) Function::write("\tNIE ¯YJESZ!");
+
     Sleep(1000);
     std::cout << std::endl;
     std::cout << "" << std::endl;
     Function::changeConsoleColor();
-    Function::write("\tBack to menu...", 25);
+
+    if (Game::game[0].getLang() == en) Function::write("\tBack to menu...", 25);
+    else if (Game::game[0].getLang() == pl) Function::write("\tWróæ do menu...", 25);
+
     Function::waitForUserInput();
-    Function::clearScreen();
+    Game::clearScreen();
     Game().logo();
 }
 
@@ -110,17 +116,23 @@ void Event::gameOver()
     Location::locations.clear();
     Quest::quests.clear();
     Sleep(500);
-    Function::clearScreen();
+    Game::clearScreen();
     Function::changeConsoleColor(lightblue);
     std::cout << std::endl;
-    Function::write("\tTHE END", 25);
+
+    if (Game::game[0].getLang() == en) Function::write("\tTHE END", 25);
+    else if (Game::game[0].getLang() == pl) Function::write("\tKONIEC", 25);
+
     Sleep(1000);
     std::cout << std::endl << std::endl;
     Function::changeConsoleColor();
     Game().credits();
     std::cout << std::endl << std::endl;
-    Function::write("\tBack to menu...", 25);
+
+    if (Game::game[0].getLang() == en) Function::write("\tBack to menu...", 25);
+    else if (Game::game[0].getLang() == pl) Function::write("\tWróæ do menu...", 25);
+
     Function::waitForUserInput();
-    Function::clearScreen();
+    Game::clearScreen();
     Game().logo();
 }

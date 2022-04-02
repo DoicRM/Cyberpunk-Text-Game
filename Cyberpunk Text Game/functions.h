@@ -55,18 +55,7 @@ public:
 	//	14 ¿ó³ty tekst na czarnym tle
 	//	15 bia³y tekst na czarnym tle
 	static void changeConsoleColor(int color = defaultColor);
-
-	// inicjowanie
-	static void initHeroEQ(); // ekwipunku gracza
-	static void initQuestsList(); // zadañ gracza
-
 	static void waitForUserInput();
-
-	// czyszczenie ekranu
-	static void clearScreen();
-
-	// zatrzymanie gry
-	static void pauseGame();
 
 	static std::map <int, std::string> choices;
 };

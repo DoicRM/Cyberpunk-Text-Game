@@ -34,6 +34,6 @@ public:
     inline const int& getHP() const { return this->hp; }
     inline const float& getMoney() const { return this->money; }
 
-    static std::map <std::string, Hero> heroes;
+    static std::map <int, Hero> heroes;
     static void initHero();
 };

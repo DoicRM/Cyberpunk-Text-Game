@@ -30,7 +30,7 @@ void Event::darkAlleyCrossroads()
 
             if (heroChoice == 1)
             {
-                Function::clearScreen();
+                Game::clearScreen();
                 Function::showHeroAction("Stop and finally find out what he wants.");
                 std::cout << std::endl;
                 Function::writeNarration("\tYou stop and turn towards the owner of the voice.");
@@ -42,14 +42,14 @@ void Event::darkAlleyCrossroads()
             }
             else if (heroChoice == 2)
             {
-                Function::clearScreen();
+                Game::clearScreen();
                 Function::showHeroAction("Ignore him again.");
                 std::cout << std::endl;
                 Function::writeNarration("\tYou have a mysterious stranger for nothing. You speed up your step and leave him far behind\n\tyou. Whatever he wanted from you is no longer important.");
                 std::cout << std::endl;
                 Function::writeDialogue("\t- 'Don't show up here again if you don't want to get your teeth kicked in!'");
                 std::cout << std::endl;
-                Function::clearScreen();
+                Game::clearScreen();
                 street();
                 break;
             }
@@ -62,7 +62,7 @@ void Event::darkAlleyCrossroads()
         Function::writeNarration(" It's full of cardboard boxes, old mechanical parts, and god knows what else.");
     }
 
-    if (!Hero::heroes["Hero"].hasItem(&Item::items["AD13"]))
+    if (!Hero::heroes[0].hasItem(&Item::items["AD13"]))
     {
         Sleep(1500);
         std::cout << std::endl;
@@ -87,14 +87,14 @@ void Event::darkAlleyCrossroads()
                 Sleep(2000);
                 std::cout << std::endl;
 
-                Hero::heroes["Hero"].addItem(&Item::items["AD13"]);
+                Hero::heroes[0].addItem(&Item::items["AD13"]);
                 Function::changeConsoleColor(item);
                 std::string str = "\t" + Item::items["AD13"].getName();
                 Function::write(str);
                 Function::changeConsoleColor();
                 Function::write(" was found.");
 
-                if (Hero::heroes["Hero"].hasItem(&Item::items["AD13"]))
+                if (Hero::heroes[0].hasItem(&Item::items["AD13"]))
                 {
                     Logger::out(Item::items["AD13"].getName() + " added to EQ", "Event::inSeaOfRubbish");
                 }
@@ -136,76 +136,70 @@ void Event::prologue()
     Logger::out("Function start", "Event::prologue");
 
     std::cout << std::endl;
-    Function::write("\tPrologue");
+
+    if (Game::game[0].getLang() == en) Function::write("\tPrologue");
+    else if (Game::game[0].getLang() == pl) Function::write("\tProlog");
+
     Sleep(2000);
     std::cout << std::endl << std::endl;
-    Function::write("\tREQUIEM FOR A DREAM");
-    Sleep(5000);
-    Function::clearScreen();
-    storyIntroduction();
 
-    /*
-        std::cout << std::endl;
-        Function::write("\tProlog");
-        Sleep(2000);
-        std::cout << std::endl << std::endl;
-        Function::write("\tREQUIEM DLA MARZEÑ");
-        Sleep(5000);
-        Function::clearScreen();
-        storyIntroduction();
-    */
+    if (Game::game[0].getLang() == en) Function::write("\tREQUIEM FOR A DREAM");
+    else if (Game::game[0].getLang() == pl) Function::write("\tREQUIEM DLA MARZEÑ");
+
+    Sleep(5000);
+    Game::clearScreen();
+    storyIntroduction();
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::storyIntroduction()
 {
     Logger::out("Function start", "Event::storyIntroduction");
 
-    std::cout << "" << std::endl;
-    Function::writeNarration("\tIt's 2050.");
-    Sleep(1000);
-    Function::writeNarration(" Megacity is a place overrun by poverty and feuding gangs, where powerful\n\tcorporations have the most influence. The violence in the streets is a clear sign of\n\tan impending war. Government operating from behind the secure walls of City Hall are\n\ttrying to combat this, but so far without success. There are rumors that they themselves\n\tare secretly supporting the chaos to create a New Order on the ruins of the city.", 20);
-    std::cout << std::endl;
-    std::cout << "" << std::endl;
-    Function::pauseGame();
-    Function::clearScreen();
-    std::cout << "" << std::endl;
-    Sleep(2500);
-    Function::writeDialogue("\tStanding at the edge of the tallest tower...", 75);
-    Sleep(2500);
-    std::cout << std::endl;
-    Function::writeDialogue("\tHolding your hand and dive...", 75);
-    Sleep(2500);
-    std::cout << std::endl;
-    Function::writeDialogue("\tFalling and falling for what feels like hours...", 75);
-    Sleep(3000);
-    Function::clearScreen();
-    std::cout << std::endl;
-    wakeUpInDarkAlley();
-
-    /* 
-        Function::clearScreen();
-        Sleep(2000);
-        std::cout << "" << std::endl;
+    if (Game::game[0].getLang() == en)
+    {
+        std::cout << std::endl;
+        Function::writeNarration("\tIt's 2050.");
+        Sleep(1000);
+        Function::writeNarration(" Megacity is a place overrun by poverty and feuding gangs, where powerful\n\tcorporations have the most influence. The violence in the streets is a clear sign of\n\tan impending war. Government operating from behind the secure walls of City Hall are\n\ttrying to combat this, but so far without success. There are rumors that they themselves\n\tare secretly supporting the chaos to create a New Order on the ruins of the city.", 20);
+        std::cout << std::endl << std::endl;
+        Game::pause();
+        Game::clearScreen();
+        std::cout << std::endl;
+        Sleep(2500);
+        Function::writeDialogue("\tStanding at the edge of the tallest tower...", 75);
+        Sleep(2500);
+        std::cout << std::endl;
+        Function::writeDialogue("\tHolding your hand and dive...", 75);
+        Sleep(2500);
+        std::cout << std::endl;
+        Function::writeDialogue("\tFalling and falling for what feels like hours...", 75);
+        Sleep(3000);
+        Game::clearScreen();
+        std::cout << std::endl;
+        wakeUpInDarkAlley();
+    }
+    else {
+        std::cout << std::endl;
         Function::writeNarration("\tJest rok 2050.");
         Sleep(1000);
         Function::writeNarration(" Megacity to miejsce opanowane przez biedê i zwaœnione gangi, gdzie najwiêksze wp³ywy maj¹ potê¿ne korporacje. Przemoc na ulicach jest wyraŸnym znakiem zbli¿aj¹cej siê wojny. Rz¹d dzia³aj¹cy zza bezpiecznych murów ratusza próbuje z tym walczyæ, ale jak na razie bezskutecznie. Kr¹¿¹ plotki, ¿e sam potajemnie wspiera chaos, by na gruzach miasta stworzyæ Nowy Porz¹dek.", 20);
+        std::cout << std::endl << std::endl;
+        Game::pause();
+        Game::clearScreen();
         std::cout << std::endl;
-        std::cout << "" << std::endl;
-        system("pause");
-        Function::clearScreen();
-        std::cout << "" << std::endl;
         Sleep(2500);
         Function::writeDialogue("\tStoj¹c na krawêdzi najwy¿szej wie¿y...", 75);
-        Sleep(1500);
-        std::cout << std::endl;
-        Function::writeDialogue("\tTrzymam ciê za rêkê i skaczê...", 75);
-        Sleep(1500);
-        std::cout << std::endl;
-        Function::writeDialogue("\tSpadam i spadam jakby godzinami ...", 75);
         Sleep(2500);
         std::cout << std::endl;
-        std::cout << "" << std::endl;
-    */
+        Function::writeDialogue("\tTrzymam ciê za rêkê i skaczê...", 75);
+        Sleep(2500);
+        std::cout << std::endl;
+        Function::writeDialogue("\tSpadam i spadam jakby godzinami...", 75);
+        Sleep(3000);
+        Game::clearScreen();
+        std::cout << std::endl;
+        wakeUpInDarkAlley();
+    }
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::wakeUpInDarkAlley()
@@ -213,35 +207,39 @@ void Event::wakeUpInDarkAlley()
     Logger::out("Function start", "Event::wakeUpInDarkAlley");
 
     darkAlleyWasVisited = true;
-    Sleep(2000);
-    Function::writeNarration("\tYou wake up dazed from a restless slumber.");
-    Sleep(1000);
-    Function::writeNarration(" It was the same dream again...");
-    Sleep(1500);
-    std::cout << std::endl;
-    Function::writeNarration("\tYou are somewhere in a dark alley. Above your head, among the smoggy haze, as if torn from\n\ta dream, rise the monumental skyscrapers of large corporations.");
-    Sleep(1000);
-    Function::writeNarration(" Their divine majesty beats\n\tyou to the eyes.");
-    Sleep(3000);
-    std::cout << std::endl;
-    Function::writeNarration("\tYour heart beats so hard that only the stinging touch of the wind protects you from a sudden\n\theart attack.");
-    Sleep(500);
-    Function::writeNarration(" Suddenly a wave of shivers comes over your body, you start shaking like an\n\taspen, and realize that you are lying on a lair made of some old newspapers.");
-    Sleep(3000);
-    std::cout << std::endl;
-    Function::writeNarration("\tWhen you rise from the ground, you notice a sea of trash around you.");
-    Sleep(1000);
-    Function::writeNarration(" It's full of cardboard\n\tboxes, old mechanical parts, and god knows what else.");
-    Sleep(2500);
-    std::cout << std::endl;
-    Function::writeNarration("\tWho knows, you might find something interesting there...");
-    std::cout << std::endl << std::endl;
 
-    Function::clearChoices();
-    Function::addChoice("Search the area for something valuable.");
-    Function::addChoice("Find the exit from the alley.");
-    Function::showChoices();
-    /*
+    if (Game::game[0].getLang() == en)
+    {
+        Sleep(2000);
+        Function::writeNarration("\tYou wake up dazed from a restless slumber.");
+        Sleep(1000);
+        Function::writeNarration(" It was the same dream again...");
+        Sleep(1500);
+        std::cout << std::endl;
+        Function::writeNarration("\tYou are somewhere in a dark alley. Above your head, among the smoggy haze, as if torn from\n\ta dream, rise the monumental skyscrapers of large corporations.");
+        Sleep(1000);
+        Function::writeNarration(" Their divine majesty beats\n\tyou to the eyes.");
+        Sleep(3000);
+        std::cout << std::endl;
+        Function::writeNarration("\tYour heart beats so hard that only the stinging touch of the wind protects you from a sudden\n\theart attack.");
+        Sleep(500);
+        Function::writeNarration(" Suddenly a wave of shivers comes over your body, you start shaking like an\n\taspen, and realize that you are lying on a lair made of some old newspapers.");
+        Sleep(3000);
+        std::cout << std::endl;
+        Function::writeNarration("\tWhen you rise from the ground, you notice a sea of trash around you.");
+        Sleep(1000);
+        Function::writeNarration(" It's full of cardboard\n\tboxes, old mechanical parts, and god knows what else.");
+        Sleep(2500);
+        std::cout << std::endl;
+        Function::writeNarration("\tWho knows, you might find something interesting there...");
+        std::cout << std::endl << std::endl;
+
+        Function::clearChoices();
+        Function::addChoice("Search the area for something valuable.");
+        Function::addChoice("Find the exit from the alley.");
+        Function::showChoices();
+    }
+    else {
         Function::writeNarration("\tBudzisz siê oszo³omiony z niespokojnej drzemki.");
         Sleep(1000);
         Function::writeNarration(" To by³ znowu ten sam sen...");
@@ -269,7 +267,7 @@ void Event::wakeUpInDarkAlley()
         Function::addChoice("Rozejrzyj siê po okolicy w poszukiwaniu czegoœ cennego.");
         Function::addChoice("ZnajdŸ wyjœcie z zau³ka.");
         Function::showChoices();
-    */
+    }
 
     while (true)
     {
@@ -278,14 +276,14 @@ void Event::wakeUpInDarkAlley()
         if (heroChoice == 1)
         {
             Sleep(1000);
-            Function::clearScreen();
+            Game::clearScreen();
             rubbishSearch();
             break;
         }
         else if (heroChoice == 2)
         {
             Sleep(1000);
-            Function::clearScreen();
+            Game::clearScreen();
             outOfTheAlley();
             break;
         }
@@ -303,14 +301,14 @@ void Event::rubbishSearch()
     Sleep(2000);
     std::cout << std::endl << std::endl;
 
-    Hero::heroes["Hero"].addItem(&Item::items["AD13"]);
+    Hero::heroes[0].addItem(&Item::items["AD13"]);
     Function::changeConsoleColor(item);
     std::string str = "\t" + Item::items["AD13"].getName();
     Function::write(str);
     Function::changeConsoleColor();
     Function::write(" was found.");
 
-    if (Hero::heroes["Hero"].hasItem(&Item::items["AD13"]))
+    if (Hero::heroes[0].hasItem(&Item::items["AD13"]))
     {
         Logger::out(Item::items["AD13"].getName() + " added to EQ", "Event::inSeaOfRubbish");
     }
@@ -332,7 +330,7 @@ void Event::outOfTheAlley()
 {
     Logger::out("Function start", "Event::outOfTheAlley");
 
-    if (!Hero::heroes["Hero"].hasItem(&Item::items["AD13"]))
+    if (!Hero::heroes[0].hasItem(&Item::items["AD13"]))
     {
         Function::showHeroAction("Find the exit from the alley.");
         std::cout << std::endl;
@@ -364,7 +362,7 @@ void Event::outOfTheAlley()
 
         if (heroChoice == 1)
         {
-            Function::clearScreen();
+            Game::clearScreen();
             Function::showHeroAction("Stop and find out what he wants.");
             std::cout << std::endl;
             Function::writeNarration("\tYou stop and turn towards the owner of the voice.");
@@ -377,10 +375,14 @@ void Event::outOfTheAlley()
         }
         else if (heroChoice == 2)
         {
-            Function::clearScreen();
+            Game::clearScreen();
             Function::showHeroAction("Ignore him and keep walking.");
             std::cout << std::endl;
-            Function::writeNarration("\tYou have a mysterious stranger for nothing. You speed up your step and leave him far behind you.\n\tWhatever he wanted from you is no longer important.");
+            Function::writeNarration("\tYou have a mysterious stranger for nothing. You speed up your step and leave him far behind you.");
+            std::cout << std::endl;
+            Function::writeDialogue("\t- 'Hey, you! Come back here!'");
+            std::cout << std::endl;
+            Function::writeNarration("\tWhatever he wanted from you is no longer important.");
             Sleep(1000);
             street();
             break;
@@ -402,12 +404,12 @@ void Event::dialogueWithBob()
         std::cout << std::endl;
         std::cout << "\t> ";
         std::cin >> heroName;
-        Hero::heroes["Hero"].setName(heroName);
-        Logger::out("Hero's name is " + Hero::heroes["Hero"].getName(), "Event::conversationWithHomeless");
+        Hero::heroes[0].setName(heroName);
+        Logger::out("Hero's name is " + Hero::heroes[0].getName(), "Event::conversationWithHomeless");
     }
 
     Npc::npcs["Bob"].setToKnowHero();
-    str = "\t- 'So you're " + Hero::heroes["Hero"].getName() + ", huh?";
+    str = "\t- 'So you're " + Hero::heroes[0].getName() + ", huh?";
     Function::writeDialogue(str);
     Sleep(1500);
     str = " All right. I'm " + Npc::npcs["Bob"].getName() + ".";
@@ -430,7 +432,7 @@ void Event::dialogueWithBob()
 
         if (heroChoice == 1)
         {
-            Function::clearScreen();
+            Game::clearScreen();
             Function::showHeroAction("'I'm not looking for trouble.'");
             bobRecommendsZed = true; // Bob poleca bohaterowi sklep z broni¹ Zeda
             std::cout << std::endl;
@@ -444,7 +446,7 @@ void Event::dialogueWithBob()
         }
         else if (heroChoice == 2)
         {
-            Function::clearScreen();
+            Game::clearScreen();
             Function::showHeroAction("'I'm just looking around. Where are we actually?'");
             std::cout << std::endl;
             Function::writeDialogue("\t- 'What's wrong with you?");
@@ -461,7 +463,7 @@ void Event::dialogueWithBob()
         }
         else if (heroChoice == 3)
         {
-            Function::clearScreen();
+            Game::clearScreen();
             Function::showHeroAction("'It's not your business.'");
             std::cout << std::endl;
             Npc::npcs["Bob"].setAttitude(angry); // angry / hostile / friendly / neutral
@@ -530,19 +532,19 @@ void Event::streetCrossroads()
 
         if (heroChoice == 1)
         {
-            Function::clearScreen();
+            Game::clearScreen();
             darkAlley();
             break;
         }
         else if (heroChoice == 2)
         {
-            Function::clearScreen();
+            Game::clearScreen();
             nightclub();
             break;
         }
         else if (heroChoice == 3)
         {
-            Function::clearScreen();
+            Game::clearScreen();
             gunShop();
             break;
         }
@@ -584,7 +586,7 @@ void Event::lookAtAmnesia()
 
         if (heroChoice == 1)
         {
-            Function::clearScreen();
+            Game::clearScreen();
             Function::showHeroAction("Come closer and see what it's all about.");
             std::cout << std::endl;
 
@@ -600,7 +602,7 @@ void Event::lookAtAmnesia()
         }
         else if (heroChoice == 2)
         {
-            Function::clearScreen();
+            Game::clearScreen();
             Function::showHeroAction("Take a look around the area.");
             encounterGunStore();
             break;
@@ -633,7 +635,7 @@ void Event::encounterGunStore()
 
         if (heroChoice == 1)
         {
-            Function::clearScreen();
+            Game::clearScreen();
             Function::showHeroAction("Go inside.");
             std::cout << std::endl;
             enterGunShop();
@@ -641,7 +643,7 @@ void Event::encounterGunStore()
         }
         else if (heroChoice == 2)
         {
-            Function::clearScreen();
+            Game::clearScreen();
             Function::showHeroAction("Turn back.");
             std::cout << std::endl;
 
@@ -706,7 +708,7 @@ void Event::meetingWithPolicemans()
     Function::writeDialogue(" And what are you doing here? Please show me your ID card.'");
     std::cout << std::endl;
 
-    if (Hero::heroes["Hero"].hasItem(&Item::items["AD13"]))
+    if (Hero::heroes[0].hasItem(&Item::items["AD13"]))
     {
         Function::writeNarration("\tYou start searching through the pockets of your jacket and pants, but other than the accelerator\n\tyou found in the trash, there's nothing else there.");
     }
@@ -725,16 +727,16 @@ void Event::meetingWithPolicemans()
         std::cout << std::endl;
         std::cout << "\t> ";
         std::cin >> heroName;
-        Hero::heroes["Hero"].setName(heroName);
-        Logger::out("Hero's name is " + Hero::heroes["Hero"].getName(), "Event::conversationWithHomeless");
+        Hero::heroes[0].setName(heroName);
+        Logger::out("Hero's name is " + Hero::heroes[0].getName(), "Event::conversationWithHomeless");
         std::cout << std::endl;
-        str = "\t- '" + Hero::heroes["Hero"].getName() + "...";
+        str = "\t- '" + Hero::heroes[0].getName() + "...";
         Function::writeDialogue(str);
         Sleep(1000);
         Function::writeDialogue(" Caden, check it out in the database.");
     }
     else {
-        str = " " + Hero::heroes["Hero"].getName() + "...";
+        str = " " + Hero::heroes[0].getName() + "...";
         Function::writeDialogue(str);
         Sleep(1000);
         Function::writeDialogue(" Caden, check\n\tit out in the database.");
@@ -777,7 +779,7 @@ void Event::meetingWithPolicemans()
         if (heroChoice == 1)
         {
             Function::clearChoices();
-            Function::clearScreen();
+            Game::clearScreen();
             Function::showHeroAction("Go inside.");
             std::cout << std::endl;
             nightclub();
@@ -786,7 +788,7 @@ void Event::meetingWithPolicemans()
         else if (heroChoice == 2)
         {
             Function::clearChoices();
-            Function::clearScreen();
+            Game::clearScreen();
             Function::showHeroAction("Turn back.");
             std::cout << std::endl;
             encounterGunStore();
@@ -826,7 +828,7 @@ void Event::enterGunShop()
         Sleep(1000);
         Function::writeNarration(" From behind the counter, Zed is already smiling at you.");
 
-        if (Hero::heroes["Hero"].hasItem(&Item::items["Pistol"]))
+        if (Hero::heroes[0].hasItem(&Item::items["Pistol"]))
         {
             std::cout << std::endl;
             Function::writeDialogue("\t- 'What's up? How's the gun working out?'");
@@ -834,7 +836,7 @@ void Event::enterGunShop()
 
         if (Quest::quests["ZedAccelerator"].isRunning() && !Quest::quests["ZedAccelerator"].isCompleted())
         {
-            if (!Hero::heroes["Hero"].hasItem(&Item::items["AD13"]))
+            if (!Hero::heroes[0].hasItem(&Item::items["AD13"]))
             {
                 dialogueWithZed();
             }
@@ -910,7 +912,7 @@ void Event::dialogueWithZed()
             else {
                 Function::writeDialogue("\t- 'No problem. See you later!'");
                 std::cout << std::endl;
-                Function::clearScreen();
+                Game::clearScreen();
 
                 if (!Npc::npcs["Caden"].knowsHero() && !Npc::npcs["CadenPartner"].knowsHero())
                 {
@@ -950,7 +952,7 @@ void Event::zedTrade()
     Logger::out("Function start", "Event::zedTrade");
     bool ZedTellsAboutWeapons = false;
 
-    if (!Hero::heroes["Hero"].hasItem(&Item::items["Pistol"]))
+    if (!Hero::heroes[0].hasItem(&Item::items["Pistol"]))
     {
         if (!ZedTellsAboutWeapons)
         {
@@ -1039,7 +1041,7 @@ void Event::buyPistol()
 
     std::cout << std::endl;
 
-    if (Hero::heroes["Hero"].getMoney() != 250.0)
+    if (Hero::heroes[0].getMoney() != 250.0)
     {
         Function::writeDialogue("\t- 'I see you're low on cash.");
         Sleep(1000);
@@ -1052,7 +1054,7 @@ void Event::buyPistol()
             Sleep(1000);
             Function::writeDialogue(" Let's just say I'll loan you this gun on a friendly basis.");
 
-            Hero::heroes["Hero"].addItem(&Item::items["Pistol"]);
+            Hero::heroes[0].addItem(&Item::items["Pistol"]);
             std::cout << std::endl;
             Function::changeConsoleColor(item);
             str = "\t" + Item::items["Pistol"].getName();
@@ -1077,7 +1079,7 @@ void Event::buyPistol()
     {
         Function::writeDialogue("\t- 'A pistol is a good start. Here, it's yours.'");
 
-        Hero::heroes["Hero"].addItem(&Item::items["Pistol"]);
+        Hero::heroes[0].addItem(&Item::items["Pistol"]);
         std::cout << std::endl;
         Function::changeConsoleColor(item);
         str = "\t" + Item::items["Pistol"].getName();
@@ -1209,7 +1211,7 @@ void Event::clubDanceFloor()
 
             if (heroChoice == 1)
             {
-                Function::clearScreen();
+                Game::clearScreen();
                 std::cout << std::endl;
                 Function::showHeroAction("'What do you want?'");
                 std::cout << std::endl;
@@ -1219,7 +1221,7 @@ void Event::clubDanceFloor()
             }
             else if (heroChoice == 2)
             {
-                Function::clearScreen();
+                Game::clearScreen();
                 std::cout << std::endl;
                 Function::showHeroAction("'Hey, baby.'");
                 std::cout << std::endl;
@@ -1231,7 +1233,7 @@ void Event::clubDanceFloor()
             }
             else if (heroChoice == 3)
             {
-                Function::clearScreen();
+                Game::clearScreen();
                 std::cout << std::endl;
                 Function::showHeroAction("Keep dancing with no words.");
                 std::cout << std::endl;
@@ -1249,7 +1251,7 @@ void Event::clubDanceFloor()
         Sleep(1000);
         Function::writeNarration(" It's quite crowded, but at least you can enjoy the beautiful\n\tviews. You try to keep up with the rest of the people dancing there. However, you quickly\n\tget tired and head for the exit.");
         Sleep(1500);
-        Function::clearScreen();
+        Game::clearScreen();
         nightclubCrossroads();
     }
 }
@@ -1329,7 +1331,7 @@ void Event::miaMeeting()
 
         if (heroChoice == 1)
         {
-            Function::clearScreen();
+            Game::clearScreen();
             std::cout << std::endl;
             Function::showHeroAction("'What is it about?'");
             std::cout << std::endl;
@@ -1337,7 +1339,7 @@ void Event::miaMeeting()
         }
         else if (heroChoice == 2)
         {
-            Function::clearScreen();
+            Game::clearScreen();
             std::cout << std::endl;
             Function::showHeroAction("Be silent and let her speak.");
             std::cout << std::endl;
@@ -1353,7 +1355,7 @@ void Event::miaMeeting()
     Function::writeNarration("\n\tNyx takes your hand and leads you towards the toilet.");
     Function::writeDialogue("\n\t- 'Do you have a gun?'");
 
-    if (Hero::heroes["Hero"].hasItem(&Item::items["Pistol"]))
+    if (Hero::heroes[0].hasItem(&Item::items["Pistol"]))
     {
         Function::writeDialogue("\n\t- 'Good.");
         Sleep(1000);
@@ -1364,7 +1366,7 @@ void Event::miaMeeting()
         Function::writeDialogue("\n\t- 'You know how to use it, don't you?");
         Sleep(1000);
         Function::writeDialogue(" Get it for yourself, you'll need it. Here's 200 bucks.'");
-        Hero::heroes["Hero"].addMoney(200);
+        Hero::heroes[0].addMoney(200);
         std::cout << std::endl;
         Function::changeConsoleColor(green);
         Function::write("\t200$");
@@ -1392,7 +1394,7 @@ void Event::clubUpstairs()
 
         if (heroChoice == 1)
         {
-            Function::clearScreen();
+            Game::clearScreen();
             std::cout << std::endl;
             Function::showHeroAction("Come closer.");
             std::cout << std::endl;
@@ -1405,7 +1407,7 @@ void Event::clubUpstairs()
         }
         else if (heroChoice == 2)
         {
-            Function::clearScreen();
+            Game::clearScreen();
             std::cout << std::endl;
             Function::showHeroAction("Go back downstairs.");
             std::cout << std::endl;
@@ -1427,7 +1429,7 @@ void Event::dialogueWithJet()
     Function::addChoice("'I want to pass.'");
     Function::addChoice("'What is behind that door?'");
 
-    if (Hero::heroes["Hero"].hasItem(&Item::items["Pistol"]))
+    if (Hero::heroes[0].hasItem(&Item::items["Pistol"]))
     {
         Function::addChoice("Kill him with a pistol.");
         Function::addChoice("Stun him with a pistol.");
@@ -1442,7 +1444,7 @@ void Event::dialogueWithJet()
 
         if (heroChoice == 1)
         {
-            Function::clearScreen();
+            Game::clearScreen();
             std::cout << std::endl;
             Function::showHeroAction("'I want to pass.'");
             std::cout << std::endl;
@@ -1451,46 +1453,46 @@ void Event::dialogueWithJet()
         }
         else if (heroChoice == 2)
         {
-            Function::clearScreen();
+            Game::clearScreen();
             std::cout << std::endl;
             Function::showHeroAction("'What is behind that door?'");
             std::cout << std::endl;
             jetPoints += 1;
             break;
         }
-        else if (heroChoice == 3 && !Hero::heroes["Hero"].hasItem(&Item::items["Pistol"]))
+        else if (heroChoice == 3 && !Hero::heroes[0].hasItem(&Item::items["Pistol"]))
         {
-            Function::clearScreen();
+            Game::clearScreen();
             std::cout << std::endl;
             Function::showHeroAction("'It's time for me to go.'");
             std::cout << std::endl;
-            Function::clearScreen();
+            Game::clearScreen();
             nightclub();
             break;
         }
-        else if (heroChoice == 3 && Hero::heroes["Hero"].hasItem(&Item::items["Pistol"]))
+        else if (heroChoice == 3 && Hero::heroes[0].hasItem(&Item::items["Pistol"]))
         {
-            Function::clearScreen();
+            Game::clearScreen();
             std::cout << std::endl;
             Function::showHeroAction("Kill him with a pistol.");
             std::cout << std::endl;
             break;
         }
-        else if (heroChoice == 4 && Hero::heroes["Hero"].hasItem(&Item::items["Pistol"]))
+        else if (heroChoice == 4 && Hero::heroes[0].hasItem(&Item::items["Pistol"]))
         {
-            Function::clearScreen();
+            Game::clearScreen();
             std::cout << std::endl;
             Function::showHeroAction("Stun him with a pistol.");
             std::cout << std::endl;
             break;
         }
-        else if (heroChoice == 5 && Hero::heroes["Hero"].hasItem(&Item::items["Pistol"]))
+        else if (heroChoice == 5 && Hero::heroes[0].hasItem(&Item::items["Pistol"]))
         {
-            Function::clearScreen();
+            Game::clearScreen();
             std::cout << std::endl;
             Function::showHeroAction("'It's time for me to go.'");
             std::cout << std::endl;
-            Function::clearScreen();
+            Game::clearScreen();
             nightclub();
             break;
         }
@@ -1591,7 +1593,7 @@ void Event::vincentHideout()
 
         if (heroChoice == 1)
         {
-            Function::clearScreen();
+            Game::clearScreen();
             Function::showHeroAction("Disconnect his consciousness from the neuronet. (Kill him)");
             std::cout << std::endl;
             Function::writeNarration("\tYou lean over Vincent and, in a fluid motion without hesitation, pull the stimulation helmet\n\toff his head. You witness the nightclub owner being shaken by a wave of convulsions. Foam\n\tbegins to come out of his mouth and after a moment the man freezes.");
@@ -1602,7 +1604,7 @@ void Event::vincentHideout()
         }
         else if (heroChoice == 2)
         {
-            Function::clearScreen();
+            Game::clearScreen();
             Function::showHeroAction("Wait for his consciousness to leave the neuronet.");
             std::cout << std::endl;
             Function::writeNarration("\tYou are not a coward.");
@@ -1640,7 +1642,7 @@ void Event::dialogueWithVincent()
 
         if (heroChoice == 1)
         {
-            Function::clearScreen();
+            Game::clearScreen();
             Function::showHeroAction("'Die!'");
             std::cout << std::endl;
             Function::writeNarration("\tWith a shout, you bring out your gun and aim it at Vincent's chest.");
@@ -1654,7 +1656,7 @@ void Event::dialogueWithVincent()
         }
         else if (heroChoice == 2)
         {
-            Function::clearScreen();
+            Game::clearScreen();
             Function::showHeroAction("'I don't want to fight with you.'");
             std::cout << std::endl;
             Function::writeNarration("\tYou are not a coward.");
@@ -1664,7 +1666,7 @@ void Event::dialogueWithVincent()
         }
         else if (heroChoice == 3)
         {
-            Function::clearScreen();
+            Game::clearScreen();
             Function::showHeroAction("'Nyx wants you dead.'");
             std::cout << std::endl;
             Function::writeNarration("\tYou are not a coward. You don't stab people in the back. That's not your style. You prefer an open fight.");
@@ -1684,7 +1686,7 @@ void Event::dialogueWithVincent()
 
         if (heroChoice == 1)
         {
-            Function::clearScreen();
+            Game::clearScreen();
             Function::showHeroAction("'It doesn't matter.'");
             std::cout << std::endl;
             Function::writeDialogue("\t- 'Ugh, you little prick. I'll get you from beyond the grave. There will be no peace. I won't let that happen!'");
@@ -1704,7 +1706,7 @@ void Event::dialogueWithVincent()
         }
         else if (heroChoice == 2)
         {
-            Function::clearScreen();
+            Game::clearScreen();
             Function::showHeroAction("'Your girlfriend, Nyx.'");
             std::cout << std::endl;
             Function::writeDialogue("\t- 'Traitorous bitch! She'll get her due someday.");
