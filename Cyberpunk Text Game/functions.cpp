@@ -93,3 +93,12 @@ void Function::waitForUserInput()
 #pragma warning(suppress : 6031)
     _getch();
 }
+
+void Function::clearScreen()
+{
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
+    system("cls");
+#else
+    system("clear");
+#endif
+}

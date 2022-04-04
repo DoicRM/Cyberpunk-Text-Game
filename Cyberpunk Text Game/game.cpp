@@ -4,7 +4,7 @@ std::map <int, Game> Game::game;
 
 Game::Game()
 {
-    Logger::out("Function start", "Game::Game");
+    //Logger::out("Function start", "Game::Game");
     this->menu = 0;
     this->choice = 0;
     this->gameLang = 0;
@@ -14,7 +14,7 @@ Game::Game()
 
 Game::~Game()
 {   
-    Logger::out("Function start", "Game::~Game");
+    //Logger::out("Function start", "Game::~Game");
 }
 
 void Game::run()
@@ -40,7 +40,7 @@ void Game::init()
     game[0] = Nocturnal;
 }
 
-void Game::initObjects()
+void Game::initAll()
 {
     Fraction::initFractions();
     Hero::initHero();
@@ -61,7 +61,7 @@ void Game::selectLanguage()
 
     while (this->gameLang != en && this->gameLang != pl)
     {
-        clearScreen();
+        Function::clearScreen();
         std::cout << std::endl;
         Function::write("\tSelect your language: ", 25);
         std::cout << std::endl;
@@ -77,7 +77,7 @@ void Game::selectLanguage()
     }
 
     Function::clearChoices();
-    clearScreen();
+    Function::clearScreen();
 }
 
 void Game::welcome()
@@ -90,7 +90,7 @@ void Game::welcome()
     else Function::write("\tRADOS£AW 'DOIC' MICHALAK PRESENTS A TEXT GAME TITLED", 40);
 
     Sleep(2000);
-    clearScreen();
+    Function::clearScreen();
 }
 
 void Game::writeLogo()
@@ -195,17 +195,17 @@ void Game::mainMenu()
 void Game::newGame()
 {
     Logger::out("Function start", "Game::newGame");
-    //Game* ptrGame = this;
-    initObjects();
-    clearScreen();
-    Event::darkAlley();
+    initAll();
+    Function::clearScreen();
+    //Event::darkAlley();
+    this->setCurrentLocation(&Location::locations["DarkAlley"]);
 }
 
 void Game::continueGame()
 {
     Logger::out("Function start", "Game::continueGame");
     Sleep(500);
-    clearScreen();
+    Function::clearScreen();
     std::cout << std::endl;
     Function::changeConsoleColor(lightblue);
 
@@ -215,7 +215,7 @@ void Game::continueGame()
     Function::changeConsoleColor();
     Sleep(1000);
     pause();
-    clearScreen();
+    Function::clearScreen();
     logo();
     mainMenu();
 }
@@ -228,7 +228,7 @@ void Game::changeLanguage()
 
     while (change != en && change != pl)
     {
-        clearScreen();
+        Function::clearScreen();
         std::cout << std::endl;
 
         if (this->getLang() == en) Function::write("\tSelect your language: ", 25);
@@ -250,7 +250,7 @@ void Game::changeLanguage()
     else if (this->getLang() == pl) Logger::out("Game language is Polish", "Game::changeLanguage");
 
     Function::clearChoices();
-    clearScreen();
+    Function::clearScreen();
     logo();
     mainMenu();
 }
@@ -264,7 +264,7 @@ void Game::endGame()
         if (this->getLang() == pl)
         {
             Sleep(500);
-            clearScreen();
+            Function::clearScreen();
             std::cout << std::endl;
             Function::write("\tJesteœ pewien, ¿e chcesz wyjœæ z gry?", 25);
             std::cout << std::endl;
@@ -276,7 +276,7 @@ void Game::endGame()
         else
         {
             Sleep(500);
-            clearScreen();
+            Function::clearScreen();
             std::cout << std::endl;
             Function::write("\tAre you sure you want to end the game?", 25);
             std::cout << std::endl;
@@ -295,7 +295,7 @@ void Game::endGame()
             break;
         case 2:
             Function::clearChoices();
-            clearScreen();
+            Function::clearScreen();
             Sleep(500); 
             logo();
             mainMenu();
@@ -308,7 +308,7 @@ void Game::credits()
 {
     Logger::out("Function start", "Game::credits");
     Sleep(500);
-    clearScreen();
+    Function::clearScreen();
     std::cout << std::endl;
 
     if (this->getLang() == pl)
@@ -344,7 +344,7 @@ void Game::credits()
 
     Sleep(1000);
     pause();
-    clearScreen();
+    Function::clearScreen();
     logo();
     mainMenu();
 }
@@ -357,7 +357,16 @@ void Game::test()
 void Game::setCurrentLocation(Location* location)
 {
     this->ptrCurrentLocation = location;
-    Logger::out("Actual location is " + location->getName(), "Game::setCurrentLocation");
+    Logger::out("Actual location is " + getCurrentLocation()->getName(), "Game::setCurrentLocation");
+    startEventsByLocation();
+}
+
+void Game::startEventsByLocation()
+{
+    if (getCurrentLocation() == &Location::locations["DarkAlley"]) Event::darkAlley();
+    else if (getCurrentLocation() == &Location::locations["Street"]) Event::street();
+    else if (getCurrentLocation() == &Location::locations["Nightclub"]) Event::nightclub();
+    else if (getCurrentLocation() == &Location::locations["GunShop"]) Event::gunShop();
 }
 
 // Inicjowanie ekwipunku gracza
@@ -398,15 +407,6 @@ void Game::initQuestsList()
         q.close();
     }
     else Logger::error("No file access", "Function::initQuestsList");
-}
-
-void Game::clearScreen()
-{
-#if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
-    system("cls");
-#else
-    system("clear");
-#endif
 }
 
 void Game::pause()

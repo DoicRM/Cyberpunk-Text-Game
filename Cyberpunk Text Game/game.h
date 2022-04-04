@@ -27,13 +27,11 @@ public:
 	static void init(); // gry
 	static void initHeroEQ(); // ekwipunku gracza
 	static void initQuestsList(); // zadañ gracza
-	// czyszczenie ekranu
-	static void clearScreen();
 	// zatrzymanie gry
 	static void pause();
 
 	void run(); // rozpoczêcie dzia³ania
-	void initObjects(); // inicjalizacja obiektów
+	void initAll(); // inicjalizacja obiektów
 	void selectLanguage(); // wybór jêzyka
 	void welcome(); // powitanie
 	void writeLogo(); // wypisywanie loga
@@ -47,6 +45,7 @@ public:
 	void test(); // do testów
 	void end() { this->playing = false; } // zakoñczenie dzia³ania
 	void setCurrentLocation(Location* location); // ustawienie aktualnej lokacji
+	void startEventsByLocation(); // ustawienie aktualnej lokacji
 
 	inline bool getPlaying() const { return this->playing; }
 	inline int getLang() const { return this->gameLang; }

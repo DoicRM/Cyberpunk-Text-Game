@@ -1,14 +1,11 @@
 #include "events.h"
 
-Location* locationPtr;
 bool darkAlleyWasVisited = false, streetWasVisited = false, gunShopWasVisited = false, nightclubWasVisited = false;
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::darkAlley()
 {
     Logger::out("Function start", "Event::darkAlley");
-    locationPtr = &Location::locations["DarkAlley"];
-    Game::game[0].setCurrentLocation(locationPtr);
 
     if (!darkAlleyWasVisited)
     {
@@ -24,8 +21,6 @@ void Event::darkAlley()
 void Event::street()
 {
     Logger::out("Function start", "Event::street");
-    locationPtr = &Location::locations["Street"];
-    Game::game[0].setCurrentLocation(locationPtr);
 
     if (!streetWasVisited)
     {
@@ -41,8 +36,6 @@ void Event::street()
 void Event::gunShop()
 {
     Logger::out("Function start", "Event::gunShop");
-    locationPtr = &Location::locations["GunShop"];
-    Game::game[0].setCurrentLocation(locationPtr);
 
     if (!gunShopWasVisited)
     {
@@ -58,8 +51,6 @@ void Event::gunShop()
 void Event::nightclub()
 {
     Logger::out("Function start", "Event::nightclub");
-    locationPtr = &Location::locations["Nightclub"];
-    Game::game[0].setCurrentLocation(locationPtr);
 
     if (!nightclubWasVisited)
     {
@@ -85,7 +76,7 @@ void Event::heroDeath()
     Location::locations.clear();
     Quest::quests.clear();
     Sleep(500);
-    Game::clearScreen();
+    Function::clearScreen();
     Function::changeConsoleColor(red);
     std::cout << std::endl;
 
@@ -101,7 +92,7 @@ void Event::heroDeath()
     else if (Game::game[0].getLang() == pl) Function::write("\tWróæ do menu...", 25);
 
     Function::waitForUserInput();
-    Game::clearScreen();
+    Function::clearScreen();
     Game().logo();
 }
 
@@ -109,14 +100,9 @@ void Event::heroDeath()
 void Event::gameOver()
 {
     Logger::out("Function start", "Event::gameOver");
-    Hero::heroes.clear();
-    Npc::npcs.clear();
-    Fraction::fractions.clear();
-    Item::items.clear();
-    Location::locations.clear();
-    Quest::quests.clear();
+    clearInstances();
     Sleep(500);
-    Game::clearScreen();
+    Function::clearScreen();
     Function::changeConsoleColor(lightblue);
     std::cout << std::endl;
 
@@ -126,13 +112,24 @@ void Event::gameOver()
     Sleep(1000);
     std::cout << std::endl << std::endl;
     Function::changeConsoleColor();
-    Game().credits();
+    Game::game[0].credits();
     std::cout << std::endl << std::endl;
 
     if (Game::game[0].getLang() == en) Function::write("\tBack to menu...", 25);
     else if (Game::game[0].getLang() == pl) Function::write("\tWróæ do menu...", 25);
 
     Function::waitForUserInput();
-    Game::clearScreen();
-    Game().logo();
+    Function::clearScreen();
+    Game::game[0].logo();
+}
+
+void Event::clearInstances()
+{
+    Logger::out("Function start", "Event::clearInstances");
+    Hero::heroes.clear();
+    Npc::npcs.clear();
+    Fraction::fractions.clear();
+    Item::items.clear();
+    Location::locations.clear();
+    Quest::quests.clear();
 }

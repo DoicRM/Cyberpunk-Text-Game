@@ -37,6 +37,9 @@ public:
 	static void showChoices();
 	static void selectChoice(int nr);
 
+	// czyszczenie ekranu
+	static void clearScreen();
+
 	// Zmiana koloru tekstu i t³a konsoli
 	//	1 czarny tekst na czarnym tle
 	//	1 ciemno niebieski tekst na czarnym tle

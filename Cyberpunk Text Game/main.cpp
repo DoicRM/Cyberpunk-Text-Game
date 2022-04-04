@@ -6,5 +6,6 @@ int main()
     Game::init();
     Game::game[0].run();
     Logger::cleanup();
+    Game::game.clear();
     return 0;
 }

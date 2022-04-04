@@ -13,6 +13,7 @@ public:
 	static void heroDeath(); // ekran œmierci
 	static void loadingFiles(); // ³adowanie plików
 	static void gameOver(); // koniec gry
+	static void clearInstances(); // czyszczenie map z instancjami
 
 private:
 	// Mroczny zau³ek
