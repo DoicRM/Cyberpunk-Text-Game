@@ -20,7 +20,7 @@ Game::~Game()
 void Game::run()
 {
     Logger::out("Function start", "Game::run");
-    Function::nameGame("Nocturnal - v.1.0");
+    Function::nameGame("Nocturnal - Demo Build");
     Function::initSpecialChars("polish");
 
     while (getPlaying())
@@ -96,42 +96,45 @@ void Game::welcome()
 void Game::writeLogo()
 {
     Logger::out("Function start", "Game::writeLogo");
-    Function::changeConsoleColor(yellow);
+    Function::changeConsoleColor(lightblue);
     std::cout << std::endl;
-    Function::write("\t ======  ===    ===  =======   =======  =======   =======   ==     ==  ===    ==  ==    ==", 1);
+    Function::write("\t ****     **   *******     ******  ********** **     ** *******   ****     **     **     **      ", 1);
     std::cout << std::endl;
-    Function::write("\t=======   ===  ===   ==   ===  ==       ==   ===  ==   ===  ==     ==  ====   ==  ==   == ", 1);
+    Function::write("\t/**/**   /**  **/////**   **////**/////**/// /**    /**/**////** /**/**   /**    ****   /**      ", 1);
     std::cout << std::endl;
-    Function::write("\t==         ======    ==   ==   ==       ==   ==   ==   ==   ==     ==  =====  ==  ==  ==  ", 1);
+    Function::write("\t/**//**  /** **     //** **    //     /**    /**    /**/**   /** /**//**  /**   **//**  /**      ", 1);
     std::cout << std::endl;
-    Function::write("\t==          ====     ======    =======  ======    ======    ==     ==  =========  =====   ", 1);
+    Function::write("\t/** //** /**/**      /**/**           /**    /**    /**/*******  /** //** /**  **  //** /**      ", 1);
     std::cout << std::endl;
-    Function::write("\t==           ==      ==   ==   ==       =====     =====     ===   ===  == ======  ==  ==  ", 1);
+    Function::write("\t/**  //**/**/**      /**/**           /**    /**    /**/**///**  /**  //**/** **********/**      ", 1);
     std::cout << std::endl;
-    Function::write("\t=======      ==      ==   ===  ==       ==  ==    ==         =======   ==   ====  ==   == ", 1);
+    Function::write("\t/**   //****//**     ** //**    **    /**    /**    /**/**  //** /**   //****/**//////**/**      ", 1);
     std::cout << std::endl;
-    Function::write("\t ======      ==      =======   =======  ==   ===  ==          =====    ==    ===  ==    ==", 1);
+    Function::write("\t/**    //*** //*******   //******     /**    //******* /**   //**/**    //***/**     /**/********", 1);
+    std::cout << std::endl;
+    Function::write("\t//      ///   ///////     //////      //      ///////  //     // //      /// //      // //////// ", 1);
     std::cout << std::endl << std::endl;
     Function::changeConsoleColor();
-    Function::write("\t\t\t\t\t\t\t\t\tDemo Build", 2);
+    Function::write("\t\t\t\t\t\tA Cyberpunk Text Game", 2);
     std::cout << std::endl << std::endl;
 }
 
 void Game::logo()
 {
     Logger::out("Function start", "Game::logo");
-    Function::changeConsoleColor(yellow);
+    Function::changeConsoleColor(lightblue);
     std::cout << std::endl;
-    std::cout << "\t ======  ===    ===  =======   =======  =======   =======   ==     ==  ===    ==  ==    ==" << std::endl;
-    std::cout << "\t=======   ===  ===   ==   ===  ==       ==   ===  ==   ===  ==     ==  ====   ==  ==   == " << std::endl;
-    std::cout << "\t==         ======    ==   ==   ==       ==   ==   ==   ==   ==     ==  =====  ==  ==  ==  " << std::endl;
-    std::cout << "\t==          ====     ======    =======  ======    ======    ==     ==  =========  =====   " << std::endl;
-    std::cout << "\t==           ==      ==   ==   ==       =====     =====     ===   ===  == ======  ==  ==  " << std::endl;
-    std::cout << "\t=======      ==      ==   ===  ==       ==  ==    ==         =======   ==   ====  ==   == " << std::endl;
-    std::cout << "\t ======      ==      =======   =======  ==   ===  ==          =====    ==    ===  ==    ==" << std::endl;
+    std::cout << "\t ****     **   *******     ******  ********** **     ** *******   ****     **     **     **      " << std::endl;
+    std::cout << "\t/**/**   /**  **/////**   **////**/////**/// /**    /**/**////** /**/**   /**    ****   /**      " << std::endl;
+    std::cout << "\t/**//**  /** **     //** **    //     /**    /**    /**/**   /** /**//**  /**   **//**  /**      " << std::endl;
+    std::cout << "\t/** //** /**/**      /**/**           /**    /**    /**/*******  /** //** /**  **  //** /**      " << std::endl;
+    std::cout << "\t/**  //**/**/**      /**/**           /**    /**    /**/**///**  /**  //**/** **********/**      " << std::endl;
+    std::cout << "\t/**   //****//**     ** //**    **    /**    /**    /**/**  //** /**   //****/**//////**/**      " << std::endl;
+    std::cout << "\t/**    //*** //*******   //******     /**    //******* /**   //**/**    //***/**     /**/********" << std::endl;
+    std::cout << "\t//      ///   ///////     //////      //      ///////  //     // //      /// //      // //////// " << std::endl;
     std::cout << std::endl;
     Function::changeConsoleColor();
-    std::cout << "\t\t\t\t\t\t\t\t\tDemo Build" << std::endl;
+    std::cout << "\t\t\t\t\t\tA Cyberpunk Text Game" << std::endl;
     std::cout << std::endl;
     mainMenu();
 }

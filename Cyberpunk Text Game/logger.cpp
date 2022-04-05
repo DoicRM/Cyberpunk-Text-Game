@@ -1,4 +1,5 @@
 // CREATED BY Rachel Wil Sha Singh 2020 (https://gitlab.com/RachelWilShaSingh/simple-cpp-text-adventure)
+// EDITED BY Rados³aw "Doic" Michalak 2022
 #include "logger.h"
 
 std::ofstream Logger::m_file;
