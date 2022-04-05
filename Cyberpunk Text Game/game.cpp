@@ -23,7 +23,7 @@ void Game::run()
     Function::nameGame("Nocturnal - v.1.0");
     Function::initSpecialChars("polish");
 
-    while (this->getPlaying())
+    while (getPlaying())
     {
         selectLanguage();
         welcome();
@@ -59,7 +59,7 @@ void Game::selectLanguage()
     Logger::out("Function start", "Game::selectLanguage");
     Function::changeConsoleColor();
 
-    while (this->gameLang != en && this->gameLang != pl)
+    while (getLang() != en && getLang() != pl)
     {
         Function::clearScreen();
         std::cout << std::endl;
@@ -69,9 +69,9 @@ void Game::selectLanguage()
         Function::addChoice("EN");
         Function::addChoice("PL");
         Function::showChoices();
-        std::cin >> this->gameLang;
+        std::cin >> gameLang;
 
-        if (this->gameLang != en && this->gameLang != pl) Logger::error("Invalid value of 'gameLang'", "Game::selectLanguage");
+        if (getLang() != en && getLang() != pl) Logger::error("Invalid value of 'gameLang'", "Game::selectLanguage");
         else if (getLang() == en) Logger::out("Game language is English", "Game::selectLanguage");
         else if (getLang() == pl) Logger::out("Game language is Polish", "Game::selectLanguage");
     }
@@ -86,7 +86,7 @@ void Game::welcome()
     std::cout << std::endl;
     Sleep(500); 
 
-    if (this->getLang() == pl) Function::write("\tRADOS£AW 'DOIC' MICHALAK PREZENTUJE GRÊ TEKSTOW¥ POD TYTU£EM", 40);
+    if (getLang() == pl) Function::write("\tRADOS£AW 'DOIC' MICHALAK PREZENTUJE GRÊ TEKSTOW¥ POD TYTU£EM", 40);
     else Function::write("\tRADOS£AW 'DOIC' MICHALAK PRESENTS A TEXT GAME TITLED", 40);
 
     Sleep(2000);
@@ -142,7 +142,7 @@ void Game::mainMenu()
     Function::changeConsoleColor();
     std::cout << std::endl;
 
-    if (this->getLang() == pl)
+    if (getLang() == pl)
     {
         Function::clearChoices();
         Function::addChoice("Nowa gra");
@@ -165,9 +165,9 @@ void Game::mainMenu()
 
     do
     {
-        std::cin >> this->menu;
+        std::cin >> menu;
 
-        switch (this->menu) {
+        switch (menu) {
         case 1:
             Function::clearChoices();
             newGame();
@@ -189,7 +189,7 @@ void Game::mainMenu()
             endGame();
             break;
         }
-    } while (this->menu > 5 || this->menu <= 0);
+    } while (menu > 5 || menu <= 0);
 }
 
 void Game::newGame()
@@ -197,8 +197,7 @@ void Game::newGame()
     Logger::out("Function start", "Game::newGame");
     initAll();
     Function::clearScreen();
-    //Event::darkAlley();
-    this->setCurrentLocation(&Location::locations["DarkAlley"]);
+    setCurrentLocation(&Location::locations["DarkAlley"]);
 }
 
 void Game::continueGame()
@@ -209,7 +208,7 @@ void Game::continueGame()
     std::cout << std::endl;
     Function::changeConsoleColor(lightblue);
 
-    if (this->getLang() == pl) Function::write("\tNic tu nie ma. Ta funkcja jest obecnie niedostêpna.\n\n", 25);
+    if (getLang() == pl) Function::write("\tNic tu nie ma. Ta funkcja jest obecnie niedostêpna.\n\n", 25);
     else Function::write("\tThere's nothing here. This feature is currently unavailable.\n\n", 25);
 
     Function::changeConsoleColor();
@@ -231,8 +230,8 @@ void Game::changeLanguage()
         Function::clearScreen();
         std::cout << std::endl;
 
-        if (this->getLang() == en) Function::write("\tSelect your language: ", 25);
-        else if (this->getLang() == pl) Function::write("\tWybierz swój jêzyk: ", 25);
+        if (getLang() == en) Function::write("\tSelect your language: ", 25);
+        else if (getLang() == pl) Function::write("\tWybierz swój jêzyk: ", 25);
 
         std::cout << std::endl;
         Function::clearChoices();
@@ -246,8 +245,8 @@ void Game::changeLanguage()
 
     this->gameLang = change;
 
-    if (this->getLang() == en) Logger::out("Game language is English", "Game::changeLanguage");
-    else if (this->getLang() == pl) Logger::out("Game language is Polish", "Game::changeLanguage");
+    if (getLang() == en) Logger::out("Game language is English", "Game::changeLanguage");
+    else if (getLang() == pl) Logger::out("Game language is Polish", "Game::changeLanguage");
 
     Function::clearChoices();
     Function::clearScreen();
@@ -261,7 +260,7 @@ void Game::endGame()
 
     do
     {
-        if (this->getLang() == pl)
+        if (getLang() == pl)
         {
             Sleep(500);
             Function::clearScreen();
@@ -286,9 +285,9 @@ void Game::endGame()
             Function::showChoices();
         }
 
-        std::cin >> this->choice;
+        std::cin >> choice;
 
-        switch (this->choice) {
+        switch (choice) {
         case 1:
             Function::clearChoices();
             end();
@@ -301,7 +300,7 @@ void Game::endGame()
             mainMenu();
             break;
         }
-    } while (this->choice != 1 && this->choice != 2);
+    } while (choice != 1 && choice != 2);
 }
 
 void Game::credits()
@@ -311,7 +310,7 @@ void Game::credits()
     Function::clearScreen();
     std::cout << std::endl;
 
-    if (this->getLang() == pl)
+    if (getLang() == pl)
     {
         Function::changeConsoleColor(lightblue);
         Function::write("\t\tAUTOR\n");

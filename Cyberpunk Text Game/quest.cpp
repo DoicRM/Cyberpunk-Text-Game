@@ -7,8 +7,8 @@ Quest::Quest()
     this->name = "None";
     this->description = "None";
     this->status = "unknown";
-    this->running = false;
-    this->completed = false;
+    this->isRunning = false;
+    this->isCompleted = false;
 }
 
 Quest::Quest(std::string name, std::string description)
@@ -16,17 +16,17 @@ Quest::Quest(std::string name, std::string description)
     this->name = name;
     this->description = description;
     this->status = "unknown";
-    this->running = false;
-    this->completed = false;
+    this->isRunning = false;
+    this->isCompleted = false;
 }
 
-Quest::Quest(std::string name, std::string description, std::string status, bool running, bool completed)
+Quest::Quest(std::string name, std::string description, std::string status, bool isRunning, bool isCompleted)
 {
     this->name = name;
     this->description = description;
     this->status = status;
-    this->running = running;
-    this->completed = completed;
+    this->isRunning = isRunning;
+    this->isCompleted = isCompleted;
 }
 
 Quest::~Quest()
@@ -35,7 +35,7 @@ Quest::~Quest()
 
 void Quest::start()
 {
-    this->running = true;
+    this->isRunning = true;
     this->status = "ongoing";
 
     std::fstream q;
@@ -55,8 +55,8 @@ void Quest::start()
 
 void Quest::end()
 {
-    this->running = false;
-    this->completed = true;
+    this->isRunning = false;
+    this->isCompleted = true;
     this->status = "completed";
 
     std::string quests[2];

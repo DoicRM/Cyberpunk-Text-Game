@@ -69,12 +69,7 @@ void Event::nightclub()
 void Event::heroDeath()
 {
     Logger::out("Function start", "Event::heroDeath");
-    Hero::heroes.clear();
-    Npc::npcs.clear();
-    Fraction::fractions.clear();
-    Item::items.clear();
-    Location::locations.clear();
-    Quest::quests.clear();
+    clearInstances();
     Sleep(500);
     Function::clearScreen();
     Function::changeConsoleColor(red);
@@ -84,8 +79,7 @@ void Event::heroDeath()
     else if (Game::game[0].getLang() == pl) Function::write("\tNIE ¯YJESZ!");
 
     Sleep(1000);
-    std::cout << std::endl;
-    std::cout << "" << std::endl;
+    std::cout << std::endl << std::endl;
     Function::changeConsoleColor();
 
     if (Game::game[0].getLang() == en) Function::write("\tBack to menu...", 25);
@@ -93,7 +87,7 @@ void Event::heroDeath()
 
     Function::waitForUserInput();
     Function::clearScreen();
-    Game().logo();
+    Game::game[0].logo();
 }
 
 // Koniec gry

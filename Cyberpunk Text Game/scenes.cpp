@@ -834,7 +834,7 @@ void Event::enterGunShop()
             Function::writeDialogue("\t- 'What's up? How's the gun working out?'");
         }
 
-        if (Quest::quests["ZedAccelerator"].isRunning() && !Quest::quests["ZedAccelerator"].isCompleted())
+        if (Quest::quests["ZedAccelerator"].getIsRunning() && !Quest::quests["ZedAccelerator"].getIsCompleted())
         {
             if (!Hero::heroes[0].hasItem(&Item::items["AD13"]))
             {
@@ -842,10 +842,12 @@ void Event::enterGunShop()
             }
             else
             {
+                // TODO
             }
         }
         else
         {
+            // TODO
         }
     }
 }
@@ -860,26 +862,30 @@ void Event::dialogueWithZed()
         std::cout << std::endl;
 
         Function::clearChoices();
-        Function::addChoice("What do you have?");
-        Function::addChoice("How's business going?");
+        Function::addChoice("'What do you have?'");
+        Function::addChoice("'How's business going?'");
 
         if (bobRecommendsZed && !zedKnowsAboutBobAndZed)
         {
-            Function::addChoice("You're Zed? I come from Bob.");
+            Function::addChoice("'You're Zed? I come from Bob.'");
         }
 
-        Function::addChoice("I have to go...");
+        Function::addChoice("'I have to go...'");
         Function::showChoices();
         std::cin >> heroChoice;
 
         if (heroChoice == 1)
         {
+            Function::clearScreen();
+            Function::showHeroAction("'What do you have?'");
             std::cout << std::endl;
             zedTrade();
             continue;
         }
         else if (heroChoice == 2)
         {
+            Function::clearScreen();
+            Function::showHeroAction("'How's business going?'");
             std::cout << std::endl;
 
             if (heroTalkedAboutBusinessWithZed == true)
@@ -897,11 +903,12 @@ void Event::dialogueWithZed()
         }
         else if (heroChoice == 3)
         {
-            std::cout << std::endl;
+            Function::clearScreen();
 
             if (bobRecommendsZed && !zedKnowsAboutBobAndZed)
             {
                 zedKnowsAboutBobAndZed = true;
+                Function::showHeroAction("'You're Zed? I come from Bob.'");
                 std::cout << std::endl;
                 Function::writeDialogue("\t- 'Yes, that is correct. I'm Zed, and this is my little shop.");
                 Npc::npcs["Zed"].setAttitude(friendly);
@@ -910,6 +917,8 @@ void Event::dialogueWithZed()
                 continue;
             }
             else {
+                Function::showHeroAction("'I have to go...'");
+                std::cout << std::endl;
                 Function::writeDialogue("\t- 'No problem. See you later!'");
                 std::cout << std::endl;
                 Function::clearScreen();
@@ -928,6 +937,8 @@ void Event::dialogueWithZed()
         }
         else if (heroChoice == 4 && bobRecommendsZed && !zedKnowsAboutBobAndZed)
         {
+            Function::clearScreen();
+            Function::showHeroAction("'I have to go...'");
             std::cout << std::endl;
             Function::writeDialogue("\t- 'No problem. See you later!'");
             std::cout << std::endl;
@@ -979,13 +990,17 @@ void Event::zedTrade()
 
                 if (heroChoice == 1)
                 {
+                    Function::clearScreen();
+                    Function::showHeroAction("Buy: pistol (250 $).");
                     buyPistol();
                     break;
                 }
                 else if (heroChoice == 2)
                 {
+                    Function::clearScreen();
+                    Function::showHeroAction("'I have made up my mind.'");
                     std::cout << std::endl;
-                    Function::writeNarration("Zed looks at you pityingly and shrugs his shoulders.");
+                    Function::writeNarration("\tZed looks at you pityingly and shrugs his shoulders.");
                     std::cout << std::endl;
                     Function::writeDialogue("\t- 'No problem. It can happen to anyone.'");
                     std::cout << std::endl;
@@ -1008,13 +1023,17 @@ void Event::zedTrade()
 
                 if (heroChoice == 1)
                 {
+                    Function::clearScreen();
+                    Function::showHeroAction("Buy: pistol (250 $).");
                     buyPistol();
                     break;
                 }
                 else if (heroChoice == 2)
                 {
+                    Function::clearScreen();
+                    Function::showHeroAction("'I have made up my mind.'");
                     std::cout << std::endl;
-                    Function::writeNarration("Zed looks at you pityingly and shrugs his shoulders.");
+                    Function::writeNarration("\tZed looks at you pityingly and shrugs his shoulders.");
                     std::cout << std::endl;
                     Function::writeDialogue("\t- 'No problem. It can happen to anyone.'");
                     std::cout << std::endl;
@@ -1027,7 +1046,7 @@ void Event::zedTrade()
     else
     {
         Function::changeConsoleColor();
-        Function::write("You have everything you need. There's no point in bothering Zed.");
+        Function::write("\tYou have everything you need. There's no point in bothering Zed.");
         std::cout << std::endl;
         dialogueWithZed();
     }

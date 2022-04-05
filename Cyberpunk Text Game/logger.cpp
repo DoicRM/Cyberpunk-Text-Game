@@ -18,9 +18,9 @@ void Logger::setup(bool isLoud)
     m_lastTimestamp = m_startTime;
     m_isLoud = isLoud;
 
-    m_file << "<html><head><title>LOG " << __DATE__ << "</title></head><body>" << std::endl;
+    m_file << "<html><head><title>LOG – " << __DATE__ << "</title><meta http-equiv='refresh' content='2'></head><body>" << std::endl;
     m_file << "<style>" << std::endl;
-    m_file << "table { font-family: sans-serif; width: 100%; }" << std::endl;
+    m_file << "table { font-family: sans-serif; width: 100%; border: 2px solid #CCCCCC; }" << std::endl;
     m_file << "tr.highlight { background: #ff7c7c; } " << std::endl;
     m_file << "tr.highlight-1 { background: #ffb67c; } " << std::endl;
     m_file << "tr.highlight-2 { background: #ffef7c; } " << std::endl;
@@ -36,17 +36,17 @@ void Logger::setup(bool isLoud)
     m_file << "td { border-bottom: solid 1px #CCCCCC; } " << std::endl;
     m_file << "table .time { padding-right: 25px; }" << std::endl;
     m_file << "table .location { padding-right: 25px; }" << std::endl;
-    m_file << "table td.time { font-size: 14px; }" << std::endl;
-    m_file << "table td.location { font-size: 14px; }" << std::endl;
-    m_file << "table td.message { font-size: 14px; }" << std::endl;
+    m_file << "table td.time { font-size: 15px; }" << std::endl;
+    m_file << "table td.location { font-size: 15px; }" << std::endl;
+    m_file << "table td.message { font-size: 15px; }" << std::endl;
     m_file << "table .odd { background: #DDDDDD; }" << std::endl;
     m_file << "table .error { background: #FFA5A5; }" << std::endl;
     m_file << "</style>" << std::endl;
     m_file << "<table>" << std::endl;
     m_file << "<tr>"
-        << "<td class='time'><strong>TIME</strong></td>"
         << "<td class='location'><strong>LOCATION</strong></td>"
         << "<td class='message'><strong>MESSAGE</strong></td>"
+        << "<td class='time'><strong>TIME</strong></td>"
         << "</tr>" << std::endl;
     out("Logging begins", "Logger::setup");
 }
@@ -90,9 +90,9 @@ void Logger::outHighlight(const std::string& message, const std::string& locatio
     if (loc == "") { loc = "-"; }
 
     m_file << "<tr class='highlight-" << color << "'>"
-        << "<td class='time'>" << getFormattedTimestamp() << "</td>"
         << "<td class='location'>" << loc << "</td>"
         << "<td class='message'>" << message << "</td>"
+        << "<td class='time'>" << getFormattedTimestamp() << "</td>"
         << "</tr>" << std::endl;
 
     m_rowCount++;
@@ -131,9 +131,9 @@ void Logger::out(const std::string& message, const std::string& location /* = ""
         std::string rowClass = (m_rowCount % 2 == 0) ? "" : "odd";
 
         m_file << "<tr class='" + rowClass + "'>"
-            << "<td class='time'>" << getFormattedTimestamp() << "</td>"
             << "<td class='location'>" << loc << "</td>"
             << "<td class='message'>" << message << "</td>"
+            << "<td class='time'>" << getFormattedTimestamp() << "</td>"
             << "</tr>" << std::endl;
 
         m_rowCount++;
@@ -151,9 +151,9 @@ void Logger::error(const std::string& message, const std::string& location /* = 
     if (loc == "") { loc = "-"; }
 
     m_file << "<tr class='error'>"
-        << "<td class='time'>" << getFormattedTimestamp() << "</td>"
         << "<td class='location'>" << loc << "</td>"
         << "<td class='message'>" << message << "</td>"
+        << "<td class='time'>" << getFormattedTimestamp() << "</td>"
         << "</tr>" << std::endl;
 }
 
