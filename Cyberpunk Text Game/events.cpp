@@ -79,11 +79,10 @@ void Event::heroDeath()
     else if (Game::game[0].getLang() == pl) Function::write("\tNIE ¯YJESZ!");
 
     Sleep(1000);
-    std::cout << std::endl << std::endl;
     Function::changeConsoleColor();
 
-    if (Game::game[0].getLang() == en) Function::write("\tBack to menu...", 25);
-    else if (Game::game[0].getLang() == pl) Function::write("\tWróæ do menu...", 25);
+    if (Game::game[0].getLang() == en) Function::write("\n\n\tBack to menu...", 25);
+    else if (Game::game[0].getLang() == pl) Function::write("\n\n\tWróæ do menu...", 25);
 
     Function::waitForUserInput();
     Function::clearScreen();
@@ -107,10 +106,9 @@ void Event::gameOver()
     std::cout << std::endl << std::endl;
     Function::changeConsoleColor();
     Game::game[0].credits();
-    std::cout << std::endl << std::endl;
 
-    if (Game::game[0].getLang() == en) Function::write("\tBack to menu...", 25);
-    else if (Game::game[0].getLang() == pl) Function::write("\tWróæ do menu...", 25);
+    if (Game::game[0].getLang() == en) Function::write("\n\n\tBack to menu...", 25);
+    else if (Game::game[0].getLang() == pl) Function::write("\n\n\tWróæ do menu...", 25);
 
     Function::waitForUserInput();
     Function::clearScreen();

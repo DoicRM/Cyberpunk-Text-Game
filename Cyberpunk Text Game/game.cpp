@@ -62,9 +62,7 @@ void Game::selectLanguage()
     while (getLang() != en && getLang() != pl)
     {
         Function::clearScreen();
-        std::cout << std::endl;
-        Function::write("\tSelect your language: ", 25);
-        std::cout << std::endl;
+        Function::write("\n\tSelect your language:\n", 25);
         Function::clearChoices();
         Function::addChoice("EN");
         Function::addChoice("PL");
@@ -83,11 +81,10 @@ void Game::selectLanguage()
 void Game::welcome()
 {
     Logger::out("Function start", "Game::welcome");
-    std::cout << std::endl;
     Sleep(500); 
 
-    if (getLang() == pl) Function::write("\tRADOS£AW 'DOIC' MICHALAK PREZENTUJE GRÊ TEKSTOW¥ POD TYTU£EM", 40);
-    else Function::write("\tRADOS£AW 'DOIC' MICHALAK PRESENTS A TEXT GAME TITLED", 40);
+    if (getLang() == pl) Function::write("\n\tRADOS£AW 'DOIC' MICHALAK PREZENTUJE GRÊ TEKSTOW¥ POD TYTU£EM", 40);
+    else Function::write("\n\tRADOS£AW 'DOIC' MICHALAK PRESENTS A TEXT GAME TITLED", 40);
 
     Sleep(2000);
     Function::clearScreen();
@@ -97,26 +94,16 @@ void Game::writeLogo()
 {
     Logger::out("Function start", "Game::writeLogo");
     Function::changeConsoleColor(lightblue);
-    std::cout << std::endl;
-    Function::write("\t ****     **   *******     ******  ********** **     ** *******   ****     **     **     **      ", 1);
-    std::cout << std::endl;
-    Function::write("\t/**/**   /**  **/////**   **////**/////**/// /**    /**/**////** /**/**   /**    ****   /**      ", 1);
-    std::cout << std::endl;
-    Function::write("\t/**//**  /** **     //** **    //     /**    /**    /**/**   /** /**//**  /**   **//**  /**      ", 1);
-    std::cout << std::endl;
-    Function::write("\t/** //** /**/**      /**/**           /**    /**    /**/*******  /** //** /**  **  //** /**      ", 1);
-    std::cout << std::endl;
-    Function::write("\t/**  //**/**/**      /**/**           /**    /**    /**/**///**  /**  //**/** **********/**      ", 1);
-    std::cout << std::endl;
-    Function::write("\t/**   //****//**     ** //**    **    /**    /**    /**/**  //** /**   //****/**//////**/**      ", 1);
-    std::cout << std::endl;
-    Function::write("\t/**    //*** //*******   //******     /**    //******* /**   //**/**    //***/**     /**/********", 1);
-    std::cout << std::endl;
-    Function::write("\t//      ///   ///////     //////      //      ///////  //     // //      /// //      // //////// ", 1);
-    std::cout << std::endl << std::endl;
+    Function::write("\n\t ****     **   *******     ******  ********** **     ** *******   ****     **     **     **      ", 1);
+    Function::write("\n\t/**/**   /**  **/////**   **////**/////**/// /**    /**/**////** /**/**   /**    ****   /**      ", 1);
+    Function::write("\n\t/**//**  /** **     //** **    //     /**    /**    /**/**   /** /**//**  /**   **//**  /**      ", 1);
+    Function::write("\n\t/** //** /**/**      /**/**           /**    /**    /**/*******  /** //** /**  **  //** /**      ", 1);
+    Function::write("\n\t/**  //**/**/**      /**/**           /**    /**    /**/**///**  /**  //**/** **********/**      ", 1);
+    Function::write("\n\t/**   //****//**     ** //**    **    /**    /**    /**/**  //** /**   //****/**//////**/**      ", 1);
+    Function::write("\n\t/**    //*** //*******   //******     /**    //******* /**   //**/**    //***/**     /**/********", 1);
+    Function::write("\n\t//      ///   ///////     //////      //      ///////  //     // //      /// //      // //////// ", 1);
     Function::changeConsoleColor();
-    Function::write("\t\t\t\t\t\tA Cyberpunk Text Game", 2);
-    std::cout << std::endl << std::endl;
+    Function::write("\n\n\t\t\t\t\t     A Cyberpunk Text Game\n\n", 2);
 }
 
 void Game::logo()
@@ -134,8 +121,7 @@ void Game::logo()
     std::cout << "\t//      ///   ///////     //////      //      ///////  //     // //      /// //      // //////// " << std::endl;
     std::cout << std::endl;
     Function::changeConsoleColor();
-    std::cout << "\t\t\t\t\t\tA Cyberpunk Text Game" << std::endl;
-    std::cout << std::endl;
+    std::cout << "\n\t\t\t\t\t     A Cyberpunk Text Game\n\n" << std::endl;
     mainMenu();
 }
 
@@ -208,11 +194,10 @@ void Game::continueGame()
     Logger::out("Function start", "Game::continueGame");
     Sleep(500);
     Function::clearScreen();
-    std::cout << std::endl;
     Function::changeConsoleColor(lightblue);
 
-    if (getLang() == pl) Function::write("\tNic tu nie ma. Ta funkcja jest obecnie niedostêpna.\n\n", 25);
-    else Function::write("\tThere's nothing here. This feature is currently unavailable.\n\n", 25);
+    if (getLang() == pl) Function::write("\n\tNic tu nie ma. Ta funkcja jest obecnie niedostêpna.\n\n", 25);
+    else Function::write("\n\tThere's nothing here. This feature is currently unavailable.\n\n", 25);
 
     Function::changeConsoleColor();
     Sleep(1000);
@@ -231,12 +216,10 @@ void Game::changeLanguage()
     while (change != en && change != pl)
     {
         Function::clearScreen();
-        std::cout << std::endl;
 
-        if (getLang() == en) Function::write("\tSelect your language: ", 25);
-        else if (getLang() == pl) Function::write("\tWybierz swój jêzyk: ", 25);
+        if (getLang() == en) Function::write("\n\tSelect your language:\n", 25);
+        else if (getLang() == pl) Function::write("\n\tWybierz swój jêzyk:\n", 25);
 
-        std::cout << std::endl;
         Function::clearChoices();
         Function::addChoice("EN");
         Function::addChoice("PL");
@@ -267,9 +250,8 @@ void Game::endGame()
         {
             Sleep(500);
             Function::clearScreen();
-            std::cout << std::endl;
-            Function::write("\tJesteœ pewien, ¿e chcesz wyjœæ z gry?", 25);
-            std::cout << std::endl;
+            Function::write("\n\tJesteœ pewien, ¿e chcesz wyjœæ z gry?\n", 25);
+
             Function::clearChoices();
             Function::addChoice("Tak");
             Function::addChoice("Nie");
@@ -279,9 +261,8 @@ void Game::endGame()
         {
             Sleep(500);
             Function::clearScreen();
-            std::cout << std::endl;
-            Function::write("\tAre you sure you want to end the game?", 25);
-            std::cout << std::endl;
+            Function::write("\n\tAre you sure you want to end the game?\n", 25);
+
             Function::clearChoices();
             Function::addChoice("Yes");
             Function::addChoice("No");
@@ -311,12 +292,11 @@ void Game::credits()
     Logger::out("Function start", "Game::credits");
     Sleep(500);
     Function::clearScreen();
-    std::cout << std::endl;
 
     if (getLang() == pl)
     {
         Function::changeConsoleColor(lightblue);
-        Function::write("\t\tAUTOR\n");
+        Function::write("\n\t\tAUTOR\n");
         Function::changeConsoleColor();
         Function::write("\tRados³aw 'Doic' Michalak\n\n");
         Function::changeConsoleColor(lightblue);
@@ -331,7 +311,7 @@ void Game::credits()
     else
     {
         Function::changeConsoleColor(lightblue);
-        Function::write("\t\tAUTHOR\n");
+        Function::write("\n\t\tAUTHOR\n");
         Function::changeConsoleColor();
         Function::write("\tRados³aw 'Doic' Michalak\n\n");
         Function::changeConsoleColor(lightblue);
