@@ -4,115 +4,6 @@ int heroChoice = 0;
 bool bobRecommendsZed = false, zedKnowsAboutBobAndZed = false, heroIsOnDanceFloor = false, heroIsAtBar = false, heroKnowsVincentCode = false;
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-void Event::darkAlleyCrossroads()
-{
-    Logger::out("Function start", "Event::darkAlleyCrossroads");
-    std::string heroName;
-    Function::showHeroAction("Visit: " + Location::locations["DarkAlley"].getName() + "\n");
-
-    if (!Npc::npcs["Bob"].knowsHero())
-    {
-        Function::writeNarration("\tWhen you enter the alley, you hear a familiar voice.");
-        Function::writeDialogue("\n\t- 'It's you again. Why don't you tell me something for one this time?'\n\n");
-
-        Function::clearChoices();
-        Function::addChoice("Stop and finally find out what he wants.");
-        Function::addChoice("Ignore him again.");
-        Function::showChoices();
-
-        while (true)
-        {
-            std::cin >> heroChoice;
-
-            if (heroChoice == 1)
-            {
-                Function::clearScreen();
-                Function::showHeroAction("Stop and finally find out what he wants.");
-                Function::writeNarration("\n\tYou stop and turn towards the owner of the voice.");
-                Sleep(1500);
-                Function::writeNarration(" His silhouette looms in the darkness. It's one of the homeless people who live here. What can he have for you?\n");
-                dialogueWithBob();
-                break;
-            }
-            else if (heroChoice == 2)
-            {
-                Function::clearScreen();
-                Function::showHeroAction("Ignore him again.");
-                Function::writeNarration("\n\tYou have a mysterious stranger for nothing. You speed up your step and leave him far behind\n\tyou. Whatever he wanted from you is no longer important.");
-                Function::writeDialogue("\n\t- 'Don't show up here again if you don't want to get your teeth kicked in!'\n");
-                Function::clearScreen();
-                Game::game[0].setCurrentLocation(&Location::locations["Street"]); // street();
-                break;
-            }
-        }
-    }
-    else
-    {
-        Function::writeNarration("\tWhen you enter an alley, you notice a sea of trash around you.");
-        Sleep(1000);
-        Function::writeNarration(" It's full of cardboard boxes, old mechanical parts, and god knows what else.");
-    }
-
-    if (!Hero::heroes[0].hasItem(&Item::items["AD13"]))
-    {
-        Sleep(1500);
-        Function::writeNarration("\n\tMaybe you will find something interesting there...\n\n");
-
-        Function::clearChoices();
-        Function::addChoice("Search the area for something valuable.");
-        Function::addChoice("Go out of the alley.");
-        Function::showChoices();
-
-        while (true)
-        {
-            std::cin >> heroChoice;
-
-            if (heroChoice == 1)
-            {
-                Sleep(1000);
-                Function::writeNarration("\n\tYou start rummaging through the trash.");
-                Sleep(1500);
-                Function::writeNarration(" The search takes a long while, but eventually you manage to find something.");
-                Sleep(2000);
-
-                Hero::heroes[0].addItem(&Item::items["AD13"]);
-                Function::changeConsoleColor(item);
-                std::string str = "\n\t" + Item::items["AD13"].getName();
-                Function::write(str);
-                Function::changeConsoleColor();
-                Function::write(" was found.");
-
-                if (Hero::heroes[0].hasItem(&Item::items["AD13"]))
-                {
-                    Logger::out(Item::items["AD13"].getName() + " added to EQ", "Event::inSeaOfRubbish");
-                }
-                else {
-                    Logger::error(Item::items["AD13"].getName() + " not added to EQ", "Event::inSeaOfRubbish");
-                }
-
-                Function::write("\n\t[TIP: This item has been added to your inventory. You can view it in the text file in your game folder.]", 15);
-                Sleep(4000);
-                Function::writeNarration("\n\tHmm, that might come in handy in the future.");
-                Sleep(1000);
-                Function::writeNarration("\n\tThere is nothing interesting here any more. Time to go back...\n");
-                Game::game[0].setCurrentLocation(&Location::locations["Street"]); // street();
-                break;
-            }
-            else if (heroChoice == 2)
-            {
-                std::cout << std::endl;
-                Game::game[0].setCurrentLocation(&Location::locations["Street"]); // street();
-                break;
-            }
-        }
-    }
-    else
-    {
-        Function::writeNarration("\n\tThere is nothing interesting here. Time to go back...\n");
-        Game::game[0].setCurrentLocation(&Location::locations["Street"]);  // street();
-    }
-}
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::prologue()
 {
     Logger::out("Function start", "Event::prologue");
@@ -176,8 +67,6 @@ void Event::storyIntroduction()
 void Event::wakeUpInDarkAlley()
 {
     Logger::out("Function start", "Event::wakeUpInDarkAlley");
-
-    darkAlleyWasVisited = true;
 
     if (Game::game[0].getLang() == en)
     {
@@ -251,10 +140,9 @@ void Event::wakeUpInDarkAlley()
     }
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-void Event::rubbishSearch()
+void Event::acceleratorFinding()
 {
-    Logger::out("Function start", "Event::rubbishSearch");
-    Function::showHeroAction("Search the area for something valuable.");
+    Logger::out("Function start", "Event::acceleratorFinding");
     Function::writeNarration("\n\tYou start rummaging through the trash.");
     Sleep(1500);
     Function::writeNarration(" The search takes a long while, but eventually you\n\tmanage to find something.");
@@ -269,19 +157,23 @@ void Event::rubbishSearch()
 
     if (Hero::heroes[0].hasItem(&Item::items["AD13"]))
     {
-        Logger::out(Item::items["AD13"].getName() + " added to EQ", "Event::inSeaOfRubbish");
+        Logger::out(Item::items["AD13"].getName() + " added to EQ", "Event::acceleratorFinding");
     }
     else {
-        Logger::error(Item::items["AD13"].getName() + " not added to EQ", "Event::inSeaOfRubbish");
+        Logger::error(Item::items["AD13"].getName() + " not added to EQ", "Event::accelelatorFinding");
     }
 
-    std::cout << std::endl;
-    Function::write("\t[TIP: This item has been added to your inventory. You can view it in the text file in your\n\tgame folder.]", 15);
+    Function::write("\n\t[TIP: This item has been added to your inventory. You can view it in the text file in your\n\tgame folder.]", 15);
     Sleep(4000);
-    std::cout << std::endl << std::endl;
-    Function::writeNarration("\tHmm, that might come in handy in the future.");
+    Function::writeNarration("\n\n\tHmm, that might come in handy in the future.");
     Sleep(1000);
-
+}
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+void Event::rubbishSearch()
+{
+    Logger::out("Function start", "Event::rubbishSearch");
+    Function::showHeroAction("Search the area for something valuable.");
+    acceleratorFinding();
     outOfTheAlley();
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -333,28 +225,21 @@ void Event::outOfTheAlley()
             Function::writeDialogue("\n\t- 'Hey, you! Come back here!'");
             Function::writeNarration("\n\tWhatever he wanted from you is no longer important.");
             Sleep(1000);
-            Game::game[0].setCurrentLocation(&Location::locations["Street"]); // street();
+            Game::game[0].setCurrentLocation(&Location::locations["Street"]);
             break;
         }
     }
-    //-------------------------------------------------------------
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::dialogueWithBob()
 {
     Logger::out("Function start", "Event::dialogueWithBob");
-    std::string heroName, str;
+    std::string str;
 
     Function::writeDialogue("\t- 'What's your name, boy?'");
 
-    if (!Npc::npcs["Bob"].knowsHero() && !Npc::npcs["Caden"].knowsHero() && !Npc::npcs["CadenPartner"].knowsHero())
-    {
-        Function::changeConsoleColor();
-        Function::write("\n\t> ");
-        std::cin >> heroName;
-        Hero::heroes[0].setName(heroName);
-        Logger::out("Hero's name is " + Hero::heroes[0].getName(), "Event::conversationWithHomeless");
-    }
+    if (!Npc::npcs["Bob"].knowsHero() && !Npc::npcs["Caden"].knowsHero() && !Npc::npcs["CadenPartner"].knowsHero()) namingHero();
+    else std::cout << std::endl;
 
     Npc::npcs["Bob"].setToKnowHero();
     str = "\t- 'So you're " + Hero::heroes[0].getName() + ", huh?";
@@ -421,7 +306,7 @@ void Event::dialogueWithBob()
             break;
         }
     }
-    //-------------------------------------------------------------
+
     if (!streetWasVisited)
     {
         Function::writeNarration("\tFinally, an old, wrinkled face surrounded by gray fuzz emerges from the darkness. An artificial,\n\tcybernetic eye watches you vigilantly.");
@@ -441,7 +326,102 @@ void Event::dialogueWithBob()
         Sleep(1500);
         Function::writeNarration(" Does this mean you see him for\n\tthe last time?");
         Sleep(3500);
-        Game::game[0].setCurrentLocation(&Location::locations["Street"]); // lookAtAmnesia();
+        Game::game[0].setCurrentLocation(&Location::locations["Street"]);
+    }
+    else {
+        // TODO: opisaæ odejœcie Boba 
+        Game::game[0].setCurrentLocation(&Location::locations["Street"]);
+    }
+}
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+void Event::darkAlleyCrossroads()
+{
+    Logger::out("Function start", "Event::darkAlleyCrossroads");
+    std::string heroName;
+    Function::showHeroAction("Visit: " + Location::locations["DarkAlley"].getName() + ".\n");
+
+    if (!Npc::npcs["Bob"].knowsHero())
+    {
+        Function::writeNarration("\tWhen you enter the alley, you hear a familiar voice.");
+        Function::writeDialogue("\n\t- 'It's you again. Why don't you tell me something for one this time?'\n\n");
+
+        Function::clearChoices();
+        Function::addChoice("Stop and finally find out what he wants.");
+        Function::addChoice("Ignore him again.");
+        Function::showChoices();
+
+        while (true)
+        {
+            std::cin >> heroChoice;
+
+            if (heroChoice == 1)
+            {
+                Function::clearScreen();
+                Function::showHeroAction("Stop and finally find out what he wants.");
+                Function::writeNarration("\n\tYou stop and turn towards the owner of the voice.");
+                Sleep(1500);
+                Function::writeNarration(" His silhouette looms in the darkness. It's one of the homeless people who live here. What can he have for you?\n");
+                dialogueWithBob();
+                Function::writeNarration(" His silhouette looms in the darkness. It's one of the homeless people who live here. What can he have for you?\n");
+                break;
+            }
+            else if (heroChoice == 2)
+            {
+                Function::clearScreen();
+                Function::showHeroAction("Ignore him again.");
+                Function::writeNarration("\n\tYou have a mysterious stranger for nothing. You speed up your step and leave him far behind\n\tyou. Whatever he wanted from you is no longer important.");
+                Function::writeDialogue("\n\t- 'Don't show up here again if you don't want to get your teeth kicked in!'\n");
+                Function::clearScreen();
+                Game::game[0].setCurrentLocation(&Location::locations["Street"]);
+                break;
+            }
+        }
+    }
+    else
+    {
+        Function::writeNarration("\tWhen you enter an alley, you notice a sea of trash around you.");
+        Sleep(1000);
+        Function::writeNarration(" It's full of cardboard boxes,\n\told mechanical parts, and god knows what else.");
+
+        if (!Hero::heroes[0].hasItem(&Item::items["AD13"]))
+        {
+            Sleep(1500);
+            Function::writeNarration("\n\tMaybe you will find something interesting there...\n\n");
+
+            Function::clearChoices();
+            Function::addChoice("Search the area for something valuable.");
+            Function::addChoice("Go out of the alley.");
+            Function::showChoices();
+
+            while (true)
+            {
+                std::cin >> heroChoice;
+
+                if (heroChoice == 1)
+                {
+                    Sleep(1000);
+                    acceleratorFinding();
+                    Function::writeNarration("\n\tThere is nothing interesting here any more. Time to go back...\n");
+                    Function::clearScreen();
+                    Game::game[0].setCurrentLocation(&Location::locations["Street"]);
+                    break;
+                }
+                else if (heroChoice == 2)
+                {
+                    std::cout << std::endl;
+                    Function::clearScreen();
+                    Game::game[0].setCurrentLocation(&Location::locations["Street"]);
+                    break;
+                }
+            }
+        }
+        else
+        {
+            Function::writeNarration("\n\tThere is nothing interesting here. Time to go back...\n\n");
+            Game::pause();
+            Function::clearScreen();
+            Game::game[0].setCurrentLocation(&Location::locations["Street"]);
+        }
     }
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -450,15 +430,13 @@ void Event::dialogueWithBob()
 void Event::streetCrossroads()
 {
     Logger::out("Function start", "Event::streetCrossroads");
-    //-------------------------------------------------------------
-    // Decyzja
-    Function::showHeroAction("Visit: " + Location::locations["Street"].getName());
+    Function::showHeroAction("Visit: " + Location::locations["Street"].getName() + '.');
     Function::writeNarration("\n\tOnce again you are on a street bathed in nighttime darkness.\n\n");
 
     Function::clearChoices();
-    Function::addChoice("Visit: " + Location::locations["DarkAlley"].getName());
-    Function::addChoice("Visit: " + Location::locations["Nightclub"].getName());
-    Function::addChoice("Visit: " + Location::locations["GunShop"].getName());
+    Function::addChoice("Visit: " + Location::locations["DarkAlley"].getName() + '.');
+    Function::addChoice("Visit: " + Location::locations["Nightclub"].getName() + '.');
+    Function::addChoice("Visit: " + Location::locations["GunShop"].getName() + '.');
     Function::showChoices();
 
     while (true)
@@ -468,29 +446,27 @@ void Event::streetCrossroads()
         if (heroChoice == 1)
         {
             Function::clearScreen();
-            Game::game[0].setCurrentLocation(&Location::locations["DarkAlley"]); // darkAlley();
+            Game::game[0].setCurrentLocation(&Location::locations["DarkAlley"]);
             break;
         }
         else if (heroChoice == 2)
         {
             Function::clearScreen();
-            Game::game[0].setCurrentLocation(&Location::locations["Nightclub"]); // nightclub();
+            Game::game[0].setCurrentLocation(&Location::locations["Nightclub"]);
             break;
         }
         else if (heroChoice == 3)
         {
             Function::clearScreen();
-            Game::game[0].setCurrentLocation(&Location::locations["GunShop"]); // gunShop();
+            Game::game[0].setCurrentLocation(&Location::locations["GunShop"]);
             break;
         }
     }
-    //-------------------------------------------------------------
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::lookAtAmnesia()
 {
     Logger::out("Function start", "Event::lookAtAmnesia");
-    streetWasVisited = true;
 
     if (!Npc::npcs["Bob"].knowsHero())
     {
@@ -526,31 +502,26 @@ void Event::lookAtAmnesia()
                 meetingWithSecurityGuards();
                 meetingWithPolicemans();
             }
-            else {
-                meetingWithPolicemans();
-            }
+            else meetingWithPolicemans();
+
             break;
         }
         else if (heroChoice == 2)
         {
             Function::clearScreen();
             Function::showHeroAction("Take a look around the area.");
-            Game::game[0].setCurrentLocation(&Location::locations["GunShop"]); // encounterGunStore();
+            Game::game[0].setCurrentLocation(&Location::locations["GunShop"]);
             break;
         }
     }
-    //-------------------------------------------------------------
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::encounterGunStore()
 {
     Logger::out("Function start", "Event::encounterGunStore");
-    Function::writeNarration("\n\tYou go to the right side of the street. After walking several meters you come across a small booth\n\tbetween blocks of flats.");
+    Function::writeNarration("\n\tYou go to the right side of the street. After walking several meters you come across a small\n\tbooth between blocks of flats.");
 
-    if (bobRecommendsZed)
-    {
-        Function::writeNarration(" Could it be that the famous gun store managed by Bob's friend?");
-    }
+    if (bobRecommendsZed) Function::writeNarration(" Could it be that the famous gun store managed by Bob's friend?");
 
     std::cout << std::endl << std::endl;
 
@@ -580,13 +551,11 @@ void Event::encounterGunStore()
                 meetingWithSecurityGuards();
                 meetingWithPolicemans();
             }
-            else {
-                meetingWithPolicemans();
-            }
+            else meetingWithPolicemans();
+
             break;
         }
     }
-    //-------------------------------------------------------------
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::meetingWithSecurityGuards()
@@ -611,10 +580,7 @@ void Event::meetingWithPolicemans()
     Logger::out("Function start", "Event::meetingWithPolicemans");
     std::string heroName, str;
 
-    if (Npc::npcs["Bob"].knowsHero())
-    {
-        Function::writeNarration("\tWhen you get closer, one of the police officers in a dark blue uniform turns toward you.");
-    }
+    if (Npc::npcs["Bob"].knowsHero()) Function::writeNarration("\tWhen you get closer, one of the police officers in a dark blue uniform turns toward you.");
     else {
         Function::writeNarration("\tIn an instant the street is filled with the howling of a police siren.");
         Sleep(1000);
@@ -627,13 +593,8 @@ void Event::meetingWithPolicemans()
     Sleep(1500);
     Function::writeDialogue(" And what are you doing here? Please show me your ID card.'");
 
-    if (Hero::heroes[0].hasItem(&Item::items["AD13"]))
-    {
-        Function::writeNarration("\n\tYou start searching through the pockets of your jacket and pants, but other than the accelerator\n\tyou found in the trash, there's nothing else there.");
-    }
-    else {
-        Function::writeNarration("\n\tYou start searching through the pockets of your jacket and pants, but there's nothing there.");
-    }
+    if (Hero::heroes[0].hasItem(&Item::items["AD13"])) Function::writeNarration("\n\tYou start searching through the pockets of your jacket and pants, but other than the accelerator\n\tyou found in the trash, there's nothing else there.");
+    else Function::writeNarration("\n\tYou start searching through the pockets of your jacket and pants, but there's nothing there.");
 
     Function::writeDialogue("\n\t- 'I see that we have a problem.");
     Sleep(1500);
@@ -642,11 +603,8 @@ void Event::meetingWithPolicemans()
     if (!Npc::npcs["Bob"].knowsHero())
     {
         Function::writeDialogue("'\n");
-        Function::write("\t> ");
-        std::cin >> heroName;
-        Hero::heroes[0].setName(heroName);
-        Logger::out("Hero's name is " + Hero::heroes[0].getName(), "Event::conversationWithHomeless");
-        str = "\n\t- '" + Hero::heroes[0].getName() + "...";
+        namingHero();
+        str = "\t- '" + Hero::heroes[0].getName() + "...";
         Function::writeDialogue(str);
         Sleep(1000);
         Function::writeDialogue(" Caden, check it out in the database.");
@@ -698,11 +656,10 @@ void Event::meetingWithPolicemans()
             Function::clearChoices();
             Function::clearScreen();
             Function::showHeroAction("Turn back.\n");
-            Game::game[0].setCurrentLocation(&Location::locations["GunShop"]); // encounterGunStore();
+            Game::game[0].setCurrentLocation(&Location::locations["GunShop"]);
             break;
         }
     }
-    //-------------------------------------------------------------
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // 2.2.3 SKLEP Z BRONI¥
@@ -710,33 +667,36 @@ void Event::meetingWithPolicemans()
 void Event::gunShopCrossroads()
 {
     Logger::out("Function start", "Event::gunShopCrossroads");
+    enterGunShop();
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::enterGunShop()
 {
     Logger::out("Function start", "Event::enterGunShop");
-    gunShopWasVisited = true;
+    //gunShopWasVisited = true;
 
     Function::writeNarration("\tThe front door hisses open before you.");
 
     if (!Npc::npcs["Zed"].knowsHero())
     {
         Sleep(1000);
-        Function::writeNarration(" You step over the threshold and enter a small room with a counter opposite the entrance. Behind it stands a tall, thin man with fatigue painted on his terribly oblong face.");
+        Function::writeNarration(" You step over the threshold and enter a small room\n\twith a counter opposite the entrance. Behind it stands a tall, thin man with fatigue painted\n\ton his terribly oblong face.");
         Sleep(1500);
-        Function::writeNarration(" He is dressed in an old corporate commando suit. On the wall behind his back hangs a lot of weapons.");
+        Function::writeNarration(" He is dressed in an old corporate commando\n\tsuit. On the wall behind his back hangs a lot of weapons.");
         Function::writeDialogue("\n\t- 'How can I help you, my friend?'\n");
         Npc::npcs["Zed"].setToKnowHero();
         dialogueWithZed();
     }
     else {
         Sleep(1000);
-        Function::writeNarration(" From behind the counter, Zed is already smiling at you.");
+        Function::writeNarration(" From behind the counter, Zed is already smiling at\n\tyou.");
 
         if (Hero::heroes[0].hasItem(&Item::items["Pistol"]))
         {
             Function::writeDialogue("\n\t- 'What's up? How's the gun working out?'");
         }
+
+        std::cout << std::endl;
 
         if (Quest::quests["ZedAccelerator"].getIsRunning() && !Quest::quests["ZedAccelerator"].getIsCompleted())
         {
@@ -796,7 +756,7 @@ void Event::dialogueWithZed()
             }
             else {
                 heroTalkedAboutBusinessWithZed = true;
-                Function::writeDialogue("\t- 'What kind of question is that anyway? Business is doing great! Everyone stops by every now and then to rearm. It's the natural order of things.'\n");
+                Function::writeDialogue("\t- 'What kind of question is that anyway? Business is doing great! Everyone stops by\n\tevery now and then to rearm. It's the natural order of things.'\n");
             }
 
             continue;
@@ -810,9 +770,9 @@ void Event::dialogueWithZed()
                 zedKnowsAboutBobAndZed = true;
                 Function::showHeroAction("'You're Zed? I come from Bob.'");
                 Function::writeDialogue("\n\t- 'Yes, that is correct. I'm Zed, and this is my little shop.");
-                Npc::npcs["Zed"].setAttitude(friendly);
                 Sleep(1000);
-                Function::writeDialogue(" Since you know Bob, you can get a small discount here'.");
+                Function::writeDialogue(" Since you know Bob,\n\tyou can get a small discount here.'");
+                Npc::npcs["Zed"].setAttitude(friendly);
                 continue;
             }
             else {
@@ -826,7 +786,7 @@ void Event::dialogueWithZed()
                 }
                 else
                 {
-                    Game::game[0].setCurrentLocation(&Location::locations["Street"]); // street();
+                    Game::game[0].setCurrentLocation(&Location::locations["Street"]);
                 }
 
                 break;
@@ -837,6 +797,7 @@ void Event::dialogueWithZed()
             Function::clearScreen();
             Function::showHeroAction("'I have to go...'");
             Function::writeDialogue("\n\t- 'No problem. See you later!'\n");
+            Function::clearScreen();
 
             if (!Npc::npcs["Caden"].knowsHero() && !Npc::npcs["CadenPartner"].knowsHero())
             {
@@ -844,13 +805,12 @@ void Event::dialogueWithZed()
             }
             else
             {
-                Game::game[0].setCurrentLocation(&Location::locations["Street"]); // street();
+                Game::game[0].setCurrentLocation(&Location::locations["Street"]);
             }
 
             break;
         }
     }
-    //-------------------------------------------------------------
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::zedTrade()
@@ -867,9 +827,9 @@ void Event::zedTrade()
             Sleep(1000);
             Function::writeDialogue(" Look - ");
             Sleep(1000);
-            Function::writeDialogue("rifles, pistols, machine guns, shotguns. I have a melee weapons as well. Knives, hammers, long blades like katanas...");
+            Function::writeDialogue("rifles, pistols, machine guns, shotguns. I\n\thave a melee weapons as well. Knives, hammers, long blades like katanas...");
             Sleep(1500);
-            Function::writeDialogue(" Anything you want, my friend!");
+            Function::writeDialogue(" Anything\n\tyou want, my friend!");
             Sleep(1500);
             Function::writeDialogue(" Tell me, what do you like?'\n\n");
 
@@ -996,16 +956,15 @@ void Event::buyPistol()
 void Event::nightclubCrossroads()
 {
     Logger::out("Function start", "Event::nightclubCrossroads");
-    //-------------------------------------------------------------
-    // Decyzja
-    Function::showHeroAction("Visit: " + Location::locations["Nightclub"].getName());
+
+    Function::showHeroAction("Visit: " + Location::locations["Nightclub"].getName() + ".\n");
     Function::writeNarration("\n\tYou enter from a fairly well-lit street into a slightly darkened nightclub, trembling with colour.\n\n");
 
     Function::clearChoices();
     Function::addChoice("Go to the dance floor.");
     Function::addChoice("Go to the bar.");
     Function::addChoice("Go upstairs.");
-    Function::addChoice("Visit: " + Location::locations["Street"].getName());
+    Function::addChoice("Visit: " + Location::locations["Street"].getName() + ".");
     Function::showChoices();
 
     while (true)
@@ -1027,13 +986,13 @@ void Event::nightclubCrossroads()
         else if (heroChoice == 3)
         {
             std::cout << std::endl;
-            Game::game[0].setCurrentLocation(&Location::locations["GunShop"]);  // gunShop();
+            clubUpstairs();
             break;
         }
         else if (heroChoice == 4)
         {
             std::cout << std::endl;
-            Game::game[0].setCurrentLocation(&Location::locations["Street"]); // street();
+            Game::game[0].setCurrentLocation(&Location::locations["Street"]);
             break;
         }
     }
@@ -1042,7 +1001,7 @@ void Event::nightclubCrossroads()
 void Event::enterClub()
 {
     Logger::out("Function start", "Event::enterClub");
-    nightclubWasVisited = true;
+    //nightclubWasVisited = true;
     Function::writeNarration("\n\tAfter passing through the entrance your eardrums are slowly bursting from the loud music in the club.");
     Sleep(1000);
     Function::writeNarration(" You walk through a short lobby and so arrive at a crowded room full of dancing people.");
@@ -1622,6 +1581,23 @@ void Event::vincentResurrection()
     Function::waitForUserInput();
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+void Event::actOne()
+{
+    Logger::out("Function start", "Event::actOne");
+
+    if (Game::game[0].getLang() == en) Function::write("\n\tAct One");
+    else Function::write("\n\tAkt pierwszy");
+
+    Sleep(2000);
+
+    if (Game::game[0].getLang() == en) Function::write("\n\n\tPROSELYTISM");
+    else Function::write("\n\n\tNAWRÓCENIE");
+
+    Sleep(5000);
+    Function::clearScreen();
+    storyIntroduction();
+}
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::loadingFiles()
 {
     Logger::out("Function start", "Event::loadingFiles");
@@ -1671,4 +1647,15 @@ void Event::loadingFiles()
     Sleep(1000);
     Function::write("\n\tDownload completed.");
     Function::changeConsoleColor();
+}
+
+void Event::namingHero()
+{
+    Logger::out("Function start", "Event::namingHero");
+    std::string heroName;
+
+    Function::write("\n\t> ");
+    std::cin >> heroName;
+    Hero::heroes[0].setName(heroName);
+    Logger::out("Hero's name is " + Hero::heroes[0].getName(), "Event::namingHero");
 }

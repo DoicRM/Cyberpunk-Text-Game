@@ -17,22 +17,6 @@ Game::~Game()
     //Logger::out("Function start", "Game::~Game");
 }
 
-void Game::run()
-{
-    Logger::out("Function start", "Game::run");
-    Function::nameGame("Nocturnal - Demo Build");
-    Function::initSpecialChars("polish");
-
-    while (getPlaying())
-    {
-        selectLanguage();
-        welcome();
-        writeLogo();
-        mainMenu();
-        end();
-    }
-}
-
 void Game::init()
 {
     Logger::out("Function start", "Game::init");
@@ -52,6 +36,22 @@ void Game::initAll()
     Quest::initQuests();
     initHeroEQ();
     initQuestsList();
+}
+
+void Game::run()
+{
+    Logger::out("Function start", "Game::run");
+    Function::nameGame("Nocturnal - Demo Build");
+    Function::initSpecialChars("polish");
+
+    while (getPlaying())
+    {
+        selectLanguage();
+        welcome();
+        writeLogo();
+        mainMenu();
+        end();
+    }
 }
 
 void Game::selectLanguage()

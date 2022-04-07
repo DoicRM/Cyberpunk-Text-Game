@@ -9,7 +9,7 @@ void Event::darkAlley()
 
     if (!darkAlleyWasVisited)
     {
-        //darkAlleyWasVisited = true;
+        darkAlleyWasVisited = true;
         prologue();
     }
     else
@@ -24,7 +24,7 @@ void Event::street()
 
     if (!streetWasVisited)
     {
-        //streetWasVisited = true;
+        streetWasVisited = true;
         lookAtAmnesia();
     }
     else
@@ -39,7 +39,7 @@ void Event::gunShop()
 
     if (!gunShopWasVisited)
     {
-        //gunShopWasVisited = true;
+        gunShopWasVisited = true;
         encounterGunStore();
     }
     else
@@ -54,7 +54,7 @@ void Event::nightclub()
 
     if (!nightclubWasVisited)
     {
-        //nightclubWasVisited = true;
+        nightclubWasVisited = true;
         Function::showHeroAction("Go inside.");
         enterClub();
     }
@@ -63,6 +63,12 @@ void Event::nightclub()
         Function::showHeroAction("Visit: Nightclub 'Amnesia'.");
         nightclubCrossroads();
     }
+}
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+void Event::sleepersHideout()
+{
+    Logger::out("Function start", "Event::sleepersHideout");
+    actOne();
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // Œmieræ bohatera
