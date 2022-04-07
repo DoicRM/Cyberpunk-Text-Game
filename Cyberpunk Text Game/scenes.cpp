@@ -4,17 +4,19 @@ int heroChoice = 0;
 bool bobRecommendsZed = false, zedKnowsAboutBobAndZed = false, heroIsOnDanceFloor = false, heroIsAtBar = false, heroKnowsVincentCode = false;
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// MROCZNY ZAU£EK
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::prologue()
 {
     Logger::out("Function start", "Event::prologue");
 
     if (Game::game[0].getLang() == en) Function::write("\n\tPrologue");
-    else if (Game::game[0].getLang() == pl) Function::write("\n\tProlog");
+    else Function::write("\n\tProlog");
 
     Sleep(2000);
 
     if (Game::game[0].getLang() == en) Function::write("\n\n\tREQUIEM FOR A DREAM");
-    else if (Game::game[0].getLang() == pl) Function::write("\n\n\tREQUIEM DLA MARZEÑ");
+    else Function::write("\n\n\tREQUIEM DLA MARZEÑ");
 
     Sleep(5000);
     Function::clearScreen();
@@ -155,13 +157,8 @@ void Event::acceleratorFinding()
     Function::changeConsoleColor();
     Function::write(" was found.");
 
-    if (Hero::heroes[0].hasItem(&Item::items["AD13"]))
-    {
-        Logger::out(Item::items["AD13"].getName() + " added to EQ", "Event::acceleratorFinding");
-    }
-    else {
-        Logger::error(Item::items["AD13"].getName() + " not added to EQ", "Event::accelelatorFinding");
-    }
+    if (Hero::heroes[0].hasItem(&Item::items["AD13"])) Logger::out(Item::items["AD13"].getName() + " added to EQ", "Event::acceleratorFinding");
+    else Logger::error(Item::items["AD13"].getName() + " not added to EQ", "Event::accelelatorFinding");
 
     Function::write("\n\t[TIP: This item has been added to your inventory. You can view it in the text file in your\n\tgame folder.]", 15);
     Sleep(4000);
@@ -362,7 +359,6 @@ void Event::darkAlleyCrossroads()
                 Sleep(1500);
                 Function::writeNarration(" His silhouette looms in the darkness. It's one of the homeless people who live here. What can he have for you?\n");
                 dialogueWithBob();
-                Function::writeNarration(" His silhouette looms in the darkness. It's one of the homeless people who live here. What can he have for you?\n");
                 break;
             }
             else if (heroChoice == 2)
@@ -425,44 +421,7 @@ void Event::darkAlleyCrossroads()
     }
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// 2.2.2 ULICA
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-void Event::streetCrossroads()
-{
-    Logger::out("Function start", "Event::streetCrossroads");
-    Function::showHeroAction("Visit: " + Location::locations["Street"].getName() + '.');
-    Function::writeNarration("\n\tOnce again you are on a street bathed in nighttime darkness.\n\n");
-
-    Function::clearChoices();
-    Function::addChoice("Visit: " + Location::locations["DarkAlley"].getName() + '.');
-    Function::addChoice("Visit: " + Location::locations["Nightclub"].getName() + '.');
-    Function::addChoice("Visit: " + Location::locations["GunShop"].getName() + '.');
-    Function::showChoices();
-
-    while (true)
-    {
-        std::cin >> heroChoice;
-
-        if (heroChoice == 1)
-        {
-            Function::clearScreen();
-            Game::game[0].setCurrentLocation(&Location::locations["DarkAlley"]);
-            break;
-        }
-        else if (heroChoice == 2)
-        {
-            Function::clearScreen();
-            Game::game[0].setCurrentLocation(&Location::locations["Nightclub"]);
-            break;
-        }
-        else if (heroChoice == 3)
-        {
-            Function::clearScreen();
-            Game::game[0].setCurrentLocation(&Location::locations["GunShop"]);
-            break;
-        }
-    }
-}
+// ULICA
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::lookAtAmnesia()
 {
@@ -662,13 +621,44 @@ void Event::meetingWithPolicemans()
     }
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// 2.2.3 SKLEP Z BRONI¥
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-void Event::gunShopCrossroads()
+void Event::streetCrossroads()
 {
-    Logger::out("Function start", "Event::gunShopCrossroads");
-    enterGunShop();
+    Logger::out("Function start", "Event::streetCrossroads");
+    Function::showHeroAction("Visit: " + Location::locations["Street"].getName() + '.');
+    Function::writeNarration("\n\tOnce again you are on a street bathed in nighttime darkness.\n\n");
+
+    Function::clearChoices();
+    Function::addChoice("Visit: " + Location::locations["DarkAlley"].getName() + '.');
+    Function::addChoice("Visit: " + Location::locations["Nightclub"].getName() + '.');
+    Function::addChoice("Visit: " + Location::locations["GunShop"].getName() + '.');
+    Function::showChoices();
+
+    while (true)
+    {
+        std::cin >> heroChoice;
+
+        if (heroChoice == 1)
+        {
+            Function::clearScreen();
+            Game::game[0].setCurrentLocation(&Location::locations["DarkAlley"]);
+            break;
+        }
+        else if (heroChoice == 2)
+        {
+            Function::clearScreen();
+            Game::game[0].setCurrentLocation(&Location::locations["Nightclub"]);
+            break;
+        }
+        else if (heroChoice == 3)
+        {
+            Function::clearScreen();
+            Game::game[0].setCurrentLocation(&Location::locations["GunShop"]);
+            break;
+        }
+    }
 }
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// SKLEP Z BRONI¥
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::enterGunShop()
 {
@@ -951,52 +941,13 @@ void Event::buyPistol()
     }
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// 2.2.4 KLUB NOCNY
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-void Event::nightclubCrossroads()
+void Event::gunShopCrossroads()
 {
-    Logger::out("Function start", "Event::nightclubCrossroads");
-
-    Function::showHeroAction("Visit: " + Location::locations["Nightclub"].getName() + ".\n");
-    Function::writeNarration("\n\tYou enter from a fairly well-lit street into a slightly darkened nightclub, trembling with colour.\n\n");
-
-    Function::clearChoices();
-    Function::addChoice("Go to the dance floor.");
-    Function::addChoice("Go to the bar.");
-    Function::addChoice("Go upstairs.");
-    Function::addChoice("Visit: " + Location::locations["Street"].getName() + ".");
-    Function::showChoices();
-
-    while (true)
-    {
-        std::cin >> heroChoice;
-
-        if (heroChoice == 1)
-        {
-            std::cout << std::endl;
-            clubDanceFloor();
-            break;
-        }
-        else if (heroChoice == 2)
-        {
-            std::cout << std::endl;
-            clubBar();
-            break;
-        }
-        else if (heroChoice == 3)
-        {
-            std::cout << std::endl;
-            clubUpstairs();
-            break;
-        }
-        else if (heroChoice == 4)
-        {
-            std::cout << std::endl;
-            Game::game[0].setCurrentLocation(&Location::locations["Street"]);
-            break;
-        }
-    }
+    Logger::out("Function start", "Event::gunShopCrossroads");
+    enterGunShop();
 }
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// KLUB NOCNY
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::enterClub()
 {
@@ -1580,6 +1531,52 @@ void Event::vincentResurrection()
     Function::write(" DIE!>");
     Function::waitForUserInput();
 }
+void Event::nightclubCrossroads()
+{
+    Logger::out("Function start", "Event::nightclubCrossroads");
+
+    Function::showHeroAction("Visit: " + Location::locations["Nightclub"].getName() + ".\n");
+    Function::writeNarration("\n\tYou enter from a fairly well-lit street into a slightly darkened nightclub, trembling with colour.\n\n");
+
+    Function::clearChoices();
+    Function::addChoice("Go to the dance floor.");
+    Function::addChoice("Go to the bar.");
+    Function::addChoice("Go upstairs.");
+    Function::addChoice("Visit: " + Location::locations["Street"].getName() + ".");
+    Function::showChoices();
+
+    while (true)
+    {
+        std::cin >> heroChoice;
+
+        if (heroChoice == 1)
+        {
+            std::cout << std::endl;
+            clubDanceFloor();
+            break;
+        }
+        else if (heroChoice == 2)
+        {
+            std::cout << std::endl;
+            clubBar();
+            break;
+        }
+        else if (heroChoice == 3)
+        {
+            std::cout << std::endl;
+            clubUpstairs();
+            break;
+        }
+        else if (heroChoice == 4)
+        {
+            std::cout << std::endl;
+            Game::game[0].setCurrentLocation(&Location::locations["Street"]);
+            break;
+        }
+    }
+}
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// KRYJÓWKA ŒNI¥CYCH
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::actOne()
 {
@@ -1597,6 +1594,8 @@ void Event::actOne()
     Function::clearScreen();
     storyIntroduction();
 }
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// INNE
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::loadingFiles()
 {
@@ -1654,6 +1653,7 @@ void Event::namingHero()
     Logger::out("Function start", "Event::namingHero");
     std::string heroName;
 
+    Function::changeConsoleColor();
     Function::write("\n\t> ");
     std::cin >> heroName;
     Hero::heroes[0].setName(heroName);
