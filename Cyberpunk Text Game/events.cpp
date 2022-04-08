@@ -55,7 +55,6 @@ void Event::nightclub()
     if (!nightclubWasVisited)
     {
         nightclubWasVisited = true;
-        Function::showHeroAction("Go inside.");
         enterClub();
     }
     else

@@ -34,16 +34,14 @@ void Event::storyIntroduction()
         Function::writeNarration(" Megacity is a place overrun by poverty and feuding gangs, where powerful\n\tcorporations have the most influence. The violence in the streets is a clear sign of\n\tan impending war. Government operating from behind the secure walls of City Hall are\n\ttrying to combat this, but so far without success. There are rumors that they themselves\n\tare secretly supporting the chaos to create a New Order on the ruins of the city.\n\n", 20);
         Game::pause();
         Function::clearScreen();
-        std::cout << std::endl;
         Sleep(2500);
-        Function::writeDialogue("\tStanding at the edge of the tallest tower...", 75);
+        Function::writeDialogue("\n\tStanding at the edge of the tallest tower...", 75);
         Sleep(2500);
         Function::writeDialogue("\n\tHolding your hand and dive...", 75);
         Sleep(2500);
         Function::writeDialogue("\n\tFalling and falling for what feels like hours...", 75);
         Sleep(3000);
         Function::clearScreen();
-        std::cout << std::endl;
         wakeUpInDarkAlley();
     }
     else {
@@ -52,9 +50,8 @@ void Event::storyIntroduction()
         Function::writeNarration(" Megacity to miejsce opanowane przez biedê i zwaœnione gangi, gdzie najwiêksze wp³ywy maj¹ potê¿ne korporacje. Przemoc na ulicach jest wyraŸnym znakiem zbli¿aj¹cej siê wojny. Rz¹d dzia³aj¹cy zza bezpiecznych murów ratusza próbuje z tym walczyæ, ale jak na razie bezskutecznie. Kr¹¿¹ plotki, ¿e sam potajemnie wspiera chaos, by na gruzach miasta stworzyæ Nowy Porz¹dek.\n\n", 20);
         Game::pause();
         Function::clearScreen();
-        std::cout << std::endl;
         Sleep(2500);
-        Function::writeDialogue("\tStoj¹c na krawêdzi najwy¿szej wie¿y...", 75);
+        Function::writeDialogue("\n\tStoj¹c na krawêdzi najwy¿szej wie¿y...", 75);
         Sleep(2500);
         Function::writeDialogue("\n\tTrzymam ciê za rêkê i skaczê...", 75);
         Sleep(2500);
@@ -73,7 +70,7 @@ void Event::wakeUpInDarkAlley()
     if (Game::game[0].getLang() == en)
     {
         Sleep(2000);
-        Function::writeNarration("\tYou wake up dazed from a restless slumber.");
+        Function::writeNarration("\n\tYou wake up dazed from a restless slumber.");
         Sleep(1000);
         Function::writeNarration(" It was the same dream again...");
         Sleep(1500);
@@ -97,7 +94,7 @@ void Event::wakeUpInDarkAlley()
         Function::showChoices();
     }
     else {
-        Function::writeNarration("\tBudzisz siê oszo³omiony z niespokojnej drzemki.");
+        Function::writeNarration("\n\tBudzisz siê oszo³omiony z niespokojnej drzemki.");
         Sleep(1000);
         Function::writeNarration(" To by³ znowu ten sam sen...");
         Sleep(1500);
@@ -114,11 +111,12 @@ void Event::wakeUpInDarkAlley()
         Function::writeNarration(" Jest pe³ne kartonów, starych czêœci mechanicznych i Bóg wie czego jeszcze.");
         Sleep(1500);
         Function::writeNarration("\n\tMo¿e znajdziesz tam coœ interesuj¹cego...\n\n");
-
+        //--------------------------------
         Function::clearChoices();
         Function::addChoice("Rozejrzyj siê po okolicy w poszukiwaniu czegoœ cennego.");
         Function::addChoice("ZnajdŸ wyjœcie z zau³ka.");
         Function::showChoices();
+        //--------------------------------
     }
 
     while (true)
@@ -186,19 +184,17 @@ void Event::outOfTheAlley()
         Function::writeNarration(" And that's okay, you probably wouldn't find\n\tanything there anyway.");
         Function::writeNarration(" Instead, you slowly toddle toward the neon color bombs at the end of\n\tthe alley.");
     }
-    else {
-        Function::writeNarration("\n\tYou slowly toddle toward the neon color bombs at the end of the alley.");
-    }
+    else Function::writeNarration("\n\tYou slowly toddle toward the neon color bombs at the end of the alley.");
 
     Sleep(3000);
     Function::writeNarration("\n\tYou are getting closer and closer to your goal when from the right, from behind a veil of\n\tshadows, a low, not very pleasant voice belonging to a man speaks up.");
     Function::writeDialogue("\n\t- 'Hey, kid. Wait for a second.'\n\n");
-
+    //--------------------------------
     Function::clearChoices();
     Function::addChoice("Stop and find out what he wants.");
     Function::addChoice("Ignore him and keep walking.");
     Function::showChoices();
-
+    //--------------------------------
     while (true)
     {
         std::cin >> heroChoice;
@@ -232,7 +228,6 @@ void Event::dialogueWithBob()
 {
     Logger::out("Function start", "Event::dialogueWithBob");
     std::string str;
-
     Function::writeDialogue("\t- 'What's your name, boy?'");
 
     if (!Npc::npcs["Bob"].knowsHero() && !Npc::npcs["Caden"].knowsHero() && !Npc::npcs["CadenPartner"].knowsHero()) namingHero();
@@ -247,13 +242,13 @@ void Event::dialogueWithBob()
     Sleep(1500);
     Function::writeDialogue(" What are you doin' here?'");
     Function::writeNarration("\n\tThe shadows in front of you, begin to ripple when your caller stands up.\n\n");
-
+    //--------------------------------
     Function::clearChoices();
     Function::addChoice("'I'm not looking for trouble.'");
     Function::addChoice("'I'm just looking around. Where are we actually?'");
     Function::addChoice("'It's not your business.'");
     Function::showChoices();
-
+    //--------------------------------
     while (true)
     {
         std::cin >> heroChoice;
@@ -290,15 +285,6 @@ void Event::dialogueWithBob()
             Function::clearScreen();
             Function::showHeroAction("'It's not your business.'\n");
             Npc::npcs["Bob"].setAttitude(angry); // angry / hostile / friendly / neutral
-
-            if (Npc::npcs["Bob"].getAttitude() == angry)
-            {
-                Logger::out("Bob is angry", "Event::conversationWithHomeless");
-            }
-            else {
-                Logger::error("Bob is not angry", "Event::conversationWithHomeless");
-            }
-
             Function::writeDialogue("\t- 'You're wrong. It's absolutely my business, kid. Don't shut your mouth like that, or you might\n\tlose a few teeth. Got it?'\n");
             break;
         }
@@ -326,7 +312,18 @@ void Event::dialogueWithBob()
         Game::game[0].setCurrentLocation(&Location::locations["Street"]);
     }
     else {
-        // TODO: opisaæ odejœcie Boba 
+        Function::writeDialogue("\t - 'All right, that is enough.");
+        Sleep(1500);
+        Function::writeDialogue("I saw the cops hanging around. It stopped\n\tbeing safe here, at least for me.");
+
+        if (Npc::npcs["Bob"].getAttitude() == angry || Npc::npcs["Bob"].getAttitude() == hostile) Function::writeDialogue(" Be glad we don't have more of it left.'");
+        else Function::writeDialogue(" Take care, kid.'");
+
+        Sleep(1500);
+        Function::writeNarration("\n\tThe aging beggar dives into the embrace of darkness in a flash.");
+        Sleep(1500);
+        Function::writeNarration(" Does this mean you see him for\n\tthe last time?\n\n");
+        Game::pause();
         Game::game[0].setCurrentLocation(&Location::locations["Street"]);
     }
 }
@@ -334,19 +331,18 @@ void Event::dialogueWithBob()
 void Event::darkAlleyCrossroads()
 {
     Logger::out("Function start", "Event::darkAlleyCrossroads");
-    std::string heroName;
     Function::showHeroAction("Visit: " + Location::locations["DarkAlley"].getName() + ".\n");
 
     if (!Npc::npcs["Bob"].knowsHero())
     {
         Function::writeNarration("\tWhen you enter the alley, you hear a familiar voice.");
         Function::writeDialogue("\n\t- 'It's you again. Why don't you tell me something for one this time?'\n\n");
-
+        //--------------------------------
         Function::clearChoices();
         Function::addChoice("Stop and finally find out what he wants.");
         Function::addChoice("Ignore him again.");
         Function::showChoices();
-
+        //--------------------------------
         while (true)
         {
             std::cin >> heroChoice;
@@ -383,12 +379,12 @@ void Event::darkAlleyCrossroads()
         {
             Sleep(1500);
             Function::writeNarration("\n\tMaybe you will find something interesting there...\n\n");
-
+            //--------------------------------
             Function::clearChoices();
             Function::addChoice("Search the area for something valuable.");
             Function::addChoice("Go out of the alley.");
             Function::showChoices();
-
+            //--------------------------------
             while (true)
             {
                 std::cin >> heroChoice;
@@ -441,12 +437,12 @@ void Event::lookAtAmnesia()
         Sleep(1500);
         Function::writeNarration(" Something smells here, it's probably trouble...\n\n");
     }
-
+    //--------------------------------
     Function::clearChoices();
     Function::addChoice("Come closer and see what it's all about.");
     Function::addChoice("Take a look around the area.");
     Function::showChoices();
-
+    //--------------------------------
     while (true)
     {
         std::cin >> heroChoice;
@@ -483,12 +479,12 @@ void Event::encounterGunStore()
     if (bobRecommendsZed) Function::writeNarration(" Could it be that the famous gun store managed by Bob's friend?");
 
     std::cout << std::endl << std::endl;
-
+    //--------------------------------
     Function::clearChoices();
     Function::addChoice("Go inside.");
     Function::addChoice("Turn back.");
     Function::showChoices();
-
+    //--------------------------------
     while (true)
     {
         std::cin >> heroChoice;
@@ -522,7 +518,7 @@ void Event::meetingWithSecurityGuards()
     Logger::out("Function start", "Event::meetingWithSecurityGuards");
     Function::writeNarration("\tWhen you get closer, the faces turn toward you and start looking at you intently.");
     Sleep(1000);
-    Function::writeNarration(" You pass them in silenceand are confronted by a broad - shouldered security guard.");
+    Function::writeNarration(" You pass\n\tthem in silenceand are confronted by a broad -\n\tshouldered security guard.");
     Function::writeDialogue("\n\t- 'What are you looking for here?");
     Sleep(1500);
     Function::writeDialogue(" Trouble, maybe?'");
@@ -530,22 +526,22 @@ void Event::meetingWithSecurityGuards()
     Function::writeDialogue("\n\t- 'You asshole, better let us in! I want a drink and for fuck's sake. I'm losing my patience!");
     Function::writeNarration("\n\tOne of the men waiting in the queue rushes forward and threatens the bouncer with his fist.");
     Sleep(1500);
-    Function::writeNarration(" The security guard's attention shifts from you to the furious guy next to you.");
+    Function::writeNarration("\n\tThe security guard's attention shifts from you to the furious guy next to you.");
     Function::writeDialogue("\n\t- 'I'll say it one last time: get the fuck out of here or you'll get fucked.'\n");
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::meetingWithPolicemans()
 {
     Logger::out("Function start", "Event::meetingWithPolicemans");
-    std::string heroName, str;
+    std::string str;
 
     if (Npc::npcs["Bob"].knowsHero()) Function::writeNarration("\tWhen you get closer, one of the police officers in a dark blue uniform turns toward you.");
     else {
         Function::writeNarration("\tIn an instant the street is filled with the howling of a police siren.");
         Sleep(1000);
-        Function::writeNarration(" The reds and blues begin to\n\tdance with each other on the sidewalk and the silhouettes of the people around you.");
+        Function::writeNarration(" The reds and blues\n\tbegin to dance with each other on the sidewalk and the silhouettes of the people around you.");
         Sleep(2000);
-        Function::writeNarration("\n\tTwo grim-looking guys in dark blue uniforms get out of a police car and walk towards you. One of them\n\tpoints at you, taking out a tablet from behind his belt.");
+        Function::writeNarration("\n\tTwo grim-looking guys in dark blue uniforms get out of a police car and walk towards you.\n\tOne of them points at you, taking out a tablet from behind his belt.");
     }
 
     Function::writeDialogue("\n\t- 'Who are you?");
@@ -564,6 +560,7 @@ void Event::meetingWithPolicemans()
         Function::writeDialogue("'\n");
         namingHero();
         str = "\t- '" + Hero::heroes[0].getName() + "...";
+        Sleep(1500);
         Function::writeDialogue(str);
         Sleep(1000);
         Function::writeDialogue(" Caden, check it out in the database.");
@@ -579,25 +576,25 @@ void Event::meetingWithPolicemans()
     Npc::npcs["Caden"].setToKnowHero();
     Sleep(1500);
     Function::writeDialogue(" And you, stand where you are.'");
-    Function::writeNarration("\n\tThe other police officer nods, gets back in the car, and it looks like he's connecting with headquarters.");
+    Function::writeNarration("\n\tThe other police officer nods, gets back in the car, and it looks like he's connecting with\n\theadquarters.");
     Sleep(3000);
     Function::writeNarration("\n\tA minute later, the same policeman returns and whispers something in his partner's ear.");
     Sleep(1500);
-    Function::writeNarration(" That one nods and turns to look at you.");
+    Function::writeNarration(" That\n\tone nods and turns to look at you.");
     Function::writeDialogue("\n\t- 'I have good news for you.");
     Sleep(1500);
-    Function::writeDialogue(" You're free for now, just don't let it occur to you to do something here, or you'll end up in arrest at the police station.");
+    Function::writeDialogue(" You're free for now, just don't let it occur to you to do\n\tsomething here, or you'll end up in arrest at the police station.");
     Sleep(1000);
-    Function::writeDialogue(" Caden, take care of the rest of the attendees.'");
+    Function::writeDialogue(" Caden, take care of the\n\trest of the attendees.'");
     Function::writeNarration("\n\tThe cop walks away to talk to the nearest person standing.");
     Function::writeDialogue("\n\t- 'If you're so pure, get in.'");
     Function::writeNarration("\n\tThe bouncer points to the door behind him.\n\n");
-
+    //--------------------------------
     Function::clearChoices();
     Function::addChoice("Go inside.");
     Function::addChoice("Turn back.");
     Function::showChoices();
-
+    //--------------------------------
     while (true)
     {
         std::cin >> heroChoice;
@@ -607,7 +604,7 @@ void Event::meetingWithPolicemans()
             Function::clearChoices();
             Function::clearScreen();
             Function::showHeroAction("Go inside.\n");
-            Game::game[0].setCurrentLocation(&Location::locations["Nightclub"]); // nightclub();
+            Game::game[0].setCurrentLocation(&Location::locations["Nightclub"]);
             break;
         }
         else if (heroChoice == 2)
@@ -626,13 +623,13 @@ void Event::streetCrossroads()
     Logger::out("Function start", "Event::streetCrossroads");
     Function::showHeroAction("Visit: " + Location::locations["Street"].getName() + '.');
     Function::writeNarration("\n\tOnce again you are on a street bathed in nighttime darkness.\n\n");
-
+    //--------------------------------
     Function::clearChoices();
     Function::addChoice("Visit: " + Location::locations["DarkAlley"].getName() + '.');
     Function::addChoice("Visit: " + Location::locations["Nightclub"].getName() + '.');
     Function::addChoice("Visit: " + Location::locations["GunShop"].getName() + '.');
     Function::showChoices();
-
+    //--------------------------------
     while (true)
     {
         std::cin >> heroChoice;
@@ -663,8 +660,6 @@ void Event::streetCrossroads()
 void Event::enterGunShop()
 {
     Logger::out("Function start", "Event::enterGunShop");
-    //gunShopWasVisited = true;
-
     Function::writeNarration("\tThe front door hisses open before you.");
 
     if (!Npc::npcs["Zed"].knowsHero())
@@ -681,10 +676,7 @@ void Event::enterGunShop()
         Sleep(1000);
         Function::writeNarration(" From behind the counter, Zed is already smiling at\n\tyou.");
 
-        if (Hero::heroes[0].hasItem(&Item::items["Pistol"]))
-        {
-            Function::writeDialogue("\n\t- 'What's up? How's the gun working out?'");
-        }
+        if (Hero::heroes[0].hasItem(&Item::items["Pistol"])) Function::writeDialogue("\n\t- 'What's up? How's the gun working out?'");
 
         std::cout << std::endl;
 
@@ -714,18 +706,16 @@ void Event::dialogueWithZed()
     while (true)
     {
         std::cout << std::endl;
-
+        //--------------------------------
         Function::clearChoices();
         Function::addChoice("'What do you have?'");
         Function::addChoice("'How's business going?'");
 
-        if (bobRecommendsZed && !zedKnowsAboutBobAndZed)
-        {
-            Function::addChoice("'You're Zed? I come from Bob.'");
-        }
+        if (bobRecommendsZed && !zedKnowsAboutBobAndZed) Function::addChoice("'You're Zed? I come from Bob.'");
 
         Function::addChoice("'I have to go...'");
         Function::showChoices();
+        //--------------------------------
         std::cin >> heroChoice;
 
         if (heroChoice == 1)
@@ -740,10 +730,7 @@ void Event::dialogueWithZed()
             Function::clearScreen();
             Function::showHeroAction("'How's business going?'\n");
 
-            if (heroTalkedAboutBusinessWithZed == true)
-            {
-                Function::writeDialogue("\t- 'Hey, what's up? Are you sclerotic or something? We already talked about this, haha!'\n");
-            }
+            if (heroTalkedAboutBusinessWithZed == true) Function::writeDialogue("\t- 'Hey, what's up? Are you sclerotic or something? We already talked about this, haha!'\n");
             else {
                 heroTalkedAboutBusinessWithZed = true;
                 Function::writeDialogue("\t- 'What kind of question is that anyway? Business is doing great! Everyone stops by\n\tevery now and then to rearm. It's the natural order of things.'\n");
@@ -770,14 +757,8 @@ void Event::dialogueWithZed()
                 Function::writeDialogue("\n\t- 'No problem. See you later!'\n");
                 Function::clearScreen();
 
-                if (!Npc::npcs["Caden"].knowsHero() && !Npc::npcs["CadenPartner"].knowsHero())
-                {
-                    meetingWithPolicemans();
-                }
-                else
-                {
-                    Game::game[0].setCurrentLocation(&Location::locations["Street"]);
-                }
+                if (!Npc::npcs["Caden"].knowsHero() && !Npc::npcs["CadenPartner"].knowsHero()) meetingWithPolicemans();
+                else Game::game[0].setCurrentLocation(&Location::locations["Street"]);
 
                 break;
             }
@@ -789,14 +770,8 @@ void Event::dialogueWithZed()
             Function::writeDialogue("\n\t- 'No problem. See you later!'\n");
             Function::clearScreen();
 
-            if (!Npc::npcs["Caden"].knowsHero() && !Npc::npcs["CadenPartner"].knowsHero())
-            {
-                meetingWithPolicemans();
-            }
-            else
-            {
-                Game::game[0].setCurrentLocation(&Location::locations["Street"]);
-            }
+            if (!Npc::npcs["Caden"].knowsHero() && !Npc::npcs["CadenPartner"].knowsHero()) meetingWithPolicemans();
+            else Game::game[0].setCurrentLocation(&Location::locations["Street"]);
 
             break;
         }
@@ -822,12 +797,12 @@ void Event::zedTrade()
             Function::writeDialogue(" Anything\n\tyou want, my friend!");
             Sleep(1500);
             Function::writeDialogue(" Tell me, what do you like?'\n\n");
-
+            //--------------------------------
             Function::clearChoices();
             Function::addChoice("Buy: pistol (250 $).");
             Function::addChoice("'I have made up my mind.'");
             Function::showChoices();
-
+            //--------------------------------
             while (true)
             {
                 std::cin >> heroChoice;
@@ -853,11 +828,12 @@ void Event::zedTrade()
         else
         {
             std::cout << std::endl;
+            //--------------------------------
             Function::clearChoices();
             Function::addChoice("Buy: pistol (250 $).");
             Function::addChoice("'I have made up my mind.'");
             Function::showChoices();
-
+            //--------------------------------
             while (true)
             {
                 std::cin >> heroChoice;
@@ -893,7 +869,6 @@ void Event::buyPistol()
 {
     Logger::out("Function start", "Event::buyPistol");
     std::string str;
-
     std::cout << std::endl;
 
     if (Hero::heroes[0].getMoney() != 250.0)
@@ -952,20 +927,19 @@ void Event::gunShopCrossroads()
 void Event::enterClub()
 {
     Logger::out("Function start", "Event::enterClub");
-    //nightclubWasVisited = true;
-    Function::writeNarration("\n\tAfter passing through the entrance your eardrums are slowly bursting from the loud music in the club.");
+    Function::writeNarration("\n\tAfter passing through the entrance your eardrums are slowly bursting from the loud music in\n\tthe club.");
     Sleep(1000);
-    Function::writeNarration(" You walk through a short lobby and so arrive at a crowded room full of dancing people.");
+    Function::writeNarration(" You walk through a short lobby and so arrive at a crowded room full of dancing\n\tpeople.");
     Sleep(1000);
-    Function::writeNarration(" Disco balls hung from the ceiling net everything around with streaks of multi-colored light.");
+    Function::writeNarration(" Disco balls hung from the ceiling net everything around with streaks of multi-colored\n\tlight.");
     Sleep(1000);
-    Function::writeNarration(" Next to the dance floor is a bar, and behind it are several mechanically streamlined bartenders.\n\n");
-
+    Function::writeNarration(" Next to the dance floor is a bar, and behind it are several mechanically streamlined\n\tbartenders.\n\n");
+    //--------------------------------
     Function::clearChoices();
     Function::addChoice("Go dance on the dance floor.");
     Function::addChoice("Go to the bar.");
     Function::showChoices();
-
+    //--------------------------------
     while (true)
     {
         std::cin >> heroChoice;
@@ -1003,13 +977,13 @@ void Event::clubDanceFloor()
         Function::writeNarration(" You are doing quite well when an attractive girl appears in\n\tfront of you. She's wearing a see-through, brightly coloured dress.");
         Sleep(1500);
         Function::writeNarration(" Is it a coincidence\n\tthat she has just appeared and is dancing so close to you?\n\n");
-
+        //--------------------------------
         Function::clearChoices();
         Function::addChoice("'What do you want?'");
         Function::addChoice("'Hey, baby.'");
         Function::addChoice("Keep dancing with no words.");
         Function::showChoices();
-
+        //--------------------------------
         while (true)
         {
             std::cin >> heroChoice;
@@ -1019,7 +993,7 @@ void Event::clubDanceFloor()
                 Function::clearScreen();
                 Function::showHeroAction("'What do you want?'");
                 Function::writeNarration("\n\tThe girl turns towards you and smiles with her snow-white teeth.");
-                Function::writeDialogue("\n\t- 'Nothing will escape your attention. I am Nyx. I\n\think you can help me.'");
+                Function::writeDialogue("\n\t- 'Nothing will escape your attention. I am Nyx. I think you can help me.'");
                 break;
             }
             else if (heroChoice == 2)
@@ -1028,8 +1002,8 @@ void Event::clubDanceFloor()
                 Function::showHeroAction("'Hey, baby.'");
                 Function::writeNarration("\n\tThe girl turns towards you and smiles with her snow-white teeth.");
                 Function::writeDialogue("\n\t- 'Hi, stud. I've been watching you since you came in. I am Nyx.'");
-                Function::writeNarration("\n\tWith the last word she comes closer to you turns her back on you and starts dancing very close to you.");
-                Function::writeDialogue("\n\t- 'I am looking for someone like you. I\n\tthink you can help me.'");
+                Function::writeNarration("\n\tWith the last word she comes closer to you turns her back on you and starts dancing very\n\tclose to you.");
+                Function::writeDialogue("\n\t- 'I am looking for someone like you. I think you can help me.'");
                 break;
             }
             else if (heroChoice == 3)
@@ -1037,7 +1011,7 @@ void Event::clubDanceFloor()
                 Function::clearScreen();
                 Function::showHeroAction("Keep dancing with no words.");
                 Function::writeNarration("\n\tThe girl turns towards you and smiles with her snow-white teeth.");
-                Function::writeDialogue("\n\t- 'Hi, I am Nyx. Vinc, the owner, is my boyfriend. I\n\tthink you can help me.'");
+                Function::writeDialogue("\n\t- 'Hi, I am Nyx. Vinc, the owner, is my boyfriend. I think you can help me.'");
                 break;
             }
         }
@@ -1048,7 +1022,7 @@ void Event::clubDanceFloor()
     {
         Function::writeNarration("\tYou get on the dance floor.");
         Sleep(1000);
-        Function::writeNarration(" It's quite crowded, but at least you can enjoy the beautiful\n\tviews. You try to keep up with the rest of the people dancing there. However, you quickly\n\tget tired and head for the exit.");
+        Function::writeNarration(" It's quite crowded, but at least you can enjoy the beautiful views. You try to keep up with\n\tthe rest of the people dancing there. However, you quickly get tired and head for the exit.");
         Sleep(1500);
         Function::clearScreen();
         nightclubCrossroads();
@@ -1059,16 +1033,15 @@ void Event::clubBar()
 {
     Logger::out("Function start", "Event::clubBar");
     heroIsAtBar = true;
-
     Function::writeNarration("\tWith a slow step, you approach the counter, settle comfortably on a stool, and lift your gaze to the barman in front of you.");
     Function::writeDialogue("\n\t- 'What's for you?'\n\n");
-
+    //--------------------------------
     Function::clearChoices();
     Function::addChoice("'Give me anything.'");
     Function::addChoice("'Who's in charge?'");
     Function::addChoice("'Bye.'");
     Function::showChoices();
-
+    //--------------------------------
     while (true)
     {
         std::cin >> heroChoice;
@@ -1108,13 +1081,13 @@ void Event::clubBar()
 void Event::miaMeeting()
 {
     Logger::out("Function start", "Event::miaMeeting");
-
     std::cout << std::endl << std::endl;
+    //--------------------------------
     Function::clearChoices();
     Function::addChoice("'What is it about?'");
     Function::addChoice("Be silent and let her speak.");
     Function::showChoices();
-
+    //--------------------------------
     while (true)
     {
         std::cin >> heroChoice;
@@ -1166,12 +1139,12 @@ void Event::clubUpstairs()
 {
     Logger::out("Function start", "Event::clubUpstairs");
     Function::writeNarration("\n\tYou go up a winding staircase. At the end of a short banister you will see a closed door guarded by another bulky individual.\n\n");
-
+    //--------------------------------
     Function::clearChoices();
     Function::addChoice("Come closer.");
     Function::addChoice("Go back downstairs.");
     Function::showChoices();
-
+    //--------------------------------
     while (true)
     {
         std::cin >> heroChoice;
@@ -1202,7 +1175,7 @@ void Event::dialogueWithJet()
     Logger::out("Function start", "Event::dialogueWithJet");
     int jetPoints = 0;
     std::cout << std::endl << std::endl;
-
+    //--------------------------------
     Function::clearChoices();
     Function::addChoice("'I want to pass.'");
     Function::addChoice("'What is behind that door?'");
@@ -1215,7 +1188,7 @@ void Event::dialogueWithJet()
 
     Function::addChoice("It's time for me to go.");
     Function::showChoices();
-
+    //--------------------------------
     while (true)
     {
         std::cin >> heroChoice;
@@ -1275,12 +1248,12 @@ void Event::vincentOffice()
 {
     Logger::out("Function start", "Event::vincentOffice");
     Function::writeNarration("\tYou enter the manager's office immersed in twilight. In the middle of the room stands a sizable desk, and on it are stacks of documents and computer. To the left of the entrance is a window to the street below. On the right you will notice a door to another room.\n\n");
-
+    //--------------------------------
     Function::clearChoices();
     Function::addChoice("Open the door and go into the other room.");
     Function::addChoice("Stay and search the office.");
     Function::showChoices();
-
+    //--------------------------------
     while (true)
     {
         std::cin >> heroChoice;
@@ -1321,11 +1294,12 @@ void Event::vincentHideoutCode()
     }
     else {
         std::cout << std::endl << std::endl;
-
+        //--------------------------------
         Function::clearChoices();
         Function::addChoice("Use code '2021'.");
         Function::addChoice("Search the office.");
         Function::showChoices();
+        //--------------------------------
     }
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -1340,12 +1314,12 @@ void Event::vincentHideout()
     Function::writeNarration(" You guess it's\n\tVincent, the club owner.");
     Sleep(2000);
     Function::writeNarration("\n\tCreeping up, you come closer. Your goal is within reach. The question is what will you do?\n\n");
-
+    //--------------------------------
     Function::clearChoices();
     Function::addChoice("Disconnect his consciousness from the neuronet. (Kill him)");
     Function::addChoice("Wait for his consciousness to leave the neuronet.");
     Function::showChoices();
-
+    //--------------------------------
     while (true)
     {
         std::cin >> heroChoice;
@@ -1382,15 +1356,14 @@ void Event::vincentHideout()
 void Event::dialogueWithVincent()
 {
     Logger::out("Function start", "Event::dialogueWithVincent");
-
     std::cout << std::endl << std::endl;
-
+    //--------------------------------
     Function::clearChoices();
     Function::addChoice("'Die!'");
     Function::addChoice("'I don't want to fight with you.'");
     Function::addChoice("'Nyx wants you dead.'");
     Function::showChoices();
-
+    //--------------------------------
     while (true)
     {
         std::cin >> heroChoice;
@@ -1426,11 +1399,12 @@ void Event::dialogueWithVincent()
     }
 
     std::cout << std::endl << std::endl;
+    //--------------------------------
     Function::clearChoices();
     Function::addChoice("'It doesn't matter.'");
     Function::addChoice("'Your girlfriend, Nyx.'");
     Function::showChoices();
-
+    //--------------------------------
     while (true)
     {
         std::cin >> heroChoice;
@@ -1481,12 +1455,12 @@ void Event::dialogueWithVincent()
     Function::writeDialogue("\n\t- 'You did it... You really did it... Is he - is he dead?'");
     Sleep(1000);
     Function::writeNarration("\n\tNyx walks past you and kneels by the dead man. She starts searching his pockets for something.\n\n");
-
+    //--------------------------------
     Function::clearChoices();
     Function::addChoice("Do nothing.");
     Function::addChoice("'What is this all about?'");
     Function::showChoices();
-
+    //--------------------------------
     while (true)
     {
         std::cin >> heroChoice;
@@ -1537,14 +1511,14 @@ void Event::nightclubCrossroads()
 
     Function::showHeroAction("Visit: " + Location::locations["Nightclub"].getName() + ".\n");
     Function::writeNarration("\n\tYou enter from a fairly well-lit street into a slightly darkened nightclub, trembling with colour.\n\n");
-
+    //--------------------------------
     Function::clearChoices();
     Function::addChoice("Go to the dance floor.");
     Function::addChoice("Go to the bar.");
     Function::addChoice("Go upstairs.");
     Function::addChoice("Visit: " + Location::locations["Street"].getName() + ".");
     Function::showChoices();
-
+    //--------------------------------
     while (true)
     {
         std::cin >> heroChoice;
