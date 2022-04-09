@@ -29,7 +29,12 @@ std::string Clothes::printClothesType()
     return type;
 }
 
-void Clothes::initClothes()
+void Clothes::initClothes_EN()
 {
-    Logger::out("Function start", "Clothes::initClothes");
+    Logger::out("Function start", "Clothes::initClothes_EN");
+}
+
+void Clothes::initClothes_PL()
+{
+    Logger::out("Function start", "Clothes::initClothes_PL");
 }

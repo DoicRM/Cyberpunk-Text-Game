@@ -25,5 +25,6 @@ public:
     inline const bool& isCurrent() const { return this->currency; };
 
     static std::map <std::string, Location> locations;
-    static void initLocations();
+    static void initLocations_EN();
+    static void initLocations_PL();
 };

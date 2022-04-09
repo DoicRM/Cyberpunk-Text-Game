@@ -87,11 +87,12 @@ void Event::wakeUpInDarkAlley()
         Function::writeNarration(" It's full of cardboard\n\tboxes, old mechanical parts, and god knows what else.");
         Sleep(2500);
         Function::writeNarration("\n\tMaybe you will find something interesting there...\n\n");
-
+        //--------------------------------
         Function::clearChoices();
         Function::addChoice("Search the area for something valuable.");
         Function::addChoice("Find the exit from the alley.");
         Function::showChoices();
+        //--------------------------------
     }
     else {
         Function::writeNarration("\n\tBudzisz siê oszo³omiony z niespokojnej drzemki.");

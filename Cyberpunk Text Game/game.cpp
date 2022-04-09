@@ -26,14 +26,28 @@ void Game::init()
 
 void Game::initAll()
 {
-    Fraction::initFractions();
     Hero::initHero();
-    Npc::initNpcs();
-    Location::initLocations();
-    Item::initItems();
-    Weapon::initWeapons();
-    Clothes::initClothes();
-    Quest::initQuests();
+
+    if (game[0].getLang() == en)
+    {
+        Fraction::initFractions_EN();
+        Npc::initNpcs_EN();
+        Location::initLocations_EN();
+        Item::initItems_EN();
+        Weapon::initWeapons_EN();
+        Clothes::initClothes_EN();
+        Quest::initQuests_EN();
+    }
+    else {
+        Fraction::initFractions_PL();
+        Npc::initNpcs_PL();
+        Location::initLocations_PL();
+        Item::initItems_PL();
+        Weapon::initWeapons_PL();
+        Clothes::initClothes_PL();
+        Quest::initQuests_PL();
+    }
+
     initHeroEQ();
     initQuestsList();
 }
@@ -103,7 +117,9 @@ void Game::writeLogo()
     Function::write("\n\t/**    //*** //*******   //******     /**    //******* /**   //**/**    //***/**     /**/********", 1);
     Function::write("\n\t//      ///   ///////     //////      //      ///////  //     // //      /// //      // //////// ", 1);
     Function::changeConsoleColor();
-    Function::write("\n\n\t\t\t\t\t     A Cyberpunk Text Game\n\n", 2);
+
+    if (getLang() == en) Function::write("\n\n\t\t\t\t\t     A Cyberpunk Text Game\n\n", 2);
+    else Function::write("\n\n\t\t\t\t\t     Cyberpunkowa gra tekstowa\n\n", 2);
 }
 
 void Game::logo()
@@ -121,7 +137,10 @@ void Game::logo()
     std::cout << "\t//      ///   ///////     //////      //      ///////  //     // //      /// //      // //////// " << std::endl;
     std::cout << std::endl;
     Function::changeConsoleColor();
-    std::cout << "\n\t\t\t\t\t     A Cyberpunk Text Game\n\n" << std::endl;
+
+    if (getLang() == en) std::cout << "\n\t\t\t\t\t     A Cyberpunk Text Game\n\n" << std::endl;
+    else std::cout << "\n\t\t\t\t\t     Cyberpunkowa gra tekstowa\n\n" << std::endl;
+
     mainMenu();
 }
 

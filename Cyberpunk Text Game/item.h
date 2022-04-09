@@ -25,5 +25,6 @@ public:
     inline const float& getPrice() const { return this->price; };
 
     static std::map <std::string, Item> items;
-    static void initItems();
+    static void initItems_EN();
+    static void initItems_PL();
 };

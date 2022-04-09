@@ -32,5 +32,6 @@ public:
     inline const bool& knowsHero() const { return this->knowingHero; };
 
     static std::map <std::string, Npc> npcs;
-    static void initNpcs();
+    static void initNpcs_EN();
+    static void initNpcs_PL();
 };

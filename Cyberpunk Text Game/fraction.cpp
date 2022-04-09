@@ -32,15 +32,32 @@ std::string Fraction::printAttitude()
     return attitude;
 }
 
-void Fraction::initFractions()
+void Fraction::initFractions_EN()
 {
-    Logger::out("Function start", "Fraction::initFractions");
+    Logger::out("Function start", "Fraction::initFractions_EN");
 
     Fraction None("None", 0, neutral);
     Fraction Beggars("Beggars", 0, neutral);
     Fraction Police("Police", 0, neutral);
     Fraction Hammers("Hammers", 0, neutral);
     Fraction Sleepers("Sleepers", 0, neutral);
+
+    fractions["None"] = None;
+    fractions["Beggars"] = Beggars;
+    fractions["Police"] = Police;
+    fractions["Hammers"] = Hammers;
+    fractions["Sleepers"] = Sleepers;
+}
+
+void Fraction::initFractions_PL()
+{
+    Logger::out("Function start", "Fraction::initFractions_PL");
+
+    Fraction None("Brak", 0, neutral);
+    Fraction Beggars("¯ebracy", 0, neutral);
+    Fraction Police("Policja", 0, neutral);
+    Fraction Hammers("M³oty", 0, neutral);
+    Fraction Sleepers("Œni¹cy", 0, neutral);
 
     fractions["None"] = None;
     fractions["Beggars"] = Beggars;

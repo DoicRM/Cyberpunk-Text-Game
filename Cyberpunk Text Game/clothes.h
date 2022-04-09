@@ -18,5 +18,6 @@ public:
 	inline const int& getClothesType() const { return this->clothesType; }
 	inline const int& getDefence() const { return this->defence; }
 
-	static void initClothes();
+	static void initClothes_EN();
+	static void initClothes_PL();
 };

@@ -24,14 +24,29 @@ Location::~Location()
 {
 }
 
-void Location::initLocations()
+void Location::initLocations_EN()
 {
-    Logger::out("Function start", "Location::initLocations");
+    Logger::out("Function start", "Location::initLocations_EN");
 
     Location DarkAlley("Dark alley", 0, Fraction::fractions["Beggars"], 1, false);
     Location Street("Street", 0, Fraction::fractions["Police"], 2, false);
     Location Nightclub("Nightclub 'Amnesia'", 0, Fraction::fractions["Hammers"], 3, false);
     Location GunShop("Zed's Gun Shop", 0, Fraction::fractions["None"], 3, false);
+
+    locations["DarkAlley"] = DarkAlley;
+    locations["Street"] = Street;
+    locations["Nightclub"] = Nightclub;
+    locations["GunShop"] = GunShop;
+}
+
+void Location::initLocations_PL()
+{
+    Logger::out("Function start", "Location::initLocations_PL");
+
+    Location DarkAlley("Mroczny zau³ek", 0, Fraction::fractions["Beggars"], 1, false);
+    Location Street("Ulica", 0, Fraction::fractions["Police"], 2, false);
+    Location Nightclub("Klub nocny 'Amnezja'", 0, Fraction::fractions["Hammers"], 3, false);
+    Location GunShop("Sklep z broni¹ 'U Zeda'", 0, Fraction::fractions["None"], 3, false);
 
     locations["DarkAlley"] = DarkAlley;
     locations["Street"] = Street;

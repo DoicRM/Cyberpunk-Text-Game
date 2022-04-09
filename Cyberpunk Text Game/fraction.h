@@ -25,5 +25,6 @@ public:
     inline const int& getAttitude() const { return this->attitude; };
 
     static std::map <std::string, Fraction> fractions;
-    static void initFractions();
+    static void initFractions_EN();
+    static void initFractions_PL();
 };
