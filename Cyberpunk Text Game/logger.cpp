@@ -19,36 +19,13 @@ void Logger::setup(bool isLoud)
     m_lastTimestamp = m_startTime;
     m_isLoud = isLoud;
 
-    m_file << "<html><head><title>LOG – " << __DATE__ << "</title><meta http-equiv='refresh' content='2'></head><body>" << std::endl;
-    m_file << "<style>" << std::endl;
-    m_file << "table { font-family: sans-serif; width: 100%; border: 2px solid #CCCCCC; }" << std::endl;
-    m_file << "tr.highlight { background: #ff7c7c; } " << std::endl;
-    m_file << "tr.highlight-1 { background: #ffb67c; } " << std::endl;
-    m_file << "tr.highlight-2 { background: #ffef7c; } " << std::endl;
-    m_file << "tr.highlight-3 { background: #aeff7c; } " << std::endl;
-    m_file << "tr.highlight-4 { background: #7cffdc; } " << std::endl;
-    m_file << "tr.highlight-5 { background: #7cbbff; } " << std::endl;
-    m_file << "tr.highlight-6 { background: #947cff; } " << std::endl;
-    m_file << "tr.highlight-7 { background: #dd7cff; } " << std::endl;
-    m_file << "tr.highlight-8 { background: #ff7cb1; } " << std::endl;
-    m_file << "tr.highlight-9 { background: #d7d7d7; } " << std::endl;
-    m_file << "tr.highlight-10 { background: #ffcbcb; } " << std::endl;
-
-    m_file << "td { border-bottom: solid 1px #CCCCCC; } " << std::endl;
-    m_file << "table .time { padding-right: 25px; }" << std::endl;
-    m_file << "table .location { padding-right: 25px; }" << std::endl;
-    m_file << "table td.time { font-size: 15px; }" << std::endl;
-    m_file << "table td.location { font-size: 15px; }" << std::endl;
-    m_file << "table td.message { font-size: 15px; }" << std::endl;
-    m_file << "table .odd { background: #DDDDDD; }" << std::endl;
-    m_file << "table .error { background: #FFA5A5; }" << std::endl;
-    m_file << "</style>" << std::endl;
-    m_file << "<table>" << std::endl;
+    m_file << "<html><head><title>LOG – " << __DATE__ << "</title><meta http-equiv='refresh' content='2'><link href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3' crossorigin='anonymous'></head><body>" << std::endl;
+    m_file << "<table class='table table-sm table-hover table-striped'><thead class='thead-light'>" << std::endl;
     m_file << "<tr>"
-        << "<td class='location'><strong>LOCATION</strong></td>"
-        << "<td class='message'><strong>MESSAGE</strong></td>"
-        << "<td class='time'><strong>TIME</strong></td>"
-        << "</tr>" << std::endl;
+        << "<th scope='col'>LOCATION</td>"
+        << "<th scope='col'>MESSAGE</td>"
+        << "<th scope='col'>TIME</td>"
+        << "</tr></thead><tbody>" << std::endl;
     out("Logging begins", "Logger::setup");
 }
 
@@ -73,7 +50,7 @@ void Logger::setFilterWord(const std::string& filter)
 void Logger::cleanup()
 {
     out("Logging ends", "Logger::cleanup");
-    m_file << "</table>" << std::endl;
+    m_file << "</tbody></table>" << std::endl;
     m_file << "</body></html>" << std::endl;
     m_file.close();
 }
@@ -131,10 +108,10 @@ void Logger::out(const std::string& message, const std::string& location /* = ""
 
         std::string rowClass = (m_rowCount % 2 == 0) ? "" : "odd";
 
-        m_file << "<tr class='" + rowClass + "'>"
-            << "<td class='location'>" << loc << "</td>"
-            << "<td class='message'>" << message << "</td>"
-            << "<td class='time'>" << getFormattedTimestamp() << "</td>"
+        m_file << "<tr>"
+            << "<td>" << loc << "</td>"
+            << "<td>" << message << "</td>"
+            << "<td>" << getFormattedTimestamp() << "</td>"
             << "</tr>" << std::endl;
 
         m_rowCount++;
@@ -151,10 +128,10 @@ void Logger::error(const std::string& message, const std::string& location /* = 
     std::string loc = location;
     if (loc == "") { loc = "-"; }
 
-    m_file << "<tr class='error'>"
-        << "<td class='location'>" << loc << "</td>"
-        << "<td class='message'>" << message << "</td>"
-        << "<td class='time'>" << getFormattedTimestamp() << "</td>"
+    m_file << "<tr class='table-danger'>"
+        << "<td>" << loc << "</td>"
+        << "<td>" << message << "</td>"
+        << "<td>" << getFormattedTimestamp() << "</td>"
         << "</tr>" << std::endl;
 }
 
