@@ -23,7 +23,7 @@ public:
     void removeHP(int hp);
     void kill();
     void addMoney(float money) { this->money += money; }
-    void removeMoney(float money);
+    void removeMoney(float money) { if (this->money > 0) this->money -= money; }
     bool isDead() { return this->hp < 0; }
     void addItem(Item* item) { this->inventory.addItem(item); }
     void removeItem(int index) { this->inventory.removeItem(index); }

@@ -62,6 +62,3 @@ public:
 
 	static std::map <int, std::string> choices;
 };
-
-
-

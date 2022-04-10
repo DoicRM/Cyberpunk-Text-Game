@@ -75,11 +75,11 @@ void Quest::end()
         {
             switch (lineNr)
             {
-            case 1: header = questsLine; break;
-            case 2: breakLine = questsLine;  break;
-            case 3: questName[questNr] = questsLine; break;
-            case 4: questDesc[questNr] = questsLine; break;
-            case 5: questStatus[questNr] = questsLine; break;
+                case 1: header = questsLine; break;
+                case 2: breakLine = questsLine;  break;
+                case 3: questName[questNr] = questsLine; break;
+                case 4: questDesc[questNr] = questsLine; break;
+                case 5: questStatus[questNr] = questsLine; break;
             }
 
             if (lineNr == 5)

@@ -68,9 +68,7 @@ void Npc::printAttitude()
         Function::changeConsoleColor();
     }
 
-    std::string str = "\t" + this->name + " is " + attitude + " now.";
-    Function::write(str);
-    std::cout << std::endl;
+    Function::write("\t" + this->name + " is " + attitude + " now.\n");
     Function::changeConsoleColor();
 }
 

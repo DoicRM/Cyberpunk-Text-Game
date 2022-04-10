@@ -17,7 +17,6 @@ Hero::~Hero()
 void Hero::removeHP(int hp)
 {
     this->hp -= hp;
-
     if (hp <= 0) kill();
 }
 
@@ -25,14 +24,6 @@ void Hero::kill()
 {
     Event::heroDeath();
 };
-
-void Hero::removeMoney(float money)
-{
-    if (this->money > 0)
-    {
-        this->money -= money;
-    }
-}
 
 void Hero::initHero()
 {

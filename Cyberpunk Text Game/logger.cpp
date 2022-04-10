@@ -166,9 +166,7 @@ std::string Logger::getFormattedTimestamp()
     char buffer[80];
     time(&timestamp);
     localtime_s(&timeinfo, &timestamp);
-    // http://www.cplusplus.com/reference/ctime/strftime/
     strftime(buffer, 80, "%H:%M:%S", &timeinfo);
-
     std::string str(buffer);
     return str;
 #else
@@ -177,9 +175,7 @@ std::string Logger::getFormattedTimestamp()
     char buffer[80];
     time(&timestamp);
     timeinfo = localtime_r(&timestamp);
-    // http://www.cplusplus.com/reference/ctime/strftime/
     strftime(buffer, 80, "%H:%M:%S", timeinfo);
-
     std::string str(buffer);
     return str;
 #endif
