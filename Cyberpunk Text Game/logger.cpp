@@ -20,7 +20,7 @@ void Logger::setup(bool isLoud)
     m_isLoud = isLoud;
 
     m_file << "<html><head><title>LOG – " << __DATE__ << "</title><meta http-equiv='refresh' content='2'><link href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3' crossorigin='anonymous'></head><body>" << std::endl;
-    m_file << "<table class='table table-sm table-hover table-striped'><thead class='thead-light'>" << std::endl;
+    m_file << "<table class='table table-responsive table-sm table-hover table-striped'><thead class='table-light'>" << std::endl;
     m_file << "<tr>"
         << "<th scope='col'>LOCATION</td>"
         << "<th scope='col'>MESSAGE</td>"
@@ -55,44 +55,15 @@ void Logger::cleanup()
     m_file.close();
 }
 
-void Logger::outHighlight(const std::string& message, const std::string& location, int color /* = 1 */)
-{
-    if (m_isLoud)
-    {
-        std::cout << getFormattedTimestamp();
-        if (location != "") { std::cout << " @ " << location; }
-        std::cout << std::endl << "  " << message << std::endl << std::endl;
-    }
-
-    std::string loc = location;
-    if (loc == "") { loc = "-"; }
-
-    m_file << "<tr class='highlight-" << color << "'>"
-        << "<td class='location'>" << loc << "</td>"
-        << "<td class='message'>" << message << "</td>"
-        << "<td class='time'>" << getFormattedTimestamp() << "</td>"
-        << "</tr>" << std::endl;
-
-    m_rowCount++;
-}
-
 void Logger::out(const std::string& message, const std::string& location /* = "" */, const std::string& category /* = "" */, bool condition /* = true */, int level /* = 0 */)
 {
     if (m_categoryFilter.size() > 0)
     {
         // Filter is active
-
-        if (category.size() == 0
-            || m_categoryFilter.find(category) == std::string::npos)
-        {
-            return;
-        }
+        if (category.size() == 0 || m_categoryFilter.find(category) == std::string::npos) return;
     }
 
-    if (level < m_logLevel)
-    {
-        return;
-    }
+    if (level < m_logLevel) return;
 
     if (condition)
     {
@@ -104,7 +75,7 @@ void Logger::out(const std::string& message, const std::string& location /* = ""
         }
 
         std::string loc = location;
-        if (loc == "") { loc = "-"; }
+        if (loc == "") loc = "-";
 
         std::string rowClass = (m_rowCount % 2 == 0) ? "" : "odd";
 
@@ -121,12 +92,12 @@ void Logger::out(const std::string& message, const std::string& location /* = ""
 void Logger::error(const std::string& message, const std::string& location /* = "" */)
 {
     std::cerr << "** " << getTimestamp() << "\t" << message;
-    if (location != "") { std::cerr << " @ " << location; }
+    if (location != "") std::cerr << " @ " << location;
     std::cerr << "\t LINE " << __LINE__ << " FILE " << __FILE__;
     std::cerr << std::endl;
 
     std::string loc = location;
-    if (loc == "") { loc = "-"; }
+    if (loc == "") loc = "-";
 
     m_file << "<tr class='table-danger'>"
         << "<td>" << loc << "</td>"
