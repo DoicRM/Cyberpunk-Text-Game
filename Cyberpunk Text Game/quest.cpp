@@ -100,7 +100,7 @@ void Quest::end()
 
 void Quest::initQuests_EN()
 {
-    Logger::out("Function start", "Quest::initQuests_EN");
+    Logger::out("Function starts", "Quest::initQuests_EN");
 
     Quest KillVincent("Beauty and the Beast", "Kill 'Amnesia' nightclub owner Vincent Ramsey at the request of his girlfriend, Nyx.");
     Quest ZedAccelerator("Shades of the Past", "Bring Zed an old model of an accelerator. In return you will receive a gun from him.");
@@ -111,7 +111,7 @@ void Quest::initQuests_EN()
 
 void Quest::initQuests_PL()
 {
-    Logger::out("Function start", "Quest::initQuests_PL");
+    Logger::out("Function starts", "Quest::initQuests_PL");
 
     Quest KillVincent("Piêkna i bestia", "Zabij w³aœciciela klubu nocnego 'Amnezja', Vincenta Ramseya, na proœbê jego dziewczyny, Nyx.");
     Quest ZedAccelerator("Cienie przesz³oœci", "Przynieœ Zedowi stary model akumulatora. W zamian otrzymasz od niego pistolet.");

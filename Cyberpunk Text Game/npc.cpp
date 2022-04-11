@@ -80,7 +80,7 @@ bool Npc::isDead()
 
 void Npc::initNpcs_EN()
 {
-    Logger::out("Function start", "Npc::initNpcs_EN");
+    Logger::out("Function starts", "Npc::initNpcs_EN");
 
     Npc Bob("Bob", male, Fraction::fractions["Beggars"]);
     Npc Caden("Caden", male, Fraction::fractions["Police"]);
@@ -105,7 +105,7 @@ void Npc::initNpcs_EN()
 
 void Npc::initNpcs_PL()
 {
-    Logger::out("Function start", "Npc::initNpcs_PL");
+    Logger::out("Function starts", "Npc::initNpcs_PL");
 
     Npc Bob("Bob", male, Fraction::fractions["Beggars"]);
     Npc Caden("Caden", male, Fraction::fractions["Police"]);

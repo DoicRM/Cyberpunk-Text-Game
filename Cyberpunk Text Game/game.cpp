@@ -4,7 +4,7 @@ std::map <int, Game> Game::game;
 
 Game::Game()
 {
-    //Logger::out("Function start", "Game::Game");
+    //Logger::out("Function starts", "Game::Game");
     this->menu = 0;
     this->choice = 0;
     this->gameLang = 0;
@@ -14,12 +14,12 @@ Game::Game()
 
 Game::~Game()
 {   
-    //Logger::out("Function start", "Game::~Game");
+    //Logger::out("Function starts", "Game::~Game");
 }
 
 void Game::init()
 {
-    Logger::out("Function start", "Game::init");
+    Logger::out("Function starts", "Game::init");
     Game Nocturnal;
     game[0] = Nocturnal;
 }
@@ -54,7 +54,7 @@ void Game::initAll()
 
 void Game::run()
 {
-    Logger::out("Function start", "Game::run");
+    Logger::out("Function starts", "Game::run");
     Function::nameGame("Nocturnal - Demo Build");
     Function::initSpecialChars("polish");
 
@@ -70,7 +70,7 @@ void Game::run()
 
 void Game::selectLanguage()
 {
-    Logger::out("Function start", "Game::selectLanguage");
+    Logger::out("Function starts", "Game::selectLanguage");
     Function::changeConsoleColor();
 
     while (getLang() != en && getLang() != pl)
@@ -81,7 +81,7 @@ void Game::selectLanguage()
         Function::addChoice("EN");
         Function::addChoice("PL");
         Function::showChoices();
-        std::cin >> gameLang;
+        gameLang = Function::getChoice();
 
         if (getLang() != en && getLang() != pl) Logger::error("Invalid value of 'gameLang'", "Game::selectLanguage");
         else if (getLang() == en) Logger::out("Game language is English", "Game::selectLanguage");
@@ -94,7 +94,7 @@ void Game::selectLanguage()
 
 void Game::welcome()
 {
-    Logger::out("Function start", "Game::welcome");
+    Logger::out("Function starts", "Game::welcome");
     Sleep(500); 
 
     if (getLang() == pl) Function::write("\n\tRADOS£AW 'DOIC' MICHALAK PREZENTUJE GRÊ TEKSTOW¥ POD TYTU£EM", 40);
@@ -106,7 +106,7 @@ void Game::welcome()
 
 void Game::writeLogo()
 {
-    Logger::out("Function start", "Game::writeLogo");
+    Logger::out("Function starts", "Game::writeLogo");
     Function::changeConsoleColor(lightblue);
     Function::write("\n\t ****     **   *******     ******  ********** **     ** *******   ****     **     **     **      ", 1);
     Function::write("\n\t/**/**   /**  **/////**   **////**/////**/// /**    /**/**////** /**/**   /**    ****   /**      ", 1);
@@ -124,7 +124,7 @@ void Game::writeLogo()
 
 void Game::logo()
 {
-    Logger::out("Function start", "Game::logo");
+    Logger::out("Function starts", "Game::logo");
     Function::changeConsoleColor(lightblue);
     std::cout << std::endl;
     std::cout << "\t ****     **   *******     ******  ********** **     ** *******   ****     **     **     **      " << std::endl;
@@ -146,7 +146,7 @@ void Game::logo()
 
 void Game::mainMenu()
 {
-    Logger::out("Function start", "Game::mainMenu");
+    Logger::out("Function starts", "Game::mainMenu");
     Function::changeConsoleColor();
     std::cout << std::endl;
 
@@ -173,7 +173,7 @@ void Game::mainMenu()
 
     do
     {
-        std::cin >> menu;
+        menu = Function::getChoice();
 
         switch (menu) {
         case 1:
@@ -202,7 +202,7 @@ void Game::mainMenu()
 
 void Game::newGame()
 {
-    Logger::out("Function start", "Game::newGame");
+    Logger::out("Function starts", "Game::newGame");
     initAll();
     Function::clearScreen();
     setCurrentLocation(&Location::locations["DarkAlley"]);
@@ -210,7 +210,7 @@ void Game::newGame()
 
 void Game::continueGame()
 {
-    Logger::out("Function start", "Game::continueGame");
+    Logger::out("Function starts", "Game::continueGame");
     Sleep(500);
     Function::clearScreen();
     Function::changeConsoleColor(lightblue);
@@ -228,7 +228,7 @@ void Game::continueGame()
 
 void Game::changeLanguage()
 {
-    Logger::out("Function start", "Game::changeLanguage");
+    Logger::out("Function starts", "Game::changeLanguage");
 
     int change = 0;
 
@@ -243,7 +243,7 @@ void Game::changeLanguage()
         Function::addChoice("EN");
         Function::addChoice("PL");
         Function::showChoices();
-        std::cin >> change;
+        change = Function::getChoice();
 
         if (change != en && change != pl) Logger::error("Invalid value of 'gameLang'", "Game::changeLanguage");
     }
@@ -261,7 +261,7 @@ void Game::changeLanguage()
 
 void Game::endGame()
 {
-    Logger::out("Function start", "Game::endGame");
+    Logger::out("Function starts", "Game::endGame");
 
     do
     {
@@ -288,7 +288,7 @@ void Game::endGame()
             Function::showChoices();
         }
 
-        std::cin >> choice;
+        choice = Function::getChoice();
 
         switch (choice) {
         case 1:
@@ -308,7 +308,7 @@ void Game::endGame()
 
 void Game::credits()
 {
-    Logger::out("Function start", "Game::credits");
+    Logger::out("Function starts", "Game::credits");
     Sleep(500);
     Function::clearScreen();
 
@@ -352,7 +352,7 @@ void Game::credits()
 
 void Game::test()
 {
-    Logger::out("Function start", "Game::test");
+    Logger::out("Function starts", "Game::test");
 }
 
 void Game::setCurrentLocation(Location* location)
@@ -373,7 +373,7 @@ void Game::startEventsByLocation()
 // Inicjowanie ekwipunku gracza
 void Game::initHeroEQ()
 {
-    Logger::out("Function start", "Function::initHeroEQ");
+    Logger::out("Function starts", "Function::initHeroEQ");
     std::fstream eq;
     eq.open("eq.txt", std::ios::out);
 
@@ -393,7 +393,7 @@ void Game::initHeroEQ()
 // Inicjowanie listy zadañ
 void Game::initQuestsList()
 {
-    Logger::out("Function start", "Function::initQuestsList");
+    Logger::out("Function starts", "Function::initQuestsList");
     std::fstream q;
     q.open("quests.txt", std::ios::out);
 

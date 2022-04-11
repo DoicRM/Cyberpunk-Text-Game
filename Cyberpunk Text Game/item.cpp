@@ -40,7 +40,7 @@ std::string Item::printType()
 
 void Item::initItems_EN()
 {
-    Logger::out("Function start", "Item::initItems_EN");
+    Logger::out("Function starts", "Item::initItems_EN");
 
     Item AD13("Accelerator D-13", OTHER, "A long gone accelerator model, though still quite precious.", 50);
     Item AccessCard("Access card", OTHER, "It definitely matches the door leading to the locked room in Ramsey's office.", 0);
@@ -51,7 +51,7 @@ void Item::initItems_EN()
 
 void Item::initItems_PL()
 {
-    Logger::out("Function start", "Item::initItems_PL");
+    Logger::out("Function starts", "Item::initItems_PL");
 
     Item AD13("Akcelerator D-13", OTHER, "Dawno nieu¿ywany model akceleratora, choæ wci¹¿ doœæ cenny.", 50);
     Item AccessCard("Karta dostêpu", OTHER, "Z pewnoœci¹ pasuje do drzwi prowadz¹cych do zablokowanego pomieszczenia w gabinecie Ramseya.", 0);

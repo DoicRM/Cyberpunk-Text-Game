@@ -71,8 +71,6 @@ void Function::showChoices()
     {
         Function::actionOption(j+1, choices[j]);
     }
-
-    Function::write("\t> ", 25);
 }
 
 void Function::selectChoice(int nr)
@@ -101,4 +99,14 @@ void Function::clearScreen()
 #else
     system("clear");
 #endif
+}
+
+int Function::getChoice()
+{
+    int choice;
+    Function::write("\t> ", 25);
+    std::cin >> choice;
+    std::cin.ignore();
+    Logger::out("User entered: " + std::to_string(choice), "Function::getChoice");
+    return choice;
 }

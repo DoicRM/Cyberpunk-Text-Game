@@ -31,10 +31,10 @@ std::string Clothes::printClothesType()
 
 void Clothes::initClothes_EN()
 {
-    Logger::out("Function start", "Clothes::initClothes_EN");
+    Logger::out("Function starts", "Clothes::initClothes_EN");
 }
 
 void Clothes::initClothes_PL()
 {
-    Logger::out("Function start", "Clothes::initClothes_PL");
+    Logger::out("Function starts", "Clothes::initClothes_PL");
 }

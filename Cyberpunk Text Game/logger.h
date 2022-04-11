@@ -16,7 +16,6 @@ public:
     static void setFilterWord(const std::string& filter);
 
     static void out(const std::string& message, const std::string& location = "", const std::string& category = "", bool condition = true, int level = 0);
-    static void outHighlight(const std::string& message, const std::string& location = "", int color = 1);
     static void error(const std::string& message, const std::string& location = "");
 
     static double getTimestamp();

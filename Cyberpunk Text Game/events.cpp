@@ -5,7 +5,7 @@ bool darkAlleyWasVisited = false, streetWasVisited = false, gunShopWasVisited = 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::darkAlley()
 {
-    Logger::out("Function start", "Event::darkAlley");
+    Logger::out("Function starts", "Event::darkAlley");
 
     if (!darkAlleyWasVisited)
     {
@@ -20,7 +20,7 @@ void Event::darkAlley()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::street()
 {
-    Logger::out("Function start", "Event::street");
+    Logger::out("Function starts", "Event::street");
 
     if (!streetWasVisited)
     {
@@ -35,7 +35,7 @@ void Event::street()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::gunShop()
 {
-    Logger::out("Function start", "Event::gunShop");
+    Logger::out("Function starts", "Event::gunShop");
 
     if (!gunShopWasVisited)
     {
@@ -50,7 +50,7 @@ void Event::gunShop()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::nightclub()
 {
-    Logger::out("Function start", "Event::nightclub");
+    Logger::out("Function starts", "Event::nightclub");
 
     if (!nightclubWasVisited)
     {
@@ -66,14 +66,14 @@ void Event::nightclub()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::sleepersHideout()
 {
-    Logger::out("Function start", "Event::sleepersHideout");
+    Logger::out("Function starts", "Event::sleepersHideout");
     actOne();
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // Œmieræ bohatera
 void Event::heroDeath()
 {
-    Logger::out("Function start", "Event::heroDeath");
+    Logger::out("Function starts", "Event::heroDeath");
     clearInstances();
     Sleep(500);
     Function::clearScreen();
@@ -97,7 +97,7 @@ void Event::heroDeath()
 // Koniec gry
 void Event::gameOver()
 {
-    Logger::out("Function start", "Event::gameOver");
+    Logger::out("Function starts", "Event::gameOver");
     clearInstances();
     Sleep(500);
     Function::clearScreen();
@@ -122,7 +122,7 @@ void Event::gameOver()
 
 void Event::clearInstances()
 {
-    Logger::out("Function start", "Event::clearInstances");
+    Logger::out("Function starts", "Event::clearInstances");
     Hero::heroes.clear();
     Npc::npcs.clear();
     Fraction::fractions.clear();

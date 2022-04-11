@@ -26,7 +26,7 @@ Location::~Location()
 
 void Location::initLocations_EN()
 {
-    Logger::out("Function start", "Location::initLocations_EN");
+    Logger::out("Function starts", "Location::initLocations_EN");
 
     Location DarkAlley("Dark alley", 0, Fraction::fractions["Beggars"], 1, false);
     Location Street("Street", 0, Fraction::fractions["Police"], 2, false);
@@ -41,7 +41,7 @@ void Location::initLocations_EN()
 
 void Location::initLocations_PL()
 {
-    Logger::out("Function start", "Location::initLocations_PL");
+    Logger::out("Function starts", "Location::initLocations_PL");
 
     Location DarkAlley("Mroczny zau³ek", 0, Fraction::fractions["Beggars"], 1, false);
     Location Street("Ulica", 0, Fraction::fractions["Police"], 2, false);

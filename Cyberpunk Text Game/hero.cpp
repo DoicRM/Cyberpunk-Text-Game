@@ -27,7 +27,7 @@ void Hero::kill()
 
 void Hero::initHero()
 {
-    Logger::out("Function start", "Hero::initHero");
+    Logger::out("Function starts", "Hero::initHero");
 
     Hero hero;
     heroes[0] = hero;

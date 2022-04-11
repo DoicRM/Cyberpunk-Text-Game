@@ -34,7 +34,7 @@ std::string Fraction::printAttitude()
 
 void Fraction::initFractions_EN()
 {
-    Logger::out("Function start", "Fraction::initFractions_EN");
+    Logger::out("Function starts", "Fraction::initFractions_EN");
 
     Fraction None("None", 0, neutral);
     Fraction Beggars("Beggars", 0, neutral);
@@ -51,7 +51,7 @@ void Fraction::initFractions_EN()
 
 void Fraction::initFractions_PL()
 {
-    Logger::out("Function start", "Fraction::initFractions_PL");
+    Logger::out("Function starts", "Fraction::initFractions_PL");
 
     Fraction None("Brak", 0, neutral);
     Fraction Beggars("¯ebracy", 0, neutral);

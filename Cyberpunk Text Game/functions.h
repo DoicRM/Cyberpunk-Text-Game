@@ -59,6 +59,7 @@ public:
 	//	15 bia³y tekst na czarnym tle
 	static void changeConsoleColor(int color = defaultColor);
 	static void waitForUserInput();
+	static int getChoice();
 
 	static std::map <int, std::string> choices;
 };
