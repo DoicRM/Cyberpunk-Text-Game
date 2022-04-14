@@ -1,6 +1,6 @@
 #pragma once
-#include "utilities.hpp"
-#include "fraction.hpp"
+#include "../utilities/utilities.hpp"
+#include "../fraction/fraction.hpp"
 
 class Npc
 {

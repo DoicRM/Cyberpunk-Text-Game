@@ -1,6 +1,6 @@
 #pragma once
-#include "fraction.hpp"
-#include "logger.hpp"
+#include "../fraction/fraction.hpp"
+#include "../logger/logger.hpp"
 #include <map>
 
 class Location

@@ -140,37 +140,37 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="clothes.cpp" />
-    <ClCompile Include="events.cpp" />
-    <ClCompile Include="fraction.cpp" />
-    <ClCompile Include="hero.cpp" />
-    <ClCompile Include="inventory.cpp" />
-    <ClCompile Include="item.cpp" />
-    <ClCompile Include="location.cpp" />
-    <ClCompile Include="logger.cpp" />
+    <ClCompile Include="clothes\clothes.cpp" />
+    <ClCompile Include="events\events.cpp" />
+    <ClCompile Include="events\scenes.cpp" />
+    <ClCompile Include="fraction\fraction.cpp" />
+    <ClCompile Include="game\game.cpp" />
+    <ClCompile Include="hero\hero.cpp" />
+    <ClCompile Include="inventory\inventory.cpp" />
+    <ClCompile Include="item\item.cpp" />
+    <ClCompile Include="location\location.cpp" />
+    <ClCompile Include="logger\logger.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="utilities.cpp" />
-    <ClCompile Include="game.cpp" />
-    <ClCompile Include="npc.cpp" />
-    <ClCompile Include="quest.cpp" />
-    <ClCompile Include="scenes.cpp" />
-    <ClCompile Include="weapon.cpp" />
+    <ClCompile Include="npc\npc.cpp" />
+    <ClCompile Include="quest\quest.cpp" />
+    <ClCompile Include="utilities\utilities.cpp" />
+    <ClCompile Include="weapon\weapon.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="clothes.hpp" />
+    <ClInclude Include="clothes\clothes.hpp" />
     <ClInclude Include="enums.hpp" />
-    <ClInclude Include="events.hpp" />
-    <ClInclude Include="fraction.hpp" />
-    <ClInclude Include="hero.hpp" />
-    <ClInclude Include="inventory.hpp" />
-    <ClInclude Include="item.hpp" />
-    <ClInclude Include="location.hpp" />
-    <ClInclude Include="utilities.hpp" />
-    <ClInclude Include="game.hpp" />
-    <ClInclude Include="logger.hpp" />
-    <ClInclude Include="npc.hpp" />
-    <ClInclude Include="quest.hpp" />
-    <ClInclude Include="weapon.hpp" />
+    <ClInclude Include="events\events.hpp" />
+    <ClInclude Include="fraction\fraction.hpp" />
+    <ClInclude Include="game\game.hpp" />
+    <ClInclude Include="hero\hero.hpp" />
+    <ClInclude Include="inventory\inventory.hpp" />
+    <ClInclude Include="item\item.hpp" />
+    <ClInclude Include="location\location.hpp" />
+    <ClInclude Include="logger\logger.hpp" />
+    <ClInclude Include="npc\npc.hpp" />
+    <ClInclude Include="quest\quest.hpp" />
+    <ClInclude Include="utilities\utilities.hpp" />
+    <ClInclude Include="weapon\weapon.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

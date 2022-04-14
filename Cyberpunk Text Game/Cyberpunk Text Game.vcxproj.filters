@@ -1,104 +1,131 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Pliki źródłowe">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <Filter Include="Game">
+      <UniqueIdentifier>{0a9afbda-cb2f-4e6b-bc83-eae5f3d1612f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Pliki nagłówkowe">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    <Filter Include="Events">
+      <UniqueIdentifier>{2f1ebb80-dd38-415e-8853-6fa7a7bc30a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fraction">
+      <UniqueIdentifier>{5f495596-3ec9-4077-9826-86e5b96f0950}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hero">
+      <UniqueIdentifier>{9229107c-152a-447c-88d0-dcdb5e31bab0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Item">
+      <UniqueIdentifier>{771b8ea7-2923-4762-a2b5-0f7a98b85e87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Location">
+      <UniqueIdentifier>{7211ed78-7483-45f0-b908-8614585a0d82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logger">
+      <UniqueIdentifier>{5551b67e-35cb-4a35-9d24-5f8a30e07540}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Npc">
+      <UniqueIdentifier>{d272247a-ffb6-444d-9a57-aff45945351d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quest">
+      <UniqueIdentifier>{e7a73f55-3c5a-416b-a831-bdf9973c56c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utilities">
+      <UniqueIdentifier>{a8ab3714-cfe7-4598-b736-f9575e6a5adc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Clothes">
+      <UniqueIdentifier>{0e23705a-580b-48b1-9b49-ae56162ab89f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Weapon">
+      <UniqueIdentifier>{bbc360fd-0349-462c-a70c-81d5559a1e50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Inventory">
+      <UniqueIdentifier>{a1654a92-2096-456f-9015-a91507f5f466}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Pliki źródłowe</Filter>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="events\events.cpp">
+      <Filter>Events</Filter>
     </ClCompile>
-    <ClCompile Include="utilities.cpp">
-      <Filter>Pliki źródłowe</Filter>
+    <ClCompile Include="events\scenes.cpp">
+      <Filter>Events</Filter>
     </ClCompile>
-    <ClCompile Include="game.cpp">
-      <Filter>Pliki źródłowe</Filter>
+    <ClCompile Include="fraction\fraction.cpp">
+      <Filter>Fraction</Filter>
     </ClCompile>
-    <ClCompile Include="location.cpp">
-      <Filter>Pliki źródłowe</Filter>
+    <ClCompile Include="hero\hero.cpp">
+      <Filter>Hero</Filter>
     </ClCompile>
-    <ClCompile Include="events.cpp">
-      <Filter>Pliki źródłowe</Filter>
+    <ClCompile Include="item\item.cpp">
+      <Filter>Item</Filter>
     </ClCompile>
-    <ClCompile Include="npc.cpp">
-      <Filter>Pliki źródłowe</Filter>
+    <ClCompile Include="location\location.cpp">
+      <Filter>Location</Filter>
     </ClCompile>
-    <ClCompile Include="hero.cpp">
-      <Filter>Pliki źródłowe</Filter>
+    <ClCompile Include="logger\logger.cpp">
+      <Filter>Logger</Filter>
     </ClCompile>
-    <ClCompile Include="item.cpp">
-      <Filter>Pliki źródłowe</Filter>
+    <ClCompile Include="npc\npc.cpp">
+      <Filter>Npc</Filter>
     </ClCompile>
-    <ClCompile Include="quest.cpp">
-      <Filter>Pliki źródłowe</Filter>
+    <ClCompile Include="quest\quest.cpp">
+      <Filter>Quest</Filter>
     </ClCompile>
-    <ClCompile Include="inventory.cpp">
-      <Filter>Pliki źródłowe</Filter>
+    <ClCompile Include="utilities\utilities.cpp">
+      <Filter>Utilities</Filter>
     </ClCompile>
-    <ClCompile Include="fraction.cpp">
-      <Filter>Pliki źródłowe</Filter>
+    <ClCompile Include="game\game.cpp">
+      <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="weapon.cpp">
-      <Filter>Pliki źródłowe</Filter>
+    <ClCompile Include="clothes\clothes.cpp">
+      <Filter>Clothes</Filter>
     </ClCompile>
-    <ClCompile Include="clothes.cpp">
-      <Filter>Pliki źródłowe</Filter>
+    <ClCompile Include="weapon\weapon.cpp">
+      <Filter>Weapon</Filter>
     </ClCompile>
-    <ClCompile Include="logger.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
-    <ClCompile Include="scenes.cpp">
-      <Filter>Pliki źródłowe</Filter>
+    <ClCompile Include="inventory\inventory.cpp">
+      <Filter>Inventory</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="utilities.hpp">
-      <Filter>Pliki nagłówkowe</Filter>
+    <ClInclude Include="enums.hpp" />
+    <ClInclude Include="events\events.hpp">
+      <Filter>Events</Filter>
     </ClInclude>
-    <ClInclude Include="game.hpp">
-      <Filter>Pliki nagłówkowe</Filter>
+    <ClInclude Include="fraction\fraction.hpp">
+      <Filter>Fraction</Filter>
     </ClInclude>
-    <ClInclude Include="location.hpp">
-      <Filter>Pliki nagłówkowe</Filter>
+    <ClInclude Include="hero\hero.hpp">
+      <Filter>Hero</Filter>
     </ClInclude>
-    <ClInclude Include="events.hpp">
-      <Filter>Pliki nagłówkowe</Filter>
+    <ClInclude Include="item\item.hpp">
+      <Filter>Item</Filter>
     </ClInclude>
-    <ClInclude Include="npc.hpp">
-      <Filter>Pliki nagłówkowe</Filter>
+    <ClInclude Include="location\location.hpp">
+      <Filter>Location</Filter>
     </ClInclude>
-    <ClInclude Include="hero.hpp">
-      <Filter>Pliki nagłówkowe</Filter>
+    <ClInclude Include="logger\logger.hpp">
+      <Filter>Logger</Filter>
     </ClInclude>
-    <ClInclude Include="item.hpp">
-      <Filter>Pliki nagłówkowe</Filter>
+    <ClInclude Include="npc\npc.hpp">
+      <Filter>Npc</Filter>
     </ClInclude>
-    <ClInclude Include="quest.hpp">
-      <Filter>Pliki nagłówkowe</Filter>
+    <ClInclude Include="quest\quest.hpp">
+      <Filter>Quest</Filter>
     </ClInclude>
-    <ClInclude Include="inventory.hpp">
-      <Filter>Pliki nagłówkowe</Filter>
+    <ClInclude Include="utilities\utilities.hpp">
+      <Filter>Utilities</Filter>
     </ClInclude>
-    <ClInclude Include="fraction.hpp">
-      <Filter>Pliki nagłówkowe</Filter>
+    <ClInclude Include="game\game.hpp">
+      <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="weapon.hpp">
-      <Filter>Pliki nagłówkowe</Filter>
+    <ClInclude Include="clothes\clothes.hpp">
+      <Filter>Clothes</Filter>
     </ClInclude>
-    <ClInclude Include="clothes.hpp">
-      <Filter>Pliki nagłówkowe</Filter>
+    <ClInclude Include="weapon\weapon.hpp">
+      <Filter>Weapon</Filter>
     </ClInclude>
-    <ClInclude Include="enums.hpp">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
-    <ClInclude Include="logger.hpp">
-      <Filter>Pliki nagłówkowe</Filter>
+    <ClInclude Include="inventory\inventory.hpp">
+      <Filter>Inventory</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

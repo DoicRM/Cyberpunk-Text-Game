@@ -1,5 +1,5 @@
 #pragma once
-#include "game.hpp"
+#include "../game/game.hpp"
 #include <map>
 
 class Event

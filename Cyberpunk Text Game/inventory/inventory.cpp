@@ -1,5 +1,5 @@
 #include "inventory.hpp"
-#include "logger.hpp"
+#include "../logger/logger.hpp"
 
 Inventory::Inventory()
 {

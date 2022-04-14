@@ -1,15 +1,15 @@
 #pragma once
-#include "fraction.hpp"
-#include "item.hpp"
-#include "weapon.hpp"
-#include "clothes.hpp"
-#include "hero.hpp"
-#include "npc.hpp"
-#include "quest.hpp"
-#include "events.hpp"
-#include "utilities.hpp"
-#include "location.hpp"
-#include "logger.hpp"
+#include "../fraction/fraction.hpp"
+#include "../item/item.hpp"
+#include "../weapon/weapon.hpp"
+#include "../clothes/clothes.hpp"
+#include "../hero/hero.hpp"
+#include "../npc/npc.hpp"
+#include "../quest/quest.hpp"
+#include "../events/events.hpp"
+#include "../utilities/utilities.hpp"
+#include "../location/location.hpp"
+#include "../logger/logger.hpp"
 
 class Game
 {

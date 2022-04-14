@@ -1,6 +1,6 @@
 #pragma once
-#include "item.hpp"
-#include "logger.hpp"
+#include "../item/item.hpp"
+#include "../logger/logger.hpp"
 
 class Weapon : public Item
 {

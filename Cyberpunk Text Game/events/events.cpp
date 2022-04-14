@@ -2,7 +2,6 @@
 
 bool darkAlleyWasVisited = false, streetWasVisited = false, gunShopWasVisited = false, nightclubWasVisited = false;
 
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::darkAlley()
 {
     Logger::out("Function starts", "Event::darkAlley");
@@ -17,7 +16,7 @@ void Event::darkAlley()
         darkAlleyCrossroads();
     }
 }
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 void Event::street()
 {
     Logger::out("Function starts", "Event::street");
@@ -32,7 +31,7 @@ void Event::street()
         streetCrossroads();
     }
 }
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 void Event::gunShop()
 {
     Logger::out("Function starts", "Event::gunShop");
@@ -47,7 +46,7 @@ void Event::gunShop()
         gunShopCrossroads();
     }
 }
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 void Event::nightclub()
 {
     Logger::out("Function starts", "Event::nightclub");
@@ -63,14 +62,13 @@ void Event::nightclub()
         nightclubCrossroads();
     }
 }
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 void Event::sleepersHideout()
 {
     Logger::out("Function starts", "Event::sleepersHideout");
     actOne();
 }
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// Œmieræ bohatera
+
 void Event::heroDeath()
 {
     Logger::out("Function starts", "Event::heroDeath");
@@ -94,7 +92,6 @@ void Event::heroDeath()
     Game::game[0].logo();
 }
 
-// Koniec gry
 void Event::gameOver()
 {
     Logger::out("Function starts", "Event::gameOver");
