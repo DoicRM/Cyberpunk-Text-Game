@@ -1,15 +1,15 @@
 #pragma once
 #include "../fraction/fraction.hpp"
 #include "../item/item.hpp"
-#include "../weapon/weapon.hpp"
-#include "../clothes/clothes.hpp"
+#include "../item/weapon/weapon.hpp"
+#include "../item/clothes/clothes.hpp"
 #include "../hero/hero.hpp"
 #include "../npc/npc.hpp"
 #include "../quest/quest.hpp"
 #include "../events/events.hpp"
 #include "../utilities/utilities.hpp"
 #include "../location/location.hpp"
-#include "../logger/logger.hpp"
+#include "../utilities/logger/logger.hpp"
 
 class Game
 {

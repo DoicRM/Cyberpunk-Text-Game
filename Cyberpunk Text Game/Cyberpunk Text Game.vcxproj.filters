@@ -19,9 +19,6 @@
     <Filter Include="Location">
       <UniqueIdentifier>{7211ed78-7483-45f0-b908-8614585a0d82}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Logger">
-      <UniqueIdentifier>{5551b67e-35cb-4a35-9d24-5f8a30e07540}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Npc">
       <UniqueIdentifier>{d272247a-ffb6-444d-9a57-aff45945351d}</UniqueIdentifier>
     </Filter>
@@ -31,22 +28,28 @@
     <Filter Include="Utilities">
       <UniqueIdentifier>{a8ab3714-cfe7-4598-b736-f9575e6a5adc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Clothes">
-      <UniqueIdentifier>{0e23705a-580b-48b1-9b49-ae56162ab89f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Weapon">
-      <UniqueIdentifier>{bbc360fd-0349-462c-a70c-81d5559a1e50}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Inventory">
       <UniqueIdentifier>{a1654a92-2096-456f-9015-a91507f5f466}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Events\Scenes">
+      <UniqueIdentifier>{da7a7ec4-77a0-4508-8a06-dd699901649f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utilities\Enums">
+      <UniqueIdentifier>{c8871f5a-608c-4b10-82fb-bbd6d367d815}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utilities\Logger">
+      <UniqueIdentifier>{5551b67e-35cb-4a35-9d24-5f8a30e07540}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Item\Weapon">
+      <UniqueIdentifier>{bbc360fd-0349-462c-a70c-81d5559a1e50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Item\Clothes">
+      <UniqueIdentifier>{0e23705a-580b-48b1-9b49-ae56162ab89f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="events\events.cpp">
-      <Filter>Events</Filter>
-    </ClCompile>
-    <ClCompile Include="events\scenes.cpp">
       <Filter>Events</Filter>
     </ClCompile>
     <ClCompile Include="fraction\fraction.cpp">
@@ -61,9 +64,6 @@
     <ClCompile Include="location\location.cpp">
       <Filter>Location</Filter>
     </ClCompile>
-    <ClCompile Include="logger\logger.cpp">
-      <Filter>Logger</Filter>
-    </ClCompile>
     <ClCompile Include="npc\npc.cpp">
       <Filter>Npc</Filter>
     </ClCompile>
@@ -76,18 +76,23 @@
     <ClCompile Include="game\game.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="clothes\clothes.cpp">
-      <Filter>Clothes</Filter>
-    </ClCompile>
-    <ClCompile Include="weapon\weapon.cpp">
-      <Filter>Weapon</Filter>
-    </ClCompile>
     <ClCompile Include="inventory\inventory.cpp">
       <Filter>Inventory</Filter>
     </ClCompile>
+    <ClCompile Include="events\scenes\scenes.cpp">
+      <Filter>Events\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="utilities\logger\logger.cpp">
+      <Filter>Utilities\Logger</Filter>
+    </ClCompile>
+    <ClCompile Include="item\clothes\clothes.cpp">
+      <Filter>Item\Clothes</Filter>
+    </ClCompile>
+    <ClCompile Include="item\weapon\weapon.cpp">
+      <Filter>Item\Weapon</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="enums.hpp" />
     <ClInclude Include="events\events.hpp">
       <Filter>Events</Filter>
     </ClInclude>
@@ -103,9 +108,6 @@
     <ClInclude Include="location\location.hpp">
       <Filter>Location</Filter>
     </ClInclude>
-    <ClInclude Include="logger\logger.hpp">
-      <Filter>Logger</Filter>
-    </ClInclude>
     <ClInclude Include="npc\npc.hpp">
       <Filter>Npc</Filter>
     </ClInclude>
@@ -118,14 +120,20 @@
     <ClInclude Include="game\game.hpp">
       <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="clothes\clothes.hpp">
-      <Filter>Clothes</Filter>
-    </ClInclude>
-    <ClInclude Include="weapon\weapon.hpp">
-      <Filter>Weapon</Filter>
-    </ClInclude>
     <ClInclude Include="inventory\inventory.hpp">
       <Filter>Inventory</Filter>
+    </ClInclude>
+    <ClInclude Include="utilities\logger\logger.hpp">
+      <Filter>Utilities\Logger</Filter>
+    </ClInclude>
+    <ClInclude Include="utilities\enums\enums.hpp">
+      <Filter>Utilities\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="item\clothes\clothes.hpp">
+      <Filter>Item\Clothes</Filter>
+    </ClInclude>
+    <ClInclude Include="item\weapon\weapon.hpp">
+      <Filter>Item\Weapon</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

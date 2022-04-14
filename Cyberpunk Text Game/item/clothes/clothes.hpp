@@ -1,6 +1,5 @@
 #pragma once
-#include "../item/item.hpp"
-#include "../enums.hpp"
+#include "../item.hpp"
 
 class Clothes : public Item
 {

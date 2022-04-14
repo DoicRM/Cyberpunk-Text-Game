@@ -1,6 +1,6 @@
 #pragma once
-#include "../enums.hpp"
-#include "../logger/logger.hpp"
+#include "../utilities/enums/enums.hpp"
+#include "../utilities/logger/logger.hpp"
 #include <iostream>
 #include <fstream>
 #include <thread>

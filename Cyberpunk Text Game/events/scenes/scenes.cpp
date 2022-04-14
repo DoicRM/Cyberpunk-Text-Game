@@ -1,4 +1,4 @@
-#include "events.hpp"
+#include "../events.hpp"
 
 int heroChoice = 0;
 bool bobRecommendsZed = false, zedKnowsAboutBobAndZed = false, heroIsOnDanceFloor = false, heroIsAtBar = false, heroKnowsVincentCode = false;
