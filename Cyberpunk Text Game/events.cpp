@@ -1,4 +1,4 @@
-#include "events.h"
+#include "events.hpp"
 
 bool darkAlleyWasVisited = false, streetWasVisited = false, gunShopWasVisited = false, nightclubWasVisited = false;
 

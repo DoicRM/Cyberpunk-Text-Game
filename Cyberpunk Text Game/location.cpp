@@ -1,4 +1,4 @@
-#include "location.h"
+#include "location.hpp"
 
 std::map <std::string, Location> Location::locations;
 
@@ -8,7 +8,7 @@ Location::Location()
     this->type = 0;
     this->occupation = Fraction();
     this->order = 0;
-    this->currency = 0;
+    this->currency = false;
 }
 
 Location::Location(std::string name, int type, Fraction occupation, int order, bool currency)

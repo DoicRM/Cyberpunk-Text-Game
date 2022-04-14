@@ -1,16 +1,15 @@
 #pragma once
-#include <string>
-#include "fraction.h"
-#include "item.h"
-#include "weapon.h"
-#include "clothes.h"
-#include "hero.h"
-#include "npc.h"
-#include "quest.h"
-#include "events.h"
-#include "functions.h"
-#include "location.h"
-#include "logger.h"
+#include "fraction.hpp"
+#include "item.hpp"
+#include "weapon.hpp"
+#include "clothes.hpp"
+#include "hero.hpp"
+#include "npc.hpp"
+#include "quest.hpp"
+#include "events.hpp"
+#include "functions.hpp"
+#include "location.hpp"
+#include "logger.hpp"
 
 class Game
 {

@@ -1,6 +1,6 @@
 #pragma once
-#include "item.h"
-#include "logger.h"
+#include "item.hpp"
+#include "logger.hpp"
 
 class Weapon : public Item
 {

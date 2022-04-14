@@ -1,8 +1,8 @@
 #pragma once
+#include "item.hpp"
+#include "logger.hpp"
 #include <fstream>
 #include <iostream>
-#include "item.h"
-#include "logger.h"
 
 class Inventory
 {

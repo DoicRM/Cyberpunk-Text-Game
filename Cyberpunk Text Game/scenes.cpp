@@ -1,4 +1,4 @@
-#include "events.h"
+#include "events.hpp"
 
 int heroChoice = 0;
 bool bobRecommendsZed = false, zedKnowsAboutBobAndZed = false, heroIsOnDanceFloor = false, heroIsAtBar = false, heroKnowsVincentCode = false;
@@ -8,7 +8,7 @@ bool bobRecommendsZed = false, zedKnowsAboutBobAndZed = false, heroIsOnDanceFloo
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::prologue()
 {
-    Logger::out("Function start", "Event::prologue");
+    Logger::out("Function starts", "Event::prologue");
 
     if (Game::game[0].getLang() == en) Function::write("\n\tPrologue");
     else Function::write("\n\tProlog");
@@ -25,7 +25,7 @@ void Event::prologue()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::storyIntroduction()
 {
-    Logger::out("Function start", "Event::storyIntroduction");
+    Logger::out("Function starts", "Event::storyIntroduction");
 
     if (Game::game[0].getLang() == en)
     {
@@ -65,7 +65,7 @@ void Event::storyIntroduction()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::wakeUpInDarkAlley()
 {
-    Logger::out("Function start", "Event::wakeUpInDarkAlley");
+    Logger::out("Function starts", "Event::wakeUpInDarkAlley");
 
     if (Game::game[0].getLang() == en)
     {
@@ -122,7 +122,7 @@ void Event::wakeUpInDarkAlley()
 
     while (true)
     {
-        std::cin >> heroChoice;
+        heroChoice = Function::getChoice();
 
         if (heroChoice == 1)
         {
@@ -138,12 +138,13 @@ void Event::wakeUpInDarkAlley()
             outOfTheAlley();
             break;
         }
+        else Logger::error("Entered invalid value of <b>heroChoice</b>", "Event::wakeUpInDarkAlley"); continue;
     }
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::acceleratorFinding()
 {
-    Logger::out("Function start", "Event::acceleratorFinding");
+    Logger::out("Function starts", "Event::acceleratorFinding");
     Function::writeNarration("\n\tYou start rummaging through the trash.");
     Sleep(1500);
     Function::writeNarration(" The search takes a long while, but eventually you\n\tmanage to find something.");
@@ -166,7 +167,7 @@ void Event::acceleratorFinding()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::rubbishSearch()
 {
-    Logger::out("Function start", "Event::rubbishSearch");
+    Logger::out("Function starts", "Event::rubbishSearch");
     Function::showHeroAction("Search the area for something valuable.");
     acceleratorFinding();
     outOfTheAlley();
@@ -174,7 +175,7 @@ void Event::rubbishSearch()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::outOfTheAlley()
 {
-    Logger::out("Function start", "Event::outOfTheAlley");
+    Logger::out("Function starts", "Event::outOfTheAlley");
 
     if (!Hero::heroes[0].hasItem(&Item::items["AD13"]))
     {
@@ -197,7 +198,7 @@ void Event::outOfTheAlley()
     //--------------------------------
     while (true)
     {
-        std::cin >> heroChoice;
+        heroChoice = Function::getChoice();
 
         if (heroChoice == 1)
         {
@@ -221,12 +222,13 @@ void Event::outOfTheAlley()
             Game::game[0].setCurrentLocation(&Location::locations["Street"]);
             break;
         }
+        else Logger::error("Entered invalid value of <b>heroChoice</b>", "Event::outOfTheAlley"); continue;
     }
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::dialogueWithBob()
 {
-    Logger::out("Function start", "Event::dialogueWithBob");
+    Logger::out("Function starts", "Event::dialogueWithBob");
     Function::writeDialogue("\t- 'What's your name, boy?'");
 
     if (!Npc::npcs["Bob"].knowsHero() && !Npc::npcs["Caden"].knowsHero() && !Npc::npcs["CadenPartner"].knowsHero()) namingHero();
@@ -248,7 +250,7 @@ void Event::dialogueWithBob()
     //--------------------------------
     while (true)
     {
-        std::cin >> heroChoice;
+        heroChoice = Function::getChoice();
 
         if (heroChoice == 1)
         {
@@ -285,6 +287,7 @@ void Event::dialogueWithBob()
             Function::writeDialogue("\t- 'You're wrong. It's absolutely my business, kid. Don't shut your mouth like that, or you might\n\tlose a few teeth. Got it?'\n");
             break;
         }
+        else Logger::error("Entered invalid value of <b>heroChoice</b>", "Event::outOfTheAlley"); continue;
     }
 
     if (!streetWasVisited)
@@ -327,7 +330,7 @@ void Event::dialogueWithBob()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::darkAlleyCrossroads()
 {
-    Logger::out("Function start", "Event::darkAlleyCrossroads");
+    Logger::out("Function starts", "Event::darkAlleyCrossroads");
     Function::showHeroAction("Visit: " + Location::locations["DarkAlley"].getName() + ".\n");
 
     if (!Npc::npcs["Bob"].knowsHero())
@@ -342,7 +345,7 @@ void Event::darkAlleyCrossroads()
         //--------------------------------
         while (true)
         {
-            std::cin >> heroChoice;
+            heroChoice = Function::getChoice();
 
             if (heroChoice == 1)
             {
@@ -364,6 +367,7 @@ void Event::darkAlleyCrossroads()
                 Game::game[0].setCurrentLocation(&Location::locations["Street"]);
                 break;
             }
+            else Logger::error("Entered invalid value of <b>heroChoice</b>", "Event::darkAlleyCrossroads"); continue;
         }
     }
     else
@@ -384,7 +388,7 @@ void Event::darkAlleyCrossroads()
             //--------------------------------
             while (true)
             {
-                std::cin >> heroChoice;
+                heroChoice = Function::getChoice();
 
                 if (heroChoice == 1)
                 {
@@ -402,6 +406,7 @@ void Event::darkAlleyCrossroads()
                     Game::game[0].setCurrentLocation(&Location::locations["Street"]);
                     break;
                 }
+                else Logger::error("Entered invalid value of <b>heroChoice</b>", "Event::darkAlleyCrossroads"); continue;
             }
         }
         else
@@ -418,7 +423,7 @@ void Event::darkAlleyCrossroads()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::lookAtAmnesia()
 {
-    Logger::out("Function start", "Event::lookAtAmnesia");
+    Logger::out("Function starts", "Event::lookAtAmnesia");
 
     if (!Npc::npcs["Bob"].knowsHero())
     {
@@ -442,7 +447,7 @@ void Event::lookAtAmnesia()
     //--------------------------------
     while (true)
     {
-        std::cin >> heroChoice;
+        heroChoice = Function::getChoice();
 
         if (heroChoice == 1)
         {
@@ -465,12 +470,13 @@ void Event::lookAtAmnesia()
             Game::game[0].setCurrentLocation(&Location::locations["GunShop"]);
             break;
         }
+        else Logger::error("Entered invalid value of <b>heroChoice</b>", "Event::lookAtAmnesia"); continue;
     }
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::encounterGunStore()
 {
-    Logger::out("Function start", "Event::encounterGunStore");
+    Logger::out("Function starts", "Event::encounterGunStore");
     Function::writeNarration("\n\tYou go to the right side of the street. After walking several meters you come across a small\n\tbooth between blocks of flats.");
 
     if (bobRecommendsZed) Function::writeNarration(" Could it be that the famous gun store managed by Bob's friend?");
@@ -484,7 +490,7 @@ void Event::encounterGunStore()
     //--------------------------------
     while (true)
     {
-        std::cin >> heroChoice;
+        heroChoice = Function::getChoice();
 
         if (heroChoice == 1)
         {
@@ -507,12 +513,13 @@ void Event::encounterGunStore()
 
             break;
         }
+        else Logger::error("Entered invalid value of <b>heroChoice</b>", "Event::encounterGunStore"); continue;
     }
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::meetingWithSecurityGuards()
 {
-    Logger::out("Function start", "Event::meetingWithSecurityGuards");
+    Logger::out("Function starts", "Event::meetingWithSecurityGuards");
     Function::writeNarration("\tWhen you get closer, the faces turn toward you and start looking at you intently.");
     Sleep(1000);
     Function::writeNarration(" You pass\n\tthem in silenceand are confronted by a broad -\n\tshouldered security guard.");
@@ -529,7 +536,7 @@ void Event::meetingWithSecurityGuards()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::meetingWithPolicemans()
 {
-    Logger::out("Function start", "Event::meetingWithPolicemans");
+    Logger::out("Function starts", "Event::meetingWithPolicemans");
 
     if (Npc::npcs["Bob"].knowsHero()) Function::writeNarration("\tWhen you get closer, one of the police officers in a dark blue uniform turns toward you.");
     else {
@@ -591,7 +598,7 @@ void Event::meetingWithPolicemans()
     //--------------------------------
     while (true)
     {
-        std::cin >> heroChoice;
+        heroChoice = Function::getChoice();
 
         if (heroChoice == 1)
         {
@@ -609,12 +616,13 @@ void Event::meetingWithPolicemans()
             Game::game[0].setCurrentLocation(&Location::locations["GunShop"]);
             break;
         }
+        else Logger::error("Entered invalid value of <b>heroChoice</b>", "Event::meetingWithPolicemans"); continue;
     }
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::streetCrossroads()
 {
-    Logger::out("Function start", "Event::streetCrossroads");
+    Logger::out("Function starts", "Event::streetCrossroads");
     Function::showHeroAction("Visit: " + Location::locations["Street"].getName() + '.');
     Function::writeNarration("\n\tOnce again you are on a street bathed in nighttime darkness.\n\n");
     //--------------------------------
@@ -626,7 +634,7 @@ void Event::streetCrossroads()
     //--------------------------------
     while (true)
     {
-        std::cin >> heroChoice;
+        heroChoice = Function::getChoice();
 
         if (heroChoice == 1)
         {
@@ -646,6 +654,7 @@ void Event::streetCrossroads()
             Game::game[0].setCurrentLocation(&Location::locations["GunShop"]);
             break;
         }
+        else Logger::error("Entered invalid value of <b>heroChoice</b>", "Event::streetCrossroads"); continue;
     }
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -653,7 +662,7 @@ void Event::streetCrossroads()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::enterGunShop()
 {
-    Logger::out("Function start", "Event::enterGunShop");
+    Logger::out("Function starts", "Event::enterGunShop");
     Function::writeNarration("\tThe front door hisses open before you.");
 
     if (!Npc::npcs["Zed"].knowsHero())
@@ -694,7 +703,7 @@ void Event::enterGunShop()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::dialogueWithZed()
 {
-    Logger::out("Function start", "Event::dialogueWithZed");
+    Logger::out("Function starts", "Event::dialogueWithZed");
     bool heroTalkedAboutBusinessWithZed = false;
 
     while (true)
@@ -710,7 +719,7 @@ void Event::dialogueWithZed()
         Function::addChoice("'I have to go...'");
         Function::showChoices();
         //--------------------------------
-        std::cin >> heroChoice;
+        heroChoice = Function::getChoice();
 
         if (heroChoice == 1)
         {
@@ -769,12 +778,13 @@ void Event::dialogueWithZed()
 
             break;
         }
+        else Logger::error("Entered invalid value of <b>heroChoice</b>", "Event::dialogueWithZed"); continue;
     }
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::zedTrade()
 {
-    Logger::out("Function start", "Event::zedTrade");
+    Logger::out("Function starts", "Event::zedTrade");
     bool ZedTellsAboutWeapons = false;
 
     if (!Hero::heroes[0].hasItem(&Item::items["Pistol"]))
@@ -799,7 +809,7 @@ void Event::zedTrade()
             //--------------------------------
             while (true)
             {
-                std::cin >> heroChoice;
+                heroChoice = Function::getChoice();
 
                 if (heroChoice == 1)
                 {
@@ -817,6 +827,7 @@ void Event::zedTrade()
                     dialogueWithZed();
                     break;
                 }
+                else Logger::error("Entered invalid value of <b>heroChoice</b>", "Event::zedTrade"); continue;
             }
         }
         else
@@ -830,7 +841,7 @@ void Event::zedTrade()
             //--------------------------------
             while (true)
             {
-                std::cin >> heroChoice;
+                heroChoice = Function::getChoice();
 
                 if (heroChoice == 1)
                 {
@@ -848,6 +859,7 @@ void Event::zedTrade()
                     dialogueWithZed();
                     break;
                 }
+                else Logger::error("Entered invalid value of <b>heroChoice</b>", "Event::zedTrade"); continue;
             }
         }
     }
@@ -861,12 +873,11 @@ void Event::zedTrade()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::buyPistol()
 {
-    Logger::out("Function start", "Event::buyPistol");
-    std::cout << std::endl;
+    Logger::out("Function starts", "Event::buyPistol");
 
     if (Hero::heroes[0].getMoney() != 250.0)
     {
-        Function::writeDialogue("\t- 'I see you're low on cash.");
+        Function::writeDialogue("\n\t- 'I see you're low on cash.");
         Sleep(1000);
         Function::writeDialogue(" But don't worry, we'll sort it out somehow.");
         Sleep(1500);
@@ -897,7 +908,7 @@ void Event::buyPistol()
     }
     else
     {
-        Function::writeDialogue("\t- 'A pistol is a good start. Here, it's yours.'");
+        Function::writeDialogue("\n\t- 'A pistol is a good start. Here, it's yours.'");
 
         Hero::heroes[0].addItem(&Item::items["Pistol"]);
         Function::changeConsoleColor(item);
@@ -909,7 +920,7 @@ void Event::buyPistol()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::gunShopCrossroads()
 {
-    Logger::out("Function start", "Event::gunShopCrossroads");
+    Logger::out("Function starts", "Event::gunShopCrossroads");
     enterGunShop();
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -917,7 +928,7 @@ void Event::gunShopCrossroads()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::enterClub()
 {
-    Logger::out("Function start", "Event::enterClub");
+    Logger::out("Function starts", "Event::enterClub");
     Function::writeNarration("\n\tAfter passing through the entrance your eardrums are slowly bursting from the loud music in\n\tthe club.");
     Sleep(1000);
     Function::writeNarration(" You walk through a short lobby and so arrive at a crowded room full of dancing\n\tpeople.");
@@ -927,32 +938,43 @@ void Event::enterClub()
     Function::writeNarration(" Next to the dance floor is a bar, and behind it are several mechanically streamlined\n\tbartenders.\n\n");
     //--------------------------------
     Function::clearChoices();
-    Function::addChoice("Go dance on the dance floor.");
+    Function::addChoice("Go to the dance floor.");
     Function::addChoice("Go to the bar.");
+    Function::addChoice("Back on the street.");
     Function::showChoices();
     //--------------------------------
     while (true)
     {
-        std::cin >> heroChoice;
+        heroChoice = Function::getChoice();
 
         if (heroChoice == 1)
         {
-            Function::showHeroAction("\nGo dance on the dance floor.");
+            Function::clearScreen();
+            Function::showHeroAction("\nGo on the dance floor.");
             clubDanceFloor();
             break;
         }
         else if (heroChoice == 2)
         {
+            Function::clearScreen();
             Function::showHeroAction("\nGo to the bar.");
             clubBar();
             break;
         }
+        else if (heroChoice == 3)
+        {
+            Function::clearScreen();
+            Function::showHeroAction("\nBack on the street.");
+            Game::game[0].setCurrentLocation(&Location::locations["Street"]);
+            break;
+        }
+        else Logger::error("Entered invalid value of <b>heroChoice</b>", "Event::enterClub"); continue;
     }
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::clubDanceFloor()
 {
-    Logger::out("Function start", "Event::clubDanceFloor");
+    Logger::out("Function starts", "Event::clubDanceFloor");
 
     if (!Npc::npcs["Nyx"].knowsHero())
     {
@@ -976,7 +998,7 @@ void Event::clubDanceFloor()
         //--------------------------------
         while (true)
         {
-            std::cin >> heroChoice;
+            heroChoice = Function::getChoice();
 
             if (heroChoice == 1)
             {
@@ -1004,13 +1026,14 @@ void Event::clubDanceFloor()
                 Function::writeDialogue("\n\t- 'Hi, I am Nyx. Vinc, the owner, is my boyfriend. I think you can help me.'");
                 break;
             }
+            else Logger::error("Entered invalid value of <b>heroChoice</b>", "Event::clubDanceFloor"); continue;
         }
 
         miaMeeting();
     }
     else
     {
-        Function::writeNarration("\tYou get on the dance floor.");
+        Function::writeNarration("\n\tYou get on the dance floor.");
         Sleep(1000);
         Function::writeNarration(" It's quite crowded, but at least you can enjoy the beautiful views. You try to keep up with\n\tthe rest of the people dancing there. However, you quickly get tired and head for the exit.");
         Sleep(1500);
@@ -1021,7 +1044,7 @@ void Event::clubDanceFloor()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::clubBar()
 {
-    Logger::out("Function start", "Event::clubBar");
+    Logger::out("Function starts", "Event::clubBar");
     heroIsAtBar = true;
     Function::writeNarration("\tWith a slow step, you approach the counter, settle comfortably on a stool, and lift your gaze to the barman in front of you.");
     Function::writeDialogue("\n\t- 'What's for you?'\n\n");
@@ -1035,7 +1058,7 @@ void Event::clubBar()
         Function::addChoice("'Bye.'");
         Function::showChoices();
         //--------------------------------
-        std::cin >> heroChoice;
+        heroChoice = Function::getChoice();
 
         if (heroChoice == 1)
         {
@@ -1066,12 +1089,13 @@ void Event::clubBar()
             Function::writeDialogue("\n\t- 'Yeah, have fun.'");
             break;
         }
+        else Logger::error("Entered invalid value of <b>heroChoice</b>", "Event::clubBar"); continue;
     }
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::miaMeeting()
 {
-    Logger::out("Function start", "Event::miaMeeting");
+    Logger::out("Function starts", "Event::miaMeeting");
     std::cout << std::endl << std::endl;
     //--------------------------------
     Function::clearChoices();
@@ -1081,7 +1105,7 @@ void Event::miaMeeting()
     //--------------------------------
     while (true)
     {
-        std::cin >> heroChoice;
+        heroChoice = Function::getChoice();
 
         if (heroChoice == 1)
         {
@@ -1095,6 +1119,7 @@ void Event::miaMeeting()
             Function::showHeroAction("Be silent and let her speak.\n");
             break;
         }
+        else Logger::error("Entered invalid value of <b>heroChoice</b>", "Event::miaMeeting"); continue;
     }
 
     Function::writeDialogue("\n\t- 'Vinc, the owner, is my boyfriend.");
@@ -1128,8 +1153,8 @@ void Event::miaMeeting()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::clubUpstairs()
 {
-    Logger::out("Function start", "Event::clubUpstairs");
-    Function::writeNarration("\n\tYou go up a winding staircase. At the end of a short banister you will see a closed door guarded by another bulky individual.\n\n");
+    Logger::out("Function starts", "Event::clubUpstairs");
+    Function::writeNarration("\n\tYou go up a winding staircase. At the end of a short banister you will see a closed door\n\tguarded by another bulky individual.\n\n");
     //--------------------------------
     Function::clearChoices();
     Function::addChoice("Come closer.");
@@ -1138,13 +1163,13 @@ void Event::clubUpstairs()
     //--------------------------------
     while (true)
     {
-        std::cin >> heroChoice;
+        heroChoice = Function::getChoice();
 
         if (heroChoice == 1)
         {
             Function::clearScreen();
             Function::showHeroAction("Come closer.");
-            Function::writeNarration("\n\tAre you brave or foolish enough to face the hammer man. You are stopped from taking another step by his firm voice.");
+            Function::writeNarration("\n\tAre you brave or foolish enough to face the hammer man. You are stopped from taking another\n\tstep by his firm voice.");
             Function::writeDialogue("\n\t- 'What here?'");
             Npc::npcs["Jet"].setToKnowHero();
             dialogueWithJet();
@@ -1154,16 +1179,17 @@ void Event::clubUpstairs()
         {
             Function::clearScreen();
             Function::showHeroAction("Go back downstairs.");
-            Function::writeNarration("\n\tYou don't dare to come closer, so like the last coward you turn back and return to the kingdom of loud music and dancing people.\n");
+            Function::writeNarration("\n\tYou don't dare to come closer, so like the last coward you turn back and return to the kingdom\n\tof loud music and dancing people.\n");
             nightclub();
             break;
         }
+        else Logger::error("Entered invalid value of <b>heroChoice</b>", "Event::clubUpstairs"); continue;
     }
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::dialogueWithJet()
 {
-    Logger::out("Function start", "Event::dialogueWithJet");
+    Logger::out("Function starts", "Event::dialogueWithJet");
     int jetPoints = 0;
     std::cout << std::endl << std::endl;
     //--------------------------------
@@ -1182,7 +1208,7 @@ void Event::dialogueWithJet()
     //--------------------------------
     while (true)
     {
-        std::cin >> heroChoice;
+        heroChoice = Function::getChoice();
 
         if (heroChoice == 1)
         {
@@ -1226,18 +1252,19 @@ void Event::dialogueWithJet()
             nightclub();
             break;
         }
+        else Logger::error("Entered invalid value of <b>heroChoice</b>", "Event::dialogueWithJet"); continue;
     }
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::vincentAssassination()
 {
-    Logger::out("Function start", "Event::vincentAssassination");
+    Logger::out("Function starts", "Event::vincentAssassination");
     vincentOffice();
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::vincentOffice()
 {
-    Logger::out("Function start", "Event::vincentOffice");
+    Logger::out("Function starts", "Event::vincentOffice");
     Function::writeNarration("\tYou enter the manager's office immersed in twilight. In the middle of the room stands a sizable desk, and on it are stacks of documents and computer. To the left of the entrance is a window to the street below. On the right you will notice a door to another room.\n\n");
     //--------------------------------
     Function::clearChoices();
@@ -1247,7 +1274,7 @@ void Event::vincentOffice()
     //--------------------------------
     while (true)
     {
-        std::cin >> heroChoice;
+        heroChoice = Function::getChoice();
 
         if (heroChoice == 1)
         {
@@ -1259,12 +1286,13 @@ void Event::vincentOffice()
             checkVincentDesk();
             break;
         }
+        else Logger::error("Entered invalid value of <b>heroChoice</b>", "Event::vincentOffice"); continue;
     }
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::checkVincentDesk()
 {
-    Logger::out("Function start", "Event::checkVincentDesk");
+    Logger::out("Function starts", "Event::checkVincentDesk");
     heroKnowsVincentCode = true;
     Function::showHeroAction("Stay and search the office.");
     Function::writeNarration("\n\tYou walk up to the desk. You start flipping through the e-papers one by one and finally your gaze falls on the flickering blue monitor.");
@@ -1275,7 +1303,7 @@ void Event::checkVincentDesk()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::vincentHideoutCode()
 {
-    Logger::out("Function start", "Event::vincentHideoutCode");
+    Logger::out("Function starts", "Event::vincentHideoutCode");
     Function::writeNarration("\n\tYou walk closer and spot the terminal. It looks like you'll need to use a code to get through.");
     Sleep(1500);
 
@@ -1296,7 +1324,7 @@ void Event::vincentHideoutCode()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::vincentHideout()
 {
-    Logger::out("Function start", "Event::vincentHideout");
+    Logger::out("Function starts", "Event::vincentHideout");
     Npc::npcs["Vincent"].setStatus(unconscious);
     Function::writeNarration("\n\tThe door closes behind you, hissing quietly.");
     Sleep(2000);
@@ -1313,7 +1341,7 @@ void Event::vincentHideout()
     //--------------------------------
     while (true)
     {
-        std::cin >> heroChoice;
+        heroChoice = Function::getChoice();
 
         if (heroChoice == 1)
         {
@@ -1341,12 +1369,13 @@ void Event::vincentHideout()
             dialogueWithVincent();
             break;
         }
+        else Logger::error("Entered invalid value of <b>heroChoice</b>", "Event::vincentHideout"); continue;
     }
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::dialogueWithVincent()
 {
-    Logger::out("Function start", "Event::dialogueWithVincent");
+    Logger::out("Function starts", "Event::dialogueWithVincent");
     std::cout << std::endl << std::endl;
     //--------------------------------
     Function::clearChoices();
@@ -1357,7 +1386,7 @@ void Event::dialogueWithVincent()
     //--------------------------------
     while (true)
     {
-        std::cin >> heroChoice;
+        heroChoice = Function::getChoice();
 
         if (heroChoice == 1)
         {
@@ -1387,6 +1416,7 @@ void Event::dialogueWithVincent()
             Function::writeNarration("\n\tYou are not a coward. You don't stab people in the back. That's not your style. You prefer an open fight.");
             break;
         }
+        else Logger::error("Entered invalid value of <b>heroChoice</b>", "Event::dialogueWithVincent"); continue;
     }
 
     std::cout << std::endl << std::endl;
@@ -1398,7 +1428,7 @@ void Event::dialogueWithVincent()
     //--------------------------------
     while (true)
     {
-        std::cin >> heroChoice;
+        heroChoice = Function::getChoice();
 
         if (heroChoice == 1)
         {
@@ -1434,6 +1464,7 @@ void Event::dialogueWithVincent()
             Function::writeNarration(" That bastard was playing for time after all!");
             break;
         }
+        else Logger::error("Entered invalid value of <b>heroChoice</b>", "Event::dialogueWithVincent"); continue;
     }
 
     Function::writeNarration("\n\tThe passage behind your back is opened.");
@@ -1454,7 +1485,7 @@ void Event::dialogueWithVincent()
     //--------------------------------
     while (true)
     {
-        std::cin >> heroChoice;
+        heroChoice = Function::getChoice();
 
         if (heroChoice == 1)
         {
@@ -1468,6 +1499,7 @@ void Event::dialogueWithVincent()
             Function::writeNarration("\n\tA girl talks to you without even looking at you.\n");
             break;
         }
+        else Logger::error("Entered invalid value of <b>heroChoice</b>", "Event::dialogueWithVincent"); continue;
     }
 
     vincentResurrection();
@@ -1475,7 +1507,7 @@ void Event::dialogueWithVincent()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::vincentResurrection()
 {
-    Logger::out("Function start", "Event::vincentResurrection");
+    Logger::out("Function starts", "Event::vincentResurrection");
     Function::writeNarration("\n\tSuddenly, the maze of cables begins to vibrate and move in a strange dance.");
     Sleep(1000);
     Function::writeNarration(" Hisses reach you and Nyx, forming a gibberish that is difficult to understand.");
@@ -1498,7 +1530,7 @@ void Event::vincentResurrection()
 }
 void Event::nightclubCrossroads()
 {
-    Logger::out("Function start", "Event::nightclubCrossroads");
+    Logger::out("Function starts", "Event::nightclubCrossroads");
 
     Function::showHeroAction("Visit: " + Location::locations["Nightclub"].getName() + ".\n");
     Function::writeNarration("\n\tYou enter from a fairly well-lit street into a slightly darkened nightclub, trembling with colour.\n\n");
@@ -1512,7 +1544,7 @@ void Event::nightclubCrossroads()
     //--------------------------------
     while (true)
     {
-        std::cin >> heroChoice;
+        heroChoice = Function::getChoice();
 
         if (heroChoice == 1)
         {
@@ -1538,6 +1570,7 @@ void Event::nightclubCrossroads()
             Game::game[0].setCurrentLocation(&Location::locations["Street"]);
             break;
         }
+        else Logger::error("Entered invalid value of <b>heroChoice</b>", "Event::nightclubCrossroads"); continue;
     }
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -1545,7 +1578,7 @@ void Event::nightclubCrossroads()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::actOne()
 {
-    Logger::out("Function start", "Event::actOne");
+    Logger::out("Function starts", "Event::actOne");
 
     if (Game::game[0].getLang() == en) Function::write("\n\tAct One");
     else Function::write("\n\tAkt pierwszy");
@@ -1564,7 +1597,7 @@ void Event::actOne()
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void Event::loadingFiles()
 {
-    Logger::out("Function start", "Event::loadingFiles");
+    Logger::out("Function starts", "Event::loadingFiles");
     Function::changeConsoleColor(dialogue);
     Function::write("\t||", 100);
     Sleep(1000);
@@ -1615,12 +1648,11 @@ void Event::loadingFiles()
 
 void Event::namingHero()
 {
-    Logger::out("Function start", "Event::namingHero");
+    Logger::out("Function starts", "Event::namingHero");
     std::string heroName;
-
     Function::changeConsoleColor();
-    Function::write("\n\t> ");
-    std::cin >> heroName;
+    std::cout << std::endl;
+    heroName = Function::getString();
     Hero::heroes[0].setName(heroName);
-    Logger::out("Hero's name is " + Hero::heroes[0].getName(), "Event::namingHero");
+    Logger::out("Set <b>" + Hero::heroes[0].getName() + "</b> to hero's name", "Event::namingHero");
 }

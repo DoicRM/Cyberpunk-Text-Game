@@ -1,4 +1,4 @@
-#include "game.h"
+#include "game.hpp"
 
 std::map <int, Game> Game::game;
 
@@ -83,9 +83,9 @@ void Game::selectLanguage()
         Function::showChoices();
         gameLang = Function::getChoice();
 
-        if (getLang() != en && getLang() != pl) Logger::error("Invalid value of 'gameLang'", "Game::selectLanguage");
-        else if (getLang() == en) Logger::out("Game language is English", "Game::selectLanguage");
-        else if (getLang() == pl) Logger::out("Game language is Polish", "Game::selectLanguage");
+        if (getLang() != en && getLang() != pl) Logger::error("Entered invalid value of <b>gameLang</b>", "Game::selectLanguage");
+        else if (getLang() == en) Logger::out("Set English as game language", "Game::selectLanguage");
+        else if (getLang() == pl) Logger::out("Set Polish as game language", "Game::selectLanguage");
     }
 
     Function::clearChoices();
@@ -245,13 +245,13 @@ void Game::changeLanguage()
         Function::showChoices();
         change = Function::getChoice();
 
-        if (change != en && change != pl) Logger::error("Invalid value of 'gameLang'", "Game::changeLanguage");
+        if (change != en && change != pl) Logger::error("Entered invalid value of <b>gameLang</b>", "Game::changeLanguage");
     }
 
     this->gameLang = change;
 
-    if (getLang() == en) Logger::out("Game language is English", "Game::changeLanguage");
-    else if (getLang() == pl) Logger::out("Game language is Polish", "Game::changeLanguage");
+    if (getLang() == en) Logger::out("Set English as game language", "Game::changeLanguage");
+    else if (getLang() == pl) Logger::out("Set Polish as game language", "Game::changeLanguage");
 
     Function::clearChoices();
     Function::clearScreen();
@@ -358,7 +358,7 @@ void Game::test()
 void Game::setCurrentLocation(Location* location)
 {
     this->ptrCurrentLocation = location;
-    Logger::out("Actual location is " + getCurrentLocation()->getName(), "Game::setCurrentLocation");
+    Logger::out("Set <b>" + getCurrentLocation()->getName() + "</b> as current location", "Game::setCurrentLocation");
     startEventsByLocation();
 }
 

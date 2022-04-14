@@ -1,6 +1,6 @@
 // CREATED BY Rachel Wil Sha Singh 2020 (https://gitlab.com/RachelWilShaSingh/simple-cpp-text-adventure)
 // EDITED BY Rados³aw "Doic" Michalak 2022
-#include "logger.h"
+#include "logger.hpp"
 
 std::ofstream Logger::m_file;
 time_t Logger::m_startTime;
@@ -67,17 +67,17 @@ void Logger::out(const std::string& message, const std::string& location /* = ""
 
     if (condition)
     {
-        if (m_isLoud)
-        {
-            std::cout << getFormattedTimestamp();
-            if (location != "") { std::cout << " @ " << location; }
-            std::cout << std::endl << "  " << message << std::endl << std::endl;
-        }
+        //if (m_isLoud)
+        //{
+        //    std::cout << getFormattedTimestamp();
+        //    if (location != "") { std::cout << " @ " << location; }
+        //    std::cout << std::endl << "  " << message << std::endl << std::endl;
+        //}
 
         std::string loc = location;
         if (loc == "") loc = "-";
 
-        std::string rowClass = (m_rowCount % 2 == 0) ? "" : "odd";
+        //std::string rowClass = (m_rowCount % 2 == 0) ? "" : "odd";
 
         m_file << "<tr>"
             << "<td>" << loc << "</td>"
@@ -91,10 +91,10 @@ void Logger::out(const std::string& message, const std::string& location /* = ""
 
 void Logger::error(const std::string& message, const std::string& location /* = "" */)
 {
-    std::cerr << "** " << getTimestamp() << "\t" << message;
-    if (location != "") std::cerr << " @ " << location;
-    std::cerr << "\t LINE " << __LINE__ << " FILE " << __FILE__;
-    std::cerr << std::endl;
+    //std::cerr << "** " << getTimestamp() << "\t" << message;
+    //if (location != "") std::cerr << " @ " << location;
+    //std::cerr << "\t LINE " << __LINE__ << " FILE " << __FILE__;
+    //std::cerr << std::endl;
 
     std::string loc = location;
     if (loc == "") loc = "-";

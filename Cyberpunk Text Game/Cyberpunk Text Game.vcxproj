@@ -157,20 +157,20 @@
     <ClCompile Include="weapon.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="clothes.h" />
-    <ClInclude Include="enums.h" />
-    <ClInclude Include="events.h" />
-    <ClInclude Include="fraction.h" />
-    <ClInclude Include="hero.h" />
-    <ClInclude Include="inventory.h" />
-    <ClInclude Include="item.h" />
-    <ClInclude Include="location.h" />
-    <ClInclude Include="functions.h" />
-    <ClInclude Include="game.h" />
-    <ClInclude Include="logger.h" />
-    <ClInclude Include="npc.h" />
-    <ClInclude Include="quest.h" />
-    <ClInclude Include="weapon.h" />
+    <ClInclude Include="clothes.hpp" />
+    <ClInclude Include="enums.hpp" />
+    <ClInclude Include="events.hpp" />
+    <ClInclude Include="fraction.hpp" />
+    <ClInclude Include="hero.hpp" />
+    <ClInclude Include="inventory.hpp" />
+    <ClInclude Include="item.hpp" />
+    <ClInclude Include="location.hpp" />
+    <ClInclude Include="functions.hpp" />
+    <ClInclude Include="game.hpp" />
+    <ClInclude Include="logger.hpp" />
+    <ClInclude Include="npc.hpp" />
+    <ClInclude Include="quest.hpp" />
+    <ClInclude Include="weapon.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

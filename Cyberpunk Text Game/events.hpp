@@ -1,6 +1,6 @@
 #pragma once
+#include "game.hpp"
 #include <map>
-#include "game.h"
 
 class Event
 {

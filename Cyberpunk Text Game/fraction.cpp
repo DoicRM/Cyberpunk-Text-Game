@@ -1,4 +1,4 @@
-#include "fraction.h"
+#include "fraction.hpp"
 
 std::map <std::string, Fraction> Fraction::fractions;
 

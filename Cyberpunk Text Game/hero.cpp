@@ -1,4 +1,4 @@
-#include "hero.h"
+#include "hero.hpp"
 
 std::map <int, Hero> Hero::heroes;
 

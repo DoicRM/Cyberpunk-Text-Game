@@ -1,4 +1,4 @@
-#include "npc.h"
+#include "npc.hpp"
 
 std::map <std::string, Npc> Npc::npcs;
 

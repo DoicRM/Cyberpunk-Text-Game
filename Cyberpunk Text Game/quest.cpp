@@ -1,4 +1,4 @@
-#include "quest.h"
+#include "quest.hpp"
 
 std::map <std::string, Quest> Quest::quests;
 

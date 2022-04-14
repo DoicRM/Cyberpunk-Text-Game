@@ -1,7 +1,7 @@
 #pragma once
+#include "fraction.hpp"
+#include "logger.hpp"
 #include <map>
-#include "fraction.h"
-#include "logger.h"
 
 class Location
 {
@@ -22,6 +22,7 @@ public:
     inline const std::string& getName() const { return this->name; };
     inline const int& getType() const { return this->type; };
     inline const Fraction& getOccupation() const { return this->occupation; };
+    inline const int& getOrder() const { return this->order; };
     inline const bool& isCurrent() const { return this->currency; };
 
     static std::map <std::string, Location> locations;

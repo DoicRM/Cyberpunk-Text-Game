@@ -1,6 +1,6 @@
 #pragma once
-#include "events.h"
-#include "inventory.h"
+#include "events.hpp"
+#include "inventory.hpp"
 
 class Hero
 {

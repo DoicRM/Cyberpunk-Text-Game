@@ -1,4 +1,4 @@
-#include "clothes.h"
+#include "clothes.hpp"
 
 Clothes::Clothes() : Item()
 {

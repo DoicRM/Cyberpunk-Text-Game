@@ -1,9 +1,9 @@
 #pragma once
+#include "logger.hpp"
 #include <iostream>
 #include <string>
 #include <fstream>
 #include <map>
-#include "logger.h"
 
 class Quest
 {

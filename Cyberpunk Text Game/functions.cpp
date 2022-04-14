@@ -1,4 +1,4 @@
-#include "functions.h"
+#include "functions.hpp"
 
 std::map <int, std::string> Function::choices;
 int choiceNr = 0;
@@ -106,7 +106,19 @@ int Function::getChoice()
     int choice;
     Function::write("\t> ", 25);
     std::cin >> choice;
+    std::cin.clear();
     std::cin.ignore();
-    Logger::out("User entered: " + std::to_string(choice), "Function::getChoice");
+    Logger::out("Entered <b>" + std::to_string(choice) + "</b>", "Function::getChoice");
     return choice;
+}
+
+std::string Function::getString()
+{
+    std::string text;
+    Function::write("\t> ", 25);
+    std::cin >> text;
+    std::cin.clear();
+    std::cin.ignore();
+    Logger::out("Entered <b>" + text + "</b>", "Function::getString");
+    return text;
 }

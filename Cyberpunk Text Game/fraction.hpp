@@ -1,7 +1,7 @@
 #pragma once
+#include "functions.hpp"
 #include <string>
 #include <map>
-#include "functions.h"
 
 class Fraction
 {

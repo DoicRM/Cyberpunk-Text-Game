@@ -1,4 +1,6 @@
 #pragma once
+#include "enums.hpp"
+#include "logger.hpp"
 #include <iostream>
 #include <fstream>
 #include <thread>
@@ -10,8 +12,7 @@
 #include <locale.h>
 #include <string>
 #include <map>
-#include "enums.h"
-#include "logger.h"
+#include <limits>
 
 class Function
 {
@@ -60,6 +61,7 @@ public:
 	static void changeConsoleColor(int color = defaultColor);
 	static void waitForUserInput();
 	static int getChoice();
+	static std::string getString();
 
 	static std::map <int, std::string> choices;
 };

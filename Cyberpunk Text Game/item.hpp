@@ -1,8 +1,8 @@
 #pragma once
+#include "enums.hpp"
+#include "logger.hpp"
 #include <string>
 #include <map>
-#include "enums.h"
-#include "logger.h"
 
 class Item
 {
