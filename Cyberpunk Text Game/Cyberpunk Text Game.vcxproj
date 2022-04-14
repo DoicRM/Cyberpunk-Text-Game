@@ -149,7 +149,7 @@
     <ClCompile Include="location.cpp" />
     <ClCompile Include="logger.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="functions.cpp" />
+    <ClCompile Include="utilities.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="npc.cpp" />
     <ClCompile Include="quest.cpp" />
@@ -165,7 +165,7 @@
     <ClInclude Include="inventory.hpp" />
     <ClInclude Include="item.hpp" />
     <ClInclude Include="location.hpp" />
-    <ClInclude Include="functions.hpp" />
+    <ClInclude Include="utilities.hpp" />
     <ClInclude Include="game.hpp" />
     <ClInclude Include="logger.hpp" />
     <ClInclude Include="npc.hpp" />

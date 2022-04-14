@@ -119,4 +119,3 @@ void Quest::initQuests_PL()
     quests["KillVincent"] = KillVincent;
     quests["ZedAccelerator"] = ZedAccelerator;
 }
-

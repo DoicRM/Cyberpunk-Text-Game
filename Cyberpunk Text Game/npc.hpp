@@ -1,5 +1,5 @@
 #pragma once
-#include "functions.hpp"
+#include "utilities.hpp"
 #include "fraction.hpp"
 
 class Npc

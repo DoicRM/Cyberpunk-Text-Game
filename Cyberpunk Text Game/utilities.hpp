@@ -14,34 +14,14 @@
 #include <map>
 #include <limits>
 
-class Function
+class Console
 {
 public:
 	static void nameGame(LPCSTR name) { SetConsoleTitleA(name); };
 	static void initSpecialChars(const char* lang) { setlocale(LC_ALL, lang); };
+	static void clearScreen(); // czyszczenie ekranu
+	static void changeConsoleColor(int color = defaultColor); // Zmiana koloru tekstu i t³a konsoli
 
-	// powolne wypisywanie kodu - (tekst, szybkoœæ)
-	static void write(const std::string& text, int speed = 60);
-	// powolne wypisywanie kodu - (tekst, szybkoœæ)
-	static void writeNarration(std::string text, int speed = 60);
-	// powolne wypisywanie kodu - (tekst, szybkoœæ)
-	static void writeDialogue(std::string text, int speed = 60);
-
-	// tworzenie akcji gracza - (numer, opis)
-	static void actionOption(int nr, std::string text);
-	// wyœwietlanie akcji gracza - (opis)
-	static void showHeroAction(std::string text);
-
-	// Decyzje
-	static void clearChoices();
-	static void addChoice(std::string description);
-	static void showChoices();
-	static void selectChoice(int nr);
-
-	// czyszczenie ekranu
-	static void clearScreen();
-
-	// Zmiana koloru tekstu i t³a konsoli
 	//	1 czarny tekst na czarnym tle
 	//	1 ciemno niebieski tekst na czarnym tle
 	//	2 ciemno zielony tekst na czarnym tle
@@ -58,10 +38,35 @@ public:
 	//	13 magenta tekst na czarnym tle
 	//	14 ¿ó³ty tekst na czarnym tle
 	//	15 bia³y tekst na czarnym tle
-	static void changeConsoleColor(int color = defaultColor);
+
 	static void waitForUserInput();
+};
+
+class Input
+{
+public:
 	static int getChoice();
 	static std::string getString();
+};
+
+class Output
+{
+public:
+	static void write(const std::string& text, int speed = 60); // powolne wypisywanie kodu - (tekst, szybkoœæ)
+	static void writeNarration(std::string text, int speed = 60); // powolne wypisywanie kodu - (tekst, szybkoœæ)
+	static void writeDialogue(std::string text, int speed = 60); // powolne wypisywanie kodu - (tekst, szybkoœæ)
+};
+
+class Decision
+{
+public:
+	static void actionOption(int nr, std::string text); // tworzenie akcji gracza - (numer, opis)
+	static void showHeroAction(std::string text); // wyœwietlanie akcji gracza - (opis)
+
+	// Decyzje
+	static void clearChoices();
+	static void addChoice(std::string description);
+	static void showChoices();
 
 	static std::map <int, std::string> choices;
 };

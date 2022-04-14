@@ -50,26 +50,26 @@ void Npc::printAttitude()
     if (this->attitude == angry)
     {
         attitude = "angry";
-        Function::changeConsoleColor(yellow);
+        Console::changeConsoleColor(yellow);
     }
     else if (this->attitude == hostile)
     {
         attitude = "hostile";
-        Function::changeConsoleColor(red);
+        Console::changeConsoleColor(red);
     }
     else if (this->attitude == friendly)
     {
         attitude = "friendly";
-        Function::changeConsoleColor(green);
+        Console::changeConsoleColor(green);
     }
     else
     {
         attitude = "neutral";
-        Function::changeConsoleColor();
+        Console::changeConsoleColor();
     }
 
-    Function::write("\t" + this->name + " is " + attitude + " now.\n");
-    Function::changeConsoleColor();
+    Output::write("\t" + this->name + " is " + attitude + " now.\n");
+    Console::changeConsoleColor();
 }
 
 bool Npc::isDead()

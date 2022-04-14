@@ -59,7 +59,7 @@ void Event::nightclub()
     }
     else
     {
-        Function::showHeroAction("Visit: Nightclub 'Amnesia'.");
+        Decision::showHeroAction("Visit: Nightclub 'Amnesia'.");
         nightclubCrossroads();
     }
 }
@@ -76,21 +76,21 @@ void Event::heroDeath()
     Logger::out("Function starts", "Event::heroDeath");
     clearInstances();
     Sleep(500);
-    Function::clearScreen();
-    Function::changeConsoleColor(red);
+    Console::clearScreen();
+    Console::changeConsoleColor(red);
     std::cout << std::endl;
 
-    if (Game::game[0].getLang() == en) Function::write("\tYOU ARE DEAD!");
-    else Function::write("\tNIE ¯YJESZ!");
+    if (Game::game[0].getLang() == en) Output::write("\tYOU ARE DEAD!");
+    else Output::write("\tNIE ¯YJESZ!");
 
     Sleep(1000);
-    Function::changeConsoleColor();
+    Console::changeConsoleColor();
 
-    if (Game::game[0].getLang() == en) Function::write("\n\n\tBack to menu...", 25);
-    else Function::write("\n\n\tWróæ do menu...", 25);
+    if (Game::game[0].getLang() == en) Output::write("\n\n\tBack to menu...", 25);
+    else Output::write("\n\n\tWróæ do menu...", 25);
 
-    Function::waitForUserInput();
-    Function::clearScreen();
+    Console::waitForUserInput();
+    Console::clearScreen();
     Game::game[0].logo();
 }
 
@@ -100,23 +100,23 @@ void Event::gameOver()
     Logger::out("Function starts", "Event::gameOver");
     clearInstances();
     Sleep(500);
-    Function::clearScreen();
-    Function::changeConsoleColor(lightblue);
+    Console::clearScreen();
+    Console::changeConsoleColor(lightblue);
     std::cout << std::endl;
 
-    if (Game::game[0].getLang() == en) Function::write("\tTHE END", 25);
-    else Function::write("\tKONIEC", 25);
+    if (Game::game[0].getLang() == en) Output::write("\tTHE END", 25);
+    else Output::write("\tKONIEC", 25);
 
     Sleep(1000);
     std::cout << std::endl << std::endl;
-    Function::changeConsoleColor();
+    Console::changeConsoleColor();
     Game::game[0].credits();
 
-    if (Game::game[0].getLang() == en) Function::write("\n\n\tBack to menu...", 25);
-    else Function::write("\n\n\tWróæ do menu...", 25);
+    if (Game::game[0].getLang() == en) Output::write("\n\n\tBack to menu...", 25);
+    else Output::write("\n\n\tWróæ do menu...", 25);
 
-    Function::waitForUserInput();
-    Function::clearScreen();
+    Console::waitForUserInput();
+    Console::clearScreen();
     Game::game[0].logo();
 }
 

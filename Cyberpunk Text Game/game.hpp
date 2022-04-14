@@ -7,7 +7,7 @@
 #include "npc.hpp"
 #include "quest.hpp"
 #include "events.hpp"
-#include "functions.hpp"
+#include "utilities.hpp"
 #include "location.hpp"
 #include "logger.hpp"
 

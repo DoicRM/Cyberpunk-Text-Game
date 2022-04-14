@@ -55,8 +55,8 @@ void Game::initAll()
 void Game::run()
 {
     Logger::out("Function starts", "Game::run");
-    Function::nameGame("Nocturnal - Demo Build");
-    Function::initSpecialChars("polish");
+    Console::nameGame("Nocturnal - Demo Build");
+    Console::initSpecialChars("polish");
 
     while (getPlaying())
     {
@@ -71,25 +71,25 @@ void Game::run()
 void Game::selectLanguage()
 {
     Logger::out("Function starts", "Game::selectLanguage");
-    Function::changeConsoleColor();
+    Console::changeConsoleColor();
 
     while (getLang() != en && getLang() != pl)
     {
-        Function::clearScreen();
-        Function::write("\n\tSelect your language:\n", 25);
-        Function::clearChoices();
-        Function::addChoice("EN");
-        Function::addChoice("PL");
-        Function::showChoices();
-        gameLang = Function::getChoice();
+        Console::clearScreen();
+        Output::write("\n\tSelect your language:\n", 25);
+        Decision::clearChoices();
+        Decision::addChoice("EN");
+        Decision::addChoice("PL");
+        Decision::showChoices();
+        gameLang = Input::getChoice();
 
         if (getLang() != en && getLang() != pl) Logger::error("Entered invalid value of <b>gameLang</b>", "Game::selectLanguage");
         else if (getLang() == en) Logger::out("Set English as game language", "Game::selectLanguage");
         else if (getLang() == pl) Logger::out("Set Polish as game language", "Game::selectLanguage");
     }
 
-    Function::clearChoices();
-    Function::clearScreen();
+    Decision::clearChoices();
+    Console::clearScreen();
 }
 
 void Game::welcome()
@@ -97,35 +97,35 @@ void Game::welcome()
     Logger::out("Function starts", "Game::welcome");
     Sleep(500); 
 
-    if (getLang() == pl) Function::write("\n\tRADOS£AW 'DOIC' MICHALAK PREZENTUJE GRÊ TEKSTOW¥ POD TYTU£EM", 40);
-    else Function::write("\n\tRADOS£AW 'DOIC' MICHALAK PRESENTS A TEXT GAME TITLED", 40);
+    if (getLang() == pl) Output::write("\n\tRADOS£AW 'DOIC' MICHALAK PREZENTUJE GRÊ TEKSTOW¥ POD TYTU£EM", 40);
+    else Output::write("\n\tRADOS£AW 'DOIC' MICHALAK PRESENTS A TEXT GAME TITLED", 40);
 
     Sleep(2000);
-    Function::clearScreen();
+    Console::clearScreen();
 }
 
 void Game::writeLogo()
 {
     Logger::out("Function starts", "Game::writeLogo");
-    Function::changeConsoleColor(lightblue);
-    Function::write("\n\t ****     **   *******     ******  ********** **     ** *******   ****     **     **     **      ", 1);
-    Function::write("\n\t/**/**   /**  **/////**   **////**/////**/// /**    /**/**////** /**/**   /**    ****   /**      ", 1);
-    Function::write("\n\t/**//**  /** **     //** **    //     /**    /**    /**/**   /** /**//**  /**   **//**  /**      ", 1);
-    Function::write("\n\t/** //** /**/**      /**/**           /**    /**    /**/*******  /** //** /**  **  //** /**      ", 1);
-    Function::write("\n\t/**  //**/**/**      /**/**           /**    /**    /**/**///**  /**  //**/** **********/**      ", 1);
-    Function::write("\n\t/**   //****//**     ** //**    **    /**    /**    /**/**  //** /**   //****/**//////**/**      ", 1);
-    Function::write("\n\t/**    //*** //*******   //******     /**    //******* /**   //**/**    //***/**     /**/********", 1);
-    Function::write("\n\t//      ///   ///////     //////      //      ///////  //     // //      /// //      // //////// ", 1);
-    Function::changeConsoleColor();
+    Console::changeConsoleColor(lightblue);
+    Output::write("\n\t ****     **   *******     ******  ********** **     ** *******   ****     **     **     **      ", 1);
+    Output::write("\n\t/**/**   /**  **/////**   **////**/////**/// /**    /**/**////** /**/**   /**    ****   /**      ", 1);
+    Output::write("\n\t/**//**  /** **     //** **    //     /**    /**    /**/**   /** /**//**  /**   **//**  /**      ", 1);
+    Output::write("\n\t/** //** /**/**      /**/**           /**    /**    /**/*******  /** //** /**  **  //** /**      ", 1);
+    Output::write("\n\t/**  //**/**/**      /**/**           /**    /**    /**/**///**  /**  //**/** **********/**      ", 1);
+    Output::write("\n\t/**   //****//**     ** //**    **    /**    /**    /**/**  //** /**   //****/**//////**/**      ", 1);
+    Output::write("\n\t/**    //*** //*******   //******     /**    //******* /**   //**/**    //***/**     /**/********", 1);
+    Output::write("\n\t//      ///   ///////     //////      //      ///////  //     // //      /// //      // //////// ", 1);
+    Console::changeConsoleColor();
 
-    if (getLang() == en) Function::write("\n\n\t\t\t\t\t     A Cyberpunk Text Game\n\n", 2);
-    else Function::write("\n\n\t\t\t\t\t     Cyberpunkowa gra tekstowa\n\n", 2);
+    if (getLang() == en) Output::write("\n\n\t\t\t\t\t     A Cyberpunk Text Game\n\n", 2);
+    else Output::write("\n\n\t\t\t\t\t     Cyberpunkowa gra tekstowa\n\n", 2);
 }
 
 void Game::logo()
 {
     Logger::out("Function starts", "Game::logo");
-    Function::changeConsoleColor(lightblue);
+    Console::changeConsoleColor(lightblue);
     std::cout << std::endl;
     std::cout << "\t ****     **   *******     ******  ********** **     ** *******   ****     **     **     **      " << std::endl;
     std::cout << "\t/**/**   /**  **/////**   **////**/////**/// /**    /**/**////** /**/**   /**    ****   /**      " << std::endl;
@@ -136,7 +136,7 @@ void Game::logo()
     std::cout << "\t/**    //*** //*******   //******     /**    //******* /**   //**/**    //***/**     /**/********" << std::endl;
     std::cout << "\t//      ///   ///////     //////      //      ///////  //     // //      /// //      // //////// " << std::endl;
     std::cout << std::endl;
-    Function::changeConsoleColor();
+    Console::changeConsoleColor();
 
     if (getLang() == en) std::cout << "\n\t\t\t\t\t     A Cyberpunk Text Game\n\n" << std::endl;
     else std::cout << "\n\t\t\t\t\t     Cyberpunkowa gra tekstowa\n\n" << std::endl;
@@ -147,53 +147,53 @@ void Game::logo()
 void Game::mainMenu()
 {
     Logger::out("Function starts", "Game::mainMenu");
-    Function::changeConsoleColor();
+    Console::changeConsoleColor();
     std::cout << std::endl;
 
     if (getLang() == pl)
     {
-        Function::clearChoices();
-        Function::addChoice("Nowa gra");
-        Function::addChoice("Kontynuuj grê");
-        Function::addChoice("Zmieñ jêzyk");
-        Function::addChoice("Napisy");
-        Function::addChoice("WyjdŸ z gry");
-        Function::showChoices();
+        Decision::clearChoices();
+        Decision::addChoice("Nowa gra");
+        Decision::addChoice("Kontynuuj grê");
+        Decision::addChoice("Zmieñ jêzyk");
+        Decision::addChoice("Napisy");
+        Decision::addChoice("WyjdŸ z gry");
+        Decision::showChoices();
     }
     else
     {
-        Function::clearChoices();
-        Function::addChoice("New game");
-        Function::addChoice("Continue game");
-        Function::addChoice("Change language");
-        Function::addChoice("Credits");
-        Function::addChoice("Quit game");
-        Function::showChoices();
+        Decision::clearChoices();
+        Decision::addChoice("New game");
+        Decision::addChoice("Continue game");
+        Decision::addChoice("Change language");
+        Decision::addChoice("Credits");
+        Decision::addChoice("Quit game");
+        Decision::showChoices();
     }
 
     do
     {
-        menu = Function::getChoice();
+        menu = Input::getChoice();
 
         switch (menu) {
         case 1:
-            Function::clearChoices();
+            Decision::clearChoices();
             newGame();
             break;
         case 2:
-            Function::clearChoices();
+            Decision::clearChoices();
             continueGame();
             break;
         case 3:
-            Function::clearChoices();
+            Decision::clearChoices();
             changeLanguage();
             break;
         case 4:
-            Function::clearChoices();
+            Decision::clearChoices();
             credits();
             break;
         case 5:
-            Function::clearChoices();
+            Decision::clearChoices();
             endGame();
             break;
         }
@@ -204,7 +204,7 @@ void Game::newGame()
 {
     Logger::out("Function starts", "Game::newGame");
     initAll();
-    Function::clearScreen();
+    Console::clearScreen();
     setCurrentLocation(&Location::locations["DarkAlley"]);
 }
 
@@ -212,16 +212,16 @@ void Game::continueGame()
 {
     Logger::out("Function starts", "Game::continueGame");
     Sleep(500);
-    Function::clearScreen();
-    Function::changeConsoleColor(lightblue);
+    Console::clearScreen();
+    Console::changeConsoleColor(lightblue);
 
-    if (getLang() == pl) Function::write("\n\tNic tu nie ma. Ta funkcja jest obecnie niedostêpna.\n\n", 25);
-    else Function::write("\n\tThere's nothing here. This feature is currently unavailable.\n\n", 25);
+    if (getLang() == pl) Output::write("\n\tNic tu nie ma. Ta funkcja jest obecnie niedostêpna.\n\n", 25);
+    else Output::write("\n\tThere's nothing here. This feature is currently unavailable.\n\n", 25);
 
-    Function::changeConsoleColor();
+    Console::changeConsoleColor();
     Sleep(1000);
     pause();
-    Function::clearScreen();
+    Console::clearScreen();
     logo();
     mainMenu();
 }
@@ -234,16 +234,16 @@ void Game::changeLanguage()
 
     while (change != en && change != pl)
     {
-        Function::clearScreen();
+        Console::clearScreen();
 
-        if (getLang() == en) Function::write("\n\tSelect your language:\n", 25);
-        else if (getLang() == pl) Function::write("\n\tWybierz swój jêzyk:\n", 25);
+        if (getLang() == en) Output::write("\n\tSelect your language:\n", 25);
+        else if (getLang() == pl) Output::write("\n\tWybierz swój jêzyk:\n", 25);
 
-        Function::clearChoices();
-        Function::addChoice("EN");
-        Function::addChoice("PL");
-        Function::showChoices();
-        change = Function::getChoice();
+        Decision::clearChoices();
+        Decision::addChoice("EN");
+        Decision::addChoice("PL");
+        Decision::showChoices();
+        change = Input::getChoice();
 
         if (change != en && change != pl) Logger::error("Entered invalid value of <b>gameLang</b>", "Game::changeLanguage");
     }
@@ -253,8 +253,8 @@ void Game::changeLanguage()
     if (getLang() == en) Logger::out("Set English as game language", "Game::changeLanguage");
     else if (getLang() == pl) Logger::out("Set Polish as game language", "Game::changeLanguage");
 
-    Function::clearChoices();
-    Function::clearScreen();
+    Decision::clearChoices();
+    Console::clearScreen();
     logo();
     mainMenu();
 }
@@ -268,36 +268,36 @@ void Game::endGame()
         if (getLang() == pl)
         {
             Sleep(500);
-            Function::clearScreen();
-            Function::write("\n\tJesteœ pewien, ¿e chcesz wyjœæ z gry?\n", 25);
+            Console::clearScreen();
+            Output::write("\n\tJesteœ pewien, ¿e chcesz wyjœæ z gry?\n", 25);
 
-            Function::clearChoices();
-            Function::addChoice("Tak");
-            Function::addChoice("Nie");
-            Function::showChoices();
+            Decision::clearChoices();
+            Decision::addChoice("Tak");
+            Decision::addChoice("Nie");
+            Decision::showChoices();
         }
         else
         {
             Sleep(500);
-            Function::clearScreen();
-            Function::write("\n\tAre you sure you want to end the game?\n", 25);
+            Console::clearScreen();
+            Output::write("\n\tAre you sure you want to end the game?\n", 25);
 
-            Function::clearChoices();
-            Function::addChoice("Yes");
-            Function::addChoice("No");
-            Function::showChoices();
+            Decision::clearChoices();
+            Decision::addChoice("Yes");
+            Decision::addChoice("No");
+            Decision::showChoices();
         }
 
-        choice = Function::getChoice();
+        choice = Input::getChoice();
 
         switch (choice) {
         case 1:
-            Function::clearChoices();
+            Decision::clearChoices();
             end();
             break;
         case 2:
-            Function::clearChoices();
-            Function::clearScreen();
+            Decision::clearChoices();
+            Console::clearScreen();
             Sleep(500); 
             logo();
             mainMenu();
@@ -310,42 +310,42 @@ void Game::credits()
 {
     Logger::out("Function starts", "Game::credits");
     Sleep(500);
-    Function::clearScreen();
+    Console::clearScreen();
 
     if (getLang() == pl)
     {
-        Function::changeConsoleColor(lightblue);
-        Function::write("\n\t\tAUTOR\n");
-        Function::changeConsoleColor();
-        Function::write("\tRados³aw 'Doic' Michalak\n\n");
-        Function::changeConsoleColor(lightblue);
-        Function::write("\t       TESTERZY\n");
-        Function::changeConsoleColor();
-        Function::write("\t    Pawe³ Michalak\n\n");
-        Function::changeConsoleColor(lightblue);
-        Function::write("\t     PODZIÊKOWANIA\n");
-        Function::changeConsoleColor();
-        Function::write("\t   Dominik Szpilski\n\t     Daniel Ob³¹k\n\n");
+        Console::changeConsoleColor(lightblue);
+        Output::write("\n\t\tAUTOR\n");
+        Console::changeConsoleColor();
+        Output::write("\tRados³aw 'Doic' Michalak\n\n");
+        Console::changeConsoleColor(lightblue);
+        Output::write("\t       TESTERZY\n");
+        Console::changeConsoleColor();
+        Output::write("\t    Pawe³ Michalak\n\n");
+        Console::changeConsoleColor(lightblue);
+        Output::write("\t     PODZIÊKOWANIA\n");
+        Console::changeConsoleColor();
+        Output::write("\t   Dominik Szpilski\n\t     Daniel Ob³¹k\n\n");
     }
     else
     {
-        Function::changeConsoleColor(lightblue);
-        Function::write("\n\t\tAUTHOR\n");
-        Function::changeConsoleColor();
-        Function::write("\tRados³aw 'Doic' Michalak\n\n");
-        Function::changeConsoleColor(lightblue);
-        Function::write("\t\tTESTERS\n");
-        Function::changeConsoleColor();
-        Function::write("\t   Pawe³ Michalak\n\n");
-        Function::changeConsoleColor(lightblue);
-        Function::write("\t\tTHANKS\n");
-        Function::changeConsoleColor();
-        Function::write("\t   Dominik Szpilski\n\t     Daniel Ob³¹k\n\n");
+        Console::changeConsoleColor(lightblue);
+        Output::write("\n\t\tAUTHOR\n");
+        Console::changeConsoleColor();
+        Output::write("\tRados³aw 'Doic' Michalak\n\n");
+        Console::changeConsoleColor(lightblue);
+        Output::write("\t\tTESTERS\n");
+        Console::changeConsoleColor();
+        Output::write("\t   Pawe³ Michalak\n\n");
+        Console::changeConsoleColor(lightblue);
+        Output::write("\t\tTHANKS\n");
+        Console::changeConsoleColor();
+        Output::write("\t   Dominik Szpilski\n\t     Daniel Ob³¹k\n\n");
     }
 
     Sleep(1000);
     pause();
-    Function::clearScreen();
+    Console::clearScreen();
     logo();
     mainMenu();
 }
@@ -415,6 +415,6 @@ void Game::pause()
     if (Game::game[0].getLang() == en) std::cout << "\tPress ANY KEY to continue...";
     else if (Game::game[0].getLang() == pl) std::cout << "\tWciœnij DOWOLNY PRZYCISK, aby kontynuowaæ...";
 
-    Function::waitForUserInput();
+    Console::waitForUserInput();
 }
 
