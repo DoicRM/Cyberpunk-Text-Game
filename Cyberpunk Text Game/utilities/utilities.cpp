@@ -1,14 +1,14 @@
 #include "utilities.hpp"
 
-std::map <int, std::string> Decision::choices;
-int choiceNr = 0;
-
 // CONSOLE
-void Console::changeConsoleColor(int color)
+void Console::setConsoleColor(int color)
 {
-    HANDLE hOut;
-    hOut = GetStdHandle(STD_OUTPUT_HANDLE);
-    SetConsoleTextAttribute(hOut, color);
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+}
+
+void Console::resetConsoleColor()
+{
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), CC_Default);
 }
 
 void Console::waitForUserInput()
@@ -41,16 +41,16 @@ void Output::write(const std::string& text, int speed)
 
 void Output::writeNarration(std::string text, int speed)
 {
-    Console::changeConsoleColor(narration);
+    Console::setConsoleColor(CC_Narration);
     Output::write(text, speed);
-    Console::changeConsoleColor();
+    Console::resetConsoleColor();
 }
 
 void Output::writeDialogue(std::string text, int speed)
 {
-    Console::changeConsoleColor(dialogue);
+    Console::setConsoleColor(CC_Dialogue);
     Output::write(text, speed);
-    Console::changeConsoleColor();
+    Console::resetConsoleColor();
 }
 
 // INPUT
@@ -76,44 +76,47 @@ std::string Input::getString()
     return text;
 }
 
-// DECISION
-void Decision::actionOption(int nr, std::string text)
+// MENU
+std::map <int, std::string> Menu::choices;
+int choiceNr = 0;
+
+void Menu::actionOption(int nr, std::string text)
 {
     std::string str = "\t[" + std::to_string(nr) + "] " + text;
     Output::write(str, 25);
     std::cout << std::endl;
 }
 
-void Decision::showHeroAction(std::string text)
+void Menu::showHeroAction(std::string text)
 {
     std::cout << std::endl;
-    Console::changeConsoleColor();
+    Console::resetConsoleColor();
     std::string str = "\t> " + text;
     std::cout << str << std::endl;
 }
 
-void Decision::clearChoices()
+void Menu::clearChoices()
 {
     //Logger::out("Value of choice before reset: " + std::to_string(choiceNr), "Function::clearChoices");
-    Decision::choices.clear();
+    Menu::choices.clear();
     choiceNr = 0;
     //Logger::out("Value of choice after reset: " + std::to_string(choiceNr), "Function::clearChoices");
 }
 
-void Decision::addChoice(std::string description)
+void Menu::addChoice(std::string description)
 {
     choices[choiceNr] = description;
     choiceNr += 1;
 }
 
-void Decision::showChoices()
+void Menu::showChoices()
 {
     std::map<int, std::string>::size_type choicesSize;
     choicesSize = choices.size();
-    Console::changeConsoleColor();
+    Console::resetConsoleColor();
 
     for (int j = 0; j < choices.size(); j++)
     {
-        Decision::actionOption(j+1, choices[j]);
+        Menu::actionOption(j+1, choices[j]);
     }
 }

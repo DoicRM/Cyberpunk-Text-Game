@@ -1,5 +1,4 @@
 #pragma once
-#include "../utilities/enums/enums.hpp"
 #include "../utilities/logger/logger.hpp"
 #include <iostream>
 #include <fstream>
@@ -14,13 +13,57 @@
 #include <map>
 #include <limits>
 
+enum ConsoleColor
+{
+	CC_Default = 15,
+	CC_Item = 3,
+	CC_Dialogue = 7,
+	CC_Narration = 8,
+	CC_Robot = 9,
+	CC_Green = 10,
+	CC_Lightblue = 11,
+	CC_Red = 12,
+	CC_Yellow = 14
+};
+
+enum GameLanguage
+{
+	EN = 1, PL = 2
+};
+
+enum Sex
+{
+	Undefined, Male, Female
+};
+
+enum Attitude
+{
+	Neutral, Angry, Hostile, Friendly
+};
+
+enum Status
+{
+	Normal, Unconscious, Dead
+};
+
+enum ItemType
+{
+	NONE, WEAPON, ARMOR, FOOD, OTHER, QUEST
+};
+
+enum ArmorType
+{
+	HEAD, CHEST, ARMS, LEGS
+};
+
 class Console
 {
 public:
 	static void nameGame(LPCSTR name) { SetConsoleTitleA(name); };
 	static void initSpecialChars(const char* lang) { setlocale(LC_ALL, lang); };
 	static void clearScreen(); // czyszczenie ekranu
-	static void changeConsoleColor(int color = defaultColor); // Zmiana koloru tekstu i t³a konsoli
+	static void setConsoleColor(int color = CC_Default); // Zmiana koloru tekstu i t³a konsoli
+	static void resetConsoleColor();
 
 	//	1 czarny tekst na czarnym tle
 	//	1 ciemno niebieski tekst na czarnym tle
@@ -57,13 +100,12 @@ public:
 	static void writeDialogue(std::string text, int speed = 60); // powolne wypisywanie kodu - (tekst, szybkoœæ)
 };
 
-class Decision
+class Menu
 {
 public:
 	static void actionOption(int nr, std::string text); // tworzenie akcji gracza - (numer, opis)
 	static void showHeroAction(std::string text); // wyœwietlanie akcji gracza - (opis)
 
-	// Decyzje
 	static void clearChoices();
 	static void addChoice(std::string description);
 	static void showChoices();

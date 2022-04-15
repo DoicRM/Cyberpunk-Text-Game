@@ -58,7 +58,7 @@ void Event::nightclub()
     }
     else
     {
-        Decision::showHeroAction("Visit: Nightclub 'Amnesia'.");
+        Menu::showHeroAction("Visit: Nightclub 'Amnesia'.");
         nightclubCrossroads();
     }
 }
@@ -75,21 +75,21 @@ void Event::heroDeath()
     clearInstances();
     Sleep(500);
     Console::clearScreen();
-    Console::changeConsoleColor(red);
+    Console::setConsoleColor(CC_Red);
     std::cout << std::endl;
 
-    if (Game::game[0].getLang() == en) Output::write("\tYOU ARE DEAD!");
+    if (Game::game[0].getLang() == EN) Output::write("\tYOU ARE DEAD!");
     else Output::write("\tNIE ¯YJESZ!");
 
     Sleep(1000);
-    Console::changeConsoleColor();
+    Console::setConsoleColor();
 
-    if (Game::game[0].getLang() == en) Output::write("\n\n\tBack to menu...", 25);
+    if (Game::game[0].getLang() == EN) Output::write("\n\n\tBack to menu...", 25);
     else Output::write("\n\n\tWróæ do menu...", 25);
 
     Console::waitForUserInput();
     Console::clearScreen();
-    Game::game[0].logo();
+    Game::game[0].loadLogo();
 }
 
 void Event::gameOver()
@@ -98,23 +98,23 @@ void Event::gameOver()
     clearInstances();
     Sleep(500);
     Console::clearScreen();
-    Console::changeConsoleColor(lightblue);
+    Console::setConsoleColor(CC_Lightblue);
     std::cout << std::endl;
 
-    if (Game::game[0].getLang() == en) Output::write("\tTHE END", 25);
+    if (Game::game[0].getLang() == EN) Output::write("\tTHE END", 25);
     else Output::write("\tKONIEC", 25);
 
     Sleep(1000);
     std::cout << std::endl << std::endl;
-    Console::changeConsoleColor();
+    Console::resetConsoleColor();
     Game::game[0].credits();
 
-    if (Game::game[0].getLang() == en) Output::write("\n\n\tBack to menu...", 25);
+    if (Game::game[0].getLang() == EN) Output::write("\n\n\tBack to menu...", 25);
     else Output::write("\n\n\tWróæ do menu...", 25);
 
     Console::waitForUserInput();
     Console::clearScreen();
-    Game::game[0].logo();
+    Game::game[0].loadLogo();
 }
 
 void Event::clearInstances()

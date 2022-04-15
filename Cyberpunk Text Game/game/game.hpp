@@ -10,6 +10,7 @@
 #include "../utilities/utilities.hpp"
 #include "../location/location.hpp"
 #include "../utilities/logger/logger.hpp"
+#include "array"
 
 class Game
 {
@@ -39,7 +40,7 @@ public:
 	void continueGame(); // kontynuacja rozgrywki
 	void changeLanguage(); // zmiana jêzyka
 	void credits(); // o autorze
-	void logo(); // wypisane logo
+	void loadLogo(); // wypisane logo
 	void endGame(); // koniec rozgrywki
 	void test(); // do testów
 	void end() { this->playing = false; } // zakoñczenie dzia³ania
@@ -51,4 +52,7 @@ public:
 	inline Location* getCurrentLocation() const { return this->ptrCurrentLocation; }
 
 	static std::map <int, Game> game;
+
+private:
+	static std::array<std::string, 8> logo;
 }; 

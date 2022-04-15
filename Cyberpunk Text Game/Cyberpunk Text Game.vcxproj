@@ -168,7 +168,6 @@
     <ClInclude Include="location\location.hpp" />
     <ClInclude Include="npc\npc.hpp" />
     <ClInclude Include="quest\quest.hpp" />
-    <ClInclude Include="utilities\enums\enums.hpp" />
     <ClInclude Include="utilities\logger\logger.hpp" />
     <ClInclude Include="utilities\utilities.hpp" />
   </ItemGroup>

@@ -5,10 +5,10 @@ std::map <std::string, Npc> Npc::npcs;
 Npc::Npc()
 {
     this->name = "None";
-    this->sex = undefined;
+    this->sex = Undefined;
     this->fraction = Fraction();
-    this->attitude = neutral;
-    this->status = normal;
+    this->attitude = Neutral;
+    this->status = Normal;
     this->knowingHero = false;
 }
 
@@ -17,8 +17,8 @@ Npc::Npc(std::string name, int sex, Fraction fraction)
     this->name = name;
     this->sex = sex;
     this->fraction = fraction;
-    this->attitude = neutral;
-    this->status = normal;
+    this->attitude = Neutral;
+    this->status = Normal;
     this->knowingHero = false;
 }
 
@@ -47,34 +47,34 @@ void Npc::printAttitude()
 {
     std::string attitude;
 
-    if (this->attitude == angry)
+    if (this->attitude == Angry)
     {
         attitude = "angry";
-        Console::changeConsoleColor(yellow);
+        Console::setConsoleColor(CC_Yellow);
     }
-    else if (this->attitude == hostile)
+    else if (this->attitude == Hostile)
     {
         attitude = "hostile";
-        Console::changeConsoleColor(red);
+        Console::setConsoleColor(CC_Red);
     }
-    else if (this->attitude == friendly)
+    else if (this->attitude == Friendly)
     {
         attitude = "friendly";
-        Console::changeConsoleColor(green);
+        Console::setConsoleColor(CC_Green);
     }
     else
     {
         attitude = "neutral";
-        Console::changeConsoleColor();
+        Console::resetConsoleColor();
     }
 
     Output::write("\t" + this->name + " is " + attitude + " now.\n");
-    Console::changeConsoleColor();
+    Console::resetConsoleColor();
 }
 
 bool Npc::isDead()
 {
-    if (status != dead) return false;
+    if (status != Dead) return false;
     return true;
 }
 
@@ -82,15 +82,15 @@ void Npc::initNpcs_EN()
 {
     Logger::out("Function starts", "Npc::initNpcs_EN");
 
-    Npc Bob("Bob", male, Fraction::fractions["Beggars"]);
-    Npc Caden("Caden", male, Fraction::fractions["Police"]);
-    Npc CadensPartner("Policeman", male, Fraction::fractions["Police"]);
-    Npc Zed("Zed", male, Fraction::fractions["None"]);
-    Npc Nyx("Nyx", female, Fraction::fractions["Sleepers"]);
-    Npc Jet("Jet", male, Fraction::fractions["Hammers"]);
-    Npc Vincent("Vincent", male, Fraction::fractions["Hammers"]);
-    Npc Enigma("Enigma", male, Fraction::fractions["None"]);
-    Npc Morpheus("Morpheus", male, Fraction::fractions["Sleepers"]);
+    Npc Bob("Bob", Male, Fraction::fractions["Beggars"]);
+    Npc Caden("Caden", Male, Fraction::fractions["Police"]);
+    Npc CadensPartner("Policeman", Male, Fraction::fractions["Police"]);
+    Npc Zed("Zed", Male, Fraction::fractions["None"]);
+    Npc Nyx("Nyx", Female, Fraction::fractions["Sleepers"]);
+    Npc Jet("Jet", Male, Fraction::fractions["Hammers"]);
+    Npc Vincent("Vincent", Male, Fraction::fractions["Hammers"]);
+    Npc Enigma("Enigma", Male, Fraction::fractions["None"]);
+    Npc Morpheus("Morpheus", Male, Fraction::fractions["Sleepers"]);
 
     npcs["Bob"] = Bob;
     npcs["Caden"] = Caden;
@@ -107,15 +107,15 @@ void Npc::initNpcs_PL()
 {
     Logger::out("Function starts", "Npc::initNpcs_PL");
 
-    Npc Bob("Bob", male, Fraction::fractions["Beggars"]);
-    Npc Caden("Caden", male, Fraction::fractions["Police"]);
-    Npc CadensPartner("Policjant", male, Fraction::fractions["Police"]);
-    Npc Zed("Zed", male, Fraction::fractions["None"]);
-    Npc Nyx("Nyx", female, Fraction::fractions["Sleepers"]);
-    Npc Jet("Jet", male, Fraction::fractions["Hammers"]);
-    Npc Vincent("Vincent", male, Fraction::fractions["Hammers"]);
-    Npc Enigma("Enigma", male, Fraction::fractions["None"]);
-    Npc Morpheus("Morfeusz", male, Fraction::fractions["Sleepers"]);
+    Npc Bob("Bob", Male, Fraction::fractions["Beggars"]);
+    Npc Caden("Caden", Male, Fraction::fractions["Police"]);
+    Npc CadensPartner("Policjant", Male, Fraction::fractions["Police"]);
+    Npc Zed("Zed", Male, Fraction::fractions["None"]);
+    Npc Nyx("Nyx", Female, Fraction::fractions["Sleepers"]);
+    Npc Jet("Jet", Male, Fraction::fractions["Hammers"]);
+    Npc Vincent("Vincent", Male, Fraction::fractions["Hammers"]);
+    Npc Enigma("Enigma", Male, Fraction::fractions["None"]);
+    Npc Morpheus("Morfeusz", Male, Fraction::fractions["Sleepers"]);
 
     npcs["Bob"] = Bob;
     npcs["Caden"] = Caden;

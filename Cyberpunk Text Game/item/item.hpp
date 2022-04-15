@@ -1,5 +1,5 @@
 #pragma once
-#include "../utilities/enums/enums.hpp"
+#include "../utilities/utilities.hpp"
 #include "../utilities/logger/logger.hpp"
 #include <string>
 #include <map>

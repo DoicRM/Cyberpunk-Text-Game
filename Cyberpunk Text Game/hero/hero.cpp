@@ -5,7 +5,7 @@ std::map <int, Hero> Hero::heroes;
 Hero::Hero()
 {
     this->name = "None";
-    this->sex = undefined;
+    this->sex = Undefined;
     this->hp = 60;
     this->money = 0.0;
 }
