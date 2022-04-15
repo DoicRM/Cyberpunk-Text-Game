@@ -64,6 +64,7 @@ void Event::storyIntroduction()
 void Event::wakeUpInDarkAlley()
 {
     Logger::out("Function starts", "Event::wakeUpInDarkAlley");
+    Menu menu1;
 
     if (Game::game[0].getLang() == EN)
     {
@@ -86,10 +87,10 @@ void Event::wakeUpInDarkAlley()
         Sleep(2500);
         Output::writeNarration("\n\tMaybe you will find something interesting there...\n\n");
         //--------------------------------
-        Menu::clearChoices();
-        Menu::addChoice("Search the area for something valuable.");
-        Menu::addChoice("Find the exit from the alley.");
-        Menu::showChoices();
+        menu1.clearOptions();
+        menu1.addOption("Search the area for something valuable.");
+        menu1.addOption("Find the exit from the alley.");
+        menu1.showOptions();
         //--------------------------------
     }
     else {
@@ -111,16 +112,16 @@ void Event::wakeUpInDarkAlley()
         Sleep(1500);
         Output::writeNarration("\n\tMo¿e znajdziesz tam coœ interesuj¹cego...\n\n");
         //--------------------------------
-        Menu::clearChoices();
-        Menu::addChoice("Rozejrzyj siê po okolicy w poszukiwaniu czegoœ cennego.");
-        Menu::addChoice("ZnajdŸ wyjœcie z zau³ka.");
-        Menu::showChoices();
+        menu1.clearOptions();
+        menu1.addOption("Rozejrzyj siê po okolicy w poszukiwaniu czegoœ cennego.");
+        menu1.addOption("ZnajdŸ wyjœcie z zau³ka.");
+        menu1.showOptions();
         //--------------------------------
     }
 
     while (true)
     {
-        heroChoice = Input::getChoice();
+        heroChoice = menu1.getChoice();
 
         if (heroChoice == 1)
         {
@@ -189,14 +190,15 @@ void Event::outOfTheAlley()
     Output::writeNarration("\n\tYou are getting closer and closer to your goal when from the right, from behind a veil of\n\tshadows, a low, not very pleasant voice belonging to a man speaks up.");
     Output::writeDialogue("\n\t- 'Hey, kid. Wait for a second.'\n\n");
     //--------------------------------
-    Menu::clearChoices();
-    Menu::addChoice("Stop and find out what he wants.");
-    Menu::addChoice("Ignore him and keep walking.");
-    Menu::showChoices();
+    Menu menu2;
+    menu2.clearOptions();
+    menu2.addOption("Stop and find out what he wants.");
+    menu2.addOption("Ignore him and keep walking.");
+    menu2.showOptions();
     //--------------------------------
     while (true)
     {
-        heroChoice = Input::getChoice();
+        heroChoice = menu2.getChoice();
 
         if (heroChoice == 1)
         {
@@ -240,15 +242,16 @@ void Event::dialogueWithBob()
     Output::writeDialogue(" What are you doin' here?'");
     Output::writeNarration("\n\tThe shadows in front of you, begin to ripple when your caller stands up.\n\n");
     //--------------------------------
-    Menu::clearChoices();
-    Menu::addChoice("'I'm not looking for trouble.'");
-    Menu::addChoice("'I'm just looking around. Where are we actually?'");
-    Menu::addChoice("'It's not your business.'");
-    Menu::showChoices();
+    Menu menu3;
+    menu3.clearOptions();
+    menu3.addOption("'I'm not looking for trouble.'");
+    menu3.addOption("'I'm just looking around. Where are we actually?'");
+    menu3.addOption("'It's not your business.'");
+    menu3.showOptions();
     //--------------------------------
     while (true)
     {
-        heroChoice = Input::getChoice();
+        heroChoice = menu3.getChoice();
 
         if (heroChoice == 1)
         {
@@ -336,10 +339,11 @@ void Event::darkAlleyCrossroads()
         Output::writeNarration("\tWhen you enter the alley, you hear a familiar voice.");
         Output::writeDialogue("\n\t- 'It's you again. Why don't you tell me something for one this time?'\n\n");
         //--------------------------------
-        Menu::clearChoices();
-        Menu::addChoice("Stop and finally find out what he wants.");
-        Menu::addChoice("Ignore him again.");
-        Menu::showChoices();
+        Menu menu2;
+        menu2.clearOptions();
+        menu2.addOption("Stop and finally find out what he wants.");
+        menu2.addOption("Ignore him and keep walking.");
+        menu2.showOptions();
         //--------------------------------
         while (true)
         {
@@ -379,14 +383,15 @@ void Event::darkAlleyCrossroads()
             Sleep(1500);
             Output::writeNarration("\n\tMaybe you will find something interesting there...\n\n");
             //--------------------------------
-            Menu::clearChoices();
-            Menu::addChoice("Search the area for something valuable.");
-            Menu::addChoice("Go out of the alley.");
-            Menu::showChoices();
+            Menu menu1;
+            menu1.clearOptions();
+            menu1.addOption("Search the area for something valuable.");
+            menu1.addOption("Go out of the alley.");
+            menu1.showOptions();
             //--------------------------------
             while (true)
             {
-                heroChoice = Input::getChoice();
+                heroChoice = menu1.getChoice();
 
                 if (heroChoice == 1)
                 {
@@ -437,14 +442,15 @@ void Event::lookAtAmnesia()
         Output::writeNarration(" Something smells here, it's probably trouble...\n\n");
     }
     //--------------------------------
-    Menu::clearChoices();
-    Menu::addChoice("Come closer and see what it's all about.");
-    Menu::addChoice("Take a look around the area.");
-    Menu::showChoices();
+    Menu menu4;
+    menu4.clearOptions();
+    menu4.addOption("Come closer and see what it's all about.");
+    menu4.addOption("Take a look around the area.");
+    menu4.showOptions();
     //--------------------------------
     while (true)
     {
-        heroChoice = Input::getChoice();
+        heroChoice = menu4.getChoice();
 
         if (heroChoice == 1)
         {
@@ -480,14 +486,15 @@ void Event::encounterGunStore()
 
     std::cout << std::endl << std::endl;
     //--------------------------------
-    Menu::clearChoices();
-    Menu::addChoice("Go inside.");
-    Menu::addChoice("Turn back.");
-    Menu::showChoices();
+    Menu menu5;
+    menu5.clearOptions();
+    menu5.addOption("Go inside.");
+    menu5.addOption("Turn back.");
+    menu5.showOptions();
     //--------------------------------
     while (true)
     {
-        heroChoice = Input::getChoice();
+        heroChoice = menu5.getChoice();
 
         if (heroChoice == 1)
         {
@@ -588,18 +595,19 @@ void Event::meetingWithPolicemans()
     Output::writeDialogue("\n\t- 'If you're so pure, get in.'");
     Output::writeNarration("\n\tThe bouncer points to the door behind him.\n\n");
     //--------------------------------
-    Menu::clearChoices();
-    Menu::addChoice("Go inside.");
-    Menu::addChoice("Turn back.");
-    Menu::showChoices();
+    Menu menu6;
+    menu6.clearOptions();
+    menu6.addOption("Go inside.");
+    menu6.addOption("Turn back.");
+    menu6.showOptions();
     //--------------------------------
     while (true)
     {
-        heroChoice = Input::getChoice();
+        heroChoice = menu6.getChoice();
 
         if (heroChoice == 1)
         {
-            Menu::clearChoices();
+            menu6.clearOptions();
             Console::clearScreen();
             Menu::showHeroAction("Go inside.\n");
             Game::game[0].setCurrentLocation(&Location::locations["Nightclub"]);
@@ -607,7 +615,7 @@ void Event::meetingWithPolicemans()
         }
         else if (heroChoice == 2)
         {
-            Menu::clearChoices();
+            menu6.clearOptions();
             Console::clearScreen();
             Menu::showHeroAction("Turn back.\n");
             Game::game[0].setCurrentLocation(&Location::locations["GunShop"]);
@@ -623,15 +631,16 @@ void Event::streetCrossroads()
     Menu::showHeroAction("Visit: " + Location::locations["Street"].getName() + '.');
     Output::writeNarration("\n\tOnce again you are on a street bathed in nighttime darkness.\n\n");
     //--------------------------------
-    Menu::clearChoices();
-    Menu::addChoice("Visit: " + Location::locations["DarkAlley"].getName() + '.');
-    Menu::addChoice("Visit: " + Location::locations["Nightclub"].getName() + '.');
-    Menu::addChoice("Visit: " + Location::locations["GunShop"].getName() + '.');
-    Menu::showChoices();
+    Menu menu7;
+    menu7.clearOptions();
+    menu7.addOption("Visit: " + Location::locations["DarkAlley"].getName() + '.');
+    menu7.addOption("Visit: " + Location::locations["Nightclub"].getName() + '.');
+    menu7.addOption("Visit: " + Location::locations["GunShop"].getName() + '.');
+    menu7.showOptions();
     //--------------------------------
     while (true)
     {
-        heroChoice = Input::getChoice();
+        heroChoice = menu7.getChoice();
 
         if (heroChoice == 1)
         {
@@ -706,16 +715,17 @@ void Event::dialogueWithZed()
     {
         std::cout << std::endl;
         //--------------------------------
-        Menu::clearChoices();
-        Menu::addChoice("'What do you have?'");
-        Menu::addChoice("'How's business going?'");
+        Menu menu8;
+        menu8.clearOptions();
+        menu8.addOption("'What do you have?'");
+        menu8.addOption("'How's business going?'");
 
-        if (bobRecommendsZed && !zedKnowsAboutBobAndZed) Menu::addChoice("'You're Zed? I come from Bob.'");
+        if (bobRecommendsZed && !zedKnowsAboutBobAndZed) menu8.addOption("'You're Zed? I come from Bob.'");
 
-        Menu::addChoice("'I have to go...'");
-        Menu::showChoices();
+        menu8.addOption("'I have to go...'");
+        menu8.showOptions();
         //--------------------------------
-        heroChoice = Input::getChoice();
+        heroChoice = menu8.getChoice();
 
         if (heroChoice == 1)
         {
@@ -798,14 +808,15 @@ void Event::zedTrade()
             Sleep(1500);
             Output::writeDialogue(" Tell me, what do you like?'\n\n");
             //--------------------------------
-            Menu::clearChoices();
-            Menu::addChoice("Buy: pistol (250 $).");
-            Menu::addChoice("'I have made up my mind.'");
-            Menu::showChoices();
+            Menu menu9;
+            menu9.clearOptions();
+            menu9.addOption("Buy: pistol (250 $).");
+            menu9.addOption("'I have made up my mind.'");
+            menu9.showOptions();
             //--------------------------------
             while (true)
             {
-                heroChoice = Input::getChoice();
+                heroChoice = menu9.getChoice();
 
                 if (heroChoice == 1)
                 {
@@ -830,14 +841,15 @@ void Event::zedTrade()
         {
             std::cout << std::endl;
             //--------------------------------
-            Menu::clearChoices();
-            Menu::addChoice("Buy: pistol (250 $).");
-            Menu::addChoice("'I have made up my mind.'");
-            Menu::showChoices();
+            Menu menu10;
+            menu10.clearOptions();
+            menu10.addOption("Buy: pistol (250 $).");
+            menu10.addOption("'I have made up my mind.'");
+            menu10.showOptions();
             //--------------------------------
             while (true)
             {
-                heroChoice = Input::getChoice();
+                heroChoice = menu10.getChoice();
 
                 if (heroChoice == 1)
                 {
@@ -932,15 +944,16 @@ void Event::enterClub()
     Sleep(1000);
     Output::writeNarration(" Next to the dance floor is a bar, and behind it are several mechanically streamlined\n\tbartenders.\n\n");
     //--------------------------------
-    Menu::clearChoices();
-    Menu::addChoice("Go to the dance floor.");
-    Menu::addChoice("Go to the bar.");
-    Menu::addChoice("Back on the street.");
-    Menu::showChoices();
+    Menu menu11;
+    menu11.clearOptions();
+    menu11.addOption("Go to the dance floor.");
+    menu11.addOption("Go to the bar.");
+    menu11.addOption("Back on the street.");
+    menu11.showOptions();
     //--------------------------------
     while (true)
     {
-        heroChoice = Input::getChoice();
+        heroChoice = menu11.getChoice();
 
         if (heroChoice == 1)
         {
@@ -985,15 +998,16 @@ void Event::clubDanceFloor()
         Sleep(1500);
         Output::writeNarration(" Is it a coincidence\n\tthat she has just appeared and is dancing so close to you?\n\n");
         //--------------------------------
-        Menu::clearChoices();
-        Menu::addChoice("'What do you want?'");
-        Menu::addChoice("'Hey, baby.'");
-        Menu::addChoice("Keep dancing with no words.");
-        Menu::showChoices();
+        Menu menu12;
+        menu12.clearOptions();
+        menu12.addOption("'What do you want?'");
+        menu12.addOption("'Hey, baby.'");
+        menu12.addOption("Keep dancing with no words.");
+        menu12.showOptions();
         //--------------------------------
         while (true)
         {
-            heroChoice = Input::getChoice();
+            heroChoice = menu12.getChoice();
 
             if (heroChoice == 1)
             {
@@ -1047,13 +1061,14 @@ void Event::clubBar()
     while (true)
     {
         //--------------------------------
-        Menu::clearChoices();
-        Menu::addChoice("'Give me anything.'");
-        Menu::addChoice("'Who's in charge?'");
-        Menu::addChoice("'Bye.'");
-        Menu::showChoices();
+        Menu menu13;
+        menu13.clearOptions();
+        menu13.addOption("'Give me anything.'");
+        menu13.addOption("'Who's in charge?'");
+        menu13.addOption("'Bye.'");
+        menu13.showOptions();
         //--------------------------------
-        heroChoice = Input::getChoice();
+        heroChoice = menu13.getChoice();
 
         if (heroChoice == 1)
         {
@@ -1093,14 +1108,15 @@ void Event::miaMeeting()
     Logger::out("Function starts", "Event::miaMeeting");
     std::cout << std::endl << std::endl;
     //--------------------------------
-    Menu::clearChoices();
-    Menu::addChoice("'What is it about?'");
-    Menu::addChoice("Be silent and let her speak.");
-    Menu::showChoices();
+    Menu menu14;
+    menu14.clearOptions();
+    menu14.addOption("'What is it about?'");
+    menu14.addOption("Be silent and let her speak.");
+    menu14.showOptions();
     //--------------------------------
     while (true)
     {
-        heroChoice = Input::getChoice();
+        heroChoice = menu14.getChoice();
 
         if (heroChoice == 1)
         {
@@ -1151,14 +1167,15 @@ void Event::clubUpstairs()
     Logger::out("Function starts", "Event::clubUpstairs");
     Output::writeNarration("\n\tYou go up a winding staircase. At the end of a short banister you will see a closed door\n\tguarded by another bulky individual.\n\n");
     //--------------------------------
-    Menu::clearChoices();
-    Menu::addChoice("Come closer.");
-    Menu::addChoice("Go back downstairs.");
-    Menu::showChoices();
+    Menu menu15;
+    menu15.clearOptions();
+    menu15.addOption("Come closer.");
+    menu15.addOption("Go back downstairs.");
+    menu15.showOptions();
     //--------------------------------
     while (true)
     {
-        heroChoice = Input::getChoice();
+        heroChoice = menu15.getChoice();
 
         if (heroChoice == 1)
         {
@@ -1188,22 +1205,23 @@ void Event::dialogueWithJet()
     int jetPoints = 0;
     std::cout << std::endl << std::endl;
     //--------------------------------
-    Menu::clearChoices();
-    Menu::addChoice("'I want to pass.'");
-    Menu::addChoice("'What is behind that door?'");
+    Menu menu16;
+    menu16.clearOptions();
+    menu16.addOption("'I want to pass.'");
+    menu16.addOption("'What is behind that door?'");
 
     if (Hero::heroes[0].hasItem(&Item::items["Pistol"]))
     {
-        Menu::addChoice("Kill him with a pistol.");
-        Menu::addChoice("Stun him with a pistol.");
+        menu16.addOption("Kill him with a pistol.");
+        menu16.addOption("Stun him with a pistol.");
     }
 
-    Menu::addChoice("It's time for me to go.");
-    Menu::showChoices();
+    menu16.addOption("It's time for me to go.");
+    menu16.showOptions();
     //--------------------------------
     while (true)
     {
-        heroChoice = Input::getChoice();
+        heroChoice = menu16.getChoice();
 
         if (heroChoice == 1)
         {
@@ -1262,14 +1280,15 @@ void Event::vincentOffice()
     Logger::out("Function starts", "Event::vincentOffice");
     Output::writeNarration("\tYou enter the manager's office immersed in twilight. In the middle of the room stands a sizable desk, and on it are stacks of documents and computer. To the left of the entrance is a window to the street below. On the right you will notice a door to another room.\n\n");
     //--------------------------------
-    Menu::clearChoices();
-    Menu::addChoice("Open the door and go into the other room.");
-    Menu::addChoice("Stay and search the office.");
-    Menu::showChoices();
+    Menu menu17;
+    menu17.clearOptions();
+    menu17.addOption("Open the door and go into the other room.");
+    menu17.addOption("Stay and search the office.");
+    menu17.showOptions();
     //--------------------------------
     while (true)
     {
-        heroChoice = Input::getChoice();
+        heroChoice = menu17.getChoice();
 
         if (heroChoice == 1)
         {
@@ -1309,10 +1328,11 @@ void Event::vincentHideoutCode()
     else {
         std::cout << std::endl << std::endl;
         //--------------------------------
-        Menu::clearChoices();
-        Menu::addChoice("Use code '2021'.");
-        Menu::addChoice("Search the office.");
-        Menu::showChoices();
+        Menu menu18;
+        menu18.clearOptions();
+        menu18.addOption("Use code '2021'.");
+        menu18.addOption("Search the office.");
+        menu18.showOptions();
         //--------------------------------
     }
 }
@@ -1329,14 +1349,15 @@ void Event::vincentHideout()
     Sleep(2000);
     Output::writeNarration("\n\tCreeping up, you come closer. Your goal is within reach. The question is what will you do?\n\n");
     //--------------------------------
-    Menu::clearChoices();
-    Menu::addChoice("Disconnect his consciousness from the neuronet. (Kill him)");
-    Menu::addChoice("Wait for his consciousness to leave the neuronet.");
-    Menu::showChoices();
+    Menu menu19;
+    menu19.clearOptions();
+    menu19.addOption("Disconnect his consciousness from the neuronet. (Kill him)");
+    menu19.addOption("Wait for his consciousness to leave the neuronet.");
+    menu19.showOptions();
     //--------------------------------
     while (true)
     {
-        heroChoice = Input::getChoice();
+        heroChoice = menu19.getChoice();
 
         if (heroChoice == 1)
         {
@@ -1373,15 +1394,16 @@ void Event::dialogueWithVincent()
     Logger::out("Function starts", "Event::dialogueWithVincent");
     std::cout << std::endl << std::endl;
     //--------------------------------
-    Menu::clearChoices();
-    Menu::addChoice("'Die!'");
-    Menu::addChoice("'I don't want to fight with you.'");
-    Menu::addChoice("'Nyx wants you dead.'");
-    Menu::showChoices();
+    Menu menu20;
+    menu20.clearOptions();
+    menu20.addOption("'Die!'");
+    menu20.addOption("'I don't want to fight with you.'");
+    menu20.addOption("'Nyx wants you dead.'");
+    menu20.showOptions();
     //--------------------------------
     while (true)
     {
-        heroChoice = Input::getChoice();
+        heroChoice = menu20.getChoice();
 
         if (heroChoice == 1)
         {
@@ -1416,14 +1438,15 @@ void Event::dialogueWithVincent()
 
     std::cout << std::endl << std::endl;
     //--------------------------------
-    Menu::clearChoices();
-    Menu::addChoice("'It doesn't matter.'");
-    Menu::addChoice("'Your girlfriend, Nyx.'");
-    Menu::showChoices();
+    Menu menu21;
+    menu21.clearOptions();
+    menu21.addOption("'It doesn't matter.'");
+    menu21.addOption("'Your girlfriend, Nyx.'");
+    menu21.showOptions();
     //--------------------------------
     while (true)
     {
-        heroChoice = Input::getChoice();
+        heroChoice = menu21.getChoice();
 
         if (heroChoice == 1)
         {
@@ -1473,14 +1496,15 @@ void Event::dialogueWithVincent()
     Sleep(1000);
     Output::writeNarration("\n\tNyx walks past you and kneels by the dead man. She starts searching his pockets for something.\n\n");
     //--------------------------------
-    Menu::clearChoices();
-    Menu::addChoice("Do nothing.");
-    Menu::addChoice("'What is this all about?'");
-    Menu::showChoices();
+    Menu menu22;
+    menu22.clearOptions();
+    menu22.addOption("Do nothing.");
+    menu22.addOption("'What is this all about?'");
+    menu22.showOptions();
     //--------------------------------
     while (true)
     {
-        heroChoice = Input::getChoice();
+        heroChoice = menu22.getChoice();
 
         if (heroChoice == 1)
         {
@@ -1530,16 +1554,17 @@ void Event::nightclubCrossroads()
     Menu::showHeroAction("Visit: " + Location::locations["Nightclub"].getName() + ".\n");
     Output::writeNarration("\n\tYou enter from a fairly well-lit street into a slightly darkened nightclub, trembling with colour.\n\n");
     //--------------------------------
-    Menu::clearChoices();
-    Menu::addChoice("Go to the dance floor.");
-    Menu::addChoice("Go to the bar.");
-    Menu::addChoice("Go upstairs.");
-    Menu::addChoice("Visit: " + Location::locations["Street"].getName() + ".");
-    Menu::showChoices();
+    Menu menu23;
+    menu23.clearOptions();
+    menu23.addOption("Go to the dance floor.");
+    menu23.addOption("Go to the bar.");
+    menu23.addOption("Go upstairs.");
+    menu23.addOption("Visit: " + Location::locations["Street"].getName() + ".");
+    menu23.showOptions();
     //--------------------------------
     while (true)
     {
-        heroChoice = Input::getChoice();
+        heroChoice = menu23.getChoice();
 
         if (heroChoice == 1)
         {

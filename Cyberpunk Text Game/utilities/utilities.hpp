@@ -99,16 +99,3 @@ public:
 	static void writeNarration(std::string text, int speed = 60); // powolne wypisywanie kodu - (tekst, szybkoœæ)
 	static void writeDialogue(std::string text, int speed = 60); // powolne wypisywanie kodu - (tekst, szybkoœæ)
 };
-
-class Menu
-{
-public:
-	static void actionOption(int nr, std::string text); // tworzenie akcji gracza - (numer, opis)
-	static void showHeroAction(std::string text); // wyœwietlanie akcji gracza - (opis)
-
-	static void clearChoices();
-	static void addChoice(std::string description);
-	static void showChoices();
-
-	static std::map <int, std::string> choices;
-};

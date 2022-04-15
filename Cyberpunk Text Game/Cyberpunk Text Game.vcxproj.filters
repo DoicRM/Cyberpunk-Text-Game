@@ -43,6 +43,9 @@
     <Filter Include="Utilities\Logger">
       <UniqueIdentifier>{5551b67e-35cb-4a35-9d24-5f8a30e07540}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Utilities\Menu">
+      <UniqueIdentifier>{65f50685-5d76-44ff-83b5-10a942d33aeb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -88,6 +91,9 @@
     <ClCompile Include="item\weapon\weapon.cpp">
       <Filter>Item\Weapon</Filter>
     </ClCompile>
+    <ClCompile Include="utilities\menu\menu.cpp">
+      <Filter>Utilities\Menu</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="events\events.hpp">
@@ -128,6 +134,9 @@
     </ClInclude>
     <ClInclude Include="item\weapon\weapon.hpp">
       <Filter>Item\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="utilities\menu\menu.hpp">
+      <Filter>Utilities\Menu</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

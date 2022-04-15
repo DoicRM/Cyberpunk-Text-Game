@@ -154,6 +154,7 @@
     <ClCompile Include="npc\npc.cpp" />
     <ClCompile Include="quest\quest.cpp" />
     <ClCompile Include="utilities\logger\logger.cpp" />
+    <ClCompile Include="utilities\menu\menu.cpp" />
     <ClCompile Include="utilities\utilities.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -169,6 +170,7 @@
     <ClInclude Include="npc\npc.hpp" />
     <ClInclude Include="quest\quest.hpp" />
     <ClInclude Include="utilities\logger\logger.hpp" />
+    <ClInclude Include="utilities\menu\menu.hpp" />
     <ClInclude Include="utilities\utilities.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

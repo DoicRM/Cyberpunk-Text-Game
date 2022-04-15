@@ -10,6 +10,7 @@
 #include "../utilities/utilities.hpp"
 #include "../location/location.hpp"
 #include "../utilities/logger/logger.hpp"
+#include "../utilities/menu/menu.hpp"
 #include "array"
 
 class Game

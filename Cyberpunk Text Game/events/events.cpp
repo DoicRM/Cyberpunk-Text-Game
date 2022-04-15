@@ -58,7 +58,6 @@ void Event::nightclub()
     }
     else
     {
-        Menu::showHeroAction("Visit: Nightclub 'Amnesia'.");
         nightclubCrossroads();
     }
 }

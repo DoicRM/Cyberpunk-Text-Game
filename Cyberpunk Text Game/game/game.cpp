@@ -73,22 +73,24 @@ void Game::selectLanguage()
     Logger::out("Function starts", "Game::selectLanguage");
     Console::resetConsoleColor();
 
+    Menu langMenu;
+
     while (getLang() != EN && getLang() != PL)
     {
         Console::clearScreen();
         Output::write("\n\tSelect your language:\n", 25);
-        Menu::clearChoices();
-        Menu::addChoice("EN");
-        Menu::addChoice("PL");
-        Menu::showChoices();
-        gameLang = Input::getChoice();
+        langMenu.clearOptions();
+        langMenu.addOption("EN");
+        langMenu.addOption("PL");
+        langMenu.showOptions();
+        gameLang = langMenu.getChoice();
 
         if (getLang() != EN && getLang() != PL) Logger::error("Entered invalid value of <b>gameLang</b>", "Game::selectLanguage");
         else if (getLang() == EN) Logger::out("Set English as game language", "Game::selectLanguage");
         else if (getLang() == PL) Logger::out("Set Polish as game language", "Game::selectLanguage");
     }
 
-    Menu::clearChoices();
+    langMenu.clearOptions();
     Console::clearScreen();
 }
 
@@ -112,7 +114,7 @@ std::array<std::string, 8> Game::logo = {
     "\t/**  //**/**/**      /**/**           /**    /**    /**/**///**  /**  //**/** **********/**      \n",
     "\t/**   //****//**     ** //**    **    /**    /**    /**/**  //** /**   //****/**//////**/**      \n",
     "\t/**    //*** //*******   //******     /**    //******* /**   //**/**    //***/**     /**/********\n",
-    "\t//      ///   ///////     //////      //      ///////  //     // //      /// //      // //////// \n"
+    "\t//      ///   ///////     //////      //      ///////  //     // //      /// //      // //////// "
 };
 
 void Game::writeLogo()
@@ -134,7 +136,7 @@ void Game::writeLogo()
 
 void Game::loadLogo()
 {
-    Logger::out("Function starts", "Game::logo");
+    Logger::out("Function starts", "Game::loadLogo");
     Console::setConsoleColor(CC_Lightblue);
     std::cout << std::endl;
 
@@ -158,50 +160,52 @@ void Game::mainMenu()
     Console::resetConsoleColor();
     std::cout << std::endl;
 
+    Menu mainMenu;
+
     if (getLang() == PL)
     {
-        Menu::clearChoices();
-        Menu::addChoice("Nowa gra");
-        Menu::addChoice("Kontynuuj grê");
-        Menu::addChoice("Zmieñ jêzyk");
-        Menu::addChoice("Napisy");
-        Menu::addChoice("WyjdŸ z gry");
-        Menu::showChoices();
+        mainMenu.clearOptions();
+        mainMenu.addOption("Nowa gra");
+        mainMenu.addOption("Kontynuuj grê");
+        mainMenu.addOption("Zmieñ jêzyk");
+        mainMenu.addOption("Napisy");
+        mainMenu.addOption("WyjdŸ z gry");
+        mainMenu.showOptions();
     }
     else
     {
-        Menu::clearChoices();
-        Menu::addChoice("New game");
-        Menu::addChoice("Continue game");
-        Menu::addChoice("Change language");
-        Menu::addChoice("Credits");
-        Menu::addChoice("Quit game");
-        Menu::showChoices();
+        mainMenu.clearOptions();
+        mainMenu.addOption("New game");
+        mainMenu.addOption("Continue game");
+        mainMenu.addOption("Change language");
+        mainMenu.addOption("Credits");
+        mainMenu.addOption("Quit game");
+        mainMenu.showOptions();
     }
 
     do
     {
-        menu = Input::getChoice();
+        menu = mainMenu.getChoice();
 
         switch (menu) {
         case 1:
-            Menu::clearChoices();
+            mainMenu.clearOptions();
             newGame();
             break;
         case 2:
-            Menu::clearChoices();
+            mainMenu.clearOptions();
             continueGame();
             break;
         case 3:
-            Menu::clearChoices();
+            mainMenu.clearOptions();
             changeLanguage();
             break;
         case 4:
-            Menu::clearChoices();
+            mainMenu.clearOptions();
             credits();
             break;
         case 5:
-            Menu::clearChoices();
+            mainMenu.clearOptions();
             endGame();
             break;
         }
@@ -239,6 +243,7 @@ void Game::changeLanguage()
     Logger::out("Function starts", "Game::changeLanguage");
 
     int change = 0;
+    Menu langMenu;
 
     while (change != EN && change != PL)
     {
@@ -247,11 +252,11 @@ void Game::changeLanguage()
         if (getLang() == EN) Output::write("\n\tSelect your language:\n", 25);
         else if (getLang() == PL) Output::write("\n\tWybierz swój jêzyk:\n", 25);
 
-        Menu::clearChoices();
-        Menu::addChoice("EN");
-        Menu::addChoice("PL");
-        Menu::showChoices();
-        change = Input::getChoice();
+        langMenu.clearOptions();
+        langMenu.addOption("EN");
+        langMenu.addOption("PL");
+        langMenu.showOptions();
+        change = langMenu.getChoice();
 
         if (change != EN && change != PL) Logger::error("Entered invalid value of <b>gameLang</b>", "Game::changeLanguage");
     }
@@ -261,7 +266,7 @@ void Game::changeLanguage()
     if (getLang() == EN) Logger::out("Set English as game language", "Game::changeLanguage");
     else if (getLang() == PL) Logger::out("Set Polish as game language", "Game::changeLanguage");
 
-    Menu::clearChoices();
+    langMenu.clearOptions();
     Console::clearScreen();
     loadLogo();
     mainMenu();
@@ -271,6 +276,8 @@ void Game::endGame()
 {
     Logger::out("Function starts", "Game::endGame");
 
+    Menu quitMenu;
+
     do
     {
         if (getLang() == PL)
@@ -279,10 +286,10 @@ void Game::endGame()
             Console::clearScreen();
             Output::write("\n\tJesteœ pewien, ¿e chcesz wyjœæ z gry?\n", 25);
 
-            Menu::clearChoices();
-            Menu::addChoice("Tak");
-            Menu::addChoice("Nie");
-            Menu::showChoices();
+            quitMenu.clearOptions();
+            quitMenu.addOption("Tak");
+            quitMenu.addOption("Nie");
+            quitMenu.showOptions();
         }
         else
         {
@@ -290,21 +297,21 @@ void Game::endGame()
             Console::clearScreen();
             Output::write("\n\tAre you sure you want to end the game?\n", 25);
 
-            Menu::clearChoices();
-            Menu::addChoice("Yes");
-            Menu::addChoice("No");
-            Menu::showChoices();
+            quitMenu.clearOptions();
+            quitMenu.addOption("Yes");
+            quitMenu.addOption("No");
+            quitMenu.showOptions();
         }
 
         choice = Input::getChoice();
 
         switch (choice) {
         case 1:
-            Menu::clearChoices();
+            quitMenu.clearOptions();
             end();
             break;
         case 2:
-            Menu::clearChoices();
+            quitMenu.clearOptions();
             Console::clearScreen();
             Sleep(500); 
             loadLogo();
