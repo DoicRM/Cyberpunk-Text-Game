@@ -56,7 +56,6 @@ void Event::storyIntroduction()
         Output::writeDialogue("\n\tSpadam i spadam jakby godzinami...", 75);
         Sleep(3000);
         Console::clearScreen();
-        std::cout << std::endl;
         wakeUpInDarkAlley();
     }
 }
@@ -69,7 +68,7 @@ void Event::wakeUpInDarkAlley()
     if (Game::game[0].getLang() == EN)
     {
         Sleep(2000);
-        Output::writeNarration("\n\tYou wake up dazed from a restless slumber.");
+        Output::writeNarration("\n\n\tYou wake up dazed from a restless slumber.");
         Sleep(1000);
         Output::writeNarration(" It was the same dream again...");
         Sleep(1500);
@@ -121,7 +120,7 @@ void Event::wakeUpInDarkAlley()
 
     while (true)
     {
-        heroChoice = menu1.getChoice();
+        heroChoice = menu1.inputChoice();
 
         if (heroChoice == 1)
         {
@@ -198,7 +197,7 @@ void Event::outOfTheAlley()
     //--------------------------------
     while (true)
     {
-        heroChoice = menu2.getChoice();
+        heroChoice = menu2.inputChoice();
 
         if (heroChoice == 1)
         {
@@ -251,7 +250,7 @@ void Event::dialogueWithBob()
     //--------------------------------
     while (true)
     {
-        heroChoice = menu3.getChoice();
+        heroChoice = menu3.inputChoice();
 
         if (heroChoice == 1)
         {
@@ -347,7 +346,7 @@ void Event::darkAlleyCrossroads()
         //--------------------------------
         while (true)
         {
-            heroChoice = Input::getChoice();
+            heroChoice = menu2.inputChoice();
 
             if (heroChoice == 1)
             {
@@ -391,7 +390,7 @@ void Event::darkAlleyCrossroads()
             //--------------------------------
             while (true)
             {
-                heroChoice = menu1.getChoice();
+                heroChoice = menu1.inputChoice();
 
                 if (heroChoice == 1)
                 {
@@ -450,7 +449,7 @@ void Event::lookAtAmnesia()
     //--------------------------------
     while (true)
     {
-        heroChoice = menu4.getChoice();
+        heroChoice = menu4.inputChoice();
 
         if (heroChoice == 1)
         {
@@ -494,7 +493,7 @@ void Event::encounterGunStore()
     //--------------------------------
     while (true)
     {
-        heroChoice = menu5.getChoice();
+        heroChoice = menu5.inputChoice();
 
         if (heroChoice == 1)
         {
@@ -603,7 +602,7 @@ void Event::meetingWithPolicemans()
     //--------------------------------
     while (true)
     {
-        heroChoice = menu6.getChoice();
+        heroChoice = menu6.inputChoice();
 
         if (heroChoice == 1)
         {
@@ -640,7 +639,7 @@ void Event::streetCrossroads()
     //--------------------------------
     while (true)
     {
-        heroChoice = menu7.getChoice();
+        heroChoice = menu7.inputChoice();
 
         if (heroChoice == 1)
         {
@@ -725,7 +724,7 @@ void Event::dialogueWithZed()
         menu8.addOption("'I have to go...'");
         menu8.showOptions();
         //--------------------------------
-        heroChoice = menu8.getChoice();
+        heroChoice = menu8.inputChoice();
 
         if (heroChoice == 1)
         {
@@ -816,7 +815,7 @@ void Event::zedTrade()
             //--------------------------------
             while (true)
             {
-                heroChoice = menu9.getChoice();
+                heroChoice = menu9.inputChoice();
 
                 if (heroChoice == 1)
                 {
@@ -849,7 +848,7 @@ void Event::zedTrade()
             //--------------------------------
             while (true)
             {
-                heroChoice = menu10.getChoice();
+                heroChoice = menu10.inputChoice();
 
                 if (heroChoice == 1)
                 {
@@ -953,7 +952,7 @@ void Event::enterClub()
     //--------------------------------
     while (true)
     {
-        heroChoice = menu11.getChoice();
+        heroChoice = menu11.inputChoice();
 
         if (heroChoice == 1)
         {
@@ -1007,7 +1006,7 @@ void Event::clubDanceFloor()
         //--------------------------------
         while (true)
         {
-            heroChoice = menu12.getChoice();
+            heroChoice = menu12.inputChoice();
 
             if (heroChoice == 1)
             {
@@ -1068,7 +1067,7 @@ void Event::clubBar()
         menu13.addOption("'Bye.'");
         menu13.showOptions();
         //--------------------------------
-        heroChoice = menu13.getChoice();
+        heroChoice = menu13.inputChoice();
 
         if (heroChoice == 1)
         {
@@ -1116,7 +1115,7 @@ void Event::miaMeeting()
     //--------------------------------
     while (true)
     {
-        heroChoice = menu14.getChoice();
+        heroChoice = menu14.inputChoice();
 
         if (heroChoice == 1)
         {
@@ -1175,7 +1174,7 @@ void Event::clubUpstairs()
     //--------------------------------
     while (true)
     {
-        heroChoice = menu15.getChoice();
+        heroChoice = menu15.inputChoice();
 
         if (heroChoice == 1)
         {
@@ -1221,7 +1220,7 @@ void Event::dialogueWithJet()
     //--------------------------------
     while (true)
     {
-        heroChoice = menu16.getChoice();
+        heroChoice = menu16.inputChoice();
 
         if (heroChoice == 1)
         {
@@ -1288,7 +1287,7 @@ void Event::vincentOffice()
     //--------------------------------
     while (true)
     {
-        heroChoice = menu17.getChoice();
+        heroChoice = menu17.inputChoice();
 
         if (heroChoice == 1)
         {
@@ -1357,7 +1356,7 @@ void Event::vincentHideout()
     //--------------------------------
     while (true)
     {
-        heroChoice = menu19.getChoice();
+        heroChoice = menu19.inputChoice();
 
         if (heroChoice == 1)
         {
@@ -1403,7 +1402,7 @@ void Event::dialogueWithVincent()
     //--------------------------------
     while (true)
     {
-        heroChoice = menu20.getChoice();
+        heroChoice = menu20.inputChoice();
 
         if (heroChoice == 1)
         {
@@ -1446,7 +1445,7 @@ void Event::dialogueWithVincent()
     //--------------------------------
     while (true)
     {
-        heroChoice = menu21.getChoice();
+        heroChoice = menu21.inputChoice();
 
         if (heroChoice == 1)
         {
@@ -1504,7 +1503,7 @@ void Event::dialogueWithVincent()
     //--------------------------------
     while (true)
     {
-        heroChoice = menu22.getChoice();
+        heroChoice = menu22.inputChoice();
 
         if (heroChoice == 1)
         {
@@ -1564,7 +1563,7 @@ void Event::nightclubCrossroads()
     //--------------------------------
     while (true)
     {
-        heroChoice = menu23.getChoice();
+        heroChoice = menu23.inputChoice();
 
         if (heroChoice == 1)
         {

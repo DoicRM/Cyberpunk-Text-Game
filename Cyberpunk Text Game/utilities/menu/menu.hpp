@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "../utilities.hpp"
+#include <array>
 
 class Menu
 {
@@ -12,10 +13,13 @@ public:
 	void showHeroChoice();
 	void clearOptions();
 	void addOption(std::string description);
+	void addOptions(std::array<std::string, 10> options);
 	void showOptions();
-	int getChoice();
+	int inputChoice();
 
-	static std::map <int, Menu> menus;
+	static std::map <std::string, Menu> menus;
+
+	inline int getChoice() const { return this->choice; }
 
 private:
 	int optionNr;

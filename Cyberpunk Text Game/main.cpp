@@ -7,5 +7,5 @@ int main()
     Game::game[0].run();
     Logger::cleanup();
     Game::game.clear();
-    return 0;
+    exit(0);
 }

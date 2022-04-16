@@ -1,16 +1,18 @@
 #include "./menu.hpp"
 
-std::map <int, Menu> menus;
+std::map <std::string, Menu> menus;
 
 Menu::Menu()
 {
+    Logger::out("Function starts", "Menu::Menu");
+    this->optionNr = 0;
     this->choice = 0;
     std::map <int, std::string> options;
 }
 
 Menu::~Menu()
 {
-
+    Logger::out("Function starts", "Menu::~Menu");
 }
 
 void Menu::actionOption(int nr, std::string text)
@@ -32,16 +34,28 @@ void Menu::showHeroChoice()
 
 void Menu::clearOptions()
 {
-    //Logger::out("Value of choice before reset: " + std::to_string(choiceNr), "Function::clearChoices");
+    //Logger::out("Value of choice before reset: " + std::to_string(optionNr), "Menu::clearOptions");
     this->options.clear();
     this->optionNr = 0;
-    //Logger::out("Value of choice after reset: " + std::to_string(choiceNr), "Function::clearChoices");
+    //Logger::out("Value of choice after reset: " + std::to_string(optionNr), "Menu::clearOptions");
 }
 
 void Menu::addOption(std::string description)
 {
     this->options[optionNr] = description;
     this->optionNr += 1;
+}
+
+void Menu::addOptions(std::array<std::string, 10> options)
+{
+    for (int i = 0; i < options.size(); i++)
+    {
+        if (!options[i].empty())
+        {
+            this->options[optionNr] = options[i];
+            this->optionNr += 1;
+        }
+    }
 }
 
 void Menu::showOptions()
@@ -56,7 +70,7 @@ void Menu::showOptions()
     }
 }
 
-int Menu::getChoice()
+int Menu::inputChoice()
 {
     Output::write("\t> ", 25);
     std::cin >> this->choice;
