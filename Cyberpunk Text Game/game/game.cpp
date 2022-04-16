@@ -79,9 +79,8 @@ void Game::selectLanguage()
         Console::clearScreen();
         Output::write("\n\tSelect your language:\n", 25);
         //--------------------------------
-        std::array<std::string, 10> langOptions = { "EN", "PL" };
         langMenu.clearOptions();
-        langMenu.addOptions(langOptions);
+        langMenu.addOptions({ "EN", "PL" });
         langMenu.showOptions();
         //--------------------------------
         this->gameLang = langMenu.inputChoice();
@@ -164,18 +163,16 @@ void Game::mainMenu()
     if (getLang() == PL)
     {
         //--------------------------------
-        std::array<std::string, 10> mainMenuOptions = { "Nowa gra", "Kontynuuj grê", "Zmieñ jêzyk", "Napisy", "WyjdŸ z gry" };
         mainMenu.clearOptions();
-        mainMenu.addOptions(mainMenuOptions);
+        mainMenu.addOptions({ "Nowa gra", "Kontynuuj grê", "Zmieñ jêzyk", "Napisy", "WyjdŸ z gry" });
         mainMenu.showOptions();
         //--------------------------------
     }
     else
     {
         //--------------------------------
-        std::array<std::string, 10> mainMenuOptions = { "New game", "Continue game", "Change language", "Credits", "Quit game" };
         mainMenu.clearOptions();
-        mainMenu.addOptions(mainMenuOptions);
+        mainMenu.addOptions({ "New game", "Continue game", "Change language", "Credits", "Quit game" });
         mainMenu.showOptions();
         //--------------------------------
     }
@@ -185,21 +182,11 @@ void Game::mainMenu()
         menu = mainMenu.inputChoice();
 
         switch (menu) {
-        case 1:
-            newGame();
-            break;
-        case 2:
-            continueGame();
-            break;
-        case 3:
-            changeLanguage();
-            break;
-        case 4:
-            credits();
-            break;
-        case 5:
-            endGame();
-            break;
+        case 1: newGame(); break;
+        case 2: continueGame(); break;
+        case 3: changeLanguage(); break;
+        case 4: credits(); break;
+        case 5: endGame(); break;
         }
     } while (menu > 5 || menu <= 0);
 }
@@ -244,9 +231,8 @@ void Game::changeLanguage()
         else if (getLang() == PL) Output::write("\n\tWybierz swój jêzyk:\n", 25);
 
         //--------------------------------
-        std::array<std::string, 10> langOptions = { "EN", "PL" };
         langMenu.clearOptions();
-        langMenu.addOptions(langOptions);
+        langMenu.addOptions({ "EN", "PL" });
         langMenu.showOptions();
         //--------------------------------
         change = langMenu.inputChoice();
@@ -277,9 +263,8 @@ void Game::endGame()
             Console::clearScreen();
             Output::write("\n\tJesteœ pewien, ¿e chcesz wyjœæ z gry?\n", 25);
             //--------------------------------
-            std::array<std::string, 10> quitOptions = { "Tak", "Nie" };
             quitMenu.clearOptions();
-            quitMenu.addOptions(quitOptions);
+            quitMenu.addOptions({ "Tak", "Nie" });
             quitMenu.showOptions();
             //--------------------------------
         }
@@ -289,9 +274,8 @@ void Game::endGame()
             Console::clearScreen();
             Output::write("\n\tAre you sure you want to end the game?\n", 25);
             //--------------------------------
-            std::array<std::string, 10> quitOptions = { "Yes", "No" };
             quitMenu.clearOptions();
-            quitMenu.addOptions(quitOptions);
+            quitMenu.addOptions({ "Yes", "No" });
             quitMenu.showOptions();
             //--------------------------------
         }
@@ -299,9 +283,7 @@ void Game::endGame()
         choice = quitMenu.inputChoice();
 
         switch (choice) {
-        case 1:
-            end();
-            break;
+        case 1: end(); break;
         case 2:
             Console::clearScreen();
             Sleep(500); 

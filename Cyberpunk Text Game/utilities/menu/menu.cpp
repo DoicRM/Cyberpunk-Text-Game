@@ -4,7 +4,7 @@ std::map <std::string, Menu> menus;
 
 Menu::Menu()
 {
-    Logger::out("Function starts", "Menu::Menu");
+    //Logger::out("Function starts", "Menu::Menu");
     this->optionNr = 0;
     this->choice = 0;
     std::map <int, std::string> options;
@@ -12,7 +12,7 @@ Menu::Menu()
 
 Menu::~Menu()
 {
-    Logger::out("Function starts", "Menu::~Menu");
+    //Logger::out("Function starts", "Menu::~Menu");
 }
 
 void Menu::actionOption(int nr, std::string text)
