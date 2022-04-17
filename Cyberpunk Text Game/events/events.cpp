@@ -77,14 +77,14 @@ void Event::heroDeath()
     Console::setConsoleColor(CC_Red);
     std::cout << std::endl;
 
-    if (Game::game[0].getLang() == EN) Output::write("\tYOU ARE DEAD!");
-    else Output::write("\tNIE ¯YJESZ!");
+    if (Game::game[0].getLang() == EN) Display::write("\tYOU ARE DEAD!");
+    else Display::write("\tNIE ¯YJESZ!");
 
     Sleep(1000);
     Console::setConsoleColor();
 
-    if (Game::game[0].getLang() == EN) Output::write("\n\n\tBack to menu...", 25);
-    else Output::write("\n\n\tWróæ do menu...", 25);
+    if (Game::game[0].getLang() == EN) Display::write("\n\n\tBack to menu...", 25);
+    else Display::write("\n\n\tWróæ do menu...", 25);
 
     Console::waitForUserInput();
     Console::clearScreen();
@@ -100,16 +100,16 @@ void Event::gameOver()
     Console::setConsoleColor(CC_Lightblue);
     std::cout << std::endl;
 
-    if (Game::game[0].getLang() == EN) Output::write("\tTHE END", 25);
-    else Output::write("\tKONIEC", 25);
+    if (Game::game[0].getLang() == EN) Display::write("\tTHE END", 25);
+    else Display::write("\tKONIEC", 25);
 
     Sleep(1000);
     std::cout << std::endl << std::endl;
     Console::resetConsoleColor();
     Game::game[0].credits();
 
-    if (Game::game[0].getLang() == EN) Output::write("\n\n\tBack to menu...", 25);
-    else Output::write("\n\n\tWróæ do menu...", 25);
+    if (Game::game[0].getLang() == EN) Display::write("\n\n\tBack to menu...", 25);
+    else Display::write("\n\n\tWróæ do menu...", 25);
 
     Console::waitForUserInput();
     Console::clearScreen();

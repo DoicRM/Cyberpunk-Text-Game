@@ -77,7 +77,7 @@ void Game::selectLanguage()
     while (getLang() != EN && getLang() != PL)
     {
         Console::clearScreen();
-        Output::write("\n\tSelect your language:\n", 25);
+        std::cout << std::endl;
         //--------------------------------
         langMenu.clearOptions();
         langMenu.addOptions({ "EN", "PL" });
@@ -98,8 +98,8 @@ void Game::welcome()
     Logger::out("Function starts", "Game::welcome");
     Sleep(500); 
 
-    if (getLang() == PL) Output::write("\n\tRADOS£AW 'DOIC' MICHALAK PREZENTUJE GRÊ TEKSTOW¥ POD TYTU£EM", 40);
-    else Output::write("\n\tRADOS£AW 'DOIC' MICHALAK PRESENTS A TEXT GAME TITLED", 40);
+    if (getLang() == PL) Display::write("\n\tRADOS£AW 'DOIC' MICHALAK PREZENTUJE GRÊ TEKSTOW¥ POD TYTU£EM", 40);
+    else Display::write("\n\tRADOS£AW 'DOIC' MICHALAK PRESENTS A TEXT GAME TITLED", 40);
 
     Sleep(2000);
     Console::clearScreen();
@@ -124,13 +124,13 @@ void Game::writeLogo()
 
     for (int i = 0; i < logo.size(); i++)
     {
-        Output::write(logo[i], 1);
+        Display::write(logo[i], 1);
     }
 
     Console::resetConsoleColor();
 
-    if (getLang() == EN) Output::write("\n\n\t\t\t\t\t     A Cyberpunk Text Game\n\n", 2);
-    else Output::write("\n\n\t\t\t\t\t     Cyberpunkowa gra tekstowa\n\n", 2);
+    if (getLang() == EN) Display::write("\n\n\t\t\t\t\t     A Cyberpunk Text Game\n\n", 2);
+    else Display::write("\n\n\t\t\t\t\t     Cyberpunkowa gra tekstowa\n\n", 2);
 }
 
 void Game::loadLogo()
@@ -206,8 +206,8 @@ void Game::continueGame()
     Console::clearScreen();
     Console::setConsoleColor(CC_Lightblue);
 
-    if (getLang() == PL) Output::write("\n\tNic tu nie ma. Ta funkcja jest obecnie niedostêpna.\n\n", 25);
-    else Output::write("\n\tThere's nothing here. This feature is currently unavailable.\n\n", 25);
+    if (getLang() == PL) Display::write("\n\tNic tu nie ma. Ta funkcja jest obecnie niedostêpna.\n\n", 25);
+    else Display::write("\n\tThere's nothing here. This feature is currently unavailable.\n\n", 25);
 
     Console::resetConsoleColor();
     Sleep(1000);
@@ -227,8 +227,8 @@ void Game::changeLanguage()
     {
         Console::clearScreen();
 
-        if (getLang() == EN) Output::write("\n\tSelect your language:\n", 25);
-        else if (getLang() == PL) Output::write("\n\tWybierz swój jêzyk:\n", 25);
+        if (getLang() == EN) Display::write("\n\tSelect your language:\n", 25);
+        else if (getLang() == PL) Display::write("\n\tWybierz swój jêzyk:\n", 25);
 
         //--------------------------------
         langMenu.clearOptions();
@@ -261,7 +261,7 @@ void Game::endGame()
         {
             Sleep(500);
             Console::clearScreen();
-            Output::write("\n\tJesteœ pewien, ¿e chcesz wyjœæ z gry?\n", 25);
+            Display::write("\n\tJesteœ pewien, ¿e chcesz wyjœæ z gry?\n", 25);
             //--------------------------------
             quitMenu.clearOptions();
             quitMenu.addOptions({ "Tak", "Nie" });
@@ -272,7 +272,7 @@ void Game::endGame()
         {
             Sleep(500);
             Console::clearScreen();
-            Output::write("\n\tAre you sure you want to end the game?\n", 25);
+            Display::write("\n\tAre you sure you want to end the game?\n", 25);
             //--------------------------------
             quitMenu.clearOptions();
             quitMenu.addOptions({ "Yes", "No" });
@@ -303,32 +303,32 @@ void Game::credits()
     if (getLang() == PL)
     {
         Console::setConsoleColor(CC_Lightblue);
-        Output::write("\n\t\tAUTOR\n");
+        Display::write("\n\t\tAUTOR\n");
         Console::resetConsoleColor();
-        Output::write("\tRados³aw 'Doic' Michalak\n\n");
+        Display::write("\tRados³aw 'Doic' Michalak\n\n");
         Console::setConsoleColor(CC_Lightblue);
-        Output::write("\t       TESTERZY\n");
+        Display::write("\t       TESTERZY\n");
         Console::resetConsoleColor();
-        Output::write("\t    Pawe³ Michalak\n\n");
+        Display::write("\t    Pawe³ Michalak\n\n");
         Console::setConsoleColor(CC_Lightblue);
-        Output::write("\t     PODZIÊKOWANIA\n");
+        Display::write("\t     PODZIÊKOWANIA\n");
         Console::resetConsoleColor();
-        Output::write("\t   Dominik Szpilski\n\t     Daniel Ob³¹k\n\n");
+        Display::write("\t   Dominik Szpilski\n\t     Daniel Ob³¹k\n\n");
     }
     else
     {
         Console::setConsoleColor(CC_Lightblue);
-        Output::write("\n\t\tAUTHOR\n");
+        Display::write("\n\t\tAUTHOR\n");
         Console::resetConsoleColor();
-        Output::write("\tRados³aw 'Doic' Michalak\n\n");
+        Display::write("\tRados³aw 'Doic' Michalak\n\n");
         Console::setConsoleColor(CC_Lightblue);
-        Output::write("\t\tTESTERS\n");
+        Display::write("\t\tTESTERS\n");
         Console::resetConsoleColor();
-        Output::write("\t   Pawe³ Michalak\n\n");
+        Display::write("\t   Pawe³ Michalak\n\n");
         Console::setConsoleColor(CC_Lightblue);
-        Output::write("\t\tTHANKS\n");
+        Display::write("\t\tTHANKS\n");
         Console::resetConsoleColor();
-        Output::write("\t   Dominik Szpilski\n\t     Daniel Ob³¹k\n\n");
+        Display::write("\t   Dominik Szpilski\n\t     Daniel Ob³¹k\n\n");
     }
 
     Sleep(1000);

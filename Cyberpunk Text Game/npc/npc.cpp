@@ -68,7 +68,7 @@ void Npc::printAttitude()
         Console::resetConsoleColor();
     }
 
-    Output::write("\t" + this->name + " is " + attitude + " now.\n");
+    Display::write("\t" + this->name + " is " + attitude + " now.\n");
     Console::resetConsoleColor();
 }
 

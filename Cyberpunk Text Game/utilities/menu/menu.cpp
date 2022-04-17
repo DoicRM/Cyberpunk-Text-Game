@@ -17,7 +17,7 @@ Menu::~Menu()
 
 void Menu::actionOption(int nr, std::string text)
 {
-    Output::write("\t[" + std::to_string(nr) + "] " + text + "\n", 25);
+    Display::write("\t[" + std::to_string(nr) + "] " + text + "\n", 25);
 }
 
 void Menu::showHeroAction(std::string text)
@@ -29,15 +29,13 @@ void Menu::showHeroAction(std::string text)
 void Menu::showHeroChoice()
 {
     Console::resetConsoleColor();
-    std::cout << "\n\t" + options[choice] + "\n";
+    std::cout << "\n\t> " + options[choice-1] + "\n";
 }
 
 void Menu::clearOptions()
 {
-    //Logger::out("Value of choice before reset: " + std::to_string(optionNr), "Menu::clearOptions");
     this->options.clear();
     this->optionNr = 0;
-    //Logger::out("Value of choice after reset: " + std::to_string(optionNr), "Menu::clearOptions");
 }
 
 void Menu::addOption(std::string description)
@@ -46,13 +44,13 @@ void Menu::addOption(std::string description)
     this->optionNr += 1;
 }
 
-void Menu::addOptions(std::array<std::string, 10> options)
+void Menu::addOptions(std::array<std::string, 10> optionsArray)
 {
-    for (int i = 0; i < options.size(); i++)
+    for (int i = 0; i < optionsArray.size(); i++)
     {
-        if (!options[i].empty())
+        if (!optionsArray[i].empty())
         {
-            this->options[optionNr] = options[i];
+            this->options[optionNr] = optionsArray[i];
             this->optionNr += 1;
         }
     }
@@ -72,7 +70,7 @@ void Menu::showOptions()
 
 int Menu::inputChoice()
 {
-    Output::write("\t> ", 25);
+    Display::write("\t> ", 25);
     std::cin >> this->choice;
     std::cin.clear();
     std::cin.ignore();
