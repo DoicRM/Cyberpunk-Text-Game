@@ -26,8 +26,8 @@ void Console::clearScreen()
 #endif
 }
 
-// OUTPUT
-void Output::write(const std::string& text, int speed)
+// DISPLAY
+void Display::write(const std::string& text, int speed)
 {
     using namespace std::chrono_literals;
 
@@ -39,17 +39,17 @@ void Output::write(const std::string& text, int speed)
     }
 }
 
-void Output::writeNarration(std::string text, int speed)
+void Display::writeNarration(std::string text, int speed)
 {
     Console::setConsoleColor(CC_Narration);
-    Output::write(text, speed);
+    Display::write(text, speed);
     Console::resetConsoleColor();
 }
 
-void Output::writeDialogue(std::string text, int speed)
+void Display::writeDialogue(std::string text, int speed)
 {
     Console::setConsoleColor(CC_Dialogue);
-    Output::write(text, speed);
+    Display::write(text, speed);
     Console::resetConsoleColor();
 }
 
@@ -57,7 +57,7 @@ void Output::writeDialogue(std::string text, int speed)
 int Input::getChoice()
 {
     int choice;
-    Output::write("\t> ", 25);
+    Display::write("\t> ", 25);
     std::cin >> choice;
     std::cin.clear();
     std::cin.ignore();
@@ -68,7 +68,7 @@ int Input::getChoice()
 std::string Input::getString()
 {
     std::string text;
-    Output::write("\t> ", 25);
+    Display::write("\t> ", 25);
     std::cin >> text;
     std::cin.clear();
     std::cin.ignore();

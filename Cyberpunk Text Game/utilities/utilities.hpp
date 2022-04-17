@@ -85,17 +85,17 @@ public:
 	static void waitForUserInput();
 };
 
+class Display
+{
+public:
+	static void write(const std::string& text, int speed = 50); // powolne wypisywanie kodu - (tekst, szybkoœæ)
+	static void writeNarration(std::string text, int speed = 50); // powolne wypisywanie kodu - (tekst, szybkoœæ)
+	static void writeDialogue(std::string text, int speed = 50); // powolne wypisywanie kodu - (tekst, szybkoœæ)
+};
+
 class Input
 {
 public:
 	static int getChoice();
 	static std::string getString();
-};
-
-class Output
-{
-public:
-	static void write(const std::string& text, int speed = 60); // powolne wypisywanie kodu - (tekst, szybkoœæ)
-	static void writeNarration(std::string text, int speed = 60); // powolne wypisywanie kodu - (tekst, szybkoœæ)
-	static void writeDialogue(std::string text, int speed = 60); // powolne wypisywanie kodu - (tekst, szybkoœæ)
 };
