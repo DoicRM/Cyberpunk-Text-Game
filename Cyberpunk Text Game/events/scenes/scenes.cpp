@@ -947,7 +947,7 @@ void Event::enterClub()
     //--------------------------------
     Menu menu11;
     menu11.clearOptions();
-    menu11.addOptions({ "Go to the dance floor.", "Go to the bar.", "Back on the street." });
+    menu11.addOptions({ "Go to the dance floor.", "Go to the bar.", "Go upstairs.", "Back on the street." });
     menu11.showOptions();
     //--------------------------------
     while (true)
@@ -969,6 +969,13 @@ void Event::enterClub()
             break;
         }
         else if (heroChoice == 3)
+        {
+            Console::clearScreen();
+            menu11.showHeroChoice();
+            clubUpstairs();
+            break;
+        }
+        else if (heroChoice == 4)
         {
             Console::clearScreen();
             menu11.showHeroChoice();
@@ -1078,6 +1085,7 @@ void Event::clubBar()
             Display::writeNarration("\n\tYou reach for the vessel and empty it.");
             Sleep(1000);
             Display::writeNarration(" You feel a pleasant warmth spreading up your throat and further down your gullet.\n\n");
+            Display::writeDialogue("\n\t- 'Anything else?'\n\n");
             continue;
         }
         else if (heroChoice == 2)
@@ -1104,7 +1112,7 @@ void Event::clubBar()
         else Logger::error("Entered invalid value of <b>heroChoice</b>", "Event::clubBar"); continue;
     }
 }
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 void Event::miaMeeting()
 {
     Logger::out("Function starts", "Event::miaMeeting");
@@ -1161,10 +1169,12 @@ void Event::miaMeeting()
         Display::write(" has been received.");
 
         Display::writeDialogue("\n\t- 'There is a gun shop nearby.");
-        Display::writeDialogue(" It is run by a guy named Zed. Visit him before you head upstairs.'");
+        Display::writeDialogue(" It's run by a guy named Zed. Visit him before you head upstairs.");
+        Sleep(1000);
+        Display::writeDialogue("\n\tI'll meet you when you've sorted this out.'");
     }
 }
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 void Event::clubUpstairs()
 {
     Logger::out("Function starts", "Event::clubUpstairs");
@@ -1200,76 +1210,99 @@ void Event::clubUpstairs()
         else Logger::error("Entered invalid value of <b>heroChoice</b>", "Event::clubUpstairs"); continue;
     }
 }
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 void Event::dialogueWithJet()
 {
     Logger::out("Function starts", "Event::dialogueWithJet");
     int jetPoints = 0;
+    bool jetWarnHero = false, jetBeatsHero = false;
     std::cout << std::endl << std::endl;
-    //--------------------------------
     Menu menu16;
-    menu16.clearOptions();
-    menu16.addOption("'I want to pass.'");
-    menu16.addOption("'What is behind that door?'");
 
-    if (Hero::heroes[0].hasItem(&Item::items["Pistol"]))
-    {
-        menu16.addOption("Kill him with a pistol.");
-        menu16.addOption("Stun him with a pistol.");
-    }
-
-    menu16.addOption("It's time for me to go.");
-    menu16.showOptions();
-    //--------------------------------
     while (true)
     {
+        if (jetPoints == 2 && !jetWarnHero)
+        {
+            jetWarnHero = true;
+            Npc::npcs["Jet"].setAttitude(Angry);
+            Display::writeDialogue("\t- 'I don't like your questions. Get out of here while you still can.'\n\n");
+        }
+        else if (jetPoints > 2 && !jetBeatsHero)
+        {
+            jetBeatsHero = true;
+            Npc::npcs["Jet"].setAttitude(Hostile);
+            Display::writeDialogue("\t- 'I warned you. Now we're going to have some fun.'");
+            Display::writeNarration("\n\tBefore you can blink, you get a right hook to the stomach accompanied by a left hook aimed\n\tat the jaw.");
+            Sleep(2500);
+            Game::game[0].setCurrentLocation(&Location::locations["Street"]);
+            // wakeUpBeforeMeetingWithJet();
+        }
+
+        //--------------------------------
+        menu16.clearOptions();
+        menu16.addOption("'I want to pass.'");
+        menu16.addOption("'What is behind that door?'");
+
+        if (Hero::heroes[0].hasItem(&Item::items["Pistol"]))
+        {
+            menu16.addOption("Kill him with a pistol.");
+            menu16.addOption("Stun him with a pistol.");
+        }
+
+        menu16.addOption("'It's time for me to go.'");
+        menu16.showOptions();
+        //--------------------------------
         heroChoice = menu16.inputChoice();
 
         if (heroChoice == 1)
         {
-            menu16.clearOptions();
             Console::clearScreen();
             menu16.showHeroChoice();
+            Display::writeNarration("\n\tWhen you say this a big paw blocks your way.");
+            Display::writeDialogue("\n\t- 'You don't get what you're looking for here, mate.'\n\n");
             jetPoints += 1;
-            break;
+            continue;
         }
         else if (heroChoice == 2)
         {
-            menu16.clearOptions();
             Console::clearScreen();
             menu16.showHeroChoice();
+            Display::writeNarration("\n\tThe security guard instinctively peeks towards the door.");
+            Display::writeDialogue("\n\t- 'You shouldn't be interested in this.'\n\n");
             jetPoints += 1;
-            break;
+            continue;
         }
         else if (heroChoice == 3 && !Hero::heroes[0].hasItem(&Item::items["Pistol"]))
         {
-            menu16.clearOptions();
             Console::clearScreen();
             menu16.showHeroChoice();
-            Console::clearScreen();
+            Display::writeDialogue("\n\t- 'Yeah. Get lost.'");
+            Display::writeNarration("\n\tAnd so you turn back and return to the kingdom of loud music and dancing people.\n\n");
             nightclub();
             break;
         }
         else if (heroChoice == 3 && Hero::heroes[0].hasItem(&Item::items["Pistol"]))
         {
-            menu16.clearOptions();
             Console::clearScreen();
             menu16.showHeroChoice();
+            // TODO: dodaæ opis zabicia Jeta!
+            vincentOffice();
             break;
         }
         else if (heroChoice == 4 && Hero::heroes[0].hasItem(&Item::items["Pistol"]))
         {
-            menu16.clearOptions();
             Console::clearScreen();
             menu16.showHeroChoice();
+            // TODO: dodaæ opis og³uszenia Jeta!
+            vincentOffice();
             break;
         }
         else if (heroChoice == 5 && Hero::heroes[0].hasItem(&Item::items["Pistol"]))
         {
-            menu16.clearOptions();
             Console::clearScreen();
             menu16.showHeroChoice();
-            Console::clearScreen();
+            Display::writeDialogue("\n\t- 'Yeah. Get lost.'");
+            Display::writeNarration("\n\tAnd so you turn back and return to the kingdom of loud music and dancing people.\n\n");
             nightclub();
             break;
         }
@@ -1554,6 +1587,7 @@ void Event::vincentResurrection()
     Display::write(" DIE!>");
     Console::waitForUserInput();
 }
+
 void Event::nightclubCrossroads()
 {
     Logger::out("Function starts", "Event::nightclubCrossroads");
@@ -1561,10 +1595,7 @@ void Event::nightclubCrossroads()
     //--------------------------------
     Menu menu23;
     menu23.clearOptions();
-    menu23.addOption("Go to the dance floor.");
-    menu23.addOption("Go to the bar.");
-    menu23.addOption("Go upstairs.");
-    menu23.addOption("Visit: " + Location::locations["Street"].getName() + ".");
+    menu23.addOptions({ "Go to the dance floor.", "Go to the bar.", "Go upstairs.", "Back on the street." });
     menu23.showOptions();
     //--------------------------------
     while (true)
@@ -1678,7 +1709,7 @@ void Event::namingHero()
     Logger::out("Function starts", "Event::namingHero");
     std::string heroName;
     Console::resetConsoleColor();
-    std::cout << std::endl;
+    //std::cout << std::endl;
     heroName = Input::getString();
     Hero::heroes[0].setName(heroName);
     Logger::out("Set <b>" + Hero::heroes[0].getName() + "</b> to hero's name", "Event::namingHero");
