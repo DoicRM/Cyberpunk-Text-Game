@@ -37,6 +37,11 @@ Npc::~Npc()
 {
 }
 
+void Npc::setName(std::string name)
+{
+    this->name = name;
+}
+
 void Npc::setAttitude(int attitude)
 {
     this->attitude = attitude;
@@ -84,10 +89,10 @@ void Npc::initNpcs_EN()
 
     Npc Bob("Bob", Male, Fraction::fractions["Beggars"]);
     Npc Caden("Caden", Male, Fraction::fractions["Police"]);
-    Npc CadensPartner("Policeman", Male, Fraction::fractions["Police"]);
+    Npc CadensPartner("The policeman", Male, Fraction::fractions["Police"]);
     Npc Zed("Zed", Male, Fraction::fractions["None"]);
     Npc Nyx("Nyx", Female, Fraction::fractions["Sleepers"]);
-    Npc Jet("Jet", Male, Fraction::fractions["Hammers"]);
+    Npc Jet("The bouncer", Male, Fraction::fractions["Hammers"]);
     Npc Vincent("Vincent", Male, Fraction::fractions["Hammers"]);
     Npc Enigma("Enigma", Male, Fraction::fractions["None"]);
     Npc Morpheus("Morpheus", Male, Fraction::fractions["Sleepers"]);
@@ -112,7 +117,7 @@ void Npc::initNpcs_PL()
     Npc CadensPartner("Policjant", Male, Fraction::fractions["Police"]);
     Npc Zed("Zed", Male, Fraction::fractions["None"]);
     Npc Nyx("Nyx", Female, Fraction::fractions["Sleepers"]);
-    Npc Jet("Jet", Male, Fraction::fractions["Hammers"]);
+    Npc Jet("Ochroniarz", Male, Fraction::fractions["Hammers"]);
     Npc Vincent("Vincent", Male, Fraction::fractions["Hammers"]);
     Npc Enigma("Enigma", Male, Fraction::fractions["None"]);
     Npc Morpheus("Morfeusz", Male, Fraction::fractions["Sleepers"]);

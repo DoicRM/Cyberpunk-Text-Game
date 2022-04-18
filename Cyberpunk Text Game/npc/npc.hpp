@@ -18,6 +18,7 @@ public:
     Npc(std::string name, int sex, Fraction fraction, int attitude, int status, bool knowingHero);
     virtual ~Npc();
 
+    void setName(std::string name);
     void setAttitude(int attitude);
     void printAttitude();
     void setStatus(int status) { this->status = status; };
