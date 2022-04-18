@@ -123,9 +123,7 @@ void Game::writeLogo()
     std::cout << std::endl;
 
     for (int i = 0; i < logo.size(); i++)
-    {
         Display::write(logo[i], 1);
-    }
 
     Console::resetConsoleColor();
 
@@ -140,9 +138,7 @@ void Game::loadLogo()
     std::cout << std::endl;
 
     for (int i = 0; i < logo.size(); i++)
-    {
         std::cout << logo[i];
-    }
 
     std::cout << std::endl;
     Console::resetConsoleColor();
@@ -202,7 +198,6 @@ void Game::newGame()
 void Game::continueGame()
 {
     Logger::out("Function starts", "Game::continueGame");
-    Sleep(500);
     Console::clearScreen();
     Console::setConsoleColor(CC_Lightblue);
 
@@ -257,10 +252,10 @@ void Game::endGame()
 
     do
     {
+        Console::clearScreen();
+
         if (getLang() == PL)
         {
-            Sleep(500);
-            Console::clearScreen();
             Display::write("\n\tJesteœ pewien, ¿e chcesz wyjœæ z gry?\n", 25);
             //--------------------------------
             quitMenu.clearOptions();
@@ -270,8 +265,6 @@ void Game::endGame()
         }
         else
         {
-            Sleep(500);
-            Console::clearScreen();
             Display::write("\n\tAre you sure you want to end the game?\n", 25);
             //--------------------------------
             quitMenu.clearOptions();
@@ -285,8 +278,7 @@ void Game::endGame()
         switch (choice) {
         case 1: end(); break;
         case 2:
-            Console::clearScreen();
-            Sleep(500); 
+            Console::clearScreen(); 
             loadLogo();
             mainMenu();
             break;
@@ -358,7 +350,6 @@ void Game::startEventsByLocation()
     else if (getCurrentLocation() == &Location::locations["GunShop"]) Event::gunShop();
 }
 
-// Inicjowanie ekwipunku gracza
 void Game::initHeroEQ()
 {
     Logger::out("Function starts", "Function::initHeroEQ");
@@ -378,7 +369,6 @@ void Game::initHeroEQ()
     else Logger::error("No file access", "Function::initHeroEQ");
 }
 
-// Inicjowanie listy zadañ
 void Game::initQuestsList()
 {
     Logger::out("Function starts", "Function::initQuestsList");
