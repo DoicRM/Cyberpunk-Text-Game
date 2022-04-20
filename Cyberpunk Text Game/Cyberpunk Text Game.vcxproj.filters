@@ -46,6 +46,9 @@
     <Filter Include="Utilities\Menu">
       <UniqueIdentifier>{65f50685-5d76-44ff-83b5-10a942d33aeb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Npc\ambient">
+      <UniqueIdentifier>{cd700b1e-5424-45cb-99aa-c93e6391e1ad}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -94,6 +97,9 @@
     <ClCompile Include="utilities\menu\menu.cpp">
       <Filter>Utilities\Menu</Filter>
     </ClCompile>
+    <ClCompile Include="npc\ambient\ambientNpc.cpp">
+      <Filter>Npc\ambient</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="events\events.hpp">
@@ -137,6 +143,9 @@
     </ClInclude>
     <ClInclude Include="utilities\menu\menu.hpp">
       <Filter>Utilities\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="npc\ambient\ambientNpc.hpp">
+      <Filter>Npc\ambient</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

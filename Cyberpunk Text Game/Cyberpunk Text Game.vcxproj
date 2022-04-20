@@ -151,6 +151,7 @@
     <ClCompile Include="item\weapon\weapon.cpp" />
     <ClCompile Include="location\location.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="npc\ambient\ambientNpc.cpp" />
     <ClCompile Include="npc\npc.cpp" />
     <ClCompile Include="quest\quest.cpp" />
     <ClCompile Include="utilities\logger\logger.cpp" />
@@ -167,6 +168,7 @@
     <ClInclude Include="item\item.hpp" />
     <ClInclude Include="item\weapon\weapon.hpp" />
     <ClInclude Include="location\location.hpp" />
+    <ClInclude Include="npc\ambient\ambientNpc.hpp" />
     <ClInclude Include="npc\npc.hpp" />
     <ClInclude Include="quest\quest.hpp" />
     <ClInclude Include="utilities\logger\logger.hpp" />
