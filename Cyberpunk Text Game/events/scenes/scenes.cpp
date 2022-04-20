@@ -1234,8 +1234,9 @@ void Event::dialogueWithJet()
             Display::writeDialogue("\t- 'I warned you. Now we're going to have some fun.'");
             Display::writeNarration("\n\tBefore you can blink, you get a right hook to the stomach accompanied by a left hook aimed\n\tat the jaw.");
             Sleep(2500);
-            Game::game[0].setCurrentLocation(&Location::locations["Street"]);
-            // wakeUpBeforeMeetingWithJet();
+            Console::clearScreen();
+            Sleep(1500);
+            wakeUpBeforeMeetingWithJet();
         }
 
         //--------------------------------
@@ -1308,6 +1309,25 @@ void Event::dialogueWithJet()
         }
         else Logger::error("Entered invalid value of <b>heroChoice</b>", "Event::dialogueWithJet"); continue;
     }
+}
+
+void Event::wakeUpBeforeMeetingWithJet()
+{
+    Logger::out("Function starts", "Event::wakeUpBeforeMeetingWithJet");
+    Display::writeNarration("\n\tEmptiness...", 65);
+    Sleep(1000);
+    Display::writeNarration(" Various sounds are coming from the darkness", 60);
+    Sleep(1500);
+    Display::writeNarration(", getting louder by the second.");
+    Sleep(1500);
+    Display::writeNarration("\n\tFinally, single colours appear before your eyes.");
+    Sleep(1000);
+    Display::writeNarration(" In the darkness of the night you see the\n\toutline of a street.");
+    Sleep(500);
+    Display::writeNarration("You remember only how " + Npc::npcs["Jet"].getName() + " put you down with one blow...");
+    Sleep(1000);
+    Display::writeNarration("\n\tWith difficulty you pick yourself up in the dirt and, walking slowly, you come to a street\n\tbathed in light.");
+    Game::game[0].setCurrentLocation(&Location::locations["Street"]);
 }
 
 void Event::vincentAssassination()

@@ -31,6 +31,7 @@ private:
 	static void lookAtAmnesia();
 	static void meetingWithSecurityGuards();
 	static void meetingWithPolicemans();
+	static void wakeUpBeforeMeetingWithJet();
 	static void streetCrossroads();
 	//	Sklep z broni¹
 	static void encounterGunStore();
