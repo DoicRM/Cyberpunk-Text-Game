@@ -42,6 +42,16 @@ void Npc::setName(std::string name)
     this->name = name;
 }
 
+void Npc::setSex(int sex)
+{
+    this->sex = sex;
+}
+
+void Npc::setFraction(Fraction fraction)
+{
+    this->fraction = fraction;
+}
+
 void Npc::setAttitude(int attitude)
 {
     this->attitude = attitude;
