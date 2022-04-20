@@ -99,3 +99,9 @@ public:
 	static int getChoice();
 	static std::string getString();
 };
+
+class RandUtil
+{
+public:
+	static int randBetween(int min, int max);
+};

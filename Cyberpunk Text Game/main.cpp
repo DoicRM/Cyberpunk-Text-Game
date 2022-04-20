@@ -2,6 +2,7 @@
 
 int main()
 {   
+    srand((unsigned)time(NULL));
     Logger::setup(false);
     Game::init();
     Game::game[0].run();

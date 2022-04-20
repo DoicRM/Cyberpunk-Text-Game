@@ -75,3 +75,8 @@ std::string Input::getString()
     Logger::out("Entered <b>" + text + "</b>", "Function::getString");
     return text;
 }
+
+int RandUtil::randBetween(int min, int max)
+{
+    return rand() % ((max - min) + 1) + min;
+}
