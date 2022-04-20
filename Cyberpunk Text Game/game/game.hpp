@@ -5,6 +5,7 @@
 #include "../item/clothes/clothes.hpp"
 #include "../hero/hero.hpp"
 #include "../npc/npc.hpp"
+#include "../npc/ambient/ambientNpc.hpp"
 #include "../quest/quest.hpp"
 #include "../events/events.hpp"
 #include "../utilities/utilities.hpp"
