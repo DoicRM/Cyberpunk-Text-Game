@@ -1,7 +1,10 @@
 #include "../events.hpp"
 
-int heroChoice = 0;
-bool bobRecommendsZed = false, zedKnowsAboutBobAndZed = false, heroIsOnDanceFloor = false, heroIsAtBar = false, heroKnowsVincentCode = false;
+bool bobRecommendsZed       = false,
+     zedKnowsAboutBobAndZed = false,
+     heroIsOnDanceFloor     = false,
+     heroIsAtBar            = false,
+     heroKnowsVincentCode   = false;
 
 // MROCZNY ZAU£EK
 void Event::prologue()
@@ -86,7 +89,6 @@ void Event::wakeUpInDarkAlley()
         Sleep(2500);
         Display::writeNarration("\n\tMaybe you will find something interesting there...\n\n");
         //--------------------------------
-        menu1.clearOptions();
         menu1.addOptions({ "Search the area for something valuable.", "Find the exit from the alley." });
         menu1.showOptions();
         //--------------------------------
@@ -110,7 +112,6 @@ void Event::wakeUpInDarkAlley()
         Sleep(1500);
         Display::writeNarration("\n\tMo¿e znajdziesz tam coœ interesuj¹cego...\n\n");
         //--------------------------------
-        menu1.clearOptions();
         menu1.addOptions({ "Rozejrzyj siê po okolicy w poszukiwaniu czegoœ cennego.", "ZnajdŸ wyjœcie z zau³ka." });
         menu1.showOptions();
         //--------------------------------
@@ -147,8 +148,13 @@ void Event::acceleratorFinding()
     Sleep(2000);
 
     Hero::heroes[0].addItem(&Item::items["AD13"]);
+    Hero::heroes[0].addMoney(5.0);
     Console::setConsoleColor(CC_Item);
     Display::write("\n\n\t" + Item::items["AD13"].getName());
+    Console::resetConsoleColor();
+    Display::write(" and ");
+    Console::setConsoleColor(CC_Green);
+    Display::write("5$");
     Console::resetConsoleColor();
     Display::write(" was found.");
 
@@ -186,7 +192,6 @@ void Event::outOfTheAlley()
     Display::writeDialogue("\n\t- 'Hey, kid. Wait for a second.'\n\n");
     //--------------------------------
     Menu menu2;
-    menu2.clearOptions();
     menu2.addOptions({ "Stop and find out what he wants.", "Ignore him and keep walking." });
     menu2.showOptions();
     //--------------------------------
@@ -237,7 +242,6 @@ void Event::dialogueWithBob()
     Display::writeNarration("\n\tThe shadows in front of you, begin to ripple when your caller stands up.\n\n");
     //--------------------------------
     Menu menu3;
-    menu3.clearOptions();
     menu3.addOptions({ "'I'm not looking for trouble.'", "'I'm just looking around. Where are we actually?'", "'It's not your business.'" });
     menu3.showOptions();
     //--------------------------------
@@ -332,7 +336,6 @@ void Event::darkAlleyCrossroads()
         Display::writeDialogue("\n\t- 'It's you again. Why don't you tell me something for one this time?'\n\n");
         //--------------------------------
         Menu menu2;
-        menu2.clearOptions();
         menu2.addOptions({ "Stop and finally find out what he wants.", "Ignore him and keep walking." });
         menu2.showOptions();
         //--------------------------------
@@ -375,7 +378,6 @@ void Event::darkAlleyCrossroads()
             Display::writeNarration("\n\tMaybe you will find something interesting there...\n\n");
             //--------------------------------
             Menu menu1;
-            menu1.clearOptions();
             menu1.addOptions({ "Search the area for something valuable.", "Go out of the alley." });
             menu1.showOptions();
             //--------------------------------
@@ -437,7 +439,6 @@ void Event::lookAtAmnesia()
     }
     //--------------------------------
     Menu menu4;
-    menu4.clearOptions();
     menu4.addOptions({ "Come closer and see what it's all about.", "Take a look around the area." });
     menu4.showOptions();
     //--------------------------------
@@ -481,7 +482,6 @@ void Event::encounterGunStore()
     std::cout << std::endl << std::endl;
     //--------------------------------
     Menu menu5;
-    menu5.clearOptions();
     menu5.addOptions({ "Go inside.", "Turn back." });
     menu5.showOptions();
     //--------------------------------
@@ -595,7 +595,6 @@ void Event::meetingWithPolicemans()
     Display::writeNarration("\n\tThe bouncer points to the door behind him.\n\n");
     //--------------------------------
     Menu menu6;
-    menu6.clearOptions();
     menu6.addOptions({ "Go inside.", "Turn back." });
     menu6.showOptions();
     //--------------------------------
@@ -614,7 +613,6 @@ void Event::meetingWithPolicemans()
         {
             Console::clearScreen();
             menu6.showHeroChoice();
-            //std::cout << std::endl;
             Game::game[0].setCurrentLocation(&Location::locations["GunShop"]);
             break;
         }
@@ -687,22 +685,7 @@ void Event::enterGunShop()
         if (Hero::heroes[0].hasItem(&Item::items["Pistol"])) Display::writeDialogue("\n\t- 'What's up? How's the gun working out?'");
 
         std::cout << std::endl;
-
-        if (Quest::quests["ZedAccelerator"].getIsRunning() && !Quest::quests["ZedAccelerator"].getIsCompleted())
-        {
-            if (!Hero::heroes[0].hasItem(&Item::items["AD13"]))
-            {
-                dialogueWithZed();
-            }
-            else
-            {
-                // TODO
-            }
-        }
-        else
-        {
-            // TODO
-        }
+        dialogueWithZed();
     }
 }
 
@@ -720,7 +703,11 @@ void Event::dialogueWithZed()
         menu8.addOption("'What do you have?'");
         menu8.addOption("'How's business going?'");
 
-        if (bobRecommendsZed && !zedKnowsAboutBobAndZed) menu8.addOption("'You're Zed? I come from Bob.'");
+        if (bobRecommendsZed && !zedKnowsAboutBobAndZed)
+            menu8.addOption("'You're Zed? I come from Bob.'");
+
+        if (Quest::quests["ZedAccelerator"].getIsRunning() && Hero::heroes[0].hasItem(&Item::items["AD13"]))
+            menu8.addOption("'I have an accelerator for you.'");
 
         menu8.addOption("'I have to go...'");
         menu8.showOptions();
@@ -812,7 +799,6 @@ void Event::zedTrade()
             Display::writeDialogue(" Tell me, what do you like?'\n\n");
             //--------------------------------
             Menu menu9;
-            menu9.clearOptions();
             menu9.addOptions({ "Buy: pistol (250 $).", "'I have made up my mind.'" });
             menu9.showOptions();
             //--------------------------------
@@ -844,7 +830,6 @@ void Event::zedTrade()
             std::cout << std::endl;
             //--------------------------------
             Menu menu10;
-            menu10.clearOptions();
             menu10.addOptions({ "Buy: pistol (250 $).", "'I have made up my mind.'" });
             menu10.showOptions();
             //--------------------------------
@@ -946,7 +931,6 @@ void Event::enterClub()
     Display::writeNarration(" Next to the dance floor is a bar, and behind it are several mechanically streamlined\n\tbartenders.\n\n");
     //--------------------------------
     Menu menu11;
-    menu11.clearOptions();
     menu11.addOptions({ "Go to the dance floor.", "Go to the bar.", "Go upstairs.", "Back on the street." });
     menu11.showOptions();
     //--------------------------------
@@ -1005,7 +989,6 @@ void Event::clubDanceFloor()
         Display::writeNarration(" Is it a coincidence\n\tthat she has just appeared and is dancing so close to you?\n\n");
         //--------------------------------
         Menu menu12;
-        menu12.clearOptions();
         menu12.addOptions({ "'What do you want?'", "'Hey, baby.'", "Keep dancing with no words." });
         menu12.showOptions();
         //--------------------------------
@@ -1066,7 +1049,6 @@ void Event::clubBar()
     {
         //--------------------------------
         Menu menu13;
-        menu13.clearOptions();
         menu13.addOptions({ "'Give me anything.'", "'Who's in charge?'", "'Bye.'" });
         menu13.showOptions();
         //--------------------------------
@@ -1119,7 +1101,6 @@ void Event::miaMeeting()
     std::cout << std::endl << std::endl;
     //--------------------------------
     Menu menu14;
-    menu14.clearOptions();
     menu14.addOptions({ "'What is it about?'", "Be silent and let her speak." });
     menu14.showOptions();
     //--------------------------------
@@ -1181,7 +1162,6 @@ void Event::clubUpstairs()
     Display::writeNarration("\n\tYou go up a winding staircase. At the end of a short banister you will see a closed door\n\tguarded by another bulky individual.\n\n");
     //--------------------------------
     Menu menu15;
-    menu15.clearOptions();
     menu15.addOptions({ "Come closer.", "Go back downstairs." });
     menu15.showOptions();
     //--------------------------------
@@ -1238,7 +1218,6 @@ void Event::dialogueWithJet()
             Sleep(1500);
             wakeUpBeforeMeetingWithJet();
         }
-
         //--------------------------------
         menu16.clearOptions();
         menu16.addOption("'I want to pass.'");
@@ -1326,7 +1305,7 @@ void Event::wakeUpBeforeMeetingWithJet()
     Sleep(500);
     Display::writeNarration("You remember only how " + Npc::npcs["Jet"].getName() + " put you down with one blow...");
     Sleep(1000);
-    Display::writeNarration("\n\tWith difficulty you pick yourself up in the dirt and, walking slowly, you come to a street\n\tbathed in light.");
+    Display::writeNarration("\n\tWith difficulty you pick yourself up in the ground and, walking slowly, you come to a street\n\tbathed in light.");
     Game::game[0].setCurrentLocation(&Location::locations["Street"]);
 }
 
@@ -1342,7 +1321,6 @@ void Event::vincentOffice()
     Display::writeNarration("\tYou enter the manager's office immersed in twilight. In the middle of the room stands a sizable desk, and on it are stacks of documents and computer. To the left of the entrance is a window to the street below. On the right you will notice a door to another room.\n\n");
     //--------------------------------
     Menu menu17;
-    menu17.clearOptions();
     menu17.addOptions({ "Open the door and go into the other room.", "Stay and search the office." });
     menu17.showOptions();
     //--------------------------------
@@ -1391,7 +1369,6 @@ void Event::vincentHideoutCode()
         std::cout << std::endl << std::endl;
         //--------------------------------
         Menu menu18;
-        menu18.clearOptions();
         menu18.addOptions({ "Use code '2021'.", "Search the office." });
         menu18.showOptions();
         //--------------------------------
@@ -1411,7 +1388,6 @@ void Event::vincentHideout()
     Display::writeNarration("\n\tCreeping up, you come closer. Your goal is within reach. The question is what will you do?\n\n");
     //--------------------------------
     Menu menu19;
-    menu19.clearOptions();
     menu19.addOptions({ "Disconnect his consciousness from the neuronet. (Kill him)", "Wait for his consciousness to leave the neuronet." });
     menu19.showOptions();
     //--------------------------------
@@ -1455,7 +1431,6 @@ void Event::dialogueWithVincent()
     std::cout << std::endl << std::endl;
     //--------------------------------
     Menu menu20;
-    menu20.clearOptions();
     menu20.addOptions({ "'Die!'", "'I don't want to fight with you.'", "'Nyx wants you dead.'" });
     menu20.showOptions();
     //--------------------------------
@@ -1497,7 +1472,6 @@ void Event::dialogueWithVincent()
     std::cout << std::endl << std::endl;
     //--------------------------------
     Menu menu21;
-    menu21.clearOptions();
     menu21.addOptions({ "'It doesn't matter.'", "'Your girlfriend, Nyx.'" });
     menu21.showOptions();
     //--------------------------------
@@ -1554,7 +1528,6 @@ void Event::dialogueWithVincent()
     Display::writeNarration("\n\tNyx walks past you and kneels by the dead man. She starts searching his pockets for something.\n\n");
     //--------------------------------
     Menu menu22;
-    menu22.clearOptions();
     menu22.addOptions({ "Do nothing.", "'What is this all about?'" });
     menu22.showOptions();
     //--------------------------------
@@ -1614,7 +1587,6 @@ void Event::nightclubCrossroads()
 
     //--------------------------------
     Menu menu23;
-    menu23.clearOptions();
     menu23.addOptions({ "Go to the dance floor.", "Go to the bar.", "Go upstairs.", "Back on the street." });
     menu23.showOptions();
     //--------------------------------
@@ -1652,24 +1624,6 @@ void Event::nightclubCrossroads()
         }
         else Logger::error("Entered invalid value of <b>heroChoice</b>", "Event::nightclubCrossroads"); continue;
     }
-}
-
-// KRYJÓWKA ŒNI¥CYCH
-void Event::actOne()
-{
-    Logger::out("Function starts", "Event::actOne");
-
-    if (Game::game[0].getLang() == EN) Display::write("\n\tAct One");
-    else Display::write("\n\tAkt pierwszy");
-
-    Sleep(2000);
-
-    if (Game::game[0].getLang() == EN) Display::write("\n\n\tPROSELYTISM");
-    else Display::write("\n\n\tNAWRÓCENIE");
-
-    Sleep(5000);
-    Console::clearScreen();
-    storyIntroduction();
 }
 
 // INNE
@@ -1729,7 +1683,6 @@ void Event::namingHero()
     Logger::out("Function starts", "Event::namingHero");
     std::string heroName;
     Console::resetConsoleColor();
-    //std::cout << std::endl;
     heroName = Input::getString();
     Hero::heroes[0].setName(heroName);
     Logger::out("Set <b>" + Hero::heroes[0].getName() + "</b> to hero's name", "Event::namingHero");
