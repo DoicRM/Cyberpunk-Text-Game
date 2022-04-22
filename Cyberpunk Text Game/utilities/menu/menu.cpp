@@ -44,13 +44,15 @@ void Menu::addOption(std::string description)
     this->optionNr += 1;
 }
 
-void Menu::addOptions(std::array<std::string, 10> optionsArray)
+void Menu::addOptions(std::array<std::string, 10> options)
 {
-    for (int i = 0; i < optionsArray.size(); i++)
+    clearOptions();
+
+    for (int i = 0; i < options.size(); i++)
     {
-        if (!optionsArray[i].empty())
+        if (!options[i].empty())
         {
-            this->options[optionNr] = optionsArray[i];
+            this->options[optionNr] = options[i];
             this->optionNr += 1;
         }
     }
