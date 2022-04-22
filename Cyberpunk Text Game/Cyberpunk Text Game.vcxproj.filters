@@ -82,7 +82,7 @@
     <ClCompile Include="inventory\inventory.cpp">
       <Filter>Inventory</Filter>
     </ClCompile>
-    <ClCompile Include="events\scenes\scenes.cpp">
+    <ClCompile Include="events\scenes\prologue.cpp">
       <Filter>Events\Scenes</Filter>
     </ClCompile>
     <ClCompile Include="utilities\logger\logger.cpp">
@@ -99,6 +99,18 @@
     </ClCompile>
     <ClCompile Include="npc\ambient\ambientNpc.cpp">
       <Filter>Npc\ambient</Filter>
+    </ClCompile>
+    <ClCompile Include="events\scenes\actOne.cpp">
+      <Filter>Events\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="events\scenes\actThree.cpp">
+      <Filter>Events\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="events\scenes\actTwo.cpp">
+      <Filter>Events\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="events\scenes\epilogue.cpp">
+      <Filter>Events\Scenes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

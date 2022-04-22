@@ -141,7 +141,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="events\events.cpp" />
-    <ClCompile Include="events\scenes\scenes.cpp" />
+    <ClCompile Include="events\scenes\actOne.cpp" />
+    <ClCompile Include="events\scenes\actThree.cpp" />
+    <ClCompile Include="events\scenes\actTwo.cpp" />
+    <ClCompile Include="events\scenes\epilogue.cpp" />
+    <ClCompile Include="events\scenes\prologue.cpp" />
     <ClCompile Include="fraction\fraction.cpp" />
     <ClCompile Include="game\game.cpp" />
     <ClCompile Include="hero\hero.cpp" />
