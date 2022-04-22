@@ -79,7 +79,6 @@ void Game::selectLanguage()
         Console::clearScreen();
         std::cout << std::endl;
         //--------------------------------
-        langMenu.clearOptions();
         langMenu.addOptions({ "EN", "PL" });
         langMenu.showOptions();
         //--------------------------------
@@ -159,7 +158,6 @@ void Game::mainMenu()
     if (getLang() == PL)
     {
         //--------------------------------
-        mainMenu.clearOptions();
         mainMenu.addOptions({ "Nowa gra", "Kontynuuj grê", "Zmieñ jêzyk", "Napisy", "WyjdŸ z gry" });
         mainMenu.showOptions();
         //--------------------------------
@@ -167,7 +165,6 @@ void Game::mainMenu()
     else
     {
         //--------------------------------
-        mainMenu.clearOptions();
         mainMenu.addOptions({ "New game", "Continue game", "Change language", "Credits", "Quit game" });
         mainMenu.showOptions();
         //--------------------------------
@@ -226,7 +223,6 @@ void Game::changeLanguage()
         else if (getLang() == PL) Display::write("\n\tWybierz swój jêzyk:\n", 25);
 
         //--------------------------------
-        langMenu.clearOptions();
         langMenu.addOptions({ "EN", "PL" });
         langMenu.showOptions();
         //--------------------------------
@@ -258,7 +254,6 @@ void Game::endGame()
         {
             Display::write("\n\tJesteœ pewien, ¿e chcesz wyjœæ z gry?\n", 25);
             //--------------------------------
-            quitMenu.clearOptions();
             quitMenu.addOptions({ "Tak", "Nie" });
             quitMenu.showOptions();
             //--------------------------------
@@ -267,7 +262,6 @@ void Game::endGame()
         {
             Display::write("\n\tAre you sure you want to end the game?\n", 25);
             //--------------------------------
-            quitMenu.clearOptions();
             quitMenu.addOptions({ "Yes", "No" });
             quitMenu.showOptions();
             //--------------------------------
