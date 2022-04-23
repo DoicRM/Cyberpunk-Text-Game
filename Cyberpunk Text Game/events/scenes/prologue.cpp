@@ -1674,7 +1674,12 @@ void Event::loadingFiles()
     Display::write("=", 100);
     Display::write("||", 100);
     Sleep(1000);
-    Display::write("\n\tDownload completed.");
+
+    if (Game::game[0].getLang() == EN)
+        Display::write("\n\tDownload completed");
+    else
+        Display::write("\n\tPobieranie zakoñczone");
+
     Console::resetConsoleColor();
 }
 
@@ -1682,6 +1687,12 @@ void Event::namingHero()
 {
     Logger::out("Function starts", "Event::namingHero");
     std::string heroName;
+
+    if (Game::game[0].getLang() == EN)
+        Display::writeNarration("\n\tYour name... You start wandering your thoughts around what your name is. As if through a fog\n\tit occurs to you that you are:\n");
+    else
+        Display::writeNarration("\n\tTwoje imiê... Zaczynasz b³¹dziæ myœlami wokó³ tego, jak siê nazywasz. Jakby przez mg³ê dociera\n\tdo ciebie, ¿e jesteœ:\n");
+
     Console::resetConsoleColor();
     heroName = Input::getString();
     Hero::heroes[0].setName(heroName);
