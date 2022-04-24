@@ -653,10 +653,10 @@ void Event::streetCrossroads()
         }
         else if (heroChoice == 3)
         {
-            Console::clearScreen();
-            menu7.showHeroChoice();
-            Game::game[0].setCurrentLocation(&Location::locations["GunShop"]);
-            break;
+        Console::clearScreen();
+        menu7.showHeroChoice();
+        Game::game[0].setCurrentLocation(&Location::locations["GunShop"]);
+        break;
         }
         else Logger::error("Entered invalid value of <b>heroChoice</b>", "Event::streetCrossroads"); continue;
     }
@@ -748,7 +748,18 @@ void Event::dialogueWithZed()
                 Sleep(1000);
                 Display::writeDialogue(" Since you know Bob,\n\tyou can get a small discount here.'");
                 Npc::npcs["Zed"].setAttitude(Friendly);
-                continue;
+            }
+            else if (Quest::quests["ZedAccelerator"].getIsRunning() && Hero::heroes[0].hasItem(&Item::items["AD13"]) && bobRecommendsZed && zedKnowsAboutBobAndZed)
+            {
+                // TODO: dodaæ rozmowê z Zedem nt. akcelelatora
+                //Hero::heroes[0].removeItem();
+                Quest::quests["ZedAccelerator"].end();
+            }
+            else if (Quest::quests["ZedAccelerator"].getIsRunning() && Hero::heroes[0].hasItem(&Item::items["AD13"]) && !bobRecommendsZed && !zedKnowsAboutBobAndZed)
+            {
+                // TODO: dodaæ rozmowê z Zedem nt. akcelelatora
+                //Hero::heroes[0].removeItem();
+                Quest::quests["ZedAccelerator"].end();
             }
             else {
                 Menu::showHeroAction("'I have to go...'");
@@ -758,11 +769,32 @@ void Event::dialogueWithZed()
 
                 if (!Npc::npcs["Caden"].knowsHero() && !Npc::npcs["CadenPartner"].knowsHero()) meetingWithPolicemans();
                 else Game::game[0].setCurrentLocation(&Location::locations["Street"]);
+            }
+
+            continue;
+        }
+        else if (heroChoice == 4 && bobRecommendsZed && !zedKnowsAboutBobAndZed)
+        {
+            if (Quest::quests["ZedAccelerator"].getIsRunning() && Hero::heroes[0].hasItem(&Item::items["AD13"]))
+            {
+                // TODO: dodaæ rozmowê z Zedem nt. akcelelatora
+                //Hero::heroes[0].removeItem();
+                Quest::quests["ZedAccelerator"].end();
+                continue;
+            }
+            else {
+                Console::clearScreen();
+                Menu::showHeroAction("'I have to go...'");
+                Display::writeDialogue("\n\t- 'No problem. See you later!'\n");
+                Console::clearScreen();
+
+                if (!Npc::npcs["Caden"].knowsHero() && !Npc::npcs["CadenPartner"].knowsHero()) meetingWithPolicemans();
+                else Game::game[0].setCurrentLocation(&Location::locations["Street"]);
 
                 break;
             }
         }
-        else if (heroChoice == 4 && bobRecommendsZed && !zedKnowsAboutBobAndZed)
+        else if (heroChoice == 5 && Quest::quests["ZedAccelerator"].getIsRunning() && Hero::heroes[0].hasItem(&Item::items["AD13"]) && bobRecommendsZed && !zedKnowsAboutBobAndZed)
         {
             Console::clearScreen();
             Menu::showHeroAction("'I have to go...'");

@@ -59,6 +59,7 @@ void Quest::end()
     this->isCompleted = true;
     this->status = "completed";
 
+    /*
     std::string quests[2];
     std::string header, breakLine, questName[1], questDesc[1], questStatus[1], questsLine;
     int questNr = 0;
@@ -96,6 +97,7 @@ void Quest::end()
         q.close();
     }
     else Logger::error("No file access", "Quest::end");
+    */
 }
 
 void Quest::initQuests_EN()
