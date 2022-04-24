@@ -7,5 +7,18 @@
 - The environment reacts to the player's actions and refers to them (reputation and consequence system)
 - Focus on the storyline and its integrity
 # Project structure
+```mermaid
+  graph TD;
+      Game-->Hero;
+      Game-->Npc;
+      Game-->Quest;
+      Game-->Inventory;
+      Game-->Fraction;
+      Game-->Location;
+      Game-->Item;
+      Item-->Armor;
+      Item-->Weapon;
+      Game-->Event;
+```
 ---
 Copyright © 2022 Radosław "Doic" Michalak
