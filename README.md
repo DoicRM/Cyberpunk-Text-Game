@@ -19,6 +19,12 @@
       Item-->Armor;
       Item-->Weapon;
       Game-->Event;
+      Game-->Utilities;
+      Utilities-->Menu;
+      Utilities-->Logger;
+      Utilities-->Console;
+      Utilities-->Display;
+      Utilities-->Random;
 ```
 ---
 Copyright © 2022 Radosław "Doic" Michalak
