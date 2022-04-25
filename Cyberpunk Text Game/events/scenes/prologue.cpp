@@ -228,10 +228,10 @@ void Event::outOfTheAlley()
 void Event::dialogueWithBob()
 {
     Logger::out("Function starts", "Event::dialogueWithBob");
-    Display::writeDialogue("\t- 'What's your name, boy?'");
+    Display::writeDialogue("\t- 'What's your name, boy?'\n");
 
-    if (!Npc::npcs["Bob"].knowsHero() && !Npc::npcs["Caden"].knowsHero() && !Npc::npcs["CadenPartner"].knowsHero()) namingHero();
-    else std::cout << std::endl;
+    if (!Npc::npcs["Bob"].knowsHero() && !Npc::npcs["Caden"].knowsHero() && !Npc::npcs["CadenPartner"].knowsHero())
+        namingHero();
 
     Npc::npcs["Bob"].setToKnowHero();
     Display::writeDialogue("\t- 'So you're " + Hero::heroes[0].getName() + ", huh?");
@@ -312,7 +312,7 @@ void Event::dialogueWithBob()
     else {
         Display::writeDialogue("\t - 'All right, that is enough.");
         Sleep(1500);
-        Display::writeDialogue("I saw the cops hanging around. It stopped\n\tbeing safe here, at least for me.");
+        Display::writeDialogue("I saw the cops hanging around. It stopped being safe here, at\n\tleast for me.");
 
         if (Npc::npcs["Bob"].getAttitude() == Angry || Npc::npcs["Bob"].getAttitude() == Hostile) Display::writeDialogue(" Be glad we don't have more of it left.'");
         else Display::writeDialogue(" Take care, kid.'");
@@ -322,6 +322,7 @@ void Event::dialogueWithBob()
         Sleep(1500);
         Display::writeNarration(" Does this mean you see him for\n\tthe last time?\n\n");
         Game::pause();
+        Console::clearScreen();
         Game::game[0].setCurrentLocation(&Location::locations["Street"]);
     }
 }
@@ -332,7 +333,7 @@ void Event::darkAlleyCrossroads()
 
     if (!Npc::npcs["Bob"].knowsHero())
     {
-        Display::writeNarration("\tWhen you enter the alley, you hear a familiar voice.");
+        Display::writeNarration("\n\tWhen you enter the alley, you hear a familiar voice.");
         Display::writeDialogue("\n\t- 'It's you again. Why don't you tell me something for one this time?'\n\n");
         //--------------------------------
         Menu menu2;
@@ -726,12 +727,11 @@ void Event::dialogueWithZed()
         {
             Console::clearScreen();
             menu8.showHeroChoice();
-            std::cout << std::endl;
 
-            if (heroTalkedAboutBusinessWithZed == true) Display::writeDialogue("\t- 'Hey, what's up? Are you sclerotic or something? We already talked about this, haha!'\n");
+            if (heroTalkedAboutBusinessWithZed == true) Display::writeDialogue("\n\t- 'Hey, what's up? Are you sclerotic or something? We already talked about this, haha!'\n");
             else {
                 heroTalkedAboutBusinessWithZed = true;
-                Display::writeDialogue("\t- 'What kind of question is that anyway? Business is doing great! Everyone stops by\n\tevery now and then to rearm. It's the natural order of things.'\n");
+                Display::writeDialogue("\n\t- 'What kind of question is that anyway? Business is doing great! Everyone stops by\n\tevery now and then to rearm. It's the natural order of things.'\n");
             }
 
             continue;
@@ -739,11 +739,11 @@ void Event::dialogueWithZed()
         else if (heroChoice == 3)
         {
             Console::clearScreen();
+            menu8.showHeroChoice();
 
             if (bobRecommendsZed && !zedKnowsAboutBobAndZed)
             {
                 zedKnowsAboutBobAndZed = true;
-                Menu::showHeroAction("'You're Zed? I come from Bob.'");
                 Display::writeDialogue("\n\t- 'Yes, that is correct. I'm Zed, and this is my little shop.");
                 Sleep(1000);
                 Display::writeDialogue(" Since you know Bob,\n\tyou can get a small discount here.'");
@@ -751,18 +751,13 @@ void Event::dialogueWithZed()
             }
             else if (Quest::quests["ZedAccelerator"].getIsRunning() && Hero::heroes[0].hasItem(&Item::items["AD13"]) && bobRecommendsZed && zedKnowsAboutBobAndZed)
             {
-                // TODO: dodaæ rozmowê z Zedem nt. akcelelatora
-                //Hero::heroes[0].removeItem();
-                Quest::quests["ZedAccelerator"].end();
+                zedGetsAnAccelerator();
             }
             else if (Quest::quests["ZedAccelerator"].getIsRunning() && Hero::heroes[0].hasItem(&Item::items["AD13"]) && !bobRecommendsZed && !zedKnowsAboutBobAndZed)
             {
-                // TODO: dodaæ rozmowê z Zedem nt. akcelelatora
-                //Hero::heroes[0].removeItem();
-                Quest::quests["ZedAccelerator"].end();
+                zedGetsAnAccelerator();
             }
             else {
-                Menu::showHeroAction("'I have to go...'");
                 Display::writeDialogue("\n\t- 'No problem. See you later!'\n");
                 Sleep(1500);
                 Console::clearScreen();
@@ -775,20 +770,20 @@ void Event::dialogueWithZed()
         }
         else if (heroChoice == 4 && bobRecommendsZed && !zedKnowsAboutBobAndZed)
         {
+            Console::clearScreen();
+            menu8.showHeroChoice();
+
             if (Quest::quests["ZedAccelerator"].getIsRunning() && Hero::heroes[0].hasItem(&Item::items["AD13"]))
             {
-                // TODO: dodaæ rozmowê z Zedem nt. akcelelatora
-                //Hero::heroes[0].removeItem();
-                Quest::quests["ZedAccelerator"].end();
+                zedGetsAnAccelerator();
                 continue;
             }
             else {
-                Console::clearScreen();
-                Menu::showHeroAction("'I have to go...'");
                 Display::writeDialogue("\n\t- 'No problem. See you later!'\n");
                 Console::clearScreen();
 
-                if (!Npc::npcs["Caden"].knowsHero() && !Npc::npcs["CadenPartner"].knowsHero()) meetingWithPolicemans();
+                if (!Npc::npcs["Caden"].knowsHero() && !Npc::npcs["CadenPartner"].knowsHero())
+                    meetingWithPolicemans();
                 else Game::game[0].setCurrentLocation(&Location::locations["Street"]);
 
                 break;
@@ -797,7 +792,7 @@ void Event::dialogueWithZed()
         else if (heroChoice == 5 && Quest::quests["ZedAccelerator"].getIsRunning() && Hero::heroes[0].hasItem(&Item::items["AD13"]) && bobRecommendsZed && !zedKnowsAboutBobAndZed)
         {
             Console::clearScreen();
-            Menu::showHeroAction("'I have to go...'");
+            menu8.showHeroChoice();
             Display::writeDialogue("\n\t- 'No problem. See you later!'\n");
             Console::clearScreen();
 
@@ -808,6 +803,23 @@ void Event::dialogueWithZed()
         }
         else Logger::error("Entered invalid value of <b>heroChoice</b>", "Event::dialogueWithZed"); continue;
     }
+}
+
+void Event::zedGetsAnAccelerator()
+{
+    Logger::out("Function starts", "Event::zedGetsAnAccelerator");
+    // Hero::heroes[0].removeItem(1); TODO: usun¹æ graczowi z ekwipunku akcelelator!
+    Display::writeDialogue("\n\t- 'Well done!");
+    Sleep(1000);
+    Display::writeDialogue(" I don't know where you found it, but now the gun is yours.'\n");
+
+    Hero::heroes[0].addItem(&Item::items["Pistol"]);
+    Console::setConsoleColor(CC_Item);
+    Display::write("\n\t" + Item::items["Pistol"].getName());
+    Console::resetConsoleColor();
+    Display::write(" gained.\n");
+
+    Quest::quests["ZedAccelerator"].end();
 }
 
 void Event::zedTrade()
@@ -922,14 +934,14 @@ void Event::buyPistol()
         }
         else
         {
-            Quest::quests["ZedAccelerator"].start();
-            Display::writeDialogue(" It so happens that I have been looking for a good accelerator for some time.");
+            Display::writeDialogue(" It so happens that\n\tI have been looking for a good accelerator for some time.");
             Sleep(1000);
-            Display::writeDialogue(" I don't mean the crap produced by corporations these days.");
+            Display::writeDialogue(" I don't mean the crap produced by\n\tcorporations these days.");
             Sleep(1000);
             Display::writeDialogue(" I mean the good old accelerator!");
             Sleep(1500);
-            Display::writeDialogue(" Find me such a device and you will get that gun. Okay?");
+            Display::writeDialogue(" Find me such a device and you will\n\tget that gun. Okay?");
+            Quest::quests["ZedAccelerator"].start();
         }
     }
     else
@@ -1341,12 +1353,6 @@ void Event::wakeUpBeforeMeetingWithJet()
     Game::game[0].setCurrentLocation(&Location::locations["Street"]);
 }
 
-void Event::vincentAssassination()
-{
-    Logger::out("Function starts", "Event::vincentAssassination");
-    vincentOffice();
-}
-
 void Event::vincentOffice()
 {
     Logger::out("Function starts", "Event::vincentOffice");
@@ -1721,9 +1727,9 @@ void Event::namingHero()
     std::string heroName;
 
     if (Game::game[0].getLang() == EN)
-        Display::writeNarration("\n\tYour name... You start wandering your thoughts around what your name is. As if through a fog\n\tit occurs to you that you are:\n");
+        Display::writeNarration("\tYour name... You start wandering your thoughts around what your name is. As if through a fog\n\tit occurs to you that you are:\n");
     else
-        Display::writeNarration("\n\tTwoje imiê... Zaczynasz b³¹dziæ myœlami wokó³ tego, jak siê nazywasz. Jakby przez mg³ê dociera\n\tdo ciebie, ¿e jesteœ:\n");
+        Display::writeNarration("\tTwoje imiê... Zaczynasz b³¹dziæ myœlami wokó³ tego, jak siê nazywasz. Jakby przez mg³ê dociera\n\tdo ciebie, ¿e jesteœ:\n");
 
     Console::resetConsoleColor();
     heroName = Input::getString();

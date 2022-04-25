@@ -42,6 +42,7 @@ private:
 	static void zedTrade();
 	static void buyPistol();
 	static void dialogueWithZed();
+	static void zedGetsAnAccelerator();
 	static void gunShopCrossroads();
 	// Klub nocny
 	static void enterClub();
