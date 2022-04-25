@@ -32,11 +32,13 @@ void Location::initLocations_EN()
     Location Street("Street", 0, Fraction::fractions["Police"], 2, false);
     Location Nightclub("Nightclub 'Amnesia'", 0, Fraction::fractions["Hammers"], 3, false);
     Location GunShop("Zed's Gun Shop", 0, Fraction::fractions["None"], 3, false);
+    Location SleepersHideout("Sleepers Hideout", 0, Fraction::fractions["Sleepers"], 4, false);
 
     locations["DarkAlley"] = DarkAlley;
     locations["Street"] = Street;
     locations["Nightclub"] = Nightclub;
     locations["GunShop"] = GunShop;
+    locations["SleepersHideout"] = SleepersHideout;
 }
 
 void Location::initLocations_PL()
@@ -47,9 +49,11 @@ void Location::initLocations_PL()
     Location Street("Ulica", 0, Fraction::fractions["Police"], 2, false);
     Location Nightclub("Klub nocny 'Amnezja'", 0, Fraction::fractions["Hammers"], 3, false);
     Location GunShop("Sklep z broni¹ 'U Zeda'", 0, Fraction::fractions["None"], 3, false);
+    Location SleepersHideout("Kryjówka Œni¹cych", 0, Fraction::fractions["Sleepers"], 4, false);
 
     locations["DarkAlley"] = DarkAlley;
     locations["Street"] = Street;
     locations["Nightclub"] = Nightclub;
     locations["GunShop"] = GunShop;
+    locations["SleepersHideout"] = SleepersHideout;
 }

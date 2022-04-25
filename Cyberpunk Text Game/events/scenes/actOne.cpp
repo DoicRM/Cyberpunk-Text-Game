@@ -17,3 +17,7 @@ void Event::actOne()
 }
 
 // KRYJÓWKA ŒNI¥CYCH
+void Event::sleepersHideoutCrossroads()
+{
+    // TODO
+}

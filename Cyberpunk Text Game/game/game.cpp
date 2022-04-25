@@ -342,6 +342,7 @@ void Game::startEventsByLocation()
     else if (getCurrentLocation() == &Location::locations["Street"]) Event::street();
     else if (getCurrentLocation() == &Location::locations["Nightclub"]) Event::nightclub();
     else if (getCurrentLocation() == &Location::locations["GunShop"]) Event::gunShop();
+    else if (getCurrentLocation() == &Location::locations["SleepersHideout"]) Event::sleepersHideout();
 }
 
 void Game::initHeroEQ()

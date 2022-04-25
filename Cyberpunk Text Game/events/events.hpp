@@ -50,7 +50,6 @@ private:
 	static void miaMeeting();
 	static void clubUpstairs();
 	static void dialogueWithJet();
-	static void vincentAssassination();
 	static void vincentOffice();
 	static void checkVincentDesk();
 	static void vincentHideoutCode();
@@ -61,6 +60,7 @@ private:
 	// AKT I
 	// Kryjówka Œni¹cych
 	static void actOne();
+	static void sleepersHideoutCrossroads();
 };
 
 extern int heroChoice;
