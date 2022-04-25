@@ -41,9 +41,14 @@ enum Attitude
 	Neutral, Angry, Hostile, Friendly
 };
 
-enum Status
+enum CharacterStatus
 {
 	Normal, Unconscious, Dead
+};
+
+enum QuestStatus
+{
+	NotStarted, Ongoing, Completed
 };
 
 enum ItemType
