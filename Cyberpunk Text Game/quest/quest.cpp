@@ -51,6 +51,9 @@ void Quest::start()
         q.close();
     }
     else Logger::error("No file access", "Quest::start");
+
+    Console::resetConsoleColor();
+    Display::write("\n\tNew quest:" + this->getName() + "\n");
 }
 
 void Quest::end()
