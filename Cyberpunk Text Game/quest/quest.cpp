@@ -53,7 +53,7 @@ void Quest::start()
     else Logger::error("No file access", "Quest::start");
 
     Console::resetConsoleColor();
-    Display::write("\n\tNew quest:" + this->getName() + "\n");
+    Display::write("\n\tNew quest: " + this->getName() + "\n");
 }
 
 void Quest::end()
