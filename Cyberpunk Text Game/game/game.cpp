@@ -60,7 +60,8 @@ void Game::run()
 
     while (getPlaying())
     {
-        selectLanguage();
+        // selectLanguage(); zablokowane do czasu przet³umaczenia w ca³oœci gry na jêzyk polski
+        this->gameLang = EN;
         welcome();
         writeLogo();
         mainMenu();
