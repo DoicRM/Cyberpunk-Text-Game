@@ -6,7 +6,7 @@ Quest::Quest()
 {
     this->name = "None";
     this->description = "None";
-    this->status = "unknown";
+    this->status = NotStarted;
     this->isRunning = false;
     this->isCompleted = false;
 }
@@ -15,12 +15,12 @@ Quest::Quest(std::string name, std::string description)
 {
     this->name = name;
     this->description = description;
-    this->status = "unknown";
+    this->status = NotStarted;
     this->isRunning = false;
     this->isCompleted = false;
 }
 
-Quest::Quest(std::string name, std::string description, std::string status, bool isRunning, bool isCompleted)
+Quest::Quest(std::string name, std::string description, int status, bool isRunning, bool isCompleted)
 {
     this->name = name;
     this->description = description;
@@ -36,17 +36,17 @@ Quest::~Quest()
 void Quest::start()
 {
     this->isRunning = true;
-    this->status = "ongoing";
+    this->status = Ongoing;
 
-    std::fstream q;
-    q.open("quests.txt", std::ios::out | std::ios::app);
+    std::ofstream q;
+    q.open("quests.txt", std::ios::app);
 
     if (q.good())
     {
         Logger::out("Access to txt file", "Quest::start");
         q << "  Name: " << this->getName() << std::endl;
         q << "  Description: " << this->getDescription() << std::endl;
-        q << "  Status: " << this->getStatus() << std::endl;
+        q << "  Status: " << this->printStatus() << std::endl;
         q << "..........................................................................." << std::endl;
         q.close();
     }
@@ -57,7 +57,7 @@ void Quest::end()
 {
     this->isRunning = false;
     this->isCompleted = true;
-    this->status = "completed";
+    this->status = Completed;
 
     /*
     std::string quests[2];
@@ -98,6 +98,17 @@ void Quest::end()
     }
     else Logger::error("No file access", "Quest::end");
     */
+}
+
+std::string Quest::printStatus()
+{
+    std::string status;
+
+    if (this->status == Ongoing) status = "ongoing";
+    else if (this->status == Completed) status = "completed";
+    else status = "not started";
+
+    return status;
 }
 
 void Quest::initQuests_EN()
