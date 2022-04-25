@@ -29,8 +29,8 @@ void Inventory::addItem(Item* item)
         newItem->nextItem = 0;     // ostatni nie wskazuje na nic
     }
 
-    std::fstream eq;
-    eq.open("eq.txt", std::ios::out | std::ios::app);
+    std::ofstream eq;
+    eq.open("eq.txt", std::ios::app);
 
     if (eq.good())
     {
