@@ -48,11 +48,11 @@ void Menu::addOptions(std::array<std::string, 10> options)
 {
     clearOptions();
 
-    for (int i = 0; i < options.size(); i++)
+    for (auto i : options)
     {
-        if (!options[i].empty())
+        if (!i.empty())
         {
-            this->options[optionNr] = options[i];
+            this->options[optionNr] = i;
             this->optionNr += 1;
         }
     }

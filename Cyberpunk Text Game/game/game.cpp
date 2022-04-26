@@ -122,8 +122,8 @@ void Game::writeLogo()
     Console::setConsoleColor(CC_Lightblue);
     std::cout << std::endl;
 
-    for (int i = 0; i < logo.size(); i++)
-        Display::write(logo[i], 1);
+    for (auto i : logo)
+        Display::write(i, 1);
 
     Console::resetConsoleColor();
 
@@ -137,8 +137,8 @@ void Game::loadLogo()
     Console::setConsoleColor(CC_Lightblue);
     std::cout << std::endl;
 
-    for (int i = 0; i < logo.size(); i++)
-        std::cout << logo[i];
+    for (auto i : logo)
+        std::cout << i;
 
     std::cout << std::endl;
     Console::resetConsoleColor();
