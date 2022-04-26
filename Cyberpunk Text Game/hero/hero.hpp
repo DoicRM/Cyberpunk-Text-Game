@@ -26,8 +26,9 @@ public:
     void removeMoney(float money) { if (this->money > 0) this->money -= money; }
     bool isDead() { return this->hp < 0; }
     void addItem(Item* item) { this->inventory.addItem(item); }
-    void removeItem(int index) { this->inventory.removeItem(index); }
+    void removeItem(Item* item) { this->inventory.removeItem(item); }
     void showInv() { this->inventory.showInv(); };
+    void clearInv() { this->inventory.clearInv(); };
     bool hasItem(Item* item) { return this->inventory.hasItem(item); }
 
     inline const std::string& getName() const { return this->name; }
