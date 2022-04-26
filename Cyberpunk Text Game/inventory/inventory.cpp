@@ -13,6 +13,12 @@ void Inventory::addItem(Item* item)
 {
     inventory.push_back(item);
 
+    for (auto i : inventory)
+    {
+        if (i == item)
+            Logger::out(item->getName() + "added to EQ", "Inventory::addItem");
+    }
+
     std::ofstream eq;
     eq.open("eq.txt", std::ios::app);
 
