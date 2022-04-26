@@ -11,9 +11,9 @@ Inventory::~Inventory()
 
 void Inventory::addItem(Item* item)
 {
-    inventory.push_back(item);
+    itemsList.push_back(item);
 
-    for (auto i : inventory)
+    for (auto i : itemsList)
     {
         if (i == item)
             Logger::out(item->getName() + "added to EQ", "Inventory::addItem");
@@ -37,16 +37,16 @@ void Inventory::addItem(Item* item)
 
 void Inventory::removeItem(Item* item)
 {
-    for (int i = 0; i < inventory.size(); i++)
+    for (int i = 0; i < itemsList.size(); i++)
     {
-        if (inventory[i] == item)
-            inventory.erase(inventory.begin()+i);
+        if (itemsList[i] == item)
+            itemsList.erase(itemsList.begin()+i);
     }
 }
 
 void Inventory::showInv()
 {
-    for (auto i : inventory)
+    for (auto i : itemsList)
     {
         std::cout << "  Name: " << i->getName() << std::endl;
         std::cout << "  Type: " << i->printType() << std::endl;
@@ -57,19 +57,16 @@ void Inventory::showInv()
 
 void Inventory::clearInv()
 {
-    inventory.clear();  
+    itemsList.clear();
 
-    if (inventory.empty())
+    if (itemsList.empty())
         Logger::out("Inventory is empty", "Inventory::clearInv");
 }
 
 bool Inventory::hasItem(Item* item)
 {
-    for (auto i : inventory)
-    {
-        if (i == item)
-            return true;
-    }
+    for (auto i : itemsList)
+        if (i == item) return true;
 
     return false;
 }

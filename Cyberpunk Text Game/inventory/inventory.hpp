@@ -18,5 +18,5 @@ public:
     bool hasItem(Item* item);
 
 private:
-    std::vector<Item*>inventory;
+    std::vector<Item*>itemsList;
 };
