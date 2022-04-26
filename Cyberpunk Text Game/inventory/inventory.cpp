@@ -51,7 +51,10 @@ void Inventory::showInv()
 
 void Inventory::clearInv()
 {
-    inventory.clear();
+    inventory.clear();  
+
+    if (inventory.empty())
+        Logger::out("Inventory is empty", "Inventory::clearInv");
 }
 
 bool Inventory::hasItem(Item* item)
