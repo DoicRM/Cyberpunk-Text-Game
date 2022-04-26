@@ -808,14 +808,18 @@ void Event::dialogueWithZed()
 void Event::zedGetsAnAccelerator()
 {
     Logger::out("Function starts", "Event::zedGetsAnAccelerator");
-    // Hero::heroes[0].removeItem(1); TODO: usun¹æ graczowi z ekwipunku akcelelator!
+    Hero::heroes[0].removeItem(&Item::items["AD13"]);
     Display::writeDialogue("\n\t- 'Well done!");
     Sleep(1000);
     Display::writeDialogue(" I don't know where you found it, but now the gun is yours.'\n");
 
     Hero::heroes[0].addItem(&Item::items["Pistol"]);
     Console::setConsoleColor(CC_Item);
-    Display::write("\n\t" + Item::items["Pistol"].getName());
+    Display::write("\n\t" + Item::items["AD13"].getName());
+    Console::resetConsoleColor();
+    Display::write(" given and ");
+    Console::setConsoleColor(CC_Item);
+    Display::write(Item::items["Pistol"].getName());
     Console::resetConsoleColor();
     Display::write(" gained.\n");
 
