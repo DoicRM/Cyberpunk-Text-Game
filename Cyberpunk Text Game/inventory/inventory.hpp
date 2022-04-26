@@ -3,17 +3,20 @@
 #include "../utilities/logger/logger.hpp"
 #include <fstream>
 #include <iostream>
+#include <vector>
 
 class Inventory
 {
 public:
-    Item* firstItem; // wskaünik na poczπtek listy
-
     Inventory();
     virtual ~Inventory();
 
     void addItem(Item* item);
-    void removeItem(int index);
+    void removeItem(Item* item);
     void showInv();
+    void clearInv();
     bool hasItem(Item* item);
+
+private:
+    std::vector<Item*>inventory;
 };
