@@ -158,9 +158,6 @@ void Event::acceleratorFinding()
     Console::resetConsoleColor();
     Display::write(" was found.");
 
-    if (Hero::heroes[0].hasItem(&Item::items["AD13"])) Logger::out(Item::items["AD13"].getName() + " added to EQ", "Event::acceleratorFinding");
-    else Logger::error(Item::items["AD13"].getName() + " not added to EQ", "Event::accelelatorFinding");
-
     Display::write("\n\t[TIP: This item has been added to your inventory. You can view it in the text file in your\n\tgame folder.]", 15);
     Sleep(4000);
     Display::writeNarration("\n\n\tHmm, that might come in handy in the future.");
