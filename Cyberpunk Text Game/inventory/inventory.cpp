@@ -41,18 +41,34 @@ void Inventory::removeItem(Item* item)
     {
         if (itemsList[i] == item)
             itemsList.erase(itemsList.begin()+i);
+        break;
     }
 }
 
 void Inventory::showInv()
 {
-    for (auto i : itemsList)
+    if (itemsList.empty())
     {
-        std::cout << "  Name: " << i->getName() << std::endl;
-        std::cout << "  Type: " << i->printType() << std::endl;
-        std::cout << "  Description: " << i->getDescription() << std::endl;
-        std::cout << "  Price: " << i->getPrice() << "$" << std::endl;
+        Display::write("\tYou do not have any items in your inventory.", 15);
     }
+    else {
+        for (int i = 0; i < itemsList.size(); i++)
+        {
+            std::cout << "\t" << (i + 1) << ". " << itemsList[i]->getName() << std::endl;
+        }
+
+        Display::write("\tSelect the index of the item you wish to preview.\n", 15);
+        int itemNr = Input::getChoice();
+        showItemInfo(itemNr);
+    }
+}
+
+void Inventory::showItemInfo(int index)
+{
+    std::cout << "\tName: " << itemsList[index]->getName() << std::endl;
+    std::cout << "\tType: " << itemsList[index]->printType() << std::endl;
+    std::cout << "\tDescription: " << itemsList[index]->getDescription() << std::endl;
+    std::cout << "\tPrice: " << itemsList[index]->getPrice() << "$" << std::endl;
 }
 
 void Inventory::clearInv()

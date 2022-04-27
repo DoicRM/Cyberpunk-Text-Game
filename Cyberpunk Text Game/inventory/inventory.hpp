@@ -14,6 +14,7 @@ public:
     void addItem(Item* item);
     void removeItem(Item* item);
     void showInv();
+    void showItemInfo(int index);
     void clearInv();
     bool hasItem(Item* item);
 
