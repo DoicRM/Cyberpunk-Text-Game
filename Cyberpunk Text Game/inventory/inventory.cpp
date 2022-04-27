@@ -57,8 +57,9 @@ void Inventory::showInv()
             std::cout << "\t" << (i + 1) << ". " << itemsList[i]->getName() << std::endl;
         }
 
-        Display::write("\tSelect the index of the item you wish to preview.\n", 15);
+        Display::write("\tSelect the index of the item you want to view.\n", 15);
         int itemNr = Input::getChoice();
+        itemNr = itemNr - 1;
         showItemInfo(itemNr);
     }
 }
