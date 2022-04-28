@@ -12,7 +12,9 @@ public:
     virtual ~Inventory();
 
     void addItem(Item* item);
+    void addItems(Item* item, int amount);
     void removeItem(Item* item);
+    void removeItems(Item* item, int amount);
     void showInv();
     void showItemInfo(int index);
     void clearInv();

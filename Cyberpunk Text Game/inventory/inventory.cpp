@@ -35,6 +35,36 @@ void Inventory::addItem(Item* item)
     else Logger::error("No file access", "Inventory::addItem");
 }
 
+void Inventory::addItems(Item* item, int amount)
+{
+    for (int i = 0; i < amount; i++)
+    {
+        itemsList.push_back(item);
+    }
+
+    for (auto j : itemsList)
+    {
+        if (j == item)
+            Logger::out(item->getName() + "added to EQ", "Inventory::addItem");
+    }
+
+    std::ofstream eq;
+    eq.open("eq.txt", std::ios::app);
+
+    if (eq.good())
+    {
+        Logger::out("Access to txt file", "Inventory::addItem");
+        eq << "  Name: " << item->getName() << std::endl;
+        eq << "  Type: " << item->printType() << std::endl;
+        eq << "  Description: " << item->getDescription() << std::endl;
+        eq << "  Price: " << item->getPrice() << "$" << std::endl;
+        eq << "  Amount: " << amount << std::endl;
+        eq << "..........................................................................." << std::endl;
+        eq.close();
+    }
+    else Logger::error("No file access", "Inventory::addItem");
+}
+
 void Inventory::removeItem(Item* item)
 {
     for (int i = 0; i < itemsList.size(); i++)
@@ -45,13 +75,28 @@ void Inventory::removeItem(Item* item)
     }
 }
 
+void Inventory::removeItems(Item* item, int amount)
+{
+    for (int i = 0; i < itemsList.size(); i++)
+    {
+        for (int j = 0; j < amount; j++)
+        {
+            if (itemsList[i] == item)
+                itemsList.erase(itemsList.begin() + i);
+        }
+
+        break;
+    }
+}
+
 void Inventory::showInv()
 {
     if (itemsList.empty())
     {
         Display::write("\tYou do not have any items in your inventory.", 15);
     }
-    else {
+    else
+    {
         for (int i = 0; i < itemsList.size(); i++)
         {
             std::cout << "\t" << (i + 1) << ". " << itemsList[i]->getName() << std::endl;
@@ -84,6 +129,5 @@ bool Inventory::hasItem(Item* item)
 {
     for (auto i : itemsList)
         if (i == item) return true;
-
     return false;
 }
