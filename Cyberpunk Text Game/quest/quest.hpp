@@ -12,6 +12,7 @@ private:
     std::string name;
     std::string description;
     int status;
+    //std::string goals[10];
     bool isRunning;
     bool isCompleted;
 
