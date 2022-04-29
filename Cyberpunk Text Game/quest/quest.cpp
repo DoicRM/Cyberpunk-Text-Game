@@ -35,6 +35,7 @@ Quest::~Quest()
 
 void Quest::start()
 {
+    this->isCompleted = false;
     this->isRunning = true;
     this->status = Ongoing;
 
