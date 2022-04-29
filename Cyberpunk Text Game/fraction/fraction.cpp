@@ -41,12 +41,14 @@ void Fraction::initFractions_EN()
     Fraction Police("Police", 0, Neutral);
     Fraction Hammers("Hammers", 0, Neutral);
     Fraction Sleepers("Sleepers", 0, Neutral);
+    Fraction SowersOfConfusion("Sowers of Confusion", 0, Neutral);
 
     fractions["None"] = None;
     fractions["Beggars"] = Beggars;
     fractions["Police"] = Police;
     fractions["Hammers"] = Hammers;
     fractions["Sleepers"] = Sleepers;
+    fractions["SowersOfConfusion"] = SowersOfConfusion;
 }
 
 void Fraction::initFractions_PL()
@@ -58,10 +60,12 @@ void Fraction::initFractions_PL()
     Fraction Police("Policja", 0, Neutral);
     Fraction Hammers("M³oty", 0, Neutral);
     Fraction Sleepers("Œni¹cy", 0, Neutral);
+    Fraction SowersOfConfusion("Siewcy Zamêtu", 0, Neutral);
 
     fractions["None"] = None;
     fractions["Beggars"] = Beggars;
     fractions["Police"] = Police;
     fractions["Hammers"] = Hammers;
     fractions["Sleepers"] = Sleepers;
+    fractions["SowersOfConfusion"] = SowersOfConfusion;
 }
