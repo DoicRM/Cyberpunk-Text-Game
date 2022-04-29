@@ -168,5 +168,8 @@
     <ClInclude Include="journal\journal.hpp">
       <Filter>Journal</Filter>
     </ClInclude>
+    <ClInclude Include="utilities\json.hpp">
+      <Filter>Utilities</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

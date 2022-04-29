@@ -177,6 +177,7 @@
     <ClInclude Include="npc\ambient\ambientNpc.hpp" />
     <ClInclude Include="npc\npc.hpp" />
     <ClInclude Include="quest\quest.hpp" />
+    <ClInclude Include="utilities\json.hpp" />
     <ClInclude Include="utilities\logger\logger.hpp" />
     <ClInclude Include="utilities\menu\menu.hpp" />
     <ClInclude Include="utilities\utilities.hpp" />
