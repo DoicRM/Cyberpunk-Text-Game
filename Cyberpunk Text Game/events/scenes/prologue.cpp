@@ -279,6 +279,7 @@ void Event::dialogueWithBob()
             menu3.showHeroChoice();
             std::cout << std::endl;
             Npc::npcs["Bob"].setAttitude(Angry); // angry / hostile / friendly / neutral
+            Sleep(500);
             Display::writeDialogue("\t- 'You're wrong. It's absolutely my business, kid. Don't shut your mouth like that, or you might\n\tlose a few teeth. Got it?'\n");
             break;
         }
@@ -311,8 +312,10 @@ void Event::dialogueWithBob()
         Sleep(1500);
         Display::writeDialogue("I saw the cops hanging around. It stopped being safe here, at\n\tleast for me.");
 
-        if (Npc::npcs["Bob"].getAttitude() == Angry || Npc::npcs["Bob"].getAttitude() == Hostile) Display::writeDialogue(" Be glad we don't have more of it left.'");
-        else Display::writeDialogue(" Take care, kid.'");
+        if (Npc::npcs["Bob"].getAttitude() == Angry || Npc::npcs["Bob"].getAttitude() == Hostile)
+            Display::writeDialogue(" Be glad we don't have more of it left.'");
+        else
+            Display::writeDialogue(" Take care, kid.'");
 
         Sleep(1500);
         Display::writeNarration("\n\tThe aging beggar dives into the embrace of darkness in a flash.");
@@ -491,7 +494,6 @@ void Event::encounterGunStore()
         {
             Console::clearScreen();
             menu5.showHeroChoice();
-            std::cout << std::endl;
             enterGunShop();
             break;
         }
@@ -820,7 +822,7 @@ void Event::zedGetsAnAccelerator()
     Console::resetConsoleColor();
     Display::write(" gained.\n");
 
-    Quest::quests["ZedAccelerator"].end();
+    Hero::heroes[0].endQuest(&Quest::quests["ZedAccelerator"]);
 }
 
 void Event::zedTrade()
@@ -942,7 +944,7 @@ void Event::buyPistol()
             Display::writeDialogue(" I mean the good old accelerator!");
             Sleep(1500);
             Display::writeDialogue(" Find me such a device and you will\n\tget that gun. Okay?");
-            Quest::quests["ZedAccelerator"].start();
+            Hero::heroes[0].addQuest(&Quest::quests["ZedAccelerator"]);
         }
     }
     else
@@ -1171,7 +1173,7 @@ void Event::miaMeeting()
     Display::writeDialogue("\n\t- 'Vinc, the owner, is my boyfriend.");
     Sleep(1000);
     Display::writeDialogue(" I want him dead.'");
-    Quest::quests["KillVincent"].start();
+    Hero::heroes[0].addQuest(&Quest::quests["KillVincent"]);
     Sleep(1500);
     Display::writeNarration("\n\tNyx takes your hand and leads you towards the toilet.");
     Display::writeDialogue("\n\t- 'Do you have a gun?'");
