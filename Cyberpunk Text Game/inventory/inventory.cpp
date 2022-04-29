@@ -16,23 +16,10 @@ void Inventory::addItem(Item* item)
     for (auto i : itemsList)
     {
         if (i == item)
-            Logger::out(item->getName() + "added to EQ", "Inventory::addItem");
+            Logger::out("<b>" + item->getName() + "</b> added to EQ", "Inventory::addItem");
     }
 
-    std::ofstream eq;
-    eq.open("eq.txt", std::ios::app);
-
-    if (eq.good())
-    {
-        Logger::out("Access to txt file", "Inventory::addItem");
-        eq << "  Name: " << item->getName() << std::endl;
-        eq << "  Type: " << item->printType() << std::endl;
-        eq << "  Description: " << item->getDescription() << std::endl;
-        eq << "  Price: " << item->getPrice() << "$" << std::endl;
-        eq << "..........................................................................." << std::endl;
-        eq.close();
-    }
-    else Logger::error("No file access", "Inventory::addItem");
+    updateInvFile();
 }
 
 void Inventory::addItems(Item* item, int amount)
@@ -45,24 +32,10 @@ void Inventory::addItems(Item* item, int amount)
     for (auto j : itemsList)
     {
         if (j == item)
-            Logger::out(item->getName() + "added to EQ", "Inventory::addItem");
+            Logger::out("<b>" + item->getName() + "</b> added to EQ", "Inventory::addItem");
     }
 
-    std::ofstream eq;
-    eq.open("eq.txt", std::ios::app);
-
-    if (eq.good())
-    {
-        Logger::out("Access to txt file", "Inventory::addItem");
-        eq << "  Name: " << item->getName() << std::endl;
-        eq << "  Type: " << item->printType() << std::endl;
-        eq << "  Description: " << item->getDescription() << std::endl;
-        eq << "  Price: " << item->getPrice() << "$" << std::endl;
-        eq << "  Amount: " << amount << std::endl;
-        eq << "..........................................................................." << std::endl;
-        eq.close();
-    }
-    else Logger::error("No file access", "Inventory::addItem");
+    updateInvFile();
 }
 
 void Inventory::removeItem(Item* item)
@@ -73,6 +46,8 @@ void Inventory::removeItem(Item* item)
             itemsList.erase(itemsList.begin()+i);
         break;
     }
+
+    updateInvFile();
 }
 
 void Inventory::removeItems(Item* item, int amount)
@@ -87,6 +62,38 @@ void Inventory::removeItems(Item* item, int amount)
 
         break;
     }
+
+    updateInvFile();
+}
+
+void Inventory::updateInvFile()
+{
+    std::ofstream eq;
+    eq.open("eq.txt");
+
+    if (eq.good())
+    {
+        Logger::out("Access to txt file", "Inventory::updateInvFile");
+
+        if (itemsList.empty())
+        {
+            eq << "..." << std::endl;
+        }
+        else
+        {
+            for (int i = 0; i < itemsList.size(); i++)
+            {
+                eq << "Name: " << itemsList[i]->getName() << std::endl;
+                eq << "Type: " << itemsList[i]->printType() << std::endl;
+                eq << "Description: " << itemsList[i]->getDescription() << std::endl;
+                eq << "Price: " << itemsList[i]->getPrice() << "$" << std::endl;
+                eq << "..........................................................................." << std::endl;
+            }
+        }
+
+        eq.close();
+    }
+    else Logger::error("No file access", "Inventory::updateInvFile");
 }
 
 void Inventory::showInv()
@@ -123,6 +130,8 @@ void Inventory::clearInv()
 
     if (itemsList.empty())
         Logger::out("Inventory is empty", "Inventory::clearInv");
+
+    updateInvFile();
 }
 
 bool Inventory::hasItem(Item* item)
