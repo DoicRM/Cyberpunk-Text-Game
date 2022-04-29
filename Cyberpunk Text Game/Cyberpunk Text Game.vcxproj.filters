@@ -49,6 +49,9 @@
     <Filter Include="Npc\ambient">
       <UniqueIdentifier>{cd700b1e-5424-45cb-99aa-c93e6391e1ad}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Journal">
+      <UniqueIdentifier>{7781ca8d-0ad3-4f53-8ddd-4db6c6bb76ef}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -112,6 +115,9 @@
     <ClCompile Include="events\scenes\epilogue.cpp">
       <Filter>Events\Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="journal\journal.cpp">
+      <Filter>Journal</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="events\events.hpp">
@@ -158,6 +164,9 @@
     </ClInclude>
     <ClInclude Include="npc\ambient\ambientNpc.hpp">
       <Filter>Npc\ambient</Filter>
+    </ClInclude>
+    <ClInclude Include="journal\journal.hpp">
+      <Filter>Journal</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

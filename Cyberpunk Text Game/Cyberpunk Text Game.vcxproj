@@ -153,6 +153,7 @@
     <ClCompile Include="item\clothes\clothes.cpp" />
     <ClCompile Include="item\item.cpp" />
     <ClCompile Include="item\weapon\weapon.cpp" />
+    <ClCompile Include="journal\journal.cpp" />
     <ClCompile Include="location\location.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="npc\ambient\ambientNpc.cpp" />
@@ -171,6 +172,7 @@
     <ClInclude Include="item\clothes\clothes.hpp" />
     <ClInclude Include="item\item.hpp" />
     <ClInclude Include="item\weapon\weapon.hpp" />
+    <ClInclude Include="journal\journal.hpp" />
     <ClInclude Include="location\location.hpp" />
     <ClInclude Include="npc\ambient\ambientNpc.hpp" />
     <ClInclude Include="npc\npc.hpp" />
