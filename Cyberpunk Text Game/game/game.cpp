@@ -349,17 +349,16 @@ void Game::startEventsByLocation()
 void Game::initHeroEQ()
 {
     Logger::out("Function starts", "Function::initHeroEQ");
-    std::fstream eq;
-    eq.open("eq.txt", std::ios::out);
+    std::ofstream eq;
+    eq.open("eq.txt");
 
     if (eq.good())
     {
         Logger::out("Access to txt file", "Function::initHeroEQ");
 
-        if (Game::game[0].getLang() == EN) eq << "                                    ITEMS                                  " << std::endl;
-        else if (Game::game[0].getLang() == PL) eq << "                               PRZEDMIOTY                                  " << std::endl;
+        if (Game::game[0].getLang() == EN) eq << "You do not have any items in your inventory." << std::endl;
+        else if (Game::game[0].getLang() == PL) eq << "Nie posiadasz ¿adnych przedmiotów w ekwipunku." << std::endl;
 
-        eq << "..........................................................................." << std::endl;
         eq.close();
     }
     else Logger::error("No file access", "Function::initHeroEQ");
@@ -368,17 +367,16 @@ void Game::initHeroEQ()
 void Game::initQuestsList()
 {
     Logger::out("Function starts", "Function::initQuestsList");
-    std::fstream q;
-    q.open("quests.txt", std::ios::out);
+    std::ofstream q;
+    q.open("journal.txt");
 
     if (q.good())
     {
         Logger::out("Access to txt file", "Function::initQuestsList");
 
-        if (Game::game[0].getLang() == EN) q << "                                    QUESTS                                 " << std::endl;
-        else if (Game::game[0].getLang() == PL) q << "                                   ZADANIA                                 " << std::endl;
+        if (Game::game[0].getLang() == EN) q << "You do not have any quests in your journal." << std::endl;
+        else if (Game::game[0].getLang() == PL) q << "Nie posiadasz ¿adnych zadañ w dzienniku." << std::endl;
 
-        q << "..........................................................................." << std::endl;
         q.close();
     }
     else Logger::error("No file access", "Function::initQuestsList");
