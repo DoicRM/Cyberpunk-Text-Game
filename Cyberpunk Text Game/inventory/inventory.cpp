@@ -32,7 +32,7 @@ void Inventory::addItems(Item* item, int amount)
     for (auto j : itemsList)
     {
         if (j == item)
-            Logger::out("<b>" + item->getName() + "</b> added to EQ", "Inventory::addItem");
+            Logger::out("<b>" + item->getName() + "</b> added to EQ", "Inventory::addItems");
     }
 
     updateInvFile();
@@ -43,7 +43,7 @@ void Inventory::removeItem(Item* item)
     for (int i = 0; i < itemsList.size(); i++)
     {
         if (itemsList[i] == item)
-            itemsList.erase(itemsList.begin()+i);
+            itemsList.erase(itemsList.begin() + i);
         break;
     }
 
@@ -81,12 +81,12 @@ void Inventory::updateInvFile()
         }
         else
         {
-            for (int i = 0; i < itemsList.size(); i++)
+            for (auto i : itemsList)
             {
-                eq << "Name: " << itemsList[i]->getName() << std::endl;
-                eq << "Type: " << itemsList[i]->printType() << std::endl;
-                eq << "Description: " << itemsList[i]->getDescription() << std::endl;
-                eq << "Price: " << itemsList[i]->getPrice() << "$" << std::endl;
+                eq << "Name: " << i->getName() << std::endl;
+                eq << "Type: " << i->printType() << std::endl;
+                eq << "Description: " << i->getDescription() << std::endl;
+                eq << "Price: " << i->getPrice() << "$" << std::endl;
                 eq << "..........................................................................." << std::endl;
             }
         }

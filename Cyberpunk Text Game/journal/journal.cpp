@@ -25,7 +25,10 @@ void Journal::addQuest(Quest* quest)
 void Journal::endQuest(Quest* quest)
 {
     quest->end();
-    Logger::out("<b>" + quest->getName() + "</b> ended", "Journal::addQuest");
+
+    if (quest->getIsCompleted())
+        Logger::out("<b>" + quest->getName() + "</b> ended", "Journal::addQuest");
+
     updateJournalFile();
 }
 
@@ -44,11 +47,11 @@ void Journal::updateJournalFile()
         }
         else
         {
-            for (int i = 0; i < questsList.size(); i++)
+            for (auto i : questsList)
             {
-                q << "Name: " << questsList[i]->getName() << std::endl;
-                q << "Description: " << questsList[i]->getDescription() << std::endl;
-                q << "Status: " << questsList[i]->printStatus() << std::endl;
+                q << "Name: " << i->getName() << std::endl;
+                q << "Description: " << i->getDescription() << std::endl;
+                q << "Status: " << i->printStatus() << std::endl;
                 q << "..........................................................................." << std::endl;
             }
         }

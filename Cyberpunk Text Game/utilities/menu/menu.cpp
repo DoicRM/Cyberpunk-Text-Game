@@ -48,7 +48,7 @@ void Menu::addOptions(std::array<std::string, 10> options)
 {
     clearOptions();
 
-    for (auto i : options)
+    for (auto& i : options)
     {
         if (!i.empty())
         {
@@ -60,8 +60,6 @@ void Menu::addOptions(std::array<std::string, 10> options)
 
 void Menu::showOptions()
 {
-    std::map<int, std::string>::size_type optionsSize;
-    optionsSize = options.size();
     Console::resetConsoleColor();
 
     for (int j = 0; j < options.size(); j++)

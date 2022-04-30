@@ -122,7 +122,7 @@ void Game::writeLogo()
     Console::setConsoleColor(CC_Lightblue);
     std::cout << std::endl;
 
-    for (auto i : logo)
+    for (auto& i : logo)
         Display::write(i, 1);
 
     Console::resetConsoleColor();
@@ -137,7 +137,7 @@ void Game::loadLogo()
     Console::setConsoleColor(CC_Lightblue);
     std::cout << std::endl;
 
-    for (auto i : logo)
+    for (auto& i : logo)
         std::cout << i;
 
     std::cout << std::endl;
@@ -356,8 +356,10 @@ void Game::initHeroEQ()
     {
         Logger::out("Access to txt file", "Function::initHeroEQ");
 
-        if (Game::game[0].getLang() == EN) eq << "You do not have any items in your inventory." << std::endl;
-        else if (Game::game[0].getLang() == PL) eq << "Nie posiadasz ¿adnych przedmiotów w ekwipunku." << std::endl;
+        if (Game::game[0].getLang() == EN)
+            eq << "You do not have any items in your inventory." << std::endl;
+        else if (Game::game[0].getLang() == PL)
+            eq << "Nie posiadasz ¿adnych przedmiotów w ekwipunku." << std::endl;
 
         eq.close();
     }
@@ -374,8 +376,10 @@ void Game::initQuestsList()
     {
         Logger::out("Access to txt file", "Function::initQuestsList");
 
-        if (Game::game[0].getLang() == EN) q << "You do not have any quests in your journal." << std::endl;
-        else if (Game::game[0].getLang() == PL) q << "Nie posiadasz ¿adnych zadañ w dzienniku." << std::endl;
+        if (Game::game[0].getLang() == EN)
+            q << "You do not have any quests in your journal." << std::endl;
+        else if (Game::game[0].getLang() == PL)
+            q << "Nie posiadasz ¿adnych zadañ w dzienniku." << std::endl;
 
         q.close();
     }
@@ -384,8 +388,10 @@ void Game::initQuestsList()
 
 void Game::pause()
 {
-    if (Game::game[0].getLang() == EN) std::cout << "\tPress ANY KEY to continue...";
-    else if (Game::game[0].getLang() == PL) std::cout << "\tWciœnij DOWOLNY PRZYCISK, aby kontynuowaæ...";
+    if (Game::game[0].getLang() == EN)
+        std::cout << "\tPress ANY KEY to continue...";
+    else if (Game::game[0].getLang() == PL)
+        std::cout << "\tWciœnij DOWOLNY PRZYCISK, aby kontynuowaæ...";
 
     Console::waitForUserInput();
 }
