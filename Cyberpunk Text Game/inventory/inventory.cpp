@@ -111,17 +111,23 @@ void Inventory::showInv()
 
         Display::write("\tSelect the index of the item you want to view.\n", 15);
         int itemNr = Input::getChoice();
-        itemNr = itemNr - 1;
         showItemInfo(itemNr);
     }
 }
 
 void Inventory::showItemInfo(int index)
 {
-    std::cout << "\tName: " << itemsList[index]->getName() << std::endl;
-    std::cout << "\tType: " << itemsList[index]->printType() << std::endl;
-    std::cout << "\tDescription: " << itemsList[index]->getDescription() << std::endl;
-    std::cout << "\tPrice: " << itemsList[index]->getPrice() << "$" << std::endl;
+    if (index <= 0 && index == (itemsList.size() + 1))
+    {
+        std::cout << "\tThere is no such index." << std::endl;
+    }
+    else
+    {
+        std::cout << "\tName: " << itemsList[index - 1]->getName() << std::endl;
+        std::cout << "\tType: " << itemsList[index - 1]->printType() << std::endl;
+        std::cout << "\tDescription: " << itemsList[index - 1]->getDescription() << std::endl;
+        std::cout << "\tPrice: " << itemsList[index - 1]->getPrice() << "$" << std::endl;
+    }
 }
 
 void Inventory::clearInv()
@@ -137,6 +143,9 @@ void Inventory::clearInv()
 bool Inventory::hasItem(Item* item)
 {
     for (auto i : itemsList)
+    {
         if (i == item) return true;
+    }
+
     return false;
 }

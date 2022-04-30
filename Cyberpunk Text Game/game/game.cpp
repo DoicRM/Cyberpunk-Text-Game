@@ -123,7 +123,9 @@ void Game::writeLogo()
     std::cout << std::endl;
 
     for (const auto& i : logo)
+    {
         Display::write(i, 1);
+    }
 
     Console::resetConsoleColor();
 
@@ -138,7 +140,9 @@ void Game::loadLogo()
     std::cout << std::endl;
 
     for (const auto& i : logo)
+    {
         std::cout << i;
+    }
 
     std::cout << std::endl;
     Console::resetConsoleColor();
