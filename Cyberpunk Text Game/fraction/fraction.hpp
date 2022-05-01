@@ -1,5 +1,6 @@
 #pragma once
 #include "../utilities/utilities.hpp"
+#include "../utilities/languageHandler/languageHandler.hpp"
 #include <string>
 #include <map>
 

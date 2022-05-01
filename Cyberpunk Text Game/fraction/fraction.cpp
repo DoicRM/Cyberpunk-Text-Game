@@ -24,10 +24,10 @@ std::string Fraction::printAttitude()
 {
     std::string attitude;
 
-    if (this->attitude == Angry) attitude = "angry";
-    else if (this->attitude == Hostile) attitude = "hostile";
-    else if (this->attitude == Friendly) attitude = "friendly";
-    else attitude = "neutral";
+    if (this->attitude == Angry) attitude = JSON::getValue("Attitude_Angry");
+    else if (this->attitude == Hostile) attitude = JSON::getValue("Attitude_Hostile");
+    else if (this->attitude == Friendly) attitude = JSON::getValue("Attitude_Friendly");
+    else attitude = JSON::getValue("Attitude_Neutral");
 
     return attitude;
 }

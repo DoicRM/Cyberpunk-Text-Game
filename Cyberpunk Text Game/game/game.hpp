@@ -8,10 +8,11 @@
 #include "../npc/ambient/ambientNpc.hpp"
 #include "../quest/quest.hpp"
 #include "../events/events.hpp"
-#include "../utilities/utilities.hpp"
 #include "../location/location.hpp"
+#include "../utilities/utilities.hpp"
 #include "../utilities/logger/logger.hpp"
 #include "../utilities/menu/menu.hpp"
+#include "../utilities/languageHandler/languageHandler.hpp"
 
 class Game
 {
@@ -27,26 +28,25 @@ public:
 	// inicjalizacja
 	static void init(); // gry
 	static void initHeroEQ(); // ekwipunku gracza
-	static void initQuestsList(); // zadañ gracza
+	static void initQuestsList(); // zadaï¿½ gracza
 	// zatrzymanie gry
 	static void pause();
 
-	void run(); // rozpoczêcie dzia³ania
-	void initAll(); // inicjalizacja obiektów
-	void selectLanguage(); // wybór jêzyka
+	void run(); // rozpoczÄ™cie dziaÅ‚ania
+	void initAll(); // inicjalizacja obiektï¿½w
+	void selectLanguage(); // wybÃ³r jÄ™zyka
 	void welcome(); // powitanie
 	void writeLogo(); // wypisywanie loga
-	void mainMenu(); // menu g³ówne
+	void mainMenu(); // menu gÅ‚Ã³wne
 	void newGame(); // nowa gra
 	void continueGame(); // kontynuacja rozgrywki
-	void changeLanguage(); // zmiana jêzyka
+	void changeLanguage(); // zmiana jï¿½zyka
 	void credits(); // o autorze
 	void loadLogo(); // wypisane logo
 	void endGame(); // koniec rozgrywki
-	void test(); // do testów
-	void end() { this->playing = false; } // zakoñczenie dzia³ania
+	void end() { this->playing = false; } // zakoÅ„czenie dziaÅ‚ania
 	void setCurrentLocation(Location* location); // ustawienie aktualnej lokacji
-	void startEventsByLocation(); // ustawienie aktualnej lokacji
+	void startEventsByLocation(); // odtworzenie wydarzeÅ„ dla lokacji
 
 	inline bool getPlaying() const { return this->playing; }
 	inline int getLang() const { return this->gameLang; }

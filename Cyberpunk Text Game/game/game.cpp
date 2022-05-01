@@ -33,20 +33,18 @@ void Game::initAll()
         Fraction::initFractions_EN();
         Npc::initNpcs_EN();
         Location::initLocations_EN();
-        Item::initItems_EN();
-        Weapon::initWeapons_EN();
-        Clothes::initClothes_EN();
         Quest::initQuests_EN();
     }
     else {
         Fraction::initFractions_PL();
         Npc::initNpcs_PL();
         Location::initLocations_PL();
-        Item::initItems_PL();
-        Weapon::initWeapons_PL();
-        Clothes::initClothes_PL();
         Quest::initQuests_PL();
     }
+
+    Item::initItems();
+    Weapon::initWeapons();
+    Clothes::initClothes();
 
     initHeroEQ();
     initQuestsList();
@@ -60,7 +58,7 @@ void Game::run()
 
     while (getPlaying())
     {
-        // selectLanguage(); zablokowane do czasu przet³umaczenia w ca³oœci gry na jêzyk polski
+        // selectLanguage(); zablokowane do czasu przetï¿½umaczenia w caï¿½oï¿½ci gry na jï¿½zyk polski
         this->gameLang = EN;
         welcome();
         writeLogo();
@@ -97,10 +95,8 @@ void Game::welcome()
 {
     Logger::out("Function starts", "Game::welcome");
     Sleep(500); 
-
-    if (getLang() == PL) Display::write("\n\tRADOS£AW 'DOIC' MICHALAK PREZENTUJE GRÊ TEKSTOW¥ POD TYTU£EM", 40);
-    else Display::write("\n\tRADOS£AW 'DOIC' MICHALAK PRESENTS A TEXT GAME TITLED", 40);
-
+    JSON::loadFile(EN);
+    Display::write(JSON::getValue("WelcomeText"), 40);
     Sleep(2000);
     Console::clearScreen();
 }
@@ -128,9 +124,7 @@ void Game::writeLogo()
     }
 
     Console::resetConsoleColor();
-
-    if (getLang() == EN) Display::write("\n\n\t\t\t\t\t     A Cyberpunk Text Game\n\n", 2);
-    else Display::write("\n\n\t\t\t\t\t     Cyberpunkowa gra tekstowa\n\n", 2);
+    Display::write(JSON::getValue("LogoSubtitle"), 2);
 }
 
 void Game::loadLogo()
@@ -146,10 +140,7 @@ void Game::loadLogo()
 
     std::cout << std::endl;
     Console::resetConsoleColor();
-
-    if (getLang() == EN) std::cout << "\n\t\t\t\t\t     A Cyberpunk Text Game\n\n" << std::endl;
-    else std::cout << "\n\t\t\t\t\t     Cyberpunkowa gra tekstowa\n\n" << std::endl;
-
+    std::cout << JSON::getValue("LogoSubtitle") << std::endl;
     mainMenu();
 }
 
@@ -159,21 +150,10 @@ void Game::mainMenu()
     Console::resetConsoleColor();
     std::cout << std::endl;
     Menu mainMenu;
-
-    if (getLang() == PL)
-    {
-        //--------------------------------
-        mainMenu.addOptions({ "Nowa gra", "Kontynuuj grê", "Zmieñ jêzyk", "Napisy", "WyjdŸ z gry" });
-        mainMenu.showOptions();
-        //--------------------------------
-    }
-    else
-    {
-        //--------------------------------
-        mainMenu.addOptions({ "New game", "Continue game", "Change language", "Credits", "Quit game" });
-        mainMenu.showOptions();
-        //--------------------------------
-    }
+    //--------------------------------
+    mainMenu.addOptions({ JSON::getValue("MainMenu_1"), JSON::getValue("MainMenu_2"), JSON::getValue("MainMenu_3"), JSON::getValue("MainMenu_4"), JSON::getValue("MainMenu_5") });
+    mainMenu.showOptions();
+    //--------------------------------
 
     do
     {
@@ -202,10 +182,7 @@ void Game::continueGame()
     Logger::out("Function starts", "Game::continueGame");
     Console::clearScreen();
     Console::setConsoleColor(CC_Lightblue);
-
-    if (getLang() == PL) Display::write("\n\tNic tu nie ma. Ta funkcja jest obecnie niedostêpna.\n\n", 25);
-    else Display::write("\n\tThere's nothing here. This feature is currently unavailable.\n\n", 25);
-
+    Display::write(JSON::getValue("ContinueGameInfo"), 25);
     Console::resetConsoleColor();
     Sleep(1000);
     pause();
@@ -223,23 +200,24 @@ void Game::changeLanguage()
     while (change != EN && change != PL)
     {
         Console::clearScreen();
-
-        if (getLang() == EN) Display::write("\n\tSelect your language:\n", 25);
-        else if (getLang() == PL) Display::write("\n\tWybierz swój jêzyk:\n", 25);
-
+        Display::write(JSON::getValue("SelectYourLanguage"), 25);
         //--------------------------------
         langMenu.addOptions({ "EN", "PL" });
         langMenu.showOptions();
         //--------------------------------
         change = langMenu.inputChoice();
 
-        if (change != EN && change != PL) Logger::error("Entered invalid value of <b>gameLang</b>", "Game::changeLanguage");
+        if (change != EN && change != PL)
+            Logger::error("Entered invalid value of <b>gameLang</b>", "Game::changeLanguage");
     }
 
     this->gameLang = change;
+    JSON::loadFile(getLang());
 
-    if (getLang() == EN) Logger::out("Set English as game language", "Game::changeLanguage");
-    else if (getLang() == PL) Logger::out("Set Polish as game language", "Game::changeLanguage");
+    if (getLang() == EN)
+        Logger::out("Set English as game language", "Game::changeLanguage");
+    else if (getLang() == PL)
+        Logger::out("Set Polish as game language", "Game::changeLanguage");
 
     Console::clearScreen();
     loadLogo();
@@ -254,24 +232,11 @@ void Game::endGame()
     do
     {
         Console::clearScreen();
-
-        if (getLang() == PL)
-        {
-            Display::write("\n\tJesteœ pewien, ¿e chcesz wyjœæ z gry?\n", 25);
-            //--------------------------------
-            quitMenu.addOptions({ "Tak", "Nie" });
-            quitMenu.showOptions();
-            //--------------------------------
-        }
-        else
-        {
-            Display::write("\n\tAre you sure you want to end the game?\n", 25);
-            //--------------------------------
-            quitMenu.addOptions({ "Yes", "No" });
-            quitMenu.showOptions();
-            //--------------------------------
-        }
-
+        Display::write(JSON::getValue("ConfirmQuitGame"), 25);
+        //--------------------------------
+        quitMenu.addOptions({ JSON::getValue("Yes"), JSON::getValue("No") });
+        quitMenu.showOptions();
+        //--------------------------------
         choice = quitMenu.inputChoice();
 
         switch (choice) {
@@ -290,48 +255,23 @@ void Game::credits()
     Logger::out("Function starts", "Game::credits");
     Sleep(500);
     Console::clearScreen();
-
-    if (getLang() == PL)
-    {
-        Console::setConsoleColor(CC_Lightblue);
-        Display::write("\n\t\tAUTOR\n");
-        Console::resetConsoleColor();
-        Display::write("\tRados³aw 'Doic' Michalak\n\n");
-        Console::setConsoleColor(CC_Lightblue);
-        Display::write("\t       TESTERZY\n");
-        Console::resetConsoleColor();
-        Display::write("\t    Pawe³ Michalak\n\n");
-        Console::setConsoleColor(CC_Lightblue);
-        Display::write("\t     PODZIÊKOWANIA\n");
-        Console::resetConsoleColor();
-        Display::write("\t   Dominik Szpilski\n\t     Daniel Ob³¹k\n\n");
-    }
-    else
-    {
-        Console::setConsoleColor(CC_Lightblue);
-        Display::write("\n\t\tAUTHOR\n");
-        Console::resetConsoleColor();
-        Display::write("\tRados³aw 'Doic' Michalak\n\n");
-        Console::setConsoleColor(CC_Lightblue);
-        Display::write("\t\tTESTERS\n");
-        Console::resetConsoleColor();
-        Display::write("\t   Pawe³ Michalak\n\n");
-        Console::setConsoleColor(CC_Lightblue);
-        Display::write("\t\tTHANKS\n");
-        Console::resetConsoleColor();
-        Display::write("\t   Dominik Szpilski\n\t     Daniel Ob³¹k\n\n");
-    }
-
+    Console::setConsoleColor(CC_Lightblue);
+    Display::write(JSON::getValue("Author"));
+    Console::resetConsoleColor();
+    Display::write("\n\tRadosï¿½aw 'Doic' Michalak\n\n");
+    Console::setConsoleColor(CC_Lightblue);
+    Display::write(JSON::getValue("Testers"));
+    Console::resetConsoleColor();
+    Display::write("\n\t    Paweï¿½ Michalak\n\n");
+    Console::setConsoleColor(CC_Lightblue);
+    Display::write(JSON::getValue("Thanks"));
+    Console::resetConsoleColor();
+    Display::write("\n\t   Dominik Szpilski\n\t     Daniel Obï¿½ï¿½k\n\n");
     Sleep(1000);
     pause();
     Console::clearScreen();
     loadLogo();
     mainMenu();
-}
-
-void Game::test()
-{
-    Logger::out("Function starts", "Game::test");
 }
 
 void Game::setCurrentLocation(Location* location)
@@ -359,12 +299,7 @@ void Game::initHeroEQ()
     if (eq.good())
     {
         Logger::out("Access to txt file", "Function::initHeroEQ");
-
-        if (Game::game[0].getLang() == EN)
-            eq << "You do not have any items in your inventory." << std::endl;
-        else if (Game::game[0].getLang() == PL)
-            eq << "Nie posiadasz ¿adnych przedmiotów w ekwipunku." << std::endl;
-
+        eq << JSON::getValue("NoItemsInInv") << std::endl;
         eq.close();
     }
     else Logger::error("No file access", "Function::initHeroEQ");
@@ -379,12 +314,7 @@ void Game::initQuestsList()
     if (q.good())
     {
         Logger::out("Access to txt file", "Function::initQuestsList");
-
-        if (Game::game[0].getLang() == EN)
-            q << "You do not have any quests in your journal." << std::endl;
-        else if (Game::game[0].getLang() == PL)
-            q << "Nie posiadasz ¿adnych zadañ w dzienniku." << std::endl;
-
+        q << JSON::getValue("NoQuetsInJournal") << std::endl;
         q.close();
     }
     else Logger::error("No file access", "Function::initQuestsList");
@@ -392,10 +322,6 @@ void Game::initQuestsList()
 
 void Game::pause()
 {
-    if (Game::game[0].getLang() == EN)
-        std::cout << "\tPress ANY KEY to continue...";
-    else if (Game::game[0].getLang() == PL)
-        std::cout << "\tWciœnij DOWOLNY PRZYCISK, aby kontynuowaæ...";
-
+    std::cout << JSON::getValue("PressAnyKey");
     Console::waitForUserInput();
 }

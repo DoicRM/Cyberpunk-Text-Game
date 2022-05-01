@@ -77,16 +77,16 @@ void Inventory::updateInvFile()
 
         if (itemsList.empty())
         {
-            eq << "..." << std::endl;
+            eq << JSON::getValue("NoItemsInInv") << std::endl;
         }
         else
         {
             for (auto i : itemsList)
             {
-                eq << "Name: " << i->getName() << std::endl;
-                eq << "Type: " << i->printType() << std::endl;
-                eq << "Description: " << i->getDescription() << std::endl;
-                eq << "Price: " << i->getPrice() << "$" << std::endl;
+                eq << JSON::getValue("ItemName") << i->getName() << std::endl;
+                eq << JSON::getValue("ItemType") << i->printType() << std::endl;
+                eq << JSON::getValue("ItemDescription") << i->getDescription() << std::endl;
+                eq << JSON::getValue("ItemPrice") << i->getPrice() << "$" << std::endl;
                 eq << "..........................................................................." << std::endl;
             }
         }
@@ -100,7 +100,7 @@ void Inventory::showInv()
 {
     if (itemsList.empty())
     {
-        Display::write("\tYou do not have any items in your inventory.", 15);
+        Display::write("\t" + JSON::getValue("NoItemsInInv"), 15);
     }
     else
     {
@@ -109,7 +109,7 @@ void Inventory::showInv()
             std::cout << "\t" << (i + 1) << ". " << itemsList[i]->getName() << std::endl;
         }
 
-        Display::write("\tSelect the index of the item you want to view.\n", 15);
+        Display::write(JSON::getValue("SelectInvIndex"), 15);
         int itemNr = Input::getChoice();
         showItemInfo(itemNr);
     }
@@ -123,10 +123,10 @@ void Inventory::showItemInfo(int index)
     }
     else
     {
-        std::cout << "\tName: " << itemsList[index - 1]->getName() << std::endl;
-        std::cout << "\tType: " << itemsList[index - 1]->printType() << std::endl;
-        std::cout << "\tDescription: " << itemsList[index - 1]->getDescription() << std::endl;
-        std::cout << "\tPrice: " << itemsList[index - 1]->getPrice() << "$" << std::endl;
+        std::cout << "\t" << JSON::getValue("ItemName") << itemsList[index - 1]->getName() << std::endl;
+        std::cout << "\t" << JSON::getValue("ItemType") << itemsList[index - 1]->printType() << std::endl;
+        std::cout << "\t" << JSON::getValue("ItemDescription") << itemsList[index - 1]->getDescription() << std::endl;
+        std::cout << "\t" << JSON::getValue("ItemPrice") << itemsList[index - 1]->getPrice() << "$" << std::endl;
     }
 }
 

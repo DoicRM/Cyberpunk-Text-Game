@@ -40,7 +40,7 @@ void Quest::start()
     this->status = Ongoing;
 
     Console::resetConsoleColor();
-    Display::write("\n\tNew quest added to the journal: " + this->getName() + "\n");
+    Display::write(JSON::getValue("JournalEntry") + this->getName() + "\n");
 }
 
 void Quest::end()

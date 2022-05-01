@@ -1,6 +1,7 @@
 #pragma once
 #include "../utilities/logger/logger.hpp"
 #include "../utilities/utilities.hpp"
+#include "../utilities/languageHandler/languageHandler.hpp"
 #include <iostream>
 #include <string>
 #include <fstream>

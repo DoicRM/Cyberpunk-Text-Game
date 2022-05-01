@@ -15,6 +15,5 @@ public:
 	inline const int& getDamageMin() const { return this->damageMin; }
 	inline const int& getDamageMax() const { return this->damageMax; }
 
-	static void initWeapons_EN();
-	static void initWeapons_PL();
+	static void initWeapons();
 };

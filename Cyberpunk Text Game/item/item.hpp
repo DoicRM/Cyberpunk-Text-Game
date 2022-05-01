@@ -1,6 +1,7 @@
 #pragma once
 #include "../utilities/utilities.hpp"
 #include "../utilities/logger/logger.hpp"
+#include "../utilities/languageHandler/languageHandler.hpp"
 #include <string>
 #include <map>
 
@@ -25,6 +26,5 @@ public:
     inline const float& getPrice() const { return this->price; };
 
     static std::map <std::string, Item> items;
-    static void initItems_EN();
-    static void initItems_PL();
+    static void initItems();
 };

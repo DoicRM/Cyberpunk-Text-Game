@@ -10,15 +10,9 @@ bool bobRecommendsZed       = false,
 void Event::prologue()
 {
     Logger::out("Function starts", "Event::prologue");
-
-    if (Game::game[0].getLang() == EN) Display::write("\n\tPrologue");
-    else Display::write("\n\tProlog");
-
+    Display::write(JSON::getValue("PrologueTitle"));
     Sleep(2000);
-
-    if (Game::game[0].getLang() == EN) Display::write("\n\n\tREQUIEM FOR A DREAM");
-    else Display::write("\n\n\tREQUIEM DLA MARZEÑ");
-
+    Display::write(JSON::getValue("PrologueSubtitle"));
     Sleep(5000);
     Console::clearScreen();
     storyIntroduction();
@@ -27,40 +21,20 @@ void Event::prologue()
 void Event::storyIntroduction()
 {
     Logger::out("Function starts", "Event::storyIntroduction");
-
-    if (Game::game[0].getLang() == EN)
-    {
-        Display::writeNarration("\n\tIt's 2050.");
-        Sleep(1000);
-        Display::writeNarration(" Megacity is a place overrun by poverty and feuding gangs, where powerful\n\tcorporations have the most influence. The violence in the streets is a clear sign of\n\tan impending war. Government operating from behind the secure walls of City Hall are\n\ttrying to combat this, but so far without success. There are rumors that they themselves\n\tare secretly supporting the chaos to create a New Order on the ruins of the city.\n\n", 20);
-        Game::pause();
-        Console::clearScreen();
-        Sleep(2500);
-        Display::writeDialogue("\n\tStanding at the edge of the tallest tower...", 75);
-        Sleep(2500);
-        Display::writeDialogue("\n\tHolding your hand and dive...", 75);
-        Sleep(2500);
-        Display::writeDialogue("\n\tFalling and falling for what feels like hours...", 75);
-        Sleep(3000);
-        Console::clearScreen();
-        wakeUpInDarkAlley();
-    }
-    else {
-        Display::writeNarration("\n\tJest rok 2050.");
-        Sleep(1000);
-        Display::writeNarration(" Megacity to miejsce opanowane przez biedê i zwaœnione gangi, gdzie najwiêksze\n\twp³ywy maj¹ potê¿ne korporacje. Przemoc na ulicach jest wyraŸnym znakiem zbli¿aj¹cej siê wojny.\n\tRz¹d dzia³aj¹cy zza bezpiecznych murów ratusza próbuje z tym walczyæ, ale jak na razie\n\tbezskutecznie. Kr¹¿¹ plotki, ¿e sam potajemnie wspiera chaos, by na gruzach miasta stworzyæ\n\tNowy Porz¹dek.\n\n", 20);
-        Game::pause();
-        Console::clearScreen();
-        Sleep(2500);
-        Display::writeDialogue("\n\tStoj¹c na krawêdzi najwy¿szej wie¿y...", 75);
-        Sleep(2500);
-        Display::writeDialogue("\n\tTrzymam ciê za rêkê i skaczê...", 75);
-        Sleep(2500);
-        Display::writeDialogue("\n\tSpadam i spadam jakby godzinami...", 75);
-        Sleep(3000);
-        Console::clearScreen();
-        wakeUpInDarkAlley();
-    }
+    Display::writeNarration(JSON::getValue("StoryIntro01"));
+    Sleep(1000);
+    Display::writeNarration(JSON::getValue("StoryIntro02"), 20);
+    Game::pause();
+    Console::clearScreen();
+    Sleep(2500);
+    Display::writeNarration(JSON::getValue("PrologueDream01"), 75);
+    Sleep(2500);
+    Display::writeNarration(JSON::getValue("PrologueDream02"), 75);
+    Sleep(2500);
+    Display::writeNarration(JSON::getValue("PrologueDream03"), 75);
+    Sleep(3000);
+    Console::clearScreen();
+    wakeUpInDarkAlley();
 }
 
 void Event::wakeUpInDarkAlley()
@@ -88,10 +62,6 @@ void Event::wakeUpInDarkAlley()
         Display::writeNarration(" It's full of cardboard\n\tboxes, old mechanical parts, and god knows what else.");
         Sleep(2500);
         Display::writeNarration("\n\tMaybe you will find something interesting there...\n\n");
-        //--------------------------------
-        menu1.addOptions({ "Search the area for something valuable.", "Find the exit from the alley." });
-        menu1.showOptions();
-        //--------------------------------
     }
     else {
         Display::writeNarration("\n\tBudzisz siê oszo³omiony z niespokojnej drzemki.");
@@ -111,11 +81,12 @@ void Event::wakeUpInDarkAlley()
         Display::writeNarration(" Jest pe³ne kartonów, starych\n\tczêœci mechanicznych i Bóg wie czego jeszcze.");
         Sleep(1500);
         Display::writeNarration("\n\tMo¿e znajdziesz tam coœ interesuj¹cego...\n\n");
-        //--------------------------------
-        menu1.addOptions({ "Rozejrzyj siê po okolicy w poszukiwaniu czegoœ cennego.", "ZnajdŸ wyjœcie z zau³ka." });
-        menu1.showOptions();
-        //--------------------------------
     }
+
+    //--------------------------------
+    menu1.addOptions({ JSON::getValue("Menu1_1"), JSON::getValue("Menu1_2") });
+    menu1.showOptions();
+    //--------------------------------
 
     while (true)
     {
@@ -158,7 +129,7 @@ void Event::acceleratorFinding()
     Console::resetConsoleColor();
     Display::write(" was found.");
 
-    Display::write("\n\t[TIP: This item has been added to your inventory. You can view it in the text file in your\n\tgame folder.]", 15);
+    Display::write(JSON::getValue("InvTip"), 15);
     Sleep(4000);
     Display::writeNarration("\n\n\tHmm, that might come in handy in the future.");
     Sleep(1000);
@@ -1625,7 +1596,6 @@ void Event::vincentResurrection()
 void Event::nightclubCrossroads()
 {
     Logger::out("Function starts", "Event::nightclubCrossroads");
-
     //--------------------------------
     Menu menu23;
     menu23.addOptions({ "Go to the dance floor.", "Go to the bar.", "Go upstairs.", "Back on the street." });
@@ -1715,12 +1685,7 @@ void Event::loadingFiles()
     Display::write("=", 100);
     Display::write("||", 100);
     Sleep(1000);
-
-    if (Game::game[0].getLang() == EN)
-        Display::write("\n\tDownload completed");
-    else
-        Display::write("\n\tPobieranie zakoñczone");
-
+    Display::write(JSON::getValue("DownloadCompleted"));
     Console::resetConsoleColor();
 }
 
@@ -1728,12 +1693,7 @@ void Event::namingHero()
 {
     Logger::out("Function starts", "Event::namingHero");
     std::string heroName;
-
-    if (Game::game[0].getLang() == EN)
-        Display::writeNarration("\tYour name... You start wandering your thoughts around what your name is. As if through a fog\n\tit occurs to you that you are:\n");
-    else
-        Display::writeNarration("\tTwoje imiê... Zaczynasz b³¹dziæ myœlami wokó³ tego, jak siê nazywasz. Jakby przez mg³ê dociera\n\tdo ciebie, ¿e jesteœ:\n");
-
+    Display::writeNarration(JSON::getValue("RememberYourName"));
     Console::resetConsoleColor();
     heroName = Input::getString();
     Hero::heroes[0].setName(heroName);

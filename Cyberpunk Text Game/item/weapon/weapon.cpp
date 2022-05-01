@@ -16,18 +16,10 @@ Weapon::~Weapon()
 {
 }
 
-void Weapon::initWeapons_EN()
+void Weapon::initWeapons()
 {
-	Logger::out("Function starts", "Weapon::initWeapons_EN");
+	Logger::out("Function starts", "Weapon::initWeapons");
 
-	Weapon Pistol("Pistol", WEAPON, "A simple weapon that shoots pure energy.", 10, 15, 250);
-	Item::items["Pistol"] = Pistol;
-}
-
-void Weapon::initWeapons_PL()
-{
-	Logger::out("Function starts", "Weapon::initWeapons_PL");
-
-	Weapon Pistol("Pistolet", WEAPON, "Prosta broñ strzelaj¹ca czyst¹ energi¹.", 10, 15, 250);
+	Weapon Pistol(JSON::getValue("Weapon_Pistol_Name"), WEAPON, JSON::getValue("Weapon_Pistol_Desc"), 10, 15, 250);
 	Item::items["Pistol"] = Pistol;
 }

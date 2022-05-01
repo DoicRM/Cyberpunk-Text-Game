@@ -1,5 +1,6 @@
 #pragma once
 #include "../quest/quest.hpp"
+#include "../utilities/languageHandler/languageHandler.hpp"
 #include <vector>
 
 class Journal
