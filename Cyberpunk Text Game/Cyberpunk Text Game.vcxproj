@@ -117,6 +117,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -159,6 +160,7 @@
     <ClCompile Include="npc\ambient\ambientNpc.cpp" />
     <ClCompile Include="npc\npc.cpp" />
     <ClCompile Include="quest\quest.cpp" />
+    <ClCompile Include="utilities\languageHandler\languageHandler.cpp" />
     <ClCompile Include="utilities\logger\logger.cpp" />
     <ClCompile Include="utilities\menu\menu.cpp" />
     <ClCompile Include="utilities\utilities.cpp" />
@@ -178,9 +180,14 @@
     <ClInclude Include="npc\npc.hpp" />
     <ClInclude Include="quest\quest.hpp" />
     <ClInclude Include="utilities\json.hpp" />
+    <ClInclude Include="utilities\languageHandler\languageHandler.hpp" />
     <ClInclude Include="utilities\logger\logger.hpp" />
     <ClInclude Include="utilities\menu\menu.hpp" />
     <ClInclude Include="utilities\utilities.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="lang\en.json" />
+    <None Include="lang\pl.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

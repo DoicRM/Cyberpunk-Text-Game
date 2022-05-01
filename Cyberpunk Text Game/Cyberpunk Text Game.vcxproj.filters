@@ -52,6 +52,12 @@
     <Filter Include="Journal">
       <UniqueIdentifier>{7781ca8d-0ad3-4f53-8ddd-4db6c6bb76ef}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Utilities\LanguageHandler">
+      <UniqueIdentifier>{5bf6a2bc-9a51-4619-9f68-2ca58fb1db82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lang">
+      <UniqueIdentifier>{3d599877-e651-40b5-ae84-febaf0bf4b36}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -118,6 +124,9 @@
     <ClCompile Include="journal\journal.cpp">
       <Filter>Journal</Filter>
     </ClCompile>
+    <ClCompile Include="utilities\languageHandler\languageHandler.cpp">
+      <Filter>Utilities\LanguageHandler</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="events\events.hpp">
@@ -171,5 +180,16 @@
     <ClInclude Include="utilities\json.hpp">
       <Filter>Utilities</Filter>
     </ClInclude>
+    <ClInclude Include="utilities\languageHandler\languageHandler.hpp">
+      <Filter>Utilities\LanguageHandler</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="lang\en.json">
+      <Filter>Lang</Filter>
+    </None>
+    <None Include="lang\pl.json">
+      <Filter>Lang</Filter>
+    </None>
   </ItemGroup>
 </Project>
