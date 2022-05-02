@@ -6,7 +6,7 @@ bool bobRecommendsZed       = false,
      heroIsAtBar            = false,
      heroKnowsVincentCode   = false;
 
-// MROCZNY ZAU£EK
+// MROCZNY ZAU≈ÅEK
 void Event::prologue()
 {
     Logger::out("Function starts", "Event::prologue");
@@ -41,48 +41,24 @@ void Event::wakeUpInDarkAlley()
 {
     Logger::out("Function starts", "Event::wakeUpInDarkAlley");
     Menu menu1;
-
-    if (Game::game[0].getLang() == EN)
-    {
-        Sleep(2000);
-        Display::writeNarration("\n\tYou wake up dazed from a restless slumber.");
-        Sleep(1000);
-        Display::writeNarration(" It was the same dream again...");
-        Sleep(1500);
-        Display::writeNarration("\n\tYou are somewhere in a dark alley. Above your head, among the smoggy haze, as if torn from\n\ta dream, rise the monumental skyscrapers of large corporations.");
-        Sleep(1000);
-        Display::writeNarration(" Their divine majesty beats\n\tyou to the eyes.");
-        Sleep(3000);
-        Display::writeNarration("\n\tYour heart beats so hard that only the stinging touch of the wind protects you from a sudden\n\theart attack.");
-        Sleep(500);
-        Display::writeNarration(" Suddenly a wave of shivers comes over your body, you start shaking like an\n\taspen, and realize that you are lying on a lair made of some old newspapers.");
-        Sleep(3000);
-        Display::writeNarration("\n\tWhen you rise from the ground, you notice a sea of trash around you.");
-        Sleep(1000);
-        Display::writeNarration(" It's full of cardboard\n\tboxes, old mechanical parts, and god knows what else.");
-        Sleep(2500);
-        Display::writeNarration("\n\tMaybe you will find something interesting there...\n\n");
-    }
-    else {
-        Display::writeNarration("\n\tBudzisz siÍ oszo≥omiony z niespokojnej drzemki.");
-        Sleep(1000);
-        Display::writeNarration(" To by≥ znowu ten sam sen...");
-        Sleep(1500);
-        Display::writeNarration("\n\tZnajdujesz siÍ gdzieú w ciemnym zau≥ku. Nad twojπ g≥owπ, wúrÛd smogowej mg≥y, niczym wyrwane\n\tze snu, wznoszπ siÍ monumentalne drapacze chmur wielkich korporacji.");
-        Sleep(1000);
-        Display::writeNarration(" Ich boski majestat bije\n\tciÍ po oczach.");
-        Sleep(2500);
-        Display::writeNarration("\n\tSerce bije ci tak mocno, øe tylko szczypiπcy dotyk wiatru chroni ciÍ przed nag≥ym atakiem\n\tserca.");
-        Sleep(500);
-        Display::writeNarration(" Nagle przez twoje cia≥o przechodzi fala dreszczy, zaczynasz trzπúÊ siÍ jak osika i\n\tuúwiadamiasz sobie, øe leøysz na legowisku zrobionym ze starych gazet.");
-        Sleep(2000);
-        Display::writeNarration("\n\tKiedy podnosisz siÍ z ziemi, zauwaøasz wokÛ≥ siebie morze úmieci.");
-        Sleep(1000);
-        Display::writeNarration(" Jest pe≥ne kartonÛw, starych\n\tczÍúci mechanicznych i BÛg wie czego jeszcze.");
-        Sleep(1500);
-        Display::writeNarration("\n\tMoøe znajdziesz tam coú interesujπcego...\n\n");
-    }
-
+    Sleep(2000);
+    Display::writeNarration(JSON::getValue("WakeUpInDarkAlley_01"));
+    Sleep(1000);
+    Display::writeNarration(JSON::getValue("WakeUpInDarkAlley_02"));
+    Sleep(1500);
+    Display::writeNarration(JSON::getValue("WakeUpInDarkAlley_03"));
+    Sleep(1000);
+    Display::writeNarration(JSON::getValue("WakeUpInDarkAlley_04"));
+    Sleep(3000);
+    Display::writeNarration(JSON::getValue("WakeUpInDarkAlley_05"));
+    Sleep(500);
+    Display::writeNarration(JSON::getValue("WakeUpInDarkAlley_06"));
+    Sleep(3000);
+    Display::writeNarration(JSON::getValue("WakeUpInDarkAlley_07"));
+    Sleep(1000);
+    Display::writeNarration(JSON::getValue("WakeUpInDarkAlley_08"));
+    Sleep(2500);
+    Display::writeNarration(JSON::getValue("WakeUpInDarkAlley_09"));
     //--------------------------------
     menu1.addOptions({ JSON::getValue("Menu1_1"), JSON::getValue("Menu1_2") });
     menu1.showOptions();
@@ -113,9 +89,9 @@ void Event::wakeUpInDarkAlley()
 void Event::acceleratorFinding()
 {
     Logger::out("Function starts", "Event::acceleratorFinding");
-    Display::writeNarration("\n\tYou start rummaging through the trash.");
+    Display::writeNarration(JSON::getValue("AcceleratorFinding_01"));
     Sleep(1500);
-    Display::writeNarration(" The search takes a long while, but eventually you\n\tmanage to find something.");
+    Display::writeNarration(JSON::getValue("AcceleratorFinding_02"));
     Sleep(2000);
 
     Hero::heroes[0].addItem(&Item::items["AD13"]);
@@ -131,7 +107,7 @@ void Event::acceleratorFinding()
 
     Display::write(JSON::getValue("InvTip"), 15);
     Sleep(4000);
-    Display::writeNarration("\n\n\tHmm, that might come in handy in the future.");
+    Display::writeNarration(JSON::getValue("AcceleratorFinding_03"));
     Sleep(1000);
 }
 
@@ -221,7 +197,7 @@ void Event::dialogueWithBob()
         {
             Console::clearScreen();
             menu3.showHeroChoice();
-            bobRecommendsZed = true; // Bob poleca bohaterowi sklep z broniπ Zeda
+            bobRecommendsZed = true; // Bob poleca bohaterowi sklep z broniƒÖ Zeda
             Display::writeDialogue("\n\t- 'Ha-ha, that's what I thought. To tell you the truth, you don't look very threatening.");
             Sleep(1000);
             Display::writeDialogue(" Well,\n\tyou could use some gat. I happen to know a guy who deals guns. His name is Zed, and his store is\n\tright around the corner.");
@@ -633,7 +609,7 @@ void Event::streetCrossroads()
     }
 }
 
-// SKLEP Z BRONI•
+// SKLEP Z BRONIƒÑ
 void Event::enterGunShop()
 {
     Logger::out("Function starts", "Event::enterGunShop");
@@ -1283,7 +1259,7 @@ void Event::dialogueWithJet()
         {
             Console::clearScreen();
             menu16.showHeroChoice();
-            // TODO: dodaÊ opis zabicia Jeta!
+            // TODO: dodaƒá opis zabicia Jeta!
             vincentOffice();
             break;
         }
@@ -1291,7 +1267,7 @@ void Event::dialogueWithJet()
         {
             Console::clearScreen();
             menu16.showHeroChoice();
-            // TODO: dodaÊ opis og≥uszenia Jeta!
+            // TODO: dodaƒá opis og≈Çuszenia Jeta!
             vincentOffice();
             break;
         }
