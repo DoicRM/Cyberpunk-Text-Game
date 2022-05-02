@@ -99,11 +99,11 @@ void Event::acceleratorFinding()
     Console::setConsoleColor(CC_Item);
     Display::write("\n\n\t" + Item::items["AD13"].getName());
     Console::resetConsoleColor();
-    Display::write(" and ");
+    Display::write(JSON::getValue("And"));
     Console::setConsoleColor(CC_Green);
     Display::write("5$");
     Console::resetConsoleColor();
-    Display::write(" was found.");
+    Display::write(JSON::getValue("WasFoundInfo"));
 
     Display::write(JSON::getValue("InvTip"), 15);
     Sleep(4000);
@@ -124,19 +124,19 @@ void Event::outOfTheAlley()
 
     if (!Hero::heroes[0].hasItem(&Item::items["AD13"]))
     {
-        Display::writeNarration("\n\tYou're not going to rummage through the trash.");
+        Display::writeNarration(JSON::getValue("OutOfTheAlley_01"));
         Sleep(1500);
-        Display::writeNarration(" And that's okay, you probably wouldn't find\n\tanything there anyway.");
-        Display::writeNarration(" Instead, you slowly toddle toward the neon color bombs at the end of\n\tthe alley.");
+        Display::writeNarration(JSON::getValue("OutOfTheAlley_02"));
+        Display::writeNarration(JSON::getValue("OutOfTheAlley_03"));
     }
-    else Display::writeNarration("\n\tYou slowly toddle toward the neon color bombs at the end of the alley.");
+    else Display::writeNarration(JSON::getValue("OutOfTheAlley_04"));
 
     Sleep(3000);
-    Display::writeNarration("\n\tYou are getting closer and closer to your goal when from the right, from behind a veil of\n\tshadows, a low, not very pleasant voice belonging to a man speaks up.");
-    Display::writeDialogue("\n\t- 'Hey, kid. Wait for a second.'\n\n");
+    Display::writeNarration(JSON::getValue("OutOfTheAlley_05"));
+    Display::writeDialogue(JSON::getValue("DIA_Bob_01"));
     //--------------------------------
     Menu menu2;
-    menu2.addOptions({ "Stop and find out what he wants.", "Ignore him and keep walking." });
+    menu2.addOptions({ JSON::getValue("Menu2_1"), JSON::getValue("Menu2_2") });
     menu2.showOptions();
     //--------------------------------
     while (true)
@@ -147,9 +147,9 @@ void Event::outOfTheAlley()
         {
             Console::clearScreen();
             menu2.showHeroChoice();
-            Display::writeNarration("\n\tYou stop and turn towards the owner of the voice.");
+            Display::writeNarration(JSON::getValue("OutOfTheAlley_06"));
             Sleep(1500);
-            Display::writeNarration(" His silhouette looms in the darkness. It's\n\tone of the homeless people who live here. What can he have for you?\n");
+            Display::writeNarration(JSON::getValue("OutOfTheAlley_07"));
             Sleep(1000);
             dialogueWithBob();
             break;
@@ -158,9 +158,9 @@ void Event::outOfTheAlley()
         {
             Console::clearScreen();
             menu2.showHeroChoice();
-            Display::writeNarration("\n\tYou have a mysterious stranger for nothing. You speed up your step and leave him far behind you.");
-            Display::writeDialogue("\n\t- 'Hey, you! Come back here!'");
-            Display::writeNarration("\n\tWhatever he wanted from you is no longer important.");
+            Display::writeNarration(JSON::getValue("OutOfTheAlley_08"));
+            Display::writeDialogue(JSON::getValue("DIA_Bob_02"));
+            Display::writeNarration(JSON::getValue("OutOfTheAlley_09"));
             Sleep(1000);
             Game::game[0].setCurrentLocation(&Location::locations["Street"]);
             break;
@@ -172,7 +172,7 @@ void Event::outOfTheAlley()
 void Event::dialogueWithBob()
 {
     Logger::out("Function starts", "Event::dialogueWithBob");
-    Display::writeDialogue("\t- 'What's your name, boy?'\n");
+    Display::writeDialogue(JSON::getValue("DIA_Bob_03"));
 
     if (!Npc::npcs["Bob"].knowsHero() && !Npc::npcs["Caden"].knowsHero() && !Npc::npcs["CadenPartner"].knowsHero())
         namingHero();
