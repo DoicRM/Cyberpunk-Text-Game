@@ -58,7 +58,7 @@ void Game::run()
 
     while (getPlaying())
     {
-        // selectLanguage(); zablokowane do czasu przet�umaczenia w ca�o�ci gry na j�zyk polski
+        // selectLanguage(); zablokowane do czasu przetłumaczenia w całości gry na język polski
         this->gameLang = EN;
         welcome();
         writeLogo();
@@ -314,7 +314,7 @@ void Game::initQuestsList()
     if (q.good())
     {
         Logger::out("Access to txt file", "Function::initQuestsList");
-        q << JSON::getValue("NoQuetsInJournal") << std::endl;
+        q << JSON::getValue("NoQuestsInJournal") << std::endl;
         q.close();
     }
     else Logger::error("No file access", "Function::initQuestsList");

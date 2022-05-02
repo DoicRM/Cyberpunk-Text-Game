@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 #include "../utilities.hpp"
 #include <array>
 
@@ -9,7 +9,7 @@ public:
 	virtual ~Menu();
 
 	void actionOption(int nr, std::string text); // tworzenie akcji gracza - (numer, opis)
-	static void showHeroAction(std::string text); // wyœwietlanie akcji gracza - (opis)
+	static void showHeroAction(std::string text); // wyświetlanie akcji gracza - (opis)
 	void showHeroChoice();
 	void clearOptions();
 	void addOption(std::string description);

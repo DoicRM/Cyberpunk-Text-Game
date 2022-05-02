@@ -28,19 +28,19 @@ public:
 	// inicjalizacja
 	static void init(); // gry
 	static void initHeroEQ(); // ekwipunku gracza
-	static void initQuestsList(); // zada� gracza
+	static void initQuestsList(); // zadań gracza
 	// zatrzymanie gry
 	static void pause();
 
 	void run(); // rozpoczęcie działania
-	void initAll(); // inicjalizacja obiekt�w
+	void initAll(); // inicjalizacja obiektów
 	void selectLanguage(); // wybór języka
 	void welcome(); // powitanie
 	void writeLogo(); // wypisywanie loga
 	void mainMenu(); // menu główne
 	void newGame(); // nowa gra
 	void continueGame(); // kontynuacja rozgrywki
-	void changeLanguage(); // zmiana j�zyka
+	void changeLanguage(); // zmiana języka
 	void credits(); // o autorze
 	void loadLogo(); // wypisane logo
 	void endGame(); // koniec rozgrywki

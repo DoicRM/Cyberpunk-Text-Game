@@ -1,4 +1,4 @@
-﻿#include "item.hpp"
+#include "item.hpp"
 
 std::map <std::string, Item> Item::items;
 

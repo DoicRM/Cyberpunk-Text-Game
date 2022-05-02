@@ -53,7 +53,7 @@ enum QuestStatus
 
 enum ItemType
 {
-	NONE, WEAPON, ARMOR, FOOD, OTHER, QUEST
+	NONE, WEAPON, CLOTHES, FOOD, OTHER, QUEST
 };
 
 enum ArmorType

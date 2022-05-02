@@ -43,7 +43,7 @@ void Journal::updateJournalFile()
 
         if (questsList.empty())
         {
-            q << JSON::getValue("NoQuetsInJournal") << std::endl;
+            q << JSON::getValue("NoQuestsInJournal") << std::endl;
         }
         else
         {
