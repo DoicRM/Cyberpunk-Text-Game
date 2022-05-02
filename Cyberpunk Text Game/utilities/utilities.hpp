@@ -63,10 +63,12 @@ enum ArmorType
 class Console
 {
 public:
-	static void nameGame(LPCSTR name) { SetConsoleTitleA(name); };
+	static void initConsole(LPCSTR lpConsoleTitle, UINT wCodePageID);
+	static void setConsoleTitle(LPCSTR lpConsoleTitle);
 	static void clearScreen(); // czyszczenie ekranu
-	static void setConsoleColor(int color = CC_Default); // Zmiana koloru tekstu i tła konsoli
+	static void setConsoleColor(int color = CC_Default); // zmiana koloru tekstu i tła konsoli
 	static void resetConsoleColor();
+	static void resetConsoleEncoding(UINT input, UINT output);
 
 	//	1 czarny tekst na czarnym tle
 	//	1 ciemno niebieski tekst na czarnym tle

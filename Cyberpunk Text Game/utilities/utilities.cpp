@@ -1,6 +1,18 @@
 #include "utilities.hpp"
 
 // CONSOLE
+void Console::initConsole(LPCSTR lpConsoleTitle, UINT wCodePageID)
+{
+    SetConsoleTitleA(lpConsoleTitle);
+    SetConsoleCP(wCodePageID);
+    SetConsoleOutputCP(wCodePageID);
+}
+
+void Console::setConsoleTitle(LPCSTR lpConsoleTitle)
+{
+    SetConsoleTitleA(lpConsoleTitle);
+}
+
 void Console::setConsoleColor(int color)
 {
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
@@ -24,6 +36,12 @@ void Console::clearScreen()
 #else
     system("clear");
 #endif
+}
+
+void Console::resetConsoleEncoding(UINT input, UINT output)
+{
+    SetConsoleCP(input);
+    SetConsoleOutputCP(output);
 }
 
 // DISPLAY
