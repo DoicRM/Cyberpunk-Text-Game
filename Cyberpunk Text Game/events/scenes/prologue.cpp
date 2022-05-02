@@ -178,15 +178,15 @@ void Event::dialogueWithBob()
         namingHero();
 
     Npc::npcs["Bob"].setToKnowHero();
-    Display::writeDialogue("\t- 'So you're " + Hero::heroes[0].getName() + ", huh?");
+    Display::writeDialogue(JSON::getValue("DIA_Bob_04") + Hero::heroes[0].getName() + JSON::getValue("DIA_Bob_05"));
     Sleep(1500);
-    Display::writeDialogue(" All right. I'm " + Npc::npcs["Bob"].getName() + ".");
+    Display::writeDialogue(JSON::getValue("DIA_Bob_06") + Npc::npcs["Bob"].getName() + ".");
     Sleep(1500);
-    Display::writeDialogue(" What are you doin' here?'");
-    Display::writeNarration("\n\tThe shadows in front of you, begin to ripple when your caller stands up.\n\n");
+    Display::writeDialogue(JSON::getValue("DIA_Bob_07"));
+    Display::writeNarration(JSON::getValue("DialogueWithBob_01"));
     //--------------------------------
     Menu menu3;
-    menu3.addOptions({ "'I'm not looking for trouble.'", "'I'm just looking around. Where are we actually?'", "'It's not your business.'" });
+    menu3.addOptions({ JSON::getValue("Menu3_1"), JSON::getValue("Menu3_2"), JSON::getValue("Menu3_3") });
     menu3.showOptions();
     //--------------------------------
     while (true)
@@ -284,7 +284,7 @@ void Event::darkAlleyCrossroads()
         Display::writeDialogue("\n\t- 'It's you again. Why don't you tell me something for one this time?'\n\n");
         //--------------------------------
         Menu menu2;
-        menu2.addOptions({ "Stop and finally find out what he wants.", "Ignore him and keep walking." });
+        menu2.addOptions({ JSON::getValue("Menu2_3"), JSON::getValue("Menu2_2")});
         menu2.showOptions();
         //--------------------------------
         while (true)
@@ -295,9 +295,9 @@ void Event::darkAlleyCrossroads()
             {
                 Console::clearScreen();
                 menu2.showHeroChoice();
-                Display::writeNarration("\n\tYou stop and turn towards the owner of the voice.");
+                Display::writeNarration(JSON::getValue("OutOfTheAlley_06"));
                 Sleep(1500);
-                Display::writeNarration(" His silhouette looms in the darkness. It's one of the homeless people who live here. What can he have for you?\n");
+                Display::writeNarration(JSON::getValue("OutOfTheAlley_07"));
                 dialogueWithBob();
                 break;
             }
@@ -305,8 +305,8 @@ void Event::darkAlleyCrossroads()
             {
                 Console::clearScreen();
                 menu2.showHeroChoice();
-                Display::writeNarration("\n\tYou have a mysterious stranger for nothing. You speed up your step and leave him far behind\n\tyou. Whatever he wanted from you is no longer important.");
-                Display::writeDialogue("\n\t- 'Don't show up here again if you don't want to get your teeth kicked in!'\n");
+                Display::writeNarration(JSON::getValue("OutOfTheAlley_08"));
+                Display::writeDialogue(JSON::getValue("DIA_Bob_08"));
                 Console::clearScreen();
                 Game::game[0].setCurrentLocation(&Location::locations["Street"]);
                 break;

@@ -83,7 +83,7 @@ void Npc::printAttitude()
         Console::resetConsoleColor();
     }
 
-    Display::write("\t" + this->name + " is " + attitude + " now.\n");
+    Display::write("\t" + this->name + JSON::getValue("Attitude_Is") + attitude + JSON::getValue("Attitude_Now"));
     Console::resetConsoleColor();
 }
 
