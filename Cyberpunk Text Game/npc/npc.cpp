@@ -64,22 +64,22 @@ void Npc::printAttitude()
 
     if (this->attitude == Angry)
     {
-        attitude = "angry";
+        attitude = JSON::getValue("Attitude_Angry");
         Console::setConsoleColor(CC_Yellow);
     }
     else if (this->attitude == Hostile)
     {
-        attitude = "hostile";
+        attitude = JSON::getValue("Attitude_Hostile");
         Console::setConsoleColor(CC_Red);
     }
     else if (this->attitude == Friendly)
     {
-        attitude = "friendly";
+        attitude = JSON::getValue("Attitude_Friendly");
         Console::setConsoleColor(CC_Green);
     }
     else
     {
-        attitude = "neutral";
+        attitude = JSON::getValue("Attitude_Neutral");
         Console::resetConsoleColor();
     }
 
