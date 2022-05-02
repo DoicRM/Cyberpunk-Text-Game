@@ -2,7 +2,7 @@
 
 int main()
 {   
-    int defaultEncoding = GetConsoleCP();
+    int defaultEncoding = GetConsoleOutputCP();
     SetConsoleOutputCP(65001); // set console encoding to UTF-8
     srand((unsigned)time(NULL));
     Logger::setup(false);
