@@ -17,6 +17,8 @@
   "PressAnyKey": "\tWciśnij DOWOLNY PRZYCISK, aby kontynuować...",
   "NoItemsInInv": "Nie posiadasz żadnych przedmiotów w ekwipunku.",
   "NoQuestsInJournal": "Nie posiadasz żadnych zadań w dzienniku.",
+  "And": " i ",
+  "WasFoundInfo": " znaleziono.",
   "Attitude_Angry": "źle",
   "Attitude_Hostile": "wrogo",
   "Attitude_Friendly": "przyjacielsko",
@@ -85,6 +87,14 @@
   "AcceleratorFinding_02": " Poszukiwania trwają dość długo, ale w końcu udaje ci się coś\n\tznaleźć.",
   "InvTip": "\n\t[WSKAZÓWKA: Ten przedmiot został dodany do twojego ekwipunku. Możesz go podejrzeć w pliku\n\ttekstowym w folderze z grą].",
   "AcceleratorFinding_03": "\n\n\tHmm, to może się przydać w przyszłości.",
+  "OutOfTheAlley_01": "\n\tNie będziesz grzebać w śmieciach.",
+  "OutOfTheAlley_02": " I dobrze, pewnie i tak nic byś tam nie znalazł.",
+  "OutOfTheAlley_03": " Zamiast tego powoli podążasz w kierunku neonowych bomb na końcu alejki.",
+  "OutOfTheAlley_04": "\n\tPowoli podążasz w kierunku neonowych bomb na końcu alejki.",
+  "OutOfTheAlley_05": "\n\tJesteś coraz bliżej celu, gdy z prawej strony, zza zasłony cieni, odzywa się niski, niezbyt\n\tprzyjemny głos należący do mężczyzny.",
+  "DIA_Bob_01": "\n\t- 'Hej, dzieciaku. Zaczekaj chwilę.'\n\n",
+  "Menu2_1": "Zatrzymaj się i dowiedz się, czego chce.",
+  "Menu2_2": "Zignoruj go i idź dalej.",
   "DownloadCompleted": "\n\tPobieranie zakończone",
   "RememberYourName": "\tTwoje imię... Zaczynasz błądzić myślami wokół tego, jak się nazywasz. Jakby przez mgłę dociera\n\tdo ciebie, że jesteś:\n"
 }

@@ -17,6 +17,8 @@
   "PressAnyKey": "\tPress ANY KEY to continue...",
   "NoItemsInInv": "You do not have any items in your inventory.",
   "NoQuestsInJournal": "You do not have any quests in your journal.",
+  "And": " and ",
+  "WasFoundInfo": " was found.",
   "Attitude_Angry": "angry",
   "Attitude_Hostile": "hostile",
   "Attitude_Friendly": "friendly",
@@ -85,6 +87,14 @@
   "AcceleratorFinding_02": " The search takes a long while, but eventually you\n\tmanage to find something.",
   "InvTip": "\n\t[TIP: This item has been added to your inventory. You can view it in the text file in your\n\tgame folder.]",
   "AcceleratorFinding_03": "\n\n\tHmm, that might come in handy in the future.",
+  "OutOfTheAlley_01": "\n\tYou're not going to rummage through the trash.",
+  "OutOfTheAlley_02": " And that's okay, you probably wouldn't find\n\tanything there anyway.",
+  "OutOfTheAlley_03": " Instead, you slowly toddle toward the neon color bombs at the end of\n\tthe alley.",
+  "OutOfTheAlley_04": "\n\tYou slowly toddle toward the neon color bombs at the end of the alley.",
+  "OutOfTheAlley_05": "\n\tYou are getting closer and closer to your goal when from the right, from behind a veil of\n\tshadows, a low, not very pleasant voice belonging to a man speaks up.",
+  "DIA_Bob_01": "\n\t- 'Hey, kid. Wait for a second.'\n\n",
+  "Menu2_1": "Stop and find out what he wants.",
+  "Menu2_2": "Ignore him and keep walking.",
   "DownloadCompleted": "\n\tDownload completed",
   "RememberYourName": "\tYour name... You start wandering your thoughts around what your name is. As if through a fog\n\tit occurs to you that you are:\n"
 }
