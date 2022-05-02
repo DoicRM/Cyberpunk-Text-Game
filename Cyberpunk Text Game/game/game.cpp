@@ -42,7 +42,6 @@ void Game::run()
 {
     Logger::out("Function starts", "Game::run");
     Console::nameGame("Nocturnal - Demo Build");
-    Console::initSpecialChars("polish");
 
     while (getPlaying())
     {
@@ -228,7 +227,9 @@ void Game::endGame()
         choice = quitMenu.inputChoice();
 
         switch (choice) {
-        case 1: end(); break;
+        case 1:
+            end();
+            break;
         case 2:
             Console::clearScreen(); 
             loadLogo();
@@ -246,15 +247,15 @@ void Game::credits()
     Console::setConsoleColor(CC_Lightblue);
     Display::write(JSON::getValue("Author"));
     Console::resetConsoleColor();
-    Display::write("\n\tRados�aw 'Doic' Michalak\n\n");
+    Display::write("\n\tRadosław 'Doic' Michalak\n\n");
     Console::setConsoleColor(CC_Lightblue);
     Display::write(JSON::getValue("Testers"));
     Console::resetConsoleColor();
-    Display::write("\n\t    Pawe� Michalak\n\n");
+    Display::write("\n\t    Paweł Michalak\n\n");
     Console::setConsoleColor(CC_Lightblue);
     Display::write(JSON::getValue("Thanks"));
     Console::resetConsoleColor();
-    Display::write("\n\t   Dominik Szpilski\n\t     Daniel Ob��k\n\n");
+    Display::write("\n\t   Dominik Szpilski\n\t     Daniel Obłąk\n\n");
     Sleep(1000);
     pause();
     Console::clearScreen();

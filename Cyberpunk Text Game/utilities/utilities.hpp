@@ -8,7 +8,6 @@
 #include <time.h>
 #include <conio.h>
 #include <windows.h>
-#include <locale.h>
 #include <string>
 #include <map>
 #include <limits>
@@ -65,7 +64,6 @@ class Console
 {
 public:
 	static void nameGame(LPCSTR name) { SetConsoleTitleA(name); };
-	static void initSpecialChars(const char* lang) { setlocale(LC_ALL, lang); };
 	static void clearScreen(); // czyszczenie ekranu
 	static void setConsoleColor(int color = CC_Default); // Zmiana koloru tekstu i tła konsoli
 	static void resetConsoleColor();
