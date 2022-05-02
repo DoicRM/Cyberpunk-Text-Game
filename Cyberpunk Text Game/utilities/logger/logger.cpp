@@ -1,5 +1,5 @@
 // CREATED BY Rachel Wil Sha Singh 2020 (https://gitlab.com/RachelWilShaSingh/simple-cpp-text-adventure)
-// EDITED BY Rados³aw "Doic" Michalak 2022
+// EDITED BY RadosÅ‚aw "Doic" Michalak 2022
 #include "logger.hpp"
 
 std::ofstream Logger::m_file;
@@ -19,7 +19,7 @@ void Logger::setup(bool isLoud)
     m_lastTimestamp = m_startTime;
     m_isLoud = isLoud;
 
-    m_file << "<html><head><title>LOG – " << __DATE__ << "</title><meta http-equiv='refresh' content='2'><link href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3' crossorigin='anonymous'></head><body>" << std::endl;
+    m_file << "<html><head><title>LOG â€“ " << __DATE__ << "</title><meta http-equiv='refresh' content='2'><link href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3' crossorigin='anonymous'></head><body>" << std::endl;
     m_file << "<table class='table table-responsive table-sm table-hover table-striped'><thead class='table-light'>" << std::endl;
     m_file << "<tr>"
         << "<th scope='col'>LOCATION</td>"

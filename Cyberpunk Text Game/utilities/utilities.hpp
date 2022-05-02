@@ -67,7 +67,7 @@ public:
 	static void nameGame(LPCSTR name) { SetConsoleTitleA(name); };
 	static void initSpecialChars(const char* lang) { setlocale(LC_ALL, lang); };
 	static void clearScreen(); // czyszczenie ekranu
-	static void setConsoleColor(int color = CC_Default); // Zmiana koloru tekstu i t³a konsoli
+	static void setConsoleColor(int color = CC_Default); // Zmiana koloru tekstu i tÅ‚a konsoli
 	static void resetConsoleColor();
 
 	//	1 czarny tekst na czarnym tle
@@ -84,8 +84,8 @@ public:
 	//	11 jasno niebieski tekst na czarnym tle
 	//	12 czerwony tekst na czarnym tle
 	//	13 magenta tekst na czarnym tle
-	//	14 ¿ó³ty tekst na czarnym tle
-	//	15 bia³y tekst na czarnym tle
+	//	14 Å¼Ã³Å‚ty tekst na czarnym tle
+	//	15 biaÅ‚y tekst na czarnym tle
 
 	static void waitForUserInput();
 };
@@ -93,9 +93,9 @@ public:
 class Display
 {
 public:
-	static void write(const std::string& text, int speed = 50); // powolne wypisywanie kodu - (tekst, szybkoœæ)
-	static void writeNarration(std::string text, int speed = 50); // powolne wypisywanie kodu - (tekst, szybkoœæ)
-	static void writeDialogue(std::string text, int speed = 50); // powolne wypisywanie kodu - (tekst, szybkoœæ)
+	static void write(const std::string& text, int speed = 50); // powolne wypisywanie kodu - (tekst, szybkoÅ›Ä‡)
+	static void writeNarration(std::string text, int speed = 50); // powolne wypisywanie kodu - (tekst, szybkoÅ›Ä‡)
+	static void writeDialogue(std::string text, int speed = 50); // powolne wypisywanie kodu - (tekst, szybkoÅ›Ä‡)
 };
 
 class Input
