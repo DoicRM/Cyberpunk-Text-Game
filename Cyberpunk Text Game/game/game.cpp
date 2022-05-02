@@ -41,7 +41,6 @@ void Game::initAll()
 void Game::run()
 {
     Logger::out("Function starts", "Game::run");
-    Console::nameGame("Nocturnal - Demo Build");
 
     while (getPlaying())
     {
