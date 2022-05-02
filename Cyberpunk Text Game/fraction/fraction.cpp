@@ -32,35 +32,16 @@ std::string Fraction::printAttitude()
     return attitude;
 }
 
-void Fraction::initFractions_EN()
+void Fraction::initFractions()
 {
-    Logger::out("Function starts", "Fraction::initFractions_EN");
+    Logger::out("Function starts", "Fraction::initFractions");
 
-    Fraction None("None", 0, Neutral);
-    Fraction Beggars("Beggars", 0, Neutral);
-    Fraction Police("Police", 0, Neutral);
-    Fraction Hammers("Hammers", 0, Neutral);
-    Fraction Sleepers("Sleepers", 0, Neutral);
-    Fraction SowersOfConfusion("Sowers of Confusion", 0, Neutral);
-
-    fractions["None"] = None;
-    fractions["Beggars"] = Beggars;
-    fractions["Police"] = Police;
-    fractions["Hammers"] = Hammers;
-    fractions["Sleepers"] = Sleepers;
-    fractions["SowersOfConfusion"] = SowersOfConfusion;
-}
-
-void Fraction::initFractions_PL()
-{
-    Logger::out("Function starts", "Fraction::initFractions_PL");
-
-    Fraction None("Brak", 0, Neutral);
-    Fraction Beggars("¯ebracy", 0, Neutral);
-    Fraction Police("Policja", 0, Neutral);
-    Fraction Hammers("M³oty", 0, Neutral);
-    Fraction Sleepers("Œni¹cy", 0, Neutral);
-    Fraction SowersOfConfusion("Siewcy Zamêtu", 0, Neutral);
+    Fraction None(JSON::getValue("Fraction_None_Name"), 0, Neutral);
+    Fraction Beggars(JSON::getValue("Fraction_Beggars_Name"), 0, Neutral);
+    Fraction Police(JSON::getValue("Fraction_Police_Name"), 0, Neutral);
+    Fraction Hammers(JSON::getValue("Fraction_Hammers_Name"), 0, Neutral);
+    Fraction Sleepers(JSON::getValue("Fraction_Sleepers_Name"), 0, Neutral);
+    Fraction SowersOfConfusion(JSON::getValue("Fraction_SowersOfConfusion_Name"), 0, Neutral);
 
     fractions["None"] = None;
     fractions["Beggars"] = Beggars;

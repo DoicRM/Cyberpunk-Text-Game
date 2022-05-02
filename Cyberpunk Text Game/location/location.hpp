@@ -22,6 +22,5 @@ public:
     inline const Fraction& getOccupation() const { return this->occupation; };
 
     static std::map <std::string, Location> locations;
-    static void initLocations_EN();
-    static void initLocations_PL();
+    static void initLocations();
 };

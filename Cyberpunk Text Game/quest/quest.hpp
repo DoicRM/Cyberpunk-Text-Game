@@ -34,6 +34,5 @@ public:
     inline const bool& getIsCompleted() const { return this->isCompleted; };
 
     static std::map <std::string, Quest> quests;
-    static void initQuests_EN();
-    static void initQuests_PL();
+    static void initQuests();
 };

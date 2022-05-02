@@ -93,54 +93,20 @@ bool Npc::isDead()
     return true;
 }
 
-void Npc::initNpcs_EN()
+void Npc::initNpcs()
 {
-    Logger::out("Function starts", "Npc::initNpcs_EN");
+    Logger::out("Function starts", "Npc::initNpcs");
     // PROLOG
     Npc Bob("Bob", Male, Fraction::fractions["Beggars"]);
     Npc Caden("Caden", Male, Fraction::fractions["Police"]);
-    Npc CadensPartner("The policeman", Male, Fraction::fractions["Police"]);
+    Npc CadensPartner(JSON::getValue("Npc_Policeman_Name"), Male, Fraction::fractions["Police"]);
     Npc Zed("Zed", Male, Fraction::fractions["None"]);
     Npc Nyx("Nyx", Female, Fraction::fractions["Sleepers"]);
-    Npc Jet("The bouncer", Male, Fraction::fractions["Hammers"]);
+    Npc Jet(JSON::getValue("Npc_Bouncer_Name"), Male, Fraction::fractions["Hammers"]);
     Npc Vincent("Vincent", Male, Fraction::fractions["Hammers"]);
     Npc Enigma("Enigma", Male, Fraction::fractions["None"]);
     // AKT I
-    Npc Morpheus("Morpheus", Male, Fraction::fractions["Sleepers"]);
-    Npc MerQRy("Mer Q'Ry", Male, Fraction::fractions["None"]);
-    Npc Karla("Karla", Female, Fraction::fractions["None"]);
-    Npc ChipCaine("Chip Caine", Male, Fraction::fractions["None"]);
-    Npc JaxRasac("Jax Rasac", Male, Fraction::fractions["SowersOfConfusion"]);
-
-    npcs["Bob"] = Bob;
-    npcs["Caden"] = Caden;
-    npcs["CadensPartner"] = CadensPartner;
-    npcs["Zed"] = Zed;
-    npcs["Nyx"] = Nyx;
-    npcs["Jet"] = Jet;
-    npcs["Vincent"] = Vincent;
-    npcs["Enigma"] = Enigma;
-    npcs["Morpheus"] = Morpheus;
-    npcs["MerQRy"] = MerQRy;
-    npcs["Karla"] = Karla;
-    npcs["ChipCaine"] = ChipCaine;
-    npcs["JaxRasac"] = JaxRasac;
-}
-
-void Npc::initNpcs_PL()
-{
-    Logger::out("Function starts", "Npc::initNpcs_PL");
-    // PROLOG
-    Npc Bob("Bob", Male, Fraction::fractions["Beggars"]);
-    Npc Caden("Caden", Male, Fraction::fractions["Police"]);
-    Npc CadensPartner("Policjant", Male, Fraction::fractions["Police"]);
-    Npc Zed("Zed", Male, Fraction::fractions["None"]);
-    Npc Nyx("Nyx", Female, Fraction::fractions["Sleepers"]);
-    Npc Jet("Ochroniarz", Male, Fraction::fractions["Hammers"]);
-    Npc Vincent("Vincent", Male, Fraction::fractions["Hammers"]);
-    Npc Enigma("Enigma", Male, Fraction::fractions["None"]);
-    // AKT I
-    Npc Morpheus("Morfeusz", Male, Fraction::fractions["Sleepers"]);
+    Npc Morpheus(JSON::getValue("Npc_Morpheus_Name"), Male, Fraction::fractions["Sleepers"]);
     Npc MerQRy("Mer Q'Ry", Male, Fraction::fractions["None"]);
     Npc Karla("Karla", Female, Fraction::fractions["None"]);
     Npc ChipCaine("Chip Caine", Male, Fraction::fractions["None"]);

@@ -20,32 +20,15 @@ Location::~Location()
 {
 }
 
-void Location::initLocations_EN()
+void Location::initLocations()
 {
-    Logger::out("Function starts", "Location::initLocations_EN");
+    Logger::out("Function starts", "Location::initLocations");
 
-    Location DarkAlley("Dark alley", 0, Fraction::fractions["Beggars"]);
-    Location Street("Street", 0, Fraction::fractions["Police"]);
-    Location Nightclub("Nightclub 'Amnesia'", 0, Fraction::fractions["Hammers"]);
-    Location GunShop("Zed's Gun Shop", 0, Fraction::fractions["None"]);
-    Location SleepersHideout("Sleepers Hideout", 0, Fraction::fractions["Sleepers"]);
-
-    locations["DarkAlley"] = DarkAlley;
-    locations["Street"] = Street;
-    locations["Nightclub"] = Nightclub;
-    locations["GunShop"] = GunShop;
-    locations["SleepersHideout"] = SleepersHideout;
-}
-
-void Location::initLocations_PL()
-{
-    Logger::out("Function starts", "Location::initLocations_PL");
-
-    Location DarkAlley("Mroczny zau³ek", 0, Fraction::fractions["Beggars"]);
-    Location Street("Ulica", 0, Fraction::fractions["Police"]);
-    Location Nightclub("Klub nocny 'Amnezja'", 0, Fraction::fractions["Hammers"]);
-    Location GunShop("Sklep z broni¹ 'U Zeda'", 0, Fraction::fractions["None"]);
-    Location SleepersHideout("Kryjówka Œni¹cych", 0, Fraction::fractions["Sleepers"]);
+    Location DarkAlley(JSON::getValue("Location_DarkAlley_Name"), 0, Fraction::fractions["Beggars"]);
+    Location Street(JSON::getValue("Location_Street_Name"), 0, Fraction::fractions["Police"]);
+    Location Nightclub(JSON::getValue("Location_Nightclub_Name"), 0, Fraction::fractions["Hammers"]);
+    Location GunShop(JSON::getValue("Location_GunShop_Name"), 0, Fraction::fractions["None"]);
+    Location SleepersHideout(JSON::getValue("Location_SleepersHideout_Name"), 0, Fraction::fractions["Sleepers"]);
 
     locations["DarkAlley"] = DarkAlley;
     locations["Street"] = Street;

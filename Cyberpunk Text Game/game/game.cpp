@@ -27,25 +27,13 @@ void Game::init()
 void Game::initAll()
 {
     Hero::initHero();
-
-    if (game[0].getLang() == EN)
-    {
-        Fraction::initFractions_EN();
-        Npc::initNpcs_EN();
-        Location::initLocations_EN();
-        Quest::initQuests_EN();
-    }
-    else {
-        Fraction::initFractions_PL();
-        Npc::initNpcs_PL();
-        Location::initLocations_PL();
-        Quest::initQuests_PL();
-    }
-
+    Fraction::initFractions();
+    Npc::initNpcs();
+    Location::initLocations();
+    Quest::initQuests();
     Item::initItems();
     Weapon::initWeapons();
     Clothes::initClothes();
-
     initHeroEQ();
     initQuestsList();
 }

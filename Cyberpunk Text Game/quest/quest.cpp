@@ -61,23 +61,12 @@ std::string Quest::printStatus()
     return status;
 }
 
-void Quest::initQuests_EN()
+void Quest::initQuests()
 {
-    Logger::out("Function starts", "Quest::initQuests_EN");
+    Logger::out("Function starts", "Quest::initQuests");
 
-    Quest KillVincent("Beauty and the Beast", "Kill 'Amnesia' nightclub owner Vincent Ramsey at the request of his girlfriend, Nyx.");
-    Quest ZedAccelerator("Shades of the Past", "Bring Zed an old model of an accelerator. In return you will receive a gun from him.");
-
-    quests["KillVincent"] = KillVincent;
-    quests["ZedAccelerator"] = ZedAccelerator;
-}
-
-void Quest::initQuests_PL()
-{
-    Logger::out("Function starts", "Quest::initQuests_PL");
-
-    Quest KillVincent("Piêkna i bestia", "Zabij w³aœciciela klubu nocnego 'Amnezja', Vincenta Ramseya, na proœbê jego dziewczyny, Nyx.");
-    Quest ZedAccelerator("Cienie przesz³oœci", "Przynieœ Zedowi stary model akumulatora. W zamian otrzymasz od niego pistolet.");
+    Quest KillVincent(JSON::getValue("Quest_KillVincent_Name"), JSON::getValue("Quest_KillVincent_Desc"));
+    Quest ZedAccelerator(JSON::getValue("Quest_ZedAccelerator_Name"), JSON::getValue("Quest_ZedAccelerator_Desc"));
 
     quests["KillVincent"] = KillVincent;
     quests["ZedAccelerator"] = ZedAccelerator;
