@@ -1619,46 +1619,13 @@ void Event::loadingFiles()
     Logger::out("Function starts", "Event::loadingFiles");
     Console::setConsoleColor(CC_Dialogue);
     Display::write("\t||", 100);
-    Sleep(1000);
-    Display::write("=", 100);
-    Sleep(1000);
-    Display::write("=", 100);
-    Sleep(1000);
-    Display::write("=", 100);
-    Sleep(1000);
-    Display::write("=", 100);
-    Sleep(1000);
-    Display::write("=", 100);
-    Sleep(1000);
-    Display::write("=", 100);
-    Sleep(1000);
-    Display::write("=", 100);
-    Sleep(1000);
-    Display::write("=", 100);
-    Sleep(1000);
-    Display::write("=", 100);
-    Sleep(1000);
-    Display::write("=", 100);
-    Sleep(1000);
-    Display::write("=", 100);
-    Sleep(1000);
-    Display::write("=", 100);
-    Sleep(1000);
-    Display::write("=", 100);
-    Sleep(1000);
-    Display::write("=", 100);
-    Sleep(1000);
-    Display::write("=", 100);
-    Sleep(1000);
-    Display::write("=", 100);
-    Sleep(1000);
-    Display::write("=", 100);
-    Sleep(1000);
-    Display::write("=", 100);
-    Sleep(1000);
-    Display::write("=", 100);
-    Sleep(1000);
-    Display::write("=", 100);
+
+    for (int i = 0; i < 21; i++)
+    {
+        Sleep(1000);
+        Display::write("=", 100);
+    }
+
     Display::write("||", 100);
     Sleep(1000);
     Display::write(JSON::getValue("DownloadCompleted"));
