@@ -43,15 +43,15 @@ void Journal::updateJournalFile()
 
         if (questsList.empty())
         {
-            q << JSON::getValue("NoQuestsInJournal") << std::endl;
+            q << j["JournalInfos"].value("NoQuestsInJournal","") << std::endl;
         }
         else
         {
             for (auto i : questsList)
             {
-                q << "Name: " << i->getName() << std::endl;
-                q << "Description: " << i->getDescription() << std::endl;
-                q << "Status: " << i->printStatus() << std::endl;
+                q << j["QuestsInfos"].value("Name", "") << i->getName() << std::endl;
+                q << j["QuestsInfos"].value("Description", "") << i->getDescription() << std::endl;
+                q << j["QuestsInfos"].value("Status", "") << i->printStatus() << std::endl;
                 q << "..........................................................................." << std::endl;
             }
         }

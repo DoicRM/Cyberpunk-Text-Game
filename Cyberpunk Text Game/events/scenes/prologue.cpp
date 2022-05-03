@@ -10,9 +10,9 @@ bool bobRecommendsZed       = false,
 void Event::prologue()
 {
     Logger::out("Function starts", "Event::prologue");
-    Display::write(JSON::getValue("PrologueTitle"));
+    Display::write(j.value("PrologueTitle",""));
     Sleep(2000);
-    Display::write(JSON::getValue("PrologueSubtitle"));
+    Display::write(j.value("PrologueSubtitle",""));
     Sleep(5000);
     Console::clearScreen();
     storyIntroduction();
@@ -21,17 +21,17 @@ void Event::prologue()
 void Event::storyIntroduction()
 {
     Logger::out("Function starts", "Event::storyIntroduction");
-    Display::writeNarration(JSON::getValue("StoryIntro01"));
+    Display::writeNarration(j.value("StoryIntro01", ""));
     Sleep(1000);
-    Display::writeNarration(JSON::getValue("StoryIntro02"), 20);
+    Display::writeNarration(j.value("StoryIntro02", ""), 20);
     Game::pause();
     Console::clearScreen();
     Sleep(2500);
-    Display::writeNarration(JSON::getValue("PrologueDream01"), 75);
+    Display::writeNarration(j.value("PrologueDream01", ""), 75);
     Sleep(2500);
-    Display::writeNarration(JSON::getValue("PrologueDream02"), 75);
+    Display::writeNarration(j.value("PrologueDream02", ""), 75);
     Sleep(2500);
-    Display::writeNarration(JSON::getValue("PrologueDream03"), 75);
+    Display::writeNarration(j.value("PrologueDream03", ""), 75);
     Sleep(3000);
     Console::clearScreen();
     wakeUpInDarkAlley();
@@ -42,25 +42,25 @@ void Event::wakeUpInDarkAlley()
     Logger::out("Function starts", "Event::wakeUpInDarkAlley");
     Menu menu1;
     Sleep(2000);
-    Display::writeNarration(JSON::getValue("WakeUpInDarkAlley_01"));
+    Display::writeNarration(j.value("WakeUpInDarkAlley_01", ""));
     Sleep(1000);
-    Display::writeNarration(JSON::getValue("WakeUpInDarkAlley_02"));
+    Display::writeNarration(j.value("WakeUpInDarkAlley_02", ""));
     Sleep(1500);
-    Display::writeNarration(JSON::getValue("WakeUpInDarkAlley_03"));
+    Display::writeNarration(j.value("WakeUpInDarkAlley_03", ""));
     Sleep(1000);
-    Display::writeNarration(JSON::getValue("WakeUpInDarkAlley_04"));
+    Display::writeNarration(j.value("WakeUpInDarkAlley_04", ""));
     Sleep(3000);
-    Display::writeNarration(JSON::getValue("WakeUpInDarkAlley_05"));
+    Display::writeNarration(j.value("WakeUpInDarkAlley_05", ""));
     Sleep(500);
-    Display::writeNarration(JSON::getValue("WakeUpInDarkAlley_06"));
+    Display::writeNarration(j.value("WakeUpInDarkAlley_06", ""));
     Sleep(3000);
-    Display::writeNarration(JSON::getValue("WakeUpInDarkAlley_07"));
+    Display::writeNarration(j.value("WakeUpInDarkAlley_07",""));
     Sleep(1000);
-    Display::writeNarration(JSON::getValue("WakeUpInDarkAlley_08"));
+    Display::writeNarration(j.value("WakeUpInDarkAlley_08", ""));
     Sleep(2500);
-    Display::writeNarration(JSON::getValue("WakeUpInDarkAlley_09"));
+    Display::writeNarration(j.value("WakeUpInDarkAlley_09", ""));
     //--------------------------------
-    menu1.addOptions({ JSON::getValue("Menu1_1"), JSON::getValue("Menu1_2") });
+    menu1.addOptions({ j["Menu1"].value("1",""), j["Menu1"].value("2","") });
     menu1.showOptions();
     //--------------------------------
 
@@ -89,9 +89,9 @@ void Event::wakeUpInDarkAlley()
 void Event::acceleratorFinding()
 {
     Logger::out("Function starts", "Event::acceleratorFinding");
-    Display::writeNarration(JSON::getValue("AcceleratorFinding_01"));
+    Display::writeNarration(j.value("AcceleratorFinding_01", ""));
     Sleep(1500);
-    Display::writeNarration(JSON::getValue("AcceleratorFinding_02"));
+    Display::writeNarration(j.value("AcceleratorFinding_02", ""));
     Sleep(2000);
 
     Hero::heroes[0].addItem(&Item::items["AD13"]);
@@ -99,15 +99,15 @@ void Event::acceleratorFinding()
     Console::setConsoleColor(CC_Item);
     Display::write("\n\n\t" + Item::items["AD13"].getName());
     Console::resetConsoleColor();
-    Display::write(JSON::getValue("And"));
+    Display::write(j["Infos"].value("And", ""));
     Console::setConsoleColor(CC_Green);
     Display::write("5$");
     Console::resetConsoleColor();
-    Display::write(JSON::getValue("WasFoundInfo"));
+    Display::write(j["Infos"].value("WasFound", ""));
 
-    Display::write(JSON::getValue("InvTip"), 15);
+    Display::write(j["InventoryInfos"].value("InvTip",""), 15);
     Sleep(4000);
-    Display::writeNarration(JSON::getValue("AcceleratorFinding_03"));
+    Display::writeNarration(j.value("AcceleratorFinding_03", ""));
     Sleep(1000);
 }
 
@@ -124,19 +124,19 @@ void Event::outOfTheAlley()
 
     if (!Hero::heroes[0].hasItem(&Item::items["AD13"]))
     {
-        Display::writeNarration(JSON::getValue("OutOfTheAlley_01"));
+        Display::writeNarration(j.value("OutOfTheAlley_01", ""));
         Sleep(1500);
-        Display::writeNarration(JSON::getValue("OutOfTheAlley_02"));
-        Display::writeNarration(JSON::getValue("OutOfTheAlley_03"));
+        Display::writeNarration(j.value("OutOfTheAlley_02", ""));
+        Display::writeNarration(j.value("OutOfTheAlley_03", ""));
     }
-    else Display::writeNarration(JSON::getValue("OutOfTheAlley_04"));
+    else Display::writeNarration(j.value("OutOfTheAlley_04", ""));
 
     Sleep(3000);
-    Display::writeNarration(JSON::getValue("OutOfTheAlley_05"));
-    Display::writeDialogue(JSON::getValue("DIA_Bob_01"));
+    Display::writeNarration(j.value("OutOfTheAlley_05", ""));
+    Display::writeDialogue(j.value("DIA_Bob_01", ""));
     //--------------------------------
     Menu menu2;
-    menu2.addOptions({ JSON::getValue("Menu2_1"), JSON::getValue("Menu2_2") });
+    menu2.addOptions({ j["Menu2"].value("1",""), j["Menu2"].value("2","") });
     menu2.showOptions();
     //--------------------------------
     while (true)
@@ -147,9 +147,9 @@ void Event::outOfTheAlley()
         {
             Console::clearScreen();
             menu2.showHeroChoice();
-            Display::writeNarration(JSON::getValue("OutOfTheAlley_06"));
+            Display::writeNarration(j.value("OutOfTheAlley_06", ""));
             Sleep(1500);
-            Display::writeNarration(JSON::getValue("OutOfTheAlley_07"));
+            Display::writeNarration(j.value("OutOfTheAlley_07", ""));
             Sleep(1000);
             dialogueWithBob();
             break;
@@ -158,9 +158,9 @@ void Event::outOfTheAlley()
         {
             Console::clearScreen();
             menu2.showHeroChoice();
-            Display::writeNarration(JSON::getValue("OutOfTheAlley_08"));
-            Display::writeDialogue(JSON::getValue("DIA_Bob_02"));
-            Display::writeNarration(JSON::getValue("OutOfTheAlley_09"));
+            Display::writeNarration(j.value("OutOfTheAlley_08", ""));
+            Display::writeDialogue(j.value("DIA_Bob_02", ""));
+            Display::writeNarration(j.value("OutOfTheAlley_09", ""));
             Sleep(1000);
             Game::game[0].setCurrentLocation(&Location::locations["Street"]);
             break;
@@ -172,21 +172,21 @@ void Event::outOfTheAlley()
 void Event::dialogueWithBob()
 {
     Logger::out("Function starts", "Event::dialogueWithBob");
-    Display::writeDialogue(JSON::getValue("DIA_Bob_03"));
+    Display::writeDialogue(j.value("DIA_Bob_03", ""));
 
     if (!Npc::npcs["Bob"].knowsHero() && !Npc::npcs["Caden"].knowsHero() && !Npc::npcs["CadenPartner"].knowsHero())
         namingHero();
 
     Npc::npcs["Bob"].setToKnowHero();
-    Display::writeDialogue(JSON::getValue("DIA_Bob_04") + Hero::heroes[0].getName() + JSON::getValue("DIA_Bob_05"));
+    Display::writeDialogue(j.value("DIA_Bob_04", "") + Hero::heroes[0].getName() + j.value("DIA_Bob_05", ""));
     Sleep(1500);
-    Display::writeDialogue(JSON::getValue("DIA_Bob_06") + Npc::npcs["Bob"].getName() + ".");
+    Display::writeDialogue(j.value("DIA_Bob_06", "") + Npc::npcs["Bob"].getName() + ".");
     Sleep(1500);
-    Display::writeDialogue(JSON::getValue("DIA_Bob_07"));
-    Display::writeNarration(JSON::getValue("DialogueWithBob_01"));
+    Display::writeDialogue(j.value("DIA_Bob_07", ""));
+    Display::writeNarration(j.value("DialogueWithBob_01", ""));
     //--------------------------------
     Menu menu3;
-    menu3.addOptions({ JSON::getValue("Menu3_1"), JSON::getValue("Menu3_2"), JSON::getValue("Menu3_3") });
+    menu3.addOptions({ j["Menu3"].value("1",""), j["Menu3"].value("2",""), j["Menu3"].value("3","") });
     menu3.showOptions();
     //--------------------------------
     while (true)
@@ -284,7 +284,7 @@ void Event::darkAlleyCrossroads()
         Display::writeDialogue("\n\t- 'It's you again. Why don't you tell me something for one this time?'\n\n");
         //--------------------------------
         Menu menu2;
-        menu2.addOptions({ JSON::getValue("Menu2_3"), JSON::getValue("Menu2_2")});
+        menu2.addOptions({ j["Menu3"].value("3",""), j["Menu3"].value("2","") });
         menu2.showOptions();
         //--------------------------------
         while (true)
@@ -295,9 +295,9 @@ void Event::darkAlleyCrossroads()
             {
                 Console::clearScreen();
                 menu2.showHeroChoice();
-                Display::writeNarration(JSON::getValue("OutOfTheAlley_06"));
+                Display::writeNarration(j.value("OutOfTheAlley_06", ""));
                 Sleep(1500);
-                Display::writeNarration(JSON::getValue("OutOfTheAlley_07"));
+                Display::writeNarration(j.value("OutOfTheAlley_07", ""));
                 dialogueWithBob();
                 break;
             }
@@ -305,8 +305,8 @@ void Event::darkAlleyCrossroads()
             {
                 Console::clearScreen();
                 menu2.showHeroChoice();
-                Display::writeNarration(JSON::getValue("OutOfTheAlley_08"));
-                Display::writeDialogue(JSON::getValue("DIA_Bob_08"));
+                Display::writeNarration(j.value("OutOfTheAlley_08", ""));
+                Display::writeDialogue(j.value("DIA_Bob_08", ""));
                 Console::clearScreen();
                 Game::game[0].setCurrentLocation(&Location::locations["Street"]);
                 break;
@@ -1628,7 +1628,7 @@ void Event::loadingFiles()
 
     Display::write("||", 100);
     Sleep(1000);
-    Display::write(JSON::getValue("DownloadCompleted"));
+    Display::write(j["Infos"].value("DownloadCompleted", ""));
     Console::resetConsoleColor();
 }
 
@@ -1636,7 +1636,7 @@ void Event::namingHero()
 {
     Logger::out("Function starts", "Event::namingHero");
     std::string heroName;
-    Display::writeNarration(JSON::getValue("RememberYourName"));
+    Display::writeNarration(j.value("RememberYourName", ""));
     Console::resetConsoleColor();
     heroName = Input::getString();
     Hero::heroes[0].setName(heroName);

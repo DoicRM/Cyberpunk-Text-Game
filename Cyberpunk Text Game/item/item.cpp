@@ -28,12 +28,12 @@ std::string Item::printType()
 {
     std::string type;
 
-    if (this->type == WEAPON) type = JSON::getValue("ItemType_Weapon");
-    else if (this->type == CLOTHES) type = JSON::getValue("ItemType_Clothes");
-    else if (this->type == OTHER) type = JSON::getValue("ItemType_Other");
-    else if (this->type == FOOD) type = JSON::getValue("ItemType_Food");
-    else if (this->type == QUEST) type = JSON::getValue("ItemType_Quest");
-    else type = JSON::getValue("ItemType_None");;
+    if (this->type == WEAPON) type = j["ItemsTypes"]["Weapon"];
+    else if (this->type == CLOTHES) type = j["ItemsTypes"]["Clothes"];
+    else if (this->type == OTHER) type = j["ItemsTypes"]["Other"];
+    else if (this->type == FOOD) type = j["ItemsTypes"]["Food"];
+    else if (this->type == QUEST) type = j["ItemsTypes"]["Quest"];
+    else type = j["ItemsTypes"]["None"];
 
     return type;
 }
@@ -42,8 +42,8 @@ void Item::initItems()
 {
     Logger::out("Function starts", "Item::initItems");
 
-    Item AD13(JSON::getValue("Item_AD13_Name"), OTHER, JSON::getValue("Item_AD13_Desc"), 50);
-    Item AccessCard(JSON::getValue("Item_AccessCard_Name"), OTHER, JSON::getValue("Item_AccessCard_Desc"), 0);
+    Item AD13(j["Items"]["AD13"]["Name"], OTHER, j["Items"]["AD13"]["Description"], 50);
+    Item AccessCard(j["Items"]["AccessCard"]["Name"], OTHER, j["Items"]["AccessCard"]["Description"], 0);
 
     items["AD13"] = AD13;
     items["AccessCard"] = AccessCard;

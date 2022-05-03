@@ -20,11 +20,11 @@ std::string Clothes::printClothesType()
 {
     std::string type;
 
-    if (this->type == HEAD) type = JSON::getValue("ClothesType_Head");
-    else if (this->type == CHEST) type = JSON::getValue("ClothesType_Chest");
-    else if (this->type == ARMS) type = JSON::getValue("ClothesType_Arms");
-    else if (this->type == LEGS)  type = JSON::getValue("ClothesType_Legs");
-    else type = JSON::getValue("ClothesType_None");
+    if (this->type == HEAD) type = j["ClothesTypes"]["Head"];
+    else if (this->type == CHEST) type = j["ClothesTypes"]["Chest"];
+    else if (this->type == ARMS) type = j["ClothesTypes"]["Arms"];
+    else if (this->type == LEGS)  type = j["ClothesTypes"]["Legs"];
+    else type = j["ClothesTypes"]["None"];
 
     return type;
 }

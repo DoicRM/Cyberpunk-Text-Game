@@ -40,7 +40,7 @@ void Quest::start()
     this->status = Ongoing;
 
     Console::resetConsoleColor();
-    Display::write(JSON::getValue("JournalEntry") + this->getName() + "\n");
+    Display::write(j["JournalInfos"].value("NoQuestsInJournal", "") + this->getName() + "\n");
 }
 
 void Quest::end()
@@ -54,9 +54,9 @@ std::string Quest::printStatus()
 {
     std::string status;
 
-    if (this->status == Ongoing) status = "ongoing";
-    else if (this->status == Completed) status = "completed";
-    else status = "not started";
+    if (this->status == Ongoing) status = j["QuestStatus"].value("Ongoing","");
+    else if (this->status == Completed) status = j["QuestStatus"].value("Completed", "");
+    else status = j["QuestStatus"].value("NotStarted", "");
 
     return status;
 }
@@ -65,8 +65,8 @@ void Quest::initQuests()
 {
     Logger::out("Function starts", "Quest::initQuests");
 
-    Quest KillVincent(JSON::getValue("Quest_KillVincent_Name"), JSON::getValue("Quest_KillVincent_Desc"));
-    Quest ZedAccelerator(JSON::getValue("Quest_ZedAccelerator_Name"), JSON::getValue("Quest_ZedAccelerator_Desc"));
+    Quest KillVincent(j["Quests"]["KillVincent"].value("Name", ""), j["Quests"]["KillVincent"].value("Description", ""));
+    Quest ZedAccelerator(j["Quests"]["ZedAccelerator"].value("Name", ""), j["Quests"]["ZedAccelerator"].value("Description", ""));
 
     quests["KillVincent"] = KillVincent;
     quests["ZedAccelerator"] = ZedAccelerator;

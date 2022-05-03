@@ -20,6 +20,6 @@ void Weapon::initWeapons()
 {
 	Logger::out("Function starts", "Weapon::initWeapons");
 
-	Weapon Pistol(JSON::getValue("Weapon_Pistol_Name"), WEAPON, JSON::getValue("Weapon_Pistol_Desc"), 10, 15, 250);
+	Weapon Pistol(j["Weapons"]["Pistol"]["Name"], WEAPON, j["Weapons"]["Pistol"]["Description"], 10, 15, 250);
 	Item::items["Pistol"] = Pistol;
 }

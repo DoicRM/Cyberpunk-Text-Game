@@ -77,16 +77,16 @@ void Inventory::updateInvFile()
 
         if (itemsList.empty())
         {
-            eq << JSON::getValue("NoItemsInInv") << std::endl;
+            eq << j["Infos"].value("NoItemsInInv", "") << std::endl;
         }
         else
         {
             for (auto i : itemsList)
             {
-                eq << JSON::getValue("ItemName") << i->getName() << std::endl;
-                eq << JSON::getValue("ItemType") << i->printType() << std::endl;
-                eq << JSON::getValue("ItemDescription") << i->getDescription() << std::endl;
-                eq << JSON::getValue("ItemPrice") << i->getPrice() << "$" << std::endl;
+                eq << j["ItemsInfos"].value("Name","") << i->getName() << std::endl;
+                eq << j["ItemsInfos"].value("Type", "") << i->printType() << std::endl;
+                eq << j["ItemsInfos"].value("Description", "") << i->getDescription() << std::endl;
+                eq << j["ItemsInfos"].value("Price", "") << i->getPrice() << "$" << std::endl;
                 eq << "..........................................................................." << std::endl;
             }
         }
@@ -100,7 +100,7 @@ void Inventory::showInv()
 {
     if (itemsList.empty())
     {
-        Display::write("\t" + JSON::getValue("NoItemsInInv"), 15);
+        Display::write("\t" + j["InventoryInfos"].value("NoItemsInInv", ""), 15);
     }
     else
     {
@@ -109,7 +109,7 @@ void Inventory::showInv()
             std::cout << "\t" << (i + 1) << ". " << itemsList[i]->getName() << std::endl;
         }
 
-        Display::write(JSON::getValue("SelectInvIndex"), 15);
+        Display::write(j["InventoryInfos"].value("SelectInvIndex", ""), 15);
         int itemNr = Input::getChoice();
         showItemInfo(itemNr);
     }
@@ -119,14 +119,14 @@ void Inventory::showItemInfo(int index)
 {
     if (index <= 0 && index == (itemsList.size() + 1))
     {
-        std::cout << "\tThere is no such index." << std::endl;
+        std::cout << "\t" + j["InventoryInfos"].value("SelectedIndexNotExists", "") << std::endl;
     }
     else
     {
-        std::cout << "\t" << JSON::getValue("ItemName") << itemsList[index - 1]->getName() << std::endl;
-        std::cout << "\t" << JSON::getValue("ItemType") << itemsList[index - 1]->printType() << std::endl;
-        std::cout << "\t" << JSON::getValue("ItemDescription") << itemsList[index - 1]->getDescription() << std::endl;
-        std::cout << "\t" << JSON::getValue("ItemPrice") << itemsList[index - 1]->getPrice() << "$" << std::endl;
+        std::cout << "\t" << j["ItemsInfos"].value("Name", "") << itemsList[index - 1]->getName() << std::endl;
+        std::cout << "\t" << j["ItemsInfos"].value("Type", "") << itemsList[index - 1]->printType() << std::endl;
+        std::cout << "\t" << j["ItemsInfos"].value("Description", "") << itemsList[index - 1]->getDescription() << std::endl;
+        std::cout << "\t" << j["ItemsInfos"].value("Price", "") << itemsList[index - 1]->getPrice() << "$" << std::endl;
     }
 }
 
