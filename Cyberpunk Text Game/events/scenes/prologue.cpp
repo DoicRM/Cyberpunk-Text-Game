@@ -133,7 +133,7 @@ void Event::outOfTheAlley()
 
     Sleep(3000);
     Display::writeNarration(jWriter["Prologue"]["OutOfTheAlley"].value("INFO_5", ""));
-    Display::writeDialogue(jWriter["Prologue"]["OutOfTheAlley"].value("DIA_Bob_01", ""));
+    Display::writeDialogue(jWriter["Prologue"]["OutOfTheAlley"].value("DIA_Bob_1", ""));
     //--------------------------------
     Menu menu2;
     menu2.addOptions({ jWriter["Prologue"]["Menu2"].value("1",""), jWriter["Prologue"]["Menu2"].value("2","") });
@@ -159,7 +159,7 @@ void Event::outOfTheAlley()
             Console::clearScreen();
             menu2.showHeroChoice();
             Display::writeNarration(jWriter["Prologue"]["OutOfTheAlley"].value("INFO_8", ""));
-            Display::writeDialogue(jWriter.value("DIA_Bob_02", ""));
+            Display::writeDialogue(jWriter.value("DIA_Bob_2", ""));
             Display::writeNarration(jWriter["Prologue"]["OutOfTheAlley"].value("INFO_9", ""));
             Sleep(1000);
             Game::game[0].setCurrentLocation(&Location::locations["Street"]);
@@ -172,17 +172,17 @@ void Event::outOfTheAlley()
 void Event::dialogueWithBob()
 {
     Logger::out("Function starts", "Event::dialogueWithBob");
-    Display::writeDialogue(jWriter["Prologue"]["DialogueWithBob"].value("DIA_Bob_03", ""));
+    Display::writeDialogue(jWriter["Prologue"]["DialogueWithBob"].value("DIA_Bob_3", ""));
 
     if (!Npc::npcs["Bob"].knowsHero() && !Npc::npcs["Caden"].knowsHero() && !Npc::npcs["CadenPartner"].knowsHero())
         namingHero();
 
     Npc::npcs["Bob"].setToKnowHero();
-    Display::writeDialogue(jWriter["Prologue"]["DialogueWithBob"].value("DIA_Bob_04", "") + Hero::heroes[0].getName() + jWriter["Prologue"]["DialogueWithBob"].value("DIA_Bob_05", ""));
+    Display::writeDialogue(jWriter["Prologue"]["DialogueWithBob"].value("DIA_Bob_4", "") + Hero::heroes[0].getName() + jWriter["Prologue"]["DialogueWithBob"].value("DIA_Bob_5", ""));
     Sleep(1500);
-    Display::writeDialogue(jWriter["Prologue"]["DialogueWithBob"].value("DIA_Bob_06", "") + Npc::npcs["Bob"].getName() + ".");
+    Display::writeDialogue(jWriter["Prologue"]["DialogueWithBob"].value("DIA_Bob_6", "") + Npc::npcs["Bob"].getName() + ".");
     Sleep(1500);
-    Display::writeDialogue(jWriter["Prologue"]["DialogueWithBob"].value("DIA_Bob_07", ""));
+    Display::writeDialogue(jWriter["Prologue"]["DialogueWithBob"].value("DIA_Bob_7", ""));
     Display::writeNarration(jWriter["Prologue"]["DialogueWithBob"].value("DialogueWithBob_01", ""));
     //--------------------------------
     Menu menu3;
