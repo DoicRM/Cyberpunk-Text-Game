@@ -10,4 +10,4 @@ public:
 	static void loadFile(int lang);
 };
 
-extern nlohmann::json j;
+extern nlohmann::json jWriter;

@@ -64,26 +64,26 @@ void Npc::printAttitude()
 
     if (this->attitude == Angry)
     {
-        attitude = j["Attitudes"].value("Angry","");
+        attitude = jWriter["Attitudes"].value("Angry","");
         Console::setConsoleColor(CC_Yellow);
     }
     else if (this->attitude == Hostile)
     {
-        attitude = j["Attitudes"].value("Hostile", "");
+        attitude = jWriter["Attitudes"].value("Hostile", "");
         Console::setConsoleColor(CC_Red);
     }
     else if (this->attitude == Friendly)
     {
-        attitude = j["Attitudes"].value("Friendly", "");
+        attitude = jWriter["Attitudes"].value("Friendly", "");
         Console::setConsoleColor(CC_Green);
     }
     else
     {
-        attitude = j["Attitudes"].value("Neutral", "");
+        attitude = jWriter["Attitudes"].value("Neutral", "");
         Console::resetConsoleColor();
     }
 
-    Display::write("\t" + this->name + j["Attitudes"].value("Is", "") + attitude + j["Attitudes"].value("Now", ""));
+    Display::write("\t" + this->name + jWriter["Attitudes"].value("Is", "") + attitude + jWriter["Attitudes"].value("Now", ""));
     Console::resetConsoleColor();
 }
 
@@ -99,14 +99,14 @@ void Npc::initNpcs()
     // PROLOG
     Npc Bob("Bob", Male, Fraction::fractions["Beggars"]);
     Npc Caden("Caden", Male, Fraction::fractions["Police"]);
-    Npc CadensPartner(j["Npcs"].value("Policeman_Name",""), Male, Fraction::fractions["Police"]);
+    Npc CadensPartner(jWriter["Npcs"].value("Policeman_Name",""), Male, Fraction::fractions["Police"]);
     Npc Zed("Zed", Male, Fraction::fractions["None"]);
     Npc Nyx("Nyx", Female, Fraction::fractions["Sleepers"]);
-    Npc Jet(j["Npcs"].value("Bouncer_Name", ""), Male, Fraction::fractions["Hammers"]);
+    Npc Jet(jWriter["Npcs"].value("Bouncer_Name", ""), Male, Fraction::fractions["Hammers"]);
     Npc Vincent("Vincent", Male, Fraction::fractions["Hammers"]);
     Npc Enigma("Enigma", Male, Fraction::fractions["None"]);
     // AKT I
-    Npc Morpheus(j["Npcs"].value("Morpheus_Name", ""), Male, Fraction::fractions["Sleepers"]);
+    Npc Morpheus(jWriter["Npcs"].value("Morpheus_Name", ""), Male, Fraction::fractions["Sleepers"]);
     Npc MerQRy("Mer Q'Ry", Male, Fraction::fractions["None"]);
     Npc Karla("Karla", Female, Fraction::fractions["None"]);
     Npc ChipCaine("Chip Caine", Male, Fraction::fractions["None"]);

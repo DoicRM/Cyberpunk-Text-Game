@@ -28,12 +28,12 @@ std::string Item::printType()
 {
     std::string type;
 
-    if (this->type == WEAPON) type = j["ItemsTypes"]["Weapon"];
-    else if (this->type == CLOTHES) type = j["ItemsTypes"]["Clothes"];
-    else if (this->type == OTHER) type = j["ItemsTypes"]["Other"];
-    else if (this->type == FOOD) type = j["ItemsTypes"]["Food"];
-    else if (this->type == QUEST) type = j["ItemsTypes"]["Quest"];
-    else type = j["ItemsTypes"]["None"];
+    if (this->type == WEAPON) type = jWriter["ItemsTypes"]["Weapon"];
+    else if (this->type == CLOTHES) type = jWriter["ItemsTypes"]["Clothes"];
+    else if (this->type == OTHER) type = jWriter["ItemsTypes"]["Other"];
+    else if (this->type == FOOD) type = jWriter["ItemsTypes"]["Food"];
+    else if (this->type == QUEST) type = jWriter["ItemsTypes"]["Quest"];
+    else type = jWriter["ItemsTypes"]["None"];
 
     return type;
 }
@@ -42,8 +42,8 @@ void Item::initItems()
 {
     Logger::out("Function starts", "Item::initItems");
 
-    Item AD13(j["Items"]["AD13"]["Name"], OTHER, j["Items"]["AD13"]["Description"], 50);
-    Item AccessCard(j["Items"]["AccessCard"]["Name"], OTHER, j["Items"]["AccessCard"]["Description"], 0);
+    Item AD13(jWriter["Items"]["AD13"]["Name"], OTHER, jWriter["Items"]["AD13"]["Description"], 50);
+    Item AccessCard(jWriter["Items"]["AccessCard"]["Name"], OTHER, jWriter["Items"]["AccessCard"]["Description"], 0);
 
     items["AD13"] = AD13;
     items["AccessCard"] = AccessCard;

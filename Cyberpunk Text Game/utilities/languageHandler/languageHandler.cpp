@@ -1,6 +1,6 @@
 #include "languageHandler.hpp"
 
-nlohmann::json j;
+nlohmann::json jWriter;
 
 void JSON::loadFile(int lang)
 {
@@ -10,7 +10,7 @@ void JSON::loadFile(int lang)
     else str = "en";
 
     std::string path = std::filesystem::current_path().string() + "\\lang\\";
-    std::ifstream reader(path + str + ".json");
-    reader >> j;
-    reader.close();
+    std::ifstream jReader(path + str + ".json");
+    jReader >> jWriter;
+    jReader.close();
 }

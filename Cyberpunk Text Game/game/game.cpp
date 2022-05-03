@@ -44,8 +44,7 @@ void Game::run()
 
     while (getPlaying())
     {
-        // selectLanguage(); zablokowane do czasu przetłumaczenia w całości gry na język polski
-        this->gameLang = EN;
+        selectLanguage();
         welcome();
         writeLogo();
         mainMenu();
@@ -74,6 +73,7 @@ void Game::selectLanguage()
         else if (getLang() == PL) Logger::out("Set Polish as game language", "Game::selectLanguage");
     }
 
+    JSON::loadFile(getLang());
     Console::clearScreen();
 }
 
@@ -81,8 +81,7 @@ void Game::welcome()
 {
     Logger::out("Function starts", "Game::welcome");
     Sleep(500); 
-    JSON::loadFile(EN);
-    Display::write(j["Infos"].value("Welcome", ""), 40);
+    Display::write(jWriter["Infos"].value("Welcome", ""), 40);
     Sleep(2000);
     Console::clearScreen();
 }
@@ -110,7 +109,8 @@ void Game::writeLogo()
     }
 
     Console::resetConsoleColor();
-    Display::write(j["Infos"].value("LogoSubtitle", ""), 2);
+    std::cout << std::endl;
+    Display::write(jWriter["Infos"].value("LogoSubtitle", ""), 2);
 }
 
 void Game::loadLogo()
@@ -126,7 +126,7 @@ void Game::loadLogo()
 
     std::cout << std::endl;
     Console::resetConsoleColor();
-    std::cout << j["Infos"].value("LogoSubtitle", "") << std::endl;
+    std::cout << jWriter["Infos"].value("LogoSubtitle", "") << std::endl;
     mainMenu();
 }
 
@@ -137,7 +137,7 @@ void Game::mainMenu()
     std::cout << std::endl;
     Menu mainMenu;
     //--------------------------------
-    mainMenu.addOptions({ j["MainMenu"].value("1", ""), j["MainMenu"].value("2", ""), j["MainMenu"].value("3", ""), j["MainMenu"].value("4", ""), j["MainMenu"].value("5", "") });
+    mainMenu.addOptions({ jWriter["MainMenu"].value("1", ""), jWriter["MainMenu"].value("2", ""), jWriter["MainMenu"].value("3", ""), jWriter["MainMenu"].value("4", ""), jWriter["MainMenu"].value("5", "") });
     mainMenu.showOptions();
     //--------------------------------
 
@@ -168,7 +168,7 @@ void Game::continueGame()
     Logger::out("Function starts", "Game::continueGame");
     Console::clearScreen();
     Console::setConsoleColor(CC_Lightblue);
-    Display::write(j["Infos"].value("ContinueGame", ""), 25);
+    Display::write(jWriter["Infos"].value("ContinueGame", ""), 25);
     Console::resetConsoleColor();
     Sleep(1000);
     pause();
@@ -186,7 +186,7 @@ void Game::changeLanguage()
     while (change != EN && change != PL)
     {
         Console::clearScreen();
-        Display::write(j["Infos"].value("SelectYourLanguage", ""), 25);
+        Display::write(jWriter["Infos"].value("SelectYourLanguage", ""), 25);
         //--------------------------------
         langMenu.addOptions({ "EN", "PL" });
         langMenu.showOptions();
@@ -218,9 +218,9 @@ void Game::endGame()
     do
     {
         Console::clearScreen();
-        Display::write(j["QuitGame"].value("ConfirmQuitGame", ""), 25);
+        Display::write(jWriter["QuitGame"].value("ConfirmQuitGame", ""), 25);
         //--------------------------------
-        quitMenu.addOptions({ j["QuitGame"].value("Yes", ""), j["QuitGame"].value("No", "") });
+        quitMenu.addOptions({ jWriter["QuitGame"].value("Yes", ""), jWriter["QuitGame"].value("No", "") });
         quitMenu.showOptions();
         //--------------------------------
         choice = quitMenu.inputChoice();
@@ -244,15 +244,15 @@ void Game::credits()
     Sleep(500);
     Console::clearScreen();
     Console::setConsoleColor(CC_Lightblue);
-    Display::write(j["Credits"].value("Author", ""));
+    Display::write(jWriter["Credits"].value("Author", ""));
     Console::resetConsoleColor();
     Display::write("\n\tRadosław 'Doic' Michalak\n\n");
     Console::setConsoleColor(CC_Lightblue);
-    Display::write(j["Credits"].value("Testers", ""));
+    Display::write(jWriter["Credits"].value("Testers", ""));
     Console::resetConsoleColor();
     Display::write("\n\t    Paweł Michalak\n\n");
     Console::setConsoleColor(CC_Lightblue);
-    Display::write(j["Credits"].value("Thanks", ""));
+    Display::write(jWriter["Credits"].value("Thanks", ""));
     Console::resetConsoleColor();
     Display::write("\n\t   Dominik Szpilski\n\t     Daniel Obłąk\n\n");
     Sleep(1000);
@@ -287,7 +287,7 @@ void Game::initHeroEQ()
     if (eq.good())
     {
         Logger::out("Access to txt file", "Function::initHeroEQ");
-        eq << j["InventoryInfos"].value("NoItemsInInv", "") << std::endl;
+        eq << jWriter["InventoryInfos"].value("NoItemsInInv", "") << std::endl;
         eq.close();
     }
     else Logger::error("No file access", "Function::initHeroEQ");
@@ -302,7 +302,7 @@ void Game::initQuestsList()
     if (q.good())
     {
         Logger::out("Access to txt file", "Function::initQuestsList");
-        q << j["JournalInfos"].value("NoQuestsInJournal", "") << std::endl;
+        q << jWriter["JournalInfos"].value("NoQuestsInJournal", "") << std::endl;
         q.close();
     }
     else Logger::error("No file access", "Function::initQuestsList");
@@ -310,6 +310,6 @@ void Game::initQuestsList()
 
 void Game::pause()
 {
-    std::cout << j["Infos"].value("PressAnyKey", "");
+    std::cout << jWriter["Infos"].value("PressAnyKey", "");
     Console::waitForUserInput();
 }

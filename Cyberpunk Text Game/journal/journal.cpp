@@ -43,15 +43,15 @@ void Journal::updateJournalFile()
 
         if (questsList.empty())
         {
-            q << j["JournalInfos"].value("NoQuestsInJournal","") << std::endl;
+            q << jWriter["JournalInfos"].value("NoQuestsInJournal","") << std::endl;
         }
         else
         {
             for (auto i : questsList)
             {
-                q << j["QuestsInfos"].value("Name", "") << i->getName() << std::endl;
-                q << j["QuestsInfos"].value("Description", "") << i->getDescription() << std::endl;
-                q << j["QuestsInfos"].value("Status", "") << i->printStatus() << std::endl;
+                q << jWriter["QuestsInfos"].value("Name", "") << i->getName() << std::endl;
+                q << jWriter["QuestsInfos"].value("Description", "") << i->getDescription() << std::endl;
+                q << jWriter["QuestsInfos"].value("Status", "") << i->printStatus() << std::endl;
                 q << "..........................................................................." << std::endl;
             }
         }
