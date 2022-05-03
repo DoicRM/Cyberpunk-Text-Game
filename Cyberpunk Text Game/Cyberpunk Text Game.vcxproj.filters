@@ -185,10 +185,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="lang\en.json">
+    <None Include="localization\en.json">
       <Filter>Lang</Filter>
     </None>
-    <None Include="lang\pl.json">
+    <None Include="localization\pl.json">
       <Filter>Lang</Filter>
     </None>
   </ItemGroup>

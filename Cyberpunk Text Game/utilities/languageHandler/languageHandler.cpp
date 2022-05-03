@@ -9,7 +9,7 @@ void JSON::loadFile(int lang)
     if (lang == PL) str = "pl";
     else str = "en";
 
-    std::string path = std::filesystem::current_path().string() + "\\lang\\";
+    std::string path = std::filesystem::current_path().string() + "\\localization\\";
     std::ifstream jReader(path + str + ".json");
     jReader >> jWriter;
     jReader.close();
