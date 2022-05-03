@@ -218,7 +218,7 @@ void Game::endGame()
     do
     {
         Console::clearScreen();
-        Display::write(jWriter["QuitGame"].value("ConfirmQuitGame", ""), 25);
+        Display::write(jWriter["QuitGame"].value("Prompt", ""), 25);
         //--------------------------------
         quitMenu.addOptions({ jWriter["QuitGame"].value("Yes", ""), jWriter["QuitGame"].value("No", "") });
         quitMenu.showOptions();
