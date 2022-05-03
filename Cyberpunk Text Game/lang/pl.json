@@ -1,72 +1,126 @@
 {
-  "WelcomeText": "\n\tRADOSŁAW 'DOIC' MICHALAK PREZENTUJE GRĘ TEKSTOWĄ POD TYTUŁEM",
-  "LogoSubtitle": "\n\t\t\t\t\t     Cyberpunkowa gra tekstowa\n\n",
-  "MainMenu_1": "Nowa gra",
-  "MainMenu_2": "Kontynuuj grę",
-  "MainMenu_3": "Zmień język",
-  "MainMenu_4": "Napisy",
-  "MainMenu_5": "Wyjdź z gry",
-  "ContinueGameInfo": "\n\tNic tu nie ma. Ta funkcja jest obecnie niedostępna.\n\n",
-  "SelectYourLanguage": "\n\tWybierz swój język:\n",
-  "Author": "\n\t\tAUTOR",
-  "Testers": "\t       TESTERZY",
-  "Thanks": "\t     PODZIĘKOWANIA",
-  "ConfirmQuitGame": "\n\tJesteś pewien, że chcesz wyjść z gry?\n",
-  "Yes": "Tak",
-  "No": "Nie",
-  "PressAnyKey": "\tWciśnij DOWOLNY PRZYCISK, aby kontynuować...",
-  "NoItemsInInv": "Nie posiadasz żadnych przedmiotów w ekwipunku.",
-  "NoQuestsInJournal": "Nie posiadasz żadnych zadań w dzienniku.",
-  "And": " i ",
-  "WasFoundInfo": " znaleziono.",
-  "Attitude_Angry": "zły",
-  "Attitude_Hostile": "wrogo nastawiony",
-  "Attitude_Friendly": "przyjazny",
-  "Attitude_Neutral": "obojętny",
-  "Attitude_Is": " jest teraz ",
-  "Attitude_Now": ".\n",
-  "ItemName": "Nazwa: ",
-  "ItemType": "Typ: ",
-  "ItemDescription": "Opis: ",
-  "ItemPrice": "Cena: ",
-  "ItemType_Weapon": "Bronie",
-  "ItemType_Clothes": "Ubrania",
-  "ItemType_Other": "Inne",
-  "ItemType_Food": "Jedzenie",
-  "ItemType_Quest": "Związane z zadaniem",
-  "ItemType_None": "Brak",
-  "ClothesType_Head": "Głowa",
-  "ClothesType_Chest": "Korpus",
-  "ClothesType_Arms": "Ręce",
-  "ClothesType_Legs": "Nogi",
-  "ClothesType_None": "Brak",
-  "Item_AD13_Name": "Akcelerator D-13",
-  "Item_AD13_Desc": "Dawno nieużywany model akceleratora. Wciąż jednak może być dość cenny.",
-  "Item_AccessCard_Name": "Karta dostępu",
-  "Item_AccessCard_Desc": "Z pewnością pasuje do drzwi prowadzących do zablokowanego pomieszczenia w gabinecie Ramseya.",
-  "Weapon_Pistol_Name": "Pistolet",
-  "Weapon_Pistol_Desc": "Prosta broń strzelająca czystą energią.",
-  "Fraction_None_Name": "Brak przynależności",
-  "Fraction_Beggars_Name": "Żebracy",
-  "Fraction_Police_Name": "Policja",
-  "Fraction_Hammers_Name": "Młoty",
-  "Fraction_Sleepers_Name": "Śniący",
-  "Fraction_SowersOfConfusion_Name": "Siewcy Zamętu",
-  "Npc_Policeman_Name": "Policjant",
-  "Npc_Bouncer_Name": "Ochroniarz",
-  "Npc_Morpheus_Name": "Morfeusz",
-  "Location_DarkAlley_Name": "Mroczny zaułek",
-  "Location_Street_Name": "Ulica",
-  "Location_Nightclub_Name": "Klub nocny 'Amnezja'",
-  "Location_GunShop_Name": "Sklep z bronią 'U Zeda'",
-  "Location_SleepersHideout_Name": "Kryjówka Śniących",
-  "Quest_KillVincent_Name": "Piękna i bestia",
-  "Quest_KillVincent_Desc": "Zabij właściciela klubu nocnego 'Amnezja', Vincenta Ramseya, na prośbę jego dziewczyny, Nyx.",
-  "Quest_ZedAccelerator_Name": "Relikt przeszłości",
-  "Quest_ZedAccelerator_Desc": "Przynieś Zedowi stary model akumulatora. W zamian otrzymasz od niego pistolet.",
-  "JournalEntry": "\n\tDodano nowe zadanie do dziennika: ",
-  "SelectInvIndex": "\tWybierz indeks przedmiotu, który chcesz wyświetlić.\n",
-  "SelectedIndexNotExists": "\tNie ma takiego indeksu.",
+  "Infos": {
+    "Welcome": "\n\tRADOSŁAW 'DOIC' MICHALAK PREZENTUJE GRĘ TEKSTOWĄ POD TYTUŁEM",
+    "LogoSubtitle": "\n\t\t\t\t\t     Cyberpunkowa gra tekstowa\n\n",
+    "ContinueGame": "\n\tNic tu nie ma. Ta funkcja jest obecnie niedostępna.\n\n",
+    "SelectYourLanguage": "\n\tWybierz swój język:\n",
+    "PressAnyKey": "\tWciśnij DOWOLNY PRZYCISK, aby kontynuować...",
+    "And": " i ",
+    "WasFound": " znaleziono.",
+    "DownloadCompleted": "\n\tPobieranie zakończone"
+  },
+  "MainMenu": {
+    "1": "Nowa gra",
+    "2": "Kontynuuj grę",
+    "3": "Zmień język",
+    "4": "Napisy",
+    "5": "Wyjdź z gry"
+  },
+  "Credits": {
+    "Author": "\n\t\tAUTOR",
+    "Testers": "\t       TESTERZY",
+    "Thanks": "\t     PODZIĘKOWANIA"
+  },
+  "QuitGame": {
+    "ConfirmQuitGame": "\n\tJesteś pewien, że chcesz wyjść z gry?\n",
+    "Yes": "Tak",
+    "No": "Nie"
+  },
+  "Attitudes": {
+    "Angry": "zły",
+    "Hostile": "wrogo nastawiony",
+    "Friendly": "przyjazny",
+    "Neutral": "obojętny",
+    "Is": " jest teraz ",
+    "Now": ".\n"
+  },
+  "ItemsInfos": {
+    "Name": "Nazwa: ",
+    "Type": "Typ: ",
+    "Description": "Opis: ",
+    "Price": "Cena: "
+  },
+  "InventoryInfos": {
+    "NoItemsInInv": "Nie posiadasz żadnych przedmiotów w ekwipunku.",
+    "InvTip": "\n\t[WSKAZÓWKA: Ten przedmiot został dodany do twojego ekwipunku. Możesz go podejrzeć w pliku\n\ttekstowym w folderze z grą].",
+    "SelectInvIndex": "\tWybierz indeks przedmiotu, który chcesz wyświetlić.\n",
+    "SelectedIndexNotExists": "\tNie ma takiego indeksu."
+  },
+  "QuestsInfos": {
+    "Name": "Nazwa: ",
+    "Description": "Opis: ",
+    "Status": "Status: "
+  },
+  "QuestStatus": {
+    "NotStarted": "nie rozpoczęte",
+    "Ongoing": "w trakcie",
+    "Completed": "wykonane"
+  },
+  "JournalInfos": {
+    "NoQuestsInJournal": "Nie posiadasz żadnych zadań w dzienniku.",
+    "JournalEntry": "\n\tDodano nowe zadanie do dziennika: "
+  },
+  "ItemsTypes": {
+    "Weapon": "Bronie",
+    "Clothes": "Ubrania",
+    "Other": "Inne",
+    "Food": "Jedzenie",
+    "Quest": "Związane z zadaniem",
+    "None": "Brak"
+  },
+  "ClothesTypes": {
+    "Head": "Głowa",
+    "Chest": "Korpus",
+    "Arms": "Ręce",
+    "Legs": "Nogi",
+    "None": "Brak"
+  },
+  "Items": {
+    "AD13": {
+      "Name": "Akcelerator D-13",
+      "Description": "Dawno nieużywany model akceleratora. Wciąż jednak może być dość cenny."
+    },
+    "AccessCard": {
+      "Name": "Karta dostępu",
+      "Description": "Z pewnością pasuje do drzwi prowadzących do zablokowanego pomieszczenia w gabinecie Ramseya."
+    }
+  },
+  "Weapons": {
+    "Pistol": {
+      "Name": "Pistolet",
+      "Description": "Prosta broń strzelająca czystą energią."
+    }
+  },
+  "Fractions": {
+    "None_Name": "Brak przynależności",
+    "Beggars_Name": "Żebracy",
+    "Police_Name": "Policja",
+    "Hammers_Name": "Młoty",
+    "Sleepers_Name": "Śniący",
+    "SowersOfConfusion_Name": "Siewcy Zamętu"
+  },
+  "Npcs": {
+    "Policeman_Name": "Policjant",
+    "Bouncer_Name": "Ochroniarz",
+    "Morpheus_Name": "Morfeusz"
+  },
+  "Locations": {
+    "DarkAlley_Name": "Mroczny zaułek",
+    "Street_Name": "Ulica",
+    "Nightclub_Name": "Klub nocny 'Amnezja'",
+    "GunShop_Name": "Sklep z bronią 'U Zeda'",
+    "SleepersHideout_Name": "Kryjówka Śniących"
+  },
+  "Quests": {
+    "KillVincent": {
+      "Name": "Piękna i bestia",
+      "Description": "Zabij właściciela klubu nocnego 'Amnezja', Vincenta Ramseya, na prośbę jego dziewczyny, Nyx."
+    },
+    "ZedAccelerator": {
+      "Name": "Relikt przeszłości",
+      "Description": "Przynieś Zedowi stary model akumulatora. W zamian otrzymasz od niego pistolet."
+    }
+  },
   "PrologueTitle": "\n\tProlog",
   "PrologueSubtitle": "\n\n\tREQUIEM DLA MARZEŃ",
   "StoryIntro01": "\n\tJest rok 2050.",
@@ -83,11 +137,12 @@
   "WakeUpInDarkAlley_07": "\n\tKiedy podnosisz się z ziemi, zauważasz wokół siebie morze śmieci.",
   "WakeUpInDarkAlley_08": " Jest pełne kartonów, starych\n\tczęści mechanicznych i Bóg wie czego jeszcze.",
   "WakeUpInDarkAlley_09": "\n\tMoże znajdziesz tam coś interesującego...\n\n",
-  "Menu1_1": "(Rozejrzyj się po okolicy w poszukiwaniu czegoś cennego.)",
-  "Menu1_2": "(Znajdź wyjście z zaułka.)",
+  "Menu1": {
+    "1": "(Rozejrzyj się po okolicy w poszukiwaniu czegoś cennego.)",
+    "2": "(Znajdź wyjście z zaułka.)"
+  },
   "AcceleratorFinding_01": "\n\tZaczynasz grzebać w śmieciach.",
   "AcceleratorFinding_02": " Poszukiwania trwają dość długo, ale w końcu udaje ci się coś\n\tznaleźć.",
-  "InvTip": "\n\t[WSKAZÓWKA: Ten przedmiot został dodany do twojego ekwipunku. Możesz go podejrzeć w pliku\n\ttekstowym w folderze z grą].",
   "AcceleratorFinding_03": "\n\n\tHmm, to może się przydać w przyszłości.",
   "OutOfTheAlley_01": "\n\tNie masz zamiaru grzebać w śmieciach.",
   "OutOfTheAlley_02": " I dobrze, pewnie i tak nic byś tam nie znalazł.",
@@ -98,9 +153,11 @@
   "OutOfTheAlley_07": " Jego sylwetka majaczy w ciemności. To\n\tjeden z bezdomnych, którzy tu mieszkają. Co takiego może dla ciebie mieć?\n",
   "OutOfTheAlley_08": "\n\tZa nic masz tajemniczego nieznajomego. Przyspieszasz kroku i zostawiasz go daleko za sobą.",
   "OutOfTheAlley_09": "To,\n\tczego od ciebie chciał, nie jest już istotne.",
-  "Menu2_1": "(Zatrzymaj się i dowiedz się, czego chce.)",
-  "Menu2_2": "(Zignoruj go i idź dalej.)",
-  "Menu2_3": "(Zatrzymaj się i dowiedz się wreszcie, czego chce.)",
+  "Menu2": {
+    "1": "(Zatrzymaj się i dowiedz się, czego chce.)",
+    "2": "(Zignoruj go i idź dalej.)",
+    "3": "(Zatrzymaj się i dowiedz się wreszcie, czego chce.)"
+  },
   "DIA_Bob_01": "\n\t- Hej, dzieciaku. Zaczekaj chwilę.\n\n",
   "DIA_Bob_02": "\n\t- Hej, ty! Wracaj tu!",
   "DIA_Bob_03": "\t- Coś za jeden, chłopcze?\n",
@@ -108,11 +165,12 @@
   "DIA_Bob_05": ", hę?",
   "DIA_Bob_06": " W porządku. Ja jestem ",
   "DIA_Bob_07": " Co tu robisz?",
-  "DIA_Bob_08": "\n\t- 'Don't show up here again if you don't want to get your teeth kicked in!'\n",
+  "DIA_Bob_08": "\n\t- Nie pokazuj się tu więcej, jeśli nie chcesz stracić zębów!\n",
   "DialogueWithBob_01": "\n\tCienie przed tobą zaczynają falować, gdy twój rozmówca wstaje.\n\n",
-  "Menu3_1": "Nie szukam kłopotów.",
-  "Menu3_2": "Tylko się rozglądam. Gdzie my właściwie jesteśmy?",
-  "Menu3_3": "To nie jest twoja sprawa.",
-  "DownloadCompleted": "\n\tPobieranie zakończone",
+  "Menu3": {
+    "1": "Nie szukam kłopotów.",
+    "2": "Tylko się rozglądam. Gdzie my właściwie jesteśmy?",
+    "3": "To nie jest twoja sprawa."
+  },
   "RememberYourName": "\tTwoje imię... Zaczynasz błądzić myślami wokół tego, jak się nazywasz. Jakby przez mgłę dociera\n\tdo ciebie, że jesteś:\n"
 }
