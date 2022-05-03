@@ -14,9 +14,3 @@ void JSON::loadFile(int lang)
     reader >> j;
     reader.close();
 }
-
-std::string JSON::getValue(std::string key)
-{
-    Logger::out("Function starts", "JSON::getValue");
-    return j.value(key, "");
-}
