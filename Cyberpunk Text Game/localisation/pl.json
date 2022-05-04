@@ -9,13 +9,13 @@
     "WasFound": " znaleziono.",
     "DownloadCompleted": "\n\tPobieranie zakończone"
   },
-  "MainMenu": {
-    "1": "Nowa gra",
-    "2": "Kontynuuj grę",
-    "3": "Zmień język",
-    "4": "Napisy",
-    "5": "Wyjdź z gry"
-  },
+  "MainMenu": [
+    "Nowa gra",
+    "Kontynuuj grę",
+    "Zmień język",
+    "Napisy",
+    "Wyjdź z gry"
+  ],
   "Credits": {
     "Author": "\n\t\tAUTOR",
     "Testers": "\t       TESTERZY",
@@ -52,9 +52,9 @@
     "Status": "Status: "
   },
   "QuestStatus": {
-    "NotStarted": "nie rozpoczęte",
-    "Ongoing": "w trakcie",
-    "Completed": "wykonane"
+    "NotStarted": "Nie rozpoczęte",
+    "Ongoing": "W trakcie",
+    "Completed": "Wykonane"
   },
   "JournalInfos": {
     "NoQuestsInJournal": "Nie posiadasz żadnych zadań w dzienniku.",
@@ -124,67 +124,69 @@
   "Prologue": {
     "Title": "\n\tProlog",
     "Subtitle": "\n\n\tREQUIEM DLA MARZEŃ",
-    "StoryIntro": {
-      "INFO_1": "\n\tJest rok 2050.",
-      "INFO_2": " Megacity to miejsce opanowane przez biedę i zwaśnione gangi, gdzie największe\n\twpływy mają potężne korporacje. Przemoc na ulicach jest wyraźnym znakiem zbliżającej się wojny.\n\tRząd działający zza bezpiecznych murów ratusza próbuje z tym walczyć, ale jak na razie\n\tbezskutecznie. Krążą plotki, że sam potajemnie wspiera chaos, by na gruzach miasta stworzyć\n\tNowy Porządek.\n\n"
-    },
-    "PrologueDream": {
-      "INFO_1": "\n\tStojąc na krawędzi najwyższej wieży...",
-      "INFO_2": "\n\tTrzymam cię za rękę i skaczę...",
-      "INFO_3": "\n\tSpadam i spadam jakby godzinami..."
-    },
-    "WakeUpInDarkAlley": {
-      "INFO_1": "\n\tBudzisz się oszołomiony z niespokojnej drzemki.",
-      "INFO_2": " To był znowu ten sam sen...",
-      "INFO_3": "\n\tZnajdujesz się gdzieś w ciemnym zaułku. Nad twoją głową, wśród smogowej mgły, niczym wyrwane\n\tze snu, wznoszą się monumentalne drapacze chmur wielkich korporacji.",
-      "INFO_4": " Ich boski majestat bije\n\tcię po oczach.",
-      "INFO_5": "\n\tSerce bije ci tak mocno, że tylko szczypiący dotyk wiatru chroni cię przed nagłym atakiem\n\tserca.",
-      "INFO_6": " Nagle przez twoje ciało przechodzi fala dreszczy, zaczynasz trząść się jak osika i\n\tuświadamiasz sobie, że leżysz na legowisku zrobionym ze starych gazet.",
-      "INFO_7": "\n\tKiedy podnosisz się z ziemi, zauważasz wokół siebie morze śmieci.",
-      "INFO_8": " Jest pełne kartonów, starych\n\tczęści mechanicznych i Bóg wie czego jeszcze.",
-      "INFO_9": "\n\tMoże znajdziesz tam coś interesującego...\n\n"
-    },
-    "Menu1": {
-      "1": "(Rozejrzyj się po okolicy w poszukiwaniu czegoś cennego.)",
-      "2": "(Znajdź wyjście z zaułka.)"
-    },
-    "AcceleratorFinding": {
-      "INFO_1": "\n\tZaczynasz grzebać w śmieciach.",
-      "INFO_2": " Poszukiwania trwają dość długo, ale w końcu udaje ci się coś\n\tznaleźć.",
-      "INFO_3": "\n\n\tHmm, to może się przydać w przyszłości."
-    },
-    "OutOfTheAlley": {
-      "INFO_1": "\n\tNie masz zamiaru grzebać w śmieciach.",
-      "INFO_2": " I dobrze, pewnie i tak nic byś tam nie znalazł.",
-      "INFO_3": " Zamiast\n\ttego powoli podążasz w kierunku neonowych bomb na końcu alejki.",
-      "INFO_4": "\n\tPowoli podążasz w kierunku neonowych bomb na końcu alejki.",
-      "INFO_5": "\n\tJesteś coraz bliżej celu, gdy z prawej strony, zza zasłony cieni, odzywa się niski, niezbyt\n\tprzyjemny głos należący do mężczyzny.",
-      "DIA_Bob_1": "\n\t- Hej, dzieciaku. Zaczekaj chwilę.\n\n",
-      "INFO_6": "\n\tZatrzymujesz się i odwracasz w stronę właściciela głosu.",
-      "INFO_7": " Jego sylwetka majaczy w ciemności. To\n\tjeden z bezdomnych, którzy tu mieszkają. Co takiego może dla ciebie mieć?\n",
-      "INFO_8": "\n\tZa nic masz tajemniczego nieznajomego. Przyspieszasz kroku i zostawiasz go daleko za sobą.",
-      "DIA_Bob_2": "\n\t- Hej, ty! Wracaj tu!",
-      "INFO_9": "To,\n\tczego od ciebie chciał, nie jest już istotne."
-    },
-    "Menu2": {
-      "1": "(Zatrzymaj się i dowiedz się, czego chce.)",
-      "2": "(Zignoruj go i idź dalej.)",
-      "3": "(Zatrzymaj się i dowiedz się wreszcie, czego chce.)"
-    },
-    "Menu3": {
-      "1": "Nie szukam kłopotów.",
-      "2": "Tylko się rozglądam. Gdzie my właściwie jesteśmy?",
-      "3": "To nie jest twoja sprawa."
-    },
-    "DialogueWithBob": {
-      "DIA_Bob_3": "\t- Coś za jeden, chłopcze?\n",
-      "DIA_Bob_4": "\t- Więc nazywasz się ",
-      "DIA_Bob_5": ", hę?",
-      "DIA_Bob_6": " W porządku. Ja jestem ",
-      "DIA_Bob_7": " Co tu robisz?",
-      "INFO_1": "\n\tCienie przed tobą zaczynają falować, gdy twój rozmówca wstaje.\n\n"
-    },
-    "DIA_Bob_8": "\n\t- Nie pokazuj się tu więcej, jeśli nie chcesz stracić zębów!\n",
+    "StoryIntro": [
+      "\n\tJest rok 2050.",
+      " Megacity to miejsce opanowane przez biedę i zwaśnione gangi, gdzie największe\n\twpływy mają potężne korporacje. Przemoc na ulicach jest wyraźnym znakiem zbliżającej się wojny.\n\tRząd działający zza bezpiecznych murów ratusza próbuje z tym walczyć, ale jak na razie\n\tbezskutecznie. Krążą plotki, że sam potajemnie wspiera chaos, by na gruzach miasta stworzyć\n\tNowy Porządek.\n\n"
+    ],
+    "PrologueDream": [
+      "\n\tStojąc na krawędzi najwyższej wieży...",
+      "\n\tTrzymam cię za rękę i skaczę...",
+      "\n\tSpadam i spadam jakby godzinami..."
+    ],
+    "WakeUpInDarkAlley": [
+      "\n\tBudzisz się oszołomiony z niespokojnej drzemki.",
+      " To był znowu ten sam sen...",
+      "\n\tZnajdujesz się gdzieś w ciemnym zaułku. Nad twoją głową, wśród smogowej mgły, niczym wyrwane\n\tze snu, wznoszą się monumentalne drapacze chmur wielkich korporacji.",
+      " Ich boski majestat bije\n\tcię po oczach.",
+      "\n\tSerce bije ci tak mocno, że tylko szczypiący dotyk wiatru chroni cię przed nagłym atakiem\n\tserca.",
+      " Nagle przez twoje ciało przechodzi fala dreszczy, zaczynasz trząść się jak osika i\n\tuświadamiasz sobie, że leżysz na legowisku zrobionym ze starych gazet.",
+      "\n\tKiedy podnosisz się z ziemi, zauważasz wokół siebie morze śmieci.",
+      " Jest pełne kartonów, starych\n\tczęści mechanicznych i Bóg wie czego jeszcze.",
+      "\n\tMoże znajdziesz tam coś interesującego...\n\n"
+    ],
+    "Menu1": [
+      "(Rozejrzyj się po okolicy w poszukiwaniu czegoś cennego.)",
+      "(Znajdź wyjście z zaułka.)"
+    ],
+    "AcceleratorFinding": [
+      "\n\tZaczynasz grzebać w śmieciach.",
+      " Poszukiwania trwają dość długo, ale w końcu udaje ci się coś\n\tznaleźć.",
+      "\n\n\tHmm, to może się przydać w przyszłości."
+    ],
+    "OutOfTheAlley": [
+      "\n\tNie masz zamiaru grzebać w śmieciach.",
+      " I dobrze, pewnie i tak nic byś tam nie znalazł.",
+      " Zamiast\n\ttego powoli podążasz w kierunku neonowych bomb na końcu alejki.",
+      "\n\tPowoli podążasz w kierunku neonowych bomb na końcu alejki.",
+      "\n\tJesteś coraz bliżej celu, gdy z prawej strony, zza zasłony cieni, odzywa się niski, niezbyt\n\tprzyjemny głos należący do mężczyzny.",
+      "\n\tZatrzymujesz się i odwracasz w stronę właściciela głosu.",
+      " Jego sylwetka majaczy w ciemności. To\n\tjeden z bezdomnych, którzy tu mieszkają. Co takiego może dla ciebie mieć?\n",
+      "\n\tZa nic masz tajemniczego nieznajomego. Przyspieszasz kroku i zostawiasz go daleko za sobą.",
+      "\n\tTo, czego od ciebie chciał, nie jest już istotne."
+    ],
+    "Menu2": [
+      "(Zatrzymaj się i dowiedz się, czego chce.)",
+      "(Zignoruj go i idź dalej.)",
+      "(Zatrzymaj się i dowiedz się wreszcie, czego chce.)"
+    ],
+    "Menu3": [
+      "Nie szukam kłopotów.",
+      "Tylko się rozglądam. Gdzie my właściwie jesteśmy?",
+      "To nie jest twoja sprawa."
+    ],
+    "DialogueWithBob": [
+      "\n\tCienie przed tobą zaczynają falować, gdy twój rozmówca wstaje.\n\n"
+    ],
+    "DIA_Bob": [
+      "\n\t- Hej, dzieciaku. Zaczekaj chwilę.\n\n",
+      "\n\t- Hej, ty! Wracaj tu!",
+      "\t- Coś za jeden, chłopcze?\n",
+      "\t- Więc nazywasz się ",
+      ", hę?",
+      " W porządku. Ja jestem ",
+      " Co tu robisz?",
+      "\n\t- Nie pokazuj się tu więcej, jeśli nie chcesz stracić zębów!\n"
+    ],
     "RememberYourName": "\tTwoje imię... Zaczynasz błądzić myślami wokół tego, jak się nazywasz. Jakby przez mgłę dociera\n\tdo ciebie, że jesteś:\n"
   }
 }

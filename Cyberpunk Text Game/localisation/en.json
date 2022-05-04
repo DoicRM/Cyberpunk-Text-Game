@@ -9,13 +9,13 @@
     "WasFound": " was found.",
     "DownloadCompleted": "\n\tDownload completed"
   },
-  "MainMenu": {
-    "1": "New game",
-    "2": "Continue game",
-    "3": "Change language",
-    "4": "Credits",
-    "5": "Quit game"
-  },
+  "MainMenu": [
+    "New game",
+    "Continue game",
+    "Change language",
+    "Credits",
+    "Quit game"
+  ],
   "Credits": {
     "Author": "\n\t\tAUTHOR",
     "Testers": "\t\tTESTERS",
@@ -52,9 +52,9 @@
     "Status": "Status: "
   },
   "QuestStatus": {
-    "NotStarted": "not started",
-    "Ongoing": "ongoing",
-    "Completed": "completed"
+    "NotStarted": "Not started",
+    "Ongoing": "Ongoing",
+    "Completed": "Completed"
   },
   "JournalInfos": {
     "NoQuestsInJournal": "You do not have any quests in your journal.",
@@ -124,67 +124,69 @@
   "Prologue": {
     "Title": "\n\tPrologue",
     "Subtitle": "\n\n\tREQUIEM FOR A DREAM",
-    "StoryIntro": {
-      "INFO_1": "\n\tIt's 2050.",
-      "INFO_2": " Megacity is a place overrun by poverty and feuding gangs, where powerful\n\tcorporations have the most influence. The violence in the streets is a clear sign of\n\tan impending war. Government operating from behind the secure walls of City Hall are\n\ttrying to combat this, but so far without success. There are rumors that they themselves\n\tare secretly supporting the chaos to create a New Order on the ruins of the city.\n\n"
-    },
-    "PrologueDream": {
-      "INFO_1": "\n\tStanding at the edge of the tallest tower...",
-      "INFO_2": "\n\tHolding your hand and dive...",
-      "INFO_3": "\n\tFalling and falling for what feels like hours..."
-    },
-    "WakeUpInDarkAlley": {
-      "INFO_1": "\n\tYou wake up dazed from a restless slumber.",
-      "INFO_2": " It was the same dream again...",
-      "INFO_3": "\n\tYou are somewhere in a dark alley. Above your head, among the smoggy haze, as if torn from\n\ta dream, rise the monumental skyscrapers of large corporations.",
-      "INFO_4": " Their divine majesty beats\n\tyou to the eyes.",
-      "INFO_5": "\n\tYour heart beats so hard that only the stinging touch of the wind protects you from a sudden\n\theart attack.",
-      "INFO_6": " Suddenly a wave of shivers comes over your body, you start shaking like an\n\taspen, and realize that you are lying on a lair made of some old newspapers.",
-      "INFO_7": "\n\tWhen you rise from the ground, you notice a sea of trash around you.",
-      "INFO_8": " It's full of cardboard\n\tboxes, old mechanical parts, and god knows what else.",
-      "INFO_9": "\n\tMaybe you will find something interesting there...\n\n"
-    },
-    "Menu1": {
-      "1": "Search the area for something valuable.",
-      "2": "Find the exit from the alley."
-    },
-    "AcceleratorFinding": {
-      "INFO_1": "\n\tYou start rummaging through the trash.",
-      "INFO_2": " The search takes a long while, but eventually you\n\tmanage to find something.",
-      "INFO_3": "\n\n\tHmm, that might come in handy in the future."
-    },
-    "OutOfTheAlley": {
-      "INFO_1": "\n\tYou're not going to rummage through the trash.",
-      "INFO_2": " And that's okay, you probably wouldn't find\n\tanything there anyway.",
-      "INFO_3": " Instead, you slowly toddle toward the neon color bombs at the end of\n\tthe alley.",
-      "INFO_4": "\n\tYou slowly toddle toward the neon color bombs at the end of the alley.",
-      "INFO_5": "\n\tYou are getting closer and closer to your goal when from the right, from behind a veil of\n\tshadows, a low, not very pleasant voice belonging to a man speaks up.",
-      "DIA_Bob_1": "\n\t'Hey, kid. Wait for a second.'\n\n",
-      "INFO_6": "\n\tYou stop and turn towards the owner of the voice.",
-      "INFO_7": " His silhouette looms in the darkness. It's\n\tone of the homeless people who live here. What can he have for you?\n",
-      "INFO_8": "\n\tYou have a mysterious stranger for nothing. You speed up your step and leave him far behind you.",
-      "DIA_Bob_2": "\n\t'Hey, you! Come back here!'",
-      "INFO_9": "\n\tWhatever he wanted from you is no longer important."
-    },
-    "Menu2": {
-      "1": "Stop and find out what he wants.",
-      "2": "Ignore him and keep walking.",
-      "3": "Stop and finally find out what he wants."
-    },
-    "Menu3": {
-      "1": "'I'm not looking for trouble.'",
-      "2": "'I'm just looking around. Where are we actually?'",
-      "3": "'It's not your business.'"
-    },
-    "DialogueWithBob": {
-      "DIA_Bob_3": "\t'What's your name, boy?'\n",
-      "DIA_Bob_4": "\t'So you're ",
-      "DIA_Bob_5": ", huh?",
-      "DIA_Bob_6": " All right. I'm ",
-      "DIA_Bob_7": " What are you doin' here?'",
-      "INFO_1": "\n\tThe shadows in front of you, begin to ripple when your caller stands up.\n\n"
-    },
-    "DIA_Bob_8": "\n\t- 'Don't show up here again if you don't want to get your teeth kicked in!'\n",
+    "StoryIntro": [
+      "\n\tIt's 2050.",
+      " Megacity is a place overrun by poverty and feuding gangs, where powerful\n\tcorporations have the most influence. The violence in the streets is a clear sign of\n\tan impending war. Government operating from behind the secure walls of City Hall are\n\ttrying to combat this, but so far without success. There are rumors that they themselves\n\tare secretly supporting the chaos to create a New Order on the ruins of the city.\n\n"
+    ],
+    "PrologueDream": [
+      "\n\tStanding at the edge of the tallest tower...",
+      "\n\tHolding your hand and dive...",
+      "\n\tFalling and falling for what feels like hours..."
+    ],
+    "WakeUpInDarkAlley": [
+      "\n\tYou wake up dazed from a restless slumber.",
+      " It was the same dream again...",
+      "\n\tYou are somewhere in a dark alley. Above your head, among the smoggy haze, as if torn from\n\ta dream, rise the monumental skyscrapers of large corporations.",
+      " Their divine majesty beats\n\tyou to the eyes.",
+      "\n\tYour heart beats so hard that only the stinging touch of the wind protects you from a sudden\n\theart attack.",
+      " Suddenly a wave of shivers comes over your body, you start shaking like an\n\taspen, and realize that you are lying on a lair made of some old newspapers.",
+      "\n\tWhen you rise from the ground, you notice a sea of trash around you.",
+      " It's full of cardboard\n\tboxes, old mechanical parts, and god knows what else.",
+      "\n\tMaybe you will find something interesting there...\n\n"
+    ],
+    "Menu1": [
+      "Search the area for something valuable.",
+      "Find the exit from the alley."
+    ],
+    "AcceleratorFinding": [
+      "\n\tYou start rummaging through the trash.",
+      " The search takes a long while, but eventually you\n\tmanage to find something.",
+      "\n\n\tHmm, that might come in handy in the future."
+    ],
+    "OutOfTheAlley": [
+      "\n\tYou're not going to rummage through the trash.",
+      " And that's okay, you probably wouldn't find\n\tanything there anyway.",
+      " Instead, you slowly toddle toward the neon color bombs at the end of\n\tthe alley.",
+      "\n\tYou slowly toddle toward the neon color bombs at the end of the alley.",
+      "\n\tYou are getting closer and closer to your goal when from the right, from behind a veil of\n\tshadows, a low, not very pleasant voice belonging to a man speaks up.",
+      "\n\tYou stop and turn towards the owner of the voice.",
+      " His silhouette looms in the darkness. It's\n\tone of the homeless people who live here. What can he have for you?\n",
+      "\n\tYou have a mysterious stranger for nothing. You speed up your step and leave him far behind you.",
+      "\n\tWhatever he wanted from you is no longer important."
+    ],
+    "Menu2": [
+      "Stop and find out what he wants.",
+      "Ignore him and keep walking.",
+      "Stop and finally find out what he wants."
+    ],
+    "Menu3": [
+      "'I'm not looking for trouble.'",
+      "'I'm just looking around. Where are we actually?'",
+      "'It's not your business.'"
+    ],
+    "DialogueWithBob": [
+      "\n\tThe shadows in front of you, begin to ripple when your caller stands up.\n\n"
+    ],
+    "DIA_Bob": [
+      "\n\t'Hey, kid. Wait for a second.'\n\n",
+      "\n\t'Hey, you! Come back here!'",
+      "\t'What's your name, boy?'\n",
+      "\t'So you're ",
+      ", huh?",
+      " All right. I'm ",
+      " What are you doin' here?'",
+      "\n\t- 'Don't show up here again if you don't want to get your teeth kicked in!'\n"
+    ],
     "RememberYourName": "\tYour name... You start wandering your thoughts around what your name is. As if through a fog\n\tit occurs to you that you are:\n"
   }
 }
