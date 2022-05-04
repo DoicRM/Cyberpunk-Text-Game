@@ -4,7 +4,7 @@ std::map <int, Game> Game::game;
 
 Game::Game()
 {
-    //Logger::out("Function starts", "Game::Game");
+    // Logger::startFuncLog(__FUNCTION__);
     this->menu = 0;
     this->choice = 0;
     this->gameLang = 0;
@@ -14,12 +14,12 @@ Game::Game()
 
 Game::~Game()
 {   
-    //Logger::out("Function starts", "Game::~Game");
+    // Logger::startFuncLog(__FUNCTION__);
 }
 
 void Game::init()
 {
-    Logger::out("Function starts", "Game::init");
+    Logger::startFuncLog(__FUNCTION__);
     Game Nocturnal;
     game[0] = Nocturnal;
 }
@@ -40,7 +40,7 @@ void Game::initAll()
 
 void Game::run()
 {
-    Logger::out("Function starts", "Game::run");
+    Logger::startFuncLog(__FUNCTION__);
 
     while (getPlaying())
     {
@@ -54,7 +54,7 @@ void Game::run()
 
 void Game::selectLanguage()
 {
-    Logger::out("Function starts", "Game::selectLanguage");
+    Logger::startFuncLog(__FUNCTION__);
     Console::resetConsoleColor();
     Menu langMenu;
 
@@ -68,20 +68,20 @@ void Game::selectLanguage()
         //--------------------------------
         this->gameLang = langMenu.inputChoice();
 
-        if (getLang() != EN && getLang() != PL) Logger::error("Entered invalid value of <b>gameLang</b>", "Game::selectLanguage");
-        else if (getLang() == EN) Logger::out("Set English as game language", "Game::selectLanguage");
-        else if (getLang() == PL) Logger::out("Set Polish as game language", "Game::selectLanguage");
+        if (getLang() != EN && getLang() != PL) Logger::error("Entered invalid value of <b>gameLang</b>", __FUNCTION__);
+        else if (getLang() == EN) Logger::out("Set English as game language", __FUNCTION__);
+        else if (getLang() == PL) Logger::out("Set Polish as game language", __FUNCTION__);
     }
 
-    JSON::loadFile(getLang());
+    JSON::loadDataFromFile(getLang());
     Console::clearScreen();
 }
 
 void Game::welcome()
 {
-    Logger::out("Function starts", "Game::welcome");
+    Logger::startFuncLog(__FUNCTION__);
     Sleep(500); 
-    Display::write(jWriter["Infos"].value("Welcome", ""), 40);
+    Display::write(jWriter.at("Infos").value("Welcome", JSON_VALUE_ERROR), 40);
     Sleep(2000);
     Console::clearScreen();
 }
@@ -99,7 +99,7 @@ std::array<std::string, 8> Game::logo = {
 
 void Game::writeLogo()
 {
-    Logger::out("Function starts", "Game::writeLogo");
+    Logger::startFuncLog(__FUNCTION__);
     Console::setConsoleColor(CC_Lightblue);
     std::cout << std::endl;
 
@@ -110,12 +110,12 @@ void Game::writeLogo()
 
     Console::resetConsoleColor();
     std::cout << std::endl;
-    Display::write(jWriter["Infos"].value("LogoSubtitle", ""), 2);
+    Display::write(jWriter.at("Infos").value("LogoSubtitle", JSON_VALUE_ERROR), 2);
 }
 
 void Game::loadLogo()
 {
-    Logger::out("Function starts", "Game::loadLogo");
+    Logger::startFuncLog(__FUNCTION__);
     Console::setConsoleColor(CC_Lightblue);
     std::cout << std::endl;
 
@@ -126,18 +126,18 @@ void Game::loadLogo()
 
     std::cout << std::endl;
     Console::resetConsoleColor();
-    std::cout << jWriter["Infos"].value("LogoSubtitle", "") << std::endl;
+    std::cout << jWriter.at("Infos").value("LogoSubtitle", JSON_VALUE_ERROR) << std::endl;
     mainMenu();
 }
 
 void Game::mainMenu()
 {
-    Logger::out("Function starts", "Game::mainMenu");
+    Logger::startFuncLog(__FUNCTION__);
     Console::resetConsoleColor();
     std::cout << std::endl;
     Menu mainMenu;
     //--------------------------------
-    mainMenu.addOptions({ jWriter["MainMenu"].value("1", ""), jWriter["MainMenu"].value("2", ""), jWriter["MainMenu"].value("3", ""), jWriter["MainMenu"].value("4", ""), jWriter["MainMenu"].value("5", "") });
+    mainMenu.addOptions({ jWriter.at("MainMenu").at(0), jWriter.at("MainMenu").at(1), jWriter.at("MainMenu").at(2), jWriter.at("MainMenu").at(3), jWriter.at("MainMenu").at(4) });
     mainMenu.showOptions();
     //--------------------------------
 
@@ -157,7 +157,7 @@ void Game::mainMenu()
 
 void Game::newGame()
 {
-    Logger::out("Function starts", "Game::newGame");
+    Logger::startFuncLog(__FUNCTION__);
     initAll();
     Console::clearScreen();
     setCurrentLocation(&Location::locations["DarkAlley"]);
@@ -165,10 +165,10 @@ void Game::newGame()
 
 void Game::continueGame()
 {
-    Logger::out("Function starts", "Game::continueGame");
+    Logger::startFuncLog(__FUNCTION__);
     Console::clearScreen();
     Console::setConsoleColor(CC_Lightblue);
-    Display::write(jWriter["Infos"].value("ContinueGame", ""), 25);
+    Display::write(jWriter.at("Infos").value("ContinueGame", JSON_VALUE_ERROR), 25);
     Console::resetConsoleColor();
     Sleep(1000);
     pause();
@@ -179,14 +179,14 @@ void Game::continueGame()
 
 void Game::changeLanguage()
 {
-    Logger::out("Function starts", "Game::changeLanguage");
+    Logger::startFuncLog(__FUNCTION__);
     int change = 0;
     Menu langMenu;
 
     while (change != EN && change != PL)
     {
         Console::clearScreen();
-        Display::write(jWriter["Infos"].value("SelectYourLanguage", ""), 25);
+        Display::write(jWriter.at("Infos").value("SelectYourLanguage", ""), 25);
         //--------------------------------
         langMenu.addOptions({ "EN", "PL" });
         langMenu.showOptions();
@@ -194,16 +194,16 @@ void Game::changeLanguage()
         change = langMenu.inputChoice();
 
         if (change != EN && change != PL)
-            Logger::error("Entered invalid value of <b>gameLang</b>", "Game::changeLanguage");
+            Logger::error("Entered invalid value of <b>gameLang</b>", __FUNCTION__);
     }
 
     this->gameLang = change;
-    JSON::loadFile(getLang());
+    JSON::loadDataFromFile(getLang());
 
     if (getLang() == EN)
-        Logger::out("Set English as game language", "Game::changeLanguage");
+        Logger::out("Set English as game language", __FUNCTION__);
     else if (getLang() == PL)
-        Logger::out("Set Polish as game language", "Game::changeLanguage");
+        Logger::out("Set Polish as game language", __FUNCTION__);
 
     Console::clearScreen();
     loadLogo();
@@ -212,15 +212,15 @@ void Game::changeLanguage()
 
 void Game::endGame()
 {
-    Logger::out("Function starts", "Game::endGame");
+    Logger::startFuncLog(__FUNCTION__);
     Menu quitMenu;
 
     do
     {
         Console::clearScreen();
-        Display::write(jWriter["QuitGame"].value("Prompt", ""), 25);
+        Display::write(jWriter.at("QuitGame").value("Prompt", JSON_VALUE_ERROR), 25);
         //--------------------------------
-        quitMenu.addOptions({ jWriter["QuitGame"].value("Yes", ""), jWriter["QuitGame"].value("No", "") });
+        quitMenu.addOptions({ jWriter.at("QuitGame").at("Yes"), jWriter.at("QuitGame").at("No") });
         quitMenu.showOptions();
         //--------------------------------
         choice = quitMenu.inputChoice();
@@ -240,19 +240,19 @@ void Game::endGame()
 
 void Game::credits()
 {
-    Logger::out("Function starts", "Game::credits");
+    Logger::startFuncLog(__FUNCTION__);
     Sleep(500);
     Console::clearScreen();
     Console::setConsoleColor(CC_Lightblue);
-    Display::write(jWriter["Credits"].value("Author", ""));
+    Display::write(jWriter.at("Credits").value("Author", JSON_VALUE_ERROR));
     Console::resetConsoleColor();
     Display::write("\n\tRadosław 'Doic' Michalak\n\n");
     Console::setConsoleColor(CC_Lightblue);
-    Display::write(jWriter["Credits"].value("Testers", ""));
+    Display::write(jWriter.at("Credits").value("Testers", JSON_VALUE_ERROR));
     Console::resetConsoleColor();
     Display::write("\n\t    Paweł Michalak\n\n");
     Console::setConsoleColor(CC_Lightblue);
-    Display::write(jWriter["Credits"].value("Thanks", ""));
+    Display::write(jWriter.at("Credits").value("Thanks", JSON_VALUE_ERROR));
     Console::resetConsoleColor();
     Display::write("\n\t   Dominik Szpilski\n\t     Daniel Obłąk\n\n");
     Sleep(1000);
@@ -265,7 +265,7 @@ void Game::credits()
 void Game::setCurrentLocation(Location* location)
 {
     this->ptrCurrentLocation = location;
-    Logger::out("Set <b>" + getCurrentLocation()->getName() + "</b> as current location", "Game::setCurrentLocation");
+    Logger::out("Set <b>" + getCurrentLocation()->getName() + "</b> as current location", __FUNCTION__);
     startEventsByLocation();
 }
 
@@ -280,36 +280,36 @@ void Game::startEventsByLocation()
 
 void Game::initHeroEQ()
 {
-    Logger::out("Function starts", "Function::initHeroEQ");
+    Logger::startFuncLog(__FUNCTION__);
     std::ofstream eq;
     eq.open("eq.txt");
 
     if (eq.good())
     {
-        Logger::out("Access to txt file", "Function::initHeroEQ");
-        eq << jWriter["InventoryInfos"].value("NoItemsInInv", "") << std::endl;
+        Logger::out("Access to txt file", __FUNCTION__);
+        eq << jWriter.at("InventoryInfos").value("NoItemsInInv", JSON_VALUE_ERROR) << std::endl;
         eq.close();
     }
-    else Logger::error("No file access", "Function::initHeroEQ");
+    else Logger::error("No file access", __FUNCTION__);
 }
 
 void Game::initQuestsList()
 {
-    Logger::out("Function starts", "Function::initQuestsList");
+    Logger::startFuncLog(__FUNCTION__);
     std::ofstream q;
     q.open("journal.txt");
 
     if (q.good())
     {
-        Logger::out("Access to txt file", "Function::initQuestsList");
-        q << jWriter["JournalInfos"].value("NoQuestsInJournal", "") << std::endl;
+        Logger::out("Access to txt file", __FUNCTION__);
+        q << jWriter.at("JournalInfos").value("NoQuestsInJournal", JSON_VALUE_ERROR) << std::endl;
         q.close();
     }
-    else Logger::error("No file access", "Function::initQuestsList");
+    else Logger::error("No file access", __FUNCTION__);
 }
 
 void Game::pause()
 {
-    std::cout << jWriter["Infos"].value("PressAnyKey", "");
+    std::cout << jWriter.at("Infos").value("PressAnyKey", JSON_VALUE_ERROR);
     Console::waitForUserInput();
 }

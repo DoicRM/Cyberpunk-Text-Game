@@ -64,26 +64,26 @@ void Npc::printAttitude()
 
     if (this->attitude == Angry)
     {
-        attitude = jWriter["Attitudes"].value("Angry","");
+        attitude = jWriter.at("Attitudes").value("Angry", JSON_VALUE_ERROR);
         Console::setConsoleColor(CC_Yellow);
     }
     else if (this->attitude == Hostile)
     {
-        attitude = jWriter["Attitudes"].value("Hostile", "");
+        attitude = jWriter.at("Attitudes").value("Hostile", JSON_VALUE_ERROR);
         Console::setConsoleColor(CC_Red);
     }
     else if (this->attitude == Friendly)
     {
-        attitude = jWriter["Attitudes"].value("Friendly", "");
+        attitude = jWriter.at("Attitudes").value("Friendly", JSON_VALUE_ERROR);
         Console::setConsoleColor(CC_Green);
     }
     else
     {
-        attitude = jWriter["Attitudes"].value("Neutral", "");
+        attitude = jWriter.at("Attitudes").value("Neutral", JSON_VALUE_ERROR);
         Console::resetConsoleColor();
     }
 
-    Display::write("\t" + this->name + jWriter["Attitudes"].value("Is", "") + attitude + jWriter["Attitudes"].value("Now", ""));
+    Display::write("\t" + this->name + jWriter.at("Attitudes").value("Is", JSON_VALUE_ERROR) + attitude + jWriter.at("Attitudes").value("Now", JSON_VALUE_ERROR));
     Console::resetConsoleColor();
 }
 
@@ -95,18 +95,18 @@ bool Npc::isDead()
 
 void Npc::initNpcs()
 {
-    Logger::out("Function starts", "Npc::initNpcs");
+    Logger::startFuncLog(__FUNCTION__);
     // PROLOG
     Npc Bob("Bob", Male, Fraction::fractions["Beggars"]);
     Npc Caden("Caden", Male, Fraction::fractions["Police"]);
-    Npc CadensPartner(jWriter["Npcs"].value("Policeman_Name",""), Male, Fraction::fractions["Police"]);
+    Npc CadensPartner(jWriter.at("Npcs").value("Policeman_Name", JSON_VALUE_ERROR), Male, Fraction::fractions["Police"]);
     Npc Zed("Zed", Male, Fraction::fractions["None"]);
     Npc Nyx("Nyx", Female, Fraction::fractions["Sleepers"]);
-    Npc Jet(jWriter["Npcs"].value("Bouncer_Name", ""), Male, Fraction::fractions["Hammers"]);
+    Npc Jet(jWriter.at("Npcs").value("Bouncer_Name", JSON_VALUE_ERROR), Male, Fraction::fractions["Hammers"]);
     Npc Vincent("Vincent", Male, Fraction::fractions["Hammers"]);
     Npc Enigma("Enigma", Male, Fraction::fractions["None"]);
     // AKT I
-    Npc Morpheus(jWriter["Npcs"].value("Morpheus_Name", ""), Male, Fraction::fractions["Sleepers"]);
+    Npc Morpheus(jWriter.at("Npcs").value("Morpheus_Name", JSON_VALUE_ERROR), Male, Fraction::fractions["Sleepers"]);
     Npc MerQRy("Mer Q'Ry", Male, Fraction::fractions["None"]);
     Npc Karla("Karla", Female, Fraction::fractions["None"]);
     Npc ChipCaine("Chip Caine", Male, Fraction::fractions["None"]);

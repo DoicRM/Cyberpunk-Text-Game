@@ -22,13 +22,13 @@ Location::~Location()
 
 void Location::initLocations()
 {
-    Logger::out("Function starts", "Location::initLocations");
+    Logger::startFuncLog(__FUNCTION__);
 
-    Location DarkAlley(jWriter["Locations"].value("DarkAlley_Name",""), 0, Fraction::fractions["Beggars"]);
-    Location Street(jWriter["Locations"].value("Street_Name", ""), 0, Fraction::fractions["Police"]);
-    Location Nightclub(jWriter["Locations"].value("Nightclub_Name", ""), 0, Fraction::fractions["Hammers"]);
-    Location GunShop(jWriter["Locations"].value("GunShop_Name", ""), 0, Fraction::fractions["None"]);
-    Location SleepersHideout(jWriter["Locations"].value("SleepersHideout_Name", ""), 0, Fraction::fractions["Sleepers"]);
+    Location DarkAlley(jWriter.at("Locations").value("DarkAlley_Name", JSON_VALUE_ERROR), 0, Fraction::fractions["Beggars"]);
+    Location Street(jWriter.at("Locations").value("Street_Name", JSON_VALUE_ERROR), 0, Fraction::fractions["Police"]);
+    Location Nightclub(jWriter.at("Locations").value("Nightclub_Name", JSON_VALUE_ERROR), 0, Fraction::fractions["Hammers"]);
+    Location GunShop(jWriter.at("Locations").value("GunShop_Name", JSON_VALUE_ERROR), 0, Fraction::fractions["None"]);
+    Location SleepersHideout(jWriter.at("Locations").value("SleepersHideout_Name", JSON_VALUE_ERROR), 0, Fraction::fractions["Sleepers"]);
 
     locations["DarkAlley"] = DarkAlley;
     locations["Street"] = Street;

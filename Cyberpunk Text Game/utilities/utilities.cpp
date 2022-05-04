@@ -79,7 +79,7 @@ int Input::getChoice()
     std::cin >> choice;
     std::cin.clear();
     std::cin.ignore();
-    Logger::out("Entered <b>" + std::to_string(choice) + "</b>", "Function::getChoice");
+    Logger::out("Entered <b>" + std::to_string(choice) + "</b>", __FUNCTION__);
     return choice;
 }
 
@@ -90,7 +90,7 @@ std::string Input::getString()
     std::cin >> text;
     std::cin.clear();
     std::cin.ignore();
-    Logger::out("Entered <b>" + text + "</b>", "Function::getString");
+    Logger::out("Entered <b>" + text + "</b>", __FUNCTION__);
     return text;
 }
 

@@ -9,10 +9,10 @@ bool bobRecommendsZed       = false,
 // MROCZNY ZAUŁEK
 void Event::prologue()
 {
-    Logger::out("Function starts", "Event::prologue");
-    Display::write(jWriter["Prologue"].value("Title", ""));
+    Logger::startFuncLog(__FUNCTION__);
+    Display::write(jWriter.at("Prologue").value("Title", JSON_VALUE_ERROR));
     Sleep(2000);
-    Display::write(jWriter["Prologue"].value("Subtitle",""));
+    Display::write(jWriter.at("Prologue").value("Subtitle", JSON_VALUE_ERROR));
     Sleep(5000);
     Console::clearScreen();
     storyIntroduction();
@@ -20,18 +20,18 @@ void Event::prologue()
 
 void Event::storyIntroduction()
 {
-    Logger::out("Function starts", "Event::storyIntroduction");
-    Display::writeNarration(jWriter["Prologue"]["StoryIntro"].value("INFO_1", ""));
+    Logger::startFuncLog(__FUNCTION__);
+    Display::writeNarration(jWriter.at("Prologue").at("StoryIntro").at(0));
     Sleep(1000);
-    Display::writeNarration(jWriter["Prologue"]["StoryIntro"].value("INFO_2", ""), 20);
+    Display::writeNarration(jWriter.at("Prologue").at("StoryIntro").at(1), 20);
     Game::pause();
     Console::clearScreen();
     Sleep(2500);
-    Display::writeNarration(jWriter["Prologue"]["PrologueDream"].value("INFO_1", ""), 75);
+    Display::writeNarration(jWriter.at("Prologue").at("PrologueDream").at(0), 75);
     Sleep(2500);
-    Display::writeNarration(jWriter["Prologue"]["PrologueDream"].value("INFO_2", ""), 75);
+    Display::writeNarration(jWriter.at("Prologue").at("PrologueDream").at(1), 75);
     Sleep(2500);
-    Display::writeNarration(jWriter["Prologue"]["PrologueDream"].value("INFO_3", ""), 75);
+    Display::writeNarration(jWriter.at("Prologue").at("PrologueDream").at(2), 75);
     Sleep(3000);
     Console::clearScreen();
     wakeUpInDarkAlley();
@@ -39,28 +39,28 @@ void Event::storyIntroduction()
 
 void Event::wakeUpInDarkAlley()
 {
-    Logger::out("Function starts", "Event::wakeUpInDarkAlley");
+    Logger::startFuncLog(__FUNCTION__);
     Menu menu1;
     Sleep(2000);
-    Display::writeNarration(jWriter["Prologue"]["WakeUpInDarkAlley"].value("INFO_1", ""));
+    Display::writeNarration(jWriter.at("Prologue").at("WakeUpInDarkAlley").at(0));
     Sleep(1000);
-    Display::writeNarration(jWriter["Prologue"]["WakeUpInDarkAlley"].value("INFO_2", ""));
+    Display::writeNarration(jWriter.at("Prologue").at("WakeUpInDarkAlley").at(1));
     Sleep(1500);
-    Display::writeNarration(jWriter["Prologue"]["WakeUpInDarkAlley"].value("INFO_3", ""));
+    Display::writeNarration(jWriter.at("Prologue").at("WakeUpInDarkAlley").at(2));
     Sleep(1000);
-    Display::writeNarration(jWriter["Prologue"]["WakeUpInDarkAlley"].value("INFO_4", ""));
+    Display::writeNarration(jWriter.at("Prologue").at("WakeUpInDarkAlley").at(3));
     Sleep(3000);
-    Display::writeNarration(jWriter["Prologue"]["WakeUpInDarkAlley"].value("INFO_5", ""));
+    Display::writeNarration(jWriter.at("Prologue").at("WakeUpInDarkAlley").at(4));
     Sleep(500);
-    Display::writeNarration(jWriter["Prologue"]["WakeUpInDarkAlley"].value("INFO_6", ""));
+    Display::writeNarration(jWriter.at("Prologue").at("WakeUpInDarkAlley").at(5));
     Sleep(3000);
-    Display::writeNarration(jWriter["Prologue"]["WakeUpInDarkAlley"].value("INFO_7",""));
+    Display::writeNarration(jWriter.at("Prologue").at("WakeUpInDarkAlley").at(6));
     Sleep(1000);
-    Display::writeNarration(jWriter["Prologue"]["WakeUpInDarkAlley"].value("INFO_8", ""));
+    Display::writeNarration(jWriter.at("Prologue").at("WakeUpInDarkAlley").at(7));
     Sleep(2500);
-    Display::writeNarration(jWriter["Prologue"]["WakeUpInDarkAlley"].value("INFO_9", ""));
+    Display::writeNarration(jWriter.at("Prologue").at("WakeUpInDarkAlley").at(8));
     //--------------------------------
-    menu1.addOptions({ jWriter["Prologue"]["Menu1"].value("1",""), jWriter["Prologue"]["Menu1"].value("2","") });
+    menu1.addOptions({ jWriter.at("Prologue").at("Menu1").at(0), jWriter.at("Prologue").at("Menu1").at(1) });
     menu1.showOptions();
     //--------------------------------
 
@@ -82,16 +82,16 @@ void Event::wakeUpInDarkAlley()
             outOfTheAlley();
             break;
         }
-        else Logger::error("Entered invalid value of <b>heroChoice</b>", "Event::wakeUpInDarkAlley"); continue;
+        else Logger::error("Entered invalid value of <b>heroChoice</b>", __FUNCTION__); continue;
     }
 }
 
 void Event::acceleratorFinding()
 {
-    Logger::out("Function starts", "Event::acceleratorFinding");
-    Display::writeNarration(jWriter["Prologue"]["AcceleratorFinding"].value("INFO_1", ""));
+    Logger::startFuncLog(__FUNCTION__);
+    Display::writeNarration(jWriter.at("Prologue").at("AcceleratorFinding").at(0));
     Sleep(1500);
-    Display::writeNarration(jWriter["Prologue"]["AcceleratorFinding"].value("INFO_2", ""));
+    Display::writeNarration(jWriter.at("Prologue").at("AcceleratorFinding").at(1));
     Sleep(2000);
 
     Hero::heroes[0].addItem(&Item::items["AD13"]);
@@ -99,44 +99,44 @@ void Event::acceleratorFinding()
     Console::setConsoleColor(CC_Item);
     Display::write("\n\n\t" + Item::items["AD13"].getName());
     Console::resetConsoleColor();
-    Display::write(jWriter["Infos"].value("And", ""));
+    Display::write(jWriter.at("Infos").value("And", JSON_VALUE_ERROR));
     Console::setConsoleColor(CC_Green);
     Display::write("5$");
     Console::resetConsoleColor();
-    Display::write(jWriter["Infos"].value("WasFound", ""));
+    Display::write(jWriter.at("Infos").value("WasFound", JSON_VALUE_ERROR));
 
-    Display::write(jWriter["InventoryInfos"].value("InvTip",""), 15);
+    Display::write(jWriter.at("InventoryInfos").value("InvTip", JSON_VALUE_ERROR), 15);
     Sleep(4000);
-    Display::writeNarration(jWriter["Prologue"]["AcceleratorFinding"].value("INFO_3", ""));
+    Display::writeNarration(jWriter.at("Prologue").at("AcceleratorFinding").at(2));
     Sleep(1000);
 }
 
 void Event::rubbishSearch()
 {
-    Logger::out("Function starts", "Event::rubbishSearch");
+    Logger::startFuncLog(__FUNCTION__);
     acceleratorFinding();
     outOfTheAlley();
 }
 
 void Event::outOfTheAlley()
 {
-    Logger::out("Function starts", "Event::outOfTheAlley");
+    Logger::startFuncLog(__FUNCTION__);
 
     if (!Hero::heroes[0].hasItem(&Item::items["AD13"]))
     {
-        Display::writeNarration(jWriter["Prologue"]["OutOfTheAlley"].value("INFO_1", ""));
+        Display::writeNarration(jWriter.at("Prologue").at("OutOfTheAlley").at(0));
         Sleep(1500);
-        Display::writeNarration(jWriter["Prologue"]["OutOfTheAlley"].value("INFO_2", ""));
-        Display::writeNarration(jWriter["Prologue"]["OutOfTheAlley"].value("INFO_3", ""));
+        Display::writeNarration(jWriter.at("Prologue").at("OutOfTheAlley").at(1));
+        Display::writeNarration(jWriter.at("Prologue").at("OutOfTheAlley").at(2));
     }
-    else Display::writeNarration(jWriter["Prologue"]["OutOfTheAlley"].value("INFO_4", ""));
+    else Display::writeNarration(jWriter.at("Prologue").at("OutOfTheAlley").at(3));
 
     Sleep(3000);
-    Display::writeNarration(jWriter["Prologue"]["OutOfTheAlley"].value("INFO_5", ""));
-    Display::writeDialogue(jWriter["Prologue"]["OutOfTheAlley"].value("DIA_Bob_1", ""));
+    Display::writeNarration(jWriter.at("Prologue").at("OutOfTheAlley").at(4));
+    Display::writeDialogue(jWriter.at("Prologue").at("DIA_Bob").at(0));
     //--------------------------------
     Menu menu2;
-    menu2.addOptions({ jWriter["Prologue"]["Menu2"].value("1",""), jWriter["Prologue"]["Menu2"].value("2","") });
+    menu2.addOptions({ jWriter.at("Prologue").at("Menu2").at(0), jWriter.at("Prologue").at("Menu2").at(1) });
     menu2.showOptions();
     //--------------------------------
     while (true)
@@ -147,9 +147,9 @@ void Event::outOfTheAlley()
         {
             Console::clearScreen();
             menu2.showHeroChoice();
-            Display::writeNarration(jWriter["Prologue"]["OutOfTheAlley"].value("INFO_6", ""));
+            Display::writeNarration(jWriter.at("Prologue").at("OutOfTheAlley").at(5));
             Sleep(1500);
-            Display::writeNarration(jWriter["Prologue"]["OutOfTheAlley"].value("INFO_7", ""));
+            Display::writeNarration(jWriter.at("Prologue").at("OutOfTheAlley").at(6));
             Sleep(1000);
             dialogueWithBob();
             break;
@@ -158,35 +158,35 @@ void Event::outOfTheAlley()
         {
             Console::clearScreen();
             menu2.showHeroChoice();
-            Display::writeNarration(jWriter["Prologue"]["OutOfTheAlley"].value("INFO_8", ""));
-            Display::writeDialogue(jWriter.value("DIA_Bob_2", ""));
-            Display::writeNarration(jWriter["Prologue"]["OutOfTheAlley"].value("INFO_9", ""));
+            Display::writeNarration(jWriter.at("Prologue").at("OutOfTheAlley").at(7));
+            Display::writeDialogue(jWriter.at("Prologue").at("DIA_Bob").at(1));
+            Display::writeNarration(jWriter.at("Prologue").at("OutOfTheAlley").at(8));
             Sleep(1000);
             Game::game[0].setCurrentLocation(&Location::locations["Street"]);
             break;
         }
-        else Logger::error("Entered invalid value of <b>heroChoice</b>", "Event::outOfTheAlley"); continue;
+        else Logger::error("Entered invalid value of <b>heroChoice</b>", __FUNCTION__); continue;
     }
 }
 
 void Event::dialogueWithBob()
 {
-    Logger::out("Function starts", "Event::dialogueWithBob");
-    Display::writeDialogue(jWriter["Prologue"]["DialogueWithBob"].value("DIA_Bob_3", ""));
+    Logger::startFuncLog(__FUNCTION__);
+    Display::writeDialogue(jWriter.at("Prologue").at("DIA_Bob").at(2));
 
     if (!Npc::npcs["Bob"].knowsHero() && !Npc::npcs["Caden"].knowsHero() && !Npc::npcs["CadenPartner"].knowsHero())
         namingHero();
 
     Npc::npcs["Bob"].setToKnowHero();
-    Display::writeDialogue(jWriter["Prologue"]["DialogueWithBob"].value("DIA_Bob_4", "") + Hero::heroes[0].getName() + jWriter["Prologue"]["DialogueWithBob"].value("DIA_Bob_5", ""));
+    Display::writeDialogue((std::string)jWriter.at("Prologue").at("DIA_Bob").at(3) + Hero::heroes[0].getName() + (std::string)jWriter.at("Prologue").at("DIA_Bob").at(4));
     Sleep(1500);
-    Display::writeDialogue(jWriter["Prologue"]["DialogueWithBob"].value("DIA_Bob_6", "") + Npc::npcs["Bob"].getName() + ".");
+    Display::writeDialogue((std::string)jWriter.at("Prologue").at("DIA_Bob").at(5) + Npc::npcs["Bob"].getName() + ".");
     Sleep(1500);
-    Display::writeDialogue(jWriter["Prologue"]["DialogueWithBob"].value("DIA_Bob_7", ""));
-    Display::writeNarration(jWriter["Prologue"]["DialogueWithBob"].value("DialogueWithBob_01", ""));
+    Display::writeDialogue(jWriter.at("Prologue").at("DIA_Bob").at(6));
+    Display::writeNarration(jWriter.at("Prologue").at("DialogueWithBob").at(0));
     //--------------------------------
     Menu menu3;
-    menu3.addOptions({ jWriter["Prologue"]["Menu3"].value("1",""), jWriter["Prologue"]["Menu3"].value("2",""), jWriter["Prologue"]["Menu3"].value("3","") });
+    menu3.addOptions({ jWriter.at("Prologue").at("Menu3").at(0), jWriter.at("Prologue").at("Menu3").at(1), jWriter.at("Prologue").at("Menu3").at(2) });
     menu3.showOptions();
     //--------------------------------
     while (true)
@@ -230,7 +230,7 @@ void Event::dialogueWithBob()
             Display::writeDialogue("\t- 'You're wrong. It's absolutely my business, kid. Don't shut your mouth like that, or you might\n\tlose a few teeth. Got it?'\n");
             break;
         }
-        else Logger::error("Entered invalid value of <b>heroChoice</b>", "Event::outOfTheAlley"); continue;
+        else Logger::error("Entered invalid value of <b>heroChoice</b>", __FUNCTION__); continue;
     }
 
     if (!streetWasVisited)
@@ -276,7 +276,7 @@ void Event::dialogueWithBob()
 
 void Event::darkAlleyCrossroads()
 {
-    Logger::out("Function starts", "Event::darkAlleyCrossroads");
+    Logger::startFuncLog(__FUNCTION__);
 
     if (!Npc::npcs["Bob"].knowsHero())
     {

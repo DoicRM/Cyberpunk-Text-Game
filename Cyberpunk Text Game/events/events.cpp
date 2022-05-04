@@ -5,7 +5,7 @@ bool darkAlleyWasVisited = false, streetWasVisited = false, gunShopWasVisited = 
 
 void Event::darkAlley()
 {
-    Logger::out("Function starts", "Event::darkAlley");
+    Logger::startFuncLog(__FUNCTION__);
 
     if (!darkAlleyWasVisited)
     {
@@ -20,7 +20,7 @@ void Event::darkAlley()
 
 void Event::street()
 {
-    Logger::out("Function starts", "Event::street");
+    Logger::startFuncLog(__FUNCTION__);
 
     if (!streetWasVisited)
     {
@@ -35,7 +35,7 @@ void Event::street()
 
 void Event::gunShop()
 {
-    Logger::out("Function starts", "Event::gunShop");
+    Logger::startFuncLog(__FUNCTION__);
 
     if (!gunShopWasVisited)
     {
@@ -50,7 +50,7 @@ void Event::gunShop()
 
 void Event::nightclub()
 {
-    Logger::out("Function starts", "Event::nightclub");
+    Logger::startFuncLog(__FUNCTION__);
 
     if (!nightclubWasVisited)
     {
@@ -65,13 +65,13 @@ void Event::nightclub()
 
 void Event::sleepersHideout()
 {
-    Logger::out("Function starts", "Event::sleepersHideout");
+    Logger::startFuncLog(__FUNCTION__);
     actOne();
 }
 
 void Event::heroDeath()
 {
-    Logger::out("Function starts", "Event::heroDeath");
+    Logger::startFuncLog(__FUNCTION__);
     clearInstances();
     Sleep(500);
     Console::clearScreen();
@@ -94,7 +94,7 @@ void Event::heroDeath()
 
 void Event::gameOver()
 {
-    Logger::out("Function starts", "Event::gameOver");
+    Logger::startFuncLog(__FUNCTION__);
     clearInstances();
     Sleep(500);
     Console::clearScreen();
@@ -119,7 +119,7 @@ void Event::gameOver()
 
 void Event::clearInstances()
 {
-    Logger::out("Function starts", "Event::clearInstances");
+    Logger::startFuncLog(__FUNCTION__);
     Hero::heroes.clear();
     Npc::npcs.clear();
     Fraction::fractions.clear();

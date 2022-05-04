@@ -24,24 +24,24 @@ std::string Fraction::printAttitude()
 {
     std::string attitude;
 
-    if (this->attitude == Angry) attitude = jWriter["Attitudes"].value("Angry", "");
-    else if (this->attitude == Hostile) attitude = jWriter["Attitudes"].value("Hostile", "");
-    else if (this->attitude == Friendly) attitude = jWriter["Attitudes"].value("Friendly", "");
-    else attitude = jWriter["Attitudes"].value("Neutral", "");
+    if (this->attitude == Angry) attitude = jWriter.at("Attitudes").value("Angry", JSON_VALUE_ERROR);
+    else if (this->attitude == Hostile) attitude = jWriter.at("Attitudes").value("Hostile", JSON_VALUE_ERROR);
+    else if (this->attitude == Friendly) attitude = jWriter.at("Attitudes").value("Friendly", JSON_VALUE_ERROR);
+    else attitude = jWriter.at("Attitudes").value("Neutral", JSON_VALUE_ERROR);
 
     return attitude;
 }
 
 void Fraction::initFractions()
 {
-    Logger::out("Function starts", "Fraction::initFractions");
+    Logger::startFuncLog(__FUNCTION__);
 
-    Fraction None(jWriter["Fractions"].value("None_Name",""), 0, Neutral);
-    Fraction Beggars(jWriter["Fractions"].value("Beggars_Name", ""), 0, Neutral);
-    Fraction Police(jWriter["Fractions"].value("Police_Name", ""), 0, Neutral);
-    Fraction Hammers(jWriter["Fractions"].value("Hammers_Name", ""), 0, Neutral);
-    Fraction Sleepers(jWriter["Fractions"].value("Sleepers_Name", ""), 0, Neutral);
-    Fraction SowersOfConfusion(jWriter["Fractions"].value("SowersOfConfusion_Name", ""), 0, Neutral);
+    Fraction None(jWriter.at("Fractions").value("None_Name", JSON_VALUE_ERROR), 0, Neutral);
+    Fraction Beggars(jWriter.at("Fractions").value("Beggars_Name", JSON_VALUE_ERROR), 0, Neutral);
+    Fraction Police(jWriter.at("Fractions").value("Police_Name", JSON_VALUE_ERROR), 0, Neutral);
+    Fraction Hammers(jWriter.at("Fractions").value("Hammers_Name", JSON_VALUE_ERROR), 0, Neutral);
+    Fraction Sleepers(jWriter.at("Fractions").value("Sleepers_Name", JSON_VALUE_ERROR), 0, Neutral);
+    Fraction SowersOfConfusion(jWriter.at("Fractions").value("SowersOfConfusion_Name", JSON_VALUE_ERROR), 0, Neutral);
 
     fractions["None"] = None;
     fractions["Beggars"] = Beggars;

@@ -2,7 +2,7 @@
 
 void Event::actOne()
 {
-    Logger::out("Function starts", "Event::actOne");
+    Logger::startFuncLog(__FUNCTION__);
 
     if (Game::game[0].getLang() == EN) Display::write("\n\tAct One");
     else Display::write("\n\tAkt pierwszy");
@@ -19,5 +19,6 @@ void Event::actOne()
 // KRYJÓWKA ŒNI¥CYCH
 void Event::sleepersHideoutCrossroads()
 {
+    Logger::startFuncLog(__FUNCTION__);
     // TODO
 }

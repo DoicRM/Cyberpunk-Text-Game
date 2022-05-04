@@ -20,16 +20,16 @@ std::string Clothes::printClothesType()
 {
     std::string type;
 
-    if (this->type == HEAD) type = jWriter["ClothesTypes"]["Head"];
-    else if (this->type == CHEST) type = jWriter["ClothesTypes"]["Chest"];
-    else if (this->type == ARMS) type = jWriter["ClothesTypes"]["Arms"];
-    else if (this->type == LEGS)  type = jWriter["ClothesTypes"]["Legs"];
-    else type = jWriter["ClothesTypes"]["None"];
+    if (this->type == HEAD) type = jWriter.at("ClothesTypes").value("Head", JSON_VALUE_ERROR);
+    else if (this->type == CHEST) type = jWriter.at("ClothesTypes").value("Chest", JSON_VALUE_ERROR);
+    else if (this->type == ARMS) type = jWriter.at("ClothesTypes").value("Arms", JSON_VALUE_ERROR);
+    else if (this->type == LEGS)  type = jWriter.at("ClothesTypes").value("Legs", JSON_VALUE_ERROR);
+    else type = jWriter.at("ClothesTypes").value("None", JSON_VALUE_ERROR);
 
     return type;
 }
 
 void Clothes::initClothes()
 {
-    Logger::out("Function starts", "Clothes::initClothes");
+    Logger::startFuncLog(__FUNCTION__);
 }

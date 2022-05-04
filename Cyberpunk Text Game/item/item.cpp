@@ -28,22 +28,22 @@ std::string Item::printType()
 {
     std::string type;
 
-    if (this->type == WEAPON) type = jWriter["ItemsTypes"]["Weapon"];
-    else if (this->type == CLOTHES) type = jWriter["ItemsTypes"]["Clothes"];
-    else if (this->type == OTHER) type = jWriter["ItemsTypes"]["Other"];
-    else if (this->type == FOOD) type = jWriter["ItemsTypes"]["Food"];
-    else if (this->type == QUEST) type = jWriter["ItemsTypes"]["Quest"];
-    else type = jWriter["ItemsTypes"]["None"];
+    if (this->type == WEAPON) type = jWriter.at("ItemsTypes").value("Weapon", JSON_VALUE_ERROR);
+    else if (this->type == CLOTHES) type = jWriter.at("ItemsTypes").value("Clothes", JSON_VALUE_ERROR);
+    else if (this->type == OTHER) type = jWriter.at("ItemsTypes").value("Other", JSON_VALUE_ERROR);
+    else if (this->type == FOOD) type = jWriter.at("ItemsTypes").value("Food", JSON_VALUE_ERROR);
+    else if (this->type == QUEST) type = jWriter.at("ItemsTypes").value("Quest", JSON_VALUE_ERROR);
+    else type = jWriter.at("ItemsTypes").value("None", JSON_VALUE_ERROR);
 
     return type;
 }
 
 void Item::initItems()
 {
-    Logger::out("Function starts", "Item::initItems");
+    Logger::startFuncLog(__FUNCTION__);
 
-    Item AD13(jWriter["Items"]["AD13"]["Name"], OTHER, jWriter["Items"]["AD13"]["Description"], 50);
-    Item AccessCard(jWriter["Items"]["AccessCard"]["Name"], OTHER, jWriter["Items"]["AccessCard"]["Description"], 0);
+    Item AD13(jWriter.at("Items").at("AD13").value("Name", JSON_VALUE_ERROR), OTHER, jWriter.at("Items").at("AD13").value("Description", JSON_VALUE_ERROR), 50);
+    Item AccessCard(jWriter.at("Items").at("AccessCard").value("Name", JSON_VALUE_ERROR), OTHER, jWriter.at("Items").at("AccessCard").value("Description", JSON_VALUE_ERROR), 0);
 
     items["AD13"] = AD13;
     items["AccessCard"] = AccessCard;
