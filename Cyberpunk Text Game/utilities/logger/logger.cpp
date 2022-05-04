@@ -26,7 +26,7 @@ void Logger::setup(bool isLoud)
         << "<th scope='col'>MESSAGE</td>"
         << "<th scope='col'>TIME</td>"
         << "</tr></thead><tbody>" << std::endl;
-    out("Logging begins", "Logger::setup");
+    out("Logging begins", __FUNCTION__);
 }
 
 void Logger::setup(int logLevel, const std::string& filter)
@@ -87,6 +87,11 @@ void Logger::out(const std::string& message, const std::string& location /* = ""
 
         m_rowCount++;
     }
+}
+
+void Logger::startFuncLog(const std::string& location)
+{
+    Logger::out("Function starts", location);
 }
 
 void Logger::error(const std::string& message, const std::string& location /* = "" */)
