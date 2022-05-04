@@ -198,26 +198,26 @@ void Event::dialogueWithBob()
             Console::clearScreen();
             menu3.showHeroChoice();
             bobRecommendsZed = true; // Bob poleca bohaterowi sklep z bronią Zeda
-            Display::writeDialogue("\n\t- 'Ha-ha, that's what I thought. To tell you the truth, you don't look very threatening.");
+            Display::writeDialogue(jWriter.at("Prologue").at("DIA_Bob").at(7));
             Sleep(1000);
-            Display::writeDialogue(" Well,\n\tyou could use some gat. I happen to know a guy who deals guns. His name is Zed, and his store is\n\tright around the corner.");
+            Display::writeDialogue(jWriter.at("Prologue").at("DIA_Bob").at(8));
             Sleep(1000);
-            Display::writeDialogue(" Tell him you're coming from old Bob and he'll find something for you.'\n");
+            Display::writeDialogue(jWriter.at("Prologue").at("DIA_Bob").at(9));
             break;
         }
         else if (heroChoice == 2)
         {
             Console::clearScreen();
             menu3.showHeroChoice();
-            Display::writeDialogue("\n\t- 'What's wrong with you?");
+            Display::writeDialogue(jWriter.at("Prologue").at("DIA_Bob").at(10));
             Sleep(1000);
-            Display::writeDialogue(" Anyway, it doesn't matter.");
+            Display::writeDialogue(jWriter.at("Prologue").at("DIA_Bob").at(11));
             Sleep(1500);
-            Display::writeDialogue(" Have you ever heard of Megacity?");
+            Display::writeDialogue(jWriter.at("Prologue").at("DIA_Bob").at(12));
             Sleep(1500);
-            Display::writeDialogue(" Well,\n\tit's right here. The neighborhood we are currently in is called Gunce Deep.");
+            Display::writeDialogue(jWriter.at("Prologue").at("DIA_Bob").at(13));
             Sleep(1000);
-            Display::writeDialogue(" Did I make your\n\thead clearer?'\n");
+            Display::writeDialogue(jWriter.at("Prologue").at("DIA_Bob").at(14));
             break;
         }
         else if (heroChoice == 3)
@@ -227,7 +227,7 @@ void Event::dialogueWithBob()
             std::cout << std::endl;
             Npc::npcs["Bob"].setAttitude(Angry); // angry / hostile / friendly / neutral
             Sleep(500);
-            Display::writeDialogue("\t- 'You're wrong. It's absolutely my business, kid. Don't shut your mouth like that, or you might\n\tlose a few teeth. Got it?'\n");
+            Display::writeDialogue(jWriter.at("Prologue").at("DIA_Bob").at(15));
             break;
         }
         else Logger::error("Entered invalid value of <b>heroChoice</b>", __FUNCTION__); continue;
@@ -284,7 +284,7 @@ void Event::darkAlleyCrossroads()
         Display::writeDialogue("\n\t- 'It's you again. Why don't you tell me something for one this time?'\n\n");
         //--------------------------------
         Menu menu2;
-        menu2.addOptions({ jWriter["Menu3"].value("3",""), jWriter["Menu3"].value("2","") });
+        menu2.addOptions({ jWriter.at("Menu3").at(0), jWriter.at("Menu3").at(1) });
         menu2.showOptions();
         //--------------------------------
         while (true)
@@ -295,9 +295,9 @@ void Event::darkAlleyCrossroads()
             {
                 Console::clearScreen();
                 menu2.showHeroChoice();
-                Display::writeNarration(jWriter.value("OutOfTheAlley_06", ""));
+                Display::writeNarration(jWriter.at("OutOfTheAlley").at(5));
                 Sleep(1500);
-                Display::writeNarration(jWriter.value("OutOfTheAlley_07", ""));
+                Display::writeNarration(jWriter.at("OutOfTheAlley").at(6));
                 dialogueWithBob();
                 break;
             }
@@ -305,8 +305,8 @@ void Event::darkAlleyCrossroads()
             {
                 Console::clearScreen();
                 menu2.showHeroChoice();
-                Display::writeNarration(jWriter.value("OutOfTheAlley_08", ""));
-                Display::writeDialogue(jWriter.value("DIA_Bob_08", ""));
+                Display::writeNarration(jWriter.at("OutOfTheAlley").at(7));
+                Display::writeDialogue(jWriter.at("DIA_Bob").at(7));
                 Console::clearScreen();
                 Game::game[0].setCurrentLocation(&Location::locations["Street"]);
                 break;
@@ -318,15 +318,15 @@ void Event::darkAlleyCrossroads()
     {
         Display::writeNarration("\tWhen you enter an alley, you notice a sea of trash around you.");
         Sleep(1000);
-        Display::writeNarration(" It's full of cardboard boxes,\n\told mechanical parts, and god knows what else.");
+        Display::writeNarration(jWriter.at("Prologue").at("WakeUpInDarkAlley").at(7));
     
         if (!Hero::heroes[0].hasItem(&Item::items["AD13"]))
         {
             Sleep(1500);
-            Display::writeNarration("\n\tMaybe you will find something interesting there...\n\n");
+            Display::writeNarration(jWriter.at("Prologue").at("WakeUpInDarkAlley").at(8));
             //--------------------------------
             Menu menu1;
-            menu1.addOptions({ "Search the area for something valuable.", "Go out of the alley." });
+            menu1.addOptions({ jWriter.at("Prologue").at("Menu1").at(0), jWriter.at("Prologue").at("Menu1").at(1) });
             menu1.showOptions();
             //--------------------------------
             while (true)
@@ -1628,7 +1628,7 @@ void Event::loadingFiles()
 
     Display::write("||", 100);
     Sleep(1000);
-    Display::write(jWriter["Infos"].value("DownloadCompleted", ""));
+    Display::write(jWriter["Infos"].value("DownloadCompleted", JSON_VALUE_ERROR));
     Console::resetConsoleColor();
 }
 
@@ -1636,7 +1636,7 @@ void Event::namingHero()
 {
     Logger::out("Function starts", "Event::namingHero");
     std::string heroName;
-    Display::writeNarration(jWriter.value("RememberYourName", ""));
+    Display::writeNarration(jWriter.at("Prologue").value("RememberYourName", JSON_VALUE_ERROR));
     Console::resetConsoleColor();
     heroName = Input::getString();
     Hero::heroes[0].setName(heroName);

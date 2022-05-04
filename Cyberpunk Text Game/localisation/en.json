@@ -7,7 +7,10 @@
     "PressAnyKey": "\tPress ANY KEY to continue...",
     "And": " and ",
     "WasFound": " was found.",
-    "DownloadCompleted": "\n\tDownload completed"
+    "DownloadCompleted": "\n\tDownload completed",
+    "YouAreDead": "\tYOU ARE DEAD!",
+    "BackToMenu": "\n\n\tBack to menu...",
+    "TheEnd": "\tTHE END"
   },
   "MainMenu": [
     "New game",
@@ -185,7 +188,16 @@
       ", huh?",
       " All right. I'm ",
       " What are you doin' here?'",
-      "\n\t- 'Don't show up here again if you don't want to get your teeth kicked in!'\n"
+      "\n\t'Ha-ha, that's what I thought. To tell you the truth, you don't look very threatening.",
+      " Well,\n\tyou could use some gat. I happen to know a guy who deals guns. His name is Zed, and his store is\n\tright around the corner.",
+      " Tell him you're coming from old Bob and he'll find something for you.'\n",
+      "\n\t'What's wrong with you?",
+      " Anyway, it doesn't matter.",
+      " Have you ever heard of Megacity?",
+      " Well,\n\tit's right here. The neighborhood we are currently in is called Gunce Deep.",
+      " Did I make your\n\thead clearer?'\n",
+      "\t'You're wrong. It's absolutely my business, kid. Don't shut your mouth like that, or you might\n\tlose a few teeth. Got it?'\n",
+      "\n\t'Don't show up here again if you don't want to get your teeth kicked in!'\n"
     ],
     "RememberYourName": "\tYour name... You start wandering your thoughts around what your name is. As if through a fog\n\tit occurs to you that you are:\n"
   }

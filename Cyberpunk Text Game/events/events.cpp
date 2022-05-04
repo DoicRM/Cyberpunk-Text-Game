@@ -77,16 +77,10 @@ void Event::heroDeath()
     Console::clearScreen();
     Console::setConsoleColor(CC_Red);
     std::cout << std::endl;
-
-    if (Game::game[0].getLang() == EN) Display::write("\tYOU ARE DEAD!");
-    else Display::write("\tNIE ¯YJESZ!");
-
+    Display::write(jWriter.at("Infos").value("YouAreDead", JSON_VALUE_ERROR));
     Sleep(1000);
     Console::setConsoleColor();
-
-    if (Game::game[0].getLang() == EN) Display::write("\n\n\tBack to menu...", 25);
-    else Display::write("\n\n\tWróæ do menu...", 25);
-
+    Display::write(jWriter.at("Infos").value("BackToMenu", JSON_VALUE_ERROR), 25);
     Console::waitForUserInput();
     Console::clearScreen();
     Game::game[0].loadLogo();
@@ -100,18 +94,12 @@ void Event::gameOver()
     Console::clearScreen();
     Console::setConsoleColor(CC_Lightblue);
     std::cout << std::endl;
-
-    if (Game::game[0].getLang() == EN) Display::write("\tTHE END", 25);
-    else Display::write("\tKONIEC", 25);
-
+    Display::write(jWriter.at("Infos").value("TheEnd", JSON_VALUE_ERROR), 25);
     Sleep(1000);
     std::cout << std::endl << std::endl;
     Console::resetConsoleColor();
     Game::game[0].credits();
-
-    if (Game::game[0].getLang() == EN) Display::write("\n\n\tBack to menu...", 25);
-    else Display::write("\n\n\tWróæ do menu...", 25);
-
+    Display::write(jWriter.at("Infos").value("BackToMenu", JSON_VALUE_ERROR), 25);
     Console::waitForUserInput();
     Console::clearScreen();
     Game::game[0].loadLogo();

@@ -7,7 +7,10 @@
     "PressAnyKey": "\tWciśnij DOWOLNY PRZYCISK, aby kontynuować...",
     "And": " i ",
     "WasFound": " znaleziono.",
-    "DownloadCompleted": "\n\tPobieranie zakończone"
+    "DownloadCompleted": "\n\tPobieranie zakończone",
+    "YouAreDead": "\tNIE ŻYJESZ!",
+    "BackToMenu": "\n\n\tWróć do menu...",
+    "TheEnd": "\tKONIEC"
   },
   "MainMenu": [
     "Nowa gra",
@@ -185,6 +188,15 @@
       ", hę?",
       " W porządku. Ja jestem ",
       " Co tu robisz?",
+      "\n\t- Haha, tak właśnie myślałem. Prawdę mówiąc, nie wyglądasz zbyt groźnie.",
+      " Przydałaby ci się\n\tjakaś broń. Znam gościa, który handluje bronią. Ma na imię Zed, jego sklep jest tuż za rogiem.",
+      "\n\tPowiedz mu, że przychodzisz od starego Boba, a on na pewno coś dla ciebie znajdzie.\n",
+      "\n\t- Co z tobą nie tak?",
+      " Zresztą nieważne.",
+      " Czy słyszałeś kiedyś o Megacity?",
+      " Cóż, to tutaj. Okolica,\n\tw której się obecnie znajdujemy, nazywa się Gunce Deep.",
+      " Coś ci świta?\n",
+      "\t- Mylisz się. To absolutnie moja sprawa, dzieciaku. Nie mów do mnie w ten sposób, jeśli nie\n\tchcesz stracić kilka zębów. Rozumiesz?\n",
       "\n\t- Nie pokazuj się tu więcej, jeśli nie chcesz stracić zębów!\n"
     ],
     "RememberYourName": "\tTwoje imię... Zaczynasz błądzić myślami wokół tego, jak się nazywasz. Jakby przez mgłę dociera\n\tdo ciebie, że jesteś:\n"
