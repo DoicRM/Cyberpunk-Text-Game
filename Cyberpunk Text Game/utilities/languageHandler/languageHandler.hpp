@@ -7,7 +7,8 @@
 class JSON
 {
 public:
-	static void loadFile(int lang);
+	static void loadDataFromFile(int lang);
 };
 
 extern nlohmann::json jWriter;
+extern std::string JSON_VALUE_ERROR;
