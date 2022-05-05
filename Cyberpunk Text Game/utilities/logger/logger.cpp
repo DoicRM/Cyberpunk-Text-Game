@@ -94,6 +94,11 @@ void Logger::startFuncLog(const std::string& location)
     Logger::out("Function starts", location);
 }
 
+void Logger::invalidHeroChoiceError(const std::string& location)
+{
+    Logger::error("Entered invalid value of <b>heroChoice</b>", location);
+}
+
 void Logger::error(const std::string& message, const std::string& location /* = "" */)
 {
     //std::cerr << "** " << getTimestamp() << "\t" << message;

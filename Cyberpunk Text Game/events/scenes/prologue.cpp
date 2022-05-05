@@ -82,7 +82,7 @@ void Event::wakeUpInDarkAlley()
             outOfTheAlley();
             break;
         }
-        else Logger::error("Entered invalid value of <b>heroChoice</b>", __FUNCTION__); continue;
+        else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
     }
 }
 
@@ -165,7 +165,7 @@ void Event::outOfTheAlley()
             Game::game[0].setCurrentLocation(&Location::locations["Street"]);
             break;
         }
-        else Logger::error("Entered invalid value of <b>heroChoice</b>", __FUNCTION__); continue;
+        else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
     }
 }
 
@@ -233,7 +233,7 @@ void Event::dialogueWithBob()
             Display::writeDialogue(jWriter.at("Prologue").at("DIA_Bob").at(15));
             break;
         }
-        else Logger::error("Entered invalid value of <b>heroChoice</b>", __FUNCTION__); continue;
+        else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
     }
 
     if (!streetWasVisited)
@@ -314,7 +314,7 @@ void Event::darkAlleyCrossroads()
                 Game::game[0].setCurrentLocation(&Location::locations["Street"]);
                 break;
             }
-            else Logger::error("Entered invalid value of <b>heroChoice</b>", __FUNCTION__); continue;
+            else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
         }
     }
     else
@@ -356,7 +356,7 @@ void Event::darkAlleyCrossroads()
                     Game::game[0].setCurrentLocation(&Location::locations["Street"]);
                     break;
                 }
-                else Logger::error("Entered invalid value of <b>heroChoice</b>", __FUNCTION__); continue;
+                else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
             }
         }
         else
@@ -419,7 +419,7 @@ void Event::lookAtAmnesia()
             Game::game[0].setCurrentLocation(&Location::locations["GunShop"]);
             break;
         }
-        else Logger::error("Entered invalid value of <b>heroChoice</b>", __FUNCTION__); continue;
+        else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
     }
 }
 
@@ -491,7 +491,8 @@ void Event::meetingWithPolicemans()
 {
     Logger::startFuncLog(__FUNCTION__);
 
-    if (Npc::npcs["Bob"].knowsHero()) Display::writeNarration("\tWhen you get closer, one of the police officers in a dark blue uniform turns toward you.");
+    if (Npc::npcs["Bob"].knowsHero())
+        Display::writeNarration("\tWhen you get closer, one of the police officers in a dark blue uniform turns toward you.");
     else {
         Display::writeNarration("\tIn an instant the street is filled with the howling of a police siren.");
         Sleep(1000);
@@ -566,7 +567,7 @@ void Event::meetingWithPolicemans()
             Game::game[0].setCurrentLocation(&Location::locations["GunShop"]);
             break;
         }
-        else Logger::error("Entered invalid value of <b>heroChoice</b>", __FUNCTION__); continue;
+        else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
     }
 }
 
@@ -603,12 +604,12 @@ void Event::streetCrossroads()
         }
         else if (heroChoice == 3)
         {
-        Console::clearScreen();
-        menu7.showHeroChoice();
-        Game::game[0].setCurrentLocation(&Location::locations["GunShop"]);
-        break;
+            Console::clearScreen();
+            menu7.showHeroChoice();
+            Game::game[0].setCurrentLocation(&Location::locations["GunShop"]);
+            break;
         }
-        else Logger::error("Entered invalid value of <b>heroChoice</b>", __FUNCTION__); continue;
+        else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
     }
 }
 
@@ -750,7 +751,7 @@ void Event::dialogueWithZed()
 
             break;
         }
-        else Logger::error("Entered invalid value of <b>heroChoice</b>", __FUNCTION__); continue;
+        else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
     }
 }
 
@@ -850,7 +851,7 @@ void Event::zedTrade()
                     dialogueWithZed();
                     break;
                 }
-                else Logger::error("Entered invalid value of <b>heroChoice</b>", __FUNCTION__); continue;
+                else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
             }
         }
     }
@@ -963,7 +964,7 @@ void Event::enterClub()
             Game::game[0].setCurrentLocation(&Location::locations["Street"]);
             break;
         }
-        else Logger::error("Entered invalid value of <b>heroChoice</b>", __FUNCTION__); continue;
+        else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
     }
 }
 
@@ -1019,7 +1020,7 @@ void Event::clubDanceFloor()
                 Display::writeDialogue("\n\t- 'Hi, I am Nyx. Vinc, the owner, is my boyfriend. I think you can help me.'");
                 break;
             }
-            else Logger::error("Entered invalid value of <b>heroChoice</b>", __FUNCTION__); continue;
+            else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
         }
 
         miaMeeting();
@@ -1088,7 +1089,7 @@ void Event::clubBar()
             Game::game[0].setCurrentLocation(&Location::locations["Nightclub"]);
             break;
         }
-        else Logger::error("Entered invalid value of <b>heroChoice</b>", __FUNCTION__); continue;
+        else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
     }
 }
 
@@ -1117,7 +1118,7 @@ void Event::miaMeeting()
             menu14.showHeroChoice();
             break;
         }
-        else Logger::error("Entered invalid value of <b>heroChoice</b>", __FUNCTION__); continue;
+        else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
     }
 
     Display::writeDialogue("\n\t- 'Vinc, the owner, is my boyfriend.");
@@ -1184,7 +1185,7 @@ void Event::clubUpstairs()
             nightclub();
             break;
         }
-        else Logger::error("Entered invalid value of <b>heroChoice</b>", __FUNCTION__); continue;
+        else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
     }
 }
 
@@ -1283,7 +1284,7 @@ void Event::dialogueWithJet()
             nightclub();
             break;
         }
-        else Logger::error("Entered invalid value of <b>heroChoice</b>", __FUNCTION__); continue;
+        else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
     }
 }
 
@@ -1331,7 +1332,7 @@ void Event::vincentOffice()
             checkVincentDesk();
             break;
         }
-        else Logger::error("Entered invalid value of <b>heroChoice</b>", __FUNCTION__); continue;
+        else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
     }
 }
 
@@ -1412,7 +1413,7 @@ void Event::vincentHideout()
             dialogueWithVincent();
             break;
         }
-        else Logger::error("Entered invalid value of <b>heroChoice</b>", __FUNCTION__); continue;
+        else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
     }
 }
 
@@ -1457,7 +1458,7 @@ void Event::dialogueWithVincent()
             Display::writeNarration("\n\tYou are not a coward. You don't stab people in the back. That's not your style. You prefer an open fight.");
             break;
         }
-        else Logger::error("Entered invalid value of <b>heroChoice</b>", __FUNCTION__); continue;
+        else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
     }
 
     std::cout << std::endl << std::endl;
@@ -1504,7 +1505,7 @@ void Event::dialogueWithVincent()
             Display::writeNarration(" That bastard was playing for time after all!");
             break;
         }
-        else Logger::error("Entered invalid value of <b>heroChoice</b>", "Event::dialogueWithVincent"); continue;
+        else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
     }
 
     Display::writeNarration("\n\tThe passage behind your back is opened.");
@@ -1542,7 +1543,7 @@ void Event::dialogueWithVincent()
             Display::writeNarration("\n\tA girl talks to you without even looking at you.\n");
             break;
         }
-        else Logger::error("Entered invalid value of <b>heroChoice</b>", __FUNCTION__); continue;
+        else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
     }
 
     vincentResurrection();
@@ -1631,7 +1632,7 @@ void Event::loadingFiles()
 
     Display::write("||", 100);
     Sleep(1000);
-    Display::write(jWriter["Infos"].value("DownloadCompleted", JSON_VALUE_ERROR));
+    Display::write(jWriter.at("Infos").value("DownloadCompleted", JSON_VALUE_ERROR));
     Console::resetConsoleColor();
 }
 

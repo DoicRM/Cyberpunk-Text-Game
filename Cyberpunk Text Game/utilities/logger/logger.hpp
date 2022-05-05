@@ -16,8 +16,9 @@ public:
     static void setFilterWord(const std::string& filter);
 
     static void out(const std::string& message, const std::string& location = "", const std::string& category = "", bool condition = true, int level = 0);
-    static void startFuncLog(const std::string& location);
+    static void startFuncLog(const std::string& location = "");
     static void error(const std::string& message, const std::string& location = "");
+    static void invalidHeroChoiceError(const std::string& location = "");
 
     static double getTimestamp();
     static std::string getFormattedTimestamp();
