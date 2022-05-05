@@ -172,6 +172,10 @@
       "(Zignoruj go i idź dalej.)",
       "(Zatrzymaj się i dowiedz się wreszcie, czego chce.)"
     ],
+    "NameMenu": [
+      "(Przedstaw się.)",
+      "(Zachowaj swoją tożsamość w tajemnicy.)"
+    ],
     "Menu3": [
       "Nie szukam kłopotów.",
       "Tylko się rozglądam. Gdzie my właściwie jesteśmy?",
@@ -183,11 +187,12 @@
     "DIA_Bob": [
       "\n\t- Hej, dzieciaku. Zaczekaj chwilę.\n\n",
       "\n\t- Hej, ty! Wracaj tu!",
-      "\t- Coś za jeden, chłopcze?\n",
+      "\t- Coś za jeden, chłopcze?\n\n",
       "\t- Więc nazywasz się ",
       ", hę?",
       " W porządku. Ja jestem ",
       " Co tu robisz?",
+      "\tNie chcesz mówić? Dobra, niech ci będzie, ale może chociaż zdradzisz mi, co tu robisz?\n\n",
       "\n\t- Haha, tak właśnie myślałem. Prawdę mówiąc, nie wyglądasz zbyt groźnie.",
       " Przydałaby ci się\n\tjakaś broń. Znam gościa, który handluje bronią. Ma na imię Zed, jego sklep jest tuż za rogiem.",
       "\n\tPowiedz mu, że przychodzisz od starego Boba, a on na pewno coś dla ciebie znajdzie.\n",
@@ -196,7 +201,7 @@
       " Czy słyszałeś kiedyś o Megacity?",
       " Cóż, to tutaj. Okolica,\n\tw której się obecnie znajdujemy, nazywa się Gunce Deep.",
       " Coś ci świta?\n",
-      "\t- Mylisz się. To absolutnie moja sprawa, dzieciaku. Nie mów do mnie w ten sposób, jeśli nie\n\tchcesz stracić kilka zębów. Rozumiesz?\n",
+      "\t- Mylisz się. To absolutnie moja sprawa, dzieciaku. Nie mów do mnie w ten sposób, jeśli nie\n\tchcesz stracić kilku zębów. Rozumiesz?\n",
       "\n\t- Nie pokazuj się tu więcej, jeśli nie chcesz stracić zębów!\n"
     ],
     "RememberYourName": "\tTwoje imię... Zaczynasz błądzić myślami wokół tego, jak się nazywasz. Jakby przez mgłę dociera\n\tdo ciebie, że jesteś:\n"

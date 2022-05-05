@@ -175,105 +175,136 @@ void Event::dialogueWithBob()
     Display::writeDialogue(jWriter.at("Prologue").at("DIA_Bob").at(2));
 
     if (!Npc::npcs["Bob"].knowsHero() && !Npc::npcs["Caden"].knowsHero() && !Npc::npcs["CadenPartner"].knowsHero())
-        namingHero();
-
-    Npc::npcs["Bob"].setToKnowHero();
-    Display::writeDialogue((std::string)jWriter.at("Prologue").at("DIA_Bob").at(3) + Hero::heroes[0].getName() + (std::string)jWriter.at("Prologue").at("DIA_Bob").at(4));
-    Sleep(1500);
-    Display::writeDialogue((std::string)jWriter.at("Prologue").at("DIA_Bob").at(5) + Npc::npcs["Bob"].getName() + ".");
-    Sleep(1500);
-    Display::writeDialogue(jWriter.at("Prologue").at("DIA_Bob").at(6));
-    Display::writeNarration(jWriter.at("Prologue").at("DialogueWithBob").at(0));
-    //--------------------------------
-    Menu menu3;
-    menu3.addOptions({ jWriter.at("Prologue").at("Menu3").at(0), jWriter.at("Prologue").at("Menu3").at(1), jWriter.at("Prologue").at("Menu3").at(2) });
-    menu3.showOptions();
-    //--------------------------------
-    while (true)
     {
-        heroChoice = menu3.inputChoice();
-
-        if (heroChoice == 1)
+        //--------------------------------
+        Menu nameMenu;
+        nameMenu.addOptions({ jWriter.at("Prologue").at("NameMenu").at(0), jWriter.at("Prologue").at("NameMenu").at(1) });
+        nameMenu.showOptions();
+        //--------------------------------
+        while (true)
         {
-            Console::clearScreen();
-            menu3.showHeroChoice();
-            bobRecommendsZed = true; // Bob poleca bohaterowi sklep z bronią Zeda
-            Display::writeDialogue(jWriter.at("Prologue").at("DIA_Bob").at(7));
-            Sleep(1000);
-            Display::writeDialogue(jWriter.at("Prologue").at("DIA_Bob").at(8));
-            Sleep(1000);
-            Display::writeDialogue(jWriter.at("Prologue").at("DIA_Bob").at(9));
-            break;
+            heroChoice = nameMenu.inputChoice();
+
+            if (heroChoice == 1)
+            {
+                Console::clearScreen();
+                nameMenu.showHeroChoice();
+                namingHero();
+                Npc::npcs["Bob"].setToKnowHero();
+                Display::writeDialogue((std::string)jWriter.at("Prologue").at("DIA_Bob").at(3) + Hero::heroes[0].getName() + (std::string)jWriter.at("Prologue").at("DIA_Bob").at(4));
+                Sleep(1500);
+                Display::writeDialogue((std::string)jWriter.at("Prologue").at("DIA_Bob").at(5) + Npc::npcs["Bob"].getName() + ".");
+                Sleep(1500);
+                Display::writeDialogue(jWriter.at("Prologue").at("DIA_Bob").at(6));
+                Display::writeNarration(jWriter.at("Prologue").at("DialogueWithBob").at(0));
+                break;
+            }
+            else if (heroChoice == 2)
+            {
+                Console::clearScreen();
+                nameMenu.showHeroChoice();
+
+                if (Npc::npcs["Bob"].getAttitude() != Angry)
+                    Npc::npcs["Bob"].setAttitude(Angry); // Angry / Hostile / Friendly / Neutral
+
+                Sleep(500);
+                Display::writeDialogue(jWriter.at("Prologue").at("DIA_Bob").at(7));
+
+                break;
+            }
+            else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
         }
-        else if (heroChoice == 2)
+        //--------------------------------
+        Menu menu3;
+        menu3.addOptions({ jWriter.at("Prologue").at("Menu3").at(0), jWriter.at("Prologue").at("Menu3").at(1), jWriter.at("Prologue").at("Menu3").at(2) });
+        menu3.showOptions();
+        //--------------------------------
+        while (true)
         {
-            Console::clearScreen();
-            menu3.showHeroChoice();
-            Display::writeDialogue(jWriter.at("Prologue").at("DIA_Bob").at(10));
-            Sleep(1000);
-            Display::writeDialogue(jWriter.at("Prologue").at("DIA_Bob").at(11));
-            Sleep(1500);
-            Display::writeDialogue(jWriter.at("Prologue").at("DIA_Bob").at(12));
-            Sleep(1500);
-            Display::writeDialogue(jWriter.at("Prologue").at("DIA_Bob").at(13));
-            Sleep(1000);
-            Display::writeDialogue(jWriter.at("Prologue").at("DIA_Bob").at(14));
-            break;
+            heroChoice = menu3.inputChoice();
+
+            if (heroChoice == 1)
+            {
+                Console::clearScreen();
+                menu3.showHeroChoice();
+                bobRecommendsZed = true; // Bob poleca bohaterowi sklep z bronią Zeda
+                Display::writeDialogue(jWriter.at("Prologue").at("DIA_Bob").at(8));
+                Sleep(1000);
+                Display::writeDialogue(jWriter.at("Prologue").at("DIA_Bob").at(9));
+                Sleep(1000);
+                Display::writeDialogue(jWriter.at("Prologue").at("DIA_Bob").at(10));
+                break;
+            }
+            else if (heroChoice == 2)
+            {
+                Console::clearScreen();
+                menu3.showHeroChoice();
+                Display::writeDialogue(jWriter.at("Prologue").at("DIA_Bob").at(11));
+                Sleep(1000);
+                Display::writeDialogue(jWriter.at("Prologue").at("DIA_Bob").at(12));
+                Sleep(1500);
+                Display::writeDialogue(jWriter.at("Prologue").at("DIA_Bob").at(13));
+                Sleep(1500);
+                Display::writeDialogue(jWriter.at("Prologue").at("DIA_Bob").at(14));
+                Sleep(1000);
+                Display::writeDialogue(jWriter.at("Prologue").at("DIA_Bob").at(15));
+                break;
+            }
+            else if (heroChoice == 3)
+            {
+                Console::clearScreen();
+                menu3.showHeroChoice();
+                std::cout << std::endl;
+
+                if (Npc::npcs["Bob"].getAttitude() != Angry)
+                    Npc::npcs["Bob"].setAttitude(Angry); // Angry / Hostile / Friendly / Neutral
+
+                Sleep(500);
+                Display::writeDialogue(jWriter.at("Prologue").at("DIA_Bob").at(16));
+                break;
+            }
+            else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
         }
-        else if (heroChoice == 3)
+
+        if (!streetWasVisited)
         {
-            Console::clearScreen();
-            menu3.showHeroChoice();
-            std::cout << std::endl;
-
-            if (Npc::npcs["Bob"].getAttitude() != Angry)
-                Npc::npcs["Bob"].setAttitude(Angry); // angry / hostile / friendly / neutral
-
+            Display::writeNarration("\tFinally, an old, wrinkled face surrounded by gray fuzz emerges from the darkness. An artificial,\n\tcybernetic eye watches you vigilantly.");
+            Sleep(1000);
+            Display::writeNarration(" You start to feel strangely uncomfortable.");
+            Sleep(2000);
+            Display::writeNarration("\n\tIn an instant the alley is filled with the howling of a police siren.");
+            Sleep(1000);
+            Display::writeNarration(" On the wall in front of\n\tyou, red and blue begin to dance with each other.");
+            Display::writeDialogue("\n\t- 'Shit");
             Sleep(500);
-            Display::writeDialogue(jWriter.at("Prologue").at("DIA_Bob").at(15));
-            break;
+            Display::writeDialogue(", cops!");
+            Sleep(500);
+            Display::writeDialogue(" Well, that's super. I think it's time for me to go.'");
+            Sleep(1500);
+            Display::writeNarration("\n\tThe aging beggar dives into the embrace of darkness in a flash.");
+            Sleep(1500);
+            Display::writeNarration(" Does this mean you see him for\n\tthe last time?");
+            Sleep(3500);
+            Game::game[0].setCurrentLocation(&Location::locations["Street"]);
         }
-        else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
-    }
+        else {
+            Display::writeDialogue("\t - 'All right, that is enough.");
+            Sleep(1500);
+            Display::writeDialogue("I saw the cops hanging around. It stopped being safe here, at\n\tleast for me.");
 
-    if (!streetWasVisited)
-    {
-        Display::writeNarration("\tFinally, an old, wrinkled face surrounded by gray fuzz emerges from the darkness. An artificial,\n\tcybernetic eye watches you vigilantly.");
-        Sleep(1000);
-        Display::writeNarration(" You start to feel strangely uncomfortable.");
-        Sleep(2000);
-        Display::writeNarration("\n\tIn an instant the alley is filled with the howling of a police siren.");
-        Sleep(1000);
-        Display::writeNarration(" On the wall in front of\n\tyou, red and blue begin to dance with each other.");
-        Display::writeDialogue("\n\t- 'Shit");
-        Sleep(500);
-        Display::writeDialogue(", cops!");
-        Sleep(500);
-        Display::writeDialogue(" Well, that's super. I think it's time for me to go.'");
-        Sleep(1500);
-        Display::writeNarration("\n\tThe aging beggar dives into the embrace of darkness in a flash.");
-        Sleep(1500);
-        Display::writeNarration(" Does this mean you see him for\n\tthe last time?");
-        Sleep(3500);
-        Game::game[0].setCurrentLocation(&Location::locations["Street"]);
-    }
-    else {
-        Display::writeDialogue("\t - 'All right, that is enough.");
-        Sleep(1500);
-        Display::writeDialogue("I saw the cops hanging around. It stopped being safe here, at\n\tleast for me.");
+            if (Npc::npcs["Bob"].getAttitude() == Angry || Npc::npcs["Bob"].getAttitude() == Hostile)
+                Display::writeDialogue(" Be glad we don't have more of it left.'");
+            else
+                Display::writeDialogue(" Take care, kid.'");
 
-        if (Npc::npcs["Bob"].getAttitude() == Angry || Npc::npcs["Bob"].getAttitude() == Hostile)
-            Display::writeDialogue(" Be glad we don't have more of it left.'");
-        else
-            Display::writeDialogue(" Take care, kid.'");
-
-        Sleep(1500);
-        Display::writeNarration("\n\tThe aging beggar dives into the embrace of darkness in a flash.");
-        Sleep(1500);
-        Display::writeNarration(" Does this mean you see him for\n\tthe last time?\n\n");
-        Game::pause();
-        Console::clearScreen();
-        Game::game[0].setCurrentLocation(&Location::locations["Street"]);
+            Sleep(1500);
+            Display::writeNarration("\n\tThe aging beggar dives into the embrace of darkness in a flash.");
+            Sleep(1500);
+            Display::writeNarration(" Does this mean you see him for\n\tthe last time?\n\n");
+            Game::pause();
+            Console::clearScreen();
+            Game::game[0].setCurrentLocation(&Location::locations["Street"]);
+        }
     }
 }
 
