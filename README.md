@@ -1,4 +1,4 @@
-![Nocturnal Title](https://user-images.githubusercontent.com/40691503/161992823-c8f33160-a8c1-4b8c-a53a-42abb04ec1db.png)
+# Nocturnal
 
 **Nocturnal** is an English and Polish language console text game written entirely in `C++`. The game setting is `cyberpunk`, but a bit different from that known from CD Project Red or R. Talsorian Games. It's a story about the fate of a man lost in an artificially-supported world of the near future controlled by possessive corporations and plagued by bandit violence.
 
