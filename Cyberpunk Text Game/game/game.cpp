@@ -4,7 +4,6 @@ std::map <int, Game> Game::game;
 
 Game::Game()
 {
-    // Logger::startFuncLog(__FUNCTION__);
     this->menu = 0;
     this->choice = 0;
     this->gameLang = 0;
@@ -14,7 +13,6 @@ Game::Game()
 
 Game::~Game()
 {   
-    // Logger::startFuncLog(__FUNCTION__);
 }
 
 void Game::init()

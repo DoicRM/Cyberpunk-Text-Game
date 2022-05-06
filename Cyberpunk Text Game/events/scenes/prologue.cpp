@@ -203,6 +203,7 @@ void Event::dialogueWithBob()
             {
                 Console::clearScreen();
                 nameMenu.showHeroChoice();
+                std::cout << std::endl;
 
                 if (Npc::npcs["Bob"].getAttitude() != Angry)
                     Npc::npcs["Bob"].setAttitude(Angry); // Angry / Hostile / Friendly / Neutral
