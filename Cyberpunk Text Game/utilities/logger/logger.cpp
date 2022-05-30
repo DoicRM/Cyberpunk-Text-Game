@@ -19,7 +19,7 @@ void Logger::setup(bool isLoud)
     m_lastTimestamp = m_startTime;
     m_isLoud = isLoud;
 
-    m_file << "<html><head><title>LOG – " << __DATE__ << "</title><meta http-equiv='refresh' content='2'><link href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3' crossorigin='anonymous'></head><body>" << std::endl;
+    m_file << "<html><head><title>LOG – " << __DATE__ << "</title><meta http-equiv='refresh' content='2'><link href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor' crossorigin='anonymous'></head><body>" << std::endl;
     m_file << "<table class='table table-responsive table-sm table-hover table-striped'><thead class='table-light'>" << std::endl;
     m_file << "<tr>"
         << "<th scope='col'>LOCATION</td>"
@@ -119,7 +119,7 @@ void Logger::error(const std::string& message, const std::string& location /* = 
 std::string Logger::getFormattedTimestamp()
 {
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
-    time_t timestamp = getTimestamp();
+    time_t timestamp = (time_t)getTimestamp();
     struct tm timeinfo;
     char buffer[80];
     time(&timestamp);
@@ -128,7 +128,7 @@ std::string Logger::getFormattedTimestamp()
     std::string str(buffer);
     return str;
 #else
-    time_t timestamp = GetTimestamp();
+    time_t timestamp = getTimestamp();
     struct tm* timeinfo;
     char buffer[80];
     time(&timestamp);
@@ -142,5 +142,5 @@ std::string Logger::getFormattedTimestamp()
 double Logger::getTimestamp()
 {
     std::chrono::system_clock::time_point now = std::chrono::system_clock::now();
-    return std::chrono::system_clock::to_time_t(now);
+    return (double)std::chrono::system_clock::to_time_t(now);
 }
