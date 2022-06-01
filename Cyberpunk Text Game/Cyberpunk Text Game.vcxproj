@@ -72,23 +72,33 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)bin\intermediates\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)bin\intermediates\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <RunCodeAnalysis>false</RunCodeAnalysis>
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)bin\intermediates\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)bin\intermediates\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>
+      </PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -101,8 +111,10 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>
+      </PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -115,7 +127,8 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>
+      </PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
@@ -130,8 +143,10 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>
+      </PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -141,53 +156,53 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="events\events.cpp" />
-    <ClCompile Include="events\scenes\actOne.cpp" />
-    <ClCompile Include="events\scenes\actThree.cpp" />
-    <ClCompile Include="events\scenes\actTwo.cpp" />
-    <ClCompile Include="events\scenes\epilogue.cpp" />
-    <ClCompile Include="events\scenes\prologue.cpp" />
-    <ClCompile Include="fraction\fraction.cpp" />
-    <ClCompile Include="game\game.cpp" />
-    <ClCompile Include="hero\hero.cpp" />
-    <ClCompile Include="inventory\inventory.cpp" />
-    <ClCompile Include="item\clothes\clothes.cpp" />
-    <ClCompile Include="item\item.cpp" />
-    <ClCompile Include="item\weapon\weapon.cpp" />
-    <ClCompile Include="journal\journal.cpp" />
-    <ClCompile Include="location\location.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="npc\ambient\ambientNpc.cpp" />
-    <ClCompile Include="npc\npc.cpp" />
-    <ClCompile Include="quest\quest.cpp" />
-    <ClCompile Include="utilities\languageHandler\languageHandler.cpp" />
-    <ClCompile Include="utilities\logger\logger.cpp" />
-    <ClCompile Include="utilities\menu\menu.cpp" />
-    <ClCompile Include="utilities\utilities.cpp" />
+    <ClCompile Include="src\events\events.cpp" />
+    <ClCompile Include="src\events\scenes\actOne.cpp" />
+    <ClCompile Include="src\events\scenes\actThree.cpp" />
+    <ClCompile Include="src\events\scenes\actTwo.cpp" />
+    <ClCompile Include="src\events\scenes\epilogue.cpp" />
+    <ClCompile Include="src\events\scenes\prologue.cpp" />
+    <ClCompile Include="src\fraction\fraction.cpp" />
+    <ClCompile Include="src\game\game.cpp" />
+    <ClCompile Include="src\hero\hero.cpp" />
+    <ClCompile Include="src\inventory\inventory.cpp" />
+    <ClCompile Include="src\item\clothes\clothes.cpp" />
+    <ClCompile Include="src\item\item.cpp" />
+    <ClCompile Include="src\item\weapon\weapon.cpp" />
+    <ClCompile Include="src\journal\journal.cpp" />
+    <ClCompile Include="src\location\location.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\npc\ambient\ambientNpc.cpp" />
+    <ClCompile Include="src\npc\npc.cpp" />
+    <ClCompile Include="src\quest\quest.cpp" />
+    <ClCompile Include="src\utilities\languageHandler\languageHandler.cpp" />
+    <ClCompile Include="src\utilities\logger\logger.cpp" />
+    <ClCompile Include="src\utilities\menu\menu.cpp" />
+    <ClCompile Include="src\utilities\utilities.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="events\events.hpp" />
-    <ClInclude Include="fraction\fraction.hpp" />
-    <ClInclude Include="game\game.hpp" />
-    <ClInclude Include="hero\hero.hpp" />
-    <ClInclude Include="inventory\inventory.hpp" />
-    <ClInclude Include="item\clothes\clothes.hpp" />
-    <ClInclude Include="item\item.hpp" />
-    <ClInclude Include="item\weapon\weapon.hpp" />
-    <ClInclude Include="journal\journal.hpp" />
-    <ClInclude Include="location\location.hpp" />
-    <ClInclude Include="npc\ambient\ambientNpc.hpp" />
-    <ClInclude Include="npc\npc.hpp" />
-    <ClInclude Include="quest\quest.hpp" />
-    <ClInclude Include="utilities\json.hpp" />
-    <ClInclude Include="utilities\languageHandler\languageHandler.hpp" />
-    <ClInclude Include="utilities\logger\logger.hpp" />
-    <ClInclude Include="utilities\menu\menu.hpp" />
-    <ClInclude Include="utilities\utilities.hpp" />
+    <ClInclude Include="src\events\events.hpp" />
+    <ClInclude Include="src\fraction\fraction.hpp" />
+    <ClInclude Include="src\game\game.hpp" />
+    <ClInclude Include="src\hero\hero.hpp" />
+    <ClInclude Include="src\inventory\inventory.hpp" />
+    <ClInclude Include="src\item\clothes\clothes.hpp" />
+    <ClInclude Include="src\item\item.hpp" />
+    <ClInclude Include="src\item\weapon\weapon.hpp" />
+    <ClInclude Include="src\journal\journal.hpp" />
+    <ClInclude Include="src\location\location.hpp" />
+    <ClInclude Include="src\npc\ambient\ambientNpc.hpp" />
+    <ClInclude Include="src\npc\npc.hpp" />
+    <ClInclude Include="src\quest\quest.hpp" />
+    <ClInclude Include="src\utilities\json.hpp" />
+    <ClInclude Include="src\utilities\languageHandler\languageHandler.hpp" />
+    <ClInclude Include="src\utilities\logger\logger.hpp" />
+    <ClInclude Include="src\utilities\menu\menu.hpp" />
+    <ClInclude Include="src\utilities\utilities.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="localisation\en.json" />
-    <None Include="localisation\pl.json" />
+    <None Include="src\localisation\en.json" />
+    <None Include="src\localisation\pl.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

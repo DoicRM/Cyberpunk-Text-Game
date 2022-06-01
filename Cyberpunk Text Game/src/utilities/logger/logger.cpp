@@ -19,7 +19,7 @@ void Logger::setup(bool isLoud)
     m_lastTimestamp = m_startTime;
     m_isLoud = isLoud;
 
-    m_file << "<html><head><title>LOG – " << __DATE__ << "</title><meta http-equiv='refresh' content='2'><link href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor' crossorigin='anonymous'></head><body>" << std::endl;
+    m_file << "<html><head><title>LOG – " << __DATE__ << "</title><meta http-equiv='refresh' content='2'><link href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor' crossorigin='anonymous'><script src='https://kit.fontawesome.com/d9390232e7.js' crossorigin='anonymous'></script></head><body>" << std::endl;
     m_file << "<table class='table table-responsive table-sm table-hover table-striped'><thead class='table-light'>" << std::endl;
     m_file << "<tr>"
         << "<th scope='col'>LOCATION</td>"

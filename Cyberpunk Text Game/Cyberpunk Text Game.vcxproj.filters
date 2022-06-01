@@ -60,135 +60,135 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="events\events.cpp">
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\events\events.cpp">
       <Filter>Events</Filter>
     </ClCompile>
-    <ClCompile Include="fraction\fraction.cpp">
+    <ClCompile Include="src\fraction\fraction.cpp">
       <Filter>Fraction</Filter>
     </ClCompile>
-    <ClCompile Include="hero\hero.cpp">
+    <ClCompile Include="src\hero\hero.cpp">
       <Filter>Hero</Filter>
     </ClCompile>
-    <ClCompile Include="item\item.cpp">
+    <ClCompile Include="src\item\item.cpp">
       <Filter>Item</Filter>
     </ClCompile>
-    <ClCompile Include="location\location.cpp">
+    <ClCompile Include="src\location\location.cpp">
       <Filter>Location</Filter>
     </ClCompile>
-    <ClCompile Include="npc\npc.cpp">
+    <ClCompile Include="src\npc\npc.cpp">
       <Filter>Npc</Filter>
     </ClCompile>
-    <ClCompile Include="quest\quest.cpp">
+    <ClCompile Include="src\quest\quest.cpp">
       <Filter>Quest</Filter>
     </ClCompile>
-    <ClCompile Include="utilities\utilities.cpp">
+    <ClCompile Include="src\utilities\utilities.cpp">
       <Filter>Utilities</Filter>
     </ClCompile>
-    <ClCompile Include="game\game.cpp">
+    <ClCompile Include="src\game\game.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="inventory\inventory.cpp">
+    <ClCompile Include="src\inventory\inventory.cpp">
       <Filter>Inventory</Filter>
     </ClCompile>
-    <ClCompile Include="events\scenes\prologue.cpp">
+    <ClCompile Include="src\events\scenes\prologue.cpp">
       <Filter>Events\Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="utilities\logger\logger.cpp">
+    <ClCompile Include="src\utilities\logger\logger.cpp">
       <Filter>Utilities\Logger</Filter>
     </ClCompile>
-    <ClCompile Include="item\clothes\clothes.cpp">
+    <ClCompile Include="src\item\clothes\clothes.cpp">
       <Filter>Item\Clothes</Filter>
     </ClCompile>
-    <ClCompile Include="item\weapon\weapon.cpp">
+    <ClCompile Include="src\item\weapon\weapon.cpp">
       <Filter>Item\Weapon</Filter>
     </ClCompile>
-    <ClCompile Include="utilities\menu\menu.cpp">
+    <ClCompile Include="src\utilities\menu\menu.cpp">
       <Filter>Utilities\Menu</Filter>
     </ClCompile>
-    <ClCompile Include="npc\ambient\ambientNpc.cpp">
+    <ClCompile Include="src\npc\ambient\ambientNpc.cpp">
       <Filter>Npc\ambient</Filter>
     </ClCompile>
-    <ClCompile Include="events\scenes\actOne.cpp">
+    <ClCompile Include="src\events\scenes\actOne.cpp">
       <Filter>Events\Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="events\scenes\actThree.cpp">
+    <ClCompile Include="src\events\scenes\actThree.cpp">
       <Filter>Events\Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="events\scenes\actTwo.cpp">
+    <ClCompile Include="src\events\scenes\actTwo.cpp">
       <Filter>Events\Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="events\scenes\epilogue.cpp">
+    <ClCompile Include="src\events\scenes\epilogue.cpp">
       <Filter>Events\Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="journal\journal.cpp">
+    <ClCompile Include="src\journal\journal.cpp">
       <Filter>Journal</Filter>
     </ClCompile>
-    <ClCompile Include="utilities\languageHandler\languageHandler.cpp">
+    <ClCompile Include="src\utilities\languageHandler\languageHandler.cpp">
       <Filter>Utilities\LanguageHandler</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="events\events.hpp">
+    <ClInclude Include="src\events\events.hpp">
       <Filter>Events</Filter>
     </ClInclude>
-    <ClInclude Include="fraction\fraction.hpp">
+    <ClInclude Include="src\fraction\fraction.hpp">
       <Filter>Fraction</Filter>
     </ClInclude>
-    <ClInclude Include="hero\hero.hpp">
+    <ClInclude Include="src\hero\hero.hpp">
       <Filter>Hero</Filter>
     </ClInclude>
-    <ClInclude Include="item\item.hpp">
+    <ClInclude Include="src\item\item.hpp">
       <Filter>Item</Filter>
     </ClInclude>
-    <ClInclude Include="location\location.hpp">
+    <ClInclude Include="src\location\location.hpp">
       <Filter>Location</Filter>
     </ClInclude>
-    <ClInclude Include="npc\npc.hpp">
+    <ClInclude Include="src\npc\npc.hpp">
       <Filter>Npc</Filter>
     </ClInclude>
-    <ClInclude Include="quest\quest.hpp">
+    <ClInclude Include="src\quest\quest.hpp">
       <Filter>Quest</Filter>
     </ClInclude>
-    <ClInclude Include="utilities\utilities.hpp">
+    <ClInclude Include="src\utilities\utilities.hpp">
       <Filter>Utilities</Filter>
     </ClInclude>
-    <ClInclude Include="game\game.hpp">
+    <ClInclude Include="src\game\game.hpp">
       <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="inventory\inventory.hpp">
+    <ClInclude Include="src\inventory\inventory.hpp">
       <Filter>Inventory</Filter>
     </ClInclude>
-    <ClInclude Include="utilities\logger\logger.hpp">
+    <ClInclude Include="src\utilities\logger\logger.hpp">
       <Filter>Utilities\Logger</Filter>
     </ClInclude>
-    <ClInclude Include="item\clothes\clothes.hpp">
+    <ClInclude Include="src\item\clothes\clothes.hpp">
       <Filter>Item\Clothes</Filter>
     </ClInclude>
-    <ClInclude Include="item\weapon\weapon.hpp">
+    <ClInclude Include="src\item\weapon\weapon.hpp">
       <Filter>Item\Weapon</Filter>
     </ClInclude>
-    <ClInclude Include="utilities\menu\menu.hpp">
+    <ClInclude Include="src\utilities\menu\menu.hpp">
       <Filter>Utilities\Menu</Filter>
     </ClInclude>
-    <ClInclude Include="npc\ambient\ambientNpc.hpp">
+    <ClInclude Include="src\npc\ambient\ambientNpc.hpp">
       <Filter>Npc\ambient</Filter>
     </ClInclude>
-    <ClInclude Include="journal\journal.hpp">
+    <ClInclude Include="src\journal\journal.hpp">
       <Filter>Journal</Filter>
     </ClInclude>
-    <ClInclude Include="utilities\json.hpp">
+    <ClInclude Include="src\utilities\json.hpp">
       <Filter>Utilities</Filter>
     </ClInclude>
-    <ClInclude Include="utilities\languageHandler\languageHandler.hpp">
+    <ClInclude Include="src\utilities\languageHandler\languageHandler.hpp">
       <Filter>Utilities\LanguageHandler</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="localisation\en.json">
+    <None Include="src\localisation\en.json">
       <Filter>Lang</Filter>
     </None>
-    <None Include="localisation\pl.json">
+    <None Include="src\localisation\pl.json">
       <Filter>Lang</Filter>
     </None>
   </ItemGroup>
