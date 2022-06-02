@@ -18,9 +18,9 @@ void JSON::loadDataFromFile(int lang)
     {
         jWriter = nlohmann::json::parse(jReader);
     }
-    catch (nlohmann::json::parse_error& ex)
+    catch (nlohmann::json::exception& e)
     {
-        Logger::error("Parse error at byte " + ex.byte, __FUNCTION__);
+        Logger::error(e.what(), __FUNCTION__);
     }
 
     jReader.close();
