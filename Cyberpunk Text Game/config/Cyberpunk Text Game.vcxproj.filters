@@ -178,6 +178,9 @@
     <ClInclude Include="src\journal\journal.hpp">
       <Filter>Journal</Filter>
     </ClInclude>
+    <ClInclude Include="include\json.hpp">
+      <Filter>Utilities</Filter>
+    </ClInclude>
     <ClInclude Include="src\utilities\languageHandler\languageHandler.hpp">
       <Filter>Utilities\LanguageHandler</Filter>
     </ClInclude>
