@@ -11,7 +11,7 @@ void JSON::loadDataFromFile(int lang)
     if (lang == PL) str = "pl";
     else str = "en";
 
-    std::string path = std::filesystem::current_path().string() + "\\src\\localisation\\";
+    std::string path = std::filesystem::current_path().string() + "\\data\\localisation\\";
     std::ifstream jReader(path + str + ".json");
 
     try
