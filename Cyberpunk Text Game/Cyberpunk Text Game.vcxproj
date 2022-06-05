@@ -175,6 +175,7 @@
     <ClCompile Include="src\npc\ambient\ambientNpc.cpp" />
     <ClCompile Include="src\npc\npc.cpp" />
     <ClCompile Include="src\quest\quest.cpp" />
+    <ClCompile Include="src\utilities\console\console.cpp" />
     <ClCompile Include="src\utilities\languageHandler\languageHandler.cpp" />
     <ClCompile Include="src\utilities\logger\logger.cpp" />
     <ClCompile Include="src\utilities\menu\menu.cpp" />
@@ -194,6 +195,7 @@
     <ClInclude Include="src\npc\ambient\ambientNpc.hpp" />
     <ClInclude Include="src\npc\npc.hpp" />
     <ClInclude Include="src\quest\quest.hpp" />
+    <ClInclude Include="src\utilities\console\console.hpp" />
     <ClInclude Include="src\utilities\json.hpp" />
     <ClInclude Include="src\utilities\languageHandler\languageHandler.hpp" />
     <ClInclude Include="src\utilities\logger\logger.hpp" />
