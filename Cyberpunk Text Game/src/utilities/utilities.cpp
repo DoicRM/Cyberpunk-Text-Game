@@ -3,9 +3,16 @@
 // CONSOLE
 void Console::initConsole(LPCSTR lpConsoleTitle, UINT wCodePageID)
 {
+    preventResizeConsole();
     SetConsoleTitleA(lpConsoleTitle);
     SetConsoleCP(wCodePageID);
     SetConsoleOutputCP(wCodePageID);
+}
+
+void Console::preventResizeConsole()
+{
+    HWND consoleWindow = GetConsoleWindow();
+    SetWindowLong(consoleWindow, GWL_STYLE, GetWindowLong(consoleWindow, GWL_STYLE) & ~WS_MAXIMIZEBOX & ~WS_SIZEBOX);
 }
 
 void Console::setConsoleTitle(LPCSTR lpConsoleTitle)

@@ -64,6 +64,7 @@ class Console
 {
 public:
 	static void initConsole(LPCSTR lpConsoleTitle, UINT wCodePageID);
+	static void preventResizeConsole();
 	static void setConsoleTitle(LPCSTR lpConsoleTitle);
 	static void clearScreen(); // czyszczenie ekranu
 	static void setConsoleColor(int color = CC_Default); // zmiana koloru tekstu i tła konsoli
