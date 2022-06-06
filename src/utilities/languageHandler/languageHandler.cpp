@@ -3,7 +3,7 @@
 nlohmann::json jWriter;
 std::string JSON_VALUE_ERROR = "[VALUE ERROR]";
 
-void JSON::loadDataFromFile(int lang)
+void LanguageHandler::loadDataFromFile(int lang)
 {
     Logger::startFuncLog(__FUNCTION__);
     std::string str;

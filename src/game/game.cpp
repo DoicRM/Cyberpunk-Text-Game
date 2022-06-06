@@ -71,7 +71,7 @@ void Game::selectLanguage()
         else if (getLang() == PL) Logger::out("Set Polish as game language", __FUNCTION__);
     }
 
-    JSON::loadDataFromFile(getLang());
+    LanguageHandler::loadDataFromFile(getLang());
     Console::clearScreen();
 }
 
@@ -196,7 +196,7 @@ void Game::changeLanguage()
     }
 
     this->gameLang = change;
-    JSON::loadDataFromFile(getLang());
+    LanguageHandler::loadDataFromFile(getLang());
 
     if (getLang() == EN)
         Logger::out("Set English as game language", __FUNCTION__);

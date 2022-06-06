@@ -4,7 +4,7 @@
 #include <string>
 #include <filesystem>
 
-class JSON
+class LanguageHandler
 {
 public:
 	static void loadDataFromFile(int lang);
