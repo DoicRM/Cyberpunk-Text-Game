@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{0634f111-1835-46e2-acee-3f753a3604b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{44b59c9c-e963-4108-9f86-90cff7cf9a07}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\main.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utilities\console\console.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utilities\utilities.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utilities\menu\menu.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utilities\logger\logger.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utilities\languageHandler\languageHandler.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\quest\quest.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\npc\npc.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\npc\ambient\ambientNpc.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\location\location.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\journal\journal.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hero\hero.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\inventory\inventory.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\item\item.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\item\clothes\clothes.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\item\weapon\weapon.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\game.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\fraction\fraction.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\events\events.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\events\scenes\actOne.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\events\scenes\actThree.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\events\scenes\actTwo.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\events\scenes\epilogue.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\events\scenes\prologue.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\utilities\console\console.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utilities\utilities.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utilities\menu\menu.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utilities\logger\logger.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utilities\languageHandler\languageHandler.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\quest\quest.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\npc\npc.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\npc\ambient\ambientNpc.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\location\location.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\journal\journal.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hero\hero.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\inventory\inventory.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\item\item.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\item\clothes\clothes.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\item\weapon\weapon.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game\game.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\fraction\fraction.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\events\events.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

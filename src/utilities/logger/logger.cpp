@@ -15,7 +15,7 @@ void Logger::setup(bool isLoud)
     m_rowCount = 0;
     m_logLevel = 0;
     m_file.open("log.html");
-    m_startTime = getTimestamp();
+    m_startTime = (time_t)getTimestamp();
     m_lastTimestamp = m_startTime;
     m_isLoud = isLoud;
 

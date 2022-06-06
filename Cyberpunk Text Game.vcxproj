@@ -196,15 +196,10 @@
     <ClInclude Include="src\npc\npc.hpp" />
     <ClInclude Include="src\quest\quest.hpp" />
     <ClInclude Include="src\utilities\console\console.hpp" />
-    <ClInclude Include="include\json.hpp" />
     <ClInclude Include="src\utilities\languageHandler\languageHandler.hpp" />
     <ClInclude Include="src\utilities\logger\logger.hpp" />
     <ClInclude Include="src\utilities\menu\menu.hpp" />
     <ClInclude Include="src\utilities\utilities.hpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="src\localisation\en.json" />
-    <None Include="src\localisation\pl.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
