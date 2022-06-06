@@ -12,6 +12,13 @@
 - The environment reacts to the player's actions and refers to them (reputation and consequence system)
 - Focus on the storyline and its integrity
 
+## Usages
+The following libraries are used in the project:
+
+```
+Uses JSON for Modern C++ 3.6.1 Copyright (c) 2013-2019 Niels Lohmann <http://nlohmann.me>
+```
+
 ---
 
-Copyright © 2022 Radosław "Doic" Michalak
+Copyright © 2021-2022 Radosław "Doic" Michalak
