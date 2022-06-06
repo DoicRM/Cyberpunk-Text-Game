@@ -22,7 +22,7 @@
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{68ef8eef-c37a-4035-b8ac-70ff50e76fd3}</ProjectGuid>
-    <RootNamespace>CyberpunkTextGame</RootNamespace>
+    <RootNamespace>Nocturnal</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
