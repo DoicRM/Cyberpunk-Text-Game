@@ -10,6 +10,7 @@
 #include <string>
 #include <map>
 #include <limits>
+#include <random>
 
 enum GameLanguage
 {
@@ -61,8 +62,8 @@ public:
 	static std::string getString();
 };
 
-class RandUtil
+class Randomize
 {
 public:
-	static int randBetween(int min, int max);
+	static int randIntBetween(int min, int max);
 };

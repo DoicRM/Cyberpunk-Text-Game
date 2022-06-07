@@ -189,6 +189,7 @@ void Event::dialogueWithBob()
             {
                 Console::clearScreen();
                 nameMenu.showHeroChoice();
+                std::cout << std::endl;
                 namingHero();
                 Npc::npcs["Bob"].setToKnowHero();
                 Display::writeDialogue((std::string)jWriter.at("Prologue").at("DIA_Bob").at(3) + Hero::heroes[0].getName() + (std::string)jWriter.at("Prologue").at("DIA_Bob").at(4));

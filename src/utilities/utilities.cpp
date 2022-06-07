@@ -50,7 +50,10 @@ std::string Input::getString()
     return text;
 }
 
-int RandUtil::randBetween(int min, int max)
+int Randomize::randIntBetween(int min, int max)
 {
-    return rand() % ((max - min) + 1) + min;
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> distrib(min, max);
+    return distrib(gen);
 }

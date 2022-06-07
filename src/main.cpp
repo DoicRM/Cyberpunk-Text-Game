@@ -3,7 +3,6 @@
 
 int main()
 {   
-    srand((unsigned)time(NULL));
     UINT defaultInputEncoding = GetConsoleCP();
     UINT defaultOutputEncoding = GetConsoleOutputCP();
     Console::initConsole("Nocturnal [Demo Build]", 65001 /* UTF-8 */);
