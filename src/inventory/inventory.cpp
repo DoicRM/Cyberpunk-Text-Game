@@ -137,7 +137,7 @@ void Inventory::showItemInfo(int index)
 
 void Inventory::clearInv()
 {
-    if (itemsList.empty())
+    if (!itemsList.empty())
     {
         itemsList.clear();
         updateInvFile();
