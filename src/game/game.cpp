@@ -70,14 +70,14 @@ void Game::selectLanguage()
         {
             Logger::error("Entered invalid value of <b>gameLang</b>", __FUNCTION__);
         }
+    }
 
-        if (getLang() == EN) {
-            Logger::out("Set English as game language", __FUNCTION__);
-        }
-        else if (getLang() == PL)
-        {
-            Logger::out("Set Polish as game language", __FUNCTION__);
-        }
+    if (getLang() == EN) {
+        Logger::out("Set English as game language", __FUNCTION__);
+    }
+    else if (getLang() == PL)
+    {
+        Logger::out("Set Polish as game language", __FUNCTION__);
     }
 
     LanguageHandler::loadDataFromFile(getLang());
@@ -213,8 +213,7 @@ void Game::changeLanguage()
     {
         Logger::out("Set English as game language", __FUNCTION__);
     }
-
-    if (getLang() == PL)
+    else if (getLang() == PL)
     {
         Logger::out("Set Polish as game language", __FUNCTION__);
     }
