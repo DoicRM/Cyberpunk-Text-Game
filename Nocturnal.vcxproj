@@ -176,10 +176,12 @@
     <ClCompile Include="src\npc\npc.cpp" />
     <ClCompile Include="src\quest\quest.cpp" />
     <ClCompile Include="src\utilities\console\console.cpp" />
+    <ClCompile Include="src\utilities\display\display.cpp" />
+    <ClCompile Include="src\utilities\input\input.cpp" />
     <ClCompile Include="src\utilities\languageHandler\languageHandler.cpp" />
     <ClCompile Include="src\utilities\logger\logger.cpp" />
     <ClCompile Include="src\utilities\menu\menu.cpp" />
-    <ClCompile Include="src\utilities\utilities.cpp" />
+    <ClCompile Include="src\utilities\randomize\randomize.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\events\events.hpp" />
@@ -196,9 +198,12 @@
     <ClInclude Include="src\npc\npc.hpp" />
     <ClInclude Include="src\quest\quest.hpp" />
     <ClInclude Include="src\utilities\console\console.hpp" />
+    <ClInclude Include="src\utilities\display\display.hpp" />
+    <ClInclude Include="src\utilities\input\input.hpp" />
     <ClInclude Include="src\utilities\languageHandler\languageHandler.hpp" />
     <ClInclude Include="src\utilities\logger\logger.hpp" />
     <ClInclude Include="src\utilities\menu\menu.hpp" />
+    <ClInclude Include="src\utilities\randomize\randomize.hpp" />
     <ClInclude Include="src\utilities\utilities.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

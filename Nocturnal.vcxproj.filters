@@ -15,9 +15,6 @@
     <ClCompile Include="src\utilities\console\console.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
-    <ClCompile Include="src\utilities\utilities.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
     <ClCompile Include="src\utilities\menu\menu.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
@@ -81,6 +78,15 @@
     <ClCompile Include="src\events\scenes\prologue.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
+    <ClCompile Include="src\utilities\display\display.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utilities\input\input.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utilities\randomize\randomize.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\utilities\console\console.hpp">
@@ -135,6 +141,15 @@
       <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="src\events\events.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utilities\input\input.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utilities\display\display.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utilities\randomize\randomize.hpp">
       <Filter>Header files</Filter>
     </ClInclude>
   </ItemGroup>

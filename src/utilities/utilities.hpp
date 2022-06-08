@@ -1,6 +1,7 @@
 #pragma once
-#include "../utilities/logger/logger.hpp"
 #include "../utilities/console/console.hpp"
+#include "../utilities/input/input.hpp"
+#include "../utilities/randomize/randomize.hpp"
 #include <iostream>
 #include <fstream>
 #include <thread>
@@ -10,7 +11,6 @@
 #include <string>
 #include <map>
 #include <limits>
-#include <random>
 
 enum GameLanguage
 {
@@ -45,25 +45,4 @@ enum ItemType
 enum ArmorType
 {
 	HEAD, CHEST, ARMS, LEGS
-};
-
-class Display
-{
-public:
-	static void write(const std::string& text, int speed = 50); // powolne wypisywanie kodu - (tekst, szybkość)
-	static void writeNarration(std::string text, int speed = 50); // powolne wypisywanie kodu - (tekst, szybkość)
-	static void writeDialogue(std::string text, int speed = 50); // powolne wypisywanie kodu - (tekst, szybkość)
-};
-
-class Input
-{
-public:
-	static int getChoice();
-	static std::string getString();
-};
-
-class Randomize
-{
-public:
-	static int randIntBetween(int min, int max);
 };
