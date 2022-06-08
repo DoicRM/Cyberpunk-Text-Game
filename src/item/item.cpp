@@ -26,30 +26,28 @@ Item::~Item()
 
 std::string Item::printType()
 {
-    std::string type;
-
     if (this->type == WEAPON)
     {
-        return type = jWriter.at("ItemsTypes").value("Weapon", JSON_VALUE_ERROR);
+        return jWriter.at("ItemsTypes").value("Weapon", JSON_VALUE_ERROR);
     }
     else if (this->type == CLOTHES)
     {
-        return type = jWriter.at("ItemsTypes").value("Clothes", JSON_VALUE_ERROR);
+        return jWriter.at("ItemsTypes").value("Clothes", JSON_VALUE_ERROR);
     } 
     else if (this->type == OTHER)
     {
-        return type = jWriter.at("ItemsTypes").value("Other", JSON_VALUE_ERROR);
+        return jWriter.at("ItemsTypes").value("Other", JSON_VALUE_ERROR);
     }
     else if (this->type == FOOD)
     {
-        return type = jWriter.at("ItemsTypes").value("Food", JSON_VALUE_ERROR);
+        return jWriter.at("ItemsTypes").value("Food", JSON_VALUE_ERROR);
     }
     else if (this->type == QUEST)
     {
-        return type = jWriter.at("ItemsTypes").value("Quest", JSON_VALUE_ERROR);
+        return jWriter.at("ItemsTypes").value("Quest", JSON_VALUE_ERROR);
     }
 
-    return type = jWriter.at("ItemsTypes").value("None", JSON_VALUE_ERROR);
+    return jWriter.at("ItemsTypes").value("None", JSON_VALUE_ERROR);
 }
 
 void Item::initItems()
