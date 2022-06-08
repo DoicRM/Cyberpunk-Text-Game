@@ -89,7 +89,11 @@ void Npc::printAttitude()
 
 bool Npc::isDead()
 {
-    if (status != Dead) return false;
+    if (status != Dead)
+    {
+        return false;
+    }
+
     return true;
 }
 

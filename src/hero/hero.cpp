@@ -17,7 +17,11 @@ Hero::~Hero()
 void Hero::removeHP(int hp)
 {
     this->hp -= hp;
-    if (hp <= 0) kill();
+
+    if (hp <= 0)
+    {
+        kill();
+    }
 }
 
 void Hero::kill()

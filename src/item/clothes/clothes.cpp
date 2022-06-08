@@ -18,15 +18,24 @@ Clothes::~Clothes()
 
 std::string Clothes::printClothesType()
 {
-    std::string type;
+    if (this->type == HEAD)
+    {
+        return jWriter.at("ClothesTypes").value("Head", JSON_VALUE_ERROR);
+    }
+    else if (this->type == CHEST)
+    {
+        return jWriter.at("ClothesTypes").value("Chest", JSON_VALUE_ERROR);
+    }
+    else if (this->type == ARMS)
+    {
+        return jWriter.at("ClothesTypes").value("Arms", JSON_VALUE_ERROR);
+    }
+    else if (this->type == LEGS)
+    {
+        return jWriter.at("ClothesTypes").value("Legs", JSON_VALUE_ERROR);
+    }
 
-    if (this->type == HEAD) type = jWriter.at("ClothesTypes").value("Head", JSON_VALUE_ERROR);
-    else if (this->type == CHEST) type = jWriter.at("ClothesTypes").value("Chest", JSON_VALUE_ERROR);
-    else if (this->type == ARMS) type = jWriter.at("ClothesTypes").value("Arms", JSON_VALUE_ERROR);
-    else if (this->type == LEGS)  type = jWriter.at("ClothesTypes").value("Legs", JSON_VALUE_ERROR);
-    else type = jWriter.at("ClothesTypes").value("None", JSON_VALUE_ERROR);
-
-    return type;
+    return jWriter.at("ClothesTypes").value("None", JSON_VALUE_ERROR);
 }
 
 void Clothes::initClothes()

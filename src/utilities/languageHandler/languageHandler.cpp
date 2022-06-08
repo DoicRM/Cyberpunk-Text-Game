@@ -8,8 +8,14 @@ void LanguageHandler::loadDataFromFile(int lang)
     Logger::startFuncLog(__FUNCTION__);
     std::string str;
 
-    if (lang == PL) str = "pl";
-    else str = "en";
+    if (lang == EN)
+    {
+        str = "en";
+    }
+    else if (lang == PL)
+    {
+        str = "pl";
+    }
 
     std::string path = std::filesystem::current_path().string() + "\\data\\localisation\\";
     std::ifstream jReader(path + str + ".json");

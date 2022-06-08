@@ -66,9 +66,18 @@ void Game::selectLanguage()
         //--------------------------------
         this->gameLang = langMenu.inputChoice();
 
-        if (getLang() != EN && getLang() != PL) Logger::error("Entered invalid value of <b>gameLang</b>", __FUNCTION__);
-        else if (getLang() == EN) Logger::out("Set English as game language", __FUNCTION__);
-        else if (getLang() == PL) Logger::out("Set Polish as game language", __FUNCTION__);
+        if (getLang() != EN && getLang() != PL)
+        {
+            Logger::error("Entered invalid value of <b>gameLang</b>", __FUNCTION__);
+        }
+
+        if (getLang() == EN) {
+            Logger::out("Set English as game language", __FUNCTION__);
+        }
+        else if (getLang() == PL)
+        {
+            Logger::out("Set Polish as game language", __FUNCTION__);
+        }
     }
 
     LanguageHandler::loadDataFromFile(getLang());
@@ -192,16 +201,23 @@ void Game::changeLanguage()
         change = langMenu.inputChoice();
 
         if (change != EN && change != PL)
+        {
             Logger::error("Entered invalid value of <b>gameLang</b>", __FUNCTION__);
+        }
     }
 
     this->gameLang = change;
     LanguageHandler::loadDataFromFile(getLang());
 
     if (getLang() == EN)
+    {
         Logger::out("Set English as game language", __FUNCTION__);
-    else if (getLang() == PL)
+    }
+
+    if (getLang() == PL)
+    {
         Logger::out("Set Polish as game language", __FUNCTION__);
+    }
 
     Console::clearScreen();
     loadLogo();
@@ -269,11 +285,11 @@ void Game::setCurrentLocation(Location* location)
 
 void Game::startEventsByLocation()
 {
-    if (getCurrentLocation() == &Location::locations["DarkAlley"]) Event::darkAlley();
-    else if (getCurrentLocation() == &Location::locations["Street"]) Event::street();
-    else if (getCurrentLocation() == &Location::locations["Nightclub"]) Event::nightclub();
-    else if (getCurrentLocation() == &Location::locations["GunShop"]) Event::gunShop();
-    else if (getCurrentLocation() == &Location::locations["SleepersHideout"]) Event::sleepersHideout();
+    if (getCurrentLocation() == &Location::locations["DarkAlley"]) { Event::darkAlley(); }
+    else if (getCurrentLocation() == &Location::locations["Street"]) { Event::street(); }
+    else if (getCurrentLocation() == &Location::locations["Nightclub"]) { Event::nightclub(); }
+    else if (getCurrentLocation() == &Location::locations["GunShop"]) { Event::gunShop(); }
+    else if (getCurrentLocation() == &Location::locations["SleepersHideout"]) { Event::sleepersHideout(); }
 }
 
 void Game::initHeroEQ()
@@ -282,13 +298,14 @@ void Game::initHeroEQ()
     std::ofstream eq;
     eq.open("eq.txt");
 
-    if (eq.good())
+    if (!eq.good())
     {
-        Logger::out("Access to txt file", __FUNCTION__);
-        eq << jWriter.at("InventoryInfos").value("NoItemsInInv", JSON_VALUE_ERROR) << std::endl;
-        eq.close();
+        return Logger::error("No file access", __FUNCTION__);
     }
-    else Logger::error("No file access", __FUNCTION__);
+    
+    Logger::out("Access to txt file", __FUNCTION__);
+    eq << jWriter.at("InventoryInfos").value("NoItemsInInv", JSON_VALUE_ERROR) << std::endl;
+    eq.close();
 }
 
 void Game::initQuestsList()
@@ -297,13 +314,14 @@ void Game::initQuestsList()
     std::ofstream q;
     q.open("journal.txt");
 
-    if (q.good())
+    if (!q.good())
     {
-        Logger::out("Access to txt file", __FUNCTION__);
-        q << jWriter.at("JournalInfos").value("NoQuestsInJournal", JSON_VALUE_ERROR) << std::endl;
-        q.close();
+        return Logger::error("No file access", __FUNCTION__);
     }
-    else Logger::error("No file access", __FUNCTION__);
+    
+    Logger::out("Access to txt file", __FUNCTION__);
+    q << jWriter.at("JournalInfos").value("NoQuestsInJournal", JSON_VALUE_ERROR) << std::endl;
+    q.close();
 }
 
 void Game::pause()

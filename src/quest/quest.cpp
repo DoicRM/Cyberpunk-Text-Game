@@ -52,13 +52,16 @@ void Quest::end()
 
 std::string Quest::printStatus()
 {
-    std::string status;
+    if (this->status == Ongoing)
+    {
+        return jWriter.at("QuestStatus").value("Ongoing", JSON_VALUE_ERROR);
+    }
+    else if (this->status == Completed)
+    {
+        return jWriter.at("QuestStatus").value("Completed", JSON_VALUE_ERROR);
+    }
 
-    if (this->status == Ongoing) status = jWriter.at("QuestStatus").value("Ongoing", JSON_VALUE_ERROR);
-    else if (this->status == Completed) status = jWriter.at("QuestStatus").value("Completed", JSON_VALUE_ERROR);
-    else status = jWriter.at("QuestStatus").value("NotStarted", JSON_VALUE_ERROR);
-
-    return status;
+    return jWriter.at("QuestStatus").value("NotStarted", JSON_VALUE_ERROR);
 }
 
 void Quest::initQuests()

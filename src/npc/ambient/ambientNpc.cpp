@@ -23,8 +23,12 @@ void AmbientNpc::randomSex(int randNr)
 
 void AmbientNpc::randomName(int randNr)
 {
-    if (getSex() == Male) setName(namesMale[randNr]);
-    else setName(namesFemale[randNr]);
+    if (getSex() == Female)
+    {
+        return setName(namesFemale[randNr]);
+    }
+
+    setName(namesMale[randNr]);
 }
 
 void AmbientNpc::randomFraction(int randNr)

@@ -22,14 +22,20 @@ Fraction::~Fraction()
 
 std::string Fraction::printAttitude()
 {
-    std::string attitude;
+    if (this->attitude == Angry)
+    {
+        return jWriter.at("Attitudes").value("Angry", JSON_VALUE_ERROR);
+    }
+    else if (this->attitude == Hostile)
+    {
+        return jWriter.at("Attitudes").value("Hostile", JSON_VALUE_ERROR);
+    }
+    else if (this->attitude == Friendly)
+    {
+        return jWriter.at("Attitudes").value("Friendly", JSON_VALUE_ERROR);
+    }
 
-    if (this->attitude == Angry) attitude = jWriter.at("Attitudes").value("Angry", JSON_VALUE_ERROR);
-    else if (this->attitude == Hostile) attitude = jWriter.at("Attitudes").value("Hostile", JSON_VALUE_ERROR);
-    else if (this->attitude == Friendly) attitude = jWriter.at("Attitudes").value("Friendly", JSON_VALUE_ERROR);
-    else attitude = jWriter.at("Attitudes").value("Neutral", JSON_VALUE_ERROR);
-
-    return attitude;
+    return jWriter.at("Attitudes").value("Neutral", JSON_VALUE_ERROR);
 }
 
 void Fraction::initFractions()
