@@ -85,7 +85,7 @@ void Inventory::updateInvFile()
         return Logger::error("No file access", __FUNCTION__);;
     }
 
-    Logger::out("Access to txt file", __FUNCTION__);
+    Logger::success("Access to txt file", __FUNCTION__);
 
     if (itemsList.empty())
     {

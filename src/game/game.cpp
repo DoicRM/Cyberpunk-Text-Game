@@ -303,7 +303,7 @@ void Game::initHeroEQ()
         return Logger::error("No file access", __FUNCTION__);
     }
     
-    Logger::out("Access to txt file", __FUNCTION__);
+    Logger::success("Access to txt file", __FUNCTION__);
     eq << jWriter.at("InventoryInfos").value("NoItemsInInv", JSON_VALUE_ERROR) << std::endl;
     eq.close();
 }
@@ -319,7 +319,7 @@ void Game::initQuestsList()
         return Logger::error("No file access", __FUNCTION__);
     }
     
-    Logger::out("Access to txt file", __FUNCTION__);
+    Logger::success("Access to txt file", __FUNCTION__);
     q << jWriter.at("JournalInfos").value("NoQuestsInJournal", JSON_VALUE_ERROR) << std::endl;
     q.close();
 }

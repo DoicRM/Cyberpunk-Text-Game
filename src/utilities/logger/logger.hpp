@@ -18,6 +18,7 @@ public:
     static void out(const std::string& message, const std::string& location = "", const std::string& category = "", bool condition = true, int level = 0);
     static void startFuncLog(const std::string& location = "");
     static void error(const std::string& message, const std::string& location = "");
+    static void success(const std::string& message, const std::string& location = "");
     static void invalidHeroChoiceError(const std::string& location = "");
 
     static double getTimestamp();

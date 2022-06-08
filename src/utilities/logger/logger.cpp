@@ -116,6 +116,18 @@ void Logger::error(const std::string& message, const std::string& location /* = 
         << "</tr>" << std::endl;
 }
 
+void Logger::success(const std::string& message, const std::string& location /* = "" */)
+{
+    std::string loc = location;
+    if (loc == "") loc = "-";
+
+    m_file << "<tr class='table-success'>"
+        << "<td>" << loc << "</td>"
+        << "<td>" << message << "</td>"
+        << "<td>" << getFormattedTimestamp() << "</td>"
+        << "</tr>" << std::endl;
+}
+
 std::string Logger::getFormattedTimestamp()
 {
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
