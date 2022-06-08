@@ -24,30 +24,30 @@ std::string Fraction::printAttitude()
 {
     if (this->attitude == Angry)
     {
-        return jWriter.at("Attitudes").value("Angry", JSON_VALUE_ERROR);
+        return jWriter["Attitudes"]["Angry"];
     }
     else if (this->attitude == Hostile)
     {
-        return jWriter.at("Attitudes").value("Hostile", JSON_VALUE_ERROR);
+        return jWriter["Attitudes"]["Hostile"];
     }
     else if (this->attitude == Friendly)
     {
-        return jWriter.at("Attitudes").value("Friendly", JSON_VALUE_ERROR);
+        return jWriter["Attitudes"]["Friendly"];
     }
 
-    return jWriter.at("Attitudes").value("Neutral", JSON_VALUE_ERROR);
+    return jWriter["Attitudes"]["Neutral"];
 }
 
 void Fraction::initFractions()
 {
     Logger::startFuncLog(__FUNCTION__);
 
-    Fraction None(jWriter.at("Fractions").value("None_Name", JSON_VALUE_ERROR), 0, Neutral);
-    Fraction Beggars(jWriter.at("Fractions").value("Beggars_Name", JSON_VALUE_ERROR), 0, Neutral);
-    Fraction Police(jWriter.at("Fractions").value("Police_Name", JSON_VALUE_ERROR), 0, Neutral);
-    Fraction Hammers(jWriter.at("Fractions").value("Hammers_Name", JSON_VALUE_ERROR), 0, Neutral);
-    Fraction Sleepers(jWriter.at("Fractions").value("Sleepers_Name", JSON_VALUE_ERROR), 0, Neutral);
-    Fraction SowersOfConfusion(jWriter.at("Fractions").value("SowersOfConfusion_Name", JSON_VALUE_ERROR), 0, Neutral);
+    Fraction None(jWriter["Fractions"]["None_Name"], 0, Neutral);
+    Fraction Beggars(jWriter["Fractions"]["Beggars_Name"], 0, Neutral);
+    Fraction Police(jWriter["Fractions"]["Police_Name"], 0, Neutral);
+    Fraction Hammers(jWriter["Fractions"]["Hammers_Name"], 0, Neutral);
+    Fraction Sleepers(jWriter["Fractions"]["Sleepers_Name"], 0, Neutral);
+    Fraction SowersOfConfusion(jWriter["Fractions"]["SowersOfConfusion_Name"], 0, Neutral);
 
     fractions["None"] = None;
     fractions["Beggars"] = Beggars;

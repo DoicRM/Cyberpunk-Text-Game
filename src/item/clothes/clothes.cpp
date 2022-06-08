@@ -20,22 +20,22 @@ std::string Clothes::printClothesType()
 {
     if (this->type == HEAD)
     {
-        return jWriter.at("ClothesTypes").value("Head", JSON_VALUE_ERROR);
+        return jWriter["ClothesTypes"]["Head"];
     }
     else if (this->type == CHEST)
     {
-        return jWriter.at("ClothesTypes").value("Chest", JSON_VALUE_ERROR);
+        return jWriter["ClothesTypes"]["Chest"];
     }
     else if (this->type == ARMS)
     {
-        return jWriter.at("ClothesTypes").value("Arms", JSON_VALUE_ERROR);
+        return jWriter["ClothesTypes"]["Arms"];
     }
     else if (this->type == LEGS)
     {
-        return jWriter.at("ClothesTypes").value("Legs", JSON_VALUE_ERROR);
+        return jWriter["ClothesTypes"]["Legs"];
     }
 
-    return jWriter.at("ClothesTypes").value("None", JSON_VALUE_ERROR);
+    return jWriter["ClothesTypes"]["None"];
 }
 
 void Clothes::initClothes()

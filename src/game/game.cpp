@@ -32,8 +32,8 @@ void Game::initAll()
     Item::initItems();
     Weapon::initWeapons();
     Clothes::initClothes();
-    initHeroEQ();
-    initQuestsList();
+    initHeroIventory();
+    initHeroJournal();
 }
 
 void Game::run()
@@ -88,7 +88,7 @@ void Game::welcome()
 {
     Logger::startFuncLog(__FUNCTION__);
     Sleep(500); 
-    Display::write(jWriter.at("Infos").value("Welcome", JSON_VALUE_ERROR), 40);
+    Display::write(jWriter["Infos"]["Welcome"], 40);
     Sleep(2000);
     Console::clearScreen();
 }
@@ -117,7 +117,7 @@ void Game::writeLogo()
 
     Console::resetConsoleColor();
     std::cout << std::endl;
-    Display::write(jWriter.at("Infos").value("LogoSubtitle", JSON_VALUE_ERROR), 2);
+    Display::write(jWriter["Infos"]["LogoSubtitle"], 2);
 }
 
 void Game::loadLogo()
@@ -133,7 +133,7 @@ void Game::loadLogo()
 
     std::cout << std::endl;
     Console::resetConsoleColor();
-    std::cout << jWriter.at("Infos").value("LogoSubtitle", JSON_VALUE_ERROR) << std::endl;
+    std::cout << (std::string)jWriter["Infos"]["LogoSubtitle"] << std::endl;
     mainMenu();
 }
 
@@ -144,7 +144,7 @@ void Game::mainMenu()
     std::cout << std::endl;
     Menu mainMenu;
     //--------------------------------
-    mainMenu.addOptions({ jWriter.at("MainMenu").at(0), jWriter.at("MainMenu").at(1), jWriter.at("MainMenu").at(2), jWriter.at("MainMenu").at(3), jWriter.at("MainMenu").at(4) });
+    mainMenu.addOptions({ jWriter["MainMenu"][0], jWriter["MainMenu"][1], jWriter["MainMenu"][2], jWriter["MainMenu"][3], jWriter["MainMenu"][4] });
     mainMenu.showOptions();
     //--------------------------------
 
@@ -175,7 +175,7 @@ void Game::continueGame()
     Logger::startFuncLog(__FUNCTION__);
     Console::clearScreen();
     Console::setConsoleColor(CC_Lightblue);
-    Display::write(jWriter.at("Infos").value("ContinueGame", JSON_VALUE_ERROR), 25);
+    Display::write(jWriter["Infos"]["ContinueGame"], 25);
     Console::resetConsoleColor();
     Sleep(1000);
     pause();
@@ -193,7 +193,7 @@ void Game::changeLanguage()
     while (change != EN && change != PL)
     {
         Console::clearScreen();
-        Display::write(jWriter.at("Infos").value("SelectYourLanguage", ""), 25);
+        Display::write(jWriter["Infos"]["SelectYourLanguage"], 25);
         //--------------------------------
         langMenu.addOptions({ "EN", "PL" });
         langMenu.showOptions();
@@ -232,9 +232,9 @@ void Game::endGame()
     do
     {
         Console::clearScreen();
-        Display::write(jWriter.at("QuitGame").value("Prompt", JSON_VALUE_ERROR), 25);
+        Display::write(jWriter["QuitGame"]["Prompt"], 25);
         //--------------------------------
-        quitMenu.addOptions({ jWriter.at("QuitGame").at("Yes"), jWriter.at("QuitGame").at("No") });
+        quitMenu.addOptions({ jWriter["QuitGame"]["Yes"], jWriter["QuitGame"]["No"] });
         quitMenu.showOptions();
         //--------------------------------
         choice = quitMenu.inputChoice();
@@ -258,15 +258,15 @@ void Game::credits()
     Sleep(500);
     Console::clearScreen();
     Console::setConsoleColor(CC_Lightblue);
-    Display::write(jWriter.at("Credits").value("Author", JSON_VALUE_ERROR));
+    Display::write(jWriter["Credits"]["Author"]);
     Console::resetConsoleColor();
     Display::write("\n\tRadosław 'Doic' Michalak\n\n");
     Console::setConsoleColor(CC_Lightblue);
-    Display::write(jWriter.at("Credits").value("Testers", JSON_VALUE_ERROR));
+    Display::write(jWriter["Credits"]["Testers"]);
     Console::resetConsoleColor();
     Display::write("\n\t    Paweł Michalak\n\n");
     Console::setConsoleColor(CC_Lightblue);
-    Display::write(jWriter.at("Credits").value("Thanks", JSON_VALUE_ERROR));
+    Display::write(jWriter["Credits"]["Thanks"]);
     Console::resetConsoleColor();
     Display::write("\n\t   Dominik Szpilski\n\t     Daniel Obłąk\n\n");
     Sleep(1000);
@@ -292,40 +292,40 @@ void Game::startEventsByLocation()
     else if (getCurrentLocation() == &Location::locations["SleepersHideout"]) { Event::sleepersHideout(); }
 }
 
-void Game::initHeroEQ()
+void Game::initHeroIventory()
 {
     Logger::startFuncLog(__FUNCTION__);
     std::ofstream eq;
     eq.open("eq.txt");
 
-    if (!eq.good())
+    if (!eq.is_open())
     {
         return Logger::error("No file access", __FUNCTION__);
     }
     
     Logger::success("Access to txt file", __FUNCTION__);
-    eq << jWriter.at("InventoryInfos").value("NoItemsInInv", JSON_VALUE_ERROR) << std::endl;
+    eq << (std::string)jWriter["InventoryInfos"]["NoItemsInInv"] << std::endl;
     eq.close();
 }
 
-void Game::initQuestsList()
+void Game::initHeroJournal()
 {
     Logger::startFuncLog(__FUNCTION__);
-    std::ofstream q;
-    q.open("journal.txt");
+    std::ofstream quests;
+    quests.open("journal.txt");
 
-    if (!q.good())
+    if (!quests.is_open())
     {
         return Logger::error("No file access", __FUNCTION__);
     }
     
     Logger::success("Access to txt file", __FUNCTION__);
-    q << jWriter.at("JournalInfos").value("NoQuestsInJournal", JSON_VALUE_ERROR) << std::endl;
-    q.close();
+    quests << (std::string)jWriter["JournalInfos"]["NoQuestsInJournal"] << std::endl;
+    quests.close();
 }
 
 void Game::pause()
 {
-    std::cout << jWriter.at("Infos").value("PressAnyKey", JSON_VALUE_ERROR);
+    std::cout << (std::string)jWriter["Infos"]["PressAnyKey"];
     Console::waitForUserInput();
 }

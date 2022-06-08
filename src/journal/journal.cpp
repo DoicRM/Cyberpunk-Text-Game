@@ -37,10 +37,10 @@ void Journal::endQuest(Quest* quest)
 
 void Journal::updateJournalFile()
 {
-    std::ofstream q;
-    q.open("journal.txt");
+    std::ofstream quests;
+    quests.open("journal.txt");
 
-    if (!q.good())
+    if (!quests.good())
     {
         return Logger::error("No file access", __FUNCTION__);
     }
@@ -49,19 +49,20 @@ void Journal::updateJournalFile()
 
     if (questsList.empty())
     {
-        q << jWriter.at("JournalInfos").value("NoQuestsInJournal", JSON_VALUE_ERROR) << std::endl;
+        quests << (std::string)jWriter["JournalInfos"]["NoQuestsInJournal"] << std::endl;
+        quests.close();
         return;
     }
 
     for (auto i : questsList)
     {
-        q << jWriter.at("QuestsInfos").value("Name", JSON_VALUE_ERROR) << i->getName() << std::endl;
-        q << jWriter.at("QuestsInfos").value("Description", JSON_VALUE_ERROR) << i->getDescription() << std::endl;
-        q << jWriter.at("QuestsInfos").value("Status", JSON_VALUE_ERROR) << i->printStatus() << std::endl;
-        q << "..........................................................................." << std::endl;
+        quests << (std::string)jWriter["QuestsInfos"]["Name"] << i->getName() << std::endl;
+        quests << (std::string)jWriter["QuestsInfos"]["Description"] << i->getDescription() << std::endl;
+        quests << (std::string)jWriter["QuestsInfos"]["Status"] << i->printStatus() << std::endl;
+        quests << "..........................................................................." << std::endl;
     }
 
-    q.close();
+    quests.close();
 }
 
 void Journal::clearJournal()

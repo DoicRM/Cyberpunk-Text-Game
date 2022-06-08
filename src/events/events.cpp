@@ -10,12 +10,10 @@ void Event::darkAlley()
     if (!darkAlleyWasVisited)
     {
         darkAlleyWasVisited = true;
-        prologue();
+        return prologue();
     }
-    else
-    {
-        darkAlleyCrossroads();
-    }
+
+    darkAlleyCrossroads();
 }
 
 void Event::street()
@@ -25,12 +23,10 @@ void Event::street()
     if (!streetWasVisited)
     {
         streetWasVisited = true;
-        lookAtAmnesia();
+        return lookAtAmnesia();
     }
-    else
-    {
-        streetCrossroads();
-    }
+
+    streetCrossroads();
 }
 
 void Event::gunShop()
@@ -40,12 +36,10 @@ void Event::gunShop()
     if (!gunShopWasVisited)
     {
         gunShopWasVisited = true;
-        encounterGunStore();
+        return encounterGunStore();
     }
-    else
-    {
-        gunShopCrossroads();
-    }
+
+    gunShopCrossroads();
 }
 
 void Event::nightclub()
@@ -55,12 +49,10 @@ void Event::nightclub()
     if (!nightclubWasVisited)
     {
         nightclubWasVisited = true;
-        enterClub();
+        return enterClub();
     }
-    else
-    {
-        nightclubCrossroads();
-    }
+
+    nightclubCrossroads();
 }
 
 void Event::sleepersHideout()
@@ -77,10 +69,10 @@ void Event::heroDeath()
     Console::clearScreen();
     Console::setConsoleColor(CC_Red);
     std::cout << std::endl;
-    Display::write(jWriter.at("Infos").value("YouAreDead", JSON_VALUE_ERROR));
+    Display::write(jWriter["Infos"]["YouAreDead"]);
     Sleep(1000);
     Console::setConsoleColor();
-    Display::write(jWriter.at("Infos").value("BackToMenu", JSON_VALUE_ERROR), 25);
+    Display::write(jWriter["Infos"]["BackToMenu"], 25);
     Console::waitForUserInput();
     Console::clearScreen();
     Game::game[0].loadLogo();
@@ -94,12 +86,12 @@ void Event::gameOver()
     Console::clearScreen();
     Console::setConsoleColor(CC_Lightblue);
     std::cout << std::endl;
-    Display::write(jWriter.at("Infos").value("TheEnd", JSON_VALUE_ERROR), 25);
+    Display::write(jWriter["Infos"]["TheEnd"], 25);
     Sleep(1000);
     std::cout << std::endl << std::endl;
     Console::resetConsoleColor();
     Game::game[0].credits();
-    Display::write(jWriter.at("Infos").value("BackToMenu", JSON_VALUE_ERROR), 25);
+    Display::write(jWriter["Infos"]["BackToMenu"], 25);
     Console::waitForUserInput();
     Console::clearScreen();
     Game::game[0].loadLogo();

@@ -89,16 +89,16 @@ void Inventory::updateInvFile()
 
     if (itemsList.empty())
     {
-        eq << jWriter.at("InventoryInfos").value("NoItemsInInv", JSON_VALUE_ERROR) << std::endl;
+        eq << (std::string)jWriter["InventoryInfos"]["NoItemsInInv"] << std::endl;
         return;
     }
 
     for (auto i : itemsList)
     {
-        eq << jWriter.at("ItemsInfos").value("Name", JSON_VALUE_ERROR) << i->getName() << std::endl;
-        eq << jWriter.at("ItemsInfos").value("Type", JSON_VALUE_ERROR) << i->printType() << std::endl;
-        eq << jWriter.at("ItemsInfos").value("Description", JSON_VALUE_ERROR) << i->getDescription() << std::endl;
-        eq << jWriter.at("ItemsInfos").value("Price", JSON_VALUE_ERROR) << i->getPrice() << "$" << std::endl;
+        eq << (std::string)jWriter["ItemsInfos"]["Name"] << i->getName() << std::endl;
+        eq << (std::string)jWriter["ItemsInfos"]["Type"] << i->printType() << std::endl;
+        eq << (std::string)jWriter["ItemsInfos"]["Description"] << i->getDescription() << std::endl;
+        eq << (std::string)jWriter["ItemsInfos"]["Price"] << i->getPrice() << "$" << std::endl;
         eq << "..........................................................................." << std::endl;
     }
 
@@ -109,7 +109,7 @@ void Inventory::showInv()
 {
     if (itemsList.empty())
     {
-        return Display::write("\t" + jWriter.at("InventoryInfos").value("NoItemsInInv", JSON_VALUE_ERROR), 15);
+        return Display::write("\t" + jWriter["InventoryInfos"]["NoItemsInInv"], 15);
     }
 
     for (int i = 0; i < itemsList.size(); i++)
@@ -117,22 +117,24 @@ void Inventory::showInv()
         std::cout << "\t" << (i + 1) << ". " << itemsList[i]->getName() << std::endl;
     }
 
-    Display::write(jWriter.at("InventoryInfos").value("SelectInvIndex", JSON_VALUE_ERROR), 15);
+    Display::write(jWriter["InventoryInfos"]["SelectInvIndex"], 15);
     int itemNr = Input::getChoice();
     showItemInfo(itemNr);
 }
 
 void Inventory::showItemInfo(int index)
 {
+    Item* indexNr = itemsList[static_cast<std::vector<Item*, std::allocator<Item*>>::size_type>(index) - 1];
+
     if (index <= 0 && index == (itemsList.size() + 1))
     {
-        return Display::write("\t" + jWriter.at("InventoryInfos").value("SelectedIndexNotExists", JSON_VALUE_ERROR), 0);
+        return Display::write("\t" + jWriter["InventoryInfos"]["SelectedIndexNotExists"], 0);
     }
 
-    std::cout << "\t" << jWriter.at("ItemsInfos").value("Name", JSON_VALUE_ERROR) << itemsList[static_cast<std::vector<Item*, std::allocator<Item*>>::size_type>(index) - 1]->getName() << std::endl;
-    std::cout << "\t" << jWriter.at("ItemsInfos").value("Type", JSON_VALUE_ERROR) << itemsList[static_cast<std::vector<Item*, std::allocator<Item*>>::size_type>(index) - 1]->printType() << std::endl;
-    std::cout << "\t" << jWriter.at("ItemsInfos").value("Description", JSON_VALUE_ERROR) << itemsList[static_cast<std::vector<Item*, std::allocator<Item*>>::size_type>(index) - 1]->getDescription() << std::endl;
-    std::cout << "\t" << jWriter.at("ItemsInfos").value("Price", JSON_VALUE_ERROR) << itemsList[static_cast<std::vector<Item*, std::allocator<Item*>>::size_type>(index) - 1]->getPrice() << "$" << std::endl;
+    std::cout << "\t" << (std::string)jWriter["ItemsInfos"]["Name"] << indexNr->getName() << std::endl;
+    std::cout << "\t" << (std::string)jWriter["ItemsInfos"]["Type"] << indexNr->printType() << std::endl;
+    std::cout << "\t" << (std::string)jWriter["ItemsInfos"]["Description"] << indexNr->getDescription() << std::endl;
+    std::cout << "\t" << (std::string)jWriter["ItemsInfos"]["Price"] << indexNr->getPrice() << "$" << std::endl;
 }
 
 void Inventory::clearInv()

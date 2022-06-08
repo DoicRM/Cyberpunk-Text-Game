@@ -27,8 +27,8 @@ public:
 
 	// inicjalizacja
 	static void init(); // gry
-	static void initHeroEQ(); // ekwipunku gracza
-	static void initQuestsList(); // zadań gracza
+	static void initHeroIventory(); // ekwipunku gracza
+	static void initHeroJournal(); // zadań gracza
 	// zatrzymanie gry
 	static void pause();
 
