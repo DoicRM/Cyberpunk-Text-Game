@@ -44,35 +44,41 @@ void Inventory::addItems(Item* item, int amount)
 
 void Inventory::removeItem(Item* item)
 {
-    for (int i = 0; i < itemsList.size(); i++)
+    if (hasItem(item))
     {
-        if (itemsList[i] == item)
-        {
-            itemsList.erase(itemsList.begin() + i);
-        }
-
-        break;
-    }
-
-    updateInvFile();
-}
-
-void Inventory::removeItems(Item* item, int amount)
-{
-    for (int i = 0; i < itemsList.size(); i++)
-    {
-        for (int j = 0; j < amount; j++)
+        for (int i = 0; i < itemsList.size(); i++)
         {
             if (itemsList[i] == item)
             {
                 itemsList.erase(itemsList.begin() + i);
             }
+
+            break;
         }
 
-        break;
+        updateInvFile();
     }
+}
 
-    updateInvFile();
+void Inventory::removeItems(Item* item, int amount)
+{
+    if (hasItem(item) >= amount)
+    {
+        for (int i = 0; i < itemsList.size(); i++)
+        {
+            for (int j = 0; j < amount; j++)
+            {
+                if (itemsList[i] == item)
+                {
+                    itemsList.erase(itemsList.begin() + i);
+                }
+            }
+
+            break;
+        }
+
+        updateInvFile();
+    }
 }
 
 void Inventory::updateInvFile()
@@ -80,16 +86,15 @@ void Inventory::updateInvFile()
     std::ofstream eq;
     eq.open("eq.txt");
 
-    if (!eq.good())
+    if (!eq.is_open())
     {
-        return Logger::error("No file access", __FUNCTION__);;
+        return Logger::error("Unable to open file", __FUNCTION__);
     }
-
-    Logger::success("Access to txt file", __FUNCTION__);
 
     if (itemsList.empty())
     {
         eq << (std::string)jWriter["InventoryInfos"]["NoItemsInInv"] << std::endl;
+        eq.close();
         return;
     }
 

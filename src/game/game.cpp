@@ -299,10 +299,9 @@ void Game::initHeroIventory()
 
     if (!eq.is_open())
     {
-        return Logger::error("No file access", __FUNCTION__);
+        return Logger::error("Unable to open file", __FUNCTION__);
     }
     
-    Logger::success("Access to txt file", __FUNCTION__);
     eq << (std::string)jWriter["InventoryInfos"]["NoItemsInInv"] << std::endl;
     eq.close();
 }
@@ -315,10 +314,9 @@ void Game::initHeroJournal()
 
     if (!quests.is_open())
     {
-        return Logger::error("No file access", __FUNCTION__);
+        return Logger::error("Unable to open file", __FUNCTION__);
     }
     
-    Logger::success("Access to txt file", __FUNCTION__);
     quests << (std::string)jWriter["JournalInfos"]["NoQuestsInJournal"] << std::endl;
     quests.close();
 }

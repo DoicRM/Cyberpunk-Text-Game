@@ -40,12 +40,10 @@ void Journal::updateJournalFile()
     std::ofstream quests;
     quests.open("journal.txt");
 
-    if (!quests.good())
+    if (!quests.is_open())
     {
-        return Logger::error("No file access", __FUNCTION__);
+        return Logger::error("Unable to open file", __FUNCTION__);
     }
-
-    Logger::success("Access to txt file", __FUNCTION__);
 
     if (questsList.empty())
     {
