@@ -208,9 +208,9 @@ void Event::dialogueWithBob()
                 nameMenu.showHeroChoice();
                 std::cout << std::endl;
 
-                if (Npc::npcs["Bob"].getAttitude() != Angry)
+                if (Npc::npcs["Bob"].getAttitude() != Attitude::Angry)
                 {
-                    Npc::npcs["Bob"].setAttitude(Angry); // Angry / Hostile / Friendly / Neutral
+                    Npc::npcs["Bob"].setAttitude(Attitude::Angry); // Angry / Hostile / Friendly / Neutral
                 }
 
                 Console::wait(500);
@@ -262,9 +262,9 @@ void Event::dialogueWithBob()
                 menu3.showHeroChoice();
                 std::cout << std::endl;
 
-                if (Npc::npcs["Bob"].getAttitude() != Angry)
+                if (Npc::npcs["Bob"].getAttitude() != Attitude::Angry)
                 {
-                    Npc::npcs["Bob"].setAttitude(Angry); // Angry / Hostile / Friendly / Neutral
+                    Npc::npcs["Bob"].setAttitude(Attitude::Angry); // Angry / Hostile / Friendly / Neutral
                 }
 
                 Console::wait(500);
@@ -300,7 +300,7 @@ void Event::dialogueWithBob()
             Console::wait(1500);
             Display::writeDialogue("I saw the cops hanging around. It stopped being safe here, at\n\tleast for me.");
 
-            if (Npc::npcs["Bob"].getAttitude() == Angry || Npc::npcs["Bob"].getAttitude() == Hostile)
+            if (Npc::npcs["Bob"].getAttitude() == Attitude::Angry || Npc::npcs["Bob"].getAttitude() == Attitude::Hostile)
             {
                 Display::writeDialogue(" Be glad we don't have more of it left.'");
             }
@@ -739,7 +739,7 @@ void Event::dialogueWithZed()
                 Display::writeDialogue("\n\t- 'Yes, that is correct. I'm Zed, and this is my little shop.");
                 Console::wait(1000);
                 Display::writeDialogue(" Since you know Bob,\n\tyou can get a small discount here.'");
-                Npc::npcs["Zed"].setAttitude(Friendly);
+                Npc::npcs["Zed"].setAttitude(Attitude::Friendly);
             }
             else if (Quest::quests["ZedAccelerator"].getIsRunning() && Hero::heroes[0].hasItem(&Item::items["AD13"]) && bobRecommendsZed && zedKnowsAboutBobAndZed)
             {
@@ -1235,29 +1235,12 @@ void Event::dialogueWithJet()
 {
     Logger::startFuncLog(__FUNCTION__);
     int jetPoints = 0;
-    bool jetWarnHero = false, jetBeatsHero = false;
-    std::cout << std::endl << std::endl;
+    std::cout << "\n\n";
     Menu menu16;
 
     while (true)
     {
-        if (jetPoints == 2 && !jetWarnHero)
-        {
-            jetWarnHero = true;
-            Npc::npcs["Jet"].setAttitude(Angry);
-            Display::writeDialogue("\t- 'I don't like your questions. Get out of here while you still can.'\n\n");
-        }
-        else if (jetPoints > 2 && !jetBeatsHero)
-        {
-            jetBeatsHero = true;
-            Npc::npcs["Jet"].setAttitude(Hostile);
-            Display::writeDialogue("\t- 'I warned you. Now we're going to have some fun.'");
-            Display::writeNarration("\n\tBefore you can blink, you get a right hook to the stomach accompanied by a left hook aimed\n\tat the jaw.");
-            Console::wait(2500);
-            Console::clearScreen();
-            Console::wait(1500);
-            wakeUpBeforeMeetingWithJet();
-        }
+        jetGetsAngry(jetPoints);
         //--------------------------------
         menu16.clearOptions();
         menu16.addOption("'I want to pass.'");
@@ -1330,6 +1313,33 @@ void Event::dialogueWithJet()
     }
 }
 
+void Event::jetGetsAngry(int angerPoints)
+{
+    bool jetWarnHero = false, jetBeatsHero = false;
+
+    if (angerPoints < 2 && !jetWarnHero && !jetBeatsHero)
+    {
+        return;
+    }
+
+    if (angerPoints == 2 && !jetWarnHero)
+    {
+        jetWarnHero = true;
+        Npc::npcs["Jet"].setAttitude(Attitude::Angry);
+        Display::writeDialogue("\t- 'I don't like your questions. Get out of here while you still can.'\n\n");
+        return;
+    }
+
+    jetBeatsHero = true;
+    Npc::npcs["Jet"].setAttitude(Attitude::Hostile);
+    Display::writeDialogue("\t- 'I warned you. Now we're going to have some fun.'");
+    Display::writeNarration("\n\tBefore you can blink, you get a right hook to the stomach accompanied by a left hook aimed\n\tat the jaw.");
+    Console::wait(2500);
+    Console::clearScreen();
+    Console::wait(2500);
+    wakeUpBeforeMeetingWithJet();
+}
+
 void Event::wakeUpBeforeMeetingWithJet()
 {
     Logger::startFuncLog(__FUNCTION__);
@@ -1346,6 +1356,10 @@ void Event::wakeUpBeforeMeetingWithJet()
     Display::writeNarration("You remember only how " + Npc::npcs["Jet"].getName() + " put you down with one blow...");
     Console::wait(1000);
     Display::writeNarration("\n\tWith difficulty you pick yourself up in the ground and, walking slowly, you come to a street\n\tbathed in light.");
+
+    int rand = Randomize::randInt(0, 10);
+    // random event
+
     Game::game[0].setCurrentLocation(&Location::locations["Street"]);
 }
 
@@ -1519,15 +1533,7 @@ void Event::dialogueWithVincent()
             menu21.showHeroChoice();
             Display::writeDialogue("\n\t- 'Ugh, you little prick. I'll get you from beyond the grave. There will be no peace. I won't let that happen!'");
             Console::wait(1500);
-            Display::writeNarration("\n\tThe last word spoken synchronizes with the bang of a gunshot as a bullet of energy pierces the club owner's chest.");
-            Console::wait(1000);
-            Display::writeNarration(" The recoil knocks him from his seat. The lifeless body clatters against the floor.");
-            Console::wait(1500);
-            Display::writeNarration(" He's dead, just like Nyx wanted.");
-            Npc::npcs["Vincent"].setStatus(Dead);
-            Display::writeNarration("\n\tOut of curiosity, you walk closer and spot the corpse holding a small pistol.");
-            Console::wait(1000);
-            Display::writeNarration(" That bastard was playing for time after all!");
+            vincentDeath();
             break;
         }
         else if (heroChoice == 2)
@@ -1536,15 +1542,7 @@ void Event::dialogueWithVincent()
             menu21.showHeroChoice();
             Display::writeDialogue("\n\t- 'Traitorous bitch! She'll get her due someday.");
             Display::writeDialogue(" All right, shithead, let's get this over with.'");
-            Display::writeNarration("\n\tThe last word spoken synchronizes with the bang of a gunshot as a bullet of energy pierces the club owner's chest.");
-            Console::wait(1000);
-            Display::writeNarration(" The recoil knocks him from his seat. The lifeless body clatters against the floor.");
-            Console::wait(1500);
-            Display::writeNarration(" He's dead, just like Nyx wanted.");
-            Npc::npcs["Vincent"].setStatus(Dead);
-            Display::writeNarration("\n\tOut of curiosity, you walk closer and spot the corpse holding a small pistol.");
-            Console::wait(1000);
-            Display::writeNarration(" That bastard was playing for time after all!");
+            vincentDeath();
             break;
         }
         else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
@@ -1589,6 +1587,19 @@ void Event::dialogueWithVincent()
     }
 
     vincentResurrection();
+}
+
+void Event::vincentDeath()
+{
+    Display::writeNarration("\n\tThe last word spoken synchronizes with the bang of a gunshot as a bullet of energy pierces the club owner's chest.");
+    Console::wait(1000);
+    Display::writeNarration(" The recoil knocks him from his seat. The lifeless body clatters against the floor.");
+    Console::wait(1500);
+    Display::writeNarration(" He's dead, just like Nyx wanted.");
+    Npc::npcs["Vincent"].setStatus(Dead);
+    Display::writeNarration("\n\tOut of curiosity, you walk closer and spot the corpse holding a small pistol.");
+    Console::wait(1000);
+    Display::writeNarration(" That bastard was playing for time after all!");
 }
 
 void Event::vincentResurrection()

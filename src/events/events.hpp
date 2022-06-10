@@ -51,11 +51,13 @@ private:
 	static void miaMeeting();
 	static void clubUpstairs();
 	static void dialogueWithJet();
+	static void jetGetsAngry(int angerPoints);
 	static void vincentOffice();
 	static void checkVincentDesk();
 	static void vincentHideoutCode();
 	static void vincentHideout();
 	static void dialogueWithVincent();
+	static void vincentDeath();
 	static void vincentResurrection();
 	static void nightclubCrossroads();
 	// AKT I
