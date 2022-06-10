@@ -11,9 +11,9 @@ void Event::prologue()
 {
     Logger::startFuncLog(__FUNCTION__);
     Display::write(jWriter["Prologue"]["Title"]);
-    Sleep(2000);
+    Console::wait(2000);
     Display::write(jWriter["Prologue"]["Subtitle"]);
-    Sleep(5000);
+    Console::wait(5000);
     Console::clearScreen();
     storyIntroduction();
 }
@@ -22,17 +22,17 @@ void Event::storyIntroduction()
 {
     Logger::startFuncLog(__FUNCTION__);
     Display::writeNarration(jWriter["Prologue"]["StoryIntro"][0]);
-    Sleep(1000);
+    Console::wait(1000);
     Display::writeNarration(jWriter["Prologue"]["StoryIntro"][1], 20);
     Game::pause();
     Console::clearScreen();
-    Sleep(2500);
+    Console::wait(2500);
     Display::writeNarration(jWriter["Prologue"]["PrologueDream"][0], 75);
-    Sleep(2500);
+    Console::wait(2500);
     Display::writeNarration(jWriter["Prologue"]["PrologueDream"][1], 75);
-    Sleep(2500);
+    Console::wait(2500);
     Display::writeNarration(jWriter["Prologue"]["PrologueDream"][2], 75);
-    Sleep(3000);
+    Console::wait(3000);
     Console::clearScreen();
     wakeUpInDarkAlley();
 }
@@ -41,23 +41,23 @@ void Event::wakeUpInDarkAlley()
 {
     Logger::startFuncLog(__FUNCTION__);
     Menu menu1;
-    Sleep(2000);
+    Console::wait(2000);
     Display::writeNarration(jWriter["Prologue"]["WakeUpInDarkAlley"][0]);
-    Sleep(1000);
+    Console::wait(1000);
     Display::writeNarration(jWriter["Prologue"]["WakeUpInDarkAlley"][1]);
-    Sleep(1500);
+    Console::wait(1500);
     Display::writeNarration(jWriter["Prologue"]["WakeUpInDarkAlley"][2]);
-    Sleep(1000);
+    Console::wait(1000);
     Display::writeNarration(jWriter["Prologue"]["WakeUpInDarkAlley"][3]);
-    Sleep(3000);
+    Console::wait(3000);
     Display::writeNarration(jWriter["Prologue"]["WakeUpInDarkAlley"][4]);
-    Sleep(500);
+    Console::wait(500);
     Display::writeNarration(jWriter["Prologue"]["WakeUpInDarkAlley"][5]);
-    Sleep(3000);
+    Console::wait(3000);
     Display::writeNarration(jWriter["Prologue"]["WakeUpInDarkAlley"][6]);
-    Sleep(1000);
+    Console::wait(1000);
     Display::writeNarration(jWriter["Prologue"]["WakeUpInDarkAlley"][7]);
-    Sleep(2500);
+    Console::wait(2500);
     Display::writeNarration(jWriter["Prologue"]["WakeUpInDarkAlley"][8]);
     //--------------------------------
     menu1.addOptions({ jWriter["Prologue"]["Menu1"][0], jWriter["Prologue"]["Menu1"][1] });
@@ -90,25 +90,25 @@ void Event::acceleratorFinding()
 {
     Logger::startFuncLog(__FUNCTION__);
     Display::writeNarration(jWriter["Prologue"]["AcceleratorFinding"][0]);
-    Sleep(1500);
+    Console::wait(1500);
     Display::writeNarration(jWriter["Prologue"]["AcceleratorFinding"][1]);
-    Sleep(2000);
+    Console::wait(2000);
 
     Hero::heroes[0].addItem(&Item::items["AD13"]);
     Hero::heroes[0].addMoney(5.0);
-    Console::setConsoleColor(CC_Item);
+    Console::setConsoleColor(ConsoleColor::CC_Item);
     Display::write("\n\n\t" + Item::items["AD13"].getName());
     Console::resetConsoleColor();
     Display::write(jWriter["Infos"]["And"]);
-    Console::setConsoleColor(CC_Green);
+    Console::setConsoleColor(ConsoleColor::CC_Green);
     Display::write("5$");
     Console::resetConsoleColor();
     Display::write(jWriter["Infos"]["WasFound"]);
 
     Display::write(jWriter["InventoryInfos"]["InvTip"], 15);
-    Sleep(4000);
+    Console::wait(4000);
     Display::writeNarration(jWriter["Prologue"]["AcceleratorFinding"][2]);
-    Sleep(1000);
+    Console::wait(1000);
 }
 
 void Event::rubbishSearch()
@@ -125,13 +125,15 @@ void Event::outOfTheAlley()
     if (!Hero::heroes[0].hasItem(&Item::items["AD13"]))
     {
         Display::writeNarration(jWriter["Prologue"]["OutOfTheAlley"][0]);
-        Sleep(1500);
+        Console::wait(1500);
         Display::writeNarration(jWriter["Prologue"]["OutOfTheAlley"][1]);
         Display::writeNarration(jWriter["Prologue"]["OutOfTheAlley"][2]);
     }
-    else Display::writeNarration(jWriter["Prologue"]["OutOfTheAlley"][3]);
+    else {
+        Display::writeNarration(jWriter["Prologue"]["OutOfTheAlley"][3]);
+    }
 
-    Sleep(3000);
+    Console::wait(3000);
     Display::writeNarration(jWriter["Prologue"]["OutOfTheAlley"][4]);
     Display::writeDialogue(jWriter["Prologue"]["DIA_Bob"][0]);
     //--------------------------------
@@ -148,9 +150,9 @@ void Event::outOfTheAlley()
             Console::clearScreen();
             menu2.showHeroChoice();
             Display::writeNarration(jWriter["Prologue"]["OutOfTheAlley"][5]);
-            Sleep(1500);
+            Console::wait(1500);
             Display::writeNarration(jWriter["Prologue"]["OutOfTheAlley"][6]);
-            Sleep(1000);
+            Console::wait(1000);
             dialogueWithBob();
             break;
         }
@@ -161,7 +163,7 @@ void Event::outOfTheAlley()
             Display::writeNarration(jWriter["Prologue"]["OutOfTheAlley"][7]);
             Display::writeDialogue(jWriter["Prologue"]["DIA_Bob"][1]);
             Display::writeNarration(jWriter["Prologue"]["OutOfTheAlley"][8]);
-            Sleep(1000);
+            Console::wait(1000);
             Game::game[0].setCurrentLocation(&Location::locations["Street"]);
             break;
         }
@@ -193,9 +195,9 @@ void Event::dialogueWithBob()
                 namingHero();
                 Npc::npcs["Bob"].setToKnowHero();
                 Display::writeDialogue((std::string)jWriter["Prologue"]["DIA_Bob"][3] + Hero::heroes[0].getName() + (std::string)jWriter["Prologue"]["DIA_Bob"][4]);
-                Sleep(1500);
+                Console::wait(1500);
                 Display::writeDialogue((std::string)jWriter["Prologue"]["DIA_Bob"][5] + Npc::npcs["Bob"].getName() + ".");
-                Sleep(1500);
+                Console::wait(1500);
                 Display::writeDialogue(jWriter["Prologue"]["DIA_Bob"][6]);
                 Display::writeNarration(jWriter["Prologue"]["DialogueWithBob"][0]);
                 break;
@@ -211,7 +213,7 @@ void Event::dialogueWithBob()
                     Npc::npcs["Bob"].setAttitude(Angry); // Angry / Hostile / Friendly / Neutral
                 }
 
-                Sleep(500);
+                Console::wait(500);
                 Display::writeDialogue(jWriter["Prologue"]["DIA_Bob"][7]);
 
                 break;
@@ -233,9 +235,9 @@ void Event::dialogueWithBob()
                 menu3.showHeroChoice();
                 bobRecommendsZed = true; // Bob poleca bohaterowi sklep z bronią Zeda
                 Display::writeDialogue(jWriter["Prologue"]["DIA_Bob"][8]);
-                Sleep(1000);
+                Console::wait(1000);
                 Display::writeDialogue(jWriter["Prologue"]["DIA_Bob"][9]);
-                Sleep(1000);
+                Console::wait(1000);
                 Display::writeDialogue(jWriter["Prologue"]["DIA_Bob"][10]);
                 break;
             }
@@ -244,13 +246,13 @@ void Event::dialogueWithBob()
                 Console::clearScreen();
                 menu3.showHeroChoice();
                 Display::writeDialogue(jWriter["Prologue"]["DIA_Bob"][11]);
-                Sleep(1000);
+                Console::wait(1000);
                 Display::writeDialogue(jWriter["Prologue"]["DIA_Bob"][12]);
-                Sleep(1500);
+                Console::wait(1500);
                 Display::writeDialogue(jWriter["Prologue"]["DIA_Bob"][13]);
-                Sleep(1500);
+                Console::wait(1500);
                 Display::writeDialogue(jWriter["Prologue"]["DIA_Bob"][14]);
-                Sleep(1000);
+                Console::wait(1000);
                 Display::writeDialogue(jWriter["Prologue"]["DIA_Bob"][15]);
                 break;
             }
@@ -265,7 +267,7 @@ void Event::dialogueWithBob()
                     Npc::npcs["Bob"].setAttitude(Angry); // Angry / Hostile / Friendly / Neutral
                 }
 
-                Sleep(500);
+                Console::wait(500);
                 Display::writeDialogue(jWriter["Prologue"]["DIA_Bob"][16]);
                 break;
             }
@@ -275,37 +277,40 @@ void Event::dialogueWithBob()
         if (!streetWasVisited)
         {
             Display::writeNarration("\tFinally, an old, wrinkled face surrounded by gray fuzz emerges from the darkness. An artificial,\n\tcybernetic eye watches you vigilantly.");
-            Sleep(1000);
+            Console::wait(1000);
             Display::writeNarration(" You start to feel strangely uncomfortable.");
-            Sleep(2000);
+            Console::wait(2000);
             Display::writeNarration("\n\tIn an instant the alley is filled with the howling of a police siren.");
-            Sleep(1000);
+            Console::wait(1000);
             Display::writeNarration(" On the wall in front of\n\tyou, red and blue begin to dance with each other.");
             Display::writeDialogue("\n\t- 'Shit");
-            Sleep(500);
+            Console::wait(500);
             Display::writeDialogue(", cops!");
-            Sleep(500);
+            Console::wait(500);
             Display::writeDialogue(" Well, that's super. I think it's time for me to go.'");
-            Sleep(1500);
+            Console::wait(1500);
             Display::writeNarration("\n\tThe aging beggar dives into the embrace of darkness in a flash.");
-            Sleep(1500);
+            Console::wait(1500);
             Display::writeNarration(" Does this mean you see him for\n\tthe last time?");
-            Sleep(3500);
+            Console::wait(3500);
             Game::game[0].setCurrentLocation(&Location::locations["Street"]);
         }
         else {
             Display::writeDialogue("\t - 'All right, that is enough.");
-            Sleep(1500);
+            Console::wait(1500);
             Display::writeDialogue("I saw the cops hanging around. It stopped being safe here, at\n\tleast for me.");
 
             if (Npc::npcs["Bob"].getAttitude() == Angry || Npc::npcs["Bob"].getAttitude() == Hostile)
+            {
                 Display::writeDialogue(" Be glad we don't have more of it left.'");
-            else
+            }
+            else {
                 Display::writeDialogue(" Take care, kid.'");
+            }
 
-            Sleep(1500);
+            Console::wait(1500);
             Display::writeNarration("\n\tThe aging beggar dives into the embrace of darkness in a flash.");
-            Sleep(1500);
+            Console::wait(1500);
             Display::writeNarration(" Does this mean you see him for\n\tthe last time?\n\n");
             Game::pause();
             Console::clearScreen();
@@ -336,7 +341,7 @@ void Event::darkAlleyCrossroads()
                 Console::clearScreen();
                 menu2.showHeroChoice();
                 Display::writeNarration(jWriter.at("OutOfTheAlley").at(5));
-                Sleep(1500);
+                Console::wait(1500);
                 Display::writeNarration(jWriter.at("OutOfTheAlley").at(6));
                 dialogueWithBob();
                 break;
@@ -357,12 +362,12 @@ void Event::darkAlleyCrossroads()
     else
     {
         Display::writeNarration("\tWhen you enter an alley, you notice a sea of trash around you.");
-        Sleep(1000);
+        Console::wait(1000);
         Display::writeNarration(jWriter.at("Prologue").at("WakeUpInDarkAlley").at(7));
     
         if (!Hero::heroes[0].hasItem(&Item::items["AD13"]))
         {
-            Sleep(1500);
+            Console::wait(1500);
             Display::writeNarration(jWriter.at("Prologue").at("WakeUpInDarkAlley").at(8));
             //--------------------------------
             Menu menu1;
@@ -379,7 +384,7 @@ void Event::darkAlleyCrossroads()
                     menu1.showHeroChoice();
                     acceleratorFinding();
                     Display::writeNarration("\n\tThere is nothing interesting here any more. Time to go back...\n");
-                    Sleep(1500);
+                    Console::wait(1500);
                     Console::clearScreen();
                     Game::game[0].setCurrentLocation(&Location::locations["Street"]);
                     break;
@@ -388,7 +393,7 @@ void Event::darkAlleyCrossroads()
                 {
                     Console::clearScreen();
                     menu1.showHeroChoice();
-                    Sleep(1500);
+                    Console::wait(1500);
                     Console::clearScreen();
                     Game::game[0].setCurrentLocation(&Location::locations["Street"]);
                     break;
@@ -414,15 +419,15 @@ void Event::lookAtAmnesia()
     if (!Npc::npcs["Bob"].knowsHero())
     {
         Display::writeNarration("\n\tYou walk out of the alley onto a street lit by neon lights on the opposite side. A large sign\n\tthat reads 'Amnesia' belongs to a nightclub.");
-        Sleep(1000);
+        Console::wait(1000);
         Display::writeNarration(" A small crowd gathers outside the entrance to the\n\tbuilding. Some people are arguing with the bouncers.");
-        Sleep(1500);
+        Console::wait(1500);
         Display::writeNarration(" Something smells here, it's probably trouble...\n\n");
     }
     else {
         Display::writeNarration("\n\tYou walk out of the alley onto a street lit by neon lights and the lamp of a police car on the\n\topposite side. A large sign that reads 'Amnesia' belongs to a nightclub.");
         Display::writeNarration(" Two cops interrogate\n\ta small crowd outside the entrance to the building.");
-        Sleep(1500);
+        Console::wait(1500);
         Display::writeNarration(" Something smells here, it's probably trouble...\n\n");
     }
     //--------------------------------
@@ -511,15 +516,15 @@ void Event::meetingWithSecurityGuards()
 {
     Logger::startFuncLog(__FUNCTION__);
     Display::writeNarration("\tWhen you get closer, the faces turn toward you and start looking at you intently.");
-    Sleep(1000);
+    Console::wait(1000);
     Display::writeNarration(" You pass\n\tthem in silenceand are confronted by a broad-shouldered security guard.");
     Display::writeDialogue("\n\t- 'What are you looking for here?");
-    Sleep(1500);
+    Console::wait(1500);
     Display::writeDialogue(" Trouble, maybe?'");
     Display::writeNarration("\n\tThe man clenches his hands into fists and smiles unpleasantly.");
     Display::writeDialogue("\n\t- 'You asshole, better let us in! I want a drink and for fuck's sake. I'm losing my patience!");
     Display::writeNarration("\n\tOne of the men waiting in the queue rushes forward and threatens the bouncer with his fist.");
-    Sleep(1500);
+    Console::wait(1500);
     Display::writeNarration("\n\tThe security guard's attention shifts from you to the furious guy next to you.");
     Display::writeDialogue("\n\t- 'I'll say it one last time: get the fuck out of here or you'll get fucked.'\n");
 }
@@ -532,51 +537,51 @@ void Event::meetingWithPolicemans()
         Display::writeNarration("\tWhen you get closer, one of the police officers in a dark blue uniform turns toward you.");
     else {
         Display::writeNarration("\tIn an instant the street is filled with the howling of a police siren.");
-        Sleep(1000);
+        Console::wait(1000);
         Display::writeNarration(" The reds and blues\n\tbegin to dance with each other on the sidewalk and the silhouettes of the people around you.");
-        Sleep(2000);
+        Console::wait(2000);
         Display::writeNarration("\n\tTwo grim-looking guys in dark blue uniforms get out of a police car and walk towards you.\n\tOne of them points at you, taking out a tablet from behind his belt.");
     }
 
     Display::writeDialogue("\n\t- 'Who are you?");
-    Sleep(1500);
+    Console::wait(1500);
     Display::writeDialogue(" And what are you doing here? Please show me your ID card.'");
 
     if (Hero::heroes[0].hasItem(&Item::items["AD13"])) Display::writeNarration("\n\tYou start searching through the pockets of your jacket and pants, but other than the accelerator\n\tyou found in the trash, there's nothing else there.");
     else Display::writeNarration("\n\tYou start searching through the pockets of your jacket and pants, but there's nothing there.");
 
     Display::writeDialogue("\n\t- 'I see that we have a problem.");
-    Sleep(1500);
+    Console::wait(1500);
     Display::writeDialogue(" Okay, then what's your name, citizen?");
 
     if (!Npc::npcs["Bob"].knowsHero())
     {
         Display::writeDialogue("'\n");
         namingHero();
-        Sleep(1500);
+        Console::wait(1500);
         Display::writeDialogue("\t- '" + Hero::heroes[0].getName() + "...");
-        Sleep(1000);
+        Console::wait(1000);
         Display::writeDialogue(" Caden, check it out in the database.");
     }
     else {
         Display::writeDialogue(" " + Hero::heroes[0].getName() + "...");
-        Sleep(1000);
+        Console::wait(1000);
         Display::writeDialogue(" Caden, check\n\tit out in the database.");
     }
 
     Npc::npcs["CadenPartner"].setToKnowHero();
     Npc::npcs["Caden"].setToKnowHero();
-    Sleep(1500);
+    Console::wait(1500);
     Display::writeDialogue(" And you, stand where you are.'");
     Display::writeNarration("\n\tThe other police officer nods, gets back in the car, and it looks like he's connecting with\n\theadquarters.");
-    Sleep(3000);
+    Console::wait(3000);
     Display::writeNarration("\n\tA minute later, the same policeman returns and whispers something in his partner's ear.");
-    Sleep(1500);
+    Console::wait(1500);
     Display::writeNarration(" That\n\tone nods and turns to look at you.");
     Display::writeDialogue("\n\t- 'I have good news for you.");
-    Sleep(1500);
+    Console::wait(1500);
     Display::writeDialogue(" You're free for now, just don't let it occur to you to do\n\tsomething here, or you'll end up in arrest at the police station.");
-    Sleep(1000);
+    Console::wait(1000);
     Display::writeDialogue(" Caden, take care of the\n\trest of the attendees.'");
     Display::writeNarration("\n\tThe cop walks away to talk to the nearest person standing.");
     Display::writeDialogue("\n\t- 'If you're so pure, get in.'");
@@ -658,16 +663,16 @@ void Event::enterGunShop()
 
     if (!Npc::npcs["Zed"].knowsHero())
     {
-        Sleep(1000);
+        Console::wait(1000);
         Display::writeNarration(" You step over the threshold and enter a small room\n\twith a counter opposite the entrance. Behind it stands a tall, thin man with fatigue painted\n\ton his terribly oblong face.");
-        Sleep(1500);
+        Console::wait(1500);
         Display::writeNarration(" He is dressed in an old corporate commando\n\tsuit. On the wall behind his back hangs a lot of weapons.");
         Display::writeDialogue("\n\t- 'How can I help you, my friend?'\n");
         Npc::npcs["Zed"].setToKnowHero();
         dialogueWithZed();
     }
     else {
-        Sleep(1000);
+        Console::wait(1000);
         Display::writeNarration(" From behind the counter, Zed is already smiling at\n\tyou.");
 
         if (Hero::heroes[0].hasItem(&Item::items["Pistol"])) Display::writeDialogue("\n\t- 'What's up? How's the gun working out?'");
@@ -732,7 +737,7 @@ void Event::dialogueWithZed()
             {
                 zedKnowsAboutBobAndZed = true;
                 Display::writeDialogue("\n\t- 'Yes, that is correct. I'm Zed, and this is my little shop.");
-                Sleep(1000);
+                Console::wait(1000);
                 Display::writeDialogue(" Since you know Bob,\n\tyou can get a small discount here.'");
                 Npc::npcs["Zed"].setAttitude(Friendly);
             }
@@ -746,7 +751,7 @@ void Event::dialogueWithZed()
             }
             else {
                 Display::writeDialogue("\n\t- 'No problem. See you later!'\n");
-                Sleep(1500);
+                Console::wait(1500);
                 Console::clearScreen();
 
                 if (!Npc::npcs["Caden"].knowsHero() && !Npc::npcs["CadenPartner"].knowsHero()) meetingWithPolicemans();
@@ -797,15 +802,15 @@ void Event::zedGetsAnAccelerator()
     Logger::startFuncLog(__FUNCTION__);
     Hero::heroes[0].removeItem(&Item::items["AD13"]);
     Display::writeDialogue("\n\t- 'Well done!");
-    Sleep(1000);
+    Console::wait(1000);
     Display::writeDialogue(" I don't know where you found it, but now the gun is yours.'\n");
 
     Hero::heroes[0].addItem(&Item::items["Pistol"]);
-    Console::setConsoleColor(CC_Item);
+    Console::setConsoleColor(ConsoleColor::CC_Item);
     Display::write("\n\t" + Item::items["AD13"].getName());
     Console::resetConsoleColor();
     Display::write(" given and ");
-    Console::setConsoleColor(CC_Item);
+    Console::setConsoleColor(ConsoleColor::CC_Item);
     Display::write(Item::items["Pistol"].getName());
     Console::resetConsoleColor();
     Display::write(" gained.\n");
@@ -824,13 +829,13 @@ void Event::zedTrade()
         {
             ZedTellsAboutWeapons = true;
             Display::writeDialogue("\t- 'Better ask what I don't have!");
-            Sleep(1000);
+            Console::wait(1000);
             Display::writeDialogue(" Look - ");
-            Sleep(1000);
+            Console::wait(1000);
             Display::writeDialogue("rifles, pistols, machine guns, shotguns. I\n\thave a melee weapons as well. Knives, hammers, long blades like katanas...");
-            Sleep(1500);
+            Console::wait(1500);
             Display::writeDialogue(" Anything\n\tyou want, my friend!");
-            Sleep(1500);
+            Console::wait(1500);
             Display::writeDialogue(" Tell me, what do you like?'\n\n");
             //--------------------------------
             Menu menu9;
@@ -907,18 +912,18 @@ void Event::buyPistol()
     if (Hero::heroes[0].getMoney() != 250.0)
     {
         Display::writeDialogue("\n\t- 'I see you're low on cash.");
-        Sleep(1000);
+        Console::wait(1000);
         Display::writeDialogue(" But don't worry, we'll sort it out somehow.");
-        Sleep(1500);
+        Console::wait(1500);
 
         if (zedKnowsAboutBobAndZed)
         {
             Display::writeDialogue(" Hmm, you know Old Bob, that already means something.");
-            Sleep(1000);
+            Console::wait(1000);
             Display::writeDialogue(" Let's just say I'll loan you this gun on a friendly basis.");
 
             Hero::heroes[0].addItem(&Item::items["Pistol"]);
-            Console::setConsoleColor(CC_Item);
+            Console::setConsoleColor(ConsoleColor::CC_Item);
             Display::write("\n\t" + Item::items["Pistol"].getName());
             Console::resetConsoleColor();
             Display::write(" gained.\n");
@@ -926,11 +931,11 @@ void Event::buyPistol()
         else
         {
             Display::writeDialogue(" It so happens that\n\tI have been looking for a good accelerator for some time.");
-            Sleep(1000);
+            Console::wait(1000);
             Display::writeDialogue(" I don't mean the crap produced by\n\tcorporations these days.");
-            Sleep(1000);
+            Console::wait(1000);
             Display::writeDialogue(" I mean the good old accelerator!");
-            Sleep(1500);
+            Console::wait(1500);
             Display::writeDialogue(" Find me such a device and you will\n\tget that gun. Okay?");
             Hero::heroes[0].addQuest(&Quest::quests["ZedAccelerator"]);
         }
@@ -940,7 +945,7 @@ void Event::buyPistol()
         Display::writeDialogue("\n\t- 'A pistol is a good start. Here, it's yours.'");
 
         Hero::heroes[0].addItem(&Item::items["Pistol"]);
-        Console::setConsoleColor(CC_Item);
+        Console::setConsoleColor(ConsoleColor::CC_Item);
         Display::write("\n\t" + Item::items["Pistol"].getName());
         Console::resetConsoleColor();
         Display::write(" was bought.\n");
@@ -958,11 +963,11 @@ void Event::enterClub()
 {
     Logger::startFuncLog(__FUNCTION__);
     Display::writeNarration("\n\tAfter passing through the entrance your eardrums are slowly bursting from the loud music in\n\tthe club.");
-    Sleep(1000);
+    Console::wait(1000);
     Display::writeNarration(" You walk through a short lobby and so arrive at a crowded room full of dancing\n\tpeople.");
-    Sleep(1000);
+    Console::wait(1000);
     Display::writeNarration(" Disco balls hung from the ceiling net everything around with streaks of multi-colored\n\tlight.");
-    Sleep(1000);
+    Console::wait(1000);
     Display::writeNarration(" Next to the dance floor is a bar, and behind it are several mechanically streamlined\n\tbartenders.\n\n");
     //--------------------------------
     Menu menu11;
@@ -1012,15 +1017,15 @@ void Event::clubDanceFloor()
     if (!Npc::npcs["Nyx"].knowsHero())
     {
         Display::writeNarration("\n\tYou get on the dance floor.");
-        Sleep(1000);
+        Console::wait(1000);
         Display::writeNarration(" A crowd of dancing people stretches out around you, rubbing\n\tagainst each other to the rhythm of the music.");
-        Sleep(1500);
+        Console::wait(1500);
         Display::writeNarration(" Half-naked beauties are dancing in places\n\tthat look like pillars supporting the ceiling. You are not sure if they are real. There\n\tis a definite possibility that they are women, but somewhere in the back of your mind you\n\tthink they are just androids.");
-        Sleep(1500);
+        Console::wait(1500);
         Display::writeNarration("\n\tYou start dancing yourself.");
-        Sleep(1000);
+        Console::wait(1000);
         Display::writeNarration(" You are doing quite well when an attractive girl appears in\n\tfront of you. She's wearing a see-through, brightly coloured dress.");
-        Sleep(1500);
+        Console::wait(1500);
         Display::writeNarration(" Is it a coincidence\n\tthat she has just appeared and is dancing so close to you?\n\n");
         //--------------------------------
         Menu menu12;
@@ -1065,9 +1070,9 @@ void Event::clubDanceFloor()
     else
     {
         Display::writeNarration("\n\tYou get on the dance floor.");
-        Sleep(1000);
+        Console::wait(1000);
         Display::writeNarration(" It's quite crowded, but at least you can enjoy the beautiful views. You try to keep up with\n\tthe rest of the people dancing there. However, you quickly get tired and head for the exit.");
-        Sleep(1500);
+        Console::wait(1500);
         Console::clearScreen();
         nightclubCrossroads();
     }
@@ -1094,13 +1099,13 @@ void Event::clubBar()
             Console::clearScreen();
             menu13.showHeroChoice();
             Display::writeDialogue("\n\t- 'Okay.");
-            Sleep(1000);
+            Console::wait(1000);
             Display::writeDialogue(" Let's see...'");
-            Sleep(1500);
+            Console::wait(1500);
             Display::writeNarration("\n\tThe barman turns his back on you and looks through the bottles of alcohol. Finally, he selects\n\tone of them and pours its contents into a glass before placing it on the counter in front of\n\tyou.");
-            Sleep(1500);
+            Console::wait(1500);
             Display::writeNarration("\n\tYou reach for the vessel and empty it.");
-            Sleep(1000);
+            Console::wait(1000);
             Display::writeNarration(" You feel a pleasant warmth spreading up your throat and further down your gullet.\n\n");
             Display::writeDialogue("\n\t- 'Anything else?'\n\n");
             continue;
@@ -1111,9 +1116,9 @@ void Event::clubBar()
             menu13.showHeroChoice();
             Display::writeNarration("\n\tThe bartender squints, hearing your question.");
             Display::writeDialogue("\n\t- 'You're not from around here, are you?");
-            Sleep(1500);
+            Console::wait(1500);
             Display::writeDialogue(" My boss is Vincent Ramsey.");
-            Sleep(1000);
+            Console::wait(1000);
             Display::writeDialogue(" He's a tough guy, so you'd better not make trouble, or it could end badly for you.'\n\n");
             continue;
         }
@@ -1159,34 +1164,34 @@ void Event::miaMeeting()
     }
 
     Display::writeDialogue("\n\t- 'Vinc, the owner, is my boyfriend.");
-    Sleep(1000);
+    Console::wait(1000);
     Display::writeDialogue(" I want him dead.'");
     Hero::heroes[0].addQuest(&Quest::quests["KillVincent"]);
-    Sleep(1500);
+    Console::wait(1500);
     Display::writeNarration("\n\tNyx takes your hand and leads you towards the toilet.");
     Display::writeDialogue("\n\t- 'Do you have a gun?'");
 
     if (Hero::heroes[0].hasItem(&Item::items["Pistol"]))
     {
         Display::writeDialogue("\n\t- 'Good.");
-        Sleep(1000);
+        Console::wait(1000);
         Display::writeDialogue(" So you already know what and how.'");
     }
     else
     {
         Display::writeDialogue("\n\t- 'You know how to use it, don't you?");
-        Sleep(1000);
+        Console::wait(1000);
         Display::writeDialogue(" Get it for yourself, you'll need it. Here's 200 bucks.'");
         Hero::heroes[0].addMoney(200);
 
-        Console::setConsoleColor(CC_Green);
+        Console::setConsoleColor(ConsoleColor::CC_Green);
         Display::write("\n\t200$");
         Console::resetConsoleColor();
         Display::write(" has been received.");
 
         Display::writeDialogue("\n\t- 'There is a gun shop nearby.");
         Display::writeDialogue(" It's run by a guy named Zed. Visit him before you head upstairs.");
-        Sleep(1000);
+        Console::wait(1000);
         Display::writeDialogue("\n\tI'll meet you when you've sorted this out.'");
     }
 }
@@ -1248,9 +1253,9 @@ void Event::dialogueWithJet()
             Npc::npcs["Jet"].setAttitude(Hostile);
             Display::writeDialogue("\t- 'I warned you. Now we're going to have some fun.'");
             Display::writeNarration("\n\tBefore you can blink, you get a right hook to the stomach accompanied by a left hook aimed\n\tat the jaw.");
-            Sleep(2500);
+            Console::wait(2500);
             Console::clearScreen();
-            Sleep(1500);
+            Console::wait(1500);
             wakeUpBeforeMeetingWithJet();
         }
         //--------------------------------
@@ -1329,17 +1334,17 @@ void Event::wakeUpBeforeMeetingWithJet()
 {
     Logger::startFuncLog(__FUNCTION__);
     Display::writeNarration("\n\tEmptiness...", 65);
-    Sleep(1000);
+    Console::wait(1000);
     Display::writeNarration(" Various sounds are coming from the darkness", 60);
-    Sleep(1500);
+    Console::wait(1500);
     Display::writeNarration(", getting louder by the second.");
-    Sleep(1500);
+    Console::wait(1500);
     Display::writeNarration("\n\tFinally, single colours appear before your eyes.");
-    Sleep(1000);
+    Console::wait(1000);
     Display::writeNarration(" In the darkness of the night you see the\n\toutline of a street.");
-    Sleep(500);
+    Console::wait(500);
     Display::writeNarration("You remember only how " + Npc::npcs["Jet"].getName() + " put you down with one blow...");
-    Sleep(1000);
+    Console::wait(1000);
     Display::writeNarration("\n\tWith difficulty you pick yourself up in the ground and, walking slowly, you come to a street\n\tbathed in light.");
     Game::game[0].setCurrentLocation(&Location::locations["Street"]);
 }
@@ -1388,7 +1393,7 @@ void Event::vincentHideoutCode()
 {
     Logger::startFuncLog(__FUNCTION__);
     Display::writeNarration("\n\tYou walk closer and spot the terminal. It looks like you'll need to use a code to get through.");
-    Sleep(1500);
+    Console::wait(1500);
 
     if (!heroKnowsVincentCode)
     {
@@ -1409,11 +1414,11 @@ void Event::vincentHideout()
     Logger::startFuncLog(__FUNCTION__);
     Npc::npcs["Vincent"].setStatus(Unconscious);
     Display::writeNarration("\n\tThe door closes behind you, hissing quietly.");
-    Sleep(2000);
+    Console::wait(2000);
     Display::writeNarration(" The room you're in is full of smaller and larger\n\tcables that merge into a single monitor that hangs above the sim-chair. On it lies a big guy\n\tin a tailored suit and a stimulation helmet on his head that obscures his face.");
-    Sleep(1500);
+    Console::wait(1500);
     Display::writeNarration(" You guess it's\n\tVincent, the club owner.");
-    Sleep(2000);
+    Console::wait(2000);
     Display::writeNarration("\n\tCreeping up, you come closer. Your goal is within reach. The question is what will you do?\n\n");
     //--------------------------------
     Menu menu19;
@@ -1429,7 +1434,7 @@ void Event::vincentHideout()
             Console::clearScreen();
             menu19.showHeroChoice();
             Display::writeNarration("\n\tYou lean over Vincent and, in a fluid motion without hesitation, pull the stimulation helmet\n\toff his head. You witness the nightclub owner being shaken by a wave of convulsions. Foam\n\tbegins to come out of his mouth and after a moment the man freezes.");
-            Sleep(1500);
+            Console::wait(1500);
             Npc::npcs["Vincent"].setStatus(Dead);
             Display::writeNarration(" He's probably dead, just like\n\tNyx wanted.");
             break;
@@ -1439,12 +1444,12 @@ void Event::vincentHideout()
             Console::clearScreen();
             menu19.showHeroChoice();
             Display::writeNarration("\n\tYou are not a coward.");
-            Sleep(1000);
+            Console::wait(1000);
             Display::writeNarration(" You don't stab people in the back. That's not your style. You prefer an\n\topen fight.");
-            Sleep(1500);
+            Console::wait(1500);
             Npc::npcs["Vincent"].setStatus(Normal);
             Display::writeNarration(" After a while, you notice Vincent moving slightly in his seat. He opens his eyes -\n\tthey are shining with the excitement of his online adventure.");
-            Sleep(1000);
+            Console::wait(1000);
             Display::writeNarration(" It is only a matter of time before\n\tVincent notices your presence. There is no turning back now.");
             Display::writeDialogue("\n\t- 'What the fuck are you doing here, dickhead?'\n");
             dialogueWithVincent();
@@ -1473,9 +1478,9 @@ void Event::dialogueWithVincent()
             menu20.showHeroChoice();
             Display::writeNarration("\n\tWith a shout, you bring out your gun and aim it at Vincent's chest.");
             Display::writeDialogue("\n\t- 'Are you such a hero?");
-            Sleep(1000);
+            Console::wait(1000);
             Display::writeDialogue(" Would you kill an unarmed man?");
-            Sleep(1000);
+            Console::wait(1000);
             Display::writeDialogue(" All right, can I at least find out who\n\tsent you? I know you're not working alone. I'm seeing you for the first time in my life.'");
             break;
         }
@@ -1484,7 +1489,7 @@ void Event::dialogueWithVincent()
             Console::clearScreen();
             menu20.showHeroChoice();
             Display::writeNarration("\n\tYou are not a coward.");
-            Sleep(1000);
+            Console::wait(1000);
             Display::writeNarration(" You don't stab people in the back. That's not your style. You prefer an\n\topen fight.");
             break;
         }
@@ -1513,15 +1518,15 @@ void Event::dialogueWithVincent()
             Console::clearScreen();
             menu21.showHeroChoice();
             Display::writeDialogue("\n\t- 'Ugh, you little prick. I'll get you from beyond the grave. There will be no peace. I won't let that happen!'");
-            Sleep(1500);
+            Console::wait(1500);
             Display::writeNarration("\n\tThe last word spoken synchronizes with the bang of a gunshot as a bullet of energy pierces the club owner's chest.");
-            Sleep(1000);
+            Console::wait(1000);
             Display::writeNarration(" The recoil knocks him from his seat. The lifeless body clatters against the floor.");
-            Sleep(1500);
+            Console::wait(1500);
             Display::writeNarration(" He's dead, just like Nyx wanted.");
             Npc::npcs["Vincent"].setStatus(Dead);
             Display::writeNarration("\n\tOut of curiosity, you walk closer and spot the corpse holding a small pistol.");
-            Sleep(1000);
+            Console::wait(1000);
             Display::writeNarration(" That bastard was playing for time after all!");
             break;
         }
@@ -1532,13 +1537,13 @@ void Event::dialogueWithVincent()
             Display::writeDialogue("\n\t- 'Traitorous bitch! She'll get her due someday.");
             Display::writeDialogue(" All right, shithead, let's get this over with.'");
             Display::writeNarration("\n\tThe last word spoken synchronizes with the bang of a gunshot as a bullet of energy pierces the club owner's chest.");
-            Sleep(1000);
+            Console::wait(1000);
             Display::writeNarration(" The recoil knocks him from his seat. The lifeless body clatters against the floor.");
-            Sleep(1500);
+            Console::wait(1500);
             Display::writeNarration(" He's dead, just like Nyx wanted.");
             Npc::npcs["Vincent"].setStatus(Dead);
             Display::writeNarration("\n\tOut of curiosity, you walk closer and spot the corpse holding a small pistol.");
-            Sleep(1000);
+            Console::wait(1000);
             Display::writeNarration(" That bastard was playing for time after all!");
             break;
         }
@@ -1546,14 +1551,14 @@ void Event::dialogueWithVincent()
     }
 
     Display::writeNarration("\n\tThe passage behind your back is opened.");
-    Sleep(1000);
+    Console::wait(1000);
     Display::writeNarration(" You turn around, in front of you is Nyx.");
     Display::writeDialogue("\n\t- 'Did you do what I asked you to do...'");
-    Sleep(1500);
+    Console::wait(1500);
     Display::writeNarration("\n\tThe girl's gaze wanders from you to the body of her ex-boyfriend behind you.");
-    Sleep(1000);
+    Console::wait(1000);
     Display::writeDialogue("\n\t- 'You did it... You really did it... Is he - is he dead?'");
-    Sleep(1000);
+    Console::wait(1000);
     Display::writeNarration("\n\tNyx walks past you and kneels by the dead man. She starts searching his pockets for something.\n\n");
     //--------------------------------
     Menu menu22;
@@ -1590,22 +1595,22 @@ void Event::vincentResurrection()
 {
     Logger::startFuncLog(__FUNCTION__);
     Display::writeNarration("\n\tSuddenly, the maze of cables begins to vibrate and move in a strange dance.");
-    Sleep(1000);
+    Console::wait(1000);
     Display::writeNarration(" Hisses reach you and Nyx, forming a gibberish that is difficult to understand.");
-    Console::setConsoleColor(CC_Robot);
+    Console::setConsoleColor(ConsoleColor::CC_Robot);
     Display::write("\n\t<You scum! You thought you got rid of me.");
-    Sleep(1000);
+    Console::wait(1000);
     Display::write(" But you didn't.");
-    Sleep(1000);
+    Console::wait(1000);
     Display::write(" I'm immortal now!>");
     Display::writeNarration("\n\tYou exchange a look with Nyx. You both can't believe what's happening.");
     Display::writeDialogue("\n\t- 'What the fuck?!'");
-    Console::setConsoleColor(CC_Robot);
+    Console::setConsoleColor(ConsoleColor::CC_Robot);
     Display::write("\n\t<Before your new lover killed me, sweatheart, I managed to pour some of my consciousness into the net. I don't need my body anymore, nothing limits me anymore.");
-    Sleep(1500);
-    Console::setConsoleColor(CC_Robot);
+    Console::wait(1500);
+    Console::setConsoleColor(ConsoleColor::CC_Robot);
     Display::write(" Now you will get what you deserve. The time for payment has come!");
-    Sleep(1000);
+    Console::wait(1000);
     Display::write(" DIE!>");
     Console::waitForUserInput();
 }
@@ -1658,17 +1663,17 @@ void Event::nightclubCrossroads()
 void Event::loadingFiles()
 {
     Logger::startFuncLog(__FUNCTION__);
-    Console::setConsoleColor(CC_Dialogue);
+    Console::setConsoleColor(ConsoleColor::CC_Dialogue);
     Display::write("\t||", 100);
 
     for (int i = 0; i < 21; i++)
     {
-        Sleep(1000);
+        Console::wait(1000);
         Display::write("=", 100);
     }
 
     Display::write("||", 100);
-    Sleep(1000);
+    Console::wait(1000);
     Display::write(jWriter["Infos"]["DownloadCompleted"]);
     Console::resetConsoleColor();
 }

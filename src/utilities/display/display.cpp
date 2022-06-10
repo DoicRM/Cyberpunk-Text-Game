@@ -14,14 +14,14 @@ void Display::write(const std::string& text, int speed)
 
 void Display::writeNarration(std::string text, int speed)
 {
-    Console::setConsoleColor(CC_Narration);
+    Console::setConsoleColor(ConsoleColor::CC_Narration);
     Display::write(text, speed);
     Console::resetConsoleColor();
 }
 
 void Display::writeDialogue(std::string text, int speed)
 {
-    Console::setConsoleColor(CC_Dialogue);
+    Console::setConsoleColor(ConsoleColor::CC_Dialogue);
     Display::write(text, speed);
     Console::resetConsoleColor();
 }

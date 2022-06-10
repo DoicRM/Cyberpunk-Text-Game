@@ -1,6 +1,8 @@
 #pragma once
 #include <Windows.h>
 #include <conio.h>
+#include <chrono>
+#include <thread>
 
 enum ConsoleColor
 {
@@ -24,6 +26,7 @@ public:
 	static void setConsoleColor(int color = CC_Default);
 	static void resetConsoleColor();
 	static void resetConsoleEncoding(UINT input, UINT output);
+	static void wait(int ms);
 private:
 	static void preventResizeConsole();
 	static void setConsoleTitle(LPCSTR lpConsoleTitle);

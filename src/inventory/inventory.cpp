@@ -44,41 +44,45 @@ void Inventory::addItems(Item* item, int amount)
 
 void Inventory::removeItem(Item* item)
 {
-    if (hasItem(item))
+    if (!hasItem(item))
     {
-        for (int i = 0; i < itemsList.size(); i++)
+        return;
+    }
+       
+    for (int i = 0; i < itemsList.size(); i++)
+    {
+        if (itemsList[i] == item)
+        {
+            itemsList.erase(itemsList.begin() + i);
+        }
+
+        break;
+    }
+
+    updateInvFile();
+}
+
+void Inventory::removeItems(Item* item, int amount)
+{
+    if (hasItem(item) < amount)
+    {
+        return;
+    }
+
+    for (int i = 0; i < itemsList.size(); i++)
+    {
+        for (int j = 0; j < amount; j++)
         {
             if (itemsList[i] == item)
             {
                 itemsList.erase(itemsList.begin() + i);
             }
-
-            break;
         }
 
-        updateInvFile();
+        break;
     }
-}
 
-void Inventory::removeItems(Item* item, int amount)
-{
-    if (hasItem(item) >= amount)
-    {
-        for (int i = 0; i < itemsList.size(); i++)
-        {
-            for (int j = 0; j < amount; j++)
-            {
-                if (itemsList[i] == item)
-                {
-                    itemsList.erase(itemsList.begin() + i);
-                }
-            }
-
-            break;
-        }
-
-        updateInvFile();
-    }
+    updateInvFile();
 }
 
 void Inventory::updateInvFile()

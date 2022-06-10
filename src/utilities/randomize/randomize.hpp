@@ -4,5 +4,5 @@
 class Randomize
 {
 public:
-	static int randIntBetween(int min, int max);
+	static int randInt(int min, int max);
 };

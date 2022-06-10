@@ -49,3 +49,8 @@ void Console::resetConsoleEncoding(UINT input, UINT output)
     SetConsoleCP(input);
     SetConsoleOutputCP(output);
 }
+
+void Console::wait(int ms)
+{
+    std::this_thread::sleep_for(std::chrono::milliseconds(ms));
+}

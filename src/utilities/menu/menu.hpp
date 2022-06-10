@@ -13,11 +13,9 @@ public:
 	void showHeroChoice();
 	void clearOptions();
 	void addOption(std::string description);
-	void addOptions(std::array<std::string, 10> options);
+	void addOptions(std::vector<std::string> options);
 	void showOptions();
 	int inputChoice();
-
-	static std::map <std::string, Menu> menus;
 
 	inline int getChoice() const { return this->choice; }
 

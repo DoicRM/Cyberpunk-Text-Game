@@ -65,17 +65,17 @@ void Npc::printAttitude()
     if (this->attitude == Angry)
     {
         attitude = jWriter["Attitudes"]["Angry"];
-        Console::setConsoleColor(CC_Yellow);
+        Console::setConsoleColor(ConsoleColor::CC_Yellow);
     }
     else if (this->attitude == Hostile)
     {
         attitude = jWriter["Attitudes"]["Hostile"];
-        Console::setConsoleColor(CC_Red);
+        Console::setConsoleColor(ConsoleColor::CC_Red);
     }
     else if (this->attitude == Friendly)
     {
         attitude = jWriter["Attitudes"]["Friendly"];
-        Console::setConsoleColor(CC_Green);
+        Console::setConsoleColor(ConsoleColor::CC_Green);
     }
     else
     {

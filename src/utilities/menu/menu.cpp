@@ -1,7 +1,5 @@
 #include "./menu.hpp"
 
-std::map <std::string, Menu> menus;
-
 Menu::Menu()
 {
     // Logger::out("Function starts", __FUNCTION__);
@@ -44,7 +42,7 @@ void Menu::addOption(std::string description)
     this->optionNr += 1;
 }
 
-void Menu::addOptions(std::array<std::string, 10> options)
+void Menu::addOptions(std::vector<std::string> options)
 {
     clearOptions();
 
@@ -60,6 +58,11 @@ void Menu::addOptions(std::array<std::string, 10> options)
 
 void Menu::showOptions()
 {
+    if (options.empty())
+    {
+        return;
+    }
+
     Console::resetConsoleColor();
 
     for (const auto& j : options)
@@ -70,6 +73,10 @@ void Menu::showOptions()
 
 int Menu::inputChoice()
 {
+    //Console::setConsoleColor(ConsoleColor::CC_Narration);
+    //std::cout << "\tType 'exit' if you want to return to the main menu." << std::endl;
+    //Console::resetConsoleColor();
+
     Display::write("\t> ", 25);
     std::cin >> this->choice;
     std::cin.clear();

@@ -11,9 +11,9 @@ AmbientNpc::~AmbientNpc()
 
 void AmbientNpc::init()
 {
-    randomSex(Randomize::randIntBetween(0, 1));
-    randomName(Randomize::randIntBetween(0,9));
-    randomFraction(Randomize::randIntBetween(0, 4));
+    randomSex(Randomize::randInt(0, 1));
+    randomName(Randomize::randInt(0,9));
+    randomFraction(Randomize::randInt(0, 4));
 }
 
 void AmbientNpc::randomSex(int randNr)
