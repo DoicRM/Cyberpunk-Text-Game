@@ -6,10 +6,10 @@ void Event::actOne()
 
     if (Game::game[0].getLang() == EN)
     {
-        Display::write("\n\tAct One");
+        Display::write("\n\tChapter One");
     }
     else {
-        Display::write("\n\tAkt pierwszy");
+        Display::write("\n\tRozdzia³ pierwszy");
     }
 
     Console::wait(2000);

@@ -76,3 +76,8 @@ extern bool darkAlleyWasVisited,
 			heroIsOnDanceFloor,
 			heroIsAtBar,
 			heroKnowsVincentCode;
+
+class RandomEvent : Event {
+public:
+	static void nickHandFinding();
+};

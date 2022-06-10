@@ -204,6 +204,15 @@
       "\t'You're wrong. It's absolutely my business, kid. Don't shut your mouth like that, or you might\n\tlose a few teeth. Got it?'\n",
       "\n\t'Don't show up here again if you don't want to get your teeth kicked in!'\n"
     ],
+    "NicHandFinding": [
+      "\n\tYou are almost at the exit of the alley when your foot encounters something hard.",
+      " You stop\n\tand lower your gaze to the obstacle.",
+      " It turns out to be a bloody hand. Next to it lie\n\thandcuffs attached to a suitcase.",
+      " It has the words 'Nick Rinaldi' written on it.",
+      " It was\n\tprobably the property of some corporate yuppie.",
+      " Someone must have made a lot of money.",
+      " Too\n\tbad it wasn't you..."
+    ],
     "RememberYourName": "\tYour name... You start wandering your thoughts around what your name is. As if through a fog\n\tit occurs to you that you are:\n"
   }
 }

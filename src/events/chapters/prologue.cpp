@@ -1343,6 +1343,7 @@ void Event::jetGetsAngry(int angerPoints)
 void Event::wakeUpBeforeMeetingWithJet()
 {
     Logger::startFuncLog(__FUNCTION__);
+
     Display::writeNarration("\n\tEmptiness...", 65);
     Console::wait(1000);
     Display::writeNarration(" Various sounds are coming from the darkness", 60);
@@ -1358,7 +1359,11 @@ void Event::wakeUpBeforeMeetingWithJet()
     Display::writeNarration("\n\tWith difficulty you pick yourself up in the ground and, walking slowly, you come to a street\n\tbathed in light.");
 
     int rand = Randomize::randInt(0, 10);
-    // random event
+    
+    if (rand > 5 && rand <= 10)
+    {
+        RandomEvent::nickHandFinding();
+    }
 
     Game::game[0].setCurrentLocation(&Location::locations["Street"]);
 }
@@ -1698,4 +1703,21 @@ void Event::namingHero()
     heroName = Input::getString();
     Hero::heroes[0].setName(heroName);
     Logger::out("Set <b>" + Hero::heroes[0].getName() + "</b> to hero's name", __FUNCTION__);
+}
+
+void RandomEvent::nickHandFinding()
+{
+    Display::writeNarration(jWriter["Prologue"]["NicHandFinding"][0]);
+    Console::wait(500);
+    Display::writeNarration(jWriter["Prologue"]["NicHandFinding"][1]);
+    Console::wait(1000);
+    Display::writeNarration(jWriter["Prologue"]["NicHandFinding"][2]);
+    Console::wait(500);
+    Display::writeNarration(jWriter["Prologue"]["NicHandFinding"][3]);
+    Console::wait(250);
+    Display::writeNarration(jWriter["Prologue"]["NicHandFinding"][4]);
+    Console::wait(500);
+    Display::writeNarration(jWriter["Prologue"]["NicHandFinding"][5]);
+    Console::wait(250);
+    Display::writeNarration(jWriter["Prologue"]["NicHandFinding"][6]);
 }
