@@ -1707,17 +1707,17 @@ void Event::namingHero()
 
 void RandomEvent::nickHandFinding()
 {
-    Display::writeNarration(jWriter["Prologue"]["NicHandFinding"][0]);
+    Display::writeNarration(jWriter["Prologue"]["NickHandFinding"][0]);
     Console::wait(500);
-    Display::writeNarration(jWriter["Prologue"]["NicHandFinding"][1]);
+    Display::writeNarration(jWriter["Prologue"]["NickHandFinding"][1]);
     Console::wait(1000);
-    Display::writeNarration(jWriter["Prologue"]["NicHandFinding"][2]);
+    Display::writeNarration(jWriter["Prologue"]["NickHandFinding"][2]);
     Console::wait(500);
-    Display::writeNarration(jWriter["Prologue"]["NicHandFinding"][3]);
+    Display::writeNarration(jWriter["Prologue"]["NickHandFinding"][3]);
     Console::wait(250);
-    Display::writeNarration(jWriter["Prologue"]["NicHandFinding"][4]);
+    Display::writeNarration(jWriter["Prologue"]["NickHandFinding"][4]);
     Console::wait(500);
-    Display::writeNarration(jWriter["Prologue"]["NicHandFinding"][5]);
+    Display::writeNarration(jWriter["Prologue"]["NickHandFinding"][5]);
     Console::wait(250);
-    Display::writeNarration(jWriter["Prologue"]["NicHandFinding"][6]);
+    Display::writeNarration(jWriter["Prologue"]["NickHandFinding"][6]);
 }
