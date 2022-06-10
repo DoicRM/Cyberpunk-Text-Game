@@ -164,12 +164,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\events\events.cpp" />
-    <ClCompile Include="src\events\scenes\actOne.cpp" />
-    <ClCompile Include="src\events\scenes\actThree.cpp" />
-    <ClCompile Include="src\events\scenes\actTwo.cpp" />
-    <ClCompile Include="src\events\scenes\epilogue.cpp" />
-    <ClCompile Include="src\events\scenes\prologue.cpp" />
+    <ClCompile Include="src\events\eventManager.cpp" />
+    <ClCompile Include="src\events\chapters\chapterOne.cpp" />
+    <ClCompile Include="src\events\chapters\chapterThree.cpp" />
+    <ClCompile Include="src\events\chapters\chapterTwo.cpp" />
+    <ClCompile Include="src\events\chapters\epilogue.cpp" />
+    <ClCompile Include="src\events\chapters\prologue.cpp" />
     <ClCompile Include="src\fraction\fraction.cpp" />
     <ClCompile Include="src\game\game.cpp" />
     <ClCompile Include="src\hero\hero.cpp" />
@@ -192,7 +192,7 @@
     <ClCompile Include="src\utilities\randomize\randomize.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\events\events.hpp" />
+    <ClInclude Include="src\events\eventManager.hpp" />
     <ClInclude Include="src\fraction\fraction.hpp" />
     <ClInclude Include="src\game\game.hpp" />
     <ClInclude Include="src\hero\hero.hpp" />

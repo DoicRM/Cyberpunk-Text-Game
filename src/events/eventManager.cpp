@@ -1,4 +1,4 @@
-#include "events.hpp"
+#include "eventManager.hpp"
 
 int heroChoice = 0;
 bool darkAlleyWasVisited = false, streetWasVisited = false, gunShopWasVisited = false, nightclubWasVisited = false;

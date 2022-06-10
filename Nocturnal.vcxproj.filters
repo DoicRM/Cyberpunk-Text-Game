@@ -60,22 +60,22 @@
     <ClCompile Include="src\fraction\fraction.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
-    <ClCompile Include="src\events\events.cpp">
+    <ClCompile Include="src\events\eventManager.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
-    <ClCompile Include="src\events\scenes\actOne.cpp">
+    <ClCompile Include="src\events\chapters\chapterOne.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
-    <ClCompile Include="src\events\scenes\actThree.cpp">
+    <ClCompile Include="src\events\chapters\chapterThree.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
-    <ClCompile Include="src\events\scenes\actTwo.cpp">
+    <ClCompile Include="src\events\chapters\chapterTwo.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
-    <ClCompile Include="src\events\scenes\epilogue.cpp">
+    <ClCompile Include="src\events\chapters\epilogue.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
-    <ClCompile Include="src\events\scenes\prologue.cpp">
+    <ClCompile Include="src\events\chapters\prologue.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
     <ClCompile Include="src\utilities\display\display.cpp">
@@ -140,7 +140,7 @@
     <ClInclude Include="src\fraction\fraction.hpp">
       <Filter>Header files</Filter>
     </ClInclude>
-    <ClInclude Include="src\events\events.hpp">
+    <ClInclude Include="src\events\eventManager.hpp">
       <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="src\utilities\input\input.hpp">
