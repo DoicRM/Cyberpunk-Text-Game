@@ -22,15 +22,15 @@ Fraction::~Fraction()
 
 std::string Fraction::printAttitude()
 {
-    if (this->attitude == Angry)
+    if (this->attitude == Attitude::Angry)
     {
         return jWriter["Attitudes"]["Angry"];
     }
-    else if (this->attitude == Hostile)
+    else if (this->attitude == Attitude::Hostile)
     {
         return jWriter["Attitudes"]["Hostile"];
     }
-    else if (this->attitude == Friendly)
+    else if (this->attitude == Attitude::Friendly)
     {
         return jWriter["Attitudes"]["Friendly"];
     }
@@ -42,12 +42,12 @@ void Fraction::initFractions()
 {
     Logger::startFuncLog(__FUNCTION__);
 
-    Fraction None(jWriter["Fractions"]["None_Name"], 0, Neutral);
-    Fraction Beggars(jWriter["Fractions"]["Beggars_Name"], 0, Neutral);
-    Fraction Police(jWriter["Fractions"]["Police_Name"], 0, Neutral);
-    Fraction Hammers(jWriter["Fractions"]["Hammers_Name"], 0, Neutral);
-    Fraction Sleepers(jWriter["Fractions"]["Sleepers_Name"], 0, Neutral);
-    Fraction SowersOfConfusion(jWriter["Fractions"]["SowersOfConfusion_Name"], 0, Neutral);
+    Fraction None(jWriter["Fractions"]["None_Name"], 0, Attitude::Neutral);
+    Fraction Beggars(jWriter["Fractions"]["Beggars_Name"], 0, Attitude::Neutral);
+    Fraction Police(jWriter["Fractions"]["Police_Name"], 0, Attitude::Neutral);
+    Fraction Hammers(jWriter["Fractions"]["Hammers_Name"], 0, Attitude::Neutral);
+    Fraction Sleepers(jWriter["Fractions"]["Sleepers_Name"], 0, Attitude::Neutral);
+    Fraction SowersOfConfusion(jWriter["Fractions"]["SowersOfConfusion_Name"], 0, Attitude::Neutral);
 
     fractions["None"] = None;
     fractions["Beggars"] = Beggars;

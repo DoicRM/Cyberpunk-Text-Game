@@ -62,17 +62,17 @@ void Npc::printAttitude()
 {
     std::string attitude;
 
-    if (this->attitude == Angry)
+    if (this->attitude == Attitude::Angry)
     {
         attitude = jWriter["Attitudes"]["Angry"];
         Console::setConsoleColor(ConsoleColor::CC_Yellow);
     }
-    else if (this->attitude == Hostile)
+    else if (this->attitude == Attitude::Hostile)
     {
         attitude = jWriter["Attitudes"]["Hostile"];
         Console::setConsoleColor(ConsoleColor::CC_Red);
     }
-    else if (this->attitude == Friendly)
+    else if (this->attitude == Attitude::Friendly)
     {
         attitude = jWriter["Attitudes"]["Friendly"];
         Console::setConsoleColor(ConsoleColor::CC_Green);
