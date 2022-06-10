@@ -65,12 +65,12 @@ void Event::heroDeath()
 {
     Logger::startFuncLog(__FUNCTION__);
     clearInstances();
-    Sleep(500);
+    Console::wait(500);
     Console::clearScreen();
     Console::setConsoleColor(CC_Red);
     std::cout << std::endl;
     Display::write(jWriter["Infos"]["YouAreDead"]);
-    Sleep(1000);
+    Console::wait(1000);
     Console::setConsoleColor();
     Display::write(jWriter["Infos"]["BackToMenu"], 25);
     Console::waitForUserInput();
@@ -82,12 +82,12 @@ void Event::gameOver()
 {
     Logger::startFuncLog(__FUNCTION__);
     clearInstances();
-    Sleep(500);
+    Console::wait(500);
     Console::clearScreen();
     Console::setConsoleColor(CC_Lightblue);
     std::cout << std::endl;
     Display::write(jWriter["Infos"]["TheEnd"], 25);
-    Sleep(1000);
+    Console::wait(1000);
     std::cout << std::endl << std::endl;
     Console::resetConsoleColor();
     Game::game[0].credits();

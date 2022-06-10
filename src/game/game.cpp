@@ -87,9 +87,9 @@ void Game::selectLanguage()
 void Game::welcome()
 {
     Logger::startFuncLog(__FUNCTION__);
-    Sleep(500); 
+    Console::wait(500); 
     Display::write(jWriter["Infos"]["Welcome"], 40);
-    Sleep(2000);
+    Console::wait(2000);
     Console::clearScreen();
 }
 
@@ -177,7 +177,7 @@ void Game::continueGame()
     Console::setConsoleColor(CC_Lightblue);
     Display::write(jWriter["Infos"]["ContinueGame"], 25);
     Console::resetConsoleColor();
-    Sleep(1000);
+    Console::wait(1000);
     pause();
     Console::clearScreen();
     loadLogo();
@@ -254,7 +254,7 @@ void Game::endGame()
 void Game::credits()
 {
     Logger::startFuncLog(__FUNCTION__);
-    Sleep(500);
+    Console::wait(500);
     Console::clearScreen();
     Console::setConsoleColor(CC_Lightblue);
     Display::write(jWriter["Credits"]["Author"]);
@@ -268,7 +268,7 @@ void Game::credits()
     Display::write(jWriter["Credits"]["Thanks"]);
     Console::resetConsoleColor();
     Display::write("\n\t   Dominik Szpilski\n\t     Daniel Obłąk\n\n");
-    Sleep(1000);
+    Console::wait(1000);
     pause();
     Console::clearScreen();
     loadLogo();
