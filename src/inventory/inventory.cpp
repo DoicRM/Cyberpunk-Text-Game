@@ -64,7 +64,7 @@ void Inventory::removeItem(Item* item)
 
 void Inventory::removeItems(Item* item, int amount)
 {
-    if (hasItems(item, amount) < amount)
+    if (!hasItems(item, amount))
     {
         return;
     }
@@ -172,12 +172,19 @@ bool Inventory::hasItem(Item* item)
 
 bool Inventory::hasItems(Item* item, int amount)
 {
+    int ownedItem = 0;
+
     for (auto i : itemsList)
     {
         if (i == item)
         {
-            return true;
+            ownedItem += 1;
         }
+    }
+
+    if (ownedItem >= amount)
+    {
+        return true;
     }
 
     return false;
