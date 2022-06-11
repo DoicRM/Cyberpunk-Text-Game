@@ -14,11 +14,14 @@
   },
   "MainMenu": [
     "Nowa gra",
-    "Kontynuuj grę",
+    "Wczytaj grę",
     "Zmień język",
     "Napisy",
     "Wyjdź z gry"
   ],
+  "LoadGame": {
+    "NoSavesFound": "\tNie znaleziono żadnych zapisów gry."
+  },
   "Credits": {
     "Author": "\n\t\tAUTOR",
     "Testers": "\t       TESTERZY",
@@ -28,6 +31,11 @@
     "Prompt": "\n\tJesteś pewien, że chcesz wyjść z gry?\n",
     "Yes": "Tak",
     "No": "Nie"
+  },
+  "Sex": {
+    "Undefined": "niezdefiniowana",
+    "Male": "mężczyzna",
+    "Female": "kobieta"
   },
   "Attitudes": {
     "Angry": "zły",

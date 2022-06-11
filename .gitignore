@@ -365,3 +365,4 @@ FodyWeavers.xsd
 # For generated files
 *.txt
 log.html
+save_*.dat

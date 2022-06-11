@@ -1,4 +1,5 @@
 #include "game.hpp"
+#include "../utilities/saveManager/saveManager.hpp"
 
 std::map <int, Game> Game::game;
 
@@ -165,6 +166,7 @@ void Game::mainMenu()
 void Game::newGame()
 {
     Logger::startFuncLog(__FUNCTION__);
+    SaveManager::createSave();
     initAll();
     Console::clearScreen();
     setCurrentLocation(&Location::locations["DarkAlley"]);
@@ -174,8 +176,7 @@ void Game::continueGame()
 {
     Logger::startFuncLog(__FUNCTION__);
     Console::clearScreen();
-    Console::setConsoleColor(CC_Lightblue);
-    Display::write(jWriter["Infos"]["ContinueGame"], 25);
+    SaveManager::printSavesList();
     Console::resetConsoleColor();
     Console::wait(1000);
     pause();

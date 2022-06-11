@@ -21,6 +21,7 @@ public:
     void showItemInfo(int index);
     void clearInv();
     bool hasItem(Item* item);
+    bool hasItems(Item* item, int amount);
 
 private:
     std::vector<Item*>itemsList;

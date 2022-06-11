@@ -190,6 +190,7 @@
     <ClCompile Include="src\utilities\logger\logger.cpp" />
     <ClCompile Include="src\utilities\menu\menu.cpp" />
     <ClCompile Include="src\utilities\randomize\randomize.cpp" />
+    <ClCompile Include="src\utilities\saveManager\saveManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\events\eventManager.hpp" />
@@ -212,6 +213,7 @@
     <ClInclude Include="src\utilities\logger\logger.hpp" />
     <ClInclude Include="src\utilities\menu\menu.hpp" />
     <ClInclude Include="src\utilities\randomize\randomize.hpp" />
+    <ClInclude Include="src\utilities\saveManager\saveManager.hpp" />
     <ClInclude Include="src\utilities\utilities.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -14,11 +14,14 @@
   },
   "MainMenu": [
     "New game",
-    "Continue game",
+    "Load game",
     "Change language",
     "Credits",
     "Quit game"
   ],
+  "LoadGame": {
+    "NoSavesFound": "\tNo saves have been found."
+  },
   "Credits": {
     "Author": "\n\t\tAUTHOR",
     "Testers": "\t\tTESTERS",
@@ -28,6 +31,11 @@
     "Prompt": "\n\tAre you sure you want to end the game?\n",
     "Yes": "Yes",
     "No": "No"
+  },
+  "Sex": {
+    "Undefined": "undefined",
+    "Male": "male",
+    "Female": "female"
   },
   "Attitudes": {
     "Angry": "angry",

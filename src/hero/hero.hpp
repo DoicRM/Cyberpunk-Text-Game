@@ -38,6 +38,7 @@ public:
     bool hasItem(Item* item) { return this->inventory.hasItem(item); }
 
     inline const std::string& getName() const { return this->name; }
+    inline const int& getSex() const { return this->sex; }
     inline const int& getHP() const { return this->hp; }
     inline const float& getMoney() const { return this->money; }
 

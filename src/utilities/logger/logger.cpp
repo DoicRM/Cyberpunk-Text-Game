@@ -151,6 +151,29 @@ std::string Logger::getFormattedTimestamp()
 #endif
 }
 
+std::string Logger::getFormattedFullDate()
+{
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
+    time_t timestamp = (time_t)getTimestamp();
+    struct tm timeinfo;
+    char buffer[80];
+    time(&timestamp);
+    localtime_s(&timeinfo, &timestamp);
+    strftime(buffer, 80, "%d.%m.%Y %H:%M", &timeinfo);
+    std::string str(buffer);
+    return str;
+#else
+    time_t timestamp = getTimestamp();
+    struct tm* timeinfo;
+    char buffer[80];
+    time(&timestamp);
+    timeinfo = localtime_r(&timestamp);
+    strftime(buffer, 80, "%d.%m.%Y %H:%M", timeinfo);
+    std::string str(buffer);
+    return str;
+#endif
+}
+
 double Logger::getTimestamp()
 {
     std::chrono::system_clock::time_point now = std::chrono::system_clock::now();

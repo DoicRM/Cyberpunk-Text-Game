@@ -23,6 +23,7 @@ public:
 
     static double getTimestamp();
     static std::string getFormattedTimestamp();
+    static std::string getFormattedFullDate();
 
 private:
     static std::ofstream m_file;
