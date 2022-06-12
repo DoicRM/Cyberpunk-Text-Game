@@ -11,10 +11,12 @@ int saveNr;
 void SaveManager::createSave()
 {
     Logger::startFuncLog(__FUNCTION__);
+    CreateDirectory("data\\saves", NULL);
     std::ofstream newSave;
+    std::string savesPath = std::filesystem::current_path().string() + "\\data\\saves\\";
     std::string save = "save_";
     std::string file = ".dat";
-    newSave.open(save + std::to_string(saveNr) + file, std::ios_base::trunc);
+    newSave.open(savesPath + save + std::to_string(saveNr) + file, std::ios_base::trunc);
     saveNr++;
     newSave << "Player" << " :: " << "Unknown" << std::endl;
     newSave << "Gender" << " :: " << Sex::Undefined << std::endl;
@@ -59,13 +61,14 @@ void SaveManager::updateSave(int saveNr, std::string player, int sex, std::strin
 void SaveManager::loadSaveInfo(std::string save)
 {
     Logger::startFuncLog(__FUNCTION__);
+    std::string savesPath = std::filesystem::current_path().string() + "\\data\\saves\\";
     std::ifstream oldSave;
-    oldSave.open(save);
+    oldSave.open(savesPath + save);
 
     if (!oldSave.is_open())
     {
         Logger::error("Unable to open file", __FUNCTION__);
-        return Game::game[0].mainMenu();
+        return Game::game[0].loadLogo();
     }
 
     std::string playerText, protoText, player, genderText, chapter, date, hour;
@@ -82,25 +85,26 @@ void SaveManager::printSavesList()
 {
     Logger::startFuncLog(__FUNCTION__);
     std::cout << std::endl;
-    searchforSaves();
+    searchForSaves();
     std::cout << std::endl << std::endl;
 }
 
-void SaveManager::searchforSaves()
+void SaveManager::searchForSaves()
 {
     Logger::startFuncLog(__FUNCTION__);
     _finddata_t f;
     intptr_t r;
     
-    std::string currentPath = std::filesystem::current_path().string() + "\\";
-    std::string searchingFilter = currentPath;
+    std::string savesPath = std::filesystem::current_path().string() + "\\data\\saves\\";
+    std::string searchingFilter = savesPath;
     searchingFilter += "save_*.dat";
 
     if ((r = _findfirst(searchingFilter.c_str(), &f)) > 0)
     {
         do
         {
-            if (!(f.attrib & _A_SUBDIR)) {
+            if (!(f.attrib & _A_SUBDIR))
+            {
                 Logger::out((std::string)f.name + " found", __FUNCTION__);
                 SaveManager::loadSaveInfo((std::string)f.name);
             }
@@ -117,16 +121,14 @@ void SaveManager::searchforSaves()
 
 std::string SaveManager::printSex(int sex)
 {
-    std::string str;
-
     if (sex == Sex::Male)
     {
-        return str = jWriter["Sex"]["Male"];
+        return jWriter["Sex"]["Male"];
     }
     else if (sex == Sex::Female)
     {
-        return str = jWriter["Sex"]["Female"];
+        return jWriter["Sex"]["Female"];
     }
 
-    return str = jWriter["Sex"]["Undefined"];
+    return jWriter["Sex"]["Undefined"];
 }

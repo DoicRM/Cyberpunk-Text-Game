@@ -12,5 +12,5 @@ int main()
     Logger::cleanup();
     Game::game.clear();
     Console::resetConsoleEncoding(defaultInputEncoding, defaultOutputEncoding);
-    return EXIT_SUCCESS;
+    return 0;
 }

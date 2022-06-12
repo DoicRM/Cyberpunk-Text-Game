@@ -172,17 +172,17 @@ bool Inventory::hasItem(Item* item)
 
 bool Inventory::hasItems(Item* item, int amount)
 {
-    int ownedItem = 0;
+    int ownedItems = 0;
 
     for (auto i : itemsList)
     {
         if (i == item)
         {
-            ownedItem += 1;
+            ownedItems += 1;
         }
     }
 
-    if (ownedItem >= amount)
+    if (ownedItems >= amount)
     {
         return true;
     }
