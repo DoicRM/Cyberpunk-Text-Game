@@ -6,7 +6,7 @@
 class SaveManager {
 public:
 	static void createSave();
-	static void loadSave();
+	static void loadSave(int nr);
 	static void updateSave(int saveNr, std::string player, int sex, std::string chapter, int stage);
 	static void printSavesList();
 	static std::string printSex(int sex);

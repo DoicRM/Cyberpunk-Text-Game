@@ -25,16 +25,17 @@ void SaveManager::createSave()
     newSave.close();
 }
 
-void SaveManager::loadSave()
+void SaveManager::loadSave(int nr)
 {
     Logger::startFuncLog(__FUNCTION__);
     std::ifstream oldSave;
-    oldSave.open("save.dat");
+    std::string savesPath = std::filesystem::current_path().string() + "\\data\\saves\\";
+    oldSave.open(savesPath + "save_" + std::to_string(nr) + ".dat");
 
     if (!oldSave.is_open())
     {
-        Logger::error("Unable to open file", __FUNCTION__);
-        return Game::game[0].mainMenu();
+        Logger::error("Unable to open 'save_" + std::to_string(nr) + ".txt' file", __FUNCTION__);
+        return Game::game[0].loadLogo();
     }
 
     std::string playerText, protoText, player, genderText, chapter;
@@ -67,8 +68,7 @@ void SaveManager::loadSaveInfo(std::string save)
 
     if (!oldSave.is_open())
     {
-        Logger::error("Unable to open file", __FUNCTION__);
-        return Game::game[0].loadLogo();
+        return Logger::error("Unable to open '" + save + "' file", __FUNCTION__);
     }
 
     std::string playerText, protoText, player, genderText, chapter, date, hour;
@@ -110,7 +110,8 @@ void SaveManager::searchForSaves()
             }
         } while (!_findnext(r, &f));
     }
-    else {
+    else
+    {
         Console::setConsoleColor(ConsoleColor::CC_Narration);
         std::cout << (std::string)jWriter["LoadGame"]["NoSavesFound"] << std::endl;
         Console::resetConsoleColor();
