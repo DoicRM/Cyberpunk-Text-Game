@@ -1,5 +1,7 @@
 # Nocturnal
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/41e4a17a018e429786e454d1a0220c5e)](https://app.codacy.com/gh/DoicRM/Nocturnal?utm_source=github.com&utm_medium=referral&utm_content=DoicRM/Nocturnal&utm_campaign=Badge_Grade_Settings)
+
 **Nocturnal** is an English and Polish language console text game written entirely in `C++`. The game setting is `cyberpunk`, but a bit different from that known from CD Project Red or R. Talsorian Games. It's a story about the fate of a man lost in an artificially-supported world of the near future controlled by possessive corporations and plagued by bandit violence.
 
 ## Story introduction
