@@ -18,10 +18,10 @@ void SaveManager::createSave()
     std::string file = ".dat";
     newSave.open(savesPath + save + std::to_string(saveNr) + file, std::ios_base::trunc);
     saveNr++;
+    newSave << Logger::getFormattedFullDate() << std::endl;
     newSave << "Player" << " :: " << "Unknown" << std::endl;
     newSave << "Gender" << " :: " << Sex::Undefined << std::endl;
     newSave << chap1 << " :: " << "1" << std::endl;
-    newSave << Logger::getFormattedFullDate() << std::endl;
     newSave.close();
 }
 
@@ -38,11 +38,11 @@ void SaveManager::loadSave(int nr)
         return Game::game[0].loadLogo();
     }
 
-    std::string playerText, protoText, player, genderText, chapter;
+    std::string date, hour, playerText, protoText, player, genderText, chapter;
     int gender;
     int stage;
 
-    oldSave >> playerText >> protoText >> player >> genderText >> protoText >> gender >> chapter >> protoText >> stage;
+    oldSave >> date >> hour >> playerText >> protoText >> player >> genderText >> protoText >> gender >> chapter >> protoText >> stage;
     oldSave.close();
 
     Hero::heroes[0].setName(player);
@@ -71,11 +71,11 @@ void SaveManager::loadSaveInfo(std::string save)
         return Logger::error("Unable to open '" + save + "' file", __FUNCTION__);
     }
 
-    std::string playerText, protoText, player, genderText, chapter, date, hour;
+    std::string date, hour, playerText, protoText, player, genderText, chapter;
     int gender;
     int stage;
 
-    oldSave >> playerText >> protoText >> player >> genderText >> protoText >> gender >> chapter >> protoText >> stage >> date >> hour;
+    oldSave >> date >> hour >> playerText >> protoText >> player >> genderText >> protoText >> gender >> chapter >> protoText >> stage;
     oldSave.close();
 
     std::cout << "\t" << player << ", " << printSex(gender) << " | " << chapter << ": " << stage << " | " << date << " " << hour << std::endl;

@@ -8,6 +8,8 @@ class LanguageHandler
 {
 public:
 	static void loadDataFromFile(int lang);
+private:
+	static std::string getLang(int lang);
 };
 
 extern nlohmann::json jWriter;
