@@ -42,7 +42,7 @@ enum ItemType
 	NONE, WEAPON, CLOTHES, FOOD, OTHER, QUEST
 };
 
-enum ArmorType
+enum ClothesType
 {
 	HEAD, CHEST, ARMS, LEGS
 };

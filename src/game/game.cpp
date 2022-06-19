@@ -89,7 +89,7 @@ void Game::welcome()
 {
     Logger::startFuncLog(__FUNCTION__);
     Console::wait(500); 
-    Display::write(jWriter["Infos"]["Welcome"], 40);
+    Display::write(jWriter["main"]["welcome"], 40);
     Console::wait(2000);
     Console::clearScreen();
 }
@@ -118,7 +118,7 @@ void Game::writeLogo()
 
     Console::resetConsoleColor();
     std::cout << std::endl;
-    Display::write(jWriter["Infos"]["LogoSubtitle"], 2);
+    Display::write(jWriter["main"]["logoSubtitle"], 2);
 }
 
 void Game::loadLogo()
@@ -134,7 +134,7 @@ void Game::loadLogo()
 
     std::cout << std::endl;
     Console::resetConsoleColor();
-    std::cout << (std::string)jWriter["Infos"]["LogoSubtitle"] << std::endl;
+    std::cout << (std::string)jWriter["main"]["logoSubtitle"] << std::endl;
     mainMenu();
 }
 
@@ -145,7 +145,7 @@ void Game::mainMenu()
     std::cout << std::endl;
     Menu mainMenu;
     //--------------------------------
-    mainMenu.addOptions({ jWriter["MainMenu"][0], jWriter["MainMenu"][1], jWriter["MainMenu"][2], jWriter["MainMenu"][3], jWriter["MainMenu"][4] });
+    mainMenu.addOptions({ jWriter["mainMenu"][0], jWriter["mainMenu"][1], jWriter["mainMenu"][2], jWriter["mainMenu"][3], jWriter["mainMenu"][4] });
     mainMenu.showOptions();
     //--------------------------------
 
@@ -194,7 +194,7 @@ void Game::changeLanguage()
     while (change != EN && change != PL)
     {
         Console::clearScreen();
-        Display::write(jWriter["Infos"]["SelectYourLanguage"], 25);
+        Display::write(jWriter["main"]["selectYouLanguage"], 25);
         //--------------------------------
         langMenu.addOptions({ "EN", "PL" });
         langMenu.showOptions();
@@ -232,9 +232,9 @@ void Game::endGame()
     do
     {
         Console::clearScreen();
-        Display::write(jWriter["QuitGame"]["Prompt"], 25);
+        Display::write(jWriter["quitGame"]["prompt"], 25);
         //--------------------------------
-        quitMenu.addOptions({ jWriter["QuitGame"]["Yes"], jWriter["QuitGame"]["No"] });
+        quitMenu.addOptions({ jWriter["quitGame"]["yes"], jWriter["quitGame"]["no"] });
         quitMenu.showOptions();
         //--------------------------------
         choice = quitMenu.inputChoice();
@@ -258,15 +258,15 @@ void Game::credits()
     Console::wait(500);
     Console::clearScreen();
     Console::setConsoleColor(CC_Lightblue);
-    Display::write(jWriter["Credits"]["Author"]);
+    Display::write(jWriter["credits"]["author"]);
     Console::resetConsoleColor();
     Display::write("\n\tRadosław 'Doic' Michalak\n\n");
     Console::setConsoleColor(CC_Lightblue);
-    Display::write(jWriter["Credits"]["Testers"]);
+    Display::write(jWriter["credits"]["testers"]);
     Console::resetConsoleColor();
     Display::write("\n\t    Paweł Michalak\n\n");
     Console::setConsoleColor(CC_Lightblue);
-    Display::write(jWriter["Credits"]["Thanks"]);
+    Display::write(jWriter["credits"]["thanks"]);
     Console::resetConsoleColor();
     Display::write("\n\t   Dominik Szpilski\n\t     Daniel Obłąk\n\n");
     Console::wait(1000);
@@ -303,7 +303,7 @@ void Game::initHeroIventory()
         return Logger::error("Unable to open file", __FUNCTION__);
     }
     
-    eq << (std::string)jWriter["InventoryInfos"]["NoItemsInInv"] << std::endl;
+    eq << (std::string)jWriter["inventory"]["noItems"] << std::endl;
     eq.close();
 }
 
@@ -318,12 +318,12 @@ void Game::initHeroJournal()
         return Logger::error("Unable to open file", __FUNCTION__);
     }
     
-    quests << (std::string)jWriter["JournalInfos"]["NoQuestsInJournal"] << std::endl;
+    quests << (std::string)jWriter["journal"]["noQuests"] << std::endl;
     quests.close();
 }
 
 void Game::pause()
 {
-    std::cout << (std::string)jWriter["Infos"]["PressAnyKey"];
+    std::cout << (std::string)jWriter["main"]["pressAnyKey"];
     Console::waitForUserInput();
 }

@@ -19,8 +19,8 @@ void SaveManager::createSave()
     newSave.open(savesPath + save + std::to_string(saveNr) + file, std::ios_base::trunc);
     saveNr++;
     newSave << Logger::getFormattedFullDate() << std::endl;
-    newSave << "Player" << " :: " << "Unknown" << std::endl;
-    newSave << "Gender" << " :: " << Sex::Undefined << std::endl;
+    newSave << "Player" << " :: " << jWriter["loadGame"]["unknown"] << std::endl;
+    newSave << "Sex" << " :: " << Sex::Undefined << std::endl;
     newSave << chap1 << " :: " << "1" << std::endl;
     newSave.close();
 }
@@ -52,11 +52,13 @@ void SaveManager::loadSave(int nr)
 void SaveManager::updateSave(int saveNr, std::string player, int sex, std::string chapter, int stage)
 {
     Logger::startFuncLog(__FUNCTION__);
-    std::ofstream newSave;
-    newSave.open("save" + std::to_string(saveNr) + ".dat", std::ios_base::app);
-    newSave << "Player" << " :: " << "Unknown" << std::endl;
-    newSave << chapter << " :: " << stage << std::endl;
-    newSave.close();
+    std::ofstream loadedSave;
+    loadedSave.open("save" + std::to_string(saveNr) + ".dat", std::ios_base::app);
+    loadedSave << Logger::getFormattedFullDate() << std::endl;
+    loadedSave << "Player" << " :: " << player << std::endl;
+    loadedSave << "Sex" << " :: " << sex << std::endl;
+    loadedSave << chapter << " :: " << stage << std::endl;
+    loadedSave.close();
 }
 
 void SaveManager::loadSaveInfo(std::string save)
@@ -113,7 +115,7 @@ void SaveManager::searchForSaves()
     else
     {
         Console::setConsoleColor(ConsoleColor::CC_Narration);
-        std::cout << (std::string)jWriter["LoadGame"]["NoSavesFound"] << std::endl;
+        std::cout << (std::string)jWriter["loadGame"]["noSavesFound"] << std::endl;
         Console::resetConsoleColor();
     }
 
@@ -124,12 +126,12 @@ std::string SaveManager::printSex(int sex)
 {
     if (sex == Sex::Male)
     {
-        return jWriter["Sex"]["Male"];
+        return jWriter["sex"]["male"];
     }
     else if (sex == Sex::Female)
     {
-        return jWriter["Sex"]["Female"];
+        return jWriter["sex"]["female"];
     }
 
-    return jWriter["Sex"]["Undefined"];
+    return jWriter["sex"]["undefined"];
 }

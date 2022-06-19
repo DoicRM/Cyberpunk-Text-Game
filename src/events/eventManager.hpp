@@ -13,15 +13,15 @@ public:
 	// AKT I
 	static void sleepersHideout();
 
-	static void heroDeath(); // ekran œmierci
-	static void loadingFiles(); // ³adowanie plików
-	static void gameOver(); // koniec gry
-	static void clearInstances(); // czyszczenie map z instancjami
-	static void namingHero(); // nadawanie bohaterowi imienia
+	static void heroDeath();
+	static void loadingFiles();
+	static void gameOver();
+	static void clearInstances();
+	static void namingHero();
 
 private:
 	// PROLOG
-	// Mroczny zau³ek
+	// Mroczny zauÅ‚ek
 	static void prologue();
 	static void storyIntroduction();
 	static void wakeUpInDarkAlley();
@@ -36,7 +36,7 @@ private:
 	static void meetingWithPolicemans();
 	static void wakeUpBeforeMeetingWithJet();
 	static void streetCrossroads();
-	// Sklep z broni¹
+	// Sklep z broniÄ…
 	static void encounterGunStore();
 	static void enterGunShop();
 	static void zedTrade();
@@ -61,7 +61,7 @@ private:
 	static void vincentResurrection();
 	static void nightclubCrossroads();
 	// AKT I
-	// Kryjówka Œni¹cych
+	// KryjÃ³wka ÅšniÄ…cych
 	static void actOne();
 	static void sleepersHideoutCrossroads();
 };
@@ -79,5 +79,8 @@ extern bool darkAlleyWasVisited,
 
 class RandomEvent : Event {
 public:
+	static void downpourStart();
 	static void nickHandFinding();
+	static void hookersMeeting();
+	static void punksMeeting();
 };

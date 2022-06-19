@@ -4,10 +4,10 @@
 class AmbientNpc : public Npc
 {
 private:
-    int sex[2] = { Male, Female };
-    std::string namesMale[10] = { "Astro", "Cypher", "Fade", "Hack", "Hex", "Miles", "Neo", "Ryker", "Smith", "Zayne" };
-    std::string namesFemale[10] = { "Apoch", "Aurora", "Bellatrix", "Cassia", "Dot", "Eve", "Harley", "Jabbit", "Jinx", "Moxie" };
-    Fraction fractions[5] = { Fraction::fractions["None"], Fraction::fractions["Beggars"], Fraction::fractions["Police"], Fraction::fractions["Hamers"], Fraction::fractions["Sleepers"] };
+    std::array<int, 2> sex = { Sex::Male, Sex::Female };
+    std::array<std::string, 10> maleNames = { "Astro", "Cypher", "Fade", "Hack", "Hex", "Miles", "Neo", "Ryker", "Smith", "Zayne" };
+    std::array<std::string, 10> femaleNames = { "Apoch", "Aurora", "Bellatrix", "Cassia", "Dot", "Eve", "Harley", "Jabbit", "Jinx", "Moxie" };
+    std::array<Fraction, 6> fractions = { Fraction::fractions["None"], Fraction::fractions["Beggars"], Fraction::fractions["Police"], Fraction::fractions["Hamers"], Fraction::fractions["Sleepers"], Fraction::fractions["Shitheads"] };
 public:
     AmbientNpc();
     virtual ~AmbientNpc();

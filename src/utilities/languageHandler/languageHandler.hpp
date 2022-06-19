@@ -9,8 +9,7 @@ class LanguageHandler
 public:
 	static void loadDataFromFile(int lang);
 private:
-	static std::string getLang(int lang);
+	static std::string getFileName(int lang);
 };
 
 extern nlohmann::json jWriter;
-extern std::string JSON_VALUE_ERROR;

@@ -20,6 +20,13 @@ void Event::street()
 {
     Logger::startFuncLog(__FUNCTION__);
 
+    int rand = Randomize::randInt(0, 10);
+
+    if (rand > 5 && rand <= 10)
+    {
+        RandomEvent::downpourStart();
+    }
+
     if (!streetWasVisited)
     {
         streetWasVisited = true;
@@ -67,12 +74,12 @@ void Event::heroDeath()
     clearInstances();
     Console::wait(500);
     Console::clearScreen();
-    Console::setConsoleColor(CC_Red);
+    Console::setConsoleColor(ConsoleColor::CC_Red);
     std::cout << std::endl;
-    Display::write(jWriter["Infos"]["YouAreDead"]);
+    Display::write(jWriter["main"]["youAreDead"]);
     Console::wait(1000);
     Console::setConsoleColor();
-    Display::write(jWriter["Infos"]["BackToMenu"], 25);
+    Display::write(jWriter["main"]["backToMenu"], 25);
     Console::waitForUserInput();
     Console::clearScreen();
     Game::game[0].loadLogo();
@@ -84,14 +91,14 @@ void Event::gameOver()
     clearInstances();
     Console::wait(500);
     Console::clearScreen();
-    Console::setConsoleColor(CC_Lightblue);
+    Console::setConsoleColor(ConsoleColor::CC_Lightblue);
     std::cout << std::endl;
-    Display::write(jWriter["Infos"]["TheEnd"], 25);
+    Display::write(jWriter["main"]["theEnd"], 25);
     Console::wait(1000);
     std::cout << std::endl << std::endl;
     Console::resetConsoleColor();
     Game::game[0].credits();
-    Display::write(jWriter["Infos"]["BackToMenu"], 25);
+    Display::write(jWriter["main"]["backToMenu"], 25);
     Console::waitForUserInput();
     Console::clearScreen();
     Game::game[0].loadLogo();

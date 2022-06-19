@@ -1,150 +1,179 @@
 {
-  "Infos": {
-    "Welcome": "\n\tRADOSŁAW 'DOIC' MICHALAK PREZENTUJE GRĘ TEKSTOWĄ POD TYTUŁEM",
-    "LogoSubtitle": "\n\t\t\t\t\t     Cyberpunkowa gra tekstowa\n\n",
-    "ContinueGame": "\n\tNic tu nie ma. Ta funkcja jest obecnie niedostępna.\n\n",
-    "SelectYourLanguage": "\n\tWybierz swój język:\n",
-    "PressAnyKey": "\tWciśnij DOWOLNY PRZYCISK, aby kontynuować...",
-    "And": " i ",
-    "WasFound": " znaleziono.",
-    "DownloadCompleted": "\n\tPobieranie zakończone",
-    "YouAreDead": "\tNIE ŻYJESZ!",
-    "BackToMenu": "\n\n\tWróć do menu...",
-    "TheEnd": "\tKONIEC"
+  "main": {
+    "welcome": "\n\tRADOSŁAW 'DOIC' MICHALAK PREZENTUJE GRĘ TEKSTOWĄ POD TYTUŁEM",
+    "logoSubtitle": "\n\t\t\t\t\t     Cyberpunkowa gra tekstowa\n\n",
+    "selectYouLanguage": "\n\tWybierz swój język:\n",
+    "pressAnyKey": "\tWciśnij DOWOLNY PRZYCISK, aby kontynuować...",
+    "and": " i ",
+    "wasFound": " znaleziono.",
+    "downloadCompleted": "\n\tPobieranie zakończone",
+    "youAreDead": "\tNIE ŻYJESZ!",
+    "backToMenu": "\n\n\tWróć do menu...",
+    "theEnd": "\tKONIEC",
+    "nothingHere": "\n\tNic tu nie ma. Ta funkcja jest obecnie niedostępna.\n\n"
   },
-  "MainMenu": [
+  "mainMenu": [
     "Nowa gra",
     "Wczytaj grę",
     "Zmień język",
     "Napisy",
     "Wyjdź z gry"
   ],
-  "LoadGame": {
-    "NoSavesFound": "\tNie znaleziono żadnych zapisów gry."
+  "loadGame": {
+    "noSavesFound": "\tNie znaleziono żadnych zapisów gry.",
+    "unknown": "Nieznany"
   },
-  "Credits": {
-    "Author": "\n\t\tAUTOR",
-    "Testers": "\t       TESTERZY",
-    "Thanks": "\t     PODZIĘKOWANIA"
+  "credits": {
+    "author": "\n\t\tAUTOR",
+    "testers": "\t       TESTERZY",
+    "thanks": "\t     PODZIĘKOWANIA"
   },
-  "QuitGame": {
-    "Prompt": "\n\tJesteś pewien, że chcesz wyjść z gry?\n",
-    "Yes": "Tak",
-    "No": "Nie"
+  "quitGame": {
+    "prompt": "\n\tJesteś pewien, że chcesz wyjść z gry?\n",
+    "yes": "Tak",
+    "no": "Nie"
   },
-  "Sex": {
-    "Undefined": "niezdefiniowana",
-    "Male": "mężczyzna",
-    "Female": "kobieta"
+  "sex": {
+    "undefined": "niezdefiniowana",
+    "male": "mężczyzna",
+    "female": "kobieta"
   },
-  "Attitudes": {
-    "Angry": "zły",
-    "Hostile": "wrogo nastawiony",
-    "Friendly": "przyjazny",
-    "Neutral": "obojętny",
-    "Is": " jest teraz ",
-    "Now": ".\n"
+  "attitude": {
+    "angry": "zły",
+    "hostile": "wrogo nastawiony",
+    "friendly": "przyjazny",
+    "neutral": "obojętny",
+    "is": " jest teraz ",
+    "now": ".\n"
   },
-  "ItemsInfos": {
-    "Name": "Nazwa: ",
-    "Type": "Typ: ",
-    "Description": "Opis: ",
-    "Price": "Cena: "
+  "item": {
+    "name": "Nazwa: ",
+    "type": "Typ: ",
+    "description": "Opis: ",
+    "price": "Cena: "
   },
-  "InventoryInfos": {
-    "NoItemsInInv": "Nie posiadasz żadnych przedmiotów w ekwipunku.",
-    "InvTip": "\n\t[WSKAZÓWKA: Ten przedmiot został dodany do twojego ekwipunku. Możesz go podejrzeć w pliku\n\ttekstowym w folderze z grą].",
-    "SelectInvIndex": "\tWybierz indeks przedmiotu, który chcesz wyświetlić.\n",
-    "SelectedIndexNotExists": "\tNie ma takiego indeksu."
+  "itemType": {
+    "weapon": "Broń",
+    "clothes": "Ubrania",
+    "other": "Inne",
+    "food": "Jedzenie",
+    "quest": "Związane z zadaniem",
+    "none": "Brak"
   },
-  "QuestsInfos": {
-    "Name": "Nazwa: ",
-    "Description": "Opis: ",
-    "Status": "Status: "
+  "inventory": {
+    "noItems": "Nie posiadasz żadnych przedmiotów w ekwipunku.",
+    "tip": "\n\t[WSKAZÓWKA: Ten przedmiot został dodany do twojego ekwipunku. Możesz go podejrzeć w pliku\n\ttekstowym w folderze z grą].",
+    "selectIndex": "\tWybierz indeks przedmiotu, który chcesz wyświetlić.\n",
+    "selectedIndexNotExists": "\tNie ma takiego indeksu."
   },
-  "QuestStatus": {
-    "NotStarted": "Nie rozpoczęte",
-    "Ongoing": "W trakcie",
-    "Completed": "Wykonane"
+  "quest": {
+    "name": "Nazwa: ",
+    "description": "Opis: ",
+    "status": "Status: "
   },
-  "JournalInfos": {
-    "NoQuestsInJournal": "Nie posiadasz żadnych zadań w dzienniku.",
-    "JournalEntry": "\n\tDodano nowe zadanie do dziennika: "
+  "questStatus": {
+    "notStarted": "Nie rozpoczęte",
+    "ongoing": "W trakcie",
+    "completed": "Wykonane"
   },
-  "ItemsTypes": {
-    "Weapon": "Bronie",
-    "Clothes": "Ubrania",
-    "Other": "Inne",
-    "Food": "Jedzenie",
-    "Quest": "Związane z zadaniem",
-    "None": "Brak"
+  "journal": {
+    "noQuests": "Nie posiadasz żadnych zadań w dzienniku.",
+    "entry": "\n\tDodano nowe zadanie do dziennika: "
   },
-  "ClothesTypes": {
-    "Head": "Głowa",
-    "Chest": "Korpus",
-    "Arms": "Ręce",
-    "Legs": "Nogi",
-    "None": "Brak"
+  "clothesType": {
+    "head": "Głowa",
+    "chest": "Korpus",
+    "arms": "Ręce",
+    "legs": "Nogi",
+    "none": "Brak"
   },
-  "Items": {
-    "AD13": {
-      "Name": "Akcelerator D-13",
-      "Description": "Dawno nieużywany model akceleratora. Wciąż jednak może być dość cenny."
+  "items": {
+    "ad13": {
+      "name": "Akcelerator D-13",
+      "description": "Dawno nieużywany model akceleratora. Wciąż jednak może być dość cenny."
     },
-    "AccessCard": {
-      "Name": "Karta dostępu",
-      "Description": "Z pewnością pasuje do drzwi prowadzących do zablokowanego pomieszczenia w gabinecie Ramseya."
+    "accessCard": {
+      "name": "Karta dostępu",
+      "description": "Z pewnością pasuje do drzwi prowadzących do zablokowanego pomieszczenia w gabinecie Ramseya."
     }
   },
-  "Weapons": {
-    "Pistol": {
-      "Name": "Pistolet",
-      "Description": "Prosta broń strzelająca czystą energią."
+  "weapons": {
+    "pistol": {
+      "name": "Pistolet",
+      "description": "Prosta broń strzelająca czystą energią."
     }
   },
-  "Fractions": {
-    "None_Name": "Brak przynależności",
-    "Beggars_Name": "Żebracy",
-    "Police_Name": "Policja",
-    "Hammers_Name": "Młoty",
-    "Sleepers_Name": "Śniący",
-    "SowersOfConfusion_Name": "Siewcy Zamętu"
-  },
-  "Npcs": {
-    "Policeman_Name": "Policjant",
-    "Bouncer_Name": "Ochroniarz",
-    "Morpheus_Name": "Morfeusz"
-  },
-  "Locations": {
-    "DarkAlley_Name": "Mroczny zaułek",
-    "Street_Name": "Ulica",
-    "Nightclub_Name": "Klub nocny 'Amnezja'",
-    "GunShop_Name": "Sklep z bronią 'U Zeda'",
-    "SleepersHideout_Name": "Kryjówka Śniących"
-  },
-  "Quests": {
-    "KillVincent": {
-      "Name": "Piękna i bestia",
-      "Description": "Zabij właściciela klubu nocnego 'Amnezja', Vincenta Ramseya, na prośbę jego dziewczyny, Nyx."
+  "fractions": {
+    "none": {
+      "name": "Brak przynależności"
     },
-    "ZedAccelerator": {
-      "Name": "Relikt przeszłości",
-      "Description": "Przynieś Zedowi stary model akumulatora. W zamian otrzymasz od niego pistolet."
+    "beggars": {
+      "name": "Żebracy"
+    },
+    "police": {
+      "name": "Policja"
+    },
+    "hammers": {
+      "name": "Młoty"
+    },
+    "sleepers": {
+      "name": "Śniący"
+    },
+    "shitheads": {
+      "name": "Zasrańcy"
     }
   },
-  "Prologue": {
-    "Title": "\n\tProlog",
-    "Subtitle": "\n\n\tREQUIEM DLA MARZEŃ",
-    "StoryIntro": [
+  "npcs": {
+    "policeman": {
+      "name": "Policjant"
+    },
+    "bouncer": {
+      "name": "Ochroniarz"
+    },
+    "morpheus": {
+      "name": "Morfeusz"
+    }
+  },
+  "locations": {
+    "darkAlley": {
+      "name": "Mroczny zaułek"
+    },
+    "street": {
+      "name": "Ulica"
+    },
+    "nightclub": {
+      "name": "Klub nocny 'Amnezja'"
+    },
+    "gunShop": {
+      "name": "Sklep z bronią 'U Zeda'"
+    },
+    "sleepersHideout": {
+      "name": "Kryjówka Śniących"
+    }
+  },
+  "quests": {
+    "killVincent": {
+      "name": "Piękna i bestia",
+      "description": "Zabij właściciela klubu nocnego 'Amnezja', Vincenta Ramseya, na prośbę jego dziewczyny, Nyx."
+    },
+    "zedAccelerator": {
+      "name": "Relikt przeszłości",
+      "description": "Przynieś Zedowi stary model akumulatora. W zamian otrzymasz od niego pistolet."
+    }
+  },
+  "prologue": {
+    "title": "\n\tProlog",
+    "subtitle": "\n\n\tREQUIEM DLA MARZEŃ",
+    "storyIntro": [
       "\n\tJest rok 2050.",
       " Megacity to miejsce opanowane przez biedę i zwaśnione gangi, gdzie największe\n\twpływy mają potężne korporacje. Przemoc na ulicach jest wyraźnym znakiem zbliżającej się wojny.\n\tRząd działający zza bezpiecznych murów ratusza próbuje z tym walczyć, ale jak na razie\n\tbezskutecznie. Krążą plotki, że sam potajemnie wspiera chaos, by na gruzach miasta stworzyć\n\tNowy Porządek.\n\n"
     ],
-    "PrologueDream": [
+    "dream": [
       "\n\tStojąc na krawędzi najwyższej wieży...",
       "\n\tTrzymam cię za rękę i skaczę...",
       "\n\tSpadam i spadam jakby godzinami..."
     ],
-    "WakeUpInDarkAlley": [
+    "wakeUp": [
       "\n\tBudzisz się oszołomiony z niespokojnej drzemki.",
       " To był znowu ten sam sen...",
       "\n\tZnajdujesz się gdzieś w ciemnym zaułku. Nad twoją głową, wśród smogowej mgły, niczym wyrwane\n\tze snu, wznoszą się monumentalne drapacze chmur wielkich korporacji.",
@@ -155,16 +184,16 @@
       " Jest pełne kartonów, starych\n\tczęści mechanicznych i Bóg wie czego jeszcze.",
       "\n\tMoże znajdziesz tam coś interesującego...\n\n"
     ],
-    "Menu1": [
+    "menu1": [
       "(Rozejrzyj się po okolicy w poszukiwaniu czegoś cennego.)",
       "(Znajdź wyjście z zaułka.)"
     ],
-    "AcceleratorFinding": [
+    "findingAccelerator": [
       "\n\tZaczynasz grzebać w śmieciach.",
       " Poszukiwania trwają dość długo, ale w końcu udaje ci się coś\n\tznaleźć.",
       "\n\n\tHmm, to może się przydać w przyszłości."
     ],
-    "OutOfTheAlley": [
+    "outOfAlley": [
       "\n\tNie masz zamiaru grzebać w śmieciach.",
       " I dobrze, pewnie i tak nic byś tam nie znalazł.",
       " Zamiast\n\ttego powoli podążasz w kierunku neonowych bomb na końcu alejki.",
@@ -175,24 +204,22 @@
       "\n\tZa nic masz tajemniczego nieznajomego. Przyspieszasz kroku i zostawiasz go daleko za sobą.",
       "\n\tTo, czego od ciebie chciał, nie jest już istotne."
     ],
-    "Menu2": [
+    "menu2": [
       "(Zatrzymaj się i dowiedz się, czego chce.)",
       "(Zignoruj go i idź dalej.)",
       "(Zatrzymaj się i dowiedz się wreszcie, czego chce.)"
     ],
-    "NameMenu": [
+    "nameMenu": [
       "(Przedstaw się.)",
       "(Zachowaj swoją tożsamość w tajemnicy.)"
     ],
-    "Menu3": [
+    "menu3": [
       "Nie szukam kłopotów.",
       "Tylko się rozglądam. Gdzie my właściwie jesteśmy?",
       "To nie jest twoja sprawa."
     ],
-    "DialogueWithBob": [
-      "\n\tCienie przed tobą zaczynają falować, gdy twój rozmówca wstaje.\n\n"
-    ],
-    "DIA_Bob": [
+    "dialogueWithBob": [
+      "\n\tCienie przed tobą zaczynają falować, gdy twój rozmówca wstaje.\n\n",
       "\n\t- Hej, dzieciaku. Zaczekaj chwilę.\n\n",
       "\n\t- Hej, ty! Wracaj tu!",
       "\t- Coś za jeden, chłopcze?\n\n",
@@ -212,7 +239,12 @@
       "\t- Mylisz się. To absolutnie moja sprawa, dzieciaku. Nie mów do mnie w ten sposób, jeśli nie\n\tchcesz stracić kilku zębów. Rozumiesz?\n",
       "\n\t- Nie pokazuj się tu więcej, jeśli nie chcesz stracić zębów!\n"
     ],
-    "NickHandFinding": [
+    "downpourStart": [
+      "\n\tCzujesz pojedyncze krople uderzające o ciebie.",
+      " Trudno powiedzieć, czy wcześniej zanosiło\n\tsię na deszcz, ale wygląda na to, że przyjdzie ci się zmoknąć.",
+      " Wystarczy chwila, by ulewa\n\tspadła na okolicę."
+    ],
+    "findingNicksHand": [
       "\n\tJesteś już prawie u wyjścia z zaułka, kiedy twoja stopa natrafia na coś twardego.",
       " Zatrzymujesz\n\tsię i spuszczasz wzrok na przeszkodę.",
       " Okazuje się, że to zakrwawiona dłoń. Obok niej leżą\n\tkajdanki przymocowane do walizki.",
@@ -221,6 +253,10 @@
       " Ktoś musiał nieźle się obłowić.",
       " Jaka szkoda, że to nie byłeś\n\tty..."
     ],
-    "RememberYourName": "\tTwoje imię... Zaczynasz błądzić myślami wokół tego, jak się nazywasz. Jakby przez mgłę dociera\n\tdo ciebie, że jesteś:\n"
+    "hookersMeeting": [
+    ],
+    "punksMeeting": [
+    ],
+    "rememberYourName": "\tTwoje imię... Zaczynasz błądzić myślami wokół tego, jak się nazywasz. Jakby przez mgłę dociera\n\tdo ciebie, że jesteś:\n"
   }
 }

@@ -7,7 +7,7 @@ Npc::Npc()
     this->name = "None";
     this->sex = Undefined;
     this->fraction = Fraction();
-    this->attitude = Neutral;
+    this->attitude = Attitude::Neutral;
     this->status = Normal;
     this->knowingHero = false;
 }
@@ -17,8 +17,8 @@ Npc::Npc(std::string name, int sex, Fraction fraction)
     this->name = name;
     this->sex = sex;
     this->fraction = fraction;
-    this->attitude = Neutral;
-    this->status = Normal;
+    this->attitude = Attitude::Neutral;
+    this->status = CharacterStatus::Normal;
     this->knowingHero = false;
 }
 
@@ -64,32 +64,32 @@ void Npc::printAttitude()
 
     if (this->attitude == Attitude::Angry)
     {
-        attitude = jWriter["Attitudes"]["Angry"];
+        attitude = jWriter["attitude"]["angry"];
         Console::setConsoleColor(ConsoleColor::CC_Yellow);
     }
     else if (this->attitude == Attitude::Hostile)
     {
-        attitude = jWriter["Attitudes"]["Hostile"];
+        attitude = jWriter["attitude"]["hostile"];
         Console::setConsoleColor(ConsoleColor::CC_Red);
     }
     else if (this->attitude == Attitude::Friendly)
     {
-        attitude = jWriter["Attitudes"]["Friendly"];
+        attitude = jWriter["attitude"]["friendly"];
         Console::setConsoleColor(ConsoleColor::CC_Green);
     }
     else
     {
-        attitude = jWriter["Attitudes"]["Neutral"];
+        attitude = jWriter["attitude"]["neutral"];
         Console::resetConsoleColor();
     }
 
-    Display::write("\t" + this->name + (std::string)jWriter["Attitudes"]["Is"] + attitude + (std::string)jWriter["Attitudes"]["Now"]);
+    Display::write("\t" + this->name + (std::string)jWriter["attitude"]["is"] + attitude + (std::string)jWriter["attitude"]["now"]);
     Console::resetConsoleColor();
 }
 
 bool Npc::isDead()
 {
-    if (status != Dead)
+    if (status != CharacterStatus::Dead)
     {
         return false;
     }
@@ -101,20 +101,20 @@ void Npc::initNpcs()
 {
     Logger::startFuncLog(__FUNCTION__);
     // PROLOG
-    Npc Bob("Bob", Male, Fraction::fractions["Beggars"]);
-    Npc Caden("Caden", Male, Fraction::fractions["Police"]);
-    Npc CadensPartner(jWriter["Npcs"]["Policeman_Name"], Male, Fraction::fractions["Police"]);
-    Npc Zed("Zed", Male, Fraction::fractions["None"]);
-    Npc Nyx("Nyx", Female, Fraction::fractions["Sleepers"]);
-    Npc Jet(jWriter["Npcs"]["Bouncer_Name"], Male, Fraction::fractions["Hammers"]);
-    Npc Vincent("Vincent", Male, Fraction::fractions["Hammers"]);
-    Npc Enigma("Enigma", Male, Fraction::fractions["None"]);
+    Npc Bob("Bob", Sex::Male, Fraction::fractions["Beggars"]);
+    Npc Caden("Caden", Sex::Male, Fraction::fractions["Police"]);
+    Npc CadensPartner(jWriter["npcs"]["policeman"]["name"], Sex::Male, Fraction::fractions["Police"]);
+    Npc Zed("Zed", Sex::Male, Fraction::fractions["None"]);
+    Npc Nyx("Nyx", Sex::Female, Fraction::fractions["Sleepers"]);
+    Npc Jet(jWriter["npcs"]["bouncer"]["name"], Sex::Male, Fraction::fractions["Hammers"]);
+    Npc Vincent("Vincent", Sex::Male, Fraction::fractions["Hammers"]);
+    Npc Enigma("Enigma", Sex::Male, Fraction::fractions["None"]);
     // AKT I
-    Npc Morpheus(jWriter["Npcs"]["Morpheus_Name"], Male, Fraction::fractions["Sleepers"]);
-    Npc MerQRy("Mer Q'Ry", Male, Fraction::fractions["None"]);
-    Npc Karla("Karla", Female, Fraction::fractions["None"]);
-    Npc ChipCaine("Chip Caine", Male, Fraction::fractions["None"]);
-    Npc JaxRasac("Jax Rasac", Male, Fraction::fractions["SowersOfConfusion"]);
+    Npc Morpheus(jWriter["npcs"]["morpheus"]["name"], Sex::Male, Fraction::fractions["Sleepers"]);
+    Npc MerQRy("Mer Q'Ry", Sex::Male, Fraction::fractions["None"]);
+    Npc Karla("Karla", Sex::Female, Fraction::fractions["None"]);
+    Npc ChipCaine("Chip Caine", Sex::Male, Fraction::fractions["None"]);
+    Npc JaxRasac("Jax Rasac", Sex::Male, Fraction::fractions["SowersOfConfusion"]);
 
     npcs["Bob"] = Bob;
     npcs["Caden"] = Caden;

@@ -24,11 +24,11 @@ void Location::initLocations()
 {
     Logger::startFuncLog(__FUNCTION__);
 
-    Location DarkAlley(jWriter["Locations"]["DarkAlley_Name"], 0, Fraction::fractions["Beggars"]);
-    Location Street(jWriter["Locations"]["Street_Name"], 0, Fraction::fractions["Police"]);
-    Location Nightclub(jWriter["Locations"]["Nightclub_Name"], 0, Fraction::fractions["Hammers"]);
-    Location GunShop(jWriter["Locations"]["GunShop_Name"], 0, Fraction::fractions["None"]);
-    Location SleepersHideout(jWriter["Locations"]["SleepersHideout_Name"], 0, Fraction::fractions["Sleepers"]);
+    Location DarkAlley(jWriter["locations"]["darkAlley"]["name"], 0, Fraction::fractions["Beggars"]);
+    Location Street(jWriter["locations"]["street"]["name"], 0, Fraction::fractions["Police"]);
+    Location Nightclub(jWriter["locations"]["nightclub"]["name"], 0, Fraction::fractions["Hammers"]);
+    Location GunShop(jWriter["locations"]["gunShop"]["name"], 0, Fraction::fractions["None"]);
+    Location SleepersHideout(jWriter["locations"]["sleepersHideout"]["name"], 0, Fraction::fractions["Sleepers"]);
 
     locations["DarkAlley"] = DarkAlley;
     locations["Street"] = Street;

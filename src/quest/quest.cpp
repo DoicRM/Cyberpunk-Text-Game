@@ -6,7 +6,7 @@ Quest::Quest()
 {
     this->name = "None";
     this->description = "None";
-    this->status = NotStarted;
+    this->status = QuestStatus::NotStarted;
     this->isRunning = false;
     this->isCompleted = false;
 }
@@ -15,7 +15,7 @@ Quest::Quest(std::string name, std::string description)
 {
     this->name = name;
     this->description = description;
-    this->status = NotStarted;
+    this->status = QuestStatus::NotStarted;
     this->isRunning = false;
     this->isCompleted = false;
 }
@@ -37,39 +37,39 @@ void Quest::start()
 {
     this->isCompleted = false;
     this->isRunning = true;
-    this->status = Ongoing;
+    this->status = QuestStatus::Ongoing;
 
     Console::resetConsoleColor();
-    Display::write((std::string)jWriter["JournalInfos"]["JournalEntry"] + this->getName() + "\n");
+    Display::write((std::string)jWriter["journal"]["entry"] + this->getName() + "\n");
 }
 
 void Quest::end()
 {
     this->isRunning = false;
     this->isCompleted = true;
-    this->status = Completed;
+    this->status = QuestStatus::Completed;
 }
 
 std::string Quest::printStatus()
 {
     if (this->status == Ongoing)
     {
-        return jWriter["QuestStatus"]["Ongoing"];
+        return jWriter["questStatus"]["ongoing"];
     }
     else if (this->status == Completed)
     {
-        return jWriter["QuestStatus"]["Completed"];
+        return jWriter["questStatus"]["completed"];
     }
 
-    return jWriter["QuestStatus"]["NotStarted"];
+    return jWriter["questStatus"]["notStarted"];
 }
 
 void Quest::initQuests()
 {
     Logger::startFuncLog(__FUNCTION__);
 
-    Quest KillVincent(jWriter["Quests"]["KillVincent"]["Name"], jWriter["Quests"]["KillVincent"]["Description"]);
-    Quest ZedAccelerator(jWriter["Quests"]["ZedAccelerator"]["Name"], jWriter["Quests"]["ZedAccelerator"]["Description"]);
+    Quest KillVincent(jWriter["quests"]["killVincent"]["name"], jWriter["quests"]["killVincent"]["description"]);
+    Quest ZedAccelerator(jWriter["quests"]["zedAccelerator"]["name"], jWriter["quests"]["zedAccelerator"]["description"]);
 
     quests["KillVincent"] = KillVincent;
     quests["ZedAccelerator"] = ZedAccelerator;

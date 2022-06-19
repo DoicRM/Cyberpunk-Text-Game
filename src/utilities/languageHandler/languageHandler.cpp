@@ -1,20 +1,19 @@
 #include "languageHandler.hpp"
 
 nlohmann::json jWriter;
-std::string JSON_VALUE_ERROR = "[VALUE ERROR]";
 
 void LanguageHandler::loadDataFromFile(int lang)
 {
     Logger::startFuncLog(__FUNCTION__);
 
-    std::string str = getLang(lang);
+    std::string fileName = getFileName(lang);
     std::string path = std::filesystem::current_path().string() + "\\data\\localisation\\";
-    std::ifstream jReader(path + str + ".json");
+    std::ifstream jReader(path + fileName + ".json");
 
     if (!jReader.is_open())
     {
-        Logger::error("Unable to open '" + str + ".json' file", __FUNCTION__);
-        std::runtime_error("Unable to open '" + str + ".json' file");
+        Logger::error("Unable to open '" + fileName + ".json' file", __FUNCTION__);
+        std::runtime_error("Unable to open '" + fileName + ".json' file");
         return;
     }
 
@@ -31,7 +30,7 @@ void LanguageHandler::loadDataFromFile(int lang)
     jReader.close();
 }
 
-std::string LanguageHandler::getLang(int lang)
+std::string LanguageHandler::getFileName(int lang)
 {
     if (lang == EN)
     {

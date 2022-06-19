@@ -20,6 +20,6 @@ void Weapon::initWeapons()
 {
 	Logger::out("Function starts", "Weapon::initWeapons");
 
-	Weapon Pistol(jWriter["Weapons"]["Pistol"]["Name"], WEAPON, jWriter["Weapons"]["Pistol"]["Description"], 10, 15, 250);
+	Weapon Pistol(jWriter["weapons"]["pistol"]["name"], ItemType::WEAPON, jWriter["weapons"]["pistol"]["description"], 10, 15, 250);
 	Item::items["Pistol"] = Pistol;
 }

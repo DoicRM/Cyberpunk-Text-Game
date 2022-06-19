@@ -97,17 +97,17 @@ void Inventory::updateInvFile()
 
     if (itemsList.empty())
     {
-        eq << (std::string)jWriter["InventoryInfos"]["NoItemsInInv"] << std::endl;
+        eq << (std::string)jWriter["inventory"]["noItems"] << std::endl;
         eq.close();
         return;
     }
 
     for (auto i : itemsList)
     {
-        eq << (std::string)jWriter["ItemsInfos"]["Name"] << i->getName() << std::endl;
-        eq << (std::string)jWriter["ItemsInfos"]["Type"] << i->printType() << std::endl;
-        eq << (std::string)jWriter["ItemsInfos"]["Description"] << i->getDescription() << std::endl;
-        eq << (std::string)jWriter["ItemsInfos"]["Price"] << i->getPrice() << "$" << std::endl;
+        eq << (std::string)jWriter["item"]["name"] << i->getName() << std::endl;
+        eq << (std::string)jWriter["item"]["type"] << i->printType() << std::endl;
+        eq << (std::string)jWriter["item"]["description"] << i->getDescription() << std::endl;
+        eq << (std::string)jWriter["item"]["price"] << i->getPrice() << "$" << std::endl;
         eq << "..........................................................................." << std::endl;
     }
 
@@ -118,7 +118,7 @@ void Inventory::showInv()
 {
     if (itemsList.empty())
     {
-        return Display::write("\t" + jWriter["InventoryInfos"]["NoItemsInInv"], 15);
+        return Display::write("\t" + jWriter["inventory"]["noItems"], 15);
     }
 
     for (int i = 0; i < itemsList.size(); i++)
@@ -126,7 +126,7 @@ void Inventory::showInv()
         std::cout << "\t" << (i + 1) << ". " << itemsList[i]->getName() << std::endl;
     }
 
-    Display::write(jWriter["InventoryInfos"]["SelectInvIndex"], 15);
+    Display::write(jWriter["inventory"]["selectIndex"], 15);
     int itemNr = Input::getChoice();
     showItemInfo(itemNr);
 }
@@ -137,13 +137,13 @@ void Inventory::showItemInfo(int index)
 
     if (index <= 0 && index == (itemsList.size() + 1))
     {
-        return Display::write("\t" + jWriter["InventoryInfos"]["SelectedIndexNotExists"], 0);
+        return Display::write("\t" + jWriter["inventory"]["selectedIndexNotExists"], 0);
     }
 
-    std::cout << "\t" << (std::string)jWriter["ItemsInfos"]["Name"] << indexNr->getName() << std::endl;
-    std::cout << "\t" << (std::string)jWriter["ItemsInfos"]["Type"] << indexNr->printType() << std::endl;
-    std::cout << "\t" << (std::string)jWriter["ItemsInfos"]["Description"] << indexNr->getDescription() << std::endl;
-    std::cout << "\t" << (std::string)jWriter["ItemsInfos"]["Price"] << indexNr->getPrice() << "$" << std::endl;
+    std::cout << "\t" << (std::string)jWriter["item"]["name"] << indexNr->getName() << std::endl;
+    std::cout << "\t" << (std::string)jWriter["item"]["type"] << indexNr->printType() << std::endl;
+    std::cout << "\t" << (std::string)jWriter["item"]["description"] << indexNr->getDescription() << std::endl;
+    std::cout << "\t" << (std::string)jWriter["item"]["price"] << indexNr->getPrice() << "$" << std::endl;
 }
 
 void Inventory::clearInv()

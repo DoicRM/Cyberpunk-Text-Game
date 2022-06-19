@@ -5,7 +5,7 @@ std::map <std::string, Item> Item::items;
 Item::Item()
 {
     this->name = "None";
-    this->type = NONE;
+    this->type = ItemType::NONE;
     this->description = "None";
     this->price = 0.0;
     this->nextItem = 0;
@@ -26,36 +26,36 @@ Item::~Item()
 
 std::string Item::printType()
 {
-    if (this->type == WEAPON)
+    if (this->type == ItemType::WEAPON)
     {
-        return jWriter["ItemsTypes"]["Weapon"];
+        return jWriter["itemType"]["weapon"];
     }
-    else if (this->type == CLOTHES)
+    else if (this->type == ItemType::CLOTHES)
     {
-        return jWriter["ItemsTypes"]["Clothes"];
+        return jWriter["itemType"]["clothes"];
     } 
-    else if (this->type == OTHER)
+    else if (this->type == ItemType::OTHER)
     {
-        return jWriter["ItemsTypes"]["Other"];
+        return jWriter["itemType"]["other"];
     }
-    else if (this->type == FOOD)
+    else if (this->type == ItemType::FOOD)
     {
-        return jWriter["ItemsTypes"]["Food"];
+        return jWriter["itemType"]["food"];
     }
-    else if (this->type == QUEST)
+    else if (this->type == ItemType::QUEST)
     {
-        return jWriter["ItemsTypes"]["Quest"];
+        return jWriter["itemType"]["quest"];
     }
 
-    return jWriter["ItemsTypes"]["None"];
+    return jWriter["itemType"]["none"];
 }
 
 void Item::initItems()
 {
     Logger::startFuncLog(__FUNCTION__);
 
-    Item AD13(jWriter["Items"]["AD13"]["Name"], OTHER, jWriter["Items"]["AD13"]["Description"], 50);
-    Item AccessCard(jWriter["Items"]["AccessCard"]["Name"], OTHER, jWriter["Items"]["AccessCard"]["Description"], 0);
+    Item AD13(jWriter["items"]["ad13"]["name"], ItemType::OTHER, jWriter["items"]["ad13"]["description"], 50);
+    Item AccessCard(jWriter["items"]["accessCard"]["name"], ItemType::OTHER, jWriter["items"]["accessCard"]["description"], 0);
 
     items["AD13"] = AD13;
     items["AccessCard"] = AccessCard;

@@ -18,24 +18,24 @@ Clothes::~Clothes()
 
 std::string Clothes::printClothesType()
 {
-    if (this->type == HEAD)
+    if (this->type == ClothesType::HEAD)
     {
-        return jWriter["ClothesTypes"]["Head"];
+        return jWriter["clothesType"]["head"];
     }
-    else if (this->type == CHEST)
+    else if (this->type == ClothesType::CHEST)
     {
-        return jWriter["ClothesTypes"]["Chest"];
+        return jWriter["clothesType"]["chest"];
     }
-    else if (this->type == ARMS)
+    else if (this->type == ClothesType::ARMS)
     {
-        return jWriter["ClothesTypes"]["Arms"];
+        return jWriter["clothesType"]["arms"];
     }
-    else if (this->type == LEGS)
+    else if (this->type == ClothesType::LEGS)
     {
-        return jWriter["ClothesTypes"]["Legs"];
+        return jWriter["clothesType"]["legs"];
     }
 
-    return jWriter["ClothesTypes"]["None"];
+    return jWriter["clothesType"]["none"];
 }
 
 void Clothes::initClothes()
