@@ -19,7 +19,7 @@ void SaveManager::createSave()
     newSave.open(savesPath + save + std::to_string(saveNr) + file, std::ios_base::trunc);
     saveNr++;
     newSave << Logger::getFormattedFullDate() << std::endl;
-    newSave << "Player" << " :: " << jWriter["loadGame"]["unknown"] << std::endl;
+    newSave << "Player" << " :: " << (std::string)jWriter["loadGame"]["unknown"] << std::endl;
     newSave << "Sex" << " :: " << Sex::Undefined << std::endl;
     newSave << chap1 << " :: " << "1" << std::endl;
     newSave.close();

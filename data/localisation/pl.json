@@ -1,7 +1,6 @@
 {
   "main": {
     "welcome": "\n\tRADOSŁAW 'DOIC' MICHALAK PREZENTUJE GRĘ TEKSTOWĄ POD TYTUŁEM",
-    "logoSubtitle": "\n\t\t\t\t\t     Cyberpunkowa gra tekstowa\n\n",
     "selectYouLanguage": "\n\tWybierz swój język:\n",
     "pressAnyKey": "\tWciśnij DOWOLNY PRZYCISK, aby kontynuować...",
     "and": " i ",
@@ -234,15 +233,36 @@
       "\n\t- Co z tobą nie tak?",
       " Zresztą nieważne.",
       " Czy słyszałeś kiedyś o Megacity?",
-      " Cóż, to tutaj. Okolica,\n\tw której się obecnie znajdujemy, nazywa się Gunce Deep.",
+      " Cóż, to tutaj. Okolica,\n\tw której teraz jesteśmy, jest nazywana Rajem Utraconym.",
       " Coś ci świta?\n",
       "\t- Mylisz się. To absolutnie moja sprawa, dzieciaku. Nie mów do mnie w ten sposób, jeśli nie\n\tchcesz stracić kilku zębów. Rozumiesz?\n",
-      "\n\t- Nie pokazuj się tu więcej, jeśli nie chcesz stracić zębów!\n"
+      "\n\t- Nie pokazuj się tu więcej, jeśli nie chcesz stracić zębów!\n",
+      "\tW końcu z ciemności wyłania się stara, pomarszczona twarz, otoczona szarą plamą. Sztuczne,\n\tcybernetyczne oko czujnie cię obserwuje.",
+      " Czujesz się dziwnie nieswojo.",
+      "\n\tW jednej chwili alejkę wypełnia wycie policyjnej syreny.",
+      " Na ścianie przed tobą czerwony\n\ti niebieski zaczynają tańczyć ze sobą.",
+      "\n\t- Cholera",
+      ", gliny!",
+      " No, super. Chyba na mnie już czas.",
+      "\n\tStarzejący się żebrak błyskawicznie zanurza się w objęciach ciemności.",
+      " Czy to oznacza, że\n\twidzisz go po raz ostatni?"
+    ],
+    "paradiseLostMenu": [
+      "Nie bardzo. Opowiedz mi o tym Raju Utraconym.",
+      "Coś sobie przypominam."
+    ],
+    "aboutParadiseLost": [
+      "\n\t- Marzy ci się lekcja historii?",
+      " Niech będzie.",
+      " Megacity zbudowano na zgliszczach miasta, które\n\tzostało zniszczone przeszło dwie dekady temu w wyniku wybuchu bomby atomowej.",
+      " Nikt już nie\n\tpamięta jego nazwy, ale wiadomo, że było to jedno z ważniejszych miast starego świata.\n\t",
+      " Robotnicy nazwali tę dzielnicę Rajem Utraconym właśnie na jego część.",
+      " Niby-ludzie ze Śródmieścia\n\tnigdy tego nie zrozumieją.\n"
     ],
     "downpourStart": [
-      "\n\tCzujesz pojedyncze krople uderzające o ciebie.",
+      "\n\tCzujesz uderzające o ciebie pojedyncze krople.",
       " Trudno powiedzieć, czy wcześniej zanosiło\n\tsię na deszcz, ale wygląda na to, że przyjdzie ci się zmoknąć.",
-      " Wystarczy chwila, by ulewa\n\tspadła na okolicę."
+      " Wystarczy chwila, by ulewa\n\tspadła na okolicę jak lawina."
     ],
     "findingNicksHand": [
       "\n\tJesteś już prawie u wyjścia z zaułka, kiedy twoja stopa natrafia na coś twardego.",

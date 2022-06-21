@@ -54,6 +54,11 @@ void Npc::setFraction(Fraction fraction)
 
 void Npc::setAttitude(int attitude)
 {
+    if (this->attitude == attitude)
+    {
+        return;
+    }
+
     this->attitude = attitude;
     printAttitude();
 }

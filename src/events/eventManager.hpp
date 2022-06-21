@@ -29,6 +29,7 @@ private:
 	static void rubbishSearch();
 	static void outOfTheAlley();
 	static void dialogueWithBob();
+		static void aboutParadiseLost();
 	static void darkAlleyCrossroads();
 	// Ulica
 	static void lookAtAmnesia();

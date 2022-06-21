@@ -194,7 +194,7 @@ void Event::dialogueWithBob()
                 std::cout << std::endl;
                 namingHero();
                 Npc::npcs["Bob"].setToKnowHero();
-                Display::writeDialogue((std::string)jWriter["prologue"]["dialogueWithBob"][4] + Hero::heroes[0].getName() + (std::string)jWriter["Prolprologueogue"]["dialogueWithBob"][5]);
+                Display::writeDialogue((std::string)jWriter["prologue"]["dialogueWithBob"][4] + Hero::heroes[0].getName() + (std::string)jWriter["prologue"]["dialogueWithBob"][5]);
                 Console::wait(1500);
                 Display::writeDialogue((std::string)jWriter["prologue"]["dialogueWithBob"][6] + Npc::npcs["Bob"].getName() + ".");
                 Console::wait(1500);
@@ -207,12 +207,7 @@ void Event::dialogueWithBob()
                 Console::clearScreen();
                 nameMenu.showHeroChoice();
                 std::cout << std::endl;
-
-                if (Npc::npcs["Bob"].getAttitude() != Attitude::Angry)
-                {
-                    Npc::npcs["Bob"].setAttitude(Attitude::Angry); // Angry / Hostile / Friendly / Neutral
-                }
-
+                Npc::npcs["Bob"].setAttitude(Attitude::Angry); // Angry / Hostile / Friendly / Neutral
                 Console::wait(500);
                 Display::writeDialogue(jWriter["prologue"]["dialogueWithBob"][8]);
 
@@ -254,6 +249,7 @@ void Event::dialogueWithBob()
                 Display::writeDialogue(jWriter["prologue"]["dialogueWithBob"][15]);
                 Console::wait(1000);
                 Display::writeDialogue(jWriter["prologue"]["dialogueWithBob"][16]);
+                aboutParadiseLost();
                 break;
             }
             else if (heroChoice == 3)
@@ -261,12 +257,7 @@ void Event::dialogueWithBob()
                 Console::clearScreen();
                 menu3.showHeroChoice();
                 std::cout << std::endl;
-
-                if (Npc::npcs["Bob"].getAttitude() != Attitude::Angry)
-                {
-                    Npc::npcs["Bob"].setAttitude(Attitude::Angry); // Angry / Hostile / Friendly / Neutral
-                }
-
+                Npc::npcs["Bob"].setAttitude(Attitude::Angry); // Angry / Hostile / Friendly / Neutral
                 Console::wait(500);
                 Display::writeDialogue(jWriter["prologue"]["dialogueWithBob"][17]);
                 break;
@@ -276,22 +267,22 @@ void Event::dialogueWithBob()
 
         if (!streetWasVisited)
         {
-            Display::writeNarration("\tFinally, an old, wrinkled face surrounded by gray fuzz emerges from the darkness. An artificial,\n\tcybernetic eye watches you vigilantly.");
+            Display::writeNarration(jWriter["prologue"]["dialogueWithBob"][18]);
             Console::wait(1000);
-            Display::writeNarration(" You start to feel strangely uncomfortable.");
+            Display::writeNarration(jWriter["prologue"]["dialogueWithBob"][19]);
             Console::wait(2000);
-            Display::writeNarration("\n\tIn an instant the alley is filled with the howling of a police siren.");
+            Display::writeNarration(jWriter["prologue"]["dialogueWithBob"][20]);
             Console::wait(1000);
-            Display::writeNarration(" On the wall in front of\n\tyou, red and blue begin to dance with each other.");
-            Display::writeDialogue("\n\t- 'Shit");
+            Display::writeNarration(jWriter["prologue"]["dialogueWithBob"][21]);
+            Display::writeDialogue(jWriter["prologue"]["dialogueWithBob"][22]);
             Console::wait(500);
-            Display::writeDialogue(", cops!");
+            Display::writeDialogue(jWriter["prologue"]["dialogueWithBob"][23]);
             Console::wait(500);
-            Display::writeDialogue(" Well, that's super. I think it's time for me to go.'");
+            Display::writeDialogue(jWriter["prologue"]["dialogueWithBob"][24]);
             Console::wait(1500);
-            Display::writeNarration("\n\tThe aging beggar dives into the embrace of darkness in a flash.");
+            Display::writeNarration(jWriter["prologue"]["dialogueWithBob"][25]);
             Console::wait(1500);
-            Display::writeNarration(" Does this mean you see him for\n\tthe last time?");
+            Display::writeNarration(jWriter["prologue"]["dialogueWithBob"][26]);
             Console::wait(3500);
             Game::game[0].setCurrentLocation(&Location::locations["Street"]);
         }
@@ -316,6 +307,45 @@ void Event::dialogueWithBob()
             Console::clearScreen();
             Game::game[0].setCurrentLocation(&Location::locations["Street"]);
         }
+    }
+}
+
+void Event::aboutParadiseLost()
+{
+    std::cout << std::endl;
+    //--------------------------------
+    Menu paradiseLostMenu;
+    paradiseLostMenu.addOptions({ jWriter["prologue"]["paradiseLostMenu"][0], jWriter["prologue"]["paradiseLostMenu"][1] });
+    paradiseLostMenu.showOptions();
+    //--------------------------------
+    while (true)
+    {
+        heroChoice = paradiseLostMenu.inputChoice();
+
+        if (heroChoice == 1)
+        {
+            Console::clearScreen();
+            paradiseLostMenu.showHeroChoice();
+            Display::writeDialogue(jWriter["prologue"]["aboutParadiseLost"][0]);
+            Console::wait(500);
+            Display::writeDialogue(jWriter["prologue"]["aboutParadiseLost"][1]);
+            Console::wait(1000);
+            Display::writeDialogue(jWriter["prologue"]["aboutParadiseLost"][2]);
+            Console::wait(1000);
+            Display::writeDialogue(jWriter["prologue"]["aboutParadiseLost"][3]);
+            Console::wait(1000);
+            Display::writeDialogue(jWriter["prologue"]["aboutParadiseLost"][4]);
+            Console::wait(1500);
+            Display::writeDialogue(jWriter["prologue"]["aboutParadiseLost"][5]);
+            break;
+        }
+        else if (heroChoice == 2)
+        {
+            Console::clearScreen();
+            paradiseLostMenu.showHeroChoice();
+            break;
+        }
+        else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
     }
 }
 

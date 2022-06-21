@@ -1,7 +1,6 @@
 {
   "main": {
     "welcome": "\n\tRADOSŁAW 'DOIC' MICHALAK PRESENTS A TEXT GAME TITLED",
-    "logoSubtitle": "\n\n\t\t\t\t\t     A Cyberpunk Text Game\n\n",
     "selectYouLanguage": "\n\tSelect your language:\n",
     "pressAnyKey": "\tPress ANY KEY to continue...",
     "and": " and ",
@@ -77,7 +76,7 @@
     "completed": "Completed"
   },
   "journal": {
-    "no_quests": "You do not have any quests in your journal.",
+    "noQuests": "You do not have any quests in your journal.",
     "entry": "\n\tNew quest added to the journal: "
   },
   "clothesType": {
@@ -234,10 +233,31 @@
       "\n\t'What's wrong with you?",
       " Anyway, it doesn't matter.",
       " Have you ever heard of Megacity?",
-      " Well,\n\tit's right here. The neighborhood we are currently in is called Gunce Deep.",
+      " Well,\n\tit's right here. The neighborhood we are currently in is called Paradise Lost.",
       " Did I make your\n\thead clearer?'\n",
       "\t'You're wrong. It's absolutely my business, kid. Don't shut your mouth like that, or you might\n\tlose a few teeth. Got it?'\n",
-      "\n\t'Don't show up here again if you don't want to get your teeth kicked in!'\n"
+      "\n\t'Don't show up here again if you don't want to get your teeth kicked in!'\n",
+      "\tFinally, an old, wrinkled face surrounded by gray fuzz emerges from the darkness. An artificial,\n\tcybernetic eye watches you vigilantly.",
+      " You start to feel strangely uncomfortable.",
+      "\n\tIn an instant the alley is filled with the howling of a police siren.",
+      " On the wall in front of\n\tyou, red and blue begin to dance with each other.",
+      "\n\t'Shit",
+      ", cops!",
+      " Well, that's super. I think it's time for me to go.'",
+      "\n\tThe aging beggar dives into the embrace of darkness in a flash.",
+      " Does this mean you see him for\n\tthe last time?"
+    ],
+    "paradiseLostMenu": [
+      "'Not really. Tell me about this Paradise Lost.'",
+      "'I remember something.'"
+    ],
+    "aboutParadiseLost": [
+      "\n\t'Dreaming of a history lesson?",
+      " Let it be.",
+      " Megacity was built on the ruins of a city destroyed\n\tby an atomic bomb more than two decades ago.",
+      " Nobody remembers remembers its name, but it is known\n\tthat it was one of the most important cities of the old world.",
+      " The workers named the district\n\tParadise Lost in its memory.",
+      " The quasi-people of the downtown will never understand this.\n"
     ],
     "downpourStart": [
       "\n\tYou feel single drops hitting you.",

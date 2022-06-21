@@ -9,7 +9,7 @@ Game::Game()
     this->choice = 0;
     this->gameLang = 0;
     this->playing = true;
-    this->ptrCurrentLocation = nullptr;
+    this->currentLocation = nullptr;
 }
 
 Game::~Game()
@@ -95,20 +95,20 @@ void Game::welcome()
 }
 
 std::array<std::string, 8> Game::logo = {
-    "\t ****     **   *******     ******  ********** **     ** *******   ****     **     **     **      \n",
-    "\t/**/**   /**  **/////**   **////**/////**/// /**    /**/**////** /**/**   /**    ****   /**      \n",
-    "\t/**//**  /** **     //** **    //     /**    /**    /**/**   /** /**//**  /**   **//**  /**      \n",
-    "\t/** //** /**/**      /**/**           /**    /**    /**/*******  /** //** /**  **  //** /**      \n",
-    "\t/**  //**/**/**      /**/**           /**    /**    /**/**///**  /**  //**/** **********/**      \n",
-    "\t/**   //****//**     ** //**    **    /**    /**    /**/**  //** /**   //****/**//////**/**      \n",
+    "\t ****     **   *******     ******  ********** **     ** *******   ****     **     **     **\n",
+    "\t/**/**   /**  **/////**   **////**/////**/// /**    /**/**////** /**/**   /**    ****   /**\n",
+    "\t/**//**  /** **     //** **    //     /**    /**    /**/**   /** /**//**  /**   **//**  /**\n",
+    "\t/** //** /**/**      /**/**           /**    /**    /**/*******  /** //** /**  **  //** /**\n",
+    "\t/**  //**/**/**      /**/**           /**    /**    /**/**///**  /**  //**/** **********/**\n",
+    "\t/**   //****//**     ** //**    **    /**    /**    /**/**  //** /**   //****/**//////**/**\n",
     "\t/**    //*** //*******   //******     /**    //******* /**   //**/**    //***/**     /**/********\n",
-    "\t//      ///   ///////     //////      //      ///////  //     // //      /// //      // //////// "
+    "\t//      ///   ///////     //////      //      ///////  //     // //      /// //      // ////////\n"
 };
 
 void Game::writeLogo()
 {
     Logger::startFuncLog(__FUNCTION__);
-    Console::setConsoleColor(CC_Lightblue);
+    Console::setConsoleColor(ConsoleColor::CC_Lightblue);
     std::cout << std::endl;
 
     for (const auto& i : logo)
@@ -118,13 +118,12 @@ void Game::writeLogo()
 
     Console::resetConsoleColor();
     std::cout << std::endl;
-    Display::write(jWriter["main"]["logoSubtitle"], 2);
 }
 
 void Game::loadLogo()
 {
     Logger::startFuncLog(__FUNCTION__);
-    Console::setConsoleColor(CC_Lightblue);
+    Console::setConsoleColor(ConsoleColor::CC_Lightblue);
     std::cout << std::endl;
 
     for (const auto& i : logo)
@@ -134,7 +133,6 @@ void Game::loadLogo()
 
     std::cout << std::endl;
     Console::resetConsoleColor();
-    std::cout << (std::string)jWriter["main"]["logoSubtitle"] << std::endl;
     mainMenu();
 }
 
@@ -155,7 +153,7 @@ void Game::mainMenu()
 
         switch (menu) {
         case 1: newGame(); break;
-        case 2: continueGame(); break;
+        case 2: laodGame(); break;
         case 3: changeLanguage(); break;
         case 4: credits(); break;
         case 5: endGame(); break;
@@ -172,7 +170,7 @@ void Game::newGame()
     setCurrentLocation(&Location::locations["DarkAlley"]);
 }
 
-void Game::continueGame()
+void Game::laodGame()
 {
     Logger::startFuncLog(__FUNCTION__);
     Console::clearScreen();
@@ -257,15 +255,15 @@ void Game::credits()
     Logger::startFuncLog(__FUNCTION__);
     Console::wait(500);
     Console::clearScreen();
-    Console::setConsoleColor(CC_Lightblue);
+    Console::setConsoleColor(ConsoleColor::CC_Lightblue);
     Display::write(jWriter["credits"]["author"]);
     Console::resetConsoleColor();
     Display::write("\n\tRadosław 'Doic' Michalak\n\n");
-    Console::setConsoleColor(CC_Lightblue);
+    Console::setConsoleColor(ConsoleColor::CC_Lightblue);
     Display::write(jWriter["credits"]["testers"]);
     Console::resetConsoleColor();
     Display::write("\n\t    Paweł Michalak\n\n");
-    Console::setConsoleColor(CC_Lightblue);
+    Console::setConsoleColor(ConsoleColor::CC_Lightblue);
     Display::write(jWriter["credits"]["thanks"]);
     Console::resetConsoleColor();
     Display::write("\n\t   Dominik Szpilski\n\t     Daniel Obłąk\n\n");
@@ -278,7 +276,7 @@ void Game::credits()
 
 void Game::setCurrentLocation(Location* location)
 {
-    this->ptrCurrentLocation = location;
+    this->currentLocation = location;
     Logger::out("Set <b>" + getCurrentLocation()->getName() + "</b> as current location", __FUNCTION__);
     startEventsByLocation();
 }

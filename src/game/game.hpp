@@ -19,41 +19,38 @@ class Game
 private:
 	bool playing;
 	int menu, choice, gameLang;
-	Location* ptrCurrentLocation;
+	Location* currentLocation;
+
+	static std::array<std::string, 8> logo;
 
 public:
 	Game();
 	virtual ~Game();
 
-	// inicjalizacja
-	static void init(); // gry
-	static void initHeroIventory(); // ekwipunku gracza
-	static void initHeroJournal(); // zadań gracza
-	// zatrzymanie gry
+	static void init();
+	static void initHeroIventory();
+	static void initHeroJournal();
 	static void pause();
 
-	void run(); // rozpoczęcie działania
-	void initAll(); // inicjalizacja obiektów
-	void selectLanguage(); // wybór języka
-	void welcome(); // powitanie
-	void writeLogo(); // wypisywanie loga
-	void mainMenu(); // menu główne
-	void newGame(); // nowa gra
-	void continueGame(); // kontynuacja rozgrywki
-	void changeLanguage(); // zmiana języka
-	void credits(); // o autorze
-	void loadLogo(); // wypisane logo
-	void endGame(); // koniec rozgrywki
-	void end() { this->playing = false; } // zakończenie działania
-	void setCurrentLocation(Location* location); // ustawienie aktualnej lokacji
-	void startEventsByLocation(); // odtworzenie wydarzeń dla lokacji
+	void run(); 
+	void initAll();
+	void selectLanguage(); 
+	void welcome(); 
+	void writeLogo(); 
+	void mainMenu();
+	void newGame(); 
+	void laodGame();
+	void changeLanguage(); 
+	void credits(); 
+	void loadLogo(); 
+	void endGame(); 
+	void end() { this->playing = false; } 
+	void setCurrentLocation(Location* location); 
+	void startEventsByLocation();
 
 	inline bool getPlaying() const { return this->playing; }
 	inline int getLang() const { return this->gameLang; }
-	inline Location* getCurrentLocation() const { return this->ptrCurrentLocation; }
+	inline Location* getCurrentLocation() const { return this->currentLocation; }
 
 	static std::map <int, Game> game;
-
-private:
-	static std::array<std::string, 8> logo;
 }; 
