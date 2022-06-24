@@ -57,7 +57,7 @@ void Game::selectLanguage()
     Console::resetConsoleColor();
     Menu langMenu;
 
-    while (getLang() != EN && getLang() != PL)
+    while (getLang() != GameLanguage::EN && getLang() != GameLanguage::PL)
     {
         Console::clearScreen();
         std::cout << std::endl;
@@ -67,16 +67,16 @@ void Game::selectLanguage()
         //--------------------------------
         this->gameLang = langMenu.inputChoice();
 
-        if (getLang() != EN && getLang() != PL)
+        if (getLang() != GameLanguage::EN && getLang() != GameLanguage::PL)
         {
             Logger::error("Entered invalid value of <b>gameLang</b>", __FUNCTION__);
         }
     }
 
-    if (getLang() == EN) {
+    if (getLang() == GameLanguage::EN) {
         Logger::out("Set English as game language", __FUNCTION__);
     }
-    else if (getLang() == PL)
+    else if (getLang() == GameLanguage::PL)
     {
         Logger::out("Set Polish as game language", __FUNCTION__);
     }
@@ -208,11 +208,11 @@ void Game::changeLanguage()
     this->gameLang = change;
     LanguageHandler::loadDataFromFile(getLang());
 
-    if (getLang() == EN)
+    if (getLang() == GameLanguage::EN)
     {
         Logger::out("Set English as game language", __FUNCTION__);
     }
-    else if (getLang() == PL)
+    else if (getLang() == GameLanguage::PL)
     {
         Logger::out("Set Polish as game language", __FUNCTION__);
     }

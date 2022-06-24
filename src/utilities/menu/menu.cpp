@@ -2,7 +2,6 @@
 
 Menu::Menu()
 {
-    // Logger::out("Function starts", __FUNCTION__);
     this->optionNr = 0;
     this->choice = 0;
     std::map <int, std::string> options;
@@ -10,7 +9,6 @@ Menu::Menu()
 
 Menu::~Menu()
 {
-    // Logger::out("Function starts", __FUNCTION__);
 }
 
 void Menu::actionOption(int nr, std::string text)
@@ -46,11 +44,11 @@ void Menu::addOptions(std::vector<std::string> options)
 {
     clearOptions();
 
-    for (const auto& i : options)
+    for (const auto& option : options)
     {
-        if (!i.empty())
+        if (!option.empty())
         {
-            this->options[optionNr] = i;
+            this->options[optionNr] = option;
             this->optionNr += 1;
         }
     }
@@ -65,22 +63,14 @@ void Menu::showOptions()
 
     Console::resetConsoleColor();
 
-    for (const auto& j : options)
+    for (const auto& option : options)
     {
-        actionOption(j.first + 1, j.second);
+        actionOption(option.first + 1, option.second);
     }
 }
 
 int Menu::inputChoice()
 {
-    //Console::setConsoleColor(ConsoleColor::CC_Narration);
-    //std::cout << "\tType 'exit' if you want to return to the main menu." << std::endl;
-    //Console::resetConsoleColor();
-
-    Display::write("\t> ", 25);
-    std::cin >> this->choice;
-    std::cin.clear();
-    std::cin.ignore();
-    Logger::out("Entered <b>" + std::to_string(this->choice) + "</b>", __FUNCTION__);
+    this->choice = Input::getChoice();
     return this->choice;
 }

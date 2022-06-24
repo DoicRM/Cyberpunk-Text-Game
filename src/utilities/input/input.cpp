@@ -5,8 +5,13 @@ int Input::getChoice()
     int choice;
     Display::write("\t> ", 25);
     std::cin >> choice;
-    std::cin.clear();
-    std::cin.ignore();
+
+    if (std::cin.fail())
+    {
+        std::cin.clear();
+        std::cin.ignore(INT_MAX, '\n');
+    }
+
     Logger::out("Entered <b>" + std::to_string(choice) + "</b>", __FUNCTION__);
     return choice;
 }

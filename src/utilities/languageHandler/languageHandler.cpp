@@ -10,13 +10,6 @@ void LanguageHandler::loadDataFromFile(int lang)
     std::string path = std::filesystem::current_path().string() + "\\data\\localisation\\";
     std::ifstream jReader(path + fileName + ".json");
 
-    if (!jReader.is_open())
-    {
-        Logger::error("Unable to open '" + fileName + ".json' file", __FUNCTION__);
-        std::runtime_error("Unable to open '" + fileName + ".json' file");
-        return;
-    }
-
     try
     {
         jWriter = nlohmann::json::parse(jReader);
@@ -24,7 +17,9 @@ void LanguageHandler::loadDataFromFile(int lang)
     catch (nlohmann::json::exception& e)
     {
         Logger::error(e.what(), __FUNCTION__);
-        std::runtime_error(e.what());
+        AllocConsole();
+        /* Make sure the validated language files are in the data/localisation folder. */
+        MessageBox(FindWindowA("ConsoleWindowClass", NULL), e.what(), "Parse JSON data from file", MB_ICONERROR);
     }
 
     jReader.close();
@@ -32,7 +27,7 @@ void LanguageHandler::loadDataFromFile(int lang)
 
 std::string LanguageHandler::getFileName(int lang)
 {
-    if (lang == EN)
+    if (lang == GameLanguage::EN)
     {
         return "en";
     }
