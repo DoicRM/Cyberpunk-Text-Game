@@ -32,7 +32,8 @@ public:
 	static void initHeroJournal();
 	static void pause();
 
-	void run(); 
+	void run();
+
 	void initAll();
 	void selectLanguage(); 
 	void welcome(); 
@@ -50,7 +51,7 @@ public:
 
 	inline bool getPlaying() const { return this->playing; }
 	inline int getLang() const { return this->gameLang; }
-	inline Location* getCurrentLocation() const { return this->currentLocation; }
+	Location* getCurrentLocation() { return this->currentLocation; }
 
 	static std::map <int, Game> game;
-}; 
+};

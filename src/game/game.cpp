@@ -57,37 +57,37 @@ void Game::selectLanguage()
     Console::resetConsoleColor();
     Menu langMenu;
 
-    while (getLang() != GameLanguage::EN && getLang() != GameLanguage::PL)
+    while(true)
     {
         Console::clearScreen();
         std::cout << std::endl;
         //--------------------------------
-        langMenu.addOptions({ "EN", "PL" });
+        langMenu.addOptions({
+            std::make_pair("EN", std::bind(&Game::welcome, this)),
+            std::make_pair("PL", std::bind(&Game::welcome, this))
+        });
         langMenu.showOptions();
         //--------------------------------
-        this->gameLang = langMenu.inputChoice();
+        this->gameLang = langMenu.getInputChoice();
+        Console::clearScreen();
 
-        if (getLang() != GameLanguage::EN && getLang() != GameLanguage::PL)
+        if (langMenu.getChoice() <= langMenu.getOptionsSize() && langMenu.getChoice() > 0)
         {
-            Logger::error("Entered invalid value of <b>gameLang</b>", __FUNCTION__);
+            LanguageHandler::loadDataFromFile(getLang());
+            langMenu.callFunction();
+            break;
+        }
+        else {
+            Logger::invalidHeroChoiceError(__FUNCTION__);
+            continue;
         }
     }
-
-    if (getLang() == GameLanguage::EN) {
-        Logger::out("Set English as game language", __FUNCTION__);
-    }
-    else if (getLang() == GameLanguage::PL)
-    {
-        Logger::out("Set Polish as game language", __FUNCTION__);
-    }
-
-    LanguageHandler::loadDataFromFile(getLang());
-    Console::clearScreen();
 }
 
 void Game::welcome()
 {
     Logger::startFuncLog(__FUNCTION__);
+    Console::clearScreen();
     Console::wait(500); 
     Display::write(jWriter["main"]["welcome"], 40);
     Console::wait(2000);
@@ -123,6 +123,7 @@ void Game::writeLogo()
 void Game::loadLogo()
 {
     Logger::startFuncLog(__FUNCTION__);
+    Console::clearScreen();
     Console::setConsoleColor(ConsoleColor::CC_Lightblue);
     std::cout << std::endl;
 
@@ -143,22 +144,21 @@ void Game::mainMenu()
     std::cout << std::endl;
     Menu mainMenu;
     //--------------------------------
-    mainMenu.addOptions({ jWriter["mainMenu"][0], jWriter["mainMenu"][1], jWriter["mainMenu"][2], jWriter["mainMenu"][3], jWriter["mainMenu"][4] });
+    mainMenu.addOptions({
+        std::make_pair(jWriter["mainMenu"][0], std::bind(&Game::newGame, this)),
+        std::make_pair(jWriter["mainMenu"][1], std::bind(&Game::laodGame, this)),
+        std::make_pair(jWriter["mainMenu"][2], std::bind(&Game::changeLanguage, this)),
+        std::make_pair(jWriter["mainMenu"][3], std::bind(&Game::credits, this)),
+        std::make_pair(jWriter["mainMenu"][4], std::bind(&Game::endGame, this))
+        });
     mainMenu.showOptions();
     //--------------------------------
-
-    do
+    while (true)
     {
-        menu = mainMenu.inputChoice();
-
-        switch (menu) {
-        case 1: newGame(); break;
-        case 2: laodGame(); break;
-        case 3: changeLanguage(); break;
-        case 4: credits(); break;
-        case 5: endGame(); break;
-        }
-    } while (menu > 5 || menu <= 0);
+        mainMenu.inputChoice();
+        std::cout << mainMenu.getChoice() << std::endl;
+        break;
+    }
 }
 
 void Game::newGame()
@@ -186,40 +186,33 @@ void Game::laodGame()
 void Game::changeLanguage()
 {
     Logger::startFuncLog(__FUNCTION__);
-    int change = 0;
     Menu langMenu;
 
-    while (change != EN && change != PL)
+    while (true)
     {
         Console::clearScreen();
         Display::write(jWriter["main"]["selectYouLanguage"], 25);
         //--------------------------------
-        langMenu.addOptions({ "EN", "PL" });
+        langMenu.addOptions({
+            std::make_pair("EN", std::bind(&Game::loadLogo, this)),
+            std::make_pair("PL", std::bind(&Game::loadLogo, this))
+            });
         langMenu.showOptions();
         //--------------------------------
-        change = langMenu.inputChoice();
+        this->gameLang = langMenu.getInputChoice();
+        Console::clearScreen();
 
-        if (change != EN && change != PL)
+        if (langMenu.getChoice() <= langMenu.getOptionsSize() && langMenu.getChoice() > 0)
         {
-            Logger::error("Entered invalid value of <b>gameLang</b>", __FUNCTION__);
+            LanguageHandler::loadDataFromFile(getLang());
+            langMenu.callFunction();
+            break;
+        }
+        else {
+            Logger::invalidHeroChoiceError(__FUNCTION__);
+            continue;
         }
     }
-
-    this->gameLang = change;
-    LanguageHandler::loadDataFromFile(getLang());
-
-    if (getLang() == GameLanguage::EN)
-    {
-        Logger::out("Set English as game language", __FUNCTION__);
-    }
-    else if (getLang() == GameLanguage::PL)
-    {
-        Logger::out("Set Polish as game language", __FUNCTION__);
-    }
-
-    Console::clearScreen();
-    loadLogo();
-    mainMenu();
 }
 
 void Game::endGame()
@@ -232,28 +225,19 @@ void Game::endGame()
         Console::clearScreen();
         Display::write(jWriter["quitGame"]["prompt"], 25);
         //--------------------------------
-        quitMenu.addOptions({ jWriter["quitGame"]["yes"], jWriter["quitGame"]["no"] });
+        quitMenu.addOptions({
+            std::make_pair(jWriter["quitGame"]["yes"], std::bind(&Game::end, this)),
+            std::make_pair(jWriter["quitGame"]["no"], std::bind(&Game::loadLogo, this))
+        });
         quitMenu.showOptions();
         //--------------------------------
-        choice = quitMenu.inputChoice();
-
-        switch (choice) {
-        case 1:
-            end();
-            break;
-        case 2:
-            Console::clearScreen(); 
-            loadLogo();
-            mainMenu();
-            break;
-        }
-    } while (choice != 1 && choice != 2);
+        quitMenu.inputChoice();
+    } while (quitMenu.getChoice() > quitMenu.getOptionsSize() && quitMenu.getChoice() <= 0);
 }
 
 void Game::credits()
 {
     Logger::startFuncLog(__FUNCTION__);
-    Console::wait(500);
     Console::clearScreen();
     Console::setConsoleColor(ConsoleColor::CC_Lightblue);
     Display::write(jWriter["credits"]["author"]);

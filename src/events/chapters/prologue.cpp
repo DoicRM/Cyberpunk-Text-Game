@@ -60,29 +60,16 @@ void Event::wakeUpInDarkAlley()
     Console::wait(2500);
     Display::writeNarration(jWriter["prologue"]["wakeUp"][8]);
     //--------------------------------
-    menu1.addOptions({ jWriter["prologue"]["menu1"][0], jWriter["prologue"]["menu1"][1] });
+    menu1.addOptions({
+        std::make_pair(jWriter["prologue"]["menu1"][0], rubbishSearch),
+        std::make_pair(jWriter["prologue"]["menu1"][1], outOfAlley)
+    });
     menu1.showOptions();
     //--------------------------------
 
     while (true)
     {
-        heroChoice = menu1.inputChoice();
-
-        if (heroChoice == 1)
-        {
-            Console::clearScreen();
-            menu1.showHeroChoice();
-            rubbishSearch();
-            break;
-        }
-        else if (heroChoice == 2)
-        {
-            Console::clearScreen();
-            menu1.showHeroChoice();
-            outOfTheAlley();
-            break;
-        }
-        else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
+        menu1.inputChoice();
     }
 }
 
@@ -96,14 +83,31 @@ void Event::acceleratorFinding()
 
     Hero::heroes[0].addItem(&Item::items["AD13"]);
     Hero::heroes[0].addMoney(5.0);
-    Console::setConsoleColor(ConsoleColor::CC_Item);
-    Display::write("\n\n\t" + Item::items["AD13"].getName());
-    Console::resetConsoleColor();
-    Display::write(jWriter["main"]["and"]);
-    Console::setConsoleColor(ConsoleColor::CC_Green);
-    Display::write("5$");
-    Console::resetConsoleColor();
-    Display::write(jWriter["main"]["wasFound"]);
+
+    if (Game::game[0].getLang() == GameLanguage::EN)
+    {
+        Console::setConsoleColor(ConsoleColor::CC_Item);
+        Display::write("\n\n\t" + Item::items["AD13"].getName());
+        Console::resetConsoleColor();
+        Display::write(jWriter["main"]["and"]);
+        Console::setConsoleColor(ConsoleColor::CC_Green);
+        Display::write("5$");
+        Console::resetConsoleColor();
+        Display::write(jWriter["main"]["wasFound"]);
+    }
+    else if (Game::game[0].getLang() == GameLanguage::PL)
+    {
+        Console::resetConsoleColor();
+        Display::write("\n\n\t" + (std::string)jWriter["main"]["wasFound"]);
+        Console::setConsoleColor(ConsoleColor::CC_Item);
+        Display::write(Item::items["AD13"].getName());
+        Console::resetConsoleColor();
+        Display::write(jWriter["main"]["and"]);
+        Console::setConsoleColor(ConsoleColor::CC_Green);
+        Display::write("5$");
+        Console::resetConsoleColor();
+        Display::write(".");
+    }
 
     Display::write(jWriter["inventory"]["tip"], 15);
     Console::wait(4000);
@@ -115,10 +119,10 @@ void Event::rubbishSearch()
 {
     Logger::startFuncLog(__FUNCTION__);
     acceleratorFinding();
-    outOfTheAlley();
+    outOfAlley();
 }
 
-void Event::outOfTheAlley()
+void Event::outOfAlley()
 {
     Logger::startFuncLog(__FUNCTION__);
 
@@ -138,37 +142,34 @@ void Event::outOfTheAlley()
     Display::writeDialogue(jWriter["prologue"]["dialogueWithBob"][1]);
     //--------------------------------
     Menu menu2;
-    menu2.addOptions({ jWriter["prologue"]["menu2"][0], jWriter["prologue"]["menu2"][1] });
+    menu2.addOptions({
+        std::make_pair(jWriter["prologue"]["menu2"][0], outOfAlley_1),
+        std::make_pair(jWriter["prologue"]["menu2"][1], outOfAlley_2)
+    });
     menu2.showOptions();
     //--------------------------------
     while (true)
     {
-        heroChoice = menu2.inputChoice();
-
-        if (heroChoice == 1)
-        {
-            Console::clearScreen();
-            menu2.showHeroChoice();
-            Display::writeNarration(jWriter["prologue"]["outOfAlley"][5]);
-            Console::wait(1500);
-            Display::writeNarration(jWriter["prologue"]["outOfAlley"][6]);
-            Console::wait(1000);
-            dialogueWithBob();
-            break;
-        }
-        else if (heroChoice == 2)
-        {
-            Console::clearScreen();
-            menu2.showHeroChoice();
-            Display::writeNarration(jWriter["prologue"]["outOfAlley"][7]);
-            Display::writeDialogue(jWriter["prologue"]["dialogueWithBob"][2]);
-            Display::writeNarration(jWriter["prologue"]["outOfAlley"][8]);
-            Console::wait(1000);
-            Game::game[0].setCurrentLocation(&Location::locations["Street"]);
-            break;
-        }
-        else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
+        menu2.inputChoice();
     }
+}
+
+void Event::outOfAlley_1()
+{
+    Display::writeNarration(jWriter["prologue"]["outOfAlley"][5]);
+    Console::wait(1500);
+    Display::writeNarration(jWriter["prologue"]["outOfAlley"][6]);
+    Console::wait(1000);
+    dialogueWithBob();
+}
+
+void Event::outOfAlley_2()
+{
+    Display::writeNarration(jWriter["prologue"]["outOfAlley"][7]);
+    Display::writeDialogue(jWriter["prologue"]["dialogueWithBob"][2]);
+    Display::writeNarration(jWriter["prologue"]["outOfAlley"][8]);
+    Console::wait(1000);
+    Game::game[0].setCurrentLocation(&Location::locations["Street"]);
 }
 
 void Event::dialogueWithBob()
@@ -180,129 +181,68 @@ void Event::dialogueWithBob()
     {
         //--------------------------------
         Menu nameMenu;
-        nameMenu.addOptions({ jWriter["prologue"]["nameMenu"][0], jWriter["prologue"]["nameMenu"][1] });
+        nameMenu.addOptions({
+            std::make_pair(jWriter["prologue"]["nameMenu"][0], dialogueWithBob_1),
+            std::make_pair(jWriter["prologue"]["nameMenu"][1], dialogueWithBob_2)
+        });
         nameMenu.showOptions();
         //--------------------------------
         while (true)
         {
-            heroChoice = nameMenu.inputChoice();
-
-            if (heroChoice == 1)
-            {
-                Console::clearScreen();
-                nameMenu.showHeroChoice();
-                std::cout << std::endl;
-                namingHero();
-                Npc::npcs["Bob"].setToKnowHero();
-                Display::writeDialogue((std::string)jWriter["prologue"]["dialogueWithBob"][4] + Hero::heroes[0].getName() + (std::string)jWriter["prologue"]["dialogueWithBob"][5]);
-                Console::wait(1500);
-                Display::writeDialogue((std::string)jWriter["prologue"]["dialogueWithBob"][6] + Npc::npcs["Bob"].getName() + ".");
-                Console::wait(1500);
-                Display::writeDialogue(jWriter["prologue"]["dialogueWithBob"][7]);
-                Display::writeNarration(jWriter["prologue"]["dialogueWithBob"][0]);
-                break;
-            }
-            else if (heroChoice == 2)
-            {
-                Console::clearScreen();
-                nameMenu.showHeroChoice();
-                std::cout << std::endl;
-                Npc::npcs["Bob"].setAttitude(Attitude::Angry); // Angry / Hostile / Friendly / Neutral
-                Console::wait(500);
-                Display::writeDialogue(jWriter["prologue"]["dialogueWithBob"][8]);
-
-                break;
-            }
-            else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
+            nameMenu.inputChoice();
         }
         //--------------------------------
         Menu menu3;
-        menu3.addOptions({ jWriter["prologue"]["menu3"][0], jWriter["prologue"]["menu3"][1], jWriter["prologue"]["menu3"][2] });
+        menu3.addOptions({
+            std::make_pair(jWriter["prologue"]["menu3"][0], dialogueWithBob_3),
+            std::make_pair(jWriter["prologue"]["menu3"][1], dialogueWithBob_4),
+            std::make_pair(jWriter["prologue"]["menu3"][2], dialogueWithBob_5)
+        });
         menu3.showOptions();
         //--------------------------------
         while (true)
         {
-            heroChoice = menu3.inputChoice();
-
-            if (heroChoice == 1)
-            {
-                Console::clearScreen();
-                menu3.showHeroChoice();
-                bobRecommendsZed = true; // Bob poleca bohaterowi sklep z bronią Zeda
-                Display::writeDialogue(jWriter["prologue"]["dialogueWithBob"][9]);
-                Console::wait(1000);
-                Display::writeDialogue(jWriter["prologue"]["dialogueWithBob"][10]);
-                Console::wait(1000);
-                Display::writeDialogue(jWriter["prologue"]["dialogueWithBob"][11]);
-                break;
-            }
-            else if (heroChoice == 2)
-            {
-                Console::clearScreen();
-                menu3.showHeroChoice();
-                Display::writeDialogue(jWriter["prologue"]["dialogueWithBob"][12]);
-                Console::wait(1000);
-                Display::writeDialogue(jWriter["prologue"]["dialogueWithBob"][13]);
-                Console::wait(1500);
-                Display::writeDialogue(jWriter["prologue"]["dialogueWithBob"][14]);
-                Console::wait(1500);
-                Display::writeDialogue(jWriter["prologue"]["dialogueWithBob"][15]);
-                Console::wait(1000);
-                Display::writeDialogue(jWriter["prologue"]["dialogueWithBob"][16]);
-                aboutParadiseLost();
-                break;
-            }
-            else if (heroChoice == 3)
-            {
-                Console::clearScreen();
-                menu3.showHeroChoice();
-                std::cout << std::endl;
-                Npc::npcs["Bob"].setAttitude(Attitude::Angry); // Angry / Hostile / Friendly / Neutral
-                Console::wait(500);
-                Display::writeDialogue(jWriter["prologue"]["dialogueWithBob"][17]);
-                break;
-            }
-            else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
+            menu3.inputChoice();
         }
 
         if (!streetWasVisited)
         {
-            Display::writeNarration(jWriter["prologue"]["dialogueWithBob"][18]);
-            Console::wait(1000);
             Display::writeNarration(jWriter["prologue"]["dialogueWithBob"][19]);
-            Console::wait(2000);
-            Display::writeNarration(jWriter["prologue"]["dialogueWithBob"][20]);
             Console::wait(1000);
+            Display::writeNarration(jWriter["prologue"]["dialogueWithBob"][20]);
+            Console::wait(2000);
             Display::writeNarration(jWriter["prologue"]["dialogueWithBob"][21]);
-            Display::writeDialogue(jWriter["prologue"]["dialogueWithBob"][22]);
-            Console::wait(500);
+            Console::wait(1000);
+            Display::writeNarration(jWriter["prologue"]["dialogueWithBob"][22]);
             Display::writeDialogue(jWriter["prologue"]["dialogueWithBob"][23]);
             Console::wait(500);
             Display::writeDialogue(jWriter["prologue"]["dialogueWithBob"][24]);
-            Console::wait(1500);
-            Display::writeNarration(jWriter["prologue"]["dialogueWithBob"][25]);
+            Console::wait(500);
+            Display::writeDialogue(jWriter["prologue"]["dialogueWithBob"][25]);
             Console::wait(1500);
             Display::writeNarration(jWriter["prologue"]["dialogueWithBob"][26]);
+            Console::wait(1500);
+            Display::writeNarration(jWriter["prologue"]["dialogueWithBob"][27]);
             Console::wait(3500);
             Game::game[0].setCurrentLocation(&Location::locations["Street"]);
         }
         else {
-            Display::writeDialogue("\t - 'All right, that is enough.");
+            Display::writeDialogue(jWriter["prologue"]["dialogueWithBob"][28]);
             Console::wait(1500);
-            Display::writeDialogue("I saw the cops hanging around. It stopped being safe here, at\n\tleast for me.");
+            Display::writeDialogue(jWriter["prologue"]["dialogueWithBob"][29]);
 
             if (Npc::npcs["Bob"].getAttitude() == Attitude::Angry || Npc::npcs["Bob"].getAttitude() == Attitude::Hostile)
             {
-                Display::writeDialogue(" Be glad we don't have more of it left.'");
+                Display::writeDialogue(jWriter["prologue"]["dialogueWithBob"][30]);
             }
             else {
-                Display::writeDialogue(" Take care, kid.'");
+                Display::writeDialogue(jWriter["prologue"]["dialogueWithBob"][31]);
             }
 
             Console::wait(1500);
-            Display::writeNarration("\n\tThe aging beggar dives into the embrace of darkness in a flash.");
+            Display::writeNarration(jWriter["prologue"]["dialogueWithBob"][26]);
             Console::wait(1500);
-            Display::writeNarration(" Does this mean you see him for\n\tthe last time?\n\n");
+            Display::writeNarration(jWriter["prologue"]["dialogueWithBob"][27]);
             Game::pause();
             Console::clearScreen();
             Game::game[0].setCurrentLocation(&Location::locations["Street"]);
@@ -310,43 +250,90 @@ void Event::dialogueWithBob()
     }
 }
 
+void Event::dialogueWithBob_1()
+{
+    namingHero();
+    Npc::npcs["Bob"].setToKnowHero();
+    Display::writeDialogue((std::string)jWriter["prologue"]["dialogueWithBob"][4] + Hero::heroes[0].getName() + (std::string)jWriter["prologue"]["dialogueWithBob"][5]);
+    Console::wait(1500);
+    Display::writeDialogue((std::string)jWriter["prologue"]["dialogueWithBob"][6] + Npc::npcs["Bob"].getName() + ".");
+    Console::wait(1500);
+    Display::writeDialogue(jWriter["prologue"]["dialogueWithBob"][7]);
+    Display::writeNarration(jWriter["prologue"]["dialogueWithBob"][0]);
+}
+
+void Event::dialogueWithBob_2()
+{
+    Npc::npcs["Bob"].setAttitude(Attitude::Angry); // Angry / Hostile / Friendly / Neutral
+    Console::wait(500);
+    Display::writeDialogue(jWriter["prologue"]["dialogueWithBob"][8]);
+}
+
+void Event::dialogueWithBob_3()
+{
+    bobRecommendsZed = true; // Bob poleca bohaterowi sklep z bronią Zeda
+    Display::writeDialogue(jWriter["prologue"]["dialogueWithBob"][9]);
+    Console::wait(1000);
+    Display::writeDialogue(jWriter["prologue"]["dialogueWithBob"][10]);
+    Console::wait(1000);
+    Display::writeDialogue(jWriter["prologue"]["dialogueWithBob"][11]);
+}
+
+void Event::dialogueWithBob_4()
+{
+    Display::writeDialogue(jWriter["prologue"]["dialogueWithBob"][12]);
+    Console::wait(1000);
+    Display::writeDialogue(jWriter["prologue"]["dialogueWithBob"][13]);
+    Console::wait(1500);
+    Display::writeDialogue(jWriter["prologue"]["dialogueWithBob"][14]);
+    Console::wait(1500);
+    Display::writeDialogue(jWriter["prologue"]["dialogueWithBob"][15]);
+    Console::wait(1000);
+    Display::writeDialogue(jWriter["prologue"]["dialogueWithBob"][16]);
+    aboutParadiseLost();
+}
+
+void Event::dialogueWithBob_5()
+{
+    Npc::npcs["Bob"].setAttitude(Attitude::Angry); // Angry / Hostile / Friendly / Neutral
+    Console::wait(500);
+    Display::writeDialogue(jWriter["prologue"]["dialogueWithBob"][17]);
+}
+
 void Event::aboutParadiseLost()
 {
     std::cout << std::endl;
     //--------------------------------
     Menu paradiseLostMenu;
-    paradiseLostMenu.addOptions({ jWriter["prologue"]["paradiseLostMenu"][0], jWriter["prologue"]["paradiseLostMenu"][1] });
+    paradiseLostMenu.addOptions({
+        std::make_pair(jWriter["prologue"]["paradiseLostMenu"][0], aboutParadiseLost_1),
+        std::make_pair(jWriter["prologue"]["paradiseLostMenu"][1], aboutParadiseLost_2)
+    });
     paradiseLostMenu.showOptions();
     //--------------------------------
     while (true)
     {
-        heroChoice = paradiseLostMenu.inputChoice();
-
-        if (heroChoice == 1)
-        {
-            Console::clearScreen();
-            paradiseLostMenu.showHeroChoice();
-            Display::writeDialogue(jWriter["prologue"]["aboutParadiseLost"][0]);
-            Console::wait(500);
-            Display::writeDialogue(jWriter["prologue"]["aboutParadiseLost"][1]);
-            Console::wait(1000);
-            Display::writeDialogue(jWriter["prologue"]["aboutParadiseLost"][2]);
-            Console::wait(1000);
-            Display::writeDialogue(jWriter["prologue"]["aboutParadiseLost"][3]);
-            Console::wait(1000);
-            Display::writeDialogue(jWriter["prologue"]["aboutParadiseLost"][4]);
-            Console::wait(1500);
-            Display::writeDialogue(jWriter["prologue"]["aboutParadiseLost"][5]);
-            break;
-        }
-        else if (heroChoice == 2)
-        {
-            Console::clearScreen();
-            paradiseLostMenu.showHeroChoice();
-            break;
-        }
-        else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
+        paradiseLostMenu.inputChoice();
     }
+}
+
+void Event::aboutParadiseLost_1()
+{
+    Display::writeDialogue(jWriter["prologue"]["aboutParadiseLost"][0]);
+    Console::wait(500);
+    Display::writeDialogue(jWriter["prologue"]["aboutParadiseLost"][1]);
+    Console::wait(1000);
+    Display::writeDialogue(jWriter["prologue"]["aboutParadiseLost"][2]);
+    Console::wait(1000);
+    Display::writeDialogue(jWriter["prologue"]["aboutParadiseLost"][3]);
+    Console::wait(1000);
+    Display::writeDialogue(jWriter["prologue"]["aboutParadiseLost"][4]);
+    Console::wait(1500);
+    Display::writeDialogue(jWriter["prologue"]["aboutParadiseLost"][5]);
+}
+
+void Event::aboutParadiseLost_2()
+{
 }
 
 void Event::darkAlleyCrossroads()
@@ -359,34 +346,15 @@ void Event::darkAlleyCrossroads()
         Display::writeDialogue("\n\t- 'It's you again. Why don't you tell me something for one this time?'\n\n");
         //--------------------------------
         Menu menu2;
-        menu2.addOptions({ jWriter["prologue"]["menu3"][0], jWriter["prologue"]["menu3"][1]});
+        menu2.addOptions({
+            std::make_pair(jWriter["prologue"]["menu2"][2], outOfAlley_1),
+            std::make_pair(jWriter["prologue"]["menu2"][1], outOfAlley_2)
+        });
         menu2.showOptions();
         //--------------------------------
         while (true)
         {
-            heroChoice = menu2.inputChoice();
-
-            if (heroChoice == 1)
-            {
-                Console::clearScreen();
-                menu2.showHeroChoice();
-                Display::writeNarration(jWriter["prologue"]["outOfAlley"][5]);
-                Console::wait(1500);
-                Display::writeNarration(jWriter["prologue"]["outOfAlley"][6]);
-                dialogueWithBob();
-                break;
-            }
-            else if (heroChoice == 2)
-            {
-                Console::clearScreen();
-                menu2.showHeroChoice();
-                Display::writeNarration(jWriter["prologue"]["outOfAlley"][7]);
-                Display::writeDialogue(jWriter["dialogueWitBob"][9]);
-                Console::clearScreen();
-                Game::game[0].setCurrentLocation(&Location::locations["Street"]);
-                break;
-            }
-            else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
+            menu2.inputChoice();
         }
     }
     else
@@ -401,34 +369,15 @@ void Event::darkAlleyCrossroads()
             Display::writeNarration(jWriter["prologue"]["wakeUp"][8]);
             //--------------------------------
             Menu menu1;
-            menu1.addOptions({ jWriter["prologue"]["menu1"][0], jWriter["prologue"]["menu1"][1] });
+            menu1.addOptions({
+                std::make_pair(jWriter["prologue"]["menu1"][0], darkAlleyCrossroads_1),
+                std::make_pair(jWriter["prologue"]["menu1"][1], darkAlleyCrossroads_2)
+            });
             menu1.showOptions();
             //--------------------------------
             while (true)
             {
-                heroChoice = menu1.inputChoice();
-
-                if (heroChoice == 1)
-                {
-                    Console::clearScreen();
-                    menu1.showHeroChoice();
-                    acceleratorFinding();
-                    Display::writeNarration("\n\tThere is nothing interesting here any more. Time to go back...\n");
-                    Console::wait(1500);
-                    Console::clearScreen();
-                    Game::game[0].setCurrentLocation(&Location::locations["Street"]);
-                    break;
-                }
-                else if (heroChoice == 2)
-                {
-                    Console::clearScreen();
-                    menu1.showHeroChoice();
-                    Console::wait(1500);
-                    Console::clearScreen();
-                    Game::game[0].setCurrentLocation(&Location::locations["Street"]);
-                    break;
-                }
-                else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
+                menu1.inputChoice();
             }
         }
         else
@@ -439,6 +388,23 @@ void Event::darkAlleyCrossroads()
             Game::game[0].setCurrentLocation(&Location::locations["Street"]);
         }
     }
+}
+
+void Event::darkAlleyCrossroads_1()
+{
+    Logger::startFuncLog(__FUNCTION__);
+    acceleratorFinding();
+    Display::writeNarration("\n\tThere is nothing interesting here any more. Time to go back...\n");
+    Console::wait(1500);
+    Console::clearScreen();
+    Game::game[0].setCurrentLocation(&Location::locations["Street"]);
+}
+
+void Event::darkAlleyCrossroads_2()
+{
+    Logger::startFuncLog(__FUNCTION__);
+    Console::clearScreen();
+    Game::game[0].setCurrentLocation(&Location::locations["Street"]);
 }
 
 // ULICA
@@ -462,37 +428,37 @@ void Event::lookAtAmnesia()
     }
     //--------------------------------
     Menu menu4;
-    menu4.addOptions({ "Come closer and see what it's all about.", "Take a look around the area." });
+    menu4.addOptions({
+        std::make_pair("Come closer and see what it's all about.", lookAtAmnesia_1),
+        std::make_pair("Take a look around the area.", lookAtAmnesia_2)
+    });
     menu4.showOptions();
     //--------------------------------
     while (true)
     {
-        heroChoice = menu4.inputChoice();
-
-        if (heroChoice == 1)
-        {
-            Console::clearScreen();
-            menu4.showHeroChoice();
-            std::cout << std::endl;
-
-            if (!Npc::npcs["Bob"].knowsHero())
-            {
-                meetingWithSecurityGuards();
-                meetingWithPolicemans();
-            }
-            else meetingWithPolicemans();
-
-            break;
-        }
-        else if (heroChoice == 2)
-        {
-            Console::clearScreen();
-            menu4.showHeroChoice();
-            Game::game[0].setCurrentLocation(&Location::locations["GunShop"]);
-            break;
-        }
-        else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
+        menu4.inputChoice();
     }
+}
+
+void Event::lookAtAmnesia_1()
+{
+    Logger::startFuncLog(__FUNCTION__);
+    std::cout << std::endl;
+
+    if (!Npc::npcs["Bob"].knowsHero())
+    {
+        meetingWithSecurityGuards();
+        meetingWithPolicemans();
+    }
+    else {
+        meetingWithPolicemans();
+    }
+}
+
+void Event::lookAtAmnesia_2()
+{
+    Logger::startFuncLog(__FUNCTION__);
+    Game::game[0].setCurrentLocation(&Location::locations["GunShop"]);
 }
 
 void Event::encounterGunStore()
@@ -500,45 +466,44 @@ void Event::encounterGunStore()
     Logger::startFuncLog(__FUNCTION__);
     Display::writeNarration("\n\tYou go to the right side of the street. After walking several meters you come across a small\n\tbooth between blocks of flats.");
 
-    if (bobRecommendsZed) Display::writeNarration(" Could it be that the famous gun store managed by Bob's friend?");
+    if (bobRecommendsZed)
+    {
+        Display::writeNarration(" Could it be that the famous gun store managed by Bob's friend?");
+    }
 
     std::cout << std::endl << std::endl;
     //--------------------------------
     Menu menu5;
-    menu5.addOptions({ "Go inside.", "Turn back." });
+    menu5.addOptions({
+        std::make_pair("Go inside.", enterGunShop),
+        std::make_pair("Turn back.", encounterGunStore_1)
+    });
     menu5.showOptions();
     //--------------------------------
     while (true)
     {
-        heroChoice = menu5.inputChoice();
+        menu5.inputChoice();
+    }
+}
 
-        if (heroChoice == 1)
+void Event::encounterGunStore_1()
+{
+    Logger::startFuncLog(__FUNCTION__);
+    std::cout << std::endl;
+
+    if (!Npc::npcs["Caden"].knowsHero() && !Npc::npcs["CadensPartner"].knowsHero())
+    {
+        if (!Npc::npcs["Bob"].knowsHero())
         {
-            Console::clearScreen();
-            menu5.showHeroChoice();
-            enterGunShop();
-            break;
+            meetingWithSecurityGuards();
+            meetingWithPolicemans();
         }
-        else if (heroChoice == 2)
-        {
-            Console::clearScreen();
-            menu5.showHeroChoice();
-            std::cout << std::endl;
-
-            if (!Npc::npcs["Caden"].knowsHero() && !Npc::npcs["CadensPartner"].knowsHero())
-            {
-                if (!Npc::npcs["Bob"].knowsHero())
-                {
-                    meetingWithSecurityGuards();
-                    meetingWithPolicemans();
-                }
-                else meetingWithPolicemans();
-            }
-            else Game::game[0].setCurrentLocation(&Location::locations["Street"]);
-
-            break;
+        else {
+            meetingWithPolicemans();
         }
-        else Logger::error("Entered invalid value of <b>heroChoice</b>", __FUNCTION__); continue;
+    }
+    else {
+        Game::game[0].setCurrentLocation(&Location::locations["Street"]);
     }
 }
 
@@ -563,8 +528,9 @@ void Event::meetingWithPolicemans()
 {
     Logger::startFuncLog(__FUNCTION__);
 
-    if (Npc::npcs["Bob"].knowsHero())
+    if (Npc::npcs["Bob"].knowsHero()) {
         Display::writeNarration("\tWhen you get closer, one of the police officers in a dark blue uniform turns toward you.");
+    }
     else {
         Display::writeNarration("\tIn an instant the street is filled with the howling of a police siren.");
         Console::wait(1000);
@@ -577,8 +543,12 @@ void Event::meetingWithPolicemans()
     Console::wait(1500);
     Display::writeDialogue(" And what are you doing here? Please show me your ID card.'");
 
-    if (Hero::heroes[0].hasItem(&Item::items["AD13"])) Display::writeNarration("\n\tYou start searching through the pockets of your jacket and pants, but other than the accelerator\n\tyou found in the trash, there's nothing else there.");
-    else Display::writeNarration("\n\tYou start searching through the pockets of your jacket and pants, but there's nothing there.");
+    if (Hero::heroes[0].hasItem(&Item::items["AD13"])) {
+        Display::writeNarration("\n\tYou start searching through the pockets of your jacket and pants, but other than the accelerator\n\tyou found in the trash, there's nothing else there.");
+    }
+    else {
+        Display::writeNarration("\n\tYou start searching through the pockets of your jacket and pants, but there's nothing there.");
+    }
 
     Display::writeDialogue("\n\t- 'I see that we have a problem.");
     Console::wait(1500);
@@ -618,29 +588,28 @@ void Event::meetingWithPolicemans()
     Display::writeNarration("\n\tThe bouncer points to the door behind him.\n\n");
     //--------------------------------
     Menu menu6;
-    menu6.addOptions({ "Go inside.", "Turn back." });
+    menu6.addOptions({
+        std::make_pair("Go inside.", meetingWithPolicemans_1),
+        std::make_pair("Turn back.", meetingWithPolicemans_2)
+    });
     menu6.showOptions();
     //--------------------------------
     while (true)
     {
-        heroChoice = menu6.inputChoice();
-
-        if (heroChoice == 1)
-        {
-            Console::clearScreen();
-            menu6.showHeroChoice();
-            Game::game[0].setCurrentLocation(&Location::locations["Nightclub"]);
-            break;
-        }
-        else if (heroChoice == 2)
-        {
-            Console::clearScreen();
-            menu6.showHeroChoice();
-            Game::game[0].setCurrentLocation(&Location::locations["GunShop"]);
-            break;
-        }
-        else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
+        menu6.inputChoice();
     }
+}
+
+void Event::meetingWithPolicemans_1()
+{
+    Logger::startFuncLog(__FUNCTION__);
+    Game::game[0].setCurrentLocation(&Location::locations["Nightclub"]);
+}
+
+void Event::meetingWithPolicemans_2()
+{
+    Logger::startFuncLog(__FUNCTION__);
+    Game::game[0].setCurrentLocation(&Location::locations["GunShop"]);
 }
 
 void Event::streetCrossroads()
@@ -649,40 +618,42 @@ void Event::streetCrossroads()
     Display::writeNarration("\n\tOnce again you are on a street bathed in nighttime darkness.\n\n");
     //--------------------------------
     Menu menu7;
-    menu7.clearOptions();
-    menu7.addOption("Visit: " + Location::locations["DarkAlley"].getName() + ".");
-    menu7.addOption("Visit: " + Location::locations["Nightclub"].getName() + ".");
-    menu7.addOption("Visit: " + Location::locations["GunShop"].getName() + ".");
+    menu7.addOptions({
+        std::make_pair("Visit: " + Location::locations["DarkAlley"].getName() + ".", visitDarkAlley),
+        std::make_pair("Visit: " + Location::locations["Nightclub"].getName() + ".", visitNightclub),
+        std::make_pair("Visit: " + Location::locations["GunShop"].getName() + ".", visitGunShop)
+    });
     menu7.showOptions();
     //--------------------------------
     while (true)
     {
-        heroChoice = menu7.inputChoice();
-
-        if (heroChoice == 1)
-        {
-            Console::clearScreen();
-            menu7.showHeroChoice();
-            Game::game[0].setCurrentLocation(&Location::locations["DarkAlley"]);
-            break;
-        }
-        else if (heroChoice == 2)
-        {
-            Console::clearScreen();
-            menu7.showHeroChoice();
-            Display::writeNarration("\n\tYou enter from a fairly well-lit street into a slightly darkened nightclub, trembling with colour.\n\n");
-            Game::game[0].setCurrentLocation(&Location::locations["Nightclub"]);
-            break;
-        }
-        else if (heroChoice == 3)
-        {
-            Console::clearScreen();
-            menu7.showHeroChoice();
-            Game::game[0].setCurrentLocation(&Location::locations["GunShop"]);
-            break;
-        }
-        else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
+        menu7.inputChoice();
     }
+}
+
+void Event::visitDarkAlley()
+{
+    Logger::startFuncLog(__FUNCTION__);
+    Game::game[0].setCurrentLocation(&Location::locations["DarkAlley"]);
+}
+
+void Event::visitStreet()
+{
+    Logger::startFuncLog(__FUNCTION__);
+    Game::game[0].setCurrentLocation(&Location::locations["Street"]);
+}
+
+void Event::visitNightclub()
+{
+    Logger::startFuncLog(__FUNCTION__);
+    Display::writeNarration("\n\tYou enter from a fairly well-lit street into a slightly darkened nightclub, trembling with colour.\n\n");
+    Game::game[0].setCurrentLocation(&Location::locations["Nightclub"]);
+}
+
+void Event::visitGunShop()
+{
+    Logger::startFuncLog(__FUNCTION__);
+    Game::game[0].setCurrentLocation(&Location::locations["GunShop"]);
 }
 
 // SKLEP Z BRONIĄ
@@ -722,108 +693,76 @@ void Event::dialogueWithZed()
         std::cout << std::endl;
         //--------------------------------
         Menu menu8;
-        menu8.clearOptions();
-        menu8.addOption("'What do you have?'");
-        menu8.addOption("'How's business going?'");
+        std::vector<std::pair<std::string, std::function<void()>>> options;
+        options.push_back(std::make_pair("'What do you have?'", dialogueWithZed_1));
+        options.push_back(std::make_pair("'How's business going?'", dialogueWithZed_2));
 
         if (bobRecommendsZed && !zedKnowsAboutBobAndZed)
-            menu8.addOption("'You're Zed? I come from Bob.'");
+        {
+            options.push_back(std::make_pair("'You're Zed? I come from Bob.'", dialogueWithZed_3));
+        }
 
         if (Quest::quests["ZedAccelerator"].getIsRunning() && Hero::heroes[0].hasItem(&Item::items["AD13"]))
-            menu8.addOption("'I have an accelerator for you.'");
+        {
+            options.push_back(std::make_pair("'I have an accelerator for you.'", dialogueWithZed_4));
+        }
 
-        menu8.addOption("'I have to go...'");
+        options.push_back(std::make_pair("'I have to go...'", dialogueWithZed_5));
+        menu8.addOptions(options);
         menu8.showOptions();
         //--------------------------------
-        heroChoice = menu8.inputChoice();
+        menu8.inputChoice();
+    }
+}
 
-        if (heroChoice == 1)
-        {
-            Console::clearScreen();
-            menu8.showHeroChoice();
-            std::cout << std::endl;
-            zedTrade();
-            continue;
-        }
-        else if (heroChoice == 2)
-        {
-            Console::clearScreen();
-            menu8.showHeroChoice();
+void Event::dialogueWithZed_1()
+{
+    Logger::startFuncLog(__FUNCTION__);
+    std::cout << std::endl;
+    zedTrade();
+}
 
-            if (heroTalkedAboutBusinessWithZed == true) Display::writeDialogue("\n\t- 'Hey, what's up? Are you sclerotic or something? We already talked about this, haha!'\n");
-            else {
-                heroTalkedAboutBusinessWithZed = true;
-                Display::writeDialogue("\n\t- 'What kind of question is that anyway? Business is doing great! Everyone stops by\n\tevery now and then to rearm. It's the natural order of things.'\n");
-            }
+void Event::dialogueWithZed_2()
+{
+    Logger::startFuncLog(__FUNCTION__);
+    bool heroTalkedAboutBusinessWithZed = false;
 
-            continue;
-        }
-        else if (heroChoice == 3)
-        {
-            Console::clearScreen();
-            menu8.showHeroChoice();
+    if (heroTalkedAboutBusinessWithZed) {
+        Display::writeDialogue("\n\t- 'Hey, what's up? Are you sclerotic or something? We already talked about this, haha!'\n");
+    }
+    else {
+        heroTalkedAboutBusinessWithZed = true;
+        Display::writeDialogue("\n\t- 'What kind of question is that anyway? Business is doing great! Everyone stops by\n\tevery now and then to rearm. It's the natural order of things.'\n");
+    }
+}
 
-            if (bobRecommendsZed && !zedKnowsAboutBobAndZed)
-            {
-                zedKnowsAboutBobAndZed = true;
-                Display::writeDialogue("\n\t- 'Yes, that is correct. I'm Zed, and this is my little shop.");
-                Console::wait(1000);
-                Display::writeDialogue(" Since you know Bob,\n\tyou can get a small discount here.'");
-                Npc::npcs["Zed"].setAttitude(Attitude::Friendly);
-            }
-            else if (Quest::quests["ZedAccelerator"].getIsRunning() && Hero::heroes[0].hasItem(&Item::items["AD13"]) && bobRecommendsZed && zedKnowsAboutBobAndZed)
-            {
-                zedGetsAnAccelerator();
-            }
-            else if (Quest::quests["ZedAccelerator"].getIsRunning() && Hero::heroes[0].hasItem(&Item::items["AD13"]) && !bobRecommendsZed && !zedKnowsAboutBobAndZed)
-            {
-                zedGetsAnAccelerator();
-            }
-            else {
-                Display::writeDialogue("\n\t- 'No problem. See you later!'\n");
-                Console::wait(1500);
-                Console::clearScreen();
+void Event::dialogueWithZed_3()
+{
+    Logger::startFuncLog(__FUNCTION__);
+    zedKnowsAboutBobAndZed = true;
+    Display::writeDialogue("\n\t- 'Yes, that is correct. I'm Zed, and this is my little shop.");
+    Console::wait(1000);
+    Display::writeDialogue(" Since you know Bob,\n\tyou can get a small discount here.'");
+    Npc::npcs["Zed"].setAttitude(Attitude::Friendly);
+}
 
-                if (!Npc::npcs["Caden"].knowsHero() && !Npc::npcs["CadenPartner"].knowsHero()) meetingWithPolicemans();
-                else Game::game[0].setCurrentLocation(&Location::locations["Street"]);
-            }
+void Event::dialogueWithZed_4()
+{
+    zedGetsAnAccelerator();
+}
 
-            continue;
-        }
-        else if (heroChoice == 4 && bobRecommendsZed && !zedKnowsAboutBobAndZed)
-        {
-            Console::clearScreen();
-            menu8.showHeroChoice();
+void Event::dialogueWithZed_5()
+{
+    Logger::startFuncLog(__FUNCTION__);
+    Display::writeDialogue("\n\t- 'No problem. See you later!'\n");
+    Console::clearScreen();
 
-            if (Quest::quests["ZedAccelerator"].getIsRunning() && Hero::heroes[0].hasItem(&Item::items["AD13"]))
-            {
-                zedGetsAnAccelerator();
-                continue;
-            }
-            else {
-                Display::writeDialogue("\n\t- 'No problem. See you later!'\n");
-                Console::clearScreen();
-
-                if (!Npc::npcs["Caden"].knowsHero() && !Npc::npcs["CadenPartner"].knowsHero())
-                    meetingWithPolicemans();
-                else Game::game[0].setCurrentLocation(&Location::locations["Street"]);
-
-                break;
-            }
-        }
-        else if (heroChoice == 5 && Quest::quests["ZedAccelerator"].getIsRunning() && Hero::heroes[0].hasItem(&Item::items["AD13"]) && bobRecommendsZed && !zedKnowsAboutBobAndZed)
-        {
-            Console::clearScreen();
-            menu8.showHeroChoice();
-            Display::writeDialogue("\n\t- 'No problem. See you later!'\n");
-            Console::clearScreen();
-
-            if (!Npc::npcs["Caden"].knowsHero() && !Npc::npcs["CadenPartner"].knowsHero()) meetingWithPolicemans();
-            else Game::game[0].setCurrentLocation(&Location::locations["Street"]);
-
-            break;
-        }
-        else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
+    if (!Npc::npcs["Caden"].knowsHero() && !Npc::npcs["CadenPartner"].knowsHero())
+    {
+        meetingWithPolicemans();
+    }
+    else {
+        Game::game[0].setCurrentLocation(&Location::locations["Street"]);
     }
 }
 
@@ -869,30 +808,15 @@ void Event::zedTrade()
             Display::writeDialogue(" Tell me, what do you like?'\n\n");
             //--------------------------------
             Menu menu9;
-            menu9.addOptions({ "Buy: pistol (250 $).", "'I have made up my mind.'" });
+            menu9.addOptions({
+                std::make_pair("Buy: pistol (250 $).", buyPistol),
+                std::make_pair("'I have made up my mind.'", zedTrade_1)
+            });
             menu9.showOptions();
             //--------------------------------
             while (true)
             {
-                heroChoice = menu9.inputChoice();
-
-                if (heroChoice == 1)
-                {
-                    Console::clearScreen();
-                    menu9.showHeroChoice();
-                    buyPistol();
-                    break;
-                }
-                else if (heroChoice == 2)
-                {
-                    Console::clearScreen();
-                    menu9.showHeroChoice();
-                    Display::writeNarration("\n\tZed looks at you pityingly and shrugs his shoulders.");
-                    Display::writeDialogue("\n\t- 'No problem. It can happen to anyone.'\n");
-                    dialogueWithZed();
-                    break;
-                }
-                else Logger::error("Entered invalid value of <b>heroChoice</b>", __FUNCTION__); continue;
+                menu9.inputChoice();
             }
         }
         else
@@ -900,30 +824,15 @@ void Event::zedTrade()
             std::cout << std::endl;
             //--------------------------------
             Menu menu10;
-            menu10.addOptions({ "Buy: pistol (250 $).", "'I have made up my mind.'" });
+            menu10.addOptions({
+                std::make_pair("Buy: pistol (250 $).", buyPistol),
+                std::make_pair("'I have made up my mind.'", zedTrade_1)
+            });
             menu10.showOptions();
             //--------------------------------
             while (true)
             {
-                heroChoice = menu10.inputChoice();
-
-                if (heroChoice == 1)
-                {
-                    Console::clearScreen();
-                    menu10.showHeroChoice();
-                    buyPistol();
-                    break;
-                }
-                else if (heroChoice == 2)
-                {
-                    Console::clearScreen();
-                    menu10.showHeroChoice();
-                    Display::writeNarration("\n\tZed looks at you pityingly and shrugs his shoulders.");
-                    Display::writeDialogue("\n\t- 'No problem. It can happen to anyone.'\n");
-                    dialogueWithZed();
-                    break;
-                }
-                else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
+                menu10.inputChoice();
             }
         }
     }
@@ -933,6 +842,14 @@ void Event::zedTrade()
         Display::write("\tYou have everything you need. There's no point in bothering Zed.\n");
         dialogueWithZed();
     }
+}
+
+void Event::zedTrade_1()
+{
+    Logger::startFuncLog(__FUNCTION__);
+    Display::writeNarration("\n\tZed looks at you pityingly and shrugs his shoulders.");
+    Display::writeDialogue("\n\t- 'No problem. It can happen to anyone.'\n");
+    dialogueWithZed();
 }
 
 void Event::buyPistol()
@@ -1001,42 +918,17 @@ void Event::enterClub()
     Display::writeNarration(" Next to the dance floor is a bar, and behind it are several mechanically streamlined\n\tbartenders.\n\n");
     //--------------------------------
     Menu menu11;
-    menu11.addOptions({ "Go to the dance floor.", "Go to the bar.", "Go upstairs.", "Back on the street." });
+    menu11.addOptions({
+        std::make_pair("Go to the dance floor.", clubDanceFloor),
+        std::make_pair("Go to the bar.", clubBar),
+        std::make_pair("Go upstairs.", clubUpstairs),
+        std::make_pair("Back on the street.", visitStreet)
+    });
     menu11.showOptions();
     //--------------------------------
     while (true)
     {
-        heroChoice = menu11.inputChoice();
-
-        if (heroChoice == 1)
-        {
-            Console::clearScreen();
-            menu11.showHeroChoice();
-            clubDanceFloor();
-            break;
-        }
-        else if (heroChoice == 2)
-        {
-            Console::clearScreen();
-            menu11.showHeroChoice();
-            clubBar();
-            break;
-        }
-        else if (heroChoice == 3)
-        {
-            Console::clearScreen();
-            menu11.showHeroChoice();
-            clubUpstairs();
-            break;
-        }
-        else if (heroChoice == 4)
-        {
-            Console::clearScreen();
-            menu11.showHeroChoice();
-            Game::game[0].setCurrentLocation(&Location::locations["Street"]);
-            break;
-        }
-        else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
+        menu11.inputChoice();
     }
 }
 
@@ -1059,40 +951,16 @@ void Event::clubDanceFloor()
         Display::writeNarration(" Is it a coincidence\n\tthat she has just appeared and is dancing so close to you?\n\n");
         //--------------------------------
         Menu menu12;
-        menu12.addOptions({ "'What do you want?'", "'Hey, baby.'", "Keep dancing with no words." });
+        menu12.addOptions({
+            std::make_pair("'What do you want?'", clubDanceFloor_1),
+            std::make_pair("'Hey, baby.'", clubDanceFloor_2),
+            std::make_pair("Keep dancing with no words.", clubDanceFloor_3)
+        });
         menu12.showOptions();
         //--------------------------------
         while (true)
         {
-            heroChoice = menu12.inputChoice();
-
-            if (heroChoice == 1)
-            {
-                Console::clearScreen();
-                menu12.showHeroChoice();
-                Display::writeNarration("\n\tThe girl turns towards you and smiles with her snow-white teeth.");
-                Display::writeDialogue("\n\t- 'Nothing will escape your attention. I am Nyx. I think you can help me.'");
-                break;
-            }
-            else if (heroChoice == 2)
-            {
-                Console::clearScreen();
-                menu12.showHeroChoice();
-                Display::writeNarration("\n\tThe girl turns towards you and smiles with her snow-white teeth.");
-                Display::writeDialogue("\n\t- 'Hi, stud. I've been watching you since you came in. I am Nyx.'");
-                Display::writeNarration("\n\tWith the last word she comes closer to you turns her back on you and starts dancing very\n\tclose to you.");
-                Display::writeDialogue("\n\t- 'I am looking for someone like you. I think you can help me.'");
-                break;
-            }
-            else if (heroChoice == 3)
-            {
-                Console::clearScreen();
-                menu12.showHeroChoice();
-                Display::writeNarration("\n\tThe girl turns towards you and smiles with her snow-white teeth.");
-                Display::writeDialogue("\n\t- 'Hi, I am Nyx. Vinc, the owner, is my boyfriend. I think you can help me.'");
-                break;
-            }
-            else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
+            menu12.inputChoice();
         }
 
         miaMeeting();
@@ -1108,6 +976,26 @@ void Event::clubDanceFloor()
     }
 }
 
+void Event::clubDanceFloor_1()
+{
+    Display::writeNarration("\n\tThe girl turns towards you and smiles with her snow-white teeth.");
+    Display::writeDialogue("\n\t- 'Nothing will escape your attention. I am Nyx. I think you can help me.'");
+}
+
+void Event::clubDanceFloor_2()
+{
+    Display::writeNarration("\n\tThe girl turns towards you and smiles with her snow-white teeth.");
+    Display::writeDialogue("\n\t- 'Hi, stud. I've been watching you since you came in. I am Nyx.'");
+    Display::writeNarration("\n\tWith the last word she comes closer to you turns her back on you and starts dancing very\n\tclose to you.");
+    Display::writeDialogue("\n\t- 'I am looking for someone like you. I think you can help me.'");
+}
+
+void Event::clubDanceFloor_3()
+{
+    Display::writeNarration("\n\tThe girl turns towards you and smiles with her snow-white teeth.");
+    Display::writeDialogue("\n\t- 'Hi, I am Nyx. Vinc, the owner, is my boyfriend. I think you can help me.'");
+}
+
 void Event::clubBar()
 {
     Logger::startFuncLog(__FUNCTION__);
@@ -1119,50 +1007,46 @@ void Event::clubBar()
     {
         //--------------------------------
         Menu menu13;
-        menu13.addOptions({ "'Give me anything.'", "'Who's in charge?'", "'Bye.'" });
+        menu13.addOptions({
+            std::make_pair("'Give me anything.'", clubBar_1),
+            std::make_pair("'Who's in charge?'", clubBar_2),
+            std::make_pair("'Bye.'", clubBar_3)
+        });
         menu13.showOptions();
         //--------------------------------
-        heroChoice = menu13.inputChoice();
-
-        if (heroChoice == 1)
-        {
-            Console::clearScreen();
-            menu13.showHeroChoice();
-            Display::writeDialogue("\n\t- 'Okay.");
-            Console::wait(1000);
-            Display::writeDialogue(" Let's see...'");
-            Console::wait(1500);
-            Display::writeNarration("\n\tThe barman turns his back on you and looks through the bottles of alcohol. Finally, he selects\n\tone of them and pours its contents into a glass before placing it on the counter in front of\n\tyou.");
-            Console::wait(1500);
-            Display::writeNarration("\n\tYou reach for the vessel and empty it.");
-            Console::wait(1000);
-            Display::writeNarration(" You feel a pleasant warmth spreading up your throat and further down your gullet.\n\n");
-            Display::writeDialogue("\n\t- 'Anything else?'\n\n");
-            continue;
-        }
-        else if (heroChoice == 2)
-        {
-            Console::clearScreen();
-            menu13.showHeroChoice();
-            Display::writeNarration("\n\tThe bartender squints, hearing your question.");
-            Display::writeDialogue("\n\t- 'You're not from around here, are you?");
-            Console::wait(1500);
-            Display::writeDialogue(" My boss is Vincent Ramsey.");
-            Console::wait(1000);
-            Display::writeDialogue(" He's a tough guy, so you'd better not make trouble, or it could end badly for you.'\n\n");
-            continue;
-        }
-        else if (heroChoice == 3)
-        {
-            Console::clearScreen();
-            menu13.showHeroChoice();
-            Display::writeNarration("\n\tThe bartender reaches for a glass from under the counter and starts wiping it down.");
-            Display::writeDialogue("\n\t- 'Yeah, have fun.'\n\n");
-            Game::game[0].setCurrentLocation(&Location::locations["Nightclub"]);
-            break;
-        }
-        else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
+        menu13.inputChoice();
     }
+}
+
+void Event::clubBar_1()
+{
+    Display::writeDialogue("\n\t- 'Okay.");
+    Console::wait(1000);
+    Display::writeDialogue(" Let's see...'");
+    Console::wait(1500);
+    Display::writeNarration("\n\tThe barman turns his back on you and looks through the bottles of alcohol. Finally, he selects\n\tone of them and pours its contents into a glass before placing it on the counter in front of\n\tyou.");
+    Console::wait(1500);
+    Display::writeNarration("\n\tYou reach for the vessel and empty it.");
+    Console::wait(1000);
+    Display::writeNarration(" You feel a pleasant warmth spreading up your throat and further down your gullet.\n\n");
+    Display::writeDialogue("\n\t- 'Anything else?'\n\n");
+}
+
+void Event::clubBar_2()
+{
+    Display::writeNarration("\n\tThe bartender squints, hearing your question.");
+    Display::writeDialogue("\n\t- 'You're not from around here, are you?");
+    Console::wait(1500);
+    Display::writeDialogue(" My boss is Vincent Ramsey.");
+    Console::wait(1000);
+    Display::writeDialogue(" He's a tough guy, so you'd better not make trouble, or it could end badly for you.'\n\n");
+}
+
+void Event::clubBar_3()
+{
+    Display::writeNarration("\n\tThe bartender reaches for a glass from under the counter and starts wiping it down.");
+    Display::writeDialogue("\n\t- 'Yeah, have fun.'\n\n");
+    Game::game[0].setCurrentLocation(&Location::locations["Nightclub"]);
 }
 
 void Event::miaMeeting()
@@ -1171,26 +1055,15 @@ void Event::miaMeeting()
     std::cout << std::endl << std::endl;
     //--------------------------------
     Menu menu14;
-    menu14.addOptions({ "'What is it about?'", "Be silent and let her speak." });
+    menu14.addOptions({
+        std::make_pair("'What is it about?'", miaMeeting_1),
+        std::make_pair("Be silent and let her speak.", miaMeeting_2)
+    });
     menu14.showOptions();
     //--------------------------------
     while (true)
     {
-        heroChoice = menu14.inputChoice();
-
-        if (heroChoice == 1)
-        {
-            Console::clearScreen();
-            menu14.showHeroChoice();
-            break;
-        }
-        else if (heroChoice == 2)
-        {
-            Console::clearScreen();
-            menu14.showHeroChoice();
-            break;
-        }
-        else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
+        menu14.inputChoice();
     }
 
     Display::writeDialogue("\n\t- 'Vinc, the owner, is my boyfriend.");
@@ -1226,125 +1099,112 @@ void Event::miaMeeting()
     }
 }
 
+void Event::miaMeeting_1()
+{
+}
+
+void Event::miaMeeting_2()
+{
+}
+
 void Event::clubUpstairs()
 {
     Logger::startFuncLog(__FUNCTION__);
     Display::writeNarration("\n\tYou go up a winding staircase. At the end of a short banister you will see a closed door\n\tguarded by another bulky individual.\n\n");
     //--------------------------------
     Menu menu15;
-    menu15.addOptions({ "Come closer.", "Go back downstairs." });
+    menu15.addOptions({
+        std::make_pair("Come closer.", clubUpstairs_1),
+        std::make_pair("Go back downstairs.", clubUpstairs_2)
+    });
     menu15.showOptions();
     //--------------------------------
     while (true)
     {
-        heroChoice = menu15.inputChoice();
-
-        if (heroChoice == 1)
-        {
-            Console::clearScreen();
-            menu15.showHeroChoice();
-            Display::writeNarration("\n\tAre you brave or foolish enough to face the hammer man. You are stopped from taking another\n\tstep by his firm voice.");
-            Display::writeDialogue("\n\t- 'What here?'");
-            Npc::npcs["Jet"].setToKnowHero();
-            dialogueWithJet();
-            break;
-        }
-        else if (heroChoice == 2)
-        {
-            Console::clearScreen();
-            menu15.showHeroChoice();
-            Display::writeNarration("\n\tYou don't dare to come closer, so like the last coward you turn back and return to the kingdom\n\tof loud music and dancing people.\n");
-            nightclub();
-            break;
-        }
-        else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
+        menu15.inputChoice();
     }
 }
 
+void Event::clubUpstairs_1()
+{
+    Display::writeNarration("\n\tAre you brave or foolish enough to face the hammer man. You are stopped from taking another\n\tstep by his firm voice.");
+    Display::writeDialogue("\n\t- 'What here?'");
+    Npc::npcs["Jet"].setToKnowHero();
+    dialogueWithJet();
+}
+
+void Event::clubUpstairs_2()
+{
+    Display::writeNarration("\n\tYou don't dare to come closer, so like the last coward you turn back and return to the kingdom\n\tof loud music and dancing people.\n");
+    nightclub();
+}
+
+int jetPoints = 0;
 void Event::dialogueWithJet()
 {
     Logger::startFuncLog(__FUNCTION__);
-    int jetPoints = 0;
-    std::cout << "\n\n";
+    std::cout << std::endl << std::endl;
     Menu menu16;
 
     while (true)
     {
         jetGetsAngry(jetPoints);
         //--------------------------------
-        menu16.clearOptions();
-        menu16.addOption("'I want to pass.'");
-        menu16.addOption("'What is behind that door?'");
+        std::vector<std::pair<std::string, std::function<void()>>> options;
+        options.push_back(std::make_pair("'I want to pass.'", dialogueWithJet_1));
+        options.push_back(std::make_pair("'What is behind that door?'", dialogueWithJet_2));
 
         if (Hero::heroes[0].hasItem(&Item::items["Pistol"]))
         {
-            menu16.addOption("Kill him with a pistol.");
-            menu16.addOption("Stun him with a pistol.");
+            options.push_back(std::make_pair("Kill him with a pistol.", dialogueWithJet_3));
+            options.push_back(std::make_pair("Stun him with a pistol.", dialogueWithJet_4));
         }
 
-        menu16.addOption("'It's time for me to go.'");
+        options.push_back(std::make_pair("'It's time for me to go.'", dialogueWithJet_5));
+        menu16.addOptions(options);
         menu16.showOptions();
         //--------------------------------
-        heroChoice = menu16.inputChoice();
-
-        if (heroChoice == 1)
-        {
-            Console::clearScreen();
-            menu16.showHeroChoice();
-            Display::writeNarration("\n\tWhen you say this a big paw blocks your way.");
-            Display::writeDialogue("\n\t- 'You don't get what you're looking for here, mate.'\n\n");
-            jetPoints += 1;
-            continue;
-        }
-        else if (heroChoice == 2)
-        {
-            Console::clearScreen();
-            menu16.showHeroChoice();
-            Display::writeNarration("\n\tThe security guard instinctively peeks towards the door.");
-            Display::writeDialogue("\n\t- 'You shouldn't be interested in this.'\n\n");
-            jetPoints += 1;
-            continue;
-        }
-        else if (heroChoice == 3 && !Hero::heroes[0].hasItem(&Item::items["Pistol"]))
-        {
-            Console::clearScreen();
-            menu16.showHeroChoice();
-            Display::writeDialogue("\n\t- 'Yeah. Get lost.'");
-            Display::writeNarration("\n\tAnd so you turn back and return to the kingdom of loud music and dancing people.\n\n");
-            nightclub();
-            break;
-        }
-        else if (heroChoice == 3 && Hero::heroes[0].hasItem(&Item::items["Pistol"]))
-        {
-            Console::clearScreen();
-            menu16.showHeroChoice();
-            // TODO: dodać opis zabicia Jeta!
-            vincentOffice();
-            break;
-        }
-        else if (heroChoice == 4 && Hero::heroes[0].hasItem(&Item::items["Pistol"]))
-        {
-            Console::clearScreen();
-            menu16.showHeroChoice();
-            // TODO: dodać opis ogłuszenia Jeta!
-            vincentOffice();
-            break;
-        }
-        else if (heroChoice == 5 && Hero::heroes[0].hasItem(&Item::items["Pistol"]))
-        {
-            Console::clearScreen();
-            menu16.showHeroChoice();
-            Display::writeDialogue("\n\t- 'Yeah. Get lost.'");
-            Display::writeNarration("\n\tAnd so you turn back and return to the kingdom of loud music and dancing people.\n\n");
-            nightclub();
-            break;
-        }
-        else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
+        menu16.inputChoice();
     }
 }
 
+void Event::dialogueWithJet_1()
+{
+    Display::writeNarration("\n\tWhen you say this a big paw blocks your way.");
+    Display::writeDialogue("\n\t- 'You don't get what you're looking for here, mate.'\n\n");
+    jetPoints += 1;
+}
+
+void Event::dialogueWithJet_2()
+{
+    Display::writeNarration("\n\tThe security guard instinctively peeks towards the door.");
+    Display::writeDialogue("\n\t- 'You shouldn't be interested in this.'\n\n");
+    jetPoints += 1;
+}
+
+void Event::dialogueWithJet_3()
+{
+    // TODO: dodać opis zabicia Jeta!
+    vincentOffice();
+}
+
+void Event::dialogueWithJet_4()
+{
+    // TODO: dodać opis ogłuszenia Jeta!
+    vincentOffice();
+}
+
+void Event::dialogueWithJet_5()
+{
+    Display::writeDialogue("\n\t- 'Yeah. Get lost.'");
+    Display::writeNarration("\n\tAnd so you turn back and return to the kingdom of loud music and dancing people.\n\n");
+    nightclub();
+}
+
+
 void Event::jetGetsAngry(int angerPoints)
 {
+    Logger::startFuncLog(__FUNCTION__);
     bool jetWarnHero = false, jetBeatsHero = false;
 
     if (angerPoints < 2 && !jetWarnHero && !jetBeatsHero)
@@ -1404,26 +1264,15 @@ void Event::vincentOffice()
     Display::writeNarration("\tYou enter the manager's office immersed in twilight. In the middle of the room stands a sizable desk, and on it are stacks of documents and computer. To the left of the entrance is a window to the street below. On the right you will notice a door to another room.\n\n");
     //--------------------------------
     Menu menu17;
-    menu17.addOptions({ "Open the door and go into the other room.", "Stay and search the office." });
+    menu17.addOptions({
+        std::make_pair("Open the door and go into the other room.", vincentHideoutCode),
+        std::make_pair("Stay and search the office.", checkVincentDesk)
+    });
     menu17.showOptions();
     //--------------------------------
     while (true)
     {
-        heroChoice = menu17.inputChoice();
-
-        if (heroChoice == 1)
-        {
-            menu17.clearOptions();
-            vincentHideoutCode();
-            break;
-        }
-        else if (heroChoice == 2)
-        {
-            menu17.clearOptions();
-            checkVincentDesk();
-            break;
-        }
-        else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
+        menu17.inputChoice();
     }
 }
 
@@ -1452,7 +1301,10 @@ void Event::vincentHideoutCode()
         std::cout << std::endl << std::endl;
         //--------------------------------
         Menu menu18;
-        menu18.addOptions({ "Use code '2021'.", "Search the office." });
+        menu18.addOptions({
+            std::make_pair("Use code '2021'.", nullptr),
+            std::make_pair("Search the office.", nullptr)
+        });
         menu18.showOptions();
         //--------------------------------
     }
@@ -1471,41 +1323,38 @@ void Event::vincentHideout()
     Display::writeNarration("\n\tCreeping up, you come closer. Your goal is within reach. The question is what will you do?\n\n");
     //--------------------------------
     Menu menu19;
-    menu19.addOptions({ "Disconnect his consciousness from the neuronet. (Kill him)", "Wait for his consciousness to leave the neuronet." });
+    menu19.addOptions({
+        std::make_pair("Disconnect his consciousness from the neuronet. (Kill him)", vincentHideout_1),
+        std::make_pair("Wait for his consciousness to leave the neuronet.", vincentHideout_2)
+    });
     menu19.showOptions();
     //--------------------------------
     while (true)
     {
-        heroChoice = menu19.inputChoice();
-
-        if (heroChoice == 1)
-        {
-            Console::clearScreen();
-            menu19.showHeroChoice();
-            Display::writeNarration("\n\tYou lean over Vincent and, in a fluid motion without hesitation, pull the stimulation helmet\n\toff his head. You witness the nightclub owner being shaken by a wave of convulsions. Foam\n\tbegins to come out of his mouth and after a moment the man freezes.");
-            Console::wait(1500);
-            Npc::npcs["Vincent"].setStatus(Dead);
-            Display::writeNarration(" He's probably dead, just like\n\tNyx wanted.");
-            break;
-        }
-        else if (heroChoice == 2)
-        {
-            Console::clearScreen();
-            menu19.showHeroChoice();
-            Display::writeNarration("\n\tYou are not a coward.");
-            Console::wait(1000);
-            Display::writeNarration(" You don't stab people in the back. That's not your style. You prefer an\n\topen fight.");
-            Console::wait(1500);
-            Npc::npcs["Vincent"].setStatus(Normal);
-            Display::writeNarration(" After a while, you notice Vincent moving slightly in his seat. He opens his eyes -\n\tthey are shining with the excitement of his online adventure.");
-            Console::wait(1000);
-            Display::writeNarration(" It is only a matter of time before\n\tVincent notices your presence. There is no turning back now.");
-            Display::writeDialogue("\n\t- 'What the fuck are you doing here, dickhead?'\n");
-            dialogueWithVincent();
-            break;
-        }
-        else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
+        menu19.inputChoice();
     }
+}
+
+void Event::vincentHideout_1()
+{
+    Display::writeNarration("\n\tYou lean over Vincent and, in a fluid motion without hesitation, pull the stimulation helmet\n\toff his head. You witness the nightclub owner being shaken by a wave of convulsions. Foam\n\tbegins to come out of his mouth and after a moment the man freezes.");
+    Console::wait(1500);
+    Npc::npcs["Vincent"].setStatus(Dead);
+    Display::writeNarration(" He's probably dead, just like\n\tNyx wanted.");
+}
+
+void Event::vincentHideout_2()
+{
+    Display::writeNarration("\n\tYou are not a coward.");
+    Console::wait(1000);
+    Display::writeNarration(" You don't stab people in the back. That's not your style. You prefer an\n\topen fight.");
+    Console::wait(1500);
+    Npc::npcs["Vincent"].setStatus(Normal);
+    Display::writeNarration(" After a while, you notice Vincent moving slightly in his seat. He opens his eyes -\n\tthey are shining with the excitement of his online adventure.");
+    Console::wait(1000);
+    Display::writeNarration(" It is only a matter of time before\n\tVincent notices your presence. There is no turning back now.");
+    Display::writeDialogue("\n\t- 'What the fuck are you doing here, dickhead?'\n");
+    dialogueWithVincent();
 }
 
 void Event::dialogueWithVincent()
@@ -1514,73 +1363,30 @@ void Event::dialogueWithVincent()
     std::cout << std::endl << std::endl;
     //--------------------------------
     Menu menu20;
-    menu20.addOptions({ "'Die!'", "'I don't want to fight with you.'", "'Nyx wants you dead.'" });
+    menu20.addOptions({
+        std::make_pair("'Die!'", dialogueWithVincent_1),
+        std::make_pair("'I don't want to fight with you.'", dialogueWithVincent_2),
+        std::make_pair("'Nyx wants you dead.'", dialogueWithVincent_3)
+    });
     menu20.showOptions();
     //--------------------------------
     while (true)
     {
-        heroChoice = menu20.inputChoice();
-
-        if (heroChoice == 1)
-        {
-            Console::clearScreen();
-            menu20.showHeroChoice();
-            Display::writeNarration("\n\tWith a shout, you bring out your gun and aim it at Vincent's chest.");
-            Display::writeDialogue("\n\t- 'Are you such a hero?");
-            Console::wait(1000);
-            Display::writeDialogue(" Would you kill an unarmed man?");
-            Console::wait(1000);
-            Display::writeDialogue(" All right, can I at least find out who\n\tsent you? I know you're not working alone. I'm seeing you for the first time in my life.'");
-            break;
-        }
-        else if (heroChoice == 2)
-        {
-            Console::clearScreen();
-            menu20.showHeroChoice();
-            Display::writeNarration("\n\tYou are not a coward.");
-            Console::wait(1000);
-            Display::writeNarration(" You don't stab people in the back. That's not your style. You prefer an\n\topen fight.");
-            break;
-        }
-        else if (heroChoice == 3)
-        {
-            Console::clearScreen();
-            menu20.showHeroChoice();
-            Display::writeNarration("\n\tYou are not a coward. You don't stab people in the back. That's not your style. You prefer an open fight.");
-            break;
-        }
-        else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
+        menu20.inputChoice();
     }
 
     std::cout << std::endl << std::endl;
     //--------------------------------
     Menu menu21;
-    menu21.addOptions({ "'It doesn't matter.'", "'Your girlfriend, Nyx.'" });
+    menu21.addOptions({
+        std::make_pair("'It doesn't matter.'", dialogueWithVincent_4),
+        std::make_pair("'Your girlfriend, Nyx.'", dialogueWithVincent_5)
+    });
     menu21.showOptions();
     //--------------------------------
     while (true)
     {
-        heroChoice = menu21.inputChoice();
-
-        if (heroChoice == 1)
-        {
-            Console::clearScreen();
-            menu21.showHeroChoice();
-            Display::writeDialogue("\n\t- 'Ugh, you little prick. I'll get you from beyond the grave. There will be no peace. I won't let that happen!'");
-            Console::wait(1500);
-            vincentDeath();
-            break;
-        }
-        else if (heroChoice == 2)
-        {
-            Console::clearScreen();
-            menu21.showHeroChoice();
-            Display::writeDialogue("\n\t- 'Traitorous bitch! She'll get her due someday.");
-            Display::writeDialogue(" All right, shithead, let's get this over with.'");
-            vincentDeath();
-            break;
-        }
-        else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
+        menu21.inputChoice();
     }
 
     Display::writeNarration("\n\tThe passage behind your back is opened.");
@@ -1595,33 +1401,66 @@ void Event::dialogueWithVincent()
     Display::writeNarration("\n\tNyx walks past you and kneels by the dead man. She starts searching his pockets for something.\n\n");
     //--------------------------------
     Menu menu22;
-    menu22.addOptions({ "Do nothing.", "'What is this all about?'" });
+    menu22.addOptions({
+        std::make_pair("Do nothing.", dialogueWithVincent_6),
+        std::make_pair("'What is this all about?'", dialogueWithVincent_7)
+    });
     menu22.showOptions();
     //--------------------------------
     while (true)
     {
-        heroChoice = menu22.inputChoice();
-
-        if (heroChoice == 1)
-        {
-            Console::clearScreen();
-            menu22.showHeroChoice();
-            Display::writeNarration("\n\tYou let the girl quietly plunder the corpse. This gives you more time to look at her shapes more closely.");
-            Display::writeDialogue("\n\t- 'Spare me, if you please.'");
-            break;
-        }
-        else if (heroChoice == 2)
-        {
-            Console::clearScreen();
-            menu22.showHeroChoice();
-            Display::writeDialogue("\n\t- 'Well, now I think I owe you an explanation.'");
-            Display::writeNarration("\n\tA girl talks to you without even looking at you.\n");
-            break;
-        }
-        else Logger::invalidHeroChoiceError(__FUNCTION__); continue;
+        menu22.inputChoice();
     }
 
     vincentResurrection();
+}
+
+void Event::dialogueWithVincent_1()
+{
+    Display::writeNarration("\n\tWith a shout, you bring out your gun and aim it at Vincent's chest.");
+    Display::writeDialogue("\n\t- 'Are you such a hero?");
+    Console::wait(1000);
+    Display::writeDialogue(" Would you kill an unarmed man?");
+    Console::wait(1000);
+    Display::writeDialogue(" All right, can I at least find out who\n\tsent you? I know you're not working alone. I'm seeing you for the first time in my life.'");
+}
+
+void Event::dialogueWithVincent_2()
+{
+    Display::writeNarration("\n\tYou are not a coward.");
+    Console::wait(1000);
+    Display::writeNarration(" You don't stab people in the back. That's not your style. You prefer an\n\topen fight.");
+}
+
+void Event::dialogueWithVincent_3()
+{
+    Display::writeNarration("\n\tYou are not a coward. You don't stab people in the back. That's not your style. You prefer an open fight.");
+}
+
+void Event::dialogueWithVincent_4()
+{
+    Display::writeDialogue("\n\t- 'Ugh, you little prick. I'll get you from beyond the grave. There will be no peace. I won't let that happen!'");
+    Console::wait(1500);
+    vincentDeath();
+}
+
+void Event::dialogueWithVincent_5()
+{
+    Display::writeDialogue("\n\t- 'Traitorous bitch! She'll get her due someday.");
+    Display::writeDialogue(" All right, shithead, let's get this over with.'");
+    vincentDeath();
+}
+
+void Event::dialogueWithVincent_6()
+{
+    Display::writeNarration("\n\tYou let the girl quietly plunder the corpse. This gives you more time to look at her shapes more closely.");
+    Display::writeDialogue("\n\t- 'Spare me, if you please.'");
+}
+
+void Event::dialogueWithVincent_7()
+{
+    Display::writeDialogue("\n\t- 'Well, now I think I owe you an explanation.'");
+    Display::writeNarration("\n\tA girl talks to you without even looking at you.\n");
 }
 
 void Event::vincentDeath()
@@ -1666,42 +1505,17 @@ void Event::nightclubCrossroads()
     Logger::startFuncLog(__FUNCTION__);
     //--------------------------------
     Menu menu23;
-    menu23.addOptions({ "Go to the dance floor.", "Go to the bar.", "Go upstairs.", "Back on the street." });
+    menu23.addOptions({
+        std::make_pair("Go to the dance floor.", clubDanceFloor),
+        std::make_pair("Go to the bar.", clubBar),
+        std::make_pair("Go upstairs.", clubUpstairs),
+        std::make_pair("Back on the street.", visitStreet)
+    });
     menu23.showOptions();
     //--------------------------------
     while (true)
     {
-        heroChoice = menu23.inputChoice();
-
-        if (heroChoice == 1)
-        {
-            Console::clearScreen();
-            menu23.showHeroChoice();
-            clubDanceFloor();
-            break;
-        }
-        else if (heroChoice == 2)
-        {
-            Console::clearScreen();
-            menu23.showHeroChoice();
-            clubBar();
-            break;
-        }
-        else if (heroChoice == 3)
-        {
-            Console::clearScreen();
-            menu23.showHeroChoice();
-            clubUpstairs();
-            break;
-        }
-        else if (heroChoice == 4)
-        {
-            Console::clearScreen();
-            menu23.showHeroChoice();
-            Game::game[0].setCurrentLocation(&Location::locations["Street"]);
-            break;
-        }
-        else Logger::error("Entered invalid value of <b>heroChoice</b>", __FUNCTION__); continue;
+        menu23.inputChoice();
     }
 }
 

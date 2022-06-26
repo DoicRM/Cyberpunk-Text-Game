@@ -1,6 +1,7 @@
 #pragma once
 #include "../utilities.hpp"
 #include <array>
+#include <functional>
 
 class Menu
 {
@@ -12,15 +13,17 @@ public:
 	static void showHeroAction(std::string text); // wyświetlanie akcji gracza - (opis)
 	void showHeroChoice();
 	void clearOptions();
-	void addOption(std::string description);
-	void addOptions(std::vector<std::string> options);
+	void addOptions(std::vector<std::pair<std::string, std::function<void()>>> options);
 	void showOptions();
-	int inputChoice();
+	void inputChoice();
+	int getInputChoice();
+	void callFunction();
 
 	inline int getChoice() const { return this->choice; }
+	inline size_t getOptionsSize() const { return this->options.size(); }
 
 private:
 	int optionNr;
 	int choice;
-	std::map <int, std::string> options;
+	std::map <int, std::pair<std::string, std::function<void()>>> options;
 };

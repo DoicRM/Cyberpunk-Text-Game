@@ -96,7 +96,7 @@ void Logger::startFuncLog(const std::string& location)
 
 void Logger::invalidHeroChoiceError(const std::string& location)
 {
-    Logger::error("Entered invalid value of <b>heroChoice</b>", location);
+    Logger::error("Entered invalid value", location);
 }
 
 void Logger::error(const std::string& message, const std::string& location /* = "" */)

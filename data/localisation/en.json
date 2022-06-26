@@ -245,7 +245,11 @@
       ", cops!",
       " Well, that's super. I think it's time for me to go.'",
       "\n\tThe aging beggar dives into the embrace of darkness in a flash.",
-      " Does this mean you see him for\n\tthe last time?"
+      " Does this mean you see him for\n\tthe last time?",
+      "\t'All right, that is enough.",
+      " I saw the cops hanging around. It stopped being safe here, at\n\tleast for me.",
+      " Be glad we don't have more time left.'",
+      " Take care, kid.'"
     ],
     "paradiseLostMenu": [
       "'Not really. Tell me about this Paradise Lost.'",

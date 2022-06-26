@@ -2,9 +2,9 @@
 
 Menu::Menu()
 {
-    this->optionNr = 0;
+    this->optionNr = 1;
     this->choice = 0;
-    std::map <int, std::string> options;
+    std::map <int, std::pair<std::string, std::function<void()>>> options;
 }
 
 Menu::~Menu()
@@ -25,32 +25,23 @@ void Menu::showHeroAction(std::string text)
 void Menu::showHeroChoice()
 {
     Console::resetConsoleColor();
-    std::cout << "\n\t> " + options[choice-1] + "\n";
+    std::cout << "\n\t> " + options[choice].first << std::endl;
 }
 
 void Menu::clearOptions()
 {
     this->options.clear();
-    this->optionNr = 0;
+    this->optionNr = 1;
 }
 
-void Menu::addOption(std::string description)
-{
-    this->options[optionNr] = description;
-    this->optionNr += 1;
-}
-
-void Menu::addOptions(std::vector<std::string> options)
+void Menu::addOptions(std::vector<std::pair<std::string, std::function<void()>>> options)
 {
     clearOptions();
 
     for (const auto& option : options)
     {
-        if (!option.empty())
-        {
-            this->options[optionNr] = option;
-            this->optionNr += 1;
-        }
+        this->options[optionNr] = std::make_pair(option.first, option.second);
+        this->optionNr += 1;
     }
 }
 
@@ -65,12 +56,35 @@ void Menu::showOptions()
 
     for (const auto& option : options)
     {
-        actionOption(option.first + 1, option.second);
+        actionOption(option.first, option.second.first);
     }
 }
-
-int Menu::inputChoice()
+ 
+void Menu::inputChoice()
 {
+    Logger::startFuncLog(__FUNCTION__);
     this->choice = Input::getChoice();
+
+    if (this->choice <= options.size() && this->choice > 0)
+    {
+        return callFunction();
+    }
+
+    Logger::invalidHeroChoiceError(__FUNCTION__);
+}
+
+int Menu::getInputChoice()
+{
+    Logger::startFuncLog(__FUNCTION__);
+    this->choice = Input::getChoice();
+
     return this->choice;
+}
+
+void Menu::callFunction()
+{
+    std::function<void()> func = options[this->choice].second;
+    Console::clearScreen();
+    showHeroChoice();
+    func();
 }

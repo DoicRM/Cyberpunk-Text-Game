@@ -29,8 +29,10 @@ std::string LanguageHandler::getFileName(int lang)
 {
     if (lang == GameLanguage::EN)
     {
+        Logger::out("Set English as game language", __FUNCTION__);
         return "en";
     }
 
+    Logger::out("Set Polish as game language", __FUNCTION__);
     return "pl";
 }

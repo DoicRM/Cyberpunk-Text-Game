@@ -4,7 +4,7 @@
     "selectYouLanguage": "\n\tWybierz swój język:\n",
     "pressAnyKey": "\tWciśnij DOWOLNY PRZYCISK, aby kontynuować...",
     "and": " i ",
-    "wasFound": " znaleziono.",
+    "wasFound": "Znaleziono ",
     "downloadCompleted": "\n\tPobieranie zakończone",
     "youAreDead": "\tNIE ŻYJESZ!",
     "backToMenu": "\n\n\tWróć do menu...",
@@ -240,12 +240,16 @@
       "\tW końcu z ciemności wyłania się stara, pomarszczona twarz, otoczona szarą plamą. Sztuczne,\n\tcybernetyczne oko czujnie cię obserwuje.",
       " Czujesz się dziwnie nieswojo.",
       "\n\tW jednej chwili alejkę wypełnia wycie policyjnej syreny.",
-      " Na ścianie przed tobą czerwony\n\ti niebieski zaczynają tańczyć ze sobą.",
+      " Na ścianie przed tobą czerwony\n\ti niebieski zaczynają ze sobą tańczyć.",
       "\n\t- Cholera",
       ", gliny!",
       " No, super. Chyba na mnie już czas.",
       "\n\tStarzejący się żebrak błyskawicznie zanurza się w objęciach ciemności.",
-      " Czy to oznacza, że\n\twidzisz go po raz ostatni?"
+      " Czy to oznacza, że\n\twidzisz go po raz ostatni?",
+      "\t - Dobra, starczy tego.",
+      " Widziałem kręcących się w pobliżu gliniarzy. Przestało tu być bezpiecznie, przynajmniej dla mnie.",
+      " Ciesz się, że nie zostało nam więcej czasu.",
+      " Trzymaj się, chłopcze."
     ],
     "paradiseLostMenu": [
       "Nie bardzo. Opowiedz mi o tym Raju Utraconym.",
@@ -255,8 +259,8 @@
       "\n\t- Marzy ci się lekcja historii?",
       " Niech będzie.",
       " Megacity zbudowano na zgliszczach miasta, które\n\tzostało zniszczone przeszło dwie dekady temu w wyniku wybuchu bomby atomowej.",
-      " Nikt już nie\n\tpamięta jego nazwy, ale wiadomo, że było to jedno z ważniejszych miast starego świata.\n\t",
-      " Robotnicy nazwali tę dzielnicę Rajem Utraconym właśnie na jego część.",
+      " Nikt już nie\n\tpamięta jego nazwy, ale wiadomo, że było to jedno z ważniejszych miast starego świata.",
+      "\n\tRobotnicy nazwali tę dzielnicę Rajem Utraconym właśnie na jego część.",
       " Niby-ludzie ze Śródmieścia\n\tnigdy tego nie zrozumieją.\n"
     ],
     "downpourStart": [
