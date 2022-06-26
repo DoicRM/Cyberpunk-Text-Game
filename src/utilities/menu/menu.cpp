@@ -63,14 +63,21 @@ void Menu::showOptions()
 void Menu::inputChoice()
 {
     Logger::startFuncLog(__FUNCTION__);
-    this->choice = Input::getChoice();
 
-    if (this->choice <= options.size() && this->choice > 0)
+    while (true)
     {
-        return callFunction();
-    }
+        this->choice = Input::getChoice();
 
-    Logger::invalidHeroChoiceError(__FUNCTION__);
+        if (this->choice <= options.size() && this->choice > 0)
+        {
+            callFunction();
+            break;
+            return;
+        }
+
+        Logger::invalidHeroChoiceError(__FUNCTION__);
+        continue;
+    }
 }
 
 int Menu::getInputChoice()

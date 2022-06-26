@@ -33,7 +33,6 @@ public:
 	static void pause();
 
 	void run();
-
 	void initAll();
 	void selectLanguage(); 
 	void welcome(); 
@@ -51,7 +50,7 @@ public:
 
 	inline bool getPlaying() const { return this->playing; }
 	inline int getLang() const { return this->gameLang; }
-	Location* getCurrentLocation() { return this->currentLocation; }
+	inline Location* getCurrentLocation() const { return this->currentLocation; }
 
 	static std::map <int, Game> game;
 };

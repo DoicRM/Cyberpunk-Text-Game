@@ -65,12 +65,8 @@ void Event::wakeUpInDarkAlley()
         std::make_pair(jWriter["prologue"]["menu1"][1], outOfAlley)
     });
     menu1.showOptions();
+    menu1.inputChoice();
     //--------------------------------
-
-    while (true)
-    {
-        menu1.inputChoice();
-    }
 }
 
 void Event::acceleratorFinding()
@@ -147,11 +143,8 @@ void Event::outOfAlley()
         std::make_pair(jWriter["prologue"]["menu2"][1], outOfAlley_2)
     });
     menu2.showOptions();
+    menu2.inputChoice();
     //--------------------------------
-    while (true)
-    {
-        menu2.inputChoice();
-    }
 }
 
 void Event::outOfAlley_1()
@@ -186,11 +179,7 @@ void Event::dialogueWithBob()
             std::make_pair(jWriter["prologue"]["nameMenu"][1], dialogueWithBob_2)
         });
         nameMenu.showOptions();
-        //--------------------------------
-        while (true)
-        {
-            nameMenu.inputChoice();
-        }
+        nameMenu.inputChoice();
         //--------------------------------
         Menu menu3;
         menu3.addOptions({
@@ -199,11 +188,8 @@ void Event::dialogueWithBob()
             std::make_pair(jWriter["prologue"]["menu3"][2], dialogueWithBob_5)
         });
         menu3.showOptions();
+        menu3.inputChoice();
         //--------------------------------
-        while (true)
-        {
-            menu3.inputChoice();
-        }
 
         if (!streetWasVisited)
         {
@@ -264,6 +250,7 @@ void Event::dialogueWithBob_1()
 
 void Event::dialogueWithBob_2()
 {
+    std::cout << std::endl;
     Npc::npcs["Bob"].setAttitude(Attitude::Angry); // Angry / Hostile / Friendly / Neutral
     Console::wait(500);
     Display::writeDialogue(jWriter["prologue"]["dialogueWithBob"][8]);
@@ -295,6 +282,7 @@ void Event::dialogueWithBob_4()
 
 void Event::dialogueWithBob_5()
 {
+    std::cout << std::endl;
     Npc::npcs["Bob"].setAttitude(Attitude::Angry); // Angry / Hostile / Friendly / Neutral
     Console::wait(500);
     Display::writeDialogue(jWriter["prologue"]["dialogueWithBob"][17]);
@@ -310,11 +298,8 @@ void Event::aboutParadiseLost()
         std::make_pair(jWriter["prologue"]["paradiseLostMenu"][1], aboutParadiseLost_2)
     });
     paradiseLostMenu.showOptions();
+    paradiseLostMenu.inputChoice();
     //--------------------------------
-    while (true)
-    {
-        paradiseLostMenu.inputChoice();
-    }
 }
 
 void Event::aboutParadiseLost_1()
@@ -351,11 +336,8 @@ void Event::darkAlleyCrossroads()
             std::make_pair(jWriter["prologue"]["menu2"][1], outOfAlley_2)
         });
         menu2.showOptions();
+        menu2.inputChoice();
         //--------------------------------
-        while (true)
-        {
-            menu2.inputChoice();
-        }
     }
     else
     {
@@ -374,11 +356,8 @@ void Event::darkAlleyCrossroads()
                 std::make_pair(jWriter["prologue"]["menu1"][1], darkAlleyCrossroads_2)
             });
             menu1.showOptions();
+            menu1.inputChoice();
             //--------------------------------
-            while (true)
-            {
-                menu1.inputChoice();
-            }
         }
         else
         {
@@ -433,11 +412,8 @@ void Event::lookAtAmnesia()
         std::make_pair("Take a look around the area.", lookAtAmnesia_2)
     });
     menu4.showOptions();
+    menu4.inputChoice();
     //--------------------------------
-    while (true)
-    {
-        menu4.inputChoice();
-    }
 }
 
 void Event::lookAtAmnesia_1()
@@ -479,11 +455,8 @@ void Event::encounterGunStore()
         std::make_pair("Turn back.", encounterGunStore_1)
     });
     menu5.showOptions();
+    menu5.inputChoice();
     //--------------------------------
-    while (true)
-    {
-        menu5.inputChoice();
-    }
 }
 
 void Event::encounterGunStore_1()
@@ -593,11 +566,8 @@ void Event::meetingWithPolicemans()
         std::make_pair("Turn back.", meetingWithPolicemans_2)
     });
     menu6.showOptions();
+    menu6.inputChoice();
     //--------------------------------
-    while (true)
-    {
-        menu6.inputChoice();
-    }
 }
 
 void Event::meetingWithPolicemans_1()
@@ -624,11 +594,8 @@ void Event::streetCrossroads()
         std::make_pair("Visit: " + Location::locations["GunShop"].getName() + ".", visitGunShop)
     });
     menu7.showOptions();
+    menu7.inputChoice();
     //--------------------------------
-    while (true)
-    {
-        menu7.inputChoice();
-    }
 }
 
 void Event::visitDarkAlley()
@@ -710,8 +677,12 @@ void Event::dialogueWithZed()
         options.push_back(std::make_pair("'I have to go...'", dialogueWithZed_5));
         menu8.addOptions(options);
         menu8.showOptions();
-        //--------------------------------
         menu8.inputChoice();
+        //--------------------------------
+        if (menu8.getChoice() <= menu8.getOptionsSize() && menu8.getChoice() > 0)
+        {
+            break;
+        }
     }
 }
 
@@ -813,11 +784,8 @@ void Event::zedTrade()
                 std::make_pair("'I have made up my mind.'", zedTrade_1)
             });
             menu9.showOptions();
+            menu9.inputChoice();
             //--------------------------------
-            while (true)
-            {
-                menu9.inputChoice();
-            }
         }
         else
         {
@@ -829,11 +797,8 @@ void Event::zedTrade()
                 std::make_pair("'I have made up my mind.'", zedTrade_1)
             });
             menu10.showOptions();
+            menu10.inputChoice();
             //--------------------------------
-            while (true)
-            {
-                menu10.inputChoice();
-            }
         }
     }
     else
@@ -925,11 +890,8 @@ void Event::enterClub()
         std::make_pair("Back on the street.", visitStreet)
     });
     menu11.showOptions();
+    menu11.inputChoice();
     //--------------------------------
-    while (true)
-    {
-        menu11.inputChoice();
-    }
 }
 
 void Event::clubDanceFloor()
@@ -957,11 +919,8 @@ void Event::clubDanceFloor()
             std::make_pair("Keep dancing with no words.", clubDanceFloor_3)
         });
         menu12.showOptions();
+        menu12.inputChoice();
         //--------------------------------
-        while (true)
-        {
-            menu12.inputChoice();
-        }
 
         miaMeeting();
     }
@@ -1013,8 +972,12 @@ void Event::clubBar()
             std::make_pair("'Bye.'", clubBar_3)
         });
         menu13.showOptions();
-        //--------------------------------
         menu13.inputChoice();
+        //--------------------------------
+        if (menu13.getChoice() <= menu13.getOptionsSize() && menu13.getChoice() > 0)
+        {
+            break;
+        }
     }
 }
 
@@ -1060,12 +1023,8 @@ void Event::miaMeeting()
         std::make_pair("Be silent and let her speak.", miaMeeting_2)
     });
     menu14.showOptions();
+    menu14.inputChoice();
     //--------------------------------
-    while (true)
-    {
-        menu14.inputChoice();
-    }
-
     Display::writeDialogue("\n\t- 'Vinc, the owner, is my boyfriend.");
     Console::wait(1000);
     Display::writeDialogue(" I want him dead.'");
@@ -1118,11 +1077,8 @@ void Event::clubUpstairs()
         std::make_pair("Go back downstairs.", clubUpstairs_2)
     });
     menu15.showOptions();
+    menu15.inputChoice();
     //--------------------------------
-    while (true)
-    {
-        menu15.inputChoice();
-    }
 }
 
 void Event::clubUpstairs_1()
@@ -1163,8 +1119,12 @@ void Event::dialogueWithJet()
         options.push_back(std::make_pair("'It's time for me to go.'", dialogueWithJet_5));
         menu16.addOptions(options);
         menu16.showOptions();
-        //--------------------------------
         menu16.inputChoice();
+        //--------------------------------
+        if (menu16.getChoice() <= menu16.getOptionsSize() && menu16.getChoice() > 0)
+        {
+            break;
+        }
     }
 }
 
@@ -1269,11 +1229,8 @@ void Event::vincentOffice()
         std::make_pair("Stay and search the office.", checkVincentDesk)
     });
     menu17.showOptions();
+    menu17.inputChoice();
     //--------------------------------
-    while (true)
-    {
-        menu17.inputChoice();
-    }
 }
 
 void Event::checkVincentDesk()
@@ -1306,6 +1263,7 @@ void Event::vincentHideoutCode()
             std::make_pair("Search the office.", nullptr)
         });
         menu18.showOptions();
+        menu18.inputChoice();
         //--------------------------------
     }
 }
@@ -1328,11 +1286,8 @@ void Event::vincentHideout()
         std::make_pair("Wait for his consciousness to leave the neuronet.", vincentHideout_2)
     });
     menu19.showOptions();
+    menu19.inputChoice();
     //--------------------------------
-    while (true)
-    {
-        menu19.inputChoice();
-    }
 }
 
 void Event::vincentHideout_1()
@@ -1369,12 +1324,8 @@ void Event::dialogueWithVincent()
         std::make_pair("'Nyx wants you dead.'", dialogueWithVincent_3)
     });
     menu20.showOptions();
+    menu20.inputChoice();
     //--------------------------------
-    while (true)
-    {
-        menu20.inputChoice();
-    }
-
     std::cout << std::endl << std::endl;
     //--------------------------------
     Menu menu21;
@@ -1383,12 +1334,8 @@ void Event::dialogueWithVincent()
         std::make_pair("'Your girlfriend, Nyx.'", dialogueWithVincent_5)
     });
     menu21.showOptions();
+    menu21.inputChoice();
     //--------------------------------
-    while (true)
-    {
-        menu21.inputChoice();
-    }
-
     Display::writeNarration("\n\tThe passage behind your back is opened.");
     Console::wait(1000);
     Display::writeNarration(" You turn around, in front of you is Nyx.");
@@ -1406,12 +1353,8 @@ void Event::dialogueWithVincent()
         std::make_pair("'What is this all about?'", dialogueWithVincent_7)
     });
     menu22.showOptions();
+    menu22.inputChoice();
     //--------------------------------
-    while (true)
-    {
-        menu22.inputChoice();
-    }
-
     vincentResurrection();
 }
 
@@ -1512,11 +1455,8 @@ void Event::nightclubCrossroads()
         std::make_pair("Back on the street.", visitStreet)
     });
     menu23.showOptions();
+    menu23.inputChoice();
     //--------------------------------
-    while (true)
-    {
-        menu23.inputChoice();
-    }
 }
 
 // INNE

@@ -150,15 +150,10 @@ void Game::mainMenu()
         std::make_pair(jWriter["mainMenu"][2], std::bind(&Game::changeLanguage, this)),
         std::make_pair(jWriter["mainMenu"][3], std::bind(&Game::credits, this)),
         std::make_pair(jWriter["mainMenu"][4], std::bind(&Game::endGame, this))
-        });
+    });
     mainMenu.showOptions();
+    mainMenu.inputChoice();
     //--------------------------------
-    while (true)
-    {
-        mainMenu.inputChoice();
-        std::cout << mainMenu.getChoice() << std::endl;
-        break;
-    }
 }
 
 void Game::newGame()
@@ -196,7 +191,7 @@ void Game::changeLanguage()
         langMenu.addOptions({
             std::make_pair("EN", std::bind(&Game::loadLogo, this)),
             std::make_pair("PL", std::bind(&Game::loadLogo, this))
-            });
+        });
         langMenu.showOptions();
         //--------------------------------
         this->gameLang = langMenu.getInputChoice();
@@ -218,21 +213,18 @@ void Game::changeLanguage()
 void Game::endGame()
 {
     Logger::startFuncLog(__FUNCTION__);
-    Menu quitMenu;
 
-    do
-    {
-        Console::clearScreen();
-        Display::write(jWriter["quitGame"]["prompt"], 25);
-        //--------------------------------
-        quitMenu.addOptions({
-            std::make_pair(jWriter["quitGame"]["yes"], std::bind(&Game::end, this)),
-            std::make_pair(jWriter["quitGame"]["no"], std::bind(&Game::loadLogo, this))
-        });
-        quitMenu.showOptions();
-        //--------------------------------
-        quitMenu.inputChoice();
-    } while (quitMenu.getChoice() > quitMenu.getOptionsSize() && quitMenu.getChoice() <= 0);
+    Menu quitMenu;
+    Console::clearScreen();
+    Display::write(jWriter["quitGame"]["prompt"], 25);
+    //--------------------------------
+    quitMenu.addOptions({
+        std::make_pair(jWriter["quitGame"]["yes"], std::bind(&Game::end, this)),
+        std::make_pair(jWriter["quitGame"]["no"], std::bind(&Game::loadLogo, this))
+    });
+    quitMenu.showOptions();
+    quitMenu.inputChoice();
+    //--------------------------------
 }
 
 void Game::credits()
