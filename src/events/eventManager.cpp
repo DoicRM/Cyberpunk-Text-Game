@@ -1,7 +1,7 @@
 #include "eventManager.hpp"
 
 int heroChoice = 0;
-bool darkAlleyWasVisited = false, streetWasVisited = false, gunShopWasVisited = false, nightclubWasVisited = false;
+bool darkAlleyWasVisited = false, streetWasVisited = false, gunShopWasVisited = false, nightclubWasVisited = false, isRaining = false;;
 
 void Event::darkAlley()
 {
@@ -20,17 +20,21 @@ void Event::street()
 {
     Logger::startFuncLog(__FUNCTION__);
 
-    int rand = Randomize::randInt(0, 10);
-
-    if (rand > 5 && rand <= 10)
+    if (!isRaining)
     {
-        RandomEvent::downpourStart();
+        int rand = Randomize::randInt(0, 10);
+
+        if (rand > 5 && rand <= 10)
+        {
+            RandomEvent::downpourStart();
+            isRaining = true;
+        }
     }
 
     if (!streetWasVisited)
     {
         streetWasVisited = true;
-        return lookAtAmnesia();
+        return lookAtEden();
     }
 
     streetCrossroads();

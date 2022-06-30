@@ -54,5 +54,5 @@ void Fraction::initFractions()
     fractions["Police"] = Police;
     fractions["Hammers"] = Hammers;
     fractions["Sleepers"] = Sleepers;
-    fractions["SowersOfConfusion"] = Shitheads;
+    fractions["Shitheads"] = Shitheads;
 }

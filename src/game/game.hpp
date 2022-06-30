@@ -28,6 +28,7 @@ public:
 	virtual ~Game();
 
 	static void init();
+	static void initLocations();
 	static void initHeroIventory();
 	static void initHeroJournal();
 	static void pause();
@@ -46,7 +47,6 @@ public:
 	void endGame(); 
 	void end() { this->playing = false; } 
 	void setCurrentLocation(Location* location); 
-	void startEventsByLocation();
 
 	inline bool getPlaying() const { return this->playing; }
 	inline int getLang() const { return this->gameLang; }

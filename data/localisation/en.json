@@ -9,7 +9,8 @@
     "youAreDead": "\tYOU ARE DEAD!",
     "backToMenu": "\n\n\tBack to menu...",
     "theEnd": "\tTHE END",
-    "nothingHere": "\n\tThere's nothing here. This feature is currently unavailable.\n\n"
+    "nothingHere": "\n\tThere's nothing here. This feature is currently unavailable.\n\n",
+    "visit": "Visit: "
   },
   "mainMenu": [
     "New game",
@@ -141,7 +142,7 @@
       "name": "Street"
     },
     "nightclub": {
-      "name": "Nightclub 'Amnesia'"
+      "name": "Nightclub 'Eden'"
     },
     "gunShop": {
       "name": "Zed's Gun Shop"
@@ -162,7 +163,7 @@
   },
   "prologue": {
     "title": "\n\tPrologue",
-    "subtitle": "\n\n\tREQUIEM FOR A DREAM",
+    "subtitle": "\n\n\tPARADISE LOST",
     "storyIntro": [
       "\n\tIt's 2050.",
       " Megacity is a place overrun by poverty and feuding gangs, where powerful\n\tcorporations have the most influence. The violence in the streets is a clear sign of\n\tan impending war. Government operating from behind the secure walls of City Hall are\n\ttrying to combat this, but so far without success. There are rumors that they themselves\n\tare secretly supporting the chaos to create a New Order on the ruins of the city.\n\n"
@@ -263,6 +264,36 @@
       " The workers named the district\n\tParadise Lost in its memory.",
       " The quasi-people of the downtown will never understand this.\n"
     ],
+    "darkAlleyCrossroads": [
+      "\n\tWhen you enter the alley, you hear a familiar voice.",
+      "\n\t'It's you again. Why don't you tell me something for this time?'\n\n",
+      "\tWhen you enter an alley, you notice a sea of trash around you.",
+      "\n\tThere is nothing interesting here. Time to go back...\n\n"
+    ],
+    "lookAtEden": [
+      "\n\tYou walk out of the alley onto a street lit by neon lights on the opposite side. A large sign\n\tthat reads 'Eden' belongs to a nightclub.",
+      " A small crowd gathers outside the entrance to the\n\tbuilding. Some people are arguing with the bouncers.",
+      " Something smells here, it's probably\n\ttrouble...\n\n",
+      "\n\tYou walk out of the alley onto a street lit by neon lights and the lamp of a police car on the\n\topposite side. A large sign that reads 'Eden' belongs to a nightclub.",
+      " Two cops interrogate\n\ta small crowd outside the entrance to the building.",
+      " Something smells here, it's probably trouble\n\t...\n\n"
+    ],
+    "menu4": [
+      "Come closer and see what it's all about.",
+      "Take a look around the area."
+    ],
+    "encounterGunStore": [
+      "\n\tYou go to the right side of the street. After walking several meters you come across a small\n\tbooth between blocks of flats.",
+      " Could it be that the famous gun store managed by old Bob's friend?"
+    ],
+    "menu5": [
+      "Go inside.",
+      "Turn back."
+    ],
+    "menu6": [
+      "Go inside.",
+      "Turn back."
+    ],
     "downpourStart": [
       "\n\tYou feel single drops hitting you.",
       " It's hard to say if it was going to rain before, but it\n\tlooks like you're gonna get wet.",
@@ -270,11 +301,11 @@
     ],
     "findingNicksHand": [
       "\n\tYou are almost at the exit of the alley when your foot encounters something hard.",
-      " You stop\n\tand lower your gaze to the obstacle.",
-      " It turns out to be a bloody hand. Next to it lie\n\thandcuffs attached to a suitcase.",
-      " It has the words 'Nick Rinaldi' written on it.",
-      " It was\n\tprobably the property of some corporate yuppie.",
-      " Someone must have made a lot of money.",
+      " You stop and\n\tlower your gaze to the obstacle.",
+      " It turns out to be a bloody hand. Next to it lie handcuffs\n\tattached to a suitcase.",
+      " A small inscription 'Nick Rinaldi' is engraved on it.",
+      " It was probably\n\tthe property of some corporate yuppie.",
+      " Someone must have made a nice profit at his expense.",
       " Too\n\tbad it wasn't you..."
     ],
     "hookersMeeting": [

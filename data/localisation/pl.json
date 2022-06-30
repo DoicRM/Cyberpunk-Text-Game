@@ -9,7 +9,8 @@
     "youAreDead": "\tNIE ŻYJESZ!",
     "backToMenu": "\n\n\tWróć do menu...",
     "theEnd": "\tKONIEC",
-    "nothingHere": "\n\tNic tu nie ma. Ta funkcja jest obecnie niedostępna.\n\n"
+    "nothingHere": "\n\tNic tu nie ma. Ta funkcja jest obecnie niedostępna.\n\n",
+    "visit": "Odwiedź: "
   },
   "mainMenu": [
     "Nowa gra",
@@ -141,7 +142,7 @@
       "name": "Ulica"
     },
     "nightclub": {
-      "name": "Klub nocny 'Amnezja'"
+      "name": "Klub nocny 'Eden'"
     },
     "gunShop": {
       "name": "Sklep z bronią 'U Zeda'"
@@ -162,7 +163,7 @@
   },
   "prologue": {
     "title": "\n\tProlog",
-    "subtitle": "\n\n\tREQUIEM DLA MARZEŃ",
+    "subtitle": "\n\n\tRAJ UTRACONY",
     "storyIntro": [
       "\n\tJest rok 2050.",
       " Megacity to miejsce opanowane przez biedę i zwaśnione gangi, gdzie największe\n\twpływy mają potężne korporacje. Przemoc na ulicach jest wyraźnym znakiem zbliżającej się wojny.\n\tRząd działający zza bezpiecznych murów ratusza próbuje z tym walczyć, ale jak na razie\n\tbezskutecznie. Krążą plotki, że sam potajemnie wspiera chaos, by na gruzach miasta stworzyć\n\tNowy Porządek.\n\n"
@@ -263,6 +264,36 @@
       "\n\tRobotnicy nazwali tę dzielnicę Rajem Utraconym właśnie na jego część.",
       " Niby-ludzie ze Śródmieścia\n\tnigdy tego nie zrozumieją.\n"
     ],
+    "darkAlleyCrossroads": [
+      "\n\tPo wejściu do zaułka słyszysz znajomy głos.",
+      "\n\t- To znowu ty. Może tym razem coś mi powiesz?\n\n",
+      "\tPo wejściu do zaułka zauważasz wokół siebie morze śmieci.",
+      "\n\tNie ma tu nic ciekawego. Czas wracać...\n\n"
+    ],
+    "lookAtEden": [
+      "\n\tWychodzisz z zaułka na ulicę oświetloną neonami po przeciwnej stronie. Duży szyld z napisem\n\t'Eden' należy do klubu nocnego.",
+      " Przed wejściem do budynku gromadzi się mały tłum. Kilka osób\n\tkłóci się z bramkarzami.",
+      " Coś tu śmierdzi, to pewnie kłopoty...\n\n",
+      "\n\tWychodzisz z zaułka na ulicę oświetloną neonami i światłem radiowozu po przeciwnej stronie.\n\tDuży szyld z napisem 'Eden' należy do klubu nocnego.",
+      " Przed wejściem do budynku dwóch policjantów\n\tprzesłuchuje mały tłumek.",
+      " Coś tu śmierdzi, to pewnie kłopoty...\n\n"
+    ],
+    "menu4": [
+      "(Podejdź bliżej i sprawdź, o co chodzi.)",
+      "(Rozejrzyj się po okolicy.)"
+    ],
+    "encounterGunStore": [
+      "\n\tIdziesz prawą stroną ulicy. Po przejściu kilkunastu metrów napotykasz małą budkę między blokami.",
+      "\n\tCzy to może być ten słynny sklep z bronią prowadzony przez przyjaciela starego Boba?"
+    ],
+    "menu5": [
+      "(Wejdź do środka.)",
+      "(Zawróć.)"
+    ],
+    "menu6": [
+      "(Wejdź do środka.)",
+      "(Zawróć.)"
+    ],
     "downpourStart": [
       "\n\tCzujesz uderzające o ciebie pojedyncze krople.",
       " Trudno powiedzieć, czy wcześniej zanosiło\n\tsię na deszcz, ale wygląda na to, że przyjdzie ci się zmoknąć.",
@@ -272,10 +303,10 @@
       "\n\tJesteś już prawie u wyjścia z zaułka, kiedy twoja stopa natrafia na coś twardego.",
       " Zatrzymujesz\n\tsię i spuszczasz wzrok na przeszkodę.",
       " Okazuje się, że to zakrwawiona dłoń. Obok niej leżą\n\tkajdanki przymocowane do walizki.",
-      " Widnieje na niej napis 'Nick Rinaldi'.",
-      " To była pewnie własność\n\tjakiegoś korporacyjnego japiszona.",
-      " Ktoś musiał nieźle się obłowić.",
-      " Jaka szkoda, że to nie byłeś\n\tty..."
+      " Widnieje na niej wygrawerowany niewielki napis 'Nick Rinaldi'.",
+      "\n\tTo była pewnie własność jakiegoś korporacyjnego japiszona.",
+      " Ktoś musiał nieźle się obłowić jego\n\tkosztem.",
+      " Jaka szkoda, że to nie byłeś ty..."
     ],
     "hookersMeeting": [
     ],

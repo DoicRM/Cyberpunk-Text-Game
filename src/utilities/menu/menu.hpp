@@ -7,10 +7,10 @@ class Menu
 {
 public:
 	Menu();
+	Menu(std::vector<std::pair<std::string, std::function<void()>>> options);
 	virtual ~Menu();
 
 	void actionOption(int nr, std::string text); // tworzenie akcji gracza - (numer, opis)
-	static void showHeroAction(std::string text); // wyświetlanie akcji gracza - (opis)
 	void showHeroChoice();
 	void clearOptions();
 	void addOptions(std::vector<std::pair<std::string, std::function<void()>>> options);

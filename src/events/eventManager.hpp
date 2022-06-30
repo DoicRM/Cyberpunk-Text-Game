@@ -43,9 +43,9 @@ private:
 		static void darkAlleyCrossroads_1();
 		static void darkAlleyCrossroads_2();
 	// Ulica
-	static void lookAtAmnesia();
-		static void lookAtAmnesia_1();
-		static void lookAtAmnesia_2();
+	static void lookAtEden();
+		static void lookAtEden_1();
+		static void lookAtEden_2();
 	static void meetingWithSecurityGuards();
 	static void meetingWithPolicemans();
 		static void meetingWithPolicemans_1();
@@ -133,4 +133,5 @@ public:
 	static void nickHandFinding();
 	static void hookersMeeting();
 	static void punksMeeting();
+	static void clubOverdose();
 };

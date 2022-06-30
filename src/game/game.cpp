@@ -28,7 +28,7 @@ void Game::initAll()
     Hero::initHero();
     Fraction::initFractions();
     Npc::initNpcs();
-    Location::initLocations();
+    initLocations();
     Quest::initQuests();
     Item::initItems();
     Weapon::initWeapons();
@@ -61,13 +61,13 @@ void Game::selectLanguage()
     {
         Console::clearScreen();
         std::cout << std::endl;
-        //--------------------------------
+        
         langMenu.addOptions({
             std::make_pair("EN", std::bind(&Game::welcome, this)),
             std::make_pair("PL", std::bind(&Game::welcome, this))
         });
         langMenu.showOptions();
-        //--------------------------------
+        
         this->gameLang = langMenu.getInputChoice();
         Console::clearScreen();
 
@@ -142,18 +142,14 @@ void Game::mainMenu()
     Logger::startFuncLog(__FUNCTION__);
     Console::resetConsoleColor();
     std::cout << std::endl;
-    Menu mainMenu;
-    //--------------------------------
-    mainMenu.addOptions({
+
+    Menu mainMenu({
         std::make_pair(jWriter["mainMenu"][0], std::bind(&Game::newGame, this)),
         std::make_pair(jWriter["mainMenu"][1], std::bind(&Game::laodGame, this)),
         std::make_pair(jWriter["mainMenu"][2], std::bind(&Game::changeLanguage, this)),
         std::make_pair(jWriter["mainMenu"][3], std::bind(&Game::credits, this)),
         std::make_pair(jWriter["mainMenu"][4], std::bind(&Game::endGame, this))
     });
-    mainMenu.showOptions();
-    mainMenu.inputChoice();
-    //--------------------------------
 }
 
 void Game::newGame()
@@ -187,13 +183,13 @@ void Game::changeLanguage()
     {
         Console::clearScreen();
         Display::write(jWriter["main"]["selectYouLanguage"], 25);
-        //--------------------------------
+
         langMenu.addOptions({
             std::make_pair("EN", std::bind(&Game::loadLogo, this)),
             std::make_pair("PL", std::bind(&Game::loadLogo, this))
         });
         langMenu.showOptions();
-        //--------------------------------
+
         this->gameLang = langMenu.getInputChoice();
         Console::clearScreen();
 
@@ -214,17 +210,13 @@ void Game::endGame()
 {
     Logger::startFuncLog(__FUNCTION__);
 
-    Menu quitMenu;
     Console::clearScreen();
     Display::write(jWriter["quitGame"]["prompt"], 25);
-    //--------------------------------
-    quitMenu.addOptions({
+
+    Menu quitMenu({
         std::make_pair(jWriter["quitGame"]["yes"], std::bind(&Game::end, this)),
         std::make_pair(jWriter["quitGame"]["no"], std::bind(&Game::loadLogo, this))
     });
-    quitMenu.showOptions();
-    quitMenu.inputChoice();
-    //--------------------------------
 }
 
 void Game::credits()
@@ -254,16 +246,7 @@ void Game::setCurrentLocation(Location* location)
 {
     this->currentLocation = location;
     Logger::out("Set <b>" + getCurrentLocation()->getName() + "</b> as current location", __FUNCTION__);
-    startEventsByLocation();
-}
-
-void Game::startEventsByLocation()
-{
-    if (getCurrentLocation() == &Location::locations["DarkAlley"]) { Event::darkAlley(); }
-    else if (getCurrentLocation() == &Location::locations["Street"]) { Event::street(); }
-    else if (getCurrentLocation() == &Location::locations["Nightclub"]) { Event::nightclub(); }
-    else if (getCurrentLocation() == &Location::locations["GunShop"]) { Event::gunShop(); }
-    else if (getCurrentLocation() == &Location::locations["SleepersHideout"]) { Event::sleepersHideout(); }
+    getCurrentLocation()->getEvents()();
 }
 
 void Game::initHeroIventory()
@@ -300,4 +283,21 @@ void Game::pause()
 {
     std::cout << (std::string)jWriter["main"]["pressAnyKey"];
     Console::waitForUserInput();
+}
+
+void Game::initLocations()
+{
+    Logger::startFuncLog(__FUNCTION__);
+
+    Location DarkAlley(jWriter["locations"]["darkAlley"]["name"], Fraction::fractions["Beggars"], Event::darkAlley);
+    Location Street(jWriter["locations"]["street"]["name"], Fraction::fractions["Police"], Event::street);
+    Location Nightclub(jWriter["locations"]["nightclub"]["name"], Fraction::fractions["Hammers"], Event::nightclub);
+    Location GunShop(jWriter["locations"]["gunShop"]["name"], Fraction::fractions["None"], Event::gunShop);
+    Location SleepersHideout(jWriter["locations"]["sleepersHideout"]["name"], Fraction::fractions["Sleepers"], Event::sleepersHideout);
+
+    Location::locations["DarkAlley"] = DarkAlley;
+    Location::locations["Street"] = Street;
+    Location::locations["Nightclub"] = Nightclub;
+    Location::locations["GunShop"] = GunShop;
+    Location::locations["SleepersHideout"] = SleepersHideout;
 }

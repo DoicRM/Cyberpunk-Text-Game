@@ -6,7 +6,7 @@ bool bobRecommendsZed       = false,
      heroIsAtBar            = false,
      heroKnowsVincentCode   = false;
 
-// MROCZNY ZAUŁEK
+// DARK ALLEY
 void Event::prologue()
 {
     Logger::startFuncLog(__FUNCTION__);
@@ -40,7 +40,7 @@ void Event::storyIntroduction()
 void Event::wakeUpInDarkAlley()
 {
     Logger::startFuncLog(__FUNCTION__);
-    Menu menu1;
+
     Console::wait(2000);
     Display::writeNarration(jWriter["prologue"]["wakeUp"][0]);
     Console::wait(1000);
@@ -59,14 +59,11 @@ void Event::wakeUpInDarkAlley()
     Display::writeNarration(jWriter["prologue"]["wakeUp"][7]);
     Console::wait(2500);
     Display::writeNarration(jWriter["prologue"]["wakeUp"][8]);
-    //--------------------------------
-    menu1.addOptions({
+
+    Menu menu1({
         std::make_pair(jWriter["prologue"]["menu1"][0], rubbishSearch),
         std::make_pair(jWriter["prologue"]["menu1"][1], outOfAlley)
     });
-    menu1.showOptions();
-    menu1.inputChoice();
-    //--------------------------------
 }
 
 void Event::acceleratorFinding()
@@ -136,15 +133,11 @@ void Event::outOfAlley()
     Console::wait(3000);
     Display::writeNarration(jWriter["prologue"]["outOfAlley"][4]);
     Display::writeDialogue(jWriter["prologue"]["dialogueWithBob"][1]);
-    //--------------------------------
-    Menu menu2;
-    menu2.addOptions({
+
+    Menu menu2({
         std::make_pair(jWriter["prologue"]["menu2"][0], outOfAlley_1),
         std::make_pair(jWriter["prologue"]["menu2"][1], outOfAlley_2)
     });
-    menu2.showOptions();
-    menu2.inputChoice();
-    //--------------------------------
 }
 
 void Event::outOfAlley_1()
@@ -172,24 +165,16 @@ void Event::dialogueWithBob()
 
     if (!Npc::npcs["Bob"].knowsHero() && !Npc::npcs["Caden"].knowsHero() && !Npc::npcs["CadenPartner"].knowsHero())
     {
-        //--------------------------------
-        Menu nameMenu;
-        nameMenu.addOptions({
+        Menu nameMenu({
             std::make_pair(jWriter["prologue"]["nameMenu"][0], dialogueWithBob_1),
             std::make_pair(jWriter["prologue"]["nameMenu"][1], dialogueWithBob_2)
         });
-        nameMenu.showOptions();
-        nameMenu.inputChoice();
-        //--------------------------------
-        Menu menu3;
-        menu3.addOptions({
+
+        Menu menu3({
             std::make_pair(jWriter["prologue"]["menu3"][0], dialogueWithBob_3),
             std::make_pair(jWriter["prologue"]["menu3"][1], dialogueWithBob_4),
             std::make_pair(jWriter["prologue"]["menu3"][2], dialogueWithBob_5)
         });
-        menu3.showOptions();
-        menu3.inputChoice();
-        //--------------------------------
 
         if (!streetWasVisited)
         {
@@ -258,7 +243,7 @@ void Event::dialogueWithBob_2()
 
 void Event::dialogueWithBob_3()
 {
-    bobRecommendsZed = true; // Bob poleca bohaterowi sklep z bronią Zeda
+    bobRecommendsZed = true; // Bob recommends Zed's gun shop to the hero
     Display::writeDialogue(jWriter["prologue"]["dialogueWithBob"][9]);
     Console::wait(1000);
     Display::writeDialogue(jWriter["prologue"]["dialogueWithBob"][10]);
@@ -291,15 +276,11 @@ void Event::dialogueWithBob_5()
 void Event::aboutParadiseLost()
 {
     std::cout << std::endl;
-    //--------------------------------
-    Menu paradiseLostMenu;
-    paradiseLostMenu.addOptions({
+
+    Menu paradiseLostMenu({
         std::make_pair(jWriter["prologue"]["paradiseLostMenu"][0], aboutParadiseLost_1),
         std::make_pair(jWriter["prologue"]["paradiseLostMenu"][1], aboutParadiseLost_2)
     });
-    paradiseLostMenu.showOptions();
-    paradiseLostMenu.inputChoice();
-    //--------------------------------
 }
 
 void Event::aboutParadiseLost_1()
@@ -327,21 +308,17 @@ void Event::darkAlleyCrossroads()
 
     if (!Npc::npcs["Bob"].knowsHero())
     {
-        Display::writeNarration("\n\tWhen you enter the alley, you hear a familiar voice.");
-        Display::writeDialogue("\n\t- 'It's you again. Why don't you tell me something for one this time?'\n\n");
-        //--------------------------------
-        Menu menu2;
-        menu2.addOptions({
+        Display::writeNarration(jWriter["prologue"]["darkAlleyCrossroads"][0]);
+        Display::writeDialogue(jWriter["prologue"]["darkAlleyCrossroads"][1]);
+
+        Menu menu2({
             std::make_pair(jWriter["prologue"]["menu2"][2], outOfAlley_1),
             std::make_pair(jWriter["prologue"]["menu2"][1], outOfAlley_2)
         });
-        menu2.showOptions();
-        menu2.inputChoice();
-        //--------------------------------
     }
     else
     {
-        Display::writeNarration("\tWhen you enter an alley, you notice a sea of trash around you.");
+        Display::writeNarration(jWriter["prologue"]["darkAlleyCrossroads"][2]);
         Console::wait(1000);
         Display::writeNarration(jWriter["prologue"]["wakeUp"][7]);
     
@@ -349,19 +326,15 @@ void Event::darkAlleyCrossroads()
         {
             Console::wait(1500);
             Display::writeNarration(jWriter["prologue"]["wakeUp"][8]);
-            //--------------------------------
-            Menu menu1;
-            menu1.addOptions({
+
+            Menu menu1({
                 std::make_pair(jWriter["prologue"]["menu1"][0], darkAlleyCrossroads_1),
                 std::make_pair(jWriter["prologue"]["menu1"][1], darkAlleyCrossroads_2)
             });
-            menu1.showOptions();
-            menu1.inputChoice();
-            //--------------------------------
         }
         else
         {
-            Display::writeNarration("\n\tThere is nothing interesting here. Time to go back...\n\n");
+            Display::writeNarration(jWriter["prologue"]["darkAlleyCrossroads"][3]);
             Game::pause();
             Console::clearScreen();
             Game::game[0].setCurrentLocation(&Location::locations["Street"]);
@@ -373,7 +346,7 @@ void Event::darkAlleyCrossroads_1()
 {
     Logger::startFuncLog(__FUNCTION__);
     acceleratorFinding();
-    Display::writeNarration("\n\tThere is nothing interesting here any more. Time to go back...\n");
+    Display::writeNarration(jWriter["prologue"]["darkAlleyCrossroads"][3]);
     Console::wait(1500);
     Console::clearScreen();
     Game::game[0].setCurrentLocation(&Location::locations["Street"]);
@@ -386,37 +359,33 @@ void Event::darkAlleyCrossroads_2()
     Game::game[0].setCurrentLocation(&Location::locations["Street"]);
 }
 
-// ULICA
-void Event::lookAtAmnesia()
+// STREET in front of the nightclub 'Eden'
+void Event::lookAtEden()
 {
     Logger::startFuncLog(__FUNCTION__);
 
     if (!Npc::npcs["Bob"].knowsHero())
     {
-        Display::writeNarration("\n\tYou walk out of the alley onto a street lit by neon lights on the opposite side. A large sign\n\tthat reads 'Amnesia' belongs to a nightclub.");
+        Display::writeNarration(jWriter["prologue"]["lookAtEden"][0]);
         Console::wait(1000);
-        Display::writeNarration(" A small crowd gathers outside the entrance to the\n\tbuilding. Some people are arguing with the bouncers.");
+        Display::writeNarration(jWriter["prologue"]["lookAtEden"][1]);
         Console::wait(1500);
-        Display::writeNarration(" Something smells here, it's probably trouble...\n\n");
+        Display::writeNarration(jWriter["prologue"]["lookAtEden"][2]);
     }
     else {
-        Display::writeNarration("\n\tYou walk out of the alley onto a street lit by neon lights and the lamp of a police car on the\n\topposite side. A large sign that reads 'Amnesia' belongs to a nightclub.");
-        Display::writeNarration(" Two cops interrogate\n\ta small crowd outside the entrance to the building.");
+        Display::writeNarration(jWriter["prologue"]["lookAtEden"][3]);
+        Display::writeNarration(jWriter["prologue"]["lookAtEden"][4]);
         Console::wait(1500);
-        Display::writeNarration(" Something smells here, it's probably trouble...\n\n");
+        Display::writeNarration(jWriter["prologue"]["lookAtEden"][5]);
     }
-    //--------------------------------
-    Menu menu4;
-    menu4.addOptions({
-        std::make_pair("Come closer and see what it's all about.", lookAtAmnesia_1),
-        std::make_pair("Take a look around the area.", lookAtAmnesia_2)
+
+    Menu menu4({
+        std::make_pair(jWriter["prologue"]["menu4"][0], lookAtEden_1),
+        std::make_pair(jWriter["prologue"]["menu4"][1], lookAtEden_2)
     });
-    menu4.showOptions();
-    menu4.inputChoice();
-    //--------------------------------
 }
 
-void Event::lookAtAmnesia_1()
+void Event::lookAtEden_1()
 {
     Logger::startFuncLog(__FUNCTION__);
     std::cout << std::endl;
@@ -431,7 +400,7 @@ void Event::lookAtAmnesia_1()
     }
 }
 
-void Event::lookAtAmnesia_2()
+void Event::lookAtEden_2()
 {
     Logger::startFuncLog(__FUNCTION__);
     Game::game[0].setCurrentLocation(&Location::locations["GunShop"]);
@@ -440,23 +409,32 @@ void Event::lookAtAmnesia_2()
 void Event::encounterGunStore()
 {
     Logger::startFuncLog(__FUNCTION__);
-    Display::writeNarration("\n\tYou go to the right side of the street. After walking several meters you come across a small\n\tbooth between blocks of flats.");
+    Display::writeNarration(jWriter["prologue"]["encounterGunStore"][0]);
 
     if (bobRecommendsZed)
     {
-        Display::writeNarration(" Could it be that the famous gun store managed by Bob's friend?");
+        Display::writeNarration(jWriter["prologue"]["encounterGunStore"][1]);
+    }
+
+    int rand = Randomize::randInt(0, 20);
+
+    if (rand > 10 && rand <= 15)
+    {
+        std::cout << std::endl;
+        RandomEvent::hookersMeeting();
+    }
+    else if (rand > 15 && rand <= 20)
+    {
+        std::cout << std::endl;
+        RandomEvent::punksMeeting();
     }
 
     std::cout << std::endl << std::endl;
-    //--------------------------------
-    Menu menu5;
-    menu5.addOptions({
-        std::make_pair("Go inside.", enterGunShop),
-        std::make_pair("Turn back.", encounterGunStore_1)
+
+    Menu menu5({
+        std::make_pair(jWriter["prologue"]["menu5"][0], enterGunShop),
+        std::make_pair(jWriter["prologue"]["menu4"][1], encounterGunStore_1)
     });
-    menu5.showOptions();
-    menu5.inputChoice();
-    //--------------------------------
 }
 
 void Event::encounterGunStore_1()
@@ -559,15 +537,11 @@ void Event::meetingWithPolicemans()
     Display::writeNarration("\n\tThe cop walks away to talk to the nearest person standing.");
     Display::writeDialogue("\n\t- 'If you're so pure, get in.'");
     Display::writeNarration("\n\tThe bouncer points to the door behind him.\n\n");
-    //--------------------------------
-    Menu menu6;
-    menu6.addOptions({
-        std::make_pair("Go inside.", meetingWithPolicemans_1),
-        std::make_pair("Turn back.", meetingWithPolicemans_2)
+
+    Menu menu6({
+        std::make_pair(jWriter["prologue"]["menu6"][0], meetingWithPolicemans_1),
+        std::make_pair(jWriter["prologue"]["menu6"][1], meetingWithPolicemans_2)
     });
-    menu6.showOptions();
-    menu6.inputChoice();
-    //--------------------------------
 }
 
 void Event::meetingWithPolicemans_1()
@@ -586,16 +560,12 @@ void Event::streetCrossroads()
 {
     Logger::startFuncLog(__FUNCTION__);
     Display::writeNarration("\n\tOnce again you are on a street bathed in nighttime darkness.\n\n");
-    //--------------------------------
-    Menu menu7;
-    menu7.addOptions({
-        std::make_pair("Visit: " + Location::locations["DarkAlley"].getName() + ".", visitDarkAlley),
-        std::make_pair("Visit: " + Location::locations["Nightclub"].getName() + ".", visitNightclub),
-        std::make_pair("Visit: " + Location::locations["GunShop"].getName() + ".", visitGunShop)
+
+    Menu menu7({
+        std::make_pair((std::string)jWriter["main"]["visit"] + Location::locations["DarkAlley"].getName() + ".", visitDarkAlley),
+        std::make_pair((std::string)jWriter["main"]["visit"] + Location::locations["Nightclub"].getName() + ".", visitNightclub),
+        std::make_pair((std::string)jWriter["main"]["visit"] + Location::locations["GunShop"].getName() + ".", visitGunShop)
     });
-    menu7.showOptions();
-    menu7.inputChoice();
-    //--------------------------------
 }
 
 void Event::visitDarkAlley()
@@ -623,7 +593,7 @@ void Event::visitGunShop()
     Game::game[0].setCurrentLocation(&Location::locations["GunShop"]);
 }
 
-// SKLEP Z BRONIĄ
+// ZED'S GUN SHOP
 void Event::enterGunShop()
 {
     Logger::startFuncLog(__FUNCTION__);
@@ -658,7 +628,7 @@ void Event::dialogueWithZed()
     while (true)
     {
         std::cout << std::endl;
-        //--------------------------------
+
         Menu menu8;
         std::vector<std::pair<std::string, std::function<void()>>> options;
         options.push_back(std::make_pair("'What do you have?'", dialogueWithZed_1));
@@ -678,7 +648,7 @@ void Event::dialogueWithZed()
         menu8.addOptions(options);
         menu8.showOptions();
         menu8.inputChoice();
-        //--------------------------------
+
         if (menu8.getChoice() <= menu8.getOptionsSize() && menu8.getChoice() > 0)
         {
             break;
@@ -777,28 +747,20 @@ void Event::zedTrade()
             Display::writeDialogue(" Anything\n\tyou want, my friend!");
             Console::wait(1500);
             Display::writeDialogue(" Tell me, what do you like?'\n\n");
-            //--------------------------------
-            Menu menu9;
-            menu9.addOptions({
+
+            Menu menu9({
                 std::make_pair("Buy: pistol (250 $).", buyPistol),
                 std::make_pair("'I have made up my mind.'", zedTrade_1)
             });
-            menu9.showOptions();
-            menu9.inputChoice();
-            //--------------------------------
         }
         else
         {
             std::cout << std::endl;
-            //--------------------------------
-            Menu menu10;
-            menu10.addOptions({
+
+            Menu menu10({
                 std::make_pair("Buy: pistol (250 $).", buyPistol),
                 std::make_pair("'I have made up my mind.'", zedTrade_1)
             });
-            menu10.showOptions();
-            menu10.inputChoice();
-            //--------------------------------
         }
     }
     else
@@ -870,7 +832,7 @@ void Event::gunShopCrossroads()
     enterGunShop();
 }
 
-// KLUB NOCNY
+// NIGHTCLUB 'EDEN'
 void Event::enterClub()
 {
     Logger::startFuncLog(__FUNCTION__);
@@ -881,17 +843,13 @@ void Event::enterClub()
     Display::writeNarration(" Disco balls hung from the ceiling net everything around with streaks of multi-colored\n\tlight.");
     Console::wait(1000);
     Display::writeNarration(" Next to the dance floor is a bar, and behind it are several mechanically streamlined\n\tbartenders.\n\n");
-    //--------------------------------
-    Menu menu11;
-    menu11.addOptions({
+
+    Menu menu11({
         std::make_pair("Go to the dance floor.", clubDanceFloor),
         std::make_pair("Go to the bar.", clubBar),
         std::make_pair("Go upstairs.", clubUpstairs),
         std::make_pair("Back on the street.", visitStreet)
     });
-    menu11.showOptions();
-    menu11.inputChoice();
-    //--------------------------------
 }
 
 void Event::clubDanceFloor()
@@ -911,16 +869,12 @@ void Event::clubDanceFloor()
         Display::writeNarration(" You are doing quite well when an attractive girl appears in\n\tfront of you. She's wearing a see-through, brightly coloured dress.");
         Console::wait(1500);
         Display::writeNarration(" Is it a coincidence\n\tthat she has just appeared and is dancing so close to you?\n\n");
-        //--------------------------------
-        Menu menu12;
-        menu12.addOptions({
+
+        Menu menu12({
             std::make_pair("'What do you want?'", clubDanceFloor_1),
             std::make_pair("'Hey, baby.'", clubDanceFloor_2),
             std::make_pair("Keep dancing with no words.", clubDanceFloor_3)
         });
-        menu12.showOptions();
-        menu12.inputChoice();
-        //--------------------------------
 
         miaMeeting();
     }
@@ -964,16 +918,12 @@ void Event::clubBar()
 
     while (true)
     {
-        //--------------------------------
-        Menu menu13;
-        menu13.addOptions({
+        Menu menu13({
             std::make_pair("'Give me anything.'", clubBar_1),
             std::make_pair("'Who's in charge?'", clubBar_2),
             std::make_pair("'Bye.'", clubBar_3)
         });
-        menu13.showOptions();
-        menu13.inputChoice();
-        //--------------------------------
+
         if (menu13.getChoice() <= menu13.getOptionsSize() && menu13.getChoice() > 0)
         {
             break;
@@ -1016,15 +966,12 @@ void Event::miaMeeting()
 {
     Logger::startFuncLog(__FUNCTION__);
     std::cout << std::endl << std::endl;
-    //--------------------------------
-    Menu menu14;
-    menu14.addOptions({
+
+    Menu menu14({
         std::make_pair("'What is it about?'", miaMeeting_1),
         std::make_pair("Be silent and let her speak.", miaMeeting_2)
     });
-    menu14.showOptions();
-    menu14.inputChoice();
-    //--------------------------------
+
     Display::writeDialogue("\n\t- 'Vinc, the owner, is my boyfriend.");
     Console::wait(1000);
     Display::writeDialogue(" I want him dead.'");
@@ -1070,15 +1017,11 @@ void Event::clubUpstairs()
 {
     Logger::startFuncLog(__FUNCTION__);
     Display::writeNarration("\n\tYou go up a winding staircase. At the end of a short banister you will see a closed door\n\tguarded by another bulky individual.\n\n");
-    //--------------------------------
-    Menu menu15;
-    menu15.addOptions({
+
+    Menu menu15({
         std::make_pair("Come closer.", clubUpstairs_1),
         std::make_pair("Go back downstairs.", clubUpstairs_2)
     });
-    menu15.showOptions();
-    menu15.inputChoice();
-    //--------------------------------
 }
 
 void Event::clubUpstairs_1()
@@ -1105,7 +1048,7 @@ void Event::dialogueWithJet()
     while (true)
     {
         jetGetsAngry(jetPoints);
-        //--------------------------------
+
         std::vector<std::pair<std::string, std::function<void()>>> options;
         options.push_back(std::make_pair("'I want to pass.'", dialogueWithJet_1));
         options.push_back(std::make_pair("'What is behind that door?'", dialogueWithJet_2));
@@ -1120,7 +1063,7 @@ void Event::dialogueWithJet()
         menu16.addOptions(options);
         menu16.showOptions();
         menu16.inputChoice();
-        //--------------------------------
+
         if (menu16.getChoice() <= menu16.getOptionsSize() && menu16.getChoice() > 0)
         {
             break;
@@ -1144,13 +1087,13 @@ void Event::dialogueWithJet_2()
 
 void Event::dialogueWithJet_3()
 {
-    // TODO: dodać opis zabicia Jeta!
+    // TODO: add description of killing Jet!
     vincentOffice();
 }
 
 void Event::dialogueWithJet_4()
 {
-    // TODO: dodać opis ogłuszenia Jeta!
+    // TODO: add description of Jet's stun!
     vincentOffice();
 }
 
@@ -1222,22 +1165,17 @@ void Event::vincentOffice()
 {
     Logger::startFuncLog(__FUNCTION__);
     Display::writeNarration("\tYou enter the manager's office immersed in twilight. In the middle of the room stands a sizable desk, and on it are stacks of documents and computer. To the left of the entrance is a window to the street below. On the right you will notice a door to another room.\n\n");
-    //--------------------------------
-    Menu menu17;
-    menu17.addOptions({
+
+    Menu menu17({
         std::make_pair("Open the door and go into the other room.", vincentHideoutCode),
         std::make_pair("Stay and search the office.", checkVincentDesk)
     });
-    menu17.showOptions();
-    menu17.inputChoice();
-    //--------------------------------
 }
 
 void Event::checkVincentDesk()
 {
     Logger::startFuncLog(__FUNCTION__);
     heroKnowsVincentCode = true;
-    Menu::showHeroAction("Stay and search the office.");
     Display::writeNarration("\n\tYou walk up to the desk. You start flipping through the e-papers one by one and finally your gaze falls on the flickering blue monitor.");
     Display::write("\n\t");
 
@@ -1256,15 +1194,11 @@ void Event::vincentHideoutCode()
     }
     else {
         std::cout << std::endl << std::endl;
-        //--------------------------------
-        Menu menu18;
-        menu18.addOptions({
+
+        Menu menu18({
             std::make_pair("Use code '2021'.", nullptr),
             std::make_pair("Search the office.", nullptr)
         });
-        menu18.showOptions();
-        menu18.inputChoice();
-        //--------------------------------
     }
 }
 
@@ -1279,15 +1213,11 @@ void Event::vincentHideout()
     Display::writeNarration(" You guess it's\n\tVincent, the club owner.");
     Console::wait(2000);
     Display::writeNarration("\n\tCreeping up, you come closer. Your goal is within reach. The question is what will you do?\n\n");
-    //--------------------------------
-    Menu menu19;
-    menu19.addOptions({
+
+    Menu menu19({
         std::make_pair("Disconnect his consciousness from the neuronet. (Kill him)", vincentHideout_1),
         std::make_pair("Wait for his consciousness to leave the neuronet.", vincentHideout_2)
     });
-    menu19.showOptions();
-    menu19.inputChoice();
-    //--------------------------------
 }
 
 void Event::vincentHideout_1()
@@ -1316,26 +1246,20 @@ void Event::dialogueWithVincent()
 {
     Logger::startFuncLog(__FUNCTION__);
     std::cout << std::endl << std::endl;
-    //--------------------------------
-    Menu menu20;
-    menu20.addOptions({
+
+    Menu menu20({
         std::make_pair("'Die!'", dialogueWithVincent_1),
         std::make_pair("'I don't want to fight with you.'", dialogueWithVincent_2),
         std::make_pair("'Nyx wants you dead.'", dialogueWithVincent_3)
     });
-    menu20.showOptions();
-    menu20.inputChoice();
-    //--------------------------------
+
     std::cout << std::endl << std::endl;
-    //--------------------------------
-    Menu menu21;
-    menu21.addOptions({
+
+    Menu menu21({
         std::make_pair("'It doesn't matter.'", dialogueWithVincent_4),
         std::make_pair("'Your girlfriend, Nyx.'", dialogueWithVincent_5)
     });
-    menu21.showOptions();
-    menu21.inputChoice();
-    //--------------------------------
+
     Display::writeNarration("\n\tThe passage behind your back is opened.");
     Console::wait(1000);
     Display::writeNarration(" You turn around, in front of you is Nyx.");
@@ -1346,15 +1270,12 @@ void Event::dialogueWithVincent()
     Display::writeDialogue("\n\t- 'You did it... You really did it... Is he - is he dead?'");
     Console::wait(1000);
     Display::writeNarration("\n\tNyx walks past you and kneels by the dead man. She starts searching his pockets for something.\n\n");
-    //--------------------------------
-    Menu menu22;
-    menu22.addOptions({
+
+    Menu menu22({
         std::make_pair("Do nothing.", dialogueWithVincent_6),
         std::make_pair("'What is this all about?'", dialogueWithVincent_7)
     });
-    menu22.showOptions();
-    menu22.inputChoice();
-    //--------------------------------
+
     vincentResurrection();
 }
 
@@ -1446,17 +1367,13 @@ void Event::vincentResurrection()
 void Event::nightclubCrossroads()
 {
     Logger::startFuncLog(__FUNCTION__);
-    //--------------------------------
-    Menu menu23;
-    menu23.addOptions({
+
+    Menu menu23({
         std::make_pair("Go to the dance floor.", clubDanceFloor),
         std::make_pair("Go to the bar.", clubBar),
         std::make_pair("Go upstairs.", clubUpstairs),
         std::make_pair("Back on the street.", visitStreet)
     });
-    menu23.showOptions();
-    menu23.inputChoice();
-    //--------------------------------
 }
 
 // INNE
@@ -1481,11 +1398,13 @@ void Event::loadingFiles()
 void Event::namingHero()
 {
     Logger::startFuncLog(__FUNCTION__);
+
     std::string heroName;
     Display::writeNarration(jWriter["prologue"]["rememberYourName"]);
     Console::resetConsoleColor();
     heroName = Input::getString();
     Hero::heroes[0].setName(heroName);
+
     Logger::out("Set <b>" + Hero::heroes[0].getName() + "</b> to hero's name", __FUNCTION__);
 }
 
@@ -1521,6 +1440,11 @@ void RandomEvent::hookersMeeting()
 }
 
 void RandomEvent::punksMeeting()
+{
+    // TODO
+}
+
+void RandomEvent::clubOverdose()
 {
     // TODO
 }

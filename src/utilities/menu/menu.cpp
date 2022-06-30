@@ -2,9 +2,15 @@
 
 Menu::Menu()
 {
-    this->optionNr = 1;
-    this->choice = 0;
-    std::map <int, std::pair<std::string, std::function<void()>>> options;
+    clearOptions();
+}
+
+Menu::Menu(std::vector<std::pair<std::string, std::function<void()>>> options)
+{
+    clearOptions();
+    addOptions(options);
+    showOptions();
+    inputChoice();
 }
 
 Menu::~Menu()
@@ -14,12 +20,6 @@ Menu::~Menu()
 void Menu::actionOption(int nr, std::string text)
 {
     Display::write("\t[" + std::to_string(nr) + "] " + text + "\n", 25);
-}
-
-void Menu::showHeroAction(std::string text)
-{
-    Console::resetConsoleColor();
-    std::cout << "\n\t> " + text + "\n";
 }
 
 void Menu::showHeroChoice()
@@ -32,6 +32,7 @@ void Menu::clearOptions()
 {
     this->options.clear();
     this->optionNr = 1;
+    this->choice = 0;
 }
 
 void Menu::addOptions(std::vector<std::pair<std::string, std::function<void()>>> options)

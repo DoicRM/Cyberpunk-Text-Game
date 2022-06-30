@@ -105,7 +105,7 @@ bool Npc::isDead()
 void Npc::initNpcs()
 {
     Logger::startFuncLog(__FUNCTION__);
-    // PROLOG
+    // PROLOGUE
     Npc Bob("Bob", Sex::Male, Fraction::fractions["Beggars"]);
     Npc Caden("Caden", Sex::Male, Fraction::fractions["Police"]);
     Npc CadensPartner(jWriter["npcs"]["policeman"]["name"], Sex::Male, Fraction::fractions["Police"]);
@@ -114,12 +114,12 @@ void Npc::initNpcs()
     Npc Jet(jWriter["npcs"]["bouncer"]["name"], Sex::Male, Fraction::fractions["Hammers"]);
     Npc Vincent("Vincent", Sex::Male, Fraction::fractions["Hammers"]);
     Npc Enigma("Enigma", Sex::Male, Fraction::fractions["None"]);
-    // AKT I
+    // ACT I
     Npc Morpheus(jWriter["npcs"]["morpheus"]["name"], Sex::Male, Fraction::fractions["Sleepers"]);
     Npc MerQRy("Mer Q'Ry", Sex::Male, Fraction::fractions["None"]);
     Npc Karla("Karla", Sex::Female, Fraction::fractions["None"]);
     Npc ChipCaine("Chip Caine", Sex::Male, Fraction::fractions["None"]);
-    Npc JaxRasac("Jax Rasac", Sex::Male, Fraction::fractions["SowersOfConfusion"]);
+    Npc JaxRasac("Jax Rasac", Sex::Male, Fraction::fractions["Shitheads"]);
 
     npcs["Bob"] = Bob;
     npcs["Caden"] = Caden;
