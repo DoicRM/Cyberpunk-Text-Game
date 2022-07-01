@@ -1,7 +1,6 @@
-#include "eventManager.hpp"
+#include "events.hpp"
 
-int heroChoice = 0;
-bool darkAlleyWasVisited = false, streetWasVisited = false, gunShopWasVisited = false, nightclubWasVisited = false, isRaining = false;;
+bool darkAlleyWasVisited = false, streetWasVisited = false, gunShopWasVisited = false, nightclubWasVisited = false, isRaining = false;
 
 void Event::darkAlley()
 {

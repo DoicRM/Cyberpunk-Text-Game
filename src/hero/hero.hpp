@@ -1,5 +1,5 @@
 #pragma once
-#include "../events/eventManager.hpp"
+#include "../events/events.hpp"
 #include "../inventory/inventory.hpp"
 #include "../journal/journal.hpp"
 
