@@ -2,7 +2,7 @@
 // 		STREET in front of the nightclub 'Eden'
 // ************************************************************
 
-#include "../../events.hpp"
+#include "prologue.hpp"
 
 void Event::lookAtEden()
 {
@@ -78,7 +78,7 @@ void Event::encounterGunStore()
     Menu menu5({
         std::make_pair(jWriter["prologue"]["menu5"][0], enterGunShop),
         std::make_pair(jWriter["prologue"]["menu4"][1], encounterGunStore_1)
-        });
+    });
 }
 
 void Event::encounterGunStore_1()
@@ -185,7 +185,7 @@ void Event::meetingWithPolicemans()
     Menu menu6({
         std::make_pair(jWriter["prologue"]["menu6"][0], meetingWithPolicemans_1),
         std::make_pair(jWriter["prologue"]["menu6"][1], meetingWithPolicemans_2)
-        });
+    });
 }
 
 void Event::meetingWithPolicemans_1()
@@ -209,7 +209,7 @@ void Event::streetCrossroads()
         std::make_pair((std::string)jWriter["main"]["visit"] + Location::locations["DarkAlley"].getName() + ".", visitDarkAlley),
         std::make_pair((std::string)jWriter["main"]["visit"] + Location::locations["Nightclub"].getName() + ".", visitNightclub),
         std::make_pair((std::string)jWriter["main"]["visit"] + Location::locations["GunShop"].getName() + ".", visitGunShop)
-        });
+    });
 }
 
 void Event::visitDarkAlley()

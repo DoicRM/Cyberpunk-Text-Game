@@ -2,7 +2,7 @@
 // 		DARK ALLEY in 'Eden' nigthclub area
 // ************************************************************
 
-#include "../../events.hpp"
+#include "prologue.hpp"
 
 bool bobRecommendsZed       = false,
      zedKnowsAboutBobAndZed = false,

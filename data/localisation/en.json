@@ -309,13 +309,13 @@
       " Too\n\tbad it wasn't you..."
     ],
     "hookersMeeting": [
-      "Somewhere from the side a laugh reaches your ears.",
+      "\n\tSomewhere from the side a laugh reaches your ears.",
       " It belongs to two women glued to the wall\n\tof a neighbouring edifice.",
       " Their skimpy attire immediately betrays their profession",
       " - they\n\tare a pair of local prostitutes.",
       " One of them finally spots herself and starts waving her hand\n\tin your direction.",
       "'Hey, sunshine, do you happen to have a cigarette and some fire on you?'",
-      "Before you have time to reply, she moves sensuously towards you and her friend tries to keep\n\tup with her."
+      "\n\tBefore you have time to reply, she moves sensuously towards you and her friend tries to keep\n\tup with her.\n\n"
     ],
     "hookersMeetingMenu": [
       "I don't have either.",
@@ -327,5 +327,9 @@
     "clubOverdose": [
     ],
     "rememberYourName": "\tYour name... You start wandering your thoughts around what your name is. As if through a fog\n\tit occurs to you that you are:\n"
+  },
+  "chapterOne": {
+    "title": "\n\tChapter One",
+    "subtitle": "\n\n\tPROSELYTISM"
   }
 }

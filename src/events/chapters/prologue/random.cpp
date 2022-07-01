@@ -2,7 +2,7 @@
 // 		RANDOM EVENTS
 // ************************************************************
 
-#include "../../events.hpp"
+#include "prologue.hpp"
 
 void RandomEvent::downpourStart()
 {

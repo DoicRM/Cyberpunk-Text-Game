@@ -5,14 +5,14 @@
 class Event
 {
 public:
-	// PROLOG
+	// PROLOGUE
 	static void darkAlley();
 	static void street();
 	static void gunShop();
 	static void nightclub();
-	// AKT I
+	// CHAPTER ONE
 	static void sleepersHideout();
-
+	// MISC
 	static void heroDeath();
 	static void loadingFiles();
 	static void gameOver();
@@ -20,8 +20,8 @@ public:
 	static void namingHero();
 
 private:
-	// PROLOG
-	// Mroczny zaułek
+	// PROLOGUE
+	// Dark Alley
 	static void prologue();
 	static void storyIntroduction();
 	static void wakeUpInDarkAlley();
@@ -42,7 +42,7 @@ private:
 	static void darkAlleyCrossroads();
 		static void darkAlleyCrossroads_1();
 		static void darkAlleyCrossroads_2();
-	// Ulica
+	// Street 
 	static void lookAtEden();
 		static void lookAtEden_1();
 		static void lookAtEden_2();
@@ -56,7 +56,7 @@ private:
 		static void visitStreet();
 		static void visitNightclub();
 		static void visitGunShop();
-	// Sklep z bronią
+	// Zed's Gun Shop
 	static void encounterGunStore();
 		static void encounterGunStore_1();
 	static void enterGunShop();
@@ -71,7 +71,7 @@ private:
 		static void dialogueWithZed_5();
 	static void zedGetsAnAccelerator();
 	static void gunShopCrossroads();
-	// Klub nocny
+	// Nightclub 'Eden'
 	static void enterClub();
 	static void clubDanceFloor();
 		static void clubDanceFloor_1();
@@ -111,21 +111,11 @@ private:
 	static void vincentDeath();
 	static void vincentResurrection();
 	static void nightclubCrossroads();
-	// AKT I
-	// Kryjówka Śniących
-	static void actOne();
+	// CHAPTER ONE
+	// Sleepers Hideout
+	static void chapterOne();
 	static void sleepersHideoutCrossroads();
 };
-
-extern bool darkAlleyWasVisited,
-			streetWasVisited,
-			gunShopWasVisited,
-			nightclubWasVisited,
-			bobRecommendsZed,
-			zedKnowsAboutBobAndZed,
-			heroIsOnDanceFloor,
-			heroIsAtBar,
-			heroKnowsVincentCode;
 
 class RandomEvent : Event {
 public:

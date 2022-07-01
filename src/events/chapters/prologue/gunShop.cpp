@@ -2,7 +2,7 @@
 // 		ZED'S GUN SHOP
 // ************************************************************
 
-#include "../../events.hpp"
+#include "prologue.hpp"
 
 void Event::enterGunShop()
 {

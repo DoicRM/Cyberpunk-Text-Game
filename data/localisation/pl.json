@@ -309,13 +309,13 @@
       " Jaka szkoda, że to nie byłeś ty..."
     ],
     "hookersMeeting": [
-      "Gdzieś z boku dociera do twoich uszu śmiech.",
+      "\n\tGdzieś z boku dociera do twoich uszu śmiech.",
       " Należy do dwóch kobiet przyklejonych do ściany\n\tsąsiedniego gmachu.",
       " Ich skąpy strój od razu zdradza ich zawód",
       " - to para miejscowych prostytutek.",
       " Jedna z nich zauważa się wreszcie i zaczyna machać ręką w twoją stronę.",
       "- Hej, słonko, masz może przy sobie papierosa i trochę ognia?",
-      "Nim zdążysz odpowiedzieć, rusza zmysłowym ku tobie, a jej koleżanka stara się za nią nadążyć."
+      "\n\tNim zdążysz odpowiedzieć, rusza zmysłowym ku tobie, a jej koleżanka stara się za nią nadążyć.\n\n"
     ],
     "hookersMeetingMenu": [
       "Nie mam ani, ani tego.",
@@ -327,5 +327,9 @@
     "clubOverdose": [
     ],
     "rememberYourName": "\tTwoje imię... Zaczynasz błądzić myślami wokół tego, jak się nazywasz. Jakby przez mgłę dociera\n\tdo ciebie, że jesteś:\n"
+  },
+  "chapterOne": {
+    "title": "\n\tRozdział pierwszy",
+    "subtitle": "\n\n\tNAWRÓCENIE"
   }
 }

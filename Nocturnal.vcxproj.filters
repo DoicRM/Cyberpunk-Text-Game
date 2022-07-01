@@ -60,16 +60,7 @@
     <ClCompile Include="src\fraction\fraction.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
-    <ClCompile Include="src\events\chapters\chapterOne.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\events\chapters\chapterThree.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\events\chapters\chapterTwo.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\events\chapters\epilogue.cpp">
+    <ClCompile Include="src\events\chapters\chapterOne\chapterOne.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
     <ClCompile Include="src\utilities\display\display.cpp">
@@ -89,6 +80,8 @@
     <ClCompile Include="src\events\chapters\prologue\street.cpp" />
     <ClCompile Include="src\events\chapters\prologue\misc.cpp" />
     <ClCompile Include="src\events\chapters\prologue\random.cpp" />
+    <ClCompile Include="src\events\chapters\prologue\prologue.cpp" />
+    <ClCompile Include="src\events\chapters\chapterOne\sleepersHideout.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\utilities\console\console.hpp">
@@ -153,5 +146,7 @@
     </ClInclude>
     <ClInclude Include="src\utilities\saveManager\saveManager.hpp" />
     <ClInclude Include="src\events\events.hpp" />
+    <ClInclude Include="src\events\chapters\prologue\prologue.hpp" />
+    <ClInclude Include="src\events\chapters\chapterOne\chapterOne.hpp" />
   </ItemGroup>
 </Project>

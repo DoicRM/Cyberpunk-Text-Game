@@ -2,7 +2,7 @@
 // 		NIGHTCLUB 'EDEN'
 // ************************************************************
 
-#include "../../events.hpp"
+#include "prologue.hpp"
 
 void Event::enterClub()
 {
@@ -20,7 +20,7 @@ void Event::enterClub()
         std::make_pair("Go to the bar.", clubBar),
         std::make_pair("Go upstairs.", clubUpstairs),
         std::make_pair("Back on the street.", visitStreet)
-        });
+    });
 }
 
 void Event::clubDanceFloor()
@@ -45,7 +45,7 @@ void Event::clubDanceFloor()
             std::make_pair("'What do you want?'", clubDanceFloor_1),
             std::make_pair("'Hey, baby.'", clubDanceFloor_2),
             std::make_pair("Keep dancing with no words.", clubDanceFloor_3)
-            });
+        });
 
         miaMeeting();
     }
@@ -93,7 +93,7 @@ void Event::clubBar()
             std::make_pair("'Give me anything.'", clubBar_1),
             std::make_pair("'Who's in charge?'", clubBar_2),
             std::make_pair("'Bye.'", clubBar_3)
-            });
+        });
 
         if (menu13.getChoice() <= menu13.getOptionsSize() && menu13.getChoice() > 0)
         {
@@ -141,7 +141,7 @@ void Event::miaMeeting()
     Menu menu14({
         std::make_pair("'What is it about?'", miaMeeting_1),
         std::make_pair("Be silent and let her speak.", miaMeeting_2)
-        });
+    });
 
     Display::writeDialogue("\n\t- 'Vinc, the owner, is my boyfriend.");
     Console::wait(1000);
@@ -192,7 +192,7 @@ void Event::clubUpstairs()
     Menu menu15({
         std::make_pair("Come closer.", clubUpstairs_1),
         std::make_pair("Go back downstairs.", clubUpstairs_2)
-        });
+    });
 }
 
 void Event::clubUpstairs_1()
@@ -340,7 +340,7 @@ void Event::vincentOffice()
     Menu menu17({
         std::make_pair("Open the door and go into the other room.", vincentHideoutCode),
         std::make_pair("Stay and search the office.", checkVincentDesk)
-        });
+    });
 }
 
 void Event::checkVincentDesk()
@@ -369,7 +369,7 @@ void Event::vincentHideoutCode()
         Menu menu18({
             std::make_pair("Use code '2021'.", nullptr),
             std::make_pair("Search the office.", nullptr)
-            });
+        });
     }
 }
 
@@ -388,7 +388,7 @@ void Event::vincentHideout()
     Menu menu19({
         std::make_pair("Disconnect his consciousness from the neuronet. (Kill him)", vincentHideout_1),
         std::make_pair("Wait for his consciousness to leave the neuronet.", vincentHideout_2)
-        });
+    });
 }
 
 void Event::vincentHideout_1()
@@ -422,14 +422,14 @@ void Event::dialogueWithVincent()
         std::make_pair("'Die!'", dialogueWithVincent_1),
         std::make_pair("'I don't want to fight with you.'", dialogueWithVincent_2),
         std::make_pair("'Nyx wants you dead.'", dialogueWithVincent_3)
-        });
+    });
 
     std::cout << std::endl << std::endl;
 
     Menu menu21({
         std::make_pair("'It doesn't matter.'", dialogueWithVincent_4),
         std::make_pair("'Your girlfriend, Nyx.'", dialogueWithVincent_5)
-        });
+    });
 
     Display::writeNarration("\n\tThe passage behind your back is opened.");
     Console::wait(1000);
@@ -445,7 +445,7 @@ void Event::dialogueWithVincent()
     Menu menu22({
         std::make_pair("Do nothing.", dialogueWithVincent_6),
         std::make_pair("'What is this all about?'", dialogueWithVincent_7)
-        });
+    });
 
     vincentResurrection();
 }
@@ -544,5 +544,5 @@ void Event::nightclubCrossroads()
         std::make_pair("Go to the bar.", clubBar),
         std::make_pair("Go upstairs.", clubUpstairs),
         std::make_pair("Back on the street.", visitStreet)
-        });
+    });
 }

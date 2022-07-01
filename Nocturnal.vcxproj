@@ -164,13 +164,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\events\chapters\chapterOne.cpp" />
-    <ClCompile Include="src\events\chapters\chapterThree.cpp" />
-    <ClCompile Include="src\events\chapters\chapterTwo.cpp" />
-    <ClCompile Include="src\events\chapters\epilogue.cpp" />
+    <ClCompile Include="src\events\chapters\chapterOne\chapterOne.cpp" />
+    <ClCompile Include="src\events\chapters\chapterOne\sleepersHideout.cpp" />
     <ClCompile Include="src\events\chapters\prologue\darkAlley.cpp" />
     <ClCompile Include="src\events\chapters\prologue\eden.cpp" />
     <ClCompile Include="src\events\chapters\prologue\misc.cpp" />
+    <ClCompile Include="src\events\chapters\prologue\prologue.cpp" />
     <ClCompile Include="src\events\chapters\prologue\random.cpp" />
     <ClCompile Include="src\events\chapters\prologue\street.cpp" />
     <ClCompile Include="src\events\chapters\prologue\gunShop.cpp" />
@@ -198,6 +197,8 @@
     <ClCompile Include="src\utilities\saveManager\saveManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\events\chapters\chapterOne\chapterOne.hpp" />
+    <ClInclude Include="src\events\chapters\prologue\prologue.hpp" />
     <ClInclude Include="src\events\events.hpp" />
     <ClInclude Include="src\fraction\fraction.hpp" />
     <ClInclude Include="src\game\game.hpp" />
