@@ -5,15 +5,18 @@ std::map <int, Game> Game::game;
 
 Game::Game()
 {
+    Weather weather;
+
     this->menu = 0;
     this->choice = 0;
     this->gameLang = 0;
     this->playing = true;
     this->currentLocation = nullptr;
+    this->weather = weather;
 }
 
 Game::~Game()
-{   
+{
 }
 
 void Game::init()
@@ -44,7 +47,6 @@ void Game::run()
     while (getPlaying())
     {
         selectLanguage();
-        welcome();
         writeLogo();
         mainMenu();
         end();
@@ -145,7 +147,7 @@ void Game::mainMenu()
 
     Menu mainMenu({
         std::make_pair(jWriter["mainMenu"][0], std::bind(&Game::newGame, this)),
-        std::make_pair(jWriter["mainMenu"][1], std::bind(&Game::laodGame, this)),
+        std::make_pair(jWriter["mainMenu"][1], std::bind(&Game::loadGame, this)),
         std::make_pair(jWriter["mainMenu"][2], std::bind(&Game::changeLanguage, this)),
         std::make_pair(jWriter["mainMenu"][3], std::bind(&Game::credits, this)),
         std::make_pair(jWriter["mainMenu"][4], std::bind(&Game::endGame, this))
@@ -161,7 +163,7 @@ void Game::newGame()
     setCurrentLocation(&Location::locations["DarkAlley"]);
 }
 
-void Game::laodGame()
+void Game::loadGame()
 {
     Logger::startFuncLog(__FUNCTION__);
     Console::clearScreen();
@@ -253,7 +255,7 @@ void Game::initHeroIventory()
 {
     Logger::startFuncLog(__FUNCTION__);
     std::ofstream eq;
-    eq.open("eq.txt");
+    eq.open("inventory.txt");
 
     if (!eq.is_open())
     {

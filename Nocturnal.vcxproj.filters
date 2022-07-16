@@ -82,6 +82,7 @@
     <ClCompile Include="src\events\chapters\prologue\random.cpp" />
     <ClCompile Include="src\events\chapters\prologue\prologue.cpp" />
     <ClCompile Include="src\events\chapters\chapterOne\sleepersHideout.cpp" />
+    <ClCompile Include="src\weather\weather.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\utilities\console\console.hpp">
@@ -148,5 +149,6 @@
     <ClInclude Include="src\events\events.hpp" />
     <ClInclude Include="src\events\chapters\prologue\prologue.hpp" />
     <ClInclude Include="src\events\chapters\chapterOne\chapterOne.hpp" />
+    <ClInclude Include="src\weather\weather.hpp" />
   </ItemGroup>
 </Project>

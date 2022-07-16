@@ -195,6 +195,7 @@
     <ClCompile Include="src\utilities\menu\menu.cpp" />
     <ClCompile Include="src\utilities\randomize\randomize.cpp" />
     <ClCompile Include="src\utilities\saveManager\saveManager.cpp" />
+    <ClCompile Include="src\weather\weather.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\events\chapters\chapterOne\chapterOne.hpp" />
@@ -221,6 +222,7 @@
     <ClInclude Include="src\utilities\randomize\randomize.hpp" />
     <ClInclude Include="src\utilities\saveManager\saveManager.hpp" />
     <ClInclude Include="src\utilities\utilities.hpp" />
+    <ClInclude Include="src\weather\weather.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

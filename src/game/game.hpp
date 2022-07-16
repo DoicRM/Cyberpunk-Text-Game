@@ -9,6 +9,7 @@
 #include "../quest/quest.hpp"
 #include "../events/events.hpp"
 #include "../location/location.hpp"
+#include "../weather/weather.hpp"
 #include "../utilities/utilities.hpp"
 #include "../utilities/logger/logger.hpp"
 #include "../utilities/menu/menu.hpp"
@@ -20,6 +21,7 @@ private:
 	bool playing;
 	int menu, choice, gameLang;
 	Location* currentLocation;
+	Weather weather;
 
 	static std::array<std::string, 8> logo;
 
@@ -40,17 +42,20 @@ public:
 	void writeLogo(); 
 	void mainMenu();
 	void newGame(); 
-	void laodGame();
+	void loadGame();
 	void changeLanguage(); 
 	void credits(); 
 	void loadLogo(); 
 	void endGame(); 
 	void end() { this->playing = false; } 
 	void setCurrentLocation(Location* location); 
+	void setWeather(WeatherType weather) { this->weather.setType(weather); };
 
 	inline bool getPlaying() const { return this->playing; }
 	inline int getLang() const { return this->gameLang; }
 	inline Location* getCurrentLocation() const { return this->currentLocation; }
+	inline Weather getWeather() const { return this->weather; }
+	inline WeatherType getWeatherType() const { return this->weather.getType(); }
 
 	static std::map <int, Game> game;
 };
