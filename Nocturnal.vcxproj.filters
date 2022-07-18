@@ -15,15 +15,6 @@
     <ClCompile Include="src\utilities\console\console.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
-    <ClCompile Include="src\utilities\menu\menu.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\utilities\logger\logger.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\utilities\languageHandler\languageHandler.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
     <ClCompile Include="src\quest\quest.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
@@ -39,12 +30,6 @@
     <ClCompile Include="src\journal\journal.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
-    <ClCompile Include="src\hero\hero.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\inventory\inventory.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
     <ClCompile Include="src\item\item.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
@@ -54,50 +39,75 @@
     <ClCompile Include="src\item\weapon\weapon.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
-    <ClCompile Include="src\game\game.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\fraction\fraction.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\events\chapters\chapterOne\chapterOne.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
     <ClCompile Include="src\utilities\display\display.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
     <ClCompile Include="src\utilities\input\input.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
-    <ClCompile Include="src\utilities\randomize\randomize.cpp">
+    <ClCompile Include="src\Event\Chapters\ChapterOne\ChapterOne.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
-    <ClCompile Include="src\utilities\saveManager\saveManager.cpp" />
-    <ClCompile Include="src\events\events.cpp" />
-    <ClCompile Include="src\events\chapters\prologue\darkAlley.cpp" />
-    <ClCompile Include="src\events\chapters\prologue\eden.cpp" />
-    <ClCompile Include="src\events\chapters\prologue\gunShop.cpp" />
-    <ClCompile Include="src\events\chapters\prologue\street.cpp" />
-    <ClCompile Include="src\events\chapters\prologue\misc.cpp" />
-    <ClCompile Include="src\events\chapters\prologue\random.cpp" />
-    <ClCompile Include="src\events\chapters\prologue\prologue.cpp" />
-    <ClCompile Include="src\events\chapters\chapterOne\sleepersHideout.cpp" />
-    <ClCompile Include="src\weather\weather.cpp" />
+    <ClCompile Include="src\Event\Chapters\Prologue\DarkAlley.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Event\Chapters\Prologue\Eden.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Event\Event.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\GameSettings\GameSettings.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Event\Chapters\Prologue\GunShop.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Npc\Hero\Hero.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utilities\JsonHandler\JsonHandler.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Menu\Menu.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Event\Chapters\Prologue\Misc.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Event\Chapters\Prologue\Prologue.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Event\Chapters\Prologue\Random.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utilities\SaveManager\SaveManager.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Event\Chapters\ChapterOne\SleepersHideout.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Event\Chapters\Prologue\Street.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utilities\Utilities.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utilities\Logger\Logger.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\fraction\Fraction.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\Game.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Inventory\Inventory.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\utilities\console\console.hpp">
-      <Filter>Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\utilities\utilities.hpp">
-      <Filter>Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\utilities\menu\menu.hpp">
-      <Filter>Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\utilities\logger\logger.hpp">
-      <Filter>Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\utilities\languageHandler\languageHandler.hpp">
       <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="src\quest\quest.hpp">
@@ -115,12 +125,6 @@
     <ClInclude Include="src\journal\journal.hpp">
       <Filter>Header files</Filter>
     </ClInclude>
-    <ClInclude Include="src\hero\hero.hpp">
-      <Filter>Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\inventory\inventory.hpp">
-      <Filter>Header files</Filter>
-    </ClInclude>
     <ClInclude Include="src\item\item.hpp">
       <Filter>Header files</Filter>
     </ClInclude>
@@ -130,25 +134,50 @@
     <ClInclude Include="src\item\weapon\weapon.hpp">
       <Filter>Header files</Filter>
     </ClInclude>
-    <ClInclude Include="src\game\game.hpp">
-      <Filter>Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\fraction\fraction.hpp">
-      <Filter>Header files</Filter>
-    </ClInclude>
     <ClInclude Include="src\utilities\input\input.hpp">
       <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="src\utilities\display\display.hpp">
       <Filter>Header files</Filter>
     </ClInclude>
-    <ClInclude Include="src\utilities\randomize\randomize.hpp">
+    <ClInclude Include="src\Event\Chapters\ChapterOne\ChapterOne.hpp">
       <Filter>Header files</Filter>
     </ClInclude>
-    <ClInclude Include="src\utilities\saveManager\saveManager.hpp" />
-    <ClInclude Include="src\events\events.hpp" />
-    <ClInclude Include="src\events\chapters\prologue\prologue.hpp" />
-    <ClInclude Include="src\events\chapters\chapterOne\chapterOne.hpp" />
-    <ClInclude Include="src\weather\weather.hpp" />
+    <ClInclude Include="src\Event\Event.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\GameSettings\GameSettings.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Npc\Hero\Hero.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilities\JsonHandler\JsonHandler.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Menu\Menu.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event\Chapters\Prologue\Prologue.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilities\SaveManager\SaveManager.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilities\Logger\Logger.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\fraction\Fraction.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utilities\Utilities.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game\Game.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Inventory\Inventory.hpp">
+      <Filter>Header files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

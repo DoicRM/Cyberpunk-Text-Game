@@ -366,3 +366,4 @@ FodyWeavers.xsd
 *.txt
 log.html
 save_*.dat
+config.json
