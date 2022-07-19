@@ -107,7 +107,7 @@ void Game::mainMenu()
         std::make_pair(json["mainMenu"][2], std::bind(&Game::changeLanguage, this)),
         std::make_pair(json["mainMenu"][3], std::bind(&Game::credits, this)),
         std::make_pair(json["mainMenu"][4], std::bind(&Game::endGame, this))
-        });
+    });
 }
 
 void Game::newGame()
@@ -123,10 +123,15 @@ void Game::loadGame()
 {
     Logger::startFuncLog(__FUNCTION__);
     Console::clearScreen();
-    SaveManager::printSavesList();
+    Console::setConsoleColor(CC_Red);
+    std::cout << (std::string)json["main"]["notAvailable"] << std::endl;
     Console::resetConsoleColor();
+    SaveManager::printSavesList();
     Console::wait(1000);
-    Game::pause();
+    Console::setConsoleColor(ConsoleColor::CC_Narration);
+    std::cout << (std::string)json["main"]["backToMenu"];
+    Console::waitForUserInput();
+    Console::resetConsoleColor();
     Console::clearScreen();
     Game::loadLogo();
     Game::mainMenu();
@@ -150,7 +155,7 @@ void Game::endGame()
     Menu quitMenu({
         std::make_pair(json["quitGame"]["yes"], std::bind(&Game::end, this)),
         std::make_pair(json["quitGame"]["no"], std::bind(&Game::loadLogo, this))
-        });
+    });
 }
 
 void Game::credits()
@@ -170,7 +175,10 @@ void Game::credits()
     Console::resetConsoleColor();
     Display::write("\n\t   Dominik Szpilski\n\t     Daniel Obłąk\n\n");
     Console::wait(1000);
-    Game::pause();
+    Console::setConsoleColor(ConsoleColor::CC_Narration);
+    std::cout << (std::string)json["main"]["backToMenu"];
+    Console::waitForUserInput();
+    Console::resetConsoleColor();
     Console::clearScreen();
     Game::loadLogo();
     Game::mainMenu();

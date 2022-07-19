@@ -7,10 +7,15 @@
     "wasFound": " was found.",
     "downloadCompleted": "\n\tDownload completed",
     "youAreDead": "\tYOU ARE DEAD!",
-    "backToMenu": "\n\n\tBack to menu...",
+    "backToMenu": "\n\n\tBack to menu",
     "theEnd": "\tTHE END",
-    "nothingHere": "\n\tThere's nothing here. This feature is currently unavailable.\n\n",
+    "notAvailable": "\n\tThis feature is currently unavailable.\n\n",
     "visit": "Visit: "
+  },
+    "story": {
+      "prologue": "Prologue",
+      "chapter": "Chapter ",
+      "epilogue": "Epilogue"
   },
   "mainMenu": [
     "New game",
@@ -71,10 +76,12 @@
     "description": "Description: ",
     "status": "Status: "
   },
-  "questStatus": {
+  "log": {
     "notStarted": "Not started",
-    "ongoing": "Ongoing",
-    "completed": "Completed"
+    "running": "Running",
+    "success": "Success",
+    "failed": "Failed",
+    "obsolete": "Obsolete"
   },
   "journal": {
     "noQuests": "You do not have any quests in your journal.",
@@ -318,11 +325,12 @@
       "\n\tBefore you have time to reply, she moves sensuously towards you and her friend tries to keep\n\tup with her.\n\n"
     ],
     "hookersMeetingMenu": [
-      "I don't have either.",
+      "''I don't have either.''",
       "(Walk away silently towards the shop.)",
       "(Walk away silently towards the club.)"
     ],
     "punksMeeting": [
+      "\n\tSomewhere from the side a laugh reaches your ears."
     ],
     "clubOverdose": [
     ],

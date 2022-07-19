@@ -1,5 +1,6 @@
 #pragma once
 #include "../Game/Game.hpp"
+#include "../Utilities/SaveManager/SaveManager.hpp"
 #include <map>
 
 class Event

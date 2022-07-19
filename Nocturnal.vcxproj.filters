@@ -180,4 +180,8 @@
       <Filter>Header files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="data\localisation\en.json" />
+    <None Include="data\localisation\pl.json" />
+  </ItemGroup>
 </Project>

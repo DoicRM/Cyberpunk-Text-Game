@@ -7,10 +7,15 @@
     "wasFound": "Znaleziono ",
     "downloadCompleted": "\n\tPobieranie zakończone",
     "youAreDead": "\tNIE ŻYJESZ!",
-    "backToMenu": "\n\n\tWróć do menu...",
+    "backToMenu": "\n\n\tWróć do menu",
     "theEnd": "\tKONIEC",
-    "nothingHere": "\n\tNic tu nie ma. Ta funkcja jest obecnie niedostępna.\n\n",
+    "notAvailable": "\n\tTa funkcja jest obecnie niedostępna.\n\n",
     "visit": "Odwiedź: "
+  },
+  "story": {
+    "prologue": "Prolog",
+    "chapter": "Rozdział ",
+    "epilogue": "Epilog"
   },
   "mainMenu": [
     "Nowa gra",
@@ -71,10 +76,12 @@
     "description": "Opis: ",
     "status": "Status: "
   },
-  "questStatus": {
+  "log": {
     "notStarted": "Nie rozpoczęte",
-    "ongoing": "W trakcie",
-    "completed": "Wykonane"
+    "running": "W trakcie",
+    "success": "Zakończone sukcesem",
+    "failed": "Zakończone sukcesem",
+    "obsolete": "Nieaktualne"
   },
   "journal": {
     "noQuests": "Nie posiadasz żadnych zadań w dzienniku.",
@@ -323,6 +330,7 @@
       "(Odejdź w milczeniu w stronę klubu.)"
     ],
     "punksMeeting": [
+      "\n\tGdzieś z boku dociera do twoich uszu śmiech."
     ],
     "clubOverdose": [
     ],

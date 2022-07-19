@@ -31,6 +31,7 @@ void Event::namingHero()
     Console::resetConsoleColor();
     heroName = Input::getString();
     Npc::npcs["Hero"].setName(heroName);
+    SaveManager::updateSave(0, heroName, Sex::Undefined, 0, 1);
 
     Logger::out("Set <b>" + Npc::npcs["Hero"].getName() + "</b> to hero's name", __FUNCTION__);
 }

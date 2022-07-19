@@ -1,12 +1,6 @@
 #include "SaveManager.hpp"
 
-const std::string pro = "Pro";
-const std::string chap1 = "Chap_1";
-const std::string chap2 = "Chap_2";
-const std::string chap3 = "Chap_3";
-const std::string epi = "Epi";
-
-int saveNr;
+int saveNr = 0;
 
 void SaveManager::createSave()
 {
@@ -14,20 +8,21 @@ void SaveManager::createSave()
     CreateDirectory("data\\saves", NULL);
     std::ofstream newSave;
     std::string savesPath = std::filesystem::current_path().string() + "\\data\\saves\\";
-    std::string save = "save_";
+    std::string saveStr = "save_";
     std::string file = ".dat";
-    newSave.open(savesPath + save + std::to_string(saveNr) + file, std::ios_base::trunc);
+    newSave.open(savesPath + saveStr + std::to_string(saveNr) + file, std::ios_base::trunc);
     saveNr++;
     newSave << Logger::getFormattedFullDate() << std::endl;
     newSave << "Player" << " :: " << (std::string)json["loadGame"]["unknown"] << std::endl;
     newSave << "Sex" << " :: " << Sex::Undefined << std::endl;
-    newSave << chap1 << " :: " << "1" << std::endl;
+    newSave << 0 << " :: " << 1 << std::endl;
     newSave.close();
 }
 
 void SaveManager::loadSave(int nr)
 {
     Logger::startFuncLog(__FUNCTION__);
+    Save save;
     std::ifstream oldSave;
     std::string savesPath = std::filesystem::current_path().string() + "\\data\\saves\\";
     oldSave.open(savesPath + "save_" + std::to_string(nr) + ".dat");
@@ -38,22 +33,21 @@ void SaveManager::loadSave(int nr)
         return Game::game[0].loadLogo();
     }
 
-    std::string date, hour, playerText, protoText, player, genderText, chapter;
-    int gender;
-    int stage;
+    std::string playerText, protoText, genderText;
 
-    oldSave >> date >> hour >> playerText >> protoText >> player >> genderText >> protoText >> gender >> chapter >> protoText >> stage;
+    oldSave >> save.date >> save.hour >> playerText >> protoText >> save.player >> genderText >> protoText >> save.gender >> save.chapter >> protoText >> save.stage;
     oldSave.close();
 
-    Npc::npcs["Hero"].setName(player);
-    Npc::npcs["Hero"].setSex(gender);
+    Hero::heroes["Hero"].setName(save.player);
+    Hero::heroes["Hero"].setSex(save.gender);
 }
 
-void SaveManager::updateSave(int saveNr, std::string player, int sex, std::string chapter, int stage)
+void SaveManager::updateSave(int saveNr, std::string player, int sex, int chapter, int stage)
 {
     Logger::startFuncLog(__FUNCTION__);
+    std::string savesPath = std::filesystem::current_path().string() + "\\data\\saves\\";
     std::ofstream loadedSave;
-    loadedSave.open("save" + std::to_string(saveNr) + ".dat", std::ios_base::app);
+    loadedSave.open(savesPath + "save_" + std::to_string(saveNr) + ".dat", std::ios_base::trunc);
     loadedSave << Logger::getFormattedFullDate() << std::endl;
     loadedSave << "Player" << " :: " << player << std::endl;
     loadedSave << "Sex" << " :: " << sex << std::endl;
@@ -61,34 +55,31 @@ void SaveManager::updateSave(int saveNr, std::string player, int sex, std::strin
     loadedSave.close();
 }
 
-void SaveManager::loadSaveInfo(std::string save)
+void SaveManager::loadSaveInfo(std::string saveToLoad)
 {
     Logger::startFuncLog(__FUNCTION__);
+    Save save;
     std::string savesPath = std::filesystem::current_path().string() + "\\data\\saves\\";
     std::ifstream oldSave;
-    oldSave.open(savesPath + save);
+    oldSave.open(savesPath + saveToLoad);
 
     if (!oldSave.is_open())
     {
-        return Logger::error("Unable to open '" + save + "' file", __FUNCTION__);
+        return Logger::error("Unable to open '" + saveToLoad + "' file", __FUNCTION__);
     }
 
-    std::string date, hour, playerText, protoText, player, genderText, chapter;
-    int gender;
-    int stage;
+    std::string playerText, protoText, genderText;
 
-    oldSave >> date >> hour >> playerText >> protoText >> player >> genderText >> protoText >> gender >> chapter >> protoText >> stage;
+    oldSave >> save.date >> save.hour >> playerText >> protoText >> save.player >> genderText >> protoText >> save.gender >> save.chapter >> protoText >> save.stage;
     oldSave.close();
 
-    std::cout << "\t" << player << ", " << printSex(gender) << " | " << chapter << ": " << stage << " | " << date << " " << hour << std::endl;
+    std::cout << "\t" << save.player << ", " << printSex(save.gender) << " | " << getChapterString(save.chapter) << " : " << save.stage << " | " << save.date << " " << save.hour << std::endl;
 }
 
 void SaveManager::printSavesList()
 {
     Logger::startFuncLog(__FUNCTION__);
-    std::cout << std::endl;
     SaveManager::searchForSaves();
-    std::cout << std::endl << std::endl;
 }
 
 void SaveManager::searchForSaves()
@@ -132,6 +123,21 @@ std::string SaveManager::printSex(int sex)
     {
         return json["sex"]["female"];
     }
-
     return json["sex"]["undefined"];
+}
+
+std::string SaveManager::getChapterString(int chapter)
+{
+    if (chapter == 0 || chapter < 0)
+    {
+        return json["story"]["prologue"];
+    }
+    else if (chapter == 1 || chapter == 2)
+    {
+        std::string str;
+        str += json["story"]["chapter"];
+        str += std::to_string(chapter);
+        return str;
+    }
+    return json["story"]["epilogue"];
 }

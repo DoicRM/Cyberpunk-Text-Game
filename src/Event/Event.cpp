@@ -30,16 +30,13 @@ void Event::gameOver()
     std::cout << std::endl << std::endl;
     Console::resetConsoleColor();
     Game::game[0].credits();
-    Display::write(json["main"]["backToMenu"], 25);
-    Console::waitForUserInput();
-    Console::clearScreen();
-    Game::game[0].loadLogo();
 }
 
 void Event::clearInstances()
 {
     Logger::startFuncLog(__FUNCTION__);
     Npc::npcs.clear();
+    Hero::heroes.clear();
     Fraction::fractions.clear();
     Item::items.clear();
     Location::locations.clear();
